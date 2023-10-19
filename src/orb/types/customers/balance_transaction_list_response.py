@@ -1,0 +1,53 @@
+# File generated from our OpenAPI spec by Stainless.
+
+from typing import Optional
+from datetime import datetime
+from typing_extensions import Literal
+
+from ..._models import BaseModel
+
+__all__ = ["BalanceTransactionListResponse", "CreditNote", "Invoice"]
+
+
+class CreditNote(BaseModel):
+    id: str
+    """The id of the Credit note"""
+
+
+class Invoice(BaseModel):
+    id: str
+    """The Invoice id"""
+
+
+class BalanceTransactionListResponse(BaseModel):
+    id: str
+    """A unique id for this transaction."""
+
+    action: Literal["applied_to_invoice", "prorated_refund", "manual_adjustment"]
+
+    amount: str
+    """The value of the amount changed in the transaction."""
+
+    created_at: datetime
+    """The creation time of this transaction."""
+
+    credit_note: Optional[CreditNote]
+
+    description: Optional[str]
+    """An optional description provided for manual customer balance adjustments."""
+
+    ending_balance: str
+    """
+    The new value of the customer's balance prior to the transaction, in the
+    customer's currency.
+    """
+
+    invoice: Optional[Invoice]
+
+    starting_balance: str
+    """
+    The original value of the customer's balance prior to the transaction, in the
+    customer's currency.
+    """
+
+    type: Literal["increment", "decrement"]

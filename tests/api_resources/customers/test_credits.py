@@ -1,0 +1,91 @@
+# File generated from our OpenAPI spec by Stainless.
+
+from __future__ import annotations
+
+import os
+
+import pytest
+
+from orb import Orb, AsyncOrb
+from tests.utils import assert_matches_type
+from orb.pagination import SyncPage, AsyncPage
+from orb.types.customers import CreditListResponse, CreditListByExternalIDResponse
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+api_key = "My API Key"
+
+
+class TestCredits:
+    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+
+    @parametrize
+    def test_method_list(self, client: Orb) -> None:
+        credit = client.customers.credits.list(
+            "string",
+        )
+        assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Orb) -> None:
+        credit = client.customers.credits.list(
+            "string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
+    def test_method_list_by_external_id(self, client: Orb) -> None:
+        credit = client.customers.credits.list_by_external_id(
+            "string",
+        )
+        assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
+
+    @parametrize
+    def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
+        credit = client.customers.credits.list_by_external_id(
+            "string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
+
+
+class TestAsyncCredits:
+    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+
+    @parametrize
+    async def test_method_list(self, client: AsyncOrb) -> None:
+        credit = await client.customers.credits.list(
+            "string",
+        )
+        assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
+        credit = await client.customers.credits.list(
+            "string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
+    async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
+        credit = await client.customers.credits.list_by_external_id(
+            "string",
+        )
+        assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
+
+    @parametrize
+    async def test_method_list_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
+        credit = await client.customers.credits.list_by_external_id(
+            "string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])

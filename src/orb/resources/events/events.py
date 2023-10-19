@@ -1,0 +1,1104 @@
+# File generated from our OpenAPI spec by Stainless.
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, List, Union, Optional
+from datetime import datetime
+
+from ...types import (
+    EventIngestResponse,
+    EventSearchResponse,
+    EventUpdateResponse,
+    EventDeprecateResponse,
+    event_ingest_params,
+    event_search_params,
+    event_update_params,
+)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
+from .backfills import Backfills, AsyncBackfills
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
+
+__all__ = ["Events", "AsyncEvents"]
+
+
+class Events(SyncAPIResource):
+    backfills: Backfills
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.backfills = Backfills(client)
+
+    def update(
+        self,
+        event_id: str,
+        *,
+        event_name: str,
+        properties: object,
+        timestamp: Union[str, datetime],
+        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventUpdateResponse:
+        """
+        This endpoint is used to amend a single usage event with a given `event_id`.
+        `event_id` refers to the `idempotency_key` passed in during ingestion. The event
+        will maintain its existing `event_id` after the amendment.
+
+        This endpoint will mark the existing event as ignored, and Orb will only use the
+        new event passed in the body of this request as the source of truth for that
+        `event_id`. Note that a single event can be amended any number of times, so the
+        same event can be overwritten in subsequent calls to this endpoint, or
+        overwritten using the [Amend customer usage](amend-usage) endpoint. Only a
+        single event with a given `event_id` will be considered the source of truth at
+        any given time.
+
+        This is a powerful and audit-safe mechanism to retroactively update a single
+        event in cases where you need to:
+
+        - update an event with new metadata as you iterate on your pricing model
+        - update an event based on the result of an external API call (ex. call to a
+          payment gateway succeeded or failed)
+
+        This amendment API is always audit-safe. The process will still retain the
+        original event, though it will be ignored for billing calculations. For auditing
+        and data fidelity purposes, Orb never overwrites or permanently deletes ingested
+        usage data.
+
+        ## Request validation
+
+        - The `timestamp` of the new event must match the `timestamp` of the existing
+          event already ingested. As with ingestion, all timestamps must be sent in
+          ISO8601 format with UTC timezone offset.
+        - The `customer_id` or `external_customer_id` of the new event must match the
+          `customer_id` or `external_customer_id` of the existing event already
+          ingested. Exactly one of `customer_id` and `external_customer_id` should be
+          specified, and similar to ingestion, the ID must identify a Customer resource
+          within Orb. Unlike ingestion, for event amendment, we strictly enforce that
+          the Customer must be in the Orb system, even during the initial integration
+          period. We do not allow updating the `Customer` an event is associated with.
+        - Orb does not accept an `idempotency_key` with the event in this endpoint,
+          since this request is by design idempotent. On retryable errors, you should
+          retry the request and assume the amendment operation has not succeeded until
+          receipt of a 2xx.
+        - The event's `timestamp` must fall within the customer's current subscription's
+          billing period, or within the grace period of the customer's current
+          subscription's previous billing period.
+
+        Args:
+          event_name: A name to meaningfully identify the action or event type.
+
+          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
+              boolean, or strings. Nested dictionaries are disallowed.
+
+          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
+              represent the time that usage was recorded, and is particularly important to
+              attribute usage to a given billing period.
+
+          customer_id: The Orb Customer identifier
+
+          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
+              customer
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._put(
+            f"/events/{event_id}",
+            body=maybe_transform(
+                {
+                    "event_name": event_name,
+                    "properties": properties,
+                    "timestamp": timestamp,
+                    "customer_id": customer_id,
+                    "external_customer_id": external_customer_id,
+                },
+                event_update_params.EventUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EventUpdateResponse,
+        )
+
+    def deprecate(
+        self,
+        event_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventDeprecateResponse:
+        """
+        This endpoint is used to deprecate a single usage event with a given `event_id`.
+        `event_id` refers to the `idempotency_key` passed in during ingestion.
+
+        This endpoint will mark the existing event as ignored. Note that if you attempt
+        to re-ingest an event with the same `event_id` as a deprecated event, Orb will
+        return an error.
+
+        This is a powerful and audit-safe mechanism to retroactively deprecate a single
+        event in cases where you need to:
+
+        - no longer bill for an event that was improperly reported
+        - no longer bill for an event based on the result of an external API call (ex.
+          call to a payment gateway failed and the user should not be billed)
+
+        If you want to only change specific properties of an event, but keep the event
+        as part of the billing calculation, use the [Amend single event](amend-event)
+        endpoint instead.
+
+        This API is always audit-safe. The process will still retain the deprecated
+        event, though it will be ignored for billing calculations. For auditing and data
+        fidelity purposes, Orb never overwrites or permanently deletes ingested usage
+        data.
+
+        ## Request validation
+
+        - Orb does not accept an `idempotency_key` with the event in this endpoint,
+          since this request is by design idempotent. On retryable errors, you should
+          retry the request and assume the deprecation operation has not succeeded until
+          receipt of a 2xx.
+        - The event's `timestamp` must fall within the customer's current subscription's
+          billing period, or within the grace period of the customer's current
+          subscription's previous billing period. Orb does not allow deprecating events
+          for billing periods that have already invoiced customers.
+        - The `customer_id` or the `external_customer_id` of the original event
+          ingestion request must identify a Customer resource within Orb, even if this
+          event was ingested during the initial integration period. We do not allow
+          deprecating events for customers not in the Orb system.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._put(
+            f"/events/{event_id}/deprecate",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EventDeprecateResponse,
+        )
+
+    def ingest(
+        self,
+        *,
+        events: List[event_ingest_params.Event],
+        backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
+        debug: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventIngestResponse:
+        """Orb's event ingestion model and API is designed around two core principles:
+
+        1.
+
+        **Data fidelity**: The accuracy of your billing model depends on a robust
+           foundation of events. Orb's API protocol encourages usage patterns that
+           ensure that your data is consistently complete and correct.
+        2. **Fast integration**: Sending events into Orb requires no tedious setup steps
+           or explicit field schema for your event shape, making it instant to start
+           streaming in usage in real-time.
+
+        ## Event shape
+
+        Events are the starting point for all usage calculations in the system, and are
+        simple at their core:
+
+        ```json
+        {
+        // customer_id and external_customer_id are used to
+        // attribute usage to a given Customer. Exactly one of these
+        // should be specified in a given ingestion event.
+
+        // `customer_id` is the Orb generated identifier for the Customer,
+        // which is returned from the Create customer API call.
+        customer_id: string,
+
+        // external_customer_id is an alternate identifier which is associated
+        // with a Customer at creation time. This is treated as an alias for
+        // customer_id, and is usually set to an identifier native to your system.
+        external_customer_id: string,
+
+        // A string name identifying the event, usually a usage
+        // action. By convention, this should not contain any whitespace.
+        event_name: string,
+
+        // An ISO 8601 format date with no timezone offset.
+        // This should represent the time that usage occurred
+        // and is important to attribute usage to a given
+        // billing period. See the notes below on determining the timestamp.
+        // e.g. 2020-12-09T16:09:53Z
+        timestamp: string,
+
+        // A unique value, generated by the client, that is
+        // used to de-duplicate events.
+        // Exactly one event with a given
+        // idempotency key will be ingested, which allows for
+        // safe request retries.
+        idempotency_key: string
+
+        // Optional custom metadata to attach to the event.
+        // This might include a numeric value used for aggregation,
+        // or a string/boolean value used for filtering.
+        // The schema of this dictionary need not be pre-declared, and
+        // properties can be added at any time.
+        properties: {
+        [key: string]?: string | number | boolean,
+        },
+        }
+        ```
+
+        ## Required fields
+
+        Because events streamed to Orb are meant to be as flexible as possible, there
+        are only a few required fields in every event.
+
+        - We recommend that `idempotency_key` are unique strings that you generated with
+          V4 UUIDs, but only require that they uniquely identify an event (i.e. don’t
+          collide).
+        - The `timestamp` field in the event body will be used to determine which
+          billable period a given event falls into. For example, with a monthly billing
+          cycle starting from the first of December, Orb will calculate metrics based on
+          events that fall into the range
+          `12-01 00:00:00 <= timestamp < 01-01 00:00:00`.
+
+        ## Logging metadata
+
+        Orb allows tagging events with metadata using a flexible properties dictionary.
+        Since Orb does not enforce a rigid schema for this field-set, key-value pairs
+        can be added dynamically as your events evolve.
+
+        This dictionary can be helpful for a wide variety of use cases:
+
+        - Numeric properties on events like `compute_time_ms` can later be inputs to our
+          flexible query engine to determine usage.
+        - Logging a region or cluster with each event can help you provide customers
+          more granular visibility into their usage.
+
+        We encourage logging this metadata with an eye towards future use cases to
+        ensure full coverage for historical data. The datatype of the value in the
+        properties dictionary is important for metric creation from an event source.
+        Values that you wish to numerically aggregate should be of numeric type in the
+        event.
+
+        ## Determining event timestamp
+
+        For cases where usage is being reported in real time as it is occurring,
+        timestamp should correspond to the time that usage occurred.
+
+        In cases where usage is reported in aggregate for a historical timeframe at a
+        regular interval, we recommend setting the event `timestamp` to the midpoint of
+        the interval. As an example, if you have an hourly reporter that sends data once
+        an hour for the previous hour of usage, setting the `timestamp` to the half-hour
+        mark will ensure that the usage is counted within the correct period.
+
+        Note that other time-related fields (e.g. time elapsed) can be added to the
+        properties dictionary as necessary.
+
+        In cases where usage is reported in aggregate for a historical timeframe, the
+        timestamp must be within the grace period set for your account. Events with
+        `timestamp < current_time - grace_period` will not be accepted as a valid event,
+        and will throw validation errors. Enforcing the grace period enables Orb to
+        accurately map usage to the correct billing cycle and ensure that all usage is
+        billed for in the corresponding billing period.
+
+        ## Event validation
+
+        Orb’s validation ensures that you recognize errors in your events as quickly as
+        possible, and the API provides informative error messages to help you fix
+        problems quickly.
+
+        We validate the following:
+
+        - Exactly one of `customer_id` and `external_customer_id` should be specified.
+        - If specified, `customer_id` must identify a Customer resource within Orb. We
+          do not support sending events for customers that have not been provisioned.
+          Similarly, if specified, `external_customer_id` must be an identifier that is
+          associated with an Orb Customer resource. Note: During our initial integration
+          period, this enforcement will be temporarily turned into a warning to ensure
+          smooth customer migration.
+        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 1 hour
+          in the future. This timestamp should be sent in UTC timezone (no timezone
+          offset).
+
+        ## Idempotency and retry semantics
+
+        Orb's idempotency guarantees allow you to implement safe retry logic in the
+        event of network or machine failures, ensuring data fidelity. Each event in the
+        request payload is associated with an idempotency key, and Orb guarantees that a
+        single idempotency key will be successfully ingested at most once.
+
+        - Successful responses return a 200 HTTP status code. The response contains
+          information about previously processed events.
+        - Requests that return a `4xx` HTTP status code indicate a payload error and
+          contain at least one event with a validation failure. An event with a
+          validation failure can be re-sent to the ingestion endpoint (after the payload
+          is fixed) with the original idempotency key since that key is not marked as
+          processed.
+        - Requests that return a `5xx` HTTP status code indicate a server-side failure.
+          These requests should be retried in their entirety.
+
+        ## API usage and limits
+
+        The ingestion API is designed made for real-time streaming ingestion and
+        architected for high throughput. Even if events are later deemed unnecessary or
+        filtered out, we encourage you to log them to Orb if they may be relevant to
+        billing calculations in the future.
+
+        To take advantage of the real-time features of the Orb platform and avoid any
+        chance of dropped events by producers, we recommend reporting events to Orb
+        frequently. Optionally, events can also be briefly aggregated at the source, as
+        this API accepts an array of event bodies.
+
+        Orb does not currently enforce a hard rate-limit for API usage or a maximum
+        request payload size, but please give us a heads up if you’re changing either of
+        these factors by an order of magnitude from initial setup.
+
+        ## Testing in debug mode
+
+        The ingestion API supports a debug mode, which returns additional verbose output
+        to indicate which event idempotency keys were newly ingested or duplicates from
+        previous requests. To enable this mode, mark `debug=true` as a query parameter.
+
+        If `debug=true` is not specified, the response will only contain
+        `validation_failed`. Orb will still honor the idempotency guarantees set
+        [here](../guides/events-and-metrics/event-ingestion#event-volume-and-concurrency)
+        in all cases.
+
+        We strongly recommend that you only use debug mode as part of testing your
+        initial Orb integration. Once you're ready to switch to production, disable
+        debug mode to take advantage of improved performance and maximal throughput.
+
+        #### Example: ingestion response with `debug=true`
+
+        ```json
+        {
+          "debug": {
+            "duplicate": [],
+            "ingested": ["B7E83HDMfJPAunXW", "SJs5DQJ3TnwSqEZE", "8SivfDsNKwCeAXim"]
+          },
+          "validation_failed": []
+        }
+        ```
+
+        #### Example: ingestion response with `debug=false`
+
+        ```json
+        {
+          "validation_failed": []
+        }
+        ```
+
+        Args:
+          backfill_id: If this ingestion request is part of a backfill, this parameter ties the
+              ingested events to the backfill
+
+          debug: Flag to enable additional debug information in the endpoint response
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/ingest",
+            body=maybe_transform({"events": events}, event_ingest_params.EventIngestParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+                query=maybe_transform(
+                    {
+                        "backfill_id": backfill_id,
+                        "debug": debug,
+                    },
+                    event_ingest_params.EventIngestParams,
+                ),
+            ),
+            cast_to=EventIngestResponse,
+        )
+
+    def search(
+        self,
+        *,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        timestamp_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        event_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        invoice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventSearchResponse:
+        """
+        This endpoint returns a filtered set of events for an account in a
+        [paginated list format](../reference/pagination).
+
+        Note that this is a `POST` endpoint rather than a `GET` endpoint because it
+        employs a JSON body for search criteria rather than query parameters, allowing
+        for a more flexible search syntax.
+
+        Note that a search criteria _must_ be specified. Currently, Orb supports the
+        following criteria:
+
+        - `event_ids`: This is an explicit array of IDs to filter by. Note that an
+          event's ID is the `idempotency_key` that was originally used for ingestion.
+        - `invoice_id`: This is an issued Orb invoice ID (see also
+          [List Invoices](list-invoices)). Orb will fetch all events that were used to
+          calculate the invoice. In the common case, this will be a list of events whose
+          `timestamp` property falls within the billing period specified by the invoice.
+
+        By default, Orb does not return _deprecated_ events in this endpoint.
+
+        By default, Orb will not throw a `404` if no events matched, Orb will return an
+        empty array for `data` instead.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
+              idempotency_key that was originally used for ingestion. Values in this array
+              will be treated case sensitively.
+
+          invoice_id: This is an issued Orb invoice ID (see also List Invoices). Orb will fetch all
+              events that were used to calculate the invoice. In the common case, this will be
+              a list of events whose timestamp property falls within the billing period
+              specified by the invoice.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/events/search",
+            body=maybe_transform(
+                {
+                    "event_ids": event_ids,
+                    "invoice_id": invoice_id,
+                },
+                event_search_params.EventSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "timestamp_gt": timestamp_gt,
+                        "timestamp_gte": timestamp_gte,
+                        "timestamp_lt": timestamp_lt,
+                        "timestamp_lte": timestamp_lte,
+                    },
+                    event_search_params.EventSearchParams,
+                ),
+            ),
+            cast_to=EventSearchResponse,
+        )
+
+
+class AsyncEvents(AsyncAPIResource):
+    backfills: AsyncBackfills
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.backfills = AsyncBackfills(client)
+
+    async def update(
+        self,
+        event_id: str,
+        *,
+        event_name: str,
+        properties: object,
+        timestamp: Union[str, datetime],
+        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventUpdateResponse:
+        """
+        This endpoint is used to amend a single usage event with a given `event_id`.
+        `event_id` refers to the `idempotency_key` passed in during ingestion. The event
+        will maintain its existing `event_id` after the amendment.
+
+        This endpoint will mark the existing event as ignored, and Orb will only use the
+        new event passed in the body of this request as the source of truth for that
+        `event_id`. Note that a single event can be amended any number of times, so the
+        same event can be overwritten in subsequent calls to this endpoint, or
+        overwritten using the [Amend customer usage](amend-usage) endpoint. Only a
+        single event with a given `event_id` will be considered the source of truth at
+        any given time.
+
+        This is a powerful and audit-safe mechanism to retroactively update a single
+        event in cases where you need to:
+
+        - update an event with new metadata as you iterate on your pricing model
+        - update an event based on the result of an external API call (ex. call to a
+          payment gateway succeeded or failed)
+
+        This amendment API is always audit-safe. The process will still retain the
+        original event, though it will be ignored for billing calculations. For auditing
+        and data fidelity purposes, Orb never overwrites or permanently deletes ingested
+        usage data.
+
+        ## Request validation
+
+        - The `timestamp` of the new event must match the `timestamp` of the existing
+          event already ingested. As with ingestion, all timestamps must be sent in
+          ISO8601 format with UTC timezone offset.
+        - The `customer_id` or `external_customer_id` of the new event must match the
+          `customer_id` or `external_customer_id` of the existing event already
+          ingested. Exactly one of `customer_id` and `external_customer_id` should be
+          specified, and similar to ingestion, the ID must identify a Customer resource
+          within Orb. Unlike ingestion, for event amendment, we strictly enforce that
+          the Customer must be in the Orb system, even during the initial integration
+          period. We do not allow updating the `Customer` an event is associated with.
+        - Orb does not accept an `idempotency_key` with the event in this endpoint,
+          since this request is by design idempotent. On retryable errors, you should
+          retry the request and assume the amendment operation has not succeeded until
+          receipt of a 2xx.
+        - The event's `timestamp` must fall within the customer's current subscription's
+          billing period, or within the grace period of the customer's current
+          subscription's previous billing period.
+
+        Args:
+          event_name: A name to meaningfully identify the action or event type.
+
+          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
+              boolean, or strings. Nested dictionaries are disallowed.
+
+          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
+              represent the time that usage was recorded, and is particularly important to
+              attribute usage to a given billing period.
+
+          customer_id: The Orb Customer identifier
+
+          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
+              customer
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._put(
+            f"/events/{event_id}",
+            body=maybe_transform(
+                {
+                    "event_name": event_name,
+                    "properties": properties,
+                    "timestamp": timestamp,
+                    "customer_id": customer_id,
+                    "external_customer_id": external_customer_id,
+                },
+                event_update_params.EventUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EventUpdateResponse,
+        )
+
+    async def deprecate(
+        self,
+        event_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventDeprecateResponse:
+        """
+        This endpoint is used to deprecate a single usage event with a given `event_id`.
+        `event_id` refers to the `idempotency_key` passed in during ingestion.
+
+        This endpoint will mark the existing event as ignored. Note that if you attempt
+        to re-ingest an event with the same `event_id` as a deprecated event, Orb will
+        return an error.
+
+        This is a powerful and audit-safe mechanism to retroactively deprecate a single
+        event in cases where you need to:
+
+        - no longer bill for an event that was improperly reported
+        - no longer bill for an event based on the result of an external API call (ex.
+          call to a payment gateway failed and the user should not be billed)
+
+        If you want to only change specific properties of an event, but keep the event
+        as part of the billing calculation, use the [Amend single event](amend-event)
+        endpoint instead.
+
+        This API is always audit-safe. The process will still retain the deprecated
+        event, though it will be ignored for billing calculations. For auditing and data
+        fidelity purposes, Orb never overwrites or permanently deletes ingested usage
+        data.
+
+        ## Request validation
+
+        - Orb does not accept an `idempotency_key` with the event in this endpoint,
+          since this request is by design idempotent. On retryable errors, you should
+          retry the request and assume the deprecation operation has not succeeded until
+          receipt of a 2xx.
+        - The event's `timestamp` must fall within the customer's current subscription's
+          billing period, or within the grace period of the customer's current
+          subscription's previous billing period. Orb does not allow deprecating events
+          for billing periods that have already invoiced customers.
+        - The `customer_id` or the `external_customer_id` of the original event
+          ingestion request must identify a Customer resource within Orb, even if this
+          event was ingested during the initial integration period. We do not allow
+          deprecating events for customers not in the Orb system.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._put(
+            f"/events/{event_id}/deprecate",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EventDeprecateResponse,
+        )
+
+    async def ingest(
+        self,
+        *,
+        events: List[event_ingest_params.Event],
+        backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
+        debug: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventIngestResponse:
+        """Orb's event ingestion model and API is designed around two core principles:
+
+        1.
+
+        **Data fidelity**: The accuracy of your billing model depends on a robust
+           foundation of events. Orb's API protocol encourages usage patterns that
+           ensure that your data is consistently complete and correct.
+        2. **Fast integration**: Sending events into Orb requires no tedious setup steps
+           or explicit field schema for your event shape, making it instant to start
+           streaming in usage in real-time.
+
+        ## Event shape
+
+        Events are the starting point for all usage calculations in the system, and are
+        simple at their core:
+
+        ```json
+        {
+        // customer_id and external_customer_id are used to
+        // attribute usage to a given Customer. Exactly one of these
+        // should be specified in a given ingestion event.
+
+        // `customer_id` is the Orb generated identifier for the Customer,
+        // which is returned from the Create customer API call.
+        customer_id: string,
+
+        // external_customer_id is an alternate identifier which is associated
+        // with a Customer at creation time. This is treated as an alias for
+        // customer_id, and is usually set to an identifier native to your system.
+        external_customer_id: string,
+
+        // A string name identifying the event, usually a usage
+        // action. By convention, this should not contain any whitespace.
+        event_name: string,
+
+        // An ISO 8601 format date with no timezone offset.
+        // This should represent the time that usage occurred
+        // and is important to attribute usage to a given
+        // billing period. See the notes below on determining the timestamp.
+        // e.g. 2020-12-09T16:09:53Z
+        timestamp: string,
+
+        // A unique value, generated by the client, that is
+        // used to de-duplicate events.
+        // Exactly one event with a given
+        // idempotency key will be ingested, which allows for
+        // safe request retries.
+        idempotency_key: string
+
+        // Optional custom metadata to attach to the event.
+        // This might include a numeric value used for aggregation,
+        // or a string/boolean value used for filtering.
+        // The schema of this dictionary need not be pre-declared, and
+        // properties can be added at any time.
+        properties: {
+        [key: string]?: string | number | boolean,
+        },
+        }
+        ```
+
+        ## Required fields
+
+        Because events streamed to Orb are meant to be as flexible as possible, there
+        are only a few required fields in every event.
+
+        - We recommend that `idempotency_key` are unique strings that you generated with
+          V4 UUIDs, but only require that they uniquely identify an event (i.e. don’t
+          collide).
+        - The `timestamp` field in the event body will be used to determine which
+          billable period a given event falls into. For example, with a monthly billing
+          cycle starting from the first of December, Orb will calculate metrics based on
+          events that fall into the range
+          `12-01 00:00:00 <= timestamp < 01-01 00:00:00`.
+
+        ## Logging metadata
+
+        Orb allows tagging events with metadata using a flexible properties dictionary.
+        Since Orb does not enforce a rigid schema for this field-set, key-value pairs
+        can be added dynamically as your events evolve.
+
+        This dictionary can be helpful for a wide variety of use cases:
+
+        - Numeric properties on events like `compute_time_ms` can later be inputs to our
+          flexible query engine to determine usage.
+        - Logging a region or cluster with each event can help you provide customers
+          more granular visibility into their usage.
+
+        We encourage logging this metadata with an eye towards future use cases to
+        ensure full coverage for historical data. The datatype of the value in the
+        properties dictionary is important for metric creation from an event source.
+        Values that you wish to numerically aggregate should be of numeric type in the
+        event.
+
+        ## Determining event timestamp
+
+        For cases where usage is being reported in real time as it is occurring,
+        timestamp should correspond to the time that usage occurred.
+
+        In cases where usage is reported in aggregate for a historical timeframe at a
+        regular interval, we recommend setting the event `timestamp` to the midpoint of
+        the interval. As an example, if you have an hourly reporter that sends data once
+        an hour for the previous hour of usage, setting the `timestamp` to the half-hour
+        mark will ensure that the usage is counted within the correct period.
+
+        Note that other time-related fields (e.g. time elapsed) can be added to the
+        properties dictionary as necessary.
+
+        In cases where usage is reported in aggregate for a historical timeframe, the
+        timestamp must be within the grace period set for your account. Events with
+        `timestamp < current_time - grace_period` will not be accepted as a valid event,
+        and will throw validation errors. Enforcing the grace period enables Orb to
+        accurately map usage to the correct billing cycle and ensure that all usage is
+        billed for in the corresponding billing period.
+
+        ## Event validation
+
+        Orb’s validation ensures that you recognize errors in your events as quickly as
+        possible, and the API provides informative error messages to help you fix
+        problems quickly.
+
+        We validate the following:
+
+        - Exactly one of `customer_id` and `external_customer_id` should be specified.
+        - If specified, `customer_id` must identify a Customer resource within Orb. We
+          do not support sending events for customers that have not been provisioned.
+          Similarly, if specified, `external_customer_id` must be an identifier that is
+          associated with an Orb Customer resource. Note: During our initial integration
+          period, this enforcement will be temporarily turned into a warning to ensure
+          smooth customer migration.
+        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 1 hour
+          in the future. This timestamp should be sent in UTC timezone (no timezone
+          offset).
+
+        ## Idempotency and retry semantics
+
+        Orb's idempotency guarantees allow you to implement safe retry logic in the
+        event of network or machine failures, ensuring data fidelity. Each event in the
+        request payload is associated with an idempotency key, and Orb guarantees that a
+        single idempotency key will be successfully ingested at most once.
+
+        - Successful responses return a 200 HTTP status code. The response contains
+          information about previously processed events.
+        - Requests that return a `4xx` HTTP status code indicate a payload error and
+          contain at least one event with a validation failure. An event with a
+          validation failure can be re-sent to the ingestion endpoint (after the payload
+          is fixed) with the original idempotency key since that key is not marked as
+          processed.
+        - Requests that return a `5xx` HTTP status code indicate a server-side failure.
+          These requests should be retried in their entirety.
+
+        ## API usage and limits
+
+        The ingestion API is designed made for real-time streaming ingestion and
+        architected for high throughput. Even if events are later deemed unnecessary or
+        filtered out, we encourage you to log them to Orb if they may be relevant to
+        billing calculations in the future.
+
+        To take advantage of the real-time features of the Orb platform and avoid any
+        chance of dropped events by producers, we recommend reporting events to Orb
+        frequently. Optionally, events can also be briefly aggregated at the source, as
+        this API accepts an array of event bodies.
+
+        Orb does not currently enforce a hard rate-limit for API usage or a maximum
+        request payload size, but please give us a heads up if you’re changing either of
+        these factors by an order of magnitude from initial setup.
+
+        ## Testing in debug mode
+
+        The ingestion API supports a debug mode, which returns additional verbose output
+        to indicate which event idempotency keys were newly ingested or duplicates from
+        previous requests. To enable this mode, mark `debug=true` as a query parameter.
+
+        If `debug=true` is not specified, the response will only contain
+        `validation_failed`. Orb will still honor the idempotency guarantees set
+        [here](../guides/events-and-metrics/event-ingestion#event-volume-and-concurrency)
+        in all cases.
+
+        We strongly recommend that you only use debug mode as part of testing your
+        initial Orb integration. Once you're ready to switch to production, disable
+        debug mode to take advantage of improved performance and maximal throughput.
+
+        #### Example: ingestion response with `debug=true`
+
+        ```json
+        {
+          "debug": {
+            "duplicate": [],
+            "ingested": ["B7E83HDMfJPAunXW", "SJs5DQJ3TnwSqEZE", "8SivfDsNKwCeAXim"]
+          },
+          "validation_failed": []
+        }
+        ```
+
+        #### Example: ingestion response with `debug=false`
+
+        ```json
+        {
+          "validation_failed": []
+        }
+        ```
+
+        Args:
+          backfill_id: If this ingestion request is part of a backfill, this parameter ties the
+              ingested events to the backfill
+
+          debug: Flag to enable additional debug information in the endpoint response
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/ingest",
+            body=maybe_transform({"events": events}, event_ingest_params.EventIngestParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+                query=maybe_transform(
+                    {
+                        "backfill_id": backfill_id,
+                        "debug": debug,
+                    },
+                    event_ingest_params.EventIngestParams,
+                ),
+            ),
+            cast_to=EventIngestResponse,
+        )
+
+    async def search(
+        self,
+        *,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        timestamp_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timestamp_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        event_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        invoice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> EventSearchResponse:
+        """
+        This endpoint returns a filtered set of events for an account in a
+        [paginated list format](../reference/pagination).
+
+        Note that this is a `POST` endpoint rather than a `GET` endpoint because it
+        employs a JSON body for search criteria rather than query parameters, allowing
+        for a more flexible search syntax.
+
+        Note that a search criteria _must_ be specified. Currently, Orb supports the
+        following criteria:
+
+        - `event_ids`: This is an explicit array of IDs to filter by. Note that an
+          event's ID is the `idempotency_key` that was originally used for ingestion.
+        - `invoice_id`: This is an issued Orb invoice ID (see also
+          [List Invoices](list-invoices)). Orb will fetch all events that were used to
+          calculate the invoice. In the common case, this will be a list of events whose
+          `timestamp` property falls within the billing period specified by the invoice.
+
+        By default, Orb does not return _deprecated_ events in this endpoint.
+
+        By default, Orb will not throw a `404` if no events matched, Orb will return an
+        empty array for `data` instead.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
+              idempotency_key that was originally used for ingestion. Values in this array
+              will be treated case sensitively.
+
+          invoice_id: This is an issued Orb invoice ID (see also List Invoices). Orb will fetch all
+              events that were used to calculate the invoice. In the common case, this will be
+              a list of events whose timestamp property falls within the billing period
+              specified by the invoice.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/events/search",
+            body=maybe_transform(
+                {
+                    "event_ids": event_ids,
+                    "invoice_id": invoice_id,
+                },
+                event_search_params.EventSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "timestamp_gt": timestamp_gt,
+                        "timestamp_gte": timestamp_gte,
+                        "timestamp_lt": timestamp_lt,
+                        "timestamp_lte": timestamp_lte,
+                    },
+                    event_search_params.EventSearchParams,
+                ),
+            ),
+            cast_to=EventSearchResponse,
+        )
