@@ -28,7 +28,10 @@ client = Orb(
     api_key="My API Key",
 )
 
-customer = client.customers.create()
+customer = client.customers.create(
+    email="example-customer@withorb.com",
+    name="My Customer",
+)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -50,7 +53,10 @@ client = AsyncOrb(
 
 
 async def main():
-    customer = await client.customers.create()
+    customer = await client.customers.create(
+        email="example-customer@withorb.com",
+        name="My Customer",
+    )
     print(customer)
 
 
@@ -140,7 +146,13 @@ from orb import Orb
 client = Orb()
 
 client.customers.create(
-    params={},
+    email="example-customer@withorb.com",
+    name="My Customer",
+    billing_address={
+        "city": "New York",
+        "country": "USA",
+        "line1": "123 Example Street",
+    },
 )
 ```
 
@@ -160,7 +172,10 @@ from orb import Orb
 client = Orb()
 
 try:
-    client.customers.create()
+    client.customers.create(
+        email="example-customer@withorb.com",
+        name="My Customer",
+    )
 except orb.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -203,7 +218,10 @@ client = Orb(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).customers.create()
+client.with_options(max_retries=5).customers.create(
+    email="example-customer@withorb.com",
+    name="My Customer",
+)
 ```
 
 ### Timeouts
@@ -226,7 +244,10 @@ client = Orb(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).customers.create()
+client.with_options(timeout=5 * 1000).customers.create(
+    email="example-customer@withorb.com",
+    name="My Customer",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
