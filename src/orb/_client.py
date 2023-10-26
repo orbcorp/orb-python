@@ -203,7 +203,7 @@ class Orb(SyncAPIClient):
             return _exceptions.FeatureNotAvailable(err_msg, response=response, body=body)
 
         if type_ == "https://docs.withorb.com/reference/error-responses#400-request-validation-errors":
-            return _exceptions.RequestValidationErrors(err_msg, response=response, body=body)
+            return _exceptions.RequestValidationError(err_msg, response=response, body=body)
 
         if type_ == "https://docs.withorb.com/reference/error-responses#401-authentication-error":
             return _exceptions.OrbAuthenticationError(err_msg, response=response, body=body)
@@ -434,7 +434,7 @@ class AsyncOrb(AsyncAPIClient):
             return _exceptions.FeatureNotAvailable(err_msg, response=response, body=body)
 
         if type_ == "https://docs.withorb.com/reference/error-responses#400-request-validation-errors":
-            return _exceptions.RequestValidationErrors(err_msg, response=response, body=body)
+            return _exceptions.RequestValidationError(err_msg, response=response, body=body)
 
         if type_ == "https://docs.withorb.com/reference/error-responses#401-authentication-error":
             return _exceptions.OrbAuthenticationError(err_msg, response=response, body=body)

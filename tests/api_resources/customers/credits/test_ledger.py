@@ -14,7 +14,7 @@ from orb.types.customers.credits import (
     LedgerListResponse,
     LedgerCreateEntryResponse,
     LedgerListByExternalIDResponse,
-    LedgerCreateEntryByExteralIDResponse,
+    LedgerCreateEntryByExternalIDResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -168,17 +168,17 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_overload_1(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_overload_1(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_with_all_params_overload_1(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_with_all_params_overload_1(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -193,41 +193,41 @@ class TestLedger:
             metadata={},
             per_unit_cost_basis="string",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_overload_2(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_overload_2(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_with_all_params_overload_2(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_with_all_params_overload_2(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_overload_3(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_overload_3(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_with_all_params_overload_3(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_with_all_params_overload_3(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_date("2019-12-27"),
@@ -237,21 +237,21 @@ class TestLedger:
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_overload_4(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_overload_4(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
             entry_type="void",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_with_all_params_overload_4(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_with_all_params_overload_4(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -260,21 +260,21 @@ class TestLedger:
             metadata={},
             void_reason="refund",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_overload_5(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_overload_5(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
             entry_type="amendment",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    def test_method_create_entry_by_exteral_id_with_all_params_overload_5(self, client: Orb) -> None:
-        ledger = client.customers.credits.ledger.create_entry_by_exteral_id(
+    def test_method_create_entry_by_external_id_with_all_params_overload_5(self, client: Orb) -> None:
+        ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -282,7 +282,7 @@ class TestLedger:
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
@@ -456,17 +456,17 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_with_all_params_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_1(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -481,41 +481,41 @@ class TestAsyncLedger:
             metadata={},
             per_unit_cost_basis="string",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_with_all_params_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_2(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_with_all_params_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_3(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_date("2019-12-27"),
@@ -525,21 +525,21 @@ class TestAsyncLedger:
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
             entry_type="void",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_with_all_params_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_4(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -548,21 +548,21 @@ class TestAsyncLedger:
             metadata={},
             void_reason="refund",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
             entry_type="amendment",
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_exteral_id_with_all_params_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_exteral_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_5(self, client: AsyncOrb) -> None:
+        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -570,7 +570,7 @@ class TestAsyncLedger:
             description="string",
             metadata={},
         )
-        assert_matches_type(LedgerCreateEntryByExteralIDResponse, ledger, path=["response"])
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:

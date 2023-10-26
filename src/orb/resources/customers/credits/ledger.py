@@ -15,11 +15,11 @@ from ....types.customers.credits import (
     LedgerListResponse,
     LedgerCreateEntryResponse,
     LedgerListByExternalIDResponse,
-    LedgerCreateEntryByExteralIDResponse,
+    LedgerCreateEntryByExternalIDResponse,
     ledger_list_params,
     ledger_create_entry_params,
     ledger_list_by_external_id_params,
-    ledger_create_entry_by_exteral_id_params,
+    ledger_create_entry_by_external_id_params,
 )
 
 __all__ = ["Ledger", "AsyncLedger"]
@@ -1042,7 +1042,7 @@ class Ledger(SyncAPIResource):
         )
 
     @overload
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1052,7 +1052,7 @@ class Ledger(SyncAPIResource):
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
-            ledger_create_entry_by_exteral_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
+            ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -1064,7 +1064,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1213,7 +1213,7 @@ class Ledger(SyncAPIResource):
         ...
 
     @overload
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1228,7 +1228,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1363,7 +1363,7 @@ class Ledger(SyncAPIResource):
         ...
 
     @overload
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1381,7 +1381,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1526,7 +1526,7 @@ class Ledger(SyncAPIResource):
         ...
 
     @overload
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1543,7 +1543,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1682,7 +1682,7 @@ class Ledger(SyncAPIResource):
         ...
 
     @overload
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1698,7 +1698,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1841,7 +1841,7 @@ class Ledger(SyncAPIResource):
         ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
-    def create_entry_by_exteral_id(
+    def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -1855,7 +1855,7 @@ class Ledger(SyncAPIResource):
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
-            ledger_create_entry_by_exteral_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
+            ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -1870,9 +1870,9 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         return cast(
-            LedgerCreateEntryByExteralIDResponse,
+            LedgerCreateEntryByExternalIDResponse,
             self._post(
                 f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
                 body=maybe_transform(
@@ -1889,7 +1889,7 @@ class Ledger(SyncAPIResource):
                         "block_id": block_id,
                         "void_reason": void_reason,
                     },
-                    ledger_create_entry_by_exteral_id_params.LedgerCreateEntryByExteralIDParams,
+                    ledger_create_entry_by_external_id_params.LedgerCreateEntryByExternalIDParams,
                 ),
                 options=make_request_options(
                     extra_headers=extra_headers,
@@ -1899,7 +1899,7 @@ class Ledger(SyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, LedgerCreateEntryByExteralIDResponse
+                    Any, LedgerCreateEntryByExternalIDResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
@@ -3080,7 +3080,7 @@ class AsyncLedger(AsyncAPIResource):
         )
 
     @overload
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3090,7 +3090,7 @@ class AsyncLedger(AsyncAPIResource):
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
-            ledger_create_entry_by_exteral_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
+            ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -3102,7 +3102,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3251,7 +3251,7 @@ class AsyncLedger(AsyncAPIResource):
         ...
 
     @overload
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3266,7 +3266,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3401,7 +3401,7 @@ class AsyncLedger(AsyncAPIResource):
         ...
 
     @overload
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3419,7 +3419,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3564,7 +3564,7 @@ class AsyncLedger(AsyncAPIResource):
         ...
 
     @overload
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3581,7 +3581,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3720,7 +3720,7 @@ class AsyncLedger(AsyncAPIResource):
         ...
 
     @overload
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3736,7 +3736,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3879,7 +3879,7 @@ class AsyncLedger(AsyncAPIResource):
         ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
-    async def create_entry_by_exteral_id(
+    async def create_entry_by_external_id(
         self,
         external_customer_id: Optional[str],
         *,
@@ -3893,7 +3893,7 @@ class AsyncLedger(AsyncAPIResource):
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
-            ledger_create_entry_by_exteral_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
+            ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -3908,9 +3908,9 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> LedgerCreateEntryByExteralIDResponse:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         return cast(
-            LedgerCreateEntryByExteralIDResponse,
+            LedgerCreateEntryByExternalIDResponse,
             await self._post(
                 f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
                 body=maybe_transform(
@@ -3927,7 +3927,7 @@ class AsyncLedger(AsyncAPIResource):
                         "block_id": block_id,
                         "void_reason": void_reason,
                     },
-                    ledger_create_entry_by_exteral_id_params.LedgerCreateEntryByExteralIDParams,
+                    ledger_create_entry_by_external_id_params.LedgerCreateEntryByExternalIDParams,
                 ),
                 options=make_request_options(
                     extra_headers=extra_headers,
@@ -3937,7 +3937,7 @@ class AsyncLedger(AsyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, LedgerCreateEntryByExteralIDResponse
+                    Any, LedgerCreateEntryByExternalIDResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
