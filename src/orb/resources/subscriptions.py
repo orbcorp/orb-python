@@ -120,13 +120,13 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          }
+          ...
         }
         ```
 
@@ -140,24 +140,24 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "tiered",
-        "tiered_config": {
-        "tiers": [
-        {
-        "first_unit":"1",
-        "last_unit": "10",
-        "unit_amount": "0.50"
-        },
-        {
-        "first_unit": "10",
-        "last_unit": null,
-        "unit_amount": "0.10"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "tiered",
+          "tiered_config": {
+            "tiers": [
+              {
+                "first_unit":"1",
+                "last_unit": "10",
+                "unit_amount": "0.50"
+              },
+              {
+                "first_unit": "10",
+                "last_unit": null,
+                "unit_amount": "0.10"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -172,22 +172,22 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "bulk",
-        "bulk_config": {
-        "tiers": [
-        {
-        "maximum_units": "10",
-        "unit_amount": "0.50"
-        },
-        {
-        "maximum_units": "1000",
-        "unit_amount": "0.40"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "bulk",
+          "bulk_config": {
+            "tiers": [
+              {
+                "maximum_units": "10",
+                "unit_amount": "0.50"
+              },
+              {
+                "maximum_units": "1000",
+                "unit_amount": "0.40"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -199,14 +199,14 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "package",
-        "package_config": {
-        "package_amount": "0.80",
-        "package_size": 10
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "package",
+          "package_config": {
+            "package_amount": "0.80",
+            "package_size": 10
+          }
+          ...
         }
         ```
 
@@ -219,14 +219,14 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "bps",
-        "bps_config": {
-        "bps": 125,
-        "per_event_cap": "11.00"
-        }
-        ...
+          ...
+          "id": "price_id"
+          "model_type": "bps",
+          "bps_config": {
+            "bps": 125,
+            "per_event_cap": "11.00"
+          }
+          ...
         }
         ```
 
@@ -241,25 +241,25 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "bulk_bps",
-        "bulk_bps_config": {
-        "tiers": [
-        {
-        "minimum_amount": "0.00",
-        "maximum_amount": "1000000.00",
-        "bps": 125,
-        "per_event_cap": "19.00"
-        },
-        {
-        "minimum_amount":"1000000.00",
-        "maximum_amount": null,
-        "bps": 115,
-        "per_event_cap": "4.00"
-        }
-        ]
-        }
+          ...
+          "id": "price_id"
+          "model_type": "bulk_bps",
+          "bulk_bps_config": {
+            "tiers": [
+              {
+                "minimum_amount": "0.00",
+                "maximum_amount": "1000000.00",
+                "bps": 125,
+                "per_event_cap": "19.00"
+              },
+              {
+                "minimum_amount":"1000000.00",
+                "maximum_amount": null,
+                "bps": 115,
+                "per_event_cap": "4.00"
+              }
+            ]
+          }
         ...
         }
         ```
@@ -276,26 +276,26 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "tiered_bps",
-        "tiered_bps_config": {
-        "tiers": [
-        {
-        "minimum_amount": "0.00",
-        "maximum_amount": "1000000.00",
-        "bps": 125,
-        "per_event_cap": "19.00"
-        },
-        {
-        "minimum_amount":"1000000",
-        "maximum_amount": null,
-        "bps": 115,
-        "per_event_cap": "4.00"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id"
+          "model_type": "tiered_bps",
+          "tiered_bps_config": {
+            "tiers": [
+              {
+                "minimum_amount": "0.00",
+                "maximum_amount": "1000000.00",
+                "bps": 125,
+                "per_event_cap": "19.00"
+              },
+              {
+                "minimum_amount":"1000000",
+                "maximum_amount": null,
+                "bps": 115,
+                "per_event_cap": "4.00"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -311,26 +311,27 @@ class Subscriptions(SyncAPIResource):
         `default_unit_amount`.
 
         ```json
-        ...
-        "model_type": "matrix"
-        "matrix_config": {
-        "default_unit_amount": "3.00",
-        "dimensions": [
-        "cluster_name",
-        "region"
-        ],
-        "matrix_values": [
         {
-        "dimension_values": [
-        "alpha",
-        "west"
-        ],
-        "unit_amount": "2.00"
-        },
-        ...
-        ]
+          ...
+          "model_type": "matrix",
+          "matrix_config": {
+            "default_unit_amount": "3.00",
+            "dimensions": [
+              "cluster_name",
+              "region"
+            ],
+            "matrix_values": [
+              {
+                "dimension_values": [
+                  "alpha",
+                  "west"
+                ],
+                "unit_amount": "2.00"
+              },
+              ...
+            ]
+          }
         }
-        ...
         ```
 
         ### Fixed fees
@@ -341,14 +342,14 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "2.00"
-        },
-        "fixed_price_quantity": 3.0
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "2.00"
+          },
+          "fixed_price_quantity": 3.0
+          ...
         }
         ```
 
@@ -373,14 +374,14 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "minimum_amount": "100.00"
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "minimum_amount": "100.00"
+          ...
         }
         ```
 
@@ -388,14 +389,14 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "minimum_amount": null
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "minimum_amount": null
+          ...
         }
         ```
 
@@ -410,12 +411,12 @@ class Subscriptions(SyncAPIResource):
         To add a discount for a specific price, add `discount` to the price in the
         `price_overrides` object. Discount should be a dictionary of the format:
 
-        ```json
+        ```ts
         {
-        "discount_type": "amount" | "percentage" | "usage",
-        "amount_discount": string,
-        "percentage_discount": string,
-        "usage_discount": string
+          "discount_type": "amount" | "percentage" | "usage",
+          "amount_discount": string,
+          "percentage_discount": string,
+          "usage_discount": string
         }
         ```
 
@@ -426,13 +427,13 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "discount": {"discount_type": "amount", "amount_discount": "175"},
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "discount": {"discount_type": "amount", "amount_discount": "175"},
         }
         ```
 
@@ -440,11 +441,11 @@ class Subscriptions(SyncAPIResource):
 
         ```json
         {
-        "customer_id": "customer_id",
-        "plan_id": "plan_id",
-        "discount": null,
-        "price_overrides": [ ... ]
-        ...
+          "customer_id": "customer_id",
+          "plan_id": "plan_id",
+          "discount": null,
+          "price_overrides": [ ... ]
+          ...
         }
         ```
 
@@ -1716,13 +1717,13 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          }
+          ...
         }
         ```
 
@@ -1736,24 +1737,24 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "tiered",
-        "tiered_config": {
-        "tiers": [
-        {
-        "first_unit":"1",
-        "last_unit": "10",
-        "unit_amount": "0.50"
-        },
-        {
-        "first_unit": "10",
-        "last_unit": null,
-        "unit_amount": "0.10"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "tiered",
+          "tiered_config": {
+            "tiers": [
+              {
+                "first_unit":"1",
+                "last_unit": "10",
+                "unit_amount": "0.50"
+              },
+              {
+                "first_unit": "10",
+                "last_unit": null,
+                "unit_amount": "0.10"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -1768,22 +1769,22 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "bulk",
-        "bulk_config": {
-        "tiers": [
-        {
-        "maximum_units": "10",
-        "unit_amount": "0.50"
-        },
-        {
-        "maximum_units": "1000",
-        "unit_amount": "0.40"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "bulk",
+          "bulk_config": {
+            "tiers": [
+              {
+                "maximum_units": "10",
+                "unit_amount": "0.50"
+              },
+              {
+                "maximum_units": "1000",
+                "unit_amount": "0.40"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -1795,14 +1796,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "package",
-        "package_config": {
-        "package_amount": "0.80",
-        "package_size": 10
-        }
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "package",
+          "package_config": {
+            "package_amount": "0.80",
+            "package_size": 10
+          }
+          ...
         }
         ```
 
@@ -1815,14 +1816,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "bps",
-        "bps_config": {
-        "bps": 125,
-        "per_event_cap": "11.00"
-        }
-        ...
+          ...
+          "id": "price_id"
+          "model_type": "bps",
+          "bps_config": {
+            "bps": 125,
+            "per_event_cap": "11.00"
+          }
+          ...
         }
         ```
 
@@ -1837,25 +1838,25 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "bulk_bps",
-        "bulk_bps_config": {
-        "tiers": [
-        {
-        "minimum_amount": "0.00",
-        "maximum_amount": "1000000.00",
-        "bps": 125,
-        "per_event_cap": "19.00"
-        },
-        {
-        "minimum_amount":"1000000.00",
-        "maximum_amount": null,
-        "bps": 115,
-        "per_event_cap": "4.00"
-        }
-        ]
-        }
+          ...
+          "id": "price_id"
+          "model_type": "bulk_bps",
+          "bulk_bps_config": {
+            "tiers": [
+              {
+                "minimum_amount": "0.00",
+                "maximum_amount": "1000000.00",
+                "bps": 125,
+                "per_event_cap": "19.00"
+              },
+              {
+                "minimum_amount":"1000000.00",
+                "maximum_amount": null,
+                "bps": 115,
+                "per_event_cap": "4.00"
+              }
+            ]
+          }
         ...
         }
         ```
@@ -1872,26 +1873,26 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id"
-        "model_type": "tiered_bps",
-        "tiered_bps_config": {
-        "tiers": [
-        {
-        "minimum_amount": "0.00",
-        "maximum_amount": "1000000.00",
-        "bps": 125,
-        "per_event_cap": "19.00"
-        },
-        {
-        "minimum_amount":"1000000",
-        "maximum_amount": null,
-        "bps": 115,
-        "per_event_cap": "4.00"
-        }
-        ]
-        }
-        ...
+          ...
+          "id": "price_id"
+          "model_type": "tiered_bps",
+          "tiered_bps_config": {
+            "tiers": [
+              {
+                "minimum_amount": "0.00",
+                "maximum_amount": "1000000.00",
+                "bps": 125,
+                "per_event_cap": "19.00"
+              },
+              {
+                "minimum_amount":"1000000",
+                "maximum_amount": null,
+                "bps": 115,
+                "per_event_cap": "4.00"
+              }
+            ]
+          }
+          ...
         }
         ```
 
@@ -1907,26 +1908,27 @@ class AsyncSubscriptions(AsyncAPIResource):
         `default_unit_amount`.
 
         ```json
-        ...
-        "model_type": "matrix"
-        "matrix_config": {
-        "default_unit_amount": "3.00",
-        "dimensions": [
-        "cluster_name",
-        "region"
-        ],
-        "matrix_values": [
         {
-        "dimension_values": [
-        "alpha",
-        "west"
-        ],
-        "unit_amount": "2.00"
-        },
-        ...
-        ]
+          ...
+          "model_type": "matrix",
+          "matrix_config": {
+            "default_unit_amount": "3.00",
+            "dimensions": [
+              "cluster_name",
+              "region"
+            ],
+            "matrix_values": [
+              {
+                "dimension_values": [
+                  "alpha",
+                  "west"
+                ],
+                "unit_amount": "2.00"
+              },
+              ...
+            ]
+          }
         }
-        ...
         ```
 
         ### Fixed fees
@@ -1937,14 +1939,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "2.00"
-        },
-        "fixed_price_quantity": 3.0
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "2.00"
+          },
+          "fixed_price_quantity": 3.0
+          ...
         }
         ```
 
@@ -1969,14 +1971,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "minimum_amount": "100.00"
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "minimum_amount": "100.00"
+          ...
         }
         ```
 
@@ -1984,14 +1986,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "minimum_amount": null
-        ...
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "minimum_amount": null
+          ...
         }
         ```
 
@@ -2006,12 +2008,12 @@ class AsyncSubscriptions(AsyncAPIResource):
         To add a discount for a specific price, add `discount` to the price in the
         `price_overrides` object. Discount should be a dictionary of the format:
 
-        ```json
+        ```ts
         {
-        "discount_type": "amount" | "percentage" | "usage",
-        "amount_discount": string,
-        "percentage_discount": string,
-        "usage_discount": string
+          "discount_type": "amount" | "percentage" | "usage",
+          "amount_discount": string,
+          "percentage_discount": string,
+          "usage_discount": string
         }
         ```
 
@@ -2022,13 +2024,13 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        ...
-        "id": "price_id",
-        "model_type": "unit",
-        "unit_config": {
-        "unit_amount": "0.50"
-        },
-        "discount": {"discount_type": "amount", "amount_discount": "175"},
+          ...
+          "id": "price_id",
+          "model_type": "unit",
+          "unit_config": {
+            "unit_amount": "0.50"
+          },
+          "discount": {"discount_type": "amount", "amount_discount": "175"},
         }
         ```
 
@@ -2036,11 +2038,11 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         ```json
         {
-        "customer_id": "customer_id",
-        "plan_id": "plan_id",
-        "discount": null,
-        "price_overrides": [ ... ]
-        ...
+          "customer_id": "customer_id",
+          "plan_id": "plan_id",
+          "discount": null,
+          "price_overrides": [ ... ]
+          ...
         }
         ```
 

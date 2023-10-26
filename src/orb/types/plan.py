@@ -5,8 +5,8 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .price import Price
+from .shared import Discount
 from .._models import BaseModel
-from .invoice_discount import InvoiceDiscount
 
 __all__ = [
     "Plan",
@@ -83,7 +83,7 @@ class PlanPhase(BaseModel):
 
     description: Optional[str]
 
-    discount: Optional[InvoiceDiscount]
+    discount: Optional[Discount]
 
     duration: Optional[int]
     """How many terms of length `duration_unit` this phase is active for.
@@ -148,7 +148,7 @@ class Plan(BaseModel):
 
     description: str
 
-    discount: Optional[InvoiceDiscount]
+    discount: Optional[Discount]
 
     external_plan_id: Optional[str]
     """

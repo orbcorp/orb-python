@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .shared import Discount
 from .._models import BaseModel
-from .invoice_discount import InvoiceDiscount
 
 __all__ = [
     "Price",
@@ -164,7 +164,7 @@ class UnitPrice(BaseModel):
 
     unit_config: UnitPriceUnitConfig
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[UnitPriceMaximum] = None
 
@@ -246,7 +246,7 @@ class PackagePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[PackagePriceMaximum] = None
 
@@ -348,7 +348,7 @@ class MatrixPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[MatrixPriceMaximum] = None
 
@@ -434,7 +434,7 @@ class TieredPrice(BaseModel):
 
     tiered_config: TieredPriceTieredConfig
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[TieredPriceMaximum] = None
 
@@ -526,7 +526,7 @@ class TieredBpsPrice(BaseModel):
 
     tiered_bps_config: TieredBpsPriceTieredBpsConfig
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[TieredBpsPriceMaximum] = None
 
@@ -604,7 +604,7 @@ class BpsPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[BpsPriceMaximum] = None
 
@@ -693,7 +693,7 @@ class BulkBpsPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[BulkBpsPriceMaximum] = None
 
@@ -776,7 +776,7 @@ class BulkPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[BulkPriceMaximum] = None
 
@@ -846,7 +846,7 @@ class TestRatingFunctionPrice(BaseModel):
 
     test_rating_function_config: Dict[str, object]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[TestRatingFunctionPriceMaximum] = None
 
@@ -916,7 +916,7 @@ class FivetranExamplePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[FivetranExamplePriceMaximum] = None
 
@@ -986,7 +986,7 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     threshold_total_amount_config: Dict[str, object]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[ThresholdTotalAmountPriceMaximum] = None
 
@@ -1056,7 +1056,7 @@ class TieredPackagePrice(BaseModel):
 
     tiered_package_config: Dict[str, object]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[TieredPackagePriceMaximum] = None
 
@@ -1126,7 +1126,7 @@ class TieredWithMinimumPrice(BaseModel):
 
     tiered_with_minimum_config: Dict[str, object]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[TieredWithMinimumPriceMaximum] = None
 
@@ -1196,7 +1196,7 @@ class PackageWithAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
-    discount: Optional[InvoiceDiscount] = None
+    discount: Optional[Discount] = None
 
     maximum: Optional[PackageWithAllocationPriceMaximum] = None
 

@@ -5,8 +5,8 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .price import Price
+from .shared import Discount
 from .._models import BaseModel
-from .invoice_discount import InvoiceDiscount
 
 __all__ = [
     "InvoiceLineItemCreateResponse",
@@ -145,7 +145,7 @@ class InvoiceLineItemCreateResponse(BaseModel):
     amount: str
     """The final amount after any discounts or minimums."""
 
-    discount: Optional[InvoiceDiscount]
+    discount: Optional[Discount]
 
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
