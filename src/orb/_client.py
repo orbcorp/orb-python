@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import asyncio
 from typing import Union, Mapping
+from typing_extensions import override
 
 import httpx
 
@@ -118,10 +119,12 @@ class Orb(SyncAPIClient):
         self.subscriptions = resources.Subscriptions(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
@@ -188,6 +191,7 @@ class Orb(SyncAPIClient):
 
         self.close()
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
@@ -346,10 +350,12 @@ class AsyncOrb(AsyncAPIClient):
         self.subscriptions = resources.AsyncSubscriptions(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
@@ -419,6 +425,7 @@ class AsyncOrb(AsyncAPIClient):
         except Exception:
             pass
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
