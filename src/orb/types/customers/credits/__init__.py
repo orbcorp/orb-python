@@ -16,9 +16,9 @@ from .ledger_list_by_external_id_params import (
 from .ledger_list_by_external_id_response import (
     LedgerListByExternalIDResponse as LedgerListByExternalIDResponse,
 )
-from .ledger_create_entry_by_exteral_id_params import (
-    LedgerCreateEntryByExteralIDParams as LedgerCreateEntryByExteralIDParams,
+from .ledger_create_entry_by_external_id_params import (
+    LedgerCreateEntryByExternalIDParams as LedgerCreateEntryByExternalIDParams,
 )
-from .ledger_create_entry_by_exteral_id_response import (
-    LedgerCreateEntryByExteralIDResponse as LedgerCreateEntryByExteralIDResponse,
+from .ledger_create_entry_by_external_id_response import (
+    LedgerCreateEntryByExternalIDResponse as LedgerCreateEntryByExternalIDResponse,
 )

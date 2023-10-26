@@ -115,7 +115,7 @@ Types:
 from orb.types.customers.credits import (
     LedgerListResponse,
     LedgerCreateEntryResponse,
-    LedgerCreateEntryByExteralIDResponse,
+    LedgerCreateEntryByExternalIDResponse,
     LedgerListByExternalIDResponse,
 )
 ```
@@ -124,7 +124,7 @@ Methods:
 
 - <code title="get /customers/{customer_id}/credits/ledger">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_list_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_list_response.py">SyncPage[LedgerListResponse]</a></code>
 - <code title="post /customers/{customer_id}/credits/ledger_entry">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">create_entry</a>(customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_create_entry_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_create_entry_response.py">LedgerCreateEntryResponse</a></code>
-- <code title="post /customers/external_customer_id/{external_customer_id}/credits/ledger_entry">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">create_entry_by_exteral_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_create_entry_by_exteral_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_create_entry_by_exteral_id_response.py">LedgerCreateEntryByExteralIDResponse</a></code>
+- <code title="post /customers/external_customer_id/{external_customer_id}/credits/ledger_entry">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">create_entry_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_create_entry_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_create_entry_by_external_id_response.py">LedgerCreateEntryByExternalIDResponse</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}/credits/ledger">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_list_by_external_id_response.py">SyncPage[LedgerListByExternalIDResponse]</a></code>
 
 ## BalanceTransactions

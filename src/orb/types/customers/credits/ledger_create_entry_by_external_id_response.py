@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from ...._models import BaseModel
 
 __all__ = [
-    "LedgerCreateEntryByExteralIDResponse",
+    "LedgerCreateEntryByExternalIDResponse",
     "IncrementLedgerEntry",
     "IncrementLedgerEntryCreditBlock",
     "IncrementLedgerEntryCustomer",
@@ -330,7 +330,7 @@ class AmendmentLedgerEntry(BaseModel):
     starting_balance: float
 
 
-LedgerCreateEntryByExteralIDResponse = Union[
+LedgerCreateEntryByExternalIDResponse = Union[
     IncrementLedgerEntry,
     DecrementLedgerEntry,
     ExpirationChangeLedgerEntry,
