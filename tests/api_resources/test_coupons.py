@@ -23,7 +23,11 @@ class TestCoupons:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         coupon = client.coupons.create(
-            discount={},
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "percentage_discount": 0.15,
+            },
             redemption_code="HALFOFF",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
@@ -31,7 +35,12 @@ class TestCoupons:
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         coupon = client.coupons.create(
-            discount={},
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "reason": "string",
+                "percentage_discount": 0.15,
+            },
             redemption_code="HALFOFF",
             duration_in_months=12,
             max_redemptions=0,
@@ -76,7 +85,11 @@ class TestAsyncCoupons:
     @parametrize
     async def test_method_create(self, client: AsyncOrb) -> None:
         coupon = await client.coupons.create(
-            discount={},
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "percentage_discount": 0.15,
+            },
             redemption_code="HALFOFF",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
@@ -84,7 +97,12 @@ class TestAsyncCoupons:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncOrb) -> None:
         coupon = await client.coupons.create(
-            discount={},
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "reason": "string",
+                "percentage_discount": 0.15,
+            },
             redemption_code="HALFOFF",
             duration_in_months=12,
             max_redemptions=0,

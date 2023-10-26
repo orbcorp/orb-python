@@ -5,13 +5,12 @@ from __future__ import annotations
 from .plan import Plan as Plan
 from .price import Price as Price
 from .coupon import Coupon as Coupon
+from .shared import Discount as Discount
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .credit_note import CreditNote as CreditNote
 from .subscription import Subscription as Subscription
 from .subscriptions import Subscriptions as Subscriptions
-from .discount_param import DiscountParam as DiscountParam
-from .invoice_discount import InvoiceDiscount as InvoiceDiscount
 from .item_list_params import ItemListParams as ItemListParams
 from .plan_list_params import PlanListParams as PlanListParams
 from .price_list_params import PriceListParams as PriceListParams

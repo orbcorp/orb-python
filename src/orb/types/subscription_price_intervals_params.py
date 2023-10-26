@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Optional
-from datetime import date, datetime
+from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -17,31 +17,31 @@ __all__ = [
     "AddDiscountUsageDiscountCreationParams",
     "AddFixedFeeQuantityTransition",
     "AddPrice",
-    "AddPriceNewUnitPrice",
-    "AddPriceNewUnitPriceUnitConfig",
-    "AddPriceNewPackagePrice",
-    "AddPriceNewPackagePricePackageConfig",
-    "AddPriceNewMatrixPrice",
-    "AddPriceNewMatrixPriceMatrixConfig",
-    "AddPriceNewMatrixPriceMatrixConfigMatrixValue",
-    "AddPriceNewTieredPrice",
-    "AddPriceNewTieredPriceTieredConfig",
-    "AddPriceNewTieredPriceTieredConfigTier",
-    "AddPriceNewTieredBpsPrice",
-    "AddPriceNewTieredBpsPriceTieredBpsConfig",
-    "AddPriceNewTieredBpsPriceTieredBpsConfigTier",
-    "AddPriceNewBpsPrice",
-    "AddPriceNewBpsPriceBpsConfig",
-    "AddPriceNewBulkBpsPrice",
-    "AddPriceNewBulkBpsPriceBulkBpsConfig",
-    "AddPriceNewBulkBpsPriceBulkBpsConfigTier",
-    "AddPriceNewBulkPrice",
-    "AddPriceNewBulkPriceBulkConfig",
-    "AddPriceNewBulkPriceBulkConfigTier",
-    "AddPriceNewThresholdTotalAmountPrice",
-    "AddPriceNewTieredPackagePrice",
-    "AddPriceNewTieredWithMinimumPrice",
-    "AddPriceNewPackageWithAllocationPrice",
+    "AddPriceNewFloatingUnitPrice",
+    "AddPriceNewFloatingUnitPriceUnitConfig",
+    "AddPriceNewFloatingPackagePrice",
+    "AddPriceNewFloatingPackagePricePackageConfig",
+    "AddPriceNewFloatingMatrixPrice",
+    "AddPriceNewFloatingMatrixPriceMatrixConfig",
+    "AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue",
+    "AddPriceNewFloatingTieredPrice",
+    "AddPriceNewFloatingTieredPriceTieredConfig",
+    "AddPriceNewFloatingTieredPriceTieredConfigTier",
+    "AddPriceNewFloatingTieredBpsPrice",
+    "AddPriceNewFloatingTieredBpsPriceTieredBpsConfig",
+    "AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier",
+    "AddPriceNewFloatingBpsPrice",
+    "AddPriceNewFloatingBpsPriceBpsConfig",
+    "AddPriceNewFloatingBulkBpsPrice",
+    "AddPriceNewFloatingBulkBpsPriceBulkBpsConfig",
+    "AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier",
+    "AddPriceNewFloatingBulkPrice",
+    "AddPriceNewFloatingBulkPriceBulkConfig",
+    "AddPriceNewFloatingBulkPriceBulkConfigTier",
+    "AddPriceNewFloatingThresholdTotalAmountPrice",
+    "AddPriceNewFloatingTieredPackagePrice",
+    "AddPriceNewFloatingTieredWithMinimumPrice",
+    "AddPriceNewFloatingPackageWithAllocationPrice",
     "Edit",
     "EditFixedFeeQuantityTransition",
 ]
@@ -90,14 +90,14 @@ AddDiscount = Union[
 
 
 class AddFixedFeeQuantityTransition(TypedDict, total=False):
-    effective_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    effective_date: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The date that the fixed fee quantity transition should take effect."""
 
     quantity: Required[int]
     """The quantity of the fixed fee quantity transition."""
 
 
-class AddPriceNewUnitPriceUnitConfig(TypedDict, total=False):
+class AddPriceNewFloatingUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
@@ -105,8 +105,8 @@ class AddPriceNewUnitPriceUnitConfig(TypedDict, total=False):
     """Multiplier to scale rated quantity by"""
 
 
-class AddPriceNewUnitPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingUnitPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -120,7 +120,7 @@ class AddPriceNewUnitPrice(TypedDict, total=False):
     name: Required[str]
     """The name of the price."""
 
-    unit_config: Required[AddPriceNewUnitPriceUnitConfig]
+    unit_config: Required[AddPriceNewFloatingUnitPriceUnitConfig]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -147,7 +147,7 @@ class AddPriceNewUnitPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewPackagePricePackageConfig(TypedDict, total=False):
+class AddPriceNewFloatingPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
     """A currency amount to rate usage by"""
 
@@ -159,8 +159,8 @@ class AddPriceNewPackagePricePackageConfig(TypedDict, total=False):
     """
 
 
-class AddPriceNewPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingPackagePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -174,7 +174,7 @@ class AddPriceNewPackagePrice(TypedDict, total=False):
     name: Required[str]
     """The name of the price."""
 
-    package_config: Required[AddPriceNewPackagePricePackageConfig]
+    package_config: Required[AddPriceNewFloatingPackagePricePackageConfig]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -201,7 +201,7 @@ class AddPriceNewPackagePrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
+class AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
     dimension_values: Required[List[Optional[str]]]
     """One or two matrix keys to filter usage to this Matrix value by.
 
@@ -216,14 +216,14 @@ class AddPriceNewMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
     """Optional multiplier to scale rated quantities by"""
 
 
-class AddPriceNewMatrixPriceMatrixConfig(TypedDict, total=False):
+class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     default_unit_amount: Required[str]
     """Default per unit rate for any usage not bucketed into a specified matrix_value"""
 
     dimensions: Required[List[Optional[str]]]
     """One or two event property values to evaluate matrix groups by"""
 
-    matrix_values: Required[List[AddPriceNewMatrixPriceMatrixConfigMatrixValue]]
+    matrix_values: Required[List[AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
 
     scaling_factor: Optional[float]
@@ -233,8 +233,8 @@ class AddPriceNewMatrixPriceMatrixConfig(TypedDict, total=False):
     """
 
 
-class AddPriceNewMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingMatrixPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -243,7 +243,7 @@ class AddPriceNewMatrixPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the plan will be associated with."""
 
-    matrix_config: Required[AddPriceNewMatrixPriceMatrixConfig]
+    matrix_config: Required[AddPriceNewFloatingMatrixPriceMatrixConfig]
 
     model_type: Required[Literal["matrix"]]
 
@@ -275,7 +275,7 @@ class AddPriceNewMatrixPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewTieredPriceTieredConfigTier(TypedDict, total=False):
+class AddPriceNewFloatingTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
     """Inclusive tier starting value"""
 
@@ -286,13 +286,13 @@ class AddPriceNewTieredPriceTieredConfigTier(TypedDict, total=False):
     """Exclusive tier ending value. If null, this is treated as the last tier"""
 
 
-class AddPriceNewTieredPriceTieredConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewTieredPriceTieredConfigTier]]
+class AddPriceNewFloatingTieredPriceTieredConfig(TypedDict, total=False):
+    tiers: Required[List[AddPriceNewFloatingTieredPriceTieredConfigTier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
-class AddPriceNewTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingTieredPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -306,7 +306,7 @@ class AddPriceNewTieredPrice(TypedDict, total=False):
     name: Required[str]
     """The name of the price."""
 
-    tiered_config: Required[AddPriceNewTieredPriceTieredConfig]
+    tiered_config: Required[AddPriceNewFloatingTieredPriceTieredConfig]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -333,7 +333,7 @@ class AddPriceNewTieredPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
+class AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
     bps: Required[float]
     """Per-event basis point rate"""
 
@@ -347,16 +347,16 @@ class AddPriceNewTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
     """Per unit maximum to charge"""
 
 
-class AddPriceNewTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewTieredBpsPriceTieredBpsConfigTier]]
+class AddPriceNewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
+    tiers: Required[List[AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier]]
     """
     Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
     tiers
     """
 
 
-class AddPriceNewTieredBpsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingTieredBpsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -370,7 +370,7 @@ class AddPriceNewTieredBpsPrice(TypedDict, total=False):
     name: Required[str]
     """The name of the price."""
 
-    tiered_bps_config: Required[AddPriceNewTieredBpsPriceTieredBpsConfig]
+    tiered_bps_config: Required[AddPriceNewFloatingTieredBpsPriceTieredBpsConfig]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -397,7 +397,7 @@ class AddPriceNewTieredBpsPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewBpsPriceBpsConfig(TypedDict, total=False):
+class AddPriceNewFloatingBpsPriceBpsConfig(TypedDict, total=False):
     bps: Required[float]
     """Basis point take rate per event"""
 
@@ -405,10 +405,10 @@ class AddPriceNewBpsPriceBpsConfig(TypedDict, total=False):
     """Optional currency amount maximum to cap spend per event"""
 
 
-class AddPriceNewBpsPrice(TypedDict, total=False):
-    bps_config: Required[AddPriceNewBpsPriceBpsConfig]
+class AddPriceNewFloatingBpsPrice(TypedDict, total=False):
+    bps_config: Required[AddPriceNewFloatingBpsPriceBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -447,7 +447,7 @@ class AddPriceNewBpsPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
+class AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
     bps: Required[float]
     """Basis points to rate on"""
 
@@ -458,18 +458,18 @@ class AddPriceNewBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
     """The maximum amount to charge for any one event"""
 
 
-class AddPriceNewBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewBulkBpsPriceBulkBpsConfigTier]]
+class AddPriceNewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
+    tiers: Required[List[AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier]]
     """
     Tiers for a bulk BPS pricing model where all usage is aggregated to a single
     tier based on total volume
     """
 
 
-class AddPriceNewBulkBpsPrice(TypedDict, total=False):
-    bulk_bps_config: Required[AddPriceNewBulkBpsPriceBulkBpsConfig]
+class AddPriceNewFloatingBulkBpsPrice(TypedDict, total=False):
+    bulk_bps_config: Required[AddPriceNewFloatingBulkBpsPriceBulkBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -508,7 +508,7 @@ class AddPriceNewBulkBpsPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewBulkPriceBulkConfigTier(TypedDict, total=False):
+class AddPriceNewFloatingBulkPriceBulkConfigTier(TypedDict, total=False):
     unit_amount: Required[str]
     """Amount per unit"""
 
@@ -516,15 +516,15 @@ class AddPriceNewBulkPriceBulkConfigTier(TypedDict, total=False):
     """Upper bound for this tier"""
 
 
-class AddPriceNewBulkPriceBulkConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewBulkPriceBulkConfigTier]]
+class AddPriceNewFloatingBulkPriceBulkConfig(TypedDict, total=False):
+    tiers: Required[List[AddPriceNewFloatingBulkPriceBulkConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 
 
-class AddPriceNewBulkPrice(TypedDict, total=False):
-    bulk_config: Required[AddPriceNewBulkPriceBulkConfig]
+class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
+    bulk_config: Required[AddPriceNewFloatingBulkPriceBulkConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -563,8 +563,8 @@ class AddPriceNewBulkPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewThresholdTotalAmountPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -605,8 +605,8 @@ class AddPriceNewThresholdTotalAmountPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewTieredPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -647,8 +647,8 @@ class AddPriceNewTieredPackagePrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewTieredWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -689,8 +689,8 @@ class AddPriceNewTieredWithMinimumPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
-class AddPriceNewPackageWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly"]]
+class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -732,18 +732,18 @@ class AddPriceNewPackageWithAllocationPrice(TypedDict, total=False):
 
 
 AddPrice = Union[
-    AddPriceNewUnitPrice,
-    AddPriceNewPackagePrice,
-    AddPriceNewMatrixPrice,
-    AddPriceNewTieredPrice,
-    AddPriceNewTieredBpsPrice,
-    AddPriceNewBpsPrice,
-    AddPriceNewBulkBpsPrice,
-    AddPriceNewBulkPrice,
-    AddPriceNewThresholdTotalAmountPrice,
-    AddPriceNewTieredPackagePrice,
-    AddPriceNewTieredWithMinimumPrice,
-    AddPriceNewPackageWithAllocationPrice,
+    AddPriceNewFloatingUnitPrice,
+    AddPriceNewFloatingPackagePrice,
+    AddPriceNewFloatingMatrixPrice,
+    AddPriceNewFloatingTieredPrice,
+    AddPriceNewFloatingTieredBpsPrice,
+    AddPriceNewFloatingBpsPrice,
+    AddPriceNewFloatingBulkBpsPrice,
+    AddPriceNewFloatingBulkPrice,
+    AddPriceNewFloatingThresholdTotalAmountPrice,
+    AddPriceNewFloatingTieredPackagePrice,
+    AddPriceNewFloatingTieredWithMinimumPrice,
+    AddPriceNewFloatingPackageWithAllocationPrice,
 ]
 
 
@@ -793,7 +793,7 @@ class Add(TypedDict, total=False):
 
 
 class EditFixedFeeQuantityTransition(TypedDict, total=False):
-    effective_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    effective_date: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The date that the fixed fee quantity transition should take effect."""
 
     quantity: Required[int]
@@ -803,6 +803,13 @@ class EditFixedFeeQuantityTransition(TypedDict, total=False):
 class Edit(TypedDict, total=False):
     price_interval_id: Required[str]
     """The id of the price interval to edit."""
+
+    billing_cycle_day: Optional[int]
+    """The updated billing cycle day for this price interval.
+
+    If not specified, the billing cycle day will not be updated. Note that
+    overlapping price intervals must have the same billing cycle day.
+    """
 
     end_date: Annotated[
         Union[Union[str, datetime], Literal["start_of_term", "end_of_term"], None], PropertyInfo(format="iso8601")
@@ -820,7 +827,7 @@ class Edit(TypedDict, total=False):
     """
 
     start_date: Annotated[
-        Union[Union[str, datetime], Literal["start_of_term", "end_of_term"], None], PropertyInfo(format="iso8601")
+        Union[Union[str, datetime], Literal["start_of_term", "end_of_term"]], PropertyInfo(format="iso8601")
     ]
     """The updated start date of this price interval.
 
