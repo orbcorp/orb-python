@@ -20,7 +20,7 @@ __all__ = [
     "InternalServerError",
     "DuplicateResourceCreation",
     "FeatureNotAvailable",
-    "RequestValidationErrors",
+    "RequestValidationError",
     "OrbAuthenticationError",
     "ResourceNotFound",
     "URLNotFound",
@@ -161,7 +161,7 @@ class FeatureNotAvailable(BadRequestError):
         self.detail = cast(Any, data.get("detail"))
 
 
-class RequestValidationErrors(BadRequestError):
+class RequestValidationError(BadRequestError):
     status: Literal[400]
 
     type: Literal["https://docs.withorb.com/reference/error-responses#400-request-validation-errors"]
