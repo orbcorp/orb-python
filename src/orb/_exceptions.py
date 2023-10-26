@@ -132,13 +132,12 @@ class DuplicateResourceCreation(BadRequestError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class FeatureNotAvailable(BadRequestError):
@@ -152,13 +151,12 @@ class FeatureNotAvailable(BadRequestError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class RequestValidationError(BadRequestError):
@@ -174,14 +172,13 @@ class RequestValidationError(BadRequestError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.validation_errors = cast(Any, data.get("validation_errors"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class OrbAuthenticationError(AuthenticationError):
@@ -195,13 +192,12 @@ class OrbAuthenticationError(AuthenticationError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class ResourceNotFound(NotFoundError):
@@ -215,11 +211,10 @@ class ResourceNotFound(NotFoundError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
+        self.title = cast(Any, data.get("title"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
 
@@ -235,13 +230,12 @@ class URLNotFound(NotFoundError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class ResourceConflict(ConflictError):
@@ -255,13 +249,12 @@ class ResourceConflict(ConflictError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class RequestTooLarge(APIStatusError):
@@ -275,13 +268,12 @@ class RequestTooLarge(APIStatusError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class ResourceTooLarge(APIStatusError):
@@ -295,13 +287,12 @@ class ResourceTooLarge(APIStatusError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class TooManyRequests(RateLimitError):
@@ -315,13 +306,12 @@ class TooManyRequests(RateLimitError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class OrbInternalServerError(InternalServerError):
@@ -335,10 +325,9 @@ class OrbInternalServerError(InternalServerError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
+        super().__init__(message, response=response, body=body)
 
-        self.title = title
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
         self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
