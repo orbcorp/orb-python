@@ -9,7 +9,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 from ...._utils import PropertyInfo
 
 __all__ = [
-    "LedgerCreateEntryByExteralIDParams",
+    "LedgerCreateEntryByExternalIDParams",
     "AddIncrementCreditLedgerEntryRequestParams",
     "AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings",
     "AddDecrementCreditLedgerEntryRequestParams",
@@ -191,7 +191,7 @@ class AddAmendmentCreditLedgerEntryRequestParams(TypedDict, total=False):
     """User-specified key/value pairs for the ledger entry resource."""
 
 
-LedgerCreateEntryByExteralIDParams = Union[
+LedgerCreateEntryByExternalIDParams = Union[
     AddIncrementCreditLedgerEntryRequestParams,
     AddDecrementCreditLedgerEntryRequestParams,
     AddExpirationChangeCreditLedgerEntryRequestParams,
