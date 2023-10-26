@@ -2,16 +2,30 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["UsageUpdateByExternalIDParams"]
+__all__ = ["UsageUpdateByExternalIDParams", "Event"]
 
 
 class UsageUpdateByExternalIDParams(TypedDict, total=False):
+    events: Required[List[Event]]
+    """Events to update"""
+
+    timeframe_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """This bound is exclusive (i.e. events before this timestamp will be updated)"""
+
+    timeframe_start: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """This bound is inclusive (i.e.
+
+    events with this timestamp onward, inclusive will be updated)
+    """
+
+
+class Event(TypedDict, total=False):
     event_name: Required[str]
     """A name to meaningfully identify the action or event type."""
 
@@ -27,15 +41,6 @@ class UsageUpdateByExternalIDParams(TypedDict, total=False):
 
     UTC). This should represent the time that usage was recorded, and is
     particularly important to attribute usage to a given billing period.
-    """
-
-    timeframe_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """This bound is exclusive (i.e. events before this timestamp will be updated)"""
-
-    timeframe_start: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """This bound is inclusive (i.e.
-
-    events with this timestamp onward, inclusive will be updated)
     """
 
     customer_id: Optional[str]

@@ -28,7 +28,7 @@ class Coupons(SyncAPIResource):
     def create(
         self,
         *,
-        discount: object,
+        discount: coupon_create_params.Discount,
         redemption_code: str,
         duration_in_months: Optional[int] | NotGiven = NOT_GIVEN,
         max_redemptions: Optional[int] | NotGiven = NOT_GIVEN,
@@ -232,7 +232,7 @@ class AsyncCoupons(AsyncAPIResource):
     async def create(
         self,
         *,
-        discount: object,
+        discount: coupon_create_params.Discount,
         redemption_code: str,
         duration_in_months: Optional[int] | NotGiven = NOT_GIVEN,
         max_redemptions: Optional[int] | NotGiven = NOT_GIVEN,

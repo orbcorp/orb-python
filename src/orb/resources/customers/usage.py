@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -24,13 +24,9 @@ class Usage(SyncAPIResource):
         self,
         id: Optional[str],
         *,
-        event_name: str,
-        properties: object,
-        timestamp: Union[str, datetime],
+        events: List[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -44,7 +40,7 @@ class Usage(SyncAPIResource):
         an active subscription.
 
         This endpoint will mark _all_ existing events within
-        `[timeframe_start, timeframe_end)` as _ignored_ for billing purpo ses, and Orb
+        `[timeframe_start, timeframe_end)` as _ignored_ for billing purposes, and Orb
         will only use the _new_ events passed in the body of this request as the source
         of truth for that timeframe moving forwards. Note that a given time period can
         be amended any number of times, so events can be overwritten in subsequent calls
@@ -56,7 +52,7 @@ class Usage(SyncAPIResource):
         - decrease historical usage consumption because of degraded service availability
           in your systems
         - account for gaps from your usage reporting mechanism
-        - make point-in-time fixes for specific event records, while ret aining the
+        - make point-in-time fixes for specific event records, while retaining the
           original time of usage and associated metadata. This amendment API is designed
           with two explicit goals:
 
@@ -64,10 +60,10 @@ class Usage(SyncAPIResource):
            original events in the timeframe, though they will be ignored for billing
            calculations. For auditing a nd data fidelity purposes, Orb never overwrites
            or permanently deletes ingested usage data.
-        2. Amendments always preser ve data **consistency**. In other words, either an
-           amendment is fully processed by the system (and the new events for th e
+        2. Amendments always preserve data **consistency**. In other words, either an
+           amendment is fully processed by the system (and the new events for the
            timeframe are honored rather than the existing ones) or the amendment request
-           fails. To maintain this important proper ty, Orb prevents _partial event
+           fails. To maintain this important property, Orb prevents _partial event
            ingestion_ on this endpoint.
 
         ## Response semantics
@@ -79,12 +75,12 @@ class Usage(SyncAPIResource):
           also not deprecate existing events in the time period.
         - You can assume that the amendment is successful on receipt of a `2xx`
           response.While a successful response from this endpoint indicates that the new
-          events have been ingested, updati ng usage totals happens asynchronously and
+          events have been ingested, updating usage totals happens asynchronously and
           may be delayed by a few minutes.
 
         As emphasized above, Orb will never show an inconsistent state (e.g. in invoice
         previews or dashboards); either it will show the existing state (before the
-        amend ment) or the new state (with new events in the requested timeframe).
+        amendment) or the new state (with new events in the requested timeframe).
 
         ## Sample request body
 
@@ -138,24 +134,12 @@ class Usage(SyncAPIResource):
         using multiple calls with small adjacent (e.g. every hour) timeframes.
 
         Args:
-          event_name: A name to meaningfully identify the action or event type.
-
-          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
-              boolean, or strings. Nested dictionaries are disallowed.
-
-          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-              represent the time that usage was recorded, and is particularly important to
-              attribute usage to a given billing period.
+          events: Events to update
 
           timeframe_end: This bound is exclusive (i.e. events before this timestamp will be updated)
 
           timeframe_start: This bound is inclusive (i.e. events with this timestamp onward, inclusive will
               be updated)
-
-          customer_id: The Orb Customer identifier
-
-          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
-              customer
 
           extra_headers: Send extra headers
 
@@ -169,16 +153,7 @@ class Usage(SyncAPIResource):
         """
         return self._patch(
             f"/customers/{id}/usage",
-            body=maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "timestamp": timestamp,
-                    "customer_id": customer_id,
-                    "external_customer_id": external_customer_id,
-                },
-                usage_update_params.UsageUpdateParams,
-            ),
+            body=maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -200,13 +175,9 @@ class Usage(SyncAPIResource):
         self,
         id: Optional[str],
         *,
-        event_name: str,
-        properties: object,
-        timestamp: Union[str, datetime],
+        events: List[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -220,7 +191,7 @@ class Usage(SyncAPIResource):
         an active subscription.
 
         This endpoint will mark _all_ existing events within
-        `[timeframe_start, timeframe_end)` as _ignored_ for billing purpo ses, and Orb
+        `[timeframe_start, timeframe_end)` as _ignored_ for billing purposes, and Orb
         will only use the _new_ events passed in the body of this request as the source
         of truth for that timeframe moving forwards. Note that a given time period can
         be amended any number of times, so events can be overwritten in subsequent calls
@@ -232,7 +203,7 @@ class Usage(SyncAPIResource):
         - decrease historical usage consumption because of degraded service availability
           in your systems
         - account for gaps from your usage reporting mechanism
-        - make point-in-time fixes for specific event records, while ret aining the
+        - make point-in-time fixes for specific event records, while retaining the
           original time of usage and associated metadata. This amendment API is designed
           with two explicit goals:
 
@@ -240,10 +211,10 @@ class Usage(SyncAPIResource):
            original events in the timeframe, though they will be ignored for billing
            calculations. For auditing a nd data fidelity purposes, Orb never overwrites
            or permanently deletes ingested usage data.
-        2. Amendments always preser ve data **consistency**. In other words, either an
-           amendment is fully processed by the system (and the new events for th e
+        2. Amendments always preserve data **consistency**. In other words, either an
+           amendment is fully processed by the system (and the new events for the
            timeframe are honored rather than the existing ones) or the amendment request
-           fails. To maintain this important proper ty, Orb prevents _partial event
+           fails. To maintain this important property, Orb prevents _partial event
            ingestion_ on this endpoint.
 
         ## Response semantics
@@ -255,12 +226,12 @@ class Usage(SyncAPIResource):
           also not deprecate existing events in the time period.
         - You can assume that the amendment is successful on receipt of a `2xx`
           response.While a successful response from this endpoint indicates that the new
-          events have been ingested, updati ng usage totals happens asynchronously and
+          events have been ingested, updating usage totals happens asynchronously and
           may be delayed by a few minutes.
 
         As emphasized above, Orb will never show an inconsistent state (e.g. in invoice
         previews or dashboards); either it will show the existing state (before the
-        amend ment) or the new state (with new events in the requested timeframe).
+        amendment) or the new state (with new events in the requested timeframe).
 
         ## Sample request body
 
@@ -314,24 +285,12 @@ class Usage(SyncAPIResource):
         using multiple calls with small adjacent (e.g. every hour) timeframes.
 
         Args:
-          event_name: A name to meaningfully identify the action or event type.
-
-          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
-              boolean, or strings. Nested dictionaries are disallowed.
-
-          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-              represent the time that usage was recorded, and is particularly important to
-              attribute usage to a given billing period.
+          events: Events to update
 
           timeframe_end: This bound is exclusive (i.e. events before this timestamp will be updated)
 
           timeframe_start: This bound is inclusive (i.e. events with this timestamp onward, inclusive will
               be updated)
-
-          customer_id: The Orb Customer identifier
-
-          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
-              customer
 
           extra_headers: Send extra headers
 
@@ -345,16 +304,7 @@ class Usage(SyncAPIResource):
         """
         return self._patch(
             f"/customers/external_customer_id/{id}/usage",
-            body=maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "timestamp": timestamp,
-                    "customer_id": customer_id,
-                    "external_customer_id": external_customer_id,
-                },
-                usage_update_by_external_id_params.UsageUpdateByExternalIDParams,
-            ),
+            body=maybe_transform({"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -378,13 +328,9 @@ class AsyncUsage(AsyncAPIResource):
         self,
         id: Optional[str],
         *,
-        event_name: str,
-        properties: object,
-        timestamp: Union[str, datetime],
+        events: List[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -398,7 +344,7 @@ class AsyncUsage(AsyncAPIResource):
         an active subscription.
 
         This endpoint will mark _all_ existing events within
-        `[timeframe_start, timeframe_end)` as _ignored_ for billing purpo ses, and Orb
+        `[timeframe_start, timeframe_end)` as _ignored_ for billing purposes, and Orb
         will only use the _new_ events passed in the body of this request as the source
         of truth for that timeframe moving forwards. Note that a given time period can
         be amended any number of times, so events can be overwritten in subsequent calls
@@ -410,7 +356,7 @@ class AsyncUsage(AsyncAPIResource):
         - decrease historical usage consumption because of degraded service availability
           in your systems
         - account for gaps from your usage reporting mechanism
-        - make point-in-time fixes for specific event records, while ret aining the
+        - make point-in-time fixes for specific event records, while retaining the
           original time of usage and associated metadata. This amendment API is designed
           with two explicit goals:
 
@@ -418,10 +364,10 @@ class AsyncUsage(AsyncAPIResource):
            original events in the timeframe, though they will be ignored for billing
            calculations. For auditing a nd data fidelity purposes, Orb never overwrites
            or permanently deletes ingested usage data.
-        2. Amendments always preser ve data **consistency**. In other words, either an
-           amendment is fully processed by the system (and the new events for th e
+        2. Amendments always preserve data **consistency**. In other words, either an
+           amendment is fully processed by the system (and the new events for the
            timeframe are honored rather than the existing ones) or the amendment request
-           fails. To maintain this important proper ty, Orb prevents _partial event
+           fails. To maintain this important property, Orb prevents _partial event
            ingestion_ on this endpoint.
 
         ## Response semantics
@@ -433,12 +379,12 @@ class AsyncUsage(AsyncAPIResource):
           also not deprecate existing events in the time period.
         - You can assume that the amendment is successful on receipt of a `2xx`
           response.While a successful response from this endpoint indicates that the new
-          events have been ingested, updati ng usage totals happens asynchronously and
+          events have been ingested, updating usage totals happens asynchronously and
           may be delayed by a few minutes.
 
         As emphasized above, Orb will never show an inconsistent state (e.g. in invoice
         previews or dashboards); either it will show the existing state (before the
-        amend ment) or the new state (with new events in the requested timeframe).
+        amendment) or the new state (with new events in the requested timeframe).
 
         ## Sample request body
 
@@ -492,24 +438,12 @@ class AsyncUsage(AsyncAPIResource):
         using multiple calls with small adjacent (e.g. every hour) timeframes.
 
         Args:
-          event_name: A name to meaningfully identify the action or event type.
-
-          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
-              boolean, or strings. Nested dictionaries are disallowed.
-
-          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-              represent the time that usage was recorded, and is particularly important to
-              attribute usage to a given billing period.
+          events: Events to update
 
           timeframe_end: This bound is exclusive (i.e. events before this timestamp will be updated)
 
           timeframe_start: This bound is inclusive (i.e. events with this timestamp onward, inclusive will
               be updated)
-
-          customer_id: The Orb Customer identifier
-
-          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
-              customer
 
           extra_headers: Send extra headers
 
@@ -523,16 +457,7 @@ class AsyncUsage(AsyncAPIResource):
         """
         return await self._patch(
             f"/customers/{id}/usage",
-            body=maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "timestamp": timestamp,
-                    "customer_id": customer_id,
-                    "external_customer_id": external_customer_id,
-                },
-                usage_update_params.UsageUpdateParams,
-            ),
+            body=maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -554,13 +479,9 @@ class AsyncUsage(AsyncAPIResource):
         self,
         id: Optional[str],
         *,
-        event_name: str,
-        properties: object,
-        timestamp: Union[str, datetime],
+        events: List[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -574,7 +495,7 @@ class AsyncUsage(AsyncAPIResource):
         an active subscription.
 
         This endpoint will mark _all_ existing events within
-        `[timeframe_start, timeframe_end)` as _ignored_ for billing purpo ses, and Orb
+        `[timeframe_start, timeframe_end)` as _ignored_ for billing purposes, and Orb
         will only use the _new_ events passed in the body of this request as the source
         of truth for that timeframe moving forwards. Note that a given time period can
         be amended any number of times, so events can be overwritten in subsequent calls
@@ -586,7 +507,7 @@ class AsyncUsage(AsyncAPIResource):
         - decrease historical usage consumption because of degraded service availability
           in your systems
         - account for gaps from your usage reporting mechanism
-        - make point-in-time fixes for specific event records, while ret aining the
+        - make point-in-time fixes for specific event records, while retaining the
           original time of usage and associated metadata. This amendment API is designed
           with two explicit goals:
 
@@ -594,10 +515,10 @@ class AsyncUsage(AsyncAPIResource):
            original events in the timeframe, though they will be ignored for billing
            calculations. For auditing a nd data fidelity purposes, Orb never overwrites
            or permanently deletes ingested usage data.
-        2. Amendments always preser ve data **consistency**. In other words, either an
-           amendment is fully processed by the system (and the new events for th e
+        2. Amendments always preserve data **consistency**. In other words, either an
+           amendment is fully processed by the system (and the new events for the
            timeframe are honored rather than the existing ones) or the amendment request
-           fails. To maintain this important proper ty, Orb prevents _partial event
+           fails. To maintain this important property, Orb prevents _partial event
            ingestion_ on this endpoint.
 
         ## Response semantics
@@ -609,12 +530,12 @@ class AsyncUsage(AsyncAPIResource):
           also not deprecate existing events in the time period.
         - You can assume that the amendment is successful on receipt of a `2xx`
           response.While a successful response from this endpoint indicates that the new
-          events have been ingested, updati ng usage totals happens asynchronously and
+          events have been ingested, updating usage totals happens asynchronously and
           may be delayed by a few minutes.
 
         As emphasized above, Orb will never show an inconsistent state (e.g. in invoice
         previews or dashboards); either it will show the existing state (before the
-        amend ment) or the new state (with new events in the requested timeframe).
+        amendment) or the new state (with new events in the requested timeframe).
 
         ## Sample request body
 
@@ -668,24 +589,12 @@ class AsyncUsage(AsyncAPIResource):
         using multiple calls with small adjacent (e.g. every hour) timeframes.
 
         Args:
-          event_name: A name to meaningfully identify the action or event type.
-
-          properties: A dictionary of custom properties. Values in this dictionary must be numeric,
-              boolean, or strings. Nested dictionaries are disallowed.
-
-          timestamp: An ISO 8601 format date with no timezone offset (i.e. UTC). This should
-              represent the time that usage was recorded, and is particularly important to
-              attribute usage to a given billing period.
+          events: Events to update
 
           timeframe_end: This bound is exclusive (i.e. events before this timestamp will be updated)
 
           timeframe_start: This bound is inclusive (i.e. events with this timestamp onward, inclusive will
               be updated)
-
-          customer_id: The Orb Customer identifier
-
-          external_customer_id: An alias for the Orb customer, whose mapping is specified when creating the
-              customer
 
           extra_headers: Send extra headers
 
@@ -699,16 +608,7 @@ class AsyncUsage(AsyncAPIResource):
         """
         return await self._patch(
             f"/customers/external_customer_id/{id}/usage",
-            body=maybe_transform(
-                {
-                    "event_name": event_name,
-                    "properties": properties,
-                    "timestamp": timestamp,
-                    "customer_id": customer_id,
-                    "external_customer_id": external_customer_id,
-                },
-                usage_update_by_external_id_params.UsageUpdateByExternalIDParams,
-            ),
+            body=maybe_transform({"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
