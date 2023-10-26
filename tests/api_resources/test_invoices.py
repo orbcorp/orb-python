@@ -25,7 +25,7 @@ class TestInvoices:
     def test_method_create(self, client: Orb) -> None:
         invoice = client.invoices.create(
             currency="USD",
-            invoice_date=parse_datetime("2022-05-01T07:00:00+00:00"),
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             line_items=[
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -63,7 +63,7 @@ class TestInvoices:
     def test_method_create_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.create(
             currency="USD",
-            invoice_date=parse_datetime("2022-05-01T07:00:00+00:00"),
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             line_items=[
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -135,7 +135,7 @@ class TestInvoices:
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
             limit=0,
-            status="draft",
+            status=["draft", "issued", "paid"],
             subscription_id="string",
         )
         assert_matches_type(SyncPage[Invoice], invoice, path=["response"])
@@ -193,7 +193,7 @@ class TestAsyncInvoices:
     async def test_method_create(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.create(
             currency="USD",
-            invoice_date=parse_datetime("2022-05-01T07:00:00+00:00"),
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             line_items=[
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -231,7 +231,7 @@ class TestAsyncInvoices:
     async def test_method_create_with_all_params(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.create(
             currency="USD",
-            invoice_date=parse_datetime("2022-05-01T07:00:00+00:00"),
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             line_items=[
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -303,7 +303,7 @@ class TestAsyncInvoices:
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
             limit=0,
-            status="draft",
+            status=["draft", "issued", "paid"],
             subscription_id="string",
         )
         assert_matches_type(AsyncPage[Invoice], invoice, path=["response"])

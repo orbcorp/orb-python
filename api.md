@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from orb.types import Discount
+```
+
 # TopLevel
 
 Types:
@@ -196,7 +202,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import Invoice, InvoiceDiscount, InvoiceFetchUpcomingResponse
+from orb.types import Invoice, InvoiceFetchUpcomingResponse
 ```
 
 Methods:
@@ -263,7 +269,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import Discount, Price
+from orb.types import Price
 ```
 
 Methods:
@@ -285,8 +291,8 @@ Types:
 ```python
 from orb.types import (
     Subscription,
-    Subscriptions,
     SubscriptionUsage,
+    Subscriptions,
     SubscriptionFetchCostsResponse,
     SubscriptionFetchScheduleResponse,
 )

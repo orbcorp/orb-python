@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import List, Union, Optional
-from datetime import date, datetime
+from datetime import datetime
 from typing_extensions import Literal
 
 from .plan import Plan
@@ -146,7 +146,7 @@ class MinimumInterval(BaseModel):
 
 
 class PriceIntervalFixedFeeQuantityTransition(BaseModel):
-    effective_date: date
+    effective_date: datetime
 
     price_id: str
 

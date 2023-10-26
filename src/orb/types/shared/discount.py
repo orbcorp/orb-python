@@ -3,9 +3,9 @@
 from typing import List, Union, Optional
 from typing_extensions import Literal
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["InvoiceDiscount", "PercentageDiscount", "TrialDiscount", "UsageDiscount", "AmountDiscount"]
+__all__ = ["Discount", "PercentageDiscount", "TrialDiscount", "UsageDiscount", "AmountDiscount"]
 
 
 class PercentageDiscount(BaseModel):
@@ -18,10 +18,12 @@ class PercentageDiscount(BaseModel):
     discount_type: Literal["percentage"]
 
     percentage_discount: float
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
     """
-    Only available if discount_type is `percentage`.This is a number between 0
-    and 1.
-    """
+
+    reason: Optional[str] = None
 
 
 class TrialDiscount(BaseModel):
@@ -32,6 +34,8 @@ class TrialDiscount(BaseModel):
     """
 
     discount_type: Literal["trial"]
+
+    reason: Optional[str] = None
 
     trial_amount_discount: Optional[str] = None
     """Only available if discount_type is `trial`"""
@@ -55,6 +59,8 @@ class UsageDiscount(BaseModel):
     Number of usage units that this discount is for
     """
 
+    reason: Optional[str] = None
+
 
 class AmountDiscount(BaseModel):
     amount_discount: str
@@ -68,5 +74,7 @@ class AmountDiscount(BaseModel):
 
     discount_type: Literal["amount"]
 
+    reason: Optional[str] = None
 
-InvoiceDiscount = Union[PercentageDiscount, TrialDiscount, UsageDiscount, AmountDiscount]
+
+Discount = Union[PercentageDiscount, TrialDiscount, UsageDiscount, AmountDiscount]

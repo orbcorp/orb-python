@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import List, Union, Optional
 from datetime import date, datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
@@ -52,6 +52,8 @@ class InvoiceListParams(TypedDict, total=False):
     limit: int
     """The number of items to fetch. Defaults to 20."""
 
-    status: Optional[Literal["draft", "issued", "paid", "synced", "void"]]
+    status: Annotated[
+        Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]], PropertyInfo(alias="status[]")
+    ]
 
     subscription_id: Optional[str]

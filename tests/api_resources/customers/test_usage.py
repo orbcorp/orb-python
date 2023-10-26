@@ -24,9 +24,23 @@ class TestUsage:
     def test_method_update(self, client: Orb) -> None:
         usage = client.customers.usage.update(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
         )
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
@@ -34,13 +48,31 @@ class TestUsage:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         usage = client.customers.usage.update(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            customer_id="string",
-            external_customer_id="string",
         )
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
@@ -48,9 +80,23 @@ class TestUsage:
     def test_method_update_by_external_id(self, client: Orb) -> None:
         usage = client.customers.usage.update_by_external_id(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
         )
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
@@ -58,13 +104,31 @@ class TestUsage:
     def test_method_update_by_external_id_with_all_params(self, client: Orb) -> None:
         usage = client.customers.usage.update_by_external_id(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            customer_id="string",
-            external_customer_id="string",
         )
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
@@ -78,9 +142,23 @@ class TestAsyncUsage:
     async def test_method_update(self, client: AsyncOrb) -> None:
         usage = await client.customers.usage.update(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
         )
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
@@ -88,13 +166,31 @@ class TestAsyncUsage:
     async def test_method_update_with_all_params(self, client: AsyncOrb) -> None:
         usage = await client.customers.usage.update(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            customer_id="string",
-            external_customer_id="string",
         )
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
@@ -102,9 +198,23 @@ class TestAsyncUsage:
     async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
         usage = await client.customers.usage.update_by_external_id(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
         )
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
@@ -112,12 +222,30 @@ class TestAsyncUsage:
     async def test_method_update_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
         usage = await client.customers.usage.update_by_external_id(
             "string",
-            event_name="string",
-            properties={},
-            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            events=[
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "customer_id": "string",
+                    "external_customer_id": "string",
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            customer_id="string",
-            external_customer_id="string",
         )
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])

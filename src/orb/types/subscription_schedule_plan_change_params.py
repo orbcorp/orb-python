@@ -5,38 +5,50 @@ from __future__ import annotations
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-from .discount_param import DiscountParam
-
 __all__ = [
     "SubscriptionSchedulePlanChangeParams",
     "PriceOverride",
     "PriceOverrideOverrideUnitPrice",
     "PriceOverrideOverrideUnitPriceUnitConfig",
+    "PriceOverrideOverrideUnitPriceDiscount",
     "PriceOverrideOverridePackagePrice",
     "PriceOverrideOverridePackagePricePackageConfig",
+    "PriceOverrideOverridePackagePriceDiscount",
     "PriceOverrideOverrideMatrixPrice",
     "PriceOverrideOverrideMatrixPriceMatrixConfig",
     "PriceOverrideOverrideMatrixPriceMatrixConfigMatrixValue",
+    "PriceOverrideOverrideMatrixPriceDiscount",
     "PriceOverrideOverrideTieredPrice",
     "PriceOverrideOverrideTieredPriceTieredConfig",
     "PriceOverrideOverrideTieredPriceTieredConfigTier",
+    "PriceOverrideOverrideTieredPriceDiscount",
     "PriceOverrideOverrideTieredBpsPrice",
     "PriceOverrideOverrideTieredBpsPriceTieredBpsConfig",
     "PriceOverrideOverrideTieredBpsPriceTieredBpsConfigTier",
+    "PriceOverrideOverrideTieredBpsPriceDiscount",
     "PriceOverrideOverrideBpsPrice",
     "PriceOverrideOverrideBpsPriceBpsConfig",
+    "PriceOverrideOverrideBpsPriceDiscount",
     "PriceOverrideOverrideBulkBpsPrice",
     "PriceOverrideOverrideBulkBpsPriceBulkBpsConfig",
     "PriceOverrideOverrideBulkBpsPriceBulkBpsConfigTier",
+    "PriceOverrideOverrideBulkBpsPriceDiscount",
     "PriceOverrideOverrideBulkPrice",
     "PriceOverrideOverrideBulkPriceBulkConfig",
     "PriceOverrideOverrideBulkPriceBulkConfigTier",
+    "PriceOverrideOverrideBulkPriceDiscount",
     "PriceOverrideOverrideTestRatingFunctionPrice",
+    "PriceOverrideOverrideTestRatingFunctionPriceDiscount",
     "PriceOverrideOverrideFivetranExamplePrice",
+    "PriceOverrideOverrideFivetranExamplePriceDiscount",
     "PriceOverrideOverrideThresholdTotalAmountPrice",
+    "PriceOverrideOverrideThresholdTotalAmountPriceDiscount",
     "PriceOverrideOverrideTieredPackagePrice",
+    "PriceOverrideOverrideTieredPackagePriceDiscount",
     "PriceOverrideOverrideTieredWithMinimumPrice",
+    "PriceOverrideOverrideTieredWithMinimumPriceDiscount",
     "PriceOverrideOverridePackageWithAllocationPrice",
+    "PriceOverrideOverridePackageWithAllocationPriceDiscount",
 ]
 
 
@@ -107,6 +119,34 @@ class PriceOverrideOverrideUnitPriceUnitConfig(TypedDict, total=False):
     """Multiplier to scale rated quantity by"""
 
 
+class PriceOverrideOverrideUnitPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideUnitPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -114,7 +154,7 @@ class PriceOverrideOverrideUnitPrice(TypedDict, total=False):
 
     unit_config: Required[PriceOverrideOverrideUnitPriceUnitConfig]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideUnitPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -139,6 +179,34 @@ class PriceOverrideOverridePackagePricePackageConfig(TypedDict, total=False):
     """
 
 
+class PriceOverrideOverridePackagePriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverridePackagePrice(TypedDict, total=False):
     id: Required[str]
 
@@ -146,7 +214,7 @@ class PriceOverrideOverridePackagePrice(TypedDict, total=False):
 
     package_config: Required[PriceOverrideOverridePackagePricePackageConfig]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverridePackagePriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -191,6 +259,34 @@ class PriceOverrideOverrideMatrixPriceMatrixConfig(TypedDict, total=False):
     """
 
 
+class PriceOverrideOverrideMatrixPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideMatrixPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -198,7 +294,7 @@ class PriceOverrideOverrideMatrixPrice(TypedDict, total=False):
 
     model_type: Required[Literal["matrix"]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideMatrixPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -227,6 +323,34 @@ class PriceOverrideOverrideTieredPriceTieredConfig(TypedDict, total=False):
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
+class PriceOverrideOverrideTieredPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideTieredPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -234,7 +358,7 @@ class PriceOverrideOverrideTieredPrice(TypedDict, total=False):
 
     tiered_config: Required[PriceOverrideOverrideTieredPriceTieredConfig]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideTieredPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -269,6 +393,34 @@ class PriceOverrideOverrideTieredBpsPriceTieredBpsConfig(TypedDict, total=False)
     """
 
 
+class PriceOverrideOverrideTieredBpsPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideTieredBpsPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -276,7 +428,7 @@ class PriceOverrideOverrideTieredBpsPrice(TypedDict, total=False):
 
     tiered_bps_config: Required[PriceOverrideOverrideTieredBpsPriceTieredBpsConfig]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideTieredBpsPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -297,6 +449,34 @@ class PriceOverrideOverrideBpsPriceBpsConfig(TypedDict, total=False):
     """Optional currency amount maximum to cap spend per event"""
 
 
+class PriceOverrideOverrideBpsPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideBpsPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -304,7 +484,7 @@ class PriceOverrideOverrideBpsPrice(TypedDict, total=False):
 
     model_type: Required[Literal["bps"]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideBpsPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -336,6 +516,34 @@ class PriceOverrideOverrideBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
     """
 
 
+class PriceOverrideOverrideBulkBpsPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideBulkBpsPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -343,7 +551,7 @@ class PriceOverrideOverrideBulkBpsPrice(TypedDict, total=False):
 
     model_type: Required[Literal["bulk_bps"]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideBulkBpsPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -369,6 +577,34 @@ class PriceOverrideOverrideBulkPriceBulkConfig(TypedDict, total=False):
     """Bulk tiers for rating based on total usage volume"""
 
 
+class PriceOverrideOverrideBulkPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverrideBulkPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -376,7 +612,7 @@ class PriceOverrideOverrideBulkPrice(TypedDict, total=False):
 
     model_type: Required[Literal["bulk"]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideBulkPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -387,6 +623,34 @@ class PriceOverrideOverrideBulkPrice(TypedDict, total=False):
 
     minimum_amount: Optional[str]
     """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideTestRatingFunctionPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
 
 
 class PriceOverrideOverrideTestRatingFunctionPrice(TypedDict, total=False):
@@ -396,7 +660,7 @@ class PriceOverrideOverrideTestRatingFunctionPrice(TypedDict, total=False):
 
     test_rating_function_config: Required[Dict[str, object]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideTestRatingFunctionPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -407,6 +671,34 @@ class PriceOverrideOverrideTestRatingFunctionPrice(TypedDict, total=False):
 
     minimum_amount: Optional[str]
     """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideFivetranExamplePriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
 
 
 class PriceOverrideOverrideFivetranExamplePrice(TypedDict, total=False):
@@ -416,7 +708,7 @@ class PriceOverrideOverrideFivetranExamplePrice(TypedDict, total=False):
 
     model_type: Required[Literal["fivetran_example"]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideFivetranExamplePriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -427,6 +719,34 @@ class PriceOverrideOverrideFivetranExamplePrice(TypedDict, total=False):
 
     minimum_amount: Optional[str]
     """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideThresholdTotalAmountPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
 
 
 class PriceOverrideOverrideThresholdTotalAmountPrice(TypedDict, total=False):
@@ -436,7 +756,7 @@ class PriceOverrideOverrideThresholdTotalAmountPrice(TypedDict, total=False):
 
     threshold_total_amount_config: Required[Dict[str, object]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideThresholdTotalAmountPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -447,6 +767,34 @@ class PriceOverrideOverrideThresholdTotalAmountPrice(TypedDict, total=False):
 
     minimum_amount: Optional[str]
     """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideTieredPackagePriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
 
 
 class PriceOverrideOverrideTieredPackagePrice(TypedDict, total=False):
@@ -456,7 +804,7 @@ class PriceOverrideOverrideTieredPackagePrice(TypedDict, total=False):
 
     tiered_package_config: Required[Dict[str, object]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideTieredPackagePriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -467,6 +815,34 @@ class PriceOverrideOverrideTieredPackagePrice(TypedDict, total=False):
 
     minimum_amount: Optional[str]
     """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideTieredWithMinimumPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
 
 
 class PriceOverrideOverrideTieredWithMinimumPrice(TypedDict, total=False):
@@ -476,7 +852,7 @@ class PriceOverrideOverrideTieredWithMinimumPrice(TypedDict, total=False):
 
     tiered_with_minimum_config: Required[Dict[str, object]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverrideTieredWithMinimumPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
@@ -489,6 +865,34 @@ class PriceOverrideOverrideTieredWithMinimumPrice(TypedDict, total=False):
     """The subscription's override minimum amount for the plan."""
 
 
+class PriceOverrideOverridePackageWithAllocationPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
 class PriceOverrideOverridePackageWithAllocationPrice(TypedDict, total=False):
     id: Required[str]
 
@@ -496,7 +900,7 @@ class PriceOverrideOverridePackageWithAllocationPrice(TypedDict, total=False):
 
     package_with_allocation_config: Required[Dict[str, object]]
 
-    discount: Optional[DiscountParam]
+    discount: Optional[PriceOverrideOverridePackageWithAllocationPriceDiscount]
     """The subscription's override discount for the plan."""
 
     fixed_price_quantity: Optional[float]
