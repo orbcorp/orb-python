@@ -2,17 +2,27 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
 from ...types import Price
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
 
 __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 
 
 class ExternalPriceID(SyncAPIResource):
+    with_raw_response: ExternalPriceIDWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = ExternalPriceIDWithRawResponse(self)
+
     def fetch(
         self,
         external_price_id: str,
@@ -52,6 +62,12 @@ class ExternalPriceID(SyncAPIResource):
 
 
 class AsyncExternalPriceID(AsyncAPIResource):
+    with_raw_response: AsyncExternalPriceIDWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncExternalPriceIDWithRawResponse(self)
+
     async def fetch(
         self,
         external_price_id: str,
@@ -87,4 +103,18 @@ class AsyncExternalPriceID(AsyncAPIResource):
                 ),
                 cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
+        )
+
+
+class ExternalPriceIDWithRawResponse:
+    def __init__(self, external_price_id: ExternalPriceID) -> None:
+        self.fetch = to_raw_response_wrapper(
+            external_price_id.fetch,
+        )
+
+
+class AsyncExternalPriceIDWithRawResponse:
+    def __init__(self, external_price_id: AsyncExternalPriceID) -> None:
+        self.fetch = async_to_raw_response_wrapper(
+            external_price_id.fetch,
         )

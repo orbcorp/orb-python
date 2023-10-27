@@ -14,6 +14,7 @@ from orb.types import (
     SubscriptionFetchScheduleResponse,
 )
 from orb._utils import parse_date, parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -116,6 +117,13 @@ class TestSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.create()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         subscription = client.subscriptions.list()
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
@@ -136,6 +144,13 @@ class TestSubscriptions:
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
     def test_method_cancel(self, client: Orb) -> None:
         subscription = client.subscriptions.cancel(
             "string",
@@ -153,10 +168,29 @@ class TestSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_cancel(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.cancel(
+            "string",
+            cancel_option="end_of_subscription_term",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -178,6 +212,15 @@ class TestSubscriptions:
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_fetch_costs(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.fetch_costs(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+    @parametrize
     def test_method_fetch_schedule(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_schedule(
             "string",
@@ -195,6 +238,15 @@ class TestSubscriptions:
             start_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+        assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch_schedule(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.fetch_schedule(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
@@ -223,6 +275,16 @@ class TestSubscriptions:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             view_mode="periodic",
         )
+        assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_raw_response_fetch_usage(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.fetch_usage(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
@@ -461,6 +523,16 @@ class TestSubscriptions:
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_raw_response_price_intervals(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.price_intervals(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
     @parametrize
     def test_method_schedule_plan_change(self, client: Orb) -> None:
         subscription = client.subscriptions.schedule_plan_change(
@@ -547,6 +619,16 @@ class TestSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_schedule_plan_change(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.schedule_plan_change(
+            "string",
+            change_option="requested_date",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     def test_method_trigger_phase(self, client: Orb) -> None:
         subscription = client.subscriptions.trigger_phase(
             "string",
@@ -562,10 +644,28 @@ class TestSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_trigger_phase(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.trigger_phase(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     def test_method_unschedule_cancellation(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_cancellation(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_unschedule_cancellation(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.unschedule_cancellation(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -577,10 +677,29 @@ class TestSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    def test_raw_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
+            "string",
+            price_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     def test_method_unschedule_pending_plan_changes(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_pending_plan_changes(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -601,6 +720,17 @@ class TestSubscriptions:
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_fixed_fee_quantity(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.update_fixed_fee_quantity(
+            "string",
+            price_id="string",
+            quantity=0,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
 
@@ -699,6 +829,13 @@ class TestAsyncSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.create()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.list()
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
@@ -719,6 +856,13 @@ class TestAsyncSubscriptions:
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.cancel(
             "string",
@@ -736,10 +880,29 @@ class TestAsyncSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_cancel(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.cancel(
+            "string",
+            cancel_option="end_of_subscription_term",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.fetch(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -761,6 +924,15 @@ class TestAsyncSubscriptions:
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_fetch_costs(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.fetch_costs(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+    @parametrize
     async def test_method_fetch_schedule(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.fetch_schedule(
             "string",
@@ -778,6 +950,15 @@ class TestAsyncSubscriptions:
             start_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+        assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch_schedule(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.fetch_schedule(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
@@ -806,6 +987,16 @@ class TestAsyncSubscriptions:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             view_mode="periodic",
         )
+        assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_raw_response_fetch_usage(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.fetch_usage(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
@@ -1044,6 +1235,16 @@ class TestAsyncSubscriptions:
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_raw_response_price_intervals(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.price_intervals(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
     @parametrize
     async def test_method_schedule_plan_change(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.schedule_plan_change(
@@ -1130,6 +1331,16 @@ class TestAsyncSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_schedule_plan_change(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.schedule_plan_change(
+            "string",
+            change_option="requested_date",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     async def test_method_trigger_phase(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.trigger_phase(
             "string",
@@ -1145,10 +1356,28 @@ class TestAsyncSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_trigger_phase(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.trigger_phase(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     async def test_method_unschedule_cancellation(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.unschedule_cancellation(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_unschedule_cancellation(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.unschedule_cancellation(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -1160,10 +1389,29 @@ class TestAsyncSubscriptions:
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
+    async def test_raw_response_unschedule_fixed_fee_quantity_updates(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
+            "string",
+            price_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
     async def test_method_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.unschedule_pending_plan_changes(
             "string",
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
@@ -1184,4 +1432,15 @@ class TestAsyncSubscriptions:
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_fixed_fee_quantity(self, client: AsyncOrb) -> None:
+        response = await client.subscriptions.with_raw_response.update_fixed_fee_quantity(
+            "string",
+            price_id="string",
+            quantity=0,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])

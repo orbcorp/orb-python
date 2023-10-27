@@ -1,28 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Dict, List, Optional
-from datetime import datetime
+from typing import Dict, Optional
 from typing_extensions import Literal
 
+from .item import Item
 from .._models import BaseModel
 
-__all__ = ["MetricCreateResponse", "Item", "ItemExternalConnection"]
-
-
-class ItemExternalConnection(BaseModel):
-    external_connection_name: Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok"]
-
-    external_entity_id: str
-
-
-class Item(BaseModel):
-    id: str
-
-    created_at: datetime
-
-    external_connections: List[ItemExternalConnection]
-
-    name: str
+__all__ = ["MetricCreateResponse"]
 
 
 class MetricCreateResponse(BaseModel):

@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.events import (
@@ -48,6 +49,16 @@ class TestBackfills:
         assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.events.backfills.with_raw_response.create(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         backfill = client.events.backfills.list()
         assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
@@ -61,10 +72,26 @@ class TestBackfills:
         assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.events.backfills.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
+
+    @parametrize
     def test_method_close(self, client: Orb) -> None:
         backfill = client.events.backfills.close(
             "string",
         )
+        assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_raw_response_close(self, client: Orb) -> None:
+        response = client.events.backfills.with_raw_response.close(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
         assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
 
     @parametrize
@@ -75,10 +102,28 @@ class TestBackfills:
         assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
 
     @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.events.backfills.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+    @parametrize
     def test_method_revert(self, client: Orb) -> None:
         backfill = client.events.backfills.revert(
             "string",
         )
+        assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_raw_response_revert(self, client: Orb) -> None:
+        response = client.events.backfills.with_raw_response.revert(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
         assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
 
 
@@ -108,6 +153,16 @@ class TestAsyncBackfills:
         assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.events.backfills.with_raw_response.create(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         backfill = await client.events.backfills.list()
         assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
@@ -121,10 +176,26 @@ class TestAsyncBackfills:
         assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.events.backfills.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
+
+    @parametrize
     async def test_method_close(self, client: AsyncOrb) -> None:
         backfill = await client.events.backfills.close(
             "string",
         )
+        assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_raw_response_close(self, client: AsyncOrb) -> None:
+        response = await client.events.backfills.with_raw_response.close(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
         assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
 
     @parametrize
@@ -135,8 +206,26 @@ class TestAsyncBackfills:
         assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
 
     @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.events.backfills.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
+        assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+    @parametrize
     async def test_method_revert(self, client: AsyncOrb) -> None:
         backfill = await client.events.backfills.revert(
             "string",
         )
+        assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_raw_response_revert(self, client: AsyncOrb) -> None:
+        response = await client.events.backfills.with_raw_response.revert(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        backfill = response.parse()
         assert_matches_type(BackfillRevertResponse, backfill, path=["response"])

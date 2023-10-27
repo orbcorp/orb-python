@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Union, Optional, cast
+from typing import TYPE_CHECKING, Any, List, Union, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -26,13 +26,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
 
 class Subscriptions(SyncAPIResource):
+    with_raw_response: SubscriptionsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = SubscriptionsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -1630,6 +1640,12 @@ class Subscriptions(SyncAPIResource):
 
 
 class AsyncSubscriptions(AsyncAPIResource):
+    with_raw_response: AsyncSubscriptionsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncSubscriptionsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -3223,4 +3239,96 @@ class AsyncSubscriptions(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Subscription,
+        )
+
+
+class SubscriptionsWithRawResponse:
+    def __init__(self, subscriptions: Subscriptions) -> None:
+        self.create = to_raw_response_wrapper(
+            subscriptions.create,
+        )
+        self.list = to_raw_response_wrapper(
+            subscriptions.list,
+        )
+        self.cancel = to_raw_response_wrapper(
+            subscriptions.cancel,
+        )
+        self.fetch = to_raw_response_wrapper(
+            subscriptions.fetch,
+        )
+        self.fetch_costs = to_raw_response_wrapper(
+            subscriptions.fetch_costs,
+        )
+        self.fetch_schedule = to_raw_response_wrapper(
+            subscriptions.fetch_schedule,
+        )
+        self.fetch_usage = to_raw_response_wrapper(
+            subscriptions.fetch_usage,
+        )
+        self.price_intervals = to_raw_response_wrapper(
+            subscriptions.price_intervals,
+        )
+        self.schedule_plan_change = to_raw_response_wrapper(
+            subscriptions.schedule_plan_change,
+        )
+        self.trigger_phase = to_raw_response_wrapper(
+            subscriptions.trigger_phase,
+        )
+        self.unschedule_cancellation = to_raw_response_wrapper(
+            subscriptions.unschedule_cancellation,
+        )
+        self.unschedule_fixed_fee_quantity_updates = to_raw_response_wrapper(
+            subscriptions.unschedule_fixed_fee_quantity_updates,
+        )
+        self.unschedule_pending_plan_changes = to_raw_response_wrapper(
+            subscriptions.unschedule_pending_plan_changes,
+        )
+        self.update_fixed_fee_quantity = to_raw_response_wrapper(
+            subscriptions.update_fixed_fee_quantity,
+        )
+
+
+class AsyncSubscriptionsWithRawResponse:
+    def __init__(self, subscriptions: AsyncSubscriptions) -> None:
+        self.create = async_to_raw_response_wrapper(
+            subscriptions.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            subscriptions.list,
+        )
+        self.cancel = async_to_raw_response_wrapper(
+            subscriptions.cancel,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            subscriptions.fetch,
+        )
+        self.fetch_costs = async_to_raw_response_wrapper(
+            subscriptions.fetch_costs,
+        )
+        self.fetch_schedule = async_to_raw_response_wrapper(
+            subscriptions.fetch_schedule,
+        )
+        self.fetch_usage = async_to_raw_response_wrapper(
+            subscriptions.fetch_usage,
+        )
+        self.price_intervals = async_to_raw_response_wrapper(
+            subscriptions.price_intervals,
+        )
+        self.schedule_plan_change = async_to_raw_response_wrapper(
+            subscriptions.schedule_plan_change,
+        )
+        self.trigger_phase = async_to_raw_response_wrapper(
+            subscriptions.trigger_phase,
+        )
+        self.unschedule_cancellation = async_to_raw_response_wrapper(
+            subscriptions.unschedule_cancellation,
+        )
+        self.unschedule_fixed_fee_quantity_updates = async_to_raw_response_wrapper(
+            subscriptions.unschedule_fixed_fee_quantity_updates,
+        )
+        self.unschedule_pending_plan_changes = async_to_raw_response_wrapper(
+            subscriptions.unschedule_pending_plan_changes,
+        )
+        self.update_fixed_fee_quantity = async_to_raw_response_wrapper(
+            subscriptions.update_fixed_fee_quantity,
         )

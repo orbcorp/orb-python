@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.events import (
@@ -20,10 +21,19 @@ from ...types.events import (
     backfill_create_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
+
 __all__ = ["Backfills", "AsyncBackfills"]
 
 
 class Backfills(SyncAPIResource):
+    with_raw_response: BackfillsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = BackfillsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -291,6 +301,12 @@ class Backfills(SyncAPIResource):
 
 
 class AsyncBackfills(AsyncAPIResource):
+    with_raw_response: AsyncBackfillsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncBackfillsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -554,4 +570,42 @@ class AsyncBackfills(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=BackfillRevertResponse,
+        )
+
+
+class BackfillsWithRawResponse:
+    def __init__(self, backfills: Backfills) -> None:
+        self.create = to_raw_response_wrapper(
+            backfills.create,
+        )
+        self.list = to_raw_response_wrapper(
+            backfills.list,
+        )
+        self.close = to_raw_response_wrapper(
+            backfills.close,
+        )
+        self.fetch = to_raw_response_wrapper(
+            backfills.fetch,
+        )
+        self.revert = to_raw_response_wrapper(
+            backfills.revert,
+        )
+
+
+class AsyncBackfillsWithRawResponse:
+    def __init__(self, backfills: AsyncBackfills) -> None:
+        self.create = async_to_raw_response_wrapper(
+            backfills.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            backfills.list,
+        )
+        self.close = async_to_raw_response_wrapper(
+            backfills.close,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            backfills.fetch,
+        )
+        self.revert = async_to_raw_response_wrapper(
+            backfills.revert,
         )

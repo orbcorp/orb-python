@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import CreditNote
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -34,10 +35,26 @@ class TestCreditNotes:
         assert_matches_type(SyncPage[CreditNote], credit_note, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.credit_notes.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
+        assert_matches_type(SyncPage[CreditNote], credit_note, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         credit_note = client.credit_notes.fetch(
             "string",
         )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.credit_notes.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
 
@@ -60,8 +77,24 @@ class TestAsyncCreditNotes:
         assert_matches_type(AsyncPage[CreditNote], credit_note, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.credit_notes.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
+        assert_matches_type(AsyncPage[CreditNote], credit_note, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         credit_note = await client.credit_notes.fetch(
             "string",
         )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.credit_notes.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
         assert_matches_type(CreditNote, credit_note, path=["response"])

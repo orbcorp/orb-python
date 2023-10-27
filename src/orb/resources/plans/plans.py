@@ -10,9 +10,15 @@ from ...types import Plan, plan_list_params, plan_create_params, plan_update_par
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .external_plan_id import ExternalPlanID, AsyncExternalPlanID
+from .external_plan_id import (
+    ExternalPlanID,
+    AsyncExternalPlanID,
+    ExternalPlanIDWithRawResponse,
+    AsyncExternalPlanIDWithRawResponse,
+)
 
 if TYPE_CHECKING:
     from ..._client import Orb, AsyncOrb
@@ -22,10 +28,12 @@ __all__ = ["Plans", "AsyncPlans"]
 
 class Plans(SyncAPIResource):
     external_plan_id: ExternalPlanID
+    with_raw_response: PlansWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
         self.external_plan_id = ExternalPlanID(client)
+        self.with_raw_response = PlansWithRawResponse(self)
 
     def create(
         self,
@@ -263,10 +271,12 @@ class Plans(SyncAPIResource):
 
 class AsyncPlans(AsyncAPIResource):
     external_plan_id: AsyncExternalPlanID
+    with_raw_response: AsyncPlansWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
         self.external_plan_id = AsyncExternalPlanID(client)
+        self.with_raw_response = AsyncPlansWithRawResponse(self)
 
     async def create(
         self,
@@ -499,4 +509,40 @@ class AsyncPlans(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Plan,
+        )
+
+
+class PlansWithRawResponse:
+    def __init__(self, plans: Plans) -> None:
+        self.external_plan_id = ExternalPlanIDWithRawResponse(plans.external_plan_id)
+
+        self.create = to_raw_response_wrapper(
+            plans.create,
+        )
+        self.update = to_raw_response_wrapper(
+            plans.update,
+        )
+        self.list = to_raw_response_wrapper(
+            plans.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            plans.fetch,
+        )
+
+
+class AsyncPlansWithRawResponse:
+    def __init__(self, plans: AsyncPlans) -> None:
+        self.external_plan_id = AsyncExternalPlanIDWithRawResponse(plans.external_plan_id)
+
+        self.create = async_to_raw_response_wrapper(
+            plans.create,
+        )
+        self.update = async_to_raw_response_wrapper(
+            plans.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            plans.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            plans.fetch,
         )

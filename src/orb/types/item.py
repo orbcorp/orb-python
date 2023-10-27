@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["ItemListResponse", "ExternalConnection"]
+__all__ = ["Item", "ExternalConnection"]
 
 
 class ExternalConnection(BaseModel):
@@ -15,7 +15,7 @@ class ExternalConnection(BaseModel):
     external_entity_id: str
 
 
-class ItemListResponse(BaseModel):
+class Item(BaseModel):
     id: str
 
     created_at: datetime

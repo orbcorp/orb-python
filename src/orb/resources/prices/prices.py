@@ -9,9 +9,15 @@ from ...types import Price, price_list_params, price_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import required_args, maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .external_price_id import ExternalPriceID, AsyncExternalPriceID
+from .external_price_id import (
+    ExternalPriceID,
+    AsyncExternalPriceID,
+    ExternalPriceIDWithRawResponse,
+    AsyncExternalPriceIDWithRawResponse,
+)
 
 if TYPE_CHECKING:
     from ..._client import Orb, AsyncOrb
@@ -21,10 +27,12 @@ __all__ = ["Prices", "AsyncPrices"]
 
 class Prices(SyncAPIResource):
     external_price_id: ExternalPriceID
+    with_raw_response: PricesWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
         self.external_price_id = ExternalPriceID(client)
+        self.with_raw_response = PricesWithRawResponse(self)
 
     @overload
     def create(
@@ -1052,10 +1060,12 @@ class Prices(SyncAPIResource):
 
 class AsyncPrices(AsyncAPIResource):
     external_price_id: AsyncExternalPriceID
+    with_raw_response: AsyncPricesWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
         self.external_price_id = AsyncExternalPriceID(client)
+        self.with_raw_response = AsyncPricesWithRawResponse(self)
 
     @overload
     async def create(
@@ -2078,4 +2088,34 @@ class AsyncPrices(AsyncAPIResource):
                 ),
                 cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
+        )
+
+
+class PricesWithRawResponse:
+    def __init__(self, prices: Prices) -> None:
+        self.external_price_id = ExternalPriceIDWithRawResponse(prices.external_price_id)
+
+        self.create = to_raw_response_wrapper(
+            prices.create,
+        )
+        self.list = to_raw_response_wrapper(
+            prices.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            prices.fetch,
+        )
+
+
+class AsyncPricesWithRawResponse:
+    def __init__(self, prices: AsyncPrices) -> None:
+        self.external_price_id = AsyncExternalPriceIDWithRawResponse(prices.external_price_id)
+
+        self.create = async_to_raw_response_wrapper(
+            prices.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            prices.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            prices.fetch,
         )
