@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .item import Item as Item
 from .plan import Plan as Plan
 from .price import Price as Price
 from .coupon import Coupon as Coupon
@@ -15,7 +16,7 @@ from .item_list_params import ItemListParams as ItemListParams
 from .plan_list_params import PlanListParams as PlanListParams
 from .price_list_params import PriceListParams as PriceListParams
 from .coupon_list_params import CouponListParams as CouponListParams
-from .item_list_response import ItemListResponse as ItemListResponse
+from .item_create_params import ItemCreateParams as ItemCreateParams
 from .metric_list_params import MetricListParams as MetricListParams
 from .plan_create_params import PlanCreateParams as PlanCreateParams
 from .plan_update_params import PlanUpdateParams as PlanUpdateParams
@@ -24,7 +25,6 @@ from .event_ingest_params import EventIngestParams as EventIngestParams
 from .event_search_params import EventSearchParams as EventSearchParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
-from .item_fetch_response import ItemFetchResponse as ItemFetchResponse
 from .price_create_params import PriceCreateParams as PriceCreateParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams

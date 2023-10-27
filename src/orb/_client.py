@@ -52,6 +52,7 @@ class Orb(SyncAPIClient):
     plans: resources.Plans
     prices: resources.Prices
     subscriptions: resources.Subscriptions
+    with_raw_response: OrbWithRawResponse
 
     # client options
     api_key: str
@@ -117,6 +118,7 @@ class Orb(SyncAPIClient):
         self.plans = resources.Plans(self)
         self.prices = resources.Prices(self)
         self.subscriptions = resources.Subscriptions(self)
+        self.with_raw_response = OrbWithRawResponse(self)
 
     @property
     @override
@@ -200,6 +202,9 @@ class Orb(SyncAPIClient):
         response: httpx.Response,
     ) -> APIStatusError:
         type_ = body.get("type") if is_mapping(body) else None
+        if type_ == "https://docs.withorb.com/reference/error-responses#400-constraint-violation":
+            return _exceptions.ConstraintViolation(err_msg, response=response, body=body)
+
         if type_ == "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation":
             return _exceptions.DuplicateResourceCreation(err_msg, response=response, body=body)
 
@@ -283,6 +288,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: resources.AsyncPlans
     prices: resources.AsyncPrices
     subscriptions: resources.AsyncSubscriptions
+    with_raw_response: AsyncOrbWithRawResponse
 
     # client options
     api_key: str
@@ -348,6 +354,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = resources.AsyncPlans(self)
         self.prices = resources.AsyncPrices(self)
         self.subscriptions = resources.AsyncSubscriptions(self)
+        self.with_raw_response = AsyncOrbWithRawResponse(self)
 
     @property
     @override
@@ -434,6 +441,9 @@ class AsyncOrb(AsyncAPIClient):
         response: httpx.Response,
     ) -> APIStatusError:
         type_ = body.get("type") if is_mapping(body) else None
+        if type_ == "https://docs.withorb.com/reference/error-responses#400-constraint-violation":
+            return _exceptions.ConstraintViolation(err_msg, response=response, body=body)
+
         if type_ == "https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation":
             return _exceptions.DuplicateResourceCreation(err_msg, response=response, body=body)
 
@@ -502,6 +512,38 @@ class AsyncOrb(AsyncAPIClient):
         if response.status_code >= 500:
             return _exceptions.InternalServerError(err_msg, response=response, body=body)
         return APIStatusError(err_msg, response=response, body=body)
+
+
+class OrbWithRawResponse:
+    def __init__(self, client: Orb) -> None:
+        self.top_level = resources.TopLevelWithRawResponse(client.top_level)
+        self.coupons = resources.CouponsWithRawResponse(client.coupons)
+        self.credit_notes = resources.CreditNotesWithRawResponse(client.credit_notes)
+        self.customers = resources.CustomersWithRawResponse(client.customers)
+        self.events = resources.EventsWithRawResponse(client.events)
+        self.invoice_line_items = resources.InvoiceLineItemsWithRawResponse(client.invoice_line_items)
+        self.invoices = resources.InvoicesWithRawResponse(client.invoices)
+        self.items = resources.ItemsWithRawResponse(client.items)
+        self.metrics = resources.MetricsWithRawResponse(client.metrics)
+        self.plans = resources.PlansWithRawResponse(client.plans)
+        self.prices = resources.PricesWithRawResponse(client.prices)
+        self.subscriptions = resources.SubscriptionsWithRawResponse(client.subscriptions)
+
+
+class AsyncOrbWithRawResponse:
+    def __init__(self, client: AsyncOrb) -> None:
+        self.top_level = resources.AsyncTopLevelWithRawResponse(client.top_level)
+        self.coupons = resources.AsyncCouponsWithRawResponse(client.coupons)
+        self.credit_notes = resources.AsyncCreditNotesWithRawResponse(client.credit_notes)
+        self.customers = resources.AsyncCustomersWithRawResponse(client.customers)
+        self.events = resources.AsyncEventsWithRawResponse(client.events)
+        self.invoice_line_items = resources.AsyncInvoiceLineItemsWithRawResponse(client.invoice_line_items)
+        self.invoices = resources.AsyncInvoicesWithRawResponse(client.invoices)
+        self.items = resources.AsyncItemsWithRawResponse(client.items)
+        self.metrics = resources.AsyncMetricsWithRawResponse(client.metrics)
+        self.plans = resources.AsyncPlansWithRawResponse(client.plans)
+        self.prices = resources.AsyncPricesWithRawResponse(client.prices)
+        self.subscriptions = resources.AsyncSubscriptionsWithRawResponse(client.subscriptions)
 
 
 Client = Orb

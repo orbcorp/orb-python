@@ -2,19 +2,70 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..types import ItemListResponse, ItemFetchResponse, item_list_params
+from ..types import Item, item_list_params, item_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["Items", "AsyncItems"]
 
 
 class Items(SyncAPIResource):
+    with_raw_response: ItemsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = ItemsWithRawResponse(self)
+
+    def create(
+        self,
+        *,
+        name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """
+        This endpoint is used to create an [Item](../guides/concepts#item).
+
+        Args:
+          name: The name of the item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/items",
+            body=maybe_transform({"name": name}, item_create_params.ItemCreateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
     def list(
         self,
         *,
@@ -26,7 +77,7 @@ class Items(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[ItemListResponse]:
+    ) -> SyncPage[Item]:
         """
         This endpoint returns a list of all Items, ordered in descending order by
         creation time.
@@ -47,7 +98,7 @@ class Items(SyncAPIResource):
         """
         return self._get_api_list(
             "/items",
-            page=SyncPage[ItemListResponse],
+            page=SyncPage[Item],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -61,7 +112,7 @@ class Items(SyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            model=ItemListResponse,
+            model=Item,
         )
 
     def fetch(
@@ -74,7 +125,7 @@ class Items(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> ItemFetchResponse:
+    ) -> Item:
         """
         This endpoint returns an item identified by its item_id.
 
@@ -92,11 +143,58 @@ class Items(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ItemFetchResponse,
+            cast_to=Item,
         )
 
 
 class AsyncItems(AsyncAPIResource):
+    with_raw_response: AsyncItemsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncItemsWithRawResponse(self)
+
+    async def create(
+        self,
+        *,
+        name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """
+        This endpoint is used to create an [Item](../guides/concepts#item).
+
+        Args:
+          name: The name of the item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/items",
+            body=maybe_transform({"name": name}, item_create_params.ItemCreateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
     def list(
         self,
         *,
@@ -108,7 +206,7 @@ class AsyncItems(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ItemListResponse, AsyncPage[ItemListResponse]]:
+    ) -> AsyncPaginator[Item, AsyncPage[Item]]:
         """
         This endpoint returns a list of all Items, ordered in descending order by
         creation time.
@@ -129,7 +227,7 @@ class AsyncItems(AsyncAPIResource):
         """
         return self._get_api_list(
             "/items",
-            page=AsyncPage[ItemListResponse],
+            page=AsyncPage[Item],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -143,7 +241,7 @@ class AsyncItems(AsyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            model=ItemListResponse,
+            model=Item,
         )
 
     async def fetch(
@@ -156,7 +254,7 @@ class AsyncItems(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> ItemFetchResponse:
+    ) -> Item:
         """
         This endpoint returns an item identified by its item_id.
 
@@ -174,5 +272,31 @@ class AsyncItems(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ItemFetchResponse,
+            cast_to=Item,
+        )
+
+
+class ItemsWithRawResponse:
+    def __init__(self, items: Items) -> None:
+        self.create = to_raw_response_wrapper(
+            items.create,
+        )
+        self.list = to_raw_response_wrapper(
+            items.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            items.fetch,
+        )
+
+
+class AsyncItemsWithRawResponse:
+    def __init__(self, items: AsyncItems) -> None:
+        self.create = async_to_raw_response_wrapper(
+            items.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            items.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            items.fetch,
         )

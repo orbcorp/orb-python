@@ -9,6 +9,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import Plan
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -68,6 +69,25 @@ class TestPlans:
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.plans.with_raw_response.create(
+            currency="string",
+            name="string",
+            prices=[
+                {
+                    "name": "Annual fee",
+                    "item_id": "string",
+                    "cadence": "annual",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                }
+            ],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
     def test_method_update(self, client: Orb) -> None:
         plan = client.plans.update(
             "string",
@@ -81,6 +101,15 @@ class TestPlans:
             external_plan_id="string",
             metadata={},
         )
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.plans.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
@@ -102,10 +131,26 @@ class TestPlans:
         assert_matches_type(SyncPage[Plan], plan, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.plans.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
+        assert_matches_type(SyncPage[Plan], plan, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         plan = client.plans.fetch(
             "string",
         )
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.plans.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
 
 
@@ -161,6 +206,25 @@ class TestAsyncPlans:
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.plans.with_raw_response.create(
+            currency="string",
+            name="string",
+            prices=[
+                {
+                    "name": "Annual fee",
+                    "item_id": "string",
+                    "cadence": "annual",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                }
+            ],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
     async def test_method_update(self, client: AsyncOrb) -> None:
         plan = await client.plans.update(
             "string",
@@ -174,6 +238,15 @@ class TestAsyncPlans:
             external_plan_id="string",
             metadata={},
         )
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, client: AsyncOrb) -> None:
+        response = await client.plans.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
@@ -195,8 +268,24 @@ class TestAsyncPlans:
         assert_matches_type(AsyncPage[Plan], plan, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.plans.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
+        assert_matches_type(AsyncPage[Plan], plan, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         plan = await client.plans.fetch(
             "string",
         )
+        assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.plans.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])

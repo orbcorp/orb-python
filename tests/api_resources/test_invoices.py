@@ -9,6 +9,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import Invoice, InvoiceFetchUpcomingResponse
 from orb._utils import parse_date, parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -111,6 +112,46 @@ class TestInvoices:
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.create(
+            currency="USD",
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            line_items=[
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+            ],
+            net_terms=0,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         invoice = client.invoices.list()
         assert_matches_type(SyncPage[Invoice], invoice, path=["response"])
@@ -141,10 +182,26 @@ class TestInvoices:
         assert_matches_type(SyncPage[Invoice], invoice, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(SyncPage[Invoice], invoice, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         invoice = client.invoices.fetch(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
@@ -160,10 +217,26 @@ class TestInvoices:
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
 
     @parametrize
+    def test_raw_response_fetch_upcoming(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.fetch_upcoming()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
+
+    @parametrize
     def test_method_issue(self, client: Orb) -> None:
         invoice = client.invoices.issue(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_issue(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.issue(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
@@ -177,10 +250,31 @@ class TestInvoices:
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
+    def test_raw_response_mark_paid(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.mark_paid(
+            "string",
+            external_id="external_payment_id_123",
+            notes="string",
+            payment_received_date=parse_date("2023-09-22"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
     def test_method_void(self, client: Orb) -> None:
         invoice = client.invoices.void(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_void(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.void(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])
 
 
@@ -279,6 +373,46 @@ class TestAsyncInvoices:
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.create(
+            currency="USD",
+            invoice_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            line_items=[
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+                {
+                    "start_date": parse_date("2023-09-22"),
+                    "end_date": parse_date("2023-09-22"),
+                    "quantity": 1,
+                    "name": "Line Item Name",
+                    "item_id": "4khy3nwzktxv7",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                },
+            ],
+            net_terms=0,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.list()
         assert_matches_type(AsyncPage[Invoice], invoice, path=["response"])
@@ -309,10 +443,26 @@ class TestAsyncInvoices:
         assert_matches_type(AsyncPage[Invoice], invoice, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(AsyncPage[Invoice], invoice, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.fetch(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
@@ -328,10 +478,26 @@ class TestAsyncInvoices:
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
 
     @parametrize
+    async def test_raw_response_fetch_upcoming(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.fetch_upcoming()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
+
+    @parametrize
     async def test_method_issue(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.issue(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_issue(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.issue(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
@@ -345,8 +511,29 @@ class TestAsyncInvoices:
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
+    async def test_raw_response_mark_paid(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.mark_paid(
+            "string",
+            external_id="external_payment_id_123",
+            notes="string",
+            payment_received_date=parse_date("2023-09-22"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
     async def test_method_void(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.void(
             "string",
         )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_void(self, client: AsyncOrb) -> None:
+        response = await client.invoices.with_raw_response.void(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
         assert_matches_type(Invoice, invoice, path=["response"])

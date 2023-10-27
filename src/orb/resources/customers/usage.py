@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import TYPE_CHECKING, List, Union, Optional
 from datetime import datetime
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.customers import (
     UsageUpdateResponse,
@@ -16,10 +17,19 @@ from ...types.customers import (
     usage_update_by_external_id_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
+
 __all__ = ["Usage", "AsyncUsage"]
 
 
 class Usage(SyncAPIResource):
+    with_raw_response: UsageWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = UsageWithRawResponse(self)
+
     def update(
         self,
         id: Optional[str],
@@ -324,6 +334,12 @@ class Usage(SyncAPIResource):
 
 
 class AsyncUsage(AsyncAPIResource):
+    with_raw_response: AsyncUsageWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncUsageWithRawResponse(self)
+
     async def update(
         self,
         id: Optional[str],
@@ -624,4 +640,24 @@ class AsyncUsage(AsyncAPIResource):
                 ),
             ),
             cast_to=UsageUpdateByExternalIDResponse,
+        )
+
+
+class UsageWithRawResponse:
+    def __init__(self, usage: Usage) -> None:
+        self.update = to_raw_response_wrapper(
+            usage.update,
+        )
+        self.update_by_external_id = to_raw_response_wrapper(
+            usage.update_by_external_id,
+        )
+
+
+class AsyncUsageWithRawResponse:
+    def __init__(self, usage: AsyncUsage) -> None:
+        self.update = async_to_raw_response_wrapper(
+            usage.update,
+        )
+        self.update_by_external_id = async_to_raw_response_wrapper(
+            usage.update_by_external_id,
         )

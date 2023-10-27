@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 
 from ..types import (
@@ -15,13 +15,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["Metrics", "AsyncMetrics"]
 
 
 class Metrics(SyncAPIResource):
+    with_raw_response: MetricsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = MetricsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -181,6 +191,12 @@ class Metrics(SyncAPIResource):
 
 
 class AsyncMetrics(AsyncAPIResource):
+    with_raw_response: AsyncMetricsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncMetricsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -336,4 +352,30 @@ class AsyncMetrics(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=MetricFetchResponse,
+        )
+
+
+class MetricsWithRawResponse:
+    def __init__(self, metrics: Metrics) -> None:
+        self.create = to_raw_response_wrapper(
+            metrics.create,
+        )
+        self.list = to_raw_response_wrapper(
+            metrics.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            metrics.fetch,
+        )
+
+
+class AsyncMetricsWithRawResponse:
+    def __init__(self, metrics: AsyncMetrics) -> None:
+        self.create = async_to_raw_response_wrapper(
+            metrics.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            metrics.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            metrics.fetch,
         )

@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Any, Union, Optional, cast, overload
+from typing import TYPE_CHECKING, Any, Union, Optional, cast, overload
 from datetime import date, datetime
 from typing_extensions import Literal
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import required_args, maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers.credits import (
@@ -22,10 +23,19 @@ from ....types.customers.credits import (
     ledger_create_entry_by_external_id_params,
 )
 
+if TYPE_CHECKING:
+    from ...._client import Orb, AsyncOrb
+
 __all__ = ["Ledger", "AsyncLedger"]
 
 
 class Ledger(SyncAPIResource):
+    with_raw_response: LedgerWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = LedgerWithRawResponse(self)
+
     def list(
         self,
         customer_id: Optional[str],
@@ -2064,6 +2074,12 @@ class Ledger(SyncAPIResource):
 
 
 class AsyncLedger(AsyncAPIResource):
+    with_raw_response: AsyncLedgerWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncLedgerWithRawResponse(self)
+
     def list(
         self,
         customer_id: Optional[str],
@@ -4098,4 +4114,36 @@ class AsyncLedger(AsyncAPIResource):
             model=cast(
                 Any, LedgerListByExternalIDResponse
             ),  # Union types cannot be passed in as arguments in the type system
+        )
+
+
+class LedgerWithRawResponse:
+    def __init__(self, ledger: Ledger) -> None:
+        self.list = to_raw_response_wrapper(
+            ledger.list,
+        )
+        self.create_entry = to_raw_response_wrapper(
+            ledger.create_entry,
+        )
+        self.create_entry_by_external_id = to_raw_response_wrapper(
+            ledger.create_entry_by_external_id,
+        )
+        self.list_by_external_id = to_raw_response_wrapper(
+            ledger.list_by_external_id,
+        )
+
+
+class AsyncLedgerWithRawResponse:
+    def __init__(self, ledger: AsyncLedger) -> None:
+        self.list = async_to_raw_response_wrapper(
+            ledger.list,
+        )
+        self.create_entry = async_to_raw_response_wrapper(
+            ledger.create_entry,
+        )
+        self.create_entry_by_external_id = async_to_raw_response_wrapper(
+            ledger.create_entry_by_external_id,
+        )
+        self.list_by_external_id = async_to_raw_response_wrapper(
+            ledger.list_by_external_id,
         )

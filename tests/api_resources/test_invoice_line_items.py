@@ -9,6 +9,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import InvoiceLineItemCreateResponse
 from orb._utils import parse_date
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -32,6 +33,20 @@ class TestInvoiceLineItems:
         )
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
 
+    @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.invoice_line_items.with_raw_response.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            name="Item Name",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice_line_item = response.parse()
+        assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
 
 class TestAsyncInvoiceLineItems:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -48,4 +63,18 @@ class TestAsyncInvoiceLineItems:
             quantity=1,
             start_date=parse_date("2023-09-22"),
         )
+        assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.invoice_line_items.with_raw_response.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            name="Item Name",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice_line_item = response.parse()
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])

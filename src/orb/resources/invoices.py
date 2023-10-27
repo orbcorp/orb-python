@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import TYPE_CHECKING, List, Union, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -17,13 +17,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["Invoices", "AsyncInvoices"]
 
 
 class Invoices(SyncAPIResource):
+    with_raw_response: InvoicesWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = InvoicesWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -413,6 +423,12 @@ class Invoices(SyncAPIResource):
 
 
 class AsyncInvoices(AsyncAPIResource):
+    with_raw_response: AsyncInvoicesWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInvoicesWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -798,4 +814,54 @@ class AsyncInvoices(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Invoice,
+        )
+
+
+class InvoicesWithRawResponse:
+    def __init__(self, invoices: Invoices) -> None:
+        self.create = to_raw_response_wrapper(
+            invoices.create,
+        )
+        self.list = to_raw_response_wrapper(
+            invoices.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            invoices.fetch,
+        )
+        self.fetch_upcoming = to_raw_response_wrapper(
+            invoices.fetch_upcoming,
+        )
+        self.issue = to_raw_response_wrapper(
+            invoices.issue,
+        )
+        self.mark_paid = to_raw_response_wrapper(
+            invoices.mark_paid,
+        )
+        self.void = to_raw_response_wrapper(
+            invoices.void,
+        )
+
+
+class AsyncInvoicesWithRawResponse:
+    def __init__(self, invoices: AsyncInvoices) -> None:
+        self.create = async_to_raw_response_wrapper(
+            invoices.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            invoices.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            invoices.fetch,
+        )
+        self.fetch_upcoming = async_to_raw_response_wrapper(
+            invoices.fetch_upcoming,
+        )
+        self.issue = async_to_raw_response_wrapper(
+            invoices.issue,
+        )
+        self.mark_paid = async_to_raw_response_wrapper(
+            invoices.mark_paid,
+        )
+        self.void = async_to_raw_response_wrapper(
+            invoices.void,
         )

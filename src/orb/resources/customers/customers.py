@@ -6,8 +6,8 @@ from typing import TYPE_CHECKING, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from .costs import Costs, AsyncCosts
-from .usage import Usage, AsyncUsage
+from .costs import Costs, AsyncCosts, CostsWithRawResponse, AsyncCostsWithRawResponse
+from .usage import Usage, AsyncUsage, UsageWithRawResponse, AsyncUsageWithRawResponse
 from ...types import (
     Customer,
     customer_list_params,
@@ -15,13 +15,24 @@ from ...types import (
     customer_update_params,
     customer_update_by_external_id_params,
 )
-from .credits import Credits, AsyncCredits
+from .credits import (
+    Credits,
+    AsyncCredits,
+    CreditsWithRawResponse,
+    AsyncCreditsWithRawResponse,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .balance_transactions import BalanceTransactions, AsyncBalanceTransactions
+from .balance_transactions import (
+    BalanceTransactions,
+    AsyncBalanceTransactions,
+    BalanceTransactionsWithRawResponse,
+    AsyncBalanceTransactionsWithRawResponse,
+)
 
 if TYPE_CHECKING:
     from ..._client import Orb, AsyncOrb
@@ -34,6 +45,7 @@ class Customers(SyncAPIResource):
     usage: Usage
     credits: Credits
     balance_transactions: BalanceTransactions
+    with_raw_response: CustomersWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
@@ -41,6 +53,7 @@ class Customers(SyncAPIResource):
         self.usage = Usage(client)
         self.credits = Credits(client)
         self.balance_transactions = BalanceTransactions(client)
+        self.with_raw_response = CustomersWithRawResponse(self)
 
     def create(
         self,
@@ -831,6 +844,7 @@ class AsyncCustomers(AsyncAPIResource):
     usage: AsyncUsage
     credits: AsyncCredits
     balance_transactions: AsyncBalanceTransactions
+    with_raw_response: AsyncCustomersWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
@@ -838,6 +852,7 @@ class AsyncCustomers(AsyncAPIResource):
         self.usage = AsyncUsage(client)
         self.credits = AsyncCredits(client)
         self.balance_transactions = AsyncBalanceTransactions(client)
+        self.with_raw_response = AsyncCustomersWithRawResponse(self)
 
     async def create(
         self,
@@ -1620,4 +1635,64 @@ class AsyncCustomers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Customer,
+        )
+
+
+class CustomersWithRawResponse:
+    def __init__(self, customers: Customers) -> None:
+        self.costs = CostsWithRawResponse(customers.costs)
+        self.usage = UsageWithRawResponse(customers.usage)
+        self.credits = CreditsWithRawResponse(customers.credits)
+        self.balance_transactions = BalanceTransactionsWithRawResponse(customers.balance_transactions)
+
+        self.create = to_raw_response_wrapper(
+            customers.create,
+        )
+        self.update = to_raw_response_wrapper(
+            customers.update,
+        )
+        self.list = to_raw_response_wrapper(
+            customers.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            customers.delete,
+        )
+        self.fetch = to_raw_response_wrapper(
+            customers.fetch,
+        )
+        self.fetch_by_external_id = to_raw_response_wrapper(
+            customers.fetch_by_external_id,
+        )
+        self.update_by_external_id = to_raw_response_wrapper(
+            customers.update_by_external_id,
+        )
+
+
+class AsyncCustomersWithRawResponse:
+    def __init__(self, customers: AsyncCustomers) -> None:
+        self.costs = AsyncCostsWithRawResponse(customers.costs)
+        self.usage = AsyncUsageWithRawResponse(customers.usage)
+        self.credits = AsyncCreditsWithRawResponse(customers.credits)
+        self.balance_transactions = AsyncBalanceTransactionsWithRawResponse(customers.balance_transactions)
+
+        self.create = async_to_raw_response_wrapper(
+            customers.create,
+        )
+        self.update = async_to_raw_response_wrapper(
+            customers.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            customers.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            customers.delete,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            customers.fetch,
+        )
+        self.fetch_by_external_id = async_to_raw_response_wrapper(
+            customers.fetch_by_external_id,
+        )
+        self.update_by_external_id = async_to_raw_response_wrapper(
+            customers.update_by_external_id,
         )

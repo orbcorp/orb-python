@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers import (
@@ -44,6 +45,17 @@ class TestBalanceTransactions:
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.customers.balance_transactions.with_raw_response.create(
+            "string",
+            amount="string",
+            type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        balance_transaction = response.parse()
+        assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.list(
             "string",
@@ -61,6 +73,15 @@ class TestBalanceTransactions:
             operation_time_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+        assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.customers.balance_transactions.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        balance_transaction = response.parse()
         assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
 
 
@@ -89,6 +110,17 @@ class TestAsyncBalanceTransactions:
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.customers.balance_transactions.with_raw_response.create(
+            "string",
+            amount="string",
+            type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        balance_transaction = response.parse()
+        assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         balance_transaction = await client.customers.balance_transactions.list(
             "string",
@@ -106,4 +138,13 @@ class TestAsyncBalanceTransactions:
             operation_time_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+        assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.customers.balance_transactions.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        balance_transaction = response.parse()
         assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])

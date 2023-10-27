@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_date, parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers.credits import (
@@ -51,6 +52,15 @@ class TestLedger:
         assert_matches_type(SyncPage[LedgerListResponse], ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(SyncPage[LedgerListResponse], ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_overload_1(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
@@ -79,6 +89,17 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_overload_1(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_overload_2(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
@@ -96,6 +117,17 @@ class TestLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_entry_overload_2(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
@@ -123,6 +155,18 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_overload_3(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_overload_4(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
@@ -146,6 +190,18 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_overload_4(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_overload_5(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
@@ -165,6 +221,18 @@ class TestLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_entry_overload_5(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
@@ -196,6 +264,17 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_by_external_id_overload_1(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_by_external_id_overload_2(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
@@ -213,6 +292,17 @@ class TestLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_entry_by_external_id_overload_2(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
@@ -240,6 +330,18 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_by_external_id_overload_3(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_create_entry_by_external_id_overload_4(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
@@ -260,6 +362,18 @@ class TestLedger:
             metadata={},
             void_reason="refund",
         )
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_entry_by_external_id_overload_4(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
@@ -285,6 +399,18 @@ class TestLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    def test_raw_response_create_entry_by_external_id_overload_5(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
         ledger = client.customers.credits.ledger.list_by_external_id(
             "string",
@@ -306,6 +432,15 @@ class TestLedger:
             limit=0,
             minimum_amount="string",
         )
+        assert_matches_type(SyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_by_external_id(self, client: Orb) -> None:
+        response = client.customers.credits.ledger.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(SyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
 
 
@@ -339,6 +474,15 @@ class TestAsyncLedger:
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_overload_1(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
@@ -367,6 +511,17 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_overload_1(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_overload_2(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
@@ -384,6 +539,17 @@ class TestAsyncLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_entry_overload_2(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
@@ -411,6 +577,18 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_overload_3(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_overload_4(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
@@ -434,6 +612,18 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_overload_4(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_overload_5(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
@@ -453,6 +643,18 @@ class TestAsyncLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_entry_overload_5(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
@@ -484,6 +686,17 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="increment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
@@ -501,6 +714,17 @@ class TestAsyncLedger:
             description="string",
             metadata={},
         )
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
@@ -528,6 +752,18 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
@@ -548,6 +784,18 @@ class TestAsyncLedger:
             metadata={},
             void_reason="refund",
         )
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
@@ -573,6 +821,18 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
+    async def test_raw_response_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
+        assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
         ledger = await client.customers.credits.ledger.list_by_external_id(
             "string",
@@ -594,4 +854,13 @@ class TestAsyncLedger:
             limit=0,
             minimum_amount="string",
         )
+        assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_by_external_id(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.ledger.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ledger = response.parse()
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])

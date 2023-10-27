@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.customers import (
     CostListResponse,
@@ -17,10 +18,19 @@ from ...types.customers import (
     cost_list_by_external_id_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
+
 __all__ = ["Costs", "AsyncCosts"]
 
 
 class Costs(SyncAPIResource):
+    with_raw_response: CostsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = CostsWithRawResponse(self)
+
     def list(
         self,
         customer_id: Optional[str],
@@ -405,6 +415,12 @@ class Costs(SyncAPIResource):
 
 
 class AsyncCosts(AsyncAPIResource):
+    with_raw_response: AsyncCostsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCostsWithRawResponse(self)
+
     async def list(
         self,
         customer_id: Optional[str],
@@ -785,4 +801,24 @@ class AsyncCosts(AsyncAPIResource):
                 ),
             ),
             cast_to=CostListByExternalIDResponse,
+        )
+
+
+class CostsWithRawResponse:
+    def __init__(self, costs: Costs) -> None:
+        self.list = to_raw_response_wrapper(
+            costs.list,
+        )
+        self.list_by_external_id = to_raw_response_wrapper(
+            costs.list_by_external_id,
+        )
+
+
+class AsyncCostsWithRawResponse:
+    def __init__(self, costs: AsyncCosts) -> None:
+        self.list = async_to_raw_response_wrapper(
+            costs.list,
+        )
+        self.list_by_external_id = async_to_raw_response_wrapper(
+            costs.list_by_external_id,
         )
