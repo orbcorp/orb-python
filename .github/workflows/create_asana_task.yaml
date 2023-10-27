@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: orbcorp/gha-create-asana-task
+      - uses: orbcorp/gha-create-asana-task@main
         with:
           asana-secret: ${{ secrets.ASANA_PAT }}
           asana-project-id: ${{ secrets.ASANA_PROJECT_ID }}
