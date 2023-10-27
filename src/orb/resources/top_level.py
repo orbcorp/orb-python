@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import TopLevelPingResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["TopLevel", "AsyncTopLevel"]
 
 
 class TopLevel(SyncAPIResource):
+    with_raw_response: TopLevelWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = TopLevelWithRawResponse(self)
+
     def ping(
         self,
         *,
@@ -39,6 +51,12 @@ class TopLevel(SyncAPIResource):
 
 
 class AsyncTopLevel(AsyncAPIResource):
+    with_raw_response: AsyncTopLevelWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncTopLevelWithRawResponse(self)
+
     async def ping(
         self,
         *,
@@ -63,4 +81,18 @@ class AsyncTopLevel(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=TopLevelPingResponse,
+        )
+
+
+class TopLevelWithRawResponse:
+    def __init__(self, top_level: TopLevel) -> None:
+        self.ping = to_raw_response_wrapper(
+            top_level.ping,
+        )
+
+
+class AsyncTopLevelWithRawResponse:
+    def __init__(self, top_level: AsyncTopLevel) -> None:
+        self.ping = async_to_raw_response_wrapper(
+            top_level.ping,
         )

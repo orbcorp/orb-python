@@ -220,13 +220,14 @@ Methods:
 Types:
 
 ```python
-from orb.types import ItemListResponse, ItemFetchResponse
+from orb.types import Item
 ```
 
 Methods:
 
-- <code title="get /items">client.items.<a href="./src/orb/resources/items.py">list</a>(\*\*<a href="src/orb/types/item_list_params.py">params</a>) -> <a href="./src/orb/types/item_list_response.py">SyncPage[ItemListResponse]</a></code>
-- <code title="get /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">fetch</a>(item_id) -> <a href="./src/orb/types/item_fetch_response.py">ItemFetchResponse</a></code>
+- <code title="post /items">client.items.<a href="./src/orb/resources/items.py">create</a>(\*\*<a href="src/orb/types/item_create_params.py">params</a>) -> <a href="./src/orb/types/item.py">Item</a></code>
+- <code title="get /items">client.items.<a href="./src/orb/resources/items.py">list</a>(\*\*<a href="src/orb/types/item_list_params.py">params</a>) -> <a href="./src/orb/types/item.py">SyncPage[Item]</a></code>
+- <code title="get /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">fetch</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 
 # Metrics
 

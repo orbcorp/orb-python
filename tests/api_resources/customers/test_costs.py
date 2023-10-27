@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.types.customers import CostListResponse, CostListByExternalIDResponse
 
@@ -39,6 +40,15 @@ class TestCosts:
         assert_matches_type(CostListResponse, cost, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.customers.costs.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        cost = response.parse()
+        assert_matches_type(CostListResponse, cost, path=["response"])
+
+    @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
         cost = client.customers.costs.list_by_external_id(
             "string",
@@ -54,6 +64,15 @@ class TestCosts:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             view_mode="periodic",
         )
+        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_by_external_id(self, client: Orb) -> None:
+        response = client.customers.costs.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        cost = response.parse()
         assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
 
 
@@ -81,6 +100,15 @@ class TestAsyncCosts:
         assert_matches_type(CostListResponse, cost, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.customers.costs.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        cost = response.parse()
+        assert_matches_type(CostListResponse, cost, path=["response"])
+
+    @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
         cost = await client.customers.costs.list_by_external_id(
             "string",
@@ -96,4 +124,13 @@ class TestAsyncCosts:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             view_mode="periodic",
         )
+        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_by_external_id(self, client: AsyncOrb) -> None:
+        response = await client.customers.costs.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        cost = response.parse()
         assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])

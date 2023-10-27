@@ -9,6 +9,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import MetricListResponse, MetricFetchResponse, MetricCreateResponse
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -43,6 +44,18 @@ class TestMetrics:
         assert_matches_type(MetricCreateResponse, metric, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.metrics.with_raw_response.create(
+            description="Sum of bytes downloaded in fast mode",
+            item_id="string",
+            name="Bytes downloaded",
+            sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
+        assert_matches_type(MetricCreateResponse, metric, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         metric = client.metrics.list()
         assert_matches_type(SyncPage[MetricListResponse], metric, path=["response"])
@@ -60,10 +73,26 @@ class TestMetrics:
         assert_matches_type(SyncPage[MetricListResponse], metric, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.metrics.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
+        assert_matches_type(SyncPage[MetricListResponse], metric, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         metric = client.metrics.fetch(
             "string",
         )
+        assert_matches_type(MetricFetchResponse, metric, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.metrics.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
         assert_matches_type(MetricFetchResponse, metric, path=["response"])
 
 
@@ -94,6 +123,18 @@ class TestAsyncMetrics:
         assert_matches_type(MetricCreateResponse, metric, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncOrb) -> None:
+        response = await client.metrics.with_raw_response.create(
+            description="Sum of bytes downloaded in fast mode",
+            item_id="string",
+            name="Bytes downloaded",
+            sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
+        assert_matches_type(MetricCreateResponse, metric, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         metric = await client.metrics.list()
         assert_matches_type(AsyncPage[MetricListResponse], metric, path=["response"])
@@ -111,8 +152,24 @@ class TestAsyncMetrics:
         assert_matches_type(AsyncPage[MetricListResponse], metric, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.metrics.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
+        assert_matches_type(AsyncPage[MetricListResponse], metric, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         metric = await client.metrics.fetch(
             "string",
         )
+        assert_matches_type(MetricFetchResponse, metric, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.metrics.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metric = response.parse()
         assert_matches_type(MetricFetchResponse, metric, path=["response"])

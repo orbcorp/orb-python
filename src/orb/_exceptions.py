@@ -18,6 +18,7 @@ __all__ = [
     "UnprocessableEntityError",
     "RateLimitError",
     "InternalServerError",
+    "ConstraintViolation",
     "DuplicateResourceCreation",
     "FeatureNotAvailable",
     "RequestValidationError",
@@ -119,6 +120,25 @@ class RateLimitError(APIStatusError):
 
 class InternalServerError(APIStatusError):
     pass
+
+
+class ConstraintViolation(BadRequestError):
+    status: Literal[400]
+
+    type: Literal["https://docs.withorb.com/reference/error-responses#400-constraint-violation"]
+
+    detail: Optional[str] = None
+
+    title: Optional[str] = None
+
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
+        data = cast(Mapping[str, object], body if is_mapping(body) else {})
+        super().__init__(message, response=response, body=body)
+
+        self.status = cast(Any, data.get("status"))
+        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, data.get("detail"))
+        self.title = cast(Any, data.get("title"))
 
 
 class DuplicateResourceCreation(BadRequestError):

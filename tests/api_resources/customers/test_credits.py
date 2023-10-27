@@ -7,6 +7,7 @@ import os
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers import CreditListResponse, CreditListByExternalIDResponse
@@ -37,6 +38,15 @@ class TestCredits:
         assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.customers.credits.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit = response.parse()
+        assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
         credit = client.customers.credits.list_by_external_id(
             "string",
@@ -50,6 +60,15 @@ class TestCredits:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_by_external_id(self, client: Orb) -> None:
+        response = client.customers.credits.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit = response.parse()
         assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
 
@@ -75,6 +94,15 @@ class TestAsyncCredits:
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit = response.parse()
+        assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
+
+    @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
         credit = await client.customers.credits.list_by_external_id(
             "string",
@@ -88,4 +116,13 @@ class TestAsyncCredits:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_by_external_id(self, client: AsyncOrb) -> None:
+        response = await client.customers.credits.with_raw_response.list_by_external_id(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit = response.parse()
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])

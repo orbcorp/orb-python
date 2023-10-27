@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import date
 
 from ..types import InvoiceLineItemCreateResponse, invoice_line_item_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["InvoiceLineItems", "AsyncInvoiceLineItems"]
 
 
 class InvoiceLineItems(SyncAPIResource):
+    with_raw_response: InvoiceLineItemsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = InvoiceLineItemsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -86,6 +96,12 @@ class InvoiceLineItems(SyncAPIResource):
 
 
 class AsyncInvoiceLineItems(AsyncAPIResource):
+    with_raw_response: AsyncInvoiceLineItemsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInvoiceLineItemsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -153,4 +169,18 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InvoiceLineItemCreateResponse,
+        )
+
+
+class InvoiceLineItemsWithRawResponse:
+    def __init__(self, invoice_line_items: InvoiceLineItems) -> None:
+        self.create = to_raw_response_wrapper(
+            invoice_line_items.create,
+        )
+
+
+class AsyncInvoiceLineItemsWithRawResponse:
+    def __init__(self, invoice_line_items: AsyncInvoiceLineItems) -> None:
+        self.create = async_to_raw_response_wrapper(
+            invoice_line_items.create,
         )

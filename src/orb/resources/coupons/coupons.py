@@ -8,8 +8,14 @@ from ...types import Coupon, coupon_list_params, coupon_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from .subscriptions import Subscriptions, AsyncSubscriptions
+from .subscriptions import (
+    Subscriptions,
+    AsyncSubscriptions,
+    SubscriptionsWithRawResponse,
+    AsyncSubscriptionsWithRawResponse,
+)
 from ..._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
@@ -20,10 +26,12 @@ __all__ = ["Coupons", "AsyncCoupons"]
 
 class Coupons(SyncAPIResource):
     subscriptions: Subscriptions
+    with_raw_response: CouponsWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
         self.subscriptions = Subscriptions(client)
+        self.with_raw_response = CouponsWithRawResponse(self)
 
     def create(
         self,
@@ -224,10 +232,12 @@ class Coupons(SyncAPIResource):
 
 class AsyncCoupons(AsyncAPIResource):
     subscriptions: AsyncSubscriptions
+    with_raw_response: AsyncCouponsWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
         self.subscriptions = AsyncSubscriptions(client)
+        self.with_raw_response = AsyncCouponsWithRawResponse(self)
 
     async def create(
         self,
@@ -423,4 +433,40 @@ class AsyncCoupons(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Coupon,
+        )
+
+
+class CouponsWithRawResponse:
+    def __init__(self, coupons: Coupons) -> None:
+        self.subscriptions = SubscriptionsWithRawResponse(coupons.subscriptions)
+
+        self.create = to_raw_response_wrapper(
+            coupons.create,
+        )
+        self.list = to_raw_response_wrapper(
+            coupons.list,
+        )
+        self.archive = to_raw_response_wrapper(
+            coupons.archive,
+        )
+        self.fetch = to_raw_response_wrapper(
+            coupons.fetch,
+        )
+
+
+class AsyncCouponsWithRawResponse:
+    def __init__(self, coupons: AsyncCoupons) -> None:
+        self.subscriptions = AsyncSubscriptionsWithRawResponse(coupons.subscriptions)
+
+        self.create = async_to_raw_response_wrapper(
+            coupons.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            coupons.list,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            coupons.archive,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            coupons.fetch,
         )

@@ -2,20 +2,30 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ...types import Subscription
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.coupons import subscription_list_params
+
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
 
 class Subscriptions(SyncAPIResource):
+    with_raw_response: SubscriptionsWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = SubscriptionsWithRawResponse(self)
+
     def list(
         self,
         coupon_id: str,
@@ -70,6 +80,12 @@ class Subscriptions(SyncAPIResource):
 
 
 class AsyncSubscriptions(AsyncAPIResource):
+    with_raw_response: AsyncSubscriptionsWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncSubscriptionsWithRawResponse(self)
+
     def list(
         self,
         coupon_id: str,
@@ -120,4 +136,18 @@ class AsyncSubscriptions(AsyncAPIResource):
                 ),
             ),
             model=Subscription,
+        )
+
+
+class SubscriptionsWithRawResponse:
+    def __init__(self, subscriptions: Subscriptions) -> None:
+        self.list = to_raw_response_wrapper(
+            subscriptions.list,
+        )
+
+
+class AsyncSubscriptionsWithRawResponse:
+    def __init__(self, subscriptions: AsyncSubscriptions) -> None:
+        self.list = async_to_raw_response_wrapper(
+            subscriptions.list,
         )

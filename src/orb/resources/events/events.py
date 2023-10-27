@@ -16,8 +16,14 @@ from ...types import (
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
-from .backfills import Backfills, AsyncBackfills
+from .backfills import (
+    Backfills,
+    AsyncBackfills,
+    BackfillsWithRawResponse,
+    AsyncBackfillsWithRawResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 
 if TYPE_CHECKING:
@@ -28,10 +34,12 @@ __all__ = ["Events", "AsyncEvents"]
 
 class Events(SyncAPIResource):
     backfills: Backfills
+    with_raw_response: EventsWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
         self.backfills = Backfills(client)
+        self.with_raw_response = EventsWithRawResponse(self)
 
     def update(
         self,
@@ -567,10 +575,12 @@ class Events(SyncAPIResource):
 
 class AsyncEvents(AsyncAPIResource):
     backfills: AsyncBackfills
+    with_raw_response: AsyncEventsWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
         self.backfills = AsyncBackfills(client)
+        self.with_raw_response = AsyncEventsWithRawResponse(self)
 
     async def update(
         self,
@@ -1101,4 +1111,40 @@ class AsyncEvents(AsyncAPIResource):
                 ),
             ),
             cast_to=EventSearchResponse,
+        )
+
+
+class EventsWithRawResponse:
+    def __init__(self, events: Events) -> None:
+        self.backfills = BackfillsWithRawResponse(events.backfills)
+
+        self.update = to_raw_response_wrapper(
+            events.update,
+        )
+        self.deprecate = to_raw_response_wrapper(
+            events.deprecate,
+        )
+        self.ingest = to_raw_response_wrapper(
+            events.ingest,
+        )
+        self.search = to_raw_response_wrapper(
+            events.search,
+        )
+
+
+class AsyncEventsWithRawResponse:
+    def __init__(self, events: AsyncEvents) -> None:
+        self.backfills = AsyncBackfillsWithRawResponse(events.backfills)
+
+        self.update = async_to_raw_response_wrapper(
+            events.update,
+        )
+        self.deprecate = async_to_raw_response_wrapper(
+            events.deprecate,
+        )
+        self.ingest = async_to_raw_response_wrapper(
+            events.ingest,
+        )
+        self.search = async_to_raw_response_wrapper(
+            events.search,
         )

@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ...types import Plan
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...types.plans import external_plan_id_update_params
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Orb, AsyncOrb
 
 __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
 
 class ExternalPlanID(SyncAPIResource):
+    with_raw_response: ExternalPlanIDWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = ExternalPlanIDWithRawResponse(self)
+
     def update(
         self,
         other_external_plan_id: str,
@@ -121,6 +131,12 @@ class ExternalPlanID(SyncAPIResource):
 
 
 class AsyncExternalPlanID(AsyncAPIResource):
+    with_raw_response: AsyncExternalPlanIDWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncExternalPlanIDWithRawResponse(self)
+
     async def update(
         self,
         other_external_plan_id: str,
@@ -223,4 +239,24 @@ class AsyncExternalPlanID(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Plan,
+        )
+
+
+class ExternalPlanIDWithRawResponse:
+    def __init__(self, external_plan_id: ExternalPlanID) -> None:
+        self.update = to_raw_response_wrapper(
+            external_plan_id.update,
+        )
+        self.fetch = to_raw_response_wrapper(
+            external_plan_id.fetch,
+        )
+
+
+class AsyncExternalPlanIDWithRawResponse:
+    def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
+        self.update = async_to_raw_response_wrapper(
+            external_plan_id.update,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            external_plan_id.fetch,
         )

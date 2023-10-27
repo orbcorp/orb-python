@@ -1,6 +1,25 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .coupons import Coupons, AsyncCoupons
-from .subscriptions import Subscriptions, AsyncSubscriptions
+from .coupons import (
+    Coupons,
+    AsyncCoupons,
+    CouponsWithRawResponse,
+    AsyncCouponsWithRawResponse,
+)
+from .subscriptions import (
+    Subscriptions,
+    AsyncSubscriptions,
+    SubscriptionsWithRawResponse,
+    AsyncSubscriptionsWithRawResponse,
+)
 
-__all__ = ["Subscriptions", "AsyncSubscriptions", "Coupons", "AsyncCoupons"]
+__all__ = [
+    "Subscriptions",
+    "AsyncSubscriptions",
+    "SubscriptionsWithRawResponse",
+    "AsyncSubscriptionsWithRawResponse",
+    "Coupons",
+    "AsyncCoupons",
+    "CouponsWithRawResponse",
+    "AsyncCouponsWithRawResponse",
+]

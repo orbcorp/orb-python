@@ -278,6 +278,27 @@ if response.my_field is None:
     print('Got json like {"my_field": null}.')
 ```
 
+### Accessing raw response data (e.g. headers)
+
+The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call.
+
+```py
+from orb import Orb
+
+client = Orb()
+response = client.customers.with_raw_response.create(
+    email="string",
+    name="string",
+)
+
+print(response.headers.get('X-My-Header'))
+
+customer = response.parse()  # get the object that `customers.create()` would have returned
+print(customer.id)
+```
+
+These methods return an [`APIResponse`](https://github.com/orbcorp/orb-python/src/orb/_response.py) object.
+
 ### Configuring the HTTP client
 
 You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
