@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import Plan
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -36,10 +37,28 @@ class TestExternalPlanID:
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.plans.external_plan_id.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         external_plan_id = client.plans.external_plan_id.fetch(
             "string",
         )
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.plans.external_plan_id.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
 
@@ -65,8 +84,26 @@ class TestAsyncExternalPlanID:
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
+    async def test_raw_response_update(self, client: AsyncOrb) -> None:
+        response = await client.plans.external_plan_id.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         external_plan_id = await client.plans.external_plan_id.fetch(
             "string",
         )
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.plans.external_plan_id.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
         assert_matches_type(Plan, external_plan_id, path=["response"])

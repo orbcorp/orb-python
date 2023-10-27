@@ -14,6 +14,7 @@ from orb.types import (
     EventDeprecateResponse,
 )
 from orb._utils import parse_datetime
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -48,10 +49,31 @@ class TestEvents:
         assert_matches_type(EventUpdateResponse, event, path=["response"])
 
     @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.events.with_raw_response.update(
+            "string",
+            event_name="string",
+            properties={},
+            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
+        assert_matches_type(EventUpdateResponse, event, path=["response"])
+
+    @parametrize
     def test_method_deprecate(self, client: Orb) -> None:
         event = client.events.deprecate(
             "string",
         )
+        assert_matches_type(EventDeprecateResponse, event, path=["response"])
+
+    @parametrize
+    def test_raw_response_deprecate(self, client: Orb) -> None:
+        response = client.events.with_raw_response.deprecate(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
         assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
     @parametrize
@@ -115,6 +137,34 @@ class TestEvents:
         assert_matches_type(EventIngestResponse, event, path=["response"])
 
     @parametrize
+    def test_raw_response_ingest(self, client: Orb) -> None:
+        response = client.events.with_raw_response.ingest(
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+            ],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
+        assert_matches_type(EventIngestResponse, event, path=["response"])
+
+    @parametrize
     def test_method_search(self, client: Orb) -> None:
         event = client.events.search()
         assert_matches_type(EventSearchResponse, event, path=["response"])
@@ -131,6 +181,13 @@ class TestEvents:
             event_ids=["string", "string", "string"],
             invoice_id="string",
         )
+        assert_matches_type(EventSearchResponse, event, path=["response"])
+
+    @parametrize
+    def test_raw_response_search(self, client: Orb) -> None:
+        response = client.events.with_raw_response.search()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
         assert_matches_type(EventSearchResponse, event, path=["response"])
 
 
@@ -162,10 +219,31 @@ class TestAsyncEvents:
         assert_matches_type(EventUpdateResponse, event, path=["response"])
 
     @parametrize
+    async def test_raw_response_update(self, client: AsyncOrb) -> None:
+        response = await client.events.with_raw_response.update(
+            "string",
+            event_name="string",
+            properties={},
+            timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
+        assert_matches_type(EventUpdateResponse, event, path=["response"])
+
+    @parametrize
     async def test_method_deprecate(self, client: AsyncOrb) -> None:
         event = await client.events.deprecate(
             "string",
         )
+        assert_matches_type(EventDeprecateResponse, event, path=["response"])
+
+    @parametrize
+    async def test_raw_response_deprecate(self, client: AsyncOrb) -> None:
+        response = await client.events.with_raw_response.deprecate(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
         assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
     @parametrize
@@ -229,6 +307,34 @@ class TestAsyncEvents:
         assert_matches_type(EventIngestResponse, event, path=["response"])
 
     @parametrize
+    async def test_raw_response_ingest(self, client: AsyncOrb) -> None:
+        response = await client.events.with_raw_response.ingest(
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                    "idempotency_key": "string",
+                },
+            ],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
+        assert_matches_type(EventIngestResponse, event, path=["response"])
+
+    @parametrize
     async def test_method_search(self, client: AsyncOrb) -> None:
         event = await client.events.search()
         assert_matches_type(EventSearchResponse, event, path=["response"])
@@ -245,4 +351,11 @@ class TestAsyncEvents:
             event_ids=["string", "string", "string"],
             invoice_id="string",
         )
+        assert_matches_type(EventSearchResponse, event, path=["response"])
+
+    @parametrize
+    async def test_raw_response_search(self, client: AsyncOrb) -> None:
+        response = await client.events.with_raw_response.search()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        event = response.parse()
         assert_matches_type(EventSearchResponse, event, path=["response"])

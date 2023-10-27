@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..types import CreditNote, credit_note_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Orb, AsyncOrb
 
 __all__ = ["CreditNotes", "AsyncCreditNotes"]
 
 
 class CreditNotes(SyncAPIResource):
+    with_raw_response: CreditNotesWithRawResponse
+
+    def __init__(self, client: Orb) -> None:
+        super().__init__(client)
+        self.with_raw_response = CreditNotesWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -100,6 +110,12 @@ class CreditNotes(SyncAPIResource):
 
 
 class AsyncCreditNotes(AsyncAPIResource):
+    with_raw_response: AsyncCreditNotesWithRawResponse
+
+    def __init__(self, client: AsyncOrb) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCreditNotesWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -181,4 +197,24 @@ class AsyncCreditNotes(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CreditNote,
+        )
+
+
+class CreditNotesWithRawResponse:
+    def __init__(self, credit_notes: CreditNotes) -> None:
+        self.list = to_raw_response_wrapper(
+            credit_notes.list,
+        )
+        self.fetch = to_raw_response_wrapper(
+            credit_notes.fetch,
+        )
+
+
+class AsyncCreditNotesWithRawResponse:
+    def __init__(self, credit_notes: AsyncCreditNotes) -> None:
+        self.list = async_to_raw_response_wrapper(
+            credit_notes.list,
+        )
+        self.fetch = async_to_raw_response_wrapper(
+            credit_notes.fetch,
         )

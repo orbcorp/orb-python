@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import Price
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,6 +27,15 @@ class TestExternalPriceID:
         )
         assert_matches_type(Price, external_price_id, path=["response"])
 
+    @parametrize
+    def test_raw_response_fetch(self, client: Orb) -> None:
+        response = client.prices.external_price_id.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_price_id = response.parse()
+        assert_matches_type(Price, external_price_id, path=["response"])
+
 
 class TestAsyncExternalPriceID:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -37,4 +47,13 @@ class TestAsyncExternalPriceID:
         external_price_id = await client.prices.external_price_id.fetch(
             "string",
         )
+        assert_matches_type(Price, external_price_id, path=["response"])
+
+    @parametrize
+    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
+        response = await client.prices.external_price_id.with_raw_response.fetch(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_price_id = response.parse()
         assert_matches_type(Price, external_price_id, path=["response"])

@@ -4,10 +4,16 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
-from .ledger import Ledger, AsyncLedger
+from .ledger import (
+    Ledger,
+    AsyncLedger,
+    LedgerWithRawResponse,
+    AsyncLedgerWithRawResponse,
+)
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers import (
@@ -25,10 +31,12 @@ __all__ = ["Credits", "AsyncCredits"]
 
 class Credits(SyncAPIResource):
     ledger: Ledger
+    with_raw_response: CreditsWithRawResponse
 
     def __init__(self, client: Orb) -> None:
         super().__init__(client)
         self.ledger = Ledger(client)
+        self.with_raw_response = CreditsWithRawResponse(self)
 
     def list(
         self,
@@ -131,10 +139,12 @@ class Credits(SyncAPIResource):
 
 class AsyncCredits(AsyncAPIResource):
     ledger: AsyncLedger
+    with_raw_response: AsyncCreditsWithRawResponse
 
     def __init__(self, client: AsyncOrb) -> None:
         super().__init__(client)
         self.ledger = AsyncLedger(client)
+        self.with_raw_response = AsyncCreditsWithRawResponse(self)
 
     def list(
         self,
@@ -232,4 +242,28 @@ class AsyncCredits(AsyncAPIResource):
                 ),
             ),
             model=CreditListByExternalIDResponse,
+        )
+
+
+class CreditsWithRawResponse:
+    def __init__(self, credits: Credits) -> None:
+        self.ledger = LedgerWithRawResponse(credits.ledger)
+
+        self.list = to_raw_response_wrapper(
+            credits.list,
+        )
+        self.list_by_external_id = to_raw_response_wrapper(
+            credits.list_by_external_id,
+        )
+
+
+class AsyncCreditsWithRawResponse:
+    def __init__(self, credits: AsyncCredits) -> None:
+        self.ledger = AsyncLedgerWithRawResponse(credits.ledger)
+
+        self.list = async_to_raw_response_wrapper(
+            credits.list,
+        )
+        self.list_by_external_id = async_to_raw_response_wrapper(
+            credits.list_by_external_id,
         )

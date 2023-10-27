@@ -8,6 +8,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import Subscription
+from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -36,6 +37,15 @@ class TestSubscriptions:
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
 
+    @parametrize
+    def test_raw_response_list(self, client: Orb) -> None:
+        response = client.coupons.subscriptions.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
 
 class TestAsyncSubscriptions:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -56,4 +66,13 @@ class TestAsyncSubscriptions:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncOrb) -> None:
+        response = await client.coupons.subscriptions.with_raw_response.list(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
