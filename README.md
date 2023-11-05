@@ -32,6 +32,7 @@ customer = client.customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
 )
+print(customer.id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -44,6 +45,7 @@ so that your API Key is not stored in source control.
 Simply import `AsyncOrb` instead of `Orb` and use `await` with each API call:
 
 ```python
+import asyncio
 from orb import AsyncOrb
 
 client = AsyncOrb(
@@ -52,12 +54,12 @@ client = AsyncOrb(
 )
 
 
-async def main():
+async def main() -> None:
     customer = await client.customers.create(
         email="example-customer@withorb.com",
         name="My Customer",
     )
-    print(customer)
+    print(customer.id)
 
 
 asyncio.run(main())
@@ -145,7 +147,7 @@ from orb import Orb
 
 client = Orb()
 
-client.customers.create(
+customer = client.customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
     billing_address={
@@ -154,6 +156,7 @@ client.customers.create(
         "line1": "123 Example Street",
     },
 )
+print(customer.id)
 ```
 
 ## Handling errors
@@ -287,10 +290,9 @@ from orb import Orb
 
 client = Orb()
 response = client.customers.with_raw_response.create(
-    email="string",
-    name="string",
+    email="example-customer@withorb.com",
+    name="My Customer",
 )
-
 print(response.headers.get('X-My-Header'))
 
 customer = response.parse()  # get the object that `customers.create()` would have returned
