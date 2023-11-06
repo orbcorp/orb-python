@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import httpx
+
 from ..types import TopLevelPingResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -31,7 +33,7 @@ class TopLevel(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TopLevelPingResponse:
         """
         This endpoint allows you to test your connection to the Orb API and check the
@@ -65,7 +67,7 @@ class AsyncTopLevel(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TopLevelPingResponse:
         """
         This endpoint allows you to test your connection to the Orb API and check the

@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List, Union, Optional
 from datetime import datetime
 
+import httpx
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -42,7 +44,7 @@ class Usage(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> UsageUpdateResponse:
         """
@@ -193,7 +195,7 @@ class Usage(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> UsageUpdateByExternalIDResponse:
         """
@@ -352,7 +354,7 @@ class AsyncUsage(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> UsageUpdateResponse:
         """
@@ -503,7 +505,7 @@ class AsyncUsage(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> UsageUpdateByExternalIDResponse:
         """

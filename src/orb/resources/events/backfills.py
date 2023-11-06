@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 
+import httpx
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -48,7 +50,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillCreateResponse:
         """
@@ -137,7 +139,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[BackfillListResponse]:
         """
         This endpoint returns a list of all backfills in a list format.
@@ -190,7 +192,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillCloseResponse:
         """Closing a backfill makes the updated usage visible in Orb.
@@ -232,7 +234,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BackfillFetchResponse:
         """
         This endpoint is used to fetch a backfill given an identifier.
@@ -263,7 +265,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillRevertResponse:
         """Reverting a backfill undoes all the effects of closing the backfill.
@@ -321,7 +323,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillCreateResponse:
         """
@@ -410,7 +412,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[BackfillListResponse, AsyncPage[BackfillListResponse]]:
         """
         This endpoint returns a list of all backfills in a list format.
@@ -463,7 +465,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillCloseResponse:
         """Closing a backfill makes the updated usage visible in Orb.
@@ -505,7 +507,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BackfillFetchResponse:
         """
         This endpoint is used to fetch a backfill given an identifier.
@@ -536,7 +538,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> BackfillRevertResponse:
         """Reverting a backfill undoes all the effects of closing the backfill.

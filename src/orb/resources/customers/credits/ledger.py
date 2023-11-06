@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, Any, Union, Optional, cast, overload
 from datetime import date, datetime
 from typing_extensions import Literal
 
+import httpx
+
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import required_args, maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -66,7 +68,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[LedgerListResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -211,7 +213,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -375,7 +377,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -528,7 +530,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -690,7 +692,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -845,7 +847,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -1015,7 +1017,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         return cast(
@@ -1072,7 +1074,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1236,7 +1238,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1389,7 +1391,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1551,7 +1553,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1706,7 +1708,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1878,7 +1880,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         return cast(
@@ -1944,7 +1946,7 @@ class Ledger(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[LedgerListByExternalIDResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -2110,7 +2112,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[LedgerListResponse, AsyncPage[LedgerListResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -2255,7 +2257,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2419,7 +2421,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2572,7 +2574,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2734,7 +2736,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2889,7 +2891,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -3059,7 +3061,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         return cast(
@@ -3116,7 +3118,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3280,7 +3282,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3433,7 +3435,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3595,7 +3597,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3750,7 +3752,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3922,7 +3924,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         return cast(
@@ -3988,7 +3990,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[LedgerListByExternalIDResponse, AsyncPage[LedgerListByExternalIDResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
