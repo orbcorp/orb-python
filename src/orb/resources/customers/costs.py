@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
+import httpx
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,7 +46,7 @@ class Costs(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CostListResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
@@ -235,7 +237,7 @@ class Costs(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CostListByExternalIDResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
@@ -434,7 +436,7 @@ class AsyncCosts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CostListResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
@@ -625,7 +627,7 @@ class AsyncCosts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CostListByExternalIDResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
