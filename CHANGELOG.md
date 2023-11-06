@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.29.0 (2023-11-06)
+
+Full Changelog: [v1.28.1...v1.29.0](https://github.com/orbcorp/orb-python/compare/v1.28.1...v1.29.0)
+
+### Features
+
+* **api:** remove unsupported params ([#33](https://github.com/orbcorp/orb-python/issues/33)) ([abd325f](https://github.com/orbcorp/orb-python/commit/abd325f78c1d58c30207bf69ba36b32229626fac))
+
 ## 1.28.1 (2023-11-06)
 
 Full Changelog: [v1.28.0...v1.28.1](https://github.com/orbcorp/orb-python/compare/v1.28.0...v1.28.1)
