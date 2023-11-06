@@ -464,7 +464,7 @@ class Subscriptions(SyncAPIResource):
         Orb supports invoicing for a subscription when a preconfigured usage threshold
         is hit. To enable threshold billing, pass in an `invoicing_threshold`, which is
         specified in the subscription's invoicing currency, when creating a
-        subscription. Ex. pass in `10.00` to issue an invoice when usage amounts hit
+        subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
         $10.00 for a subscription that invoices in USD.
 
         Args:
@@ -2067,7 +2067,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         Orb supports invoicing for a subscription when a preconfigured usage threshold
         is hit. To enable threshold billing, pass in an `invoicing_threshold`, which is
         specified in the subscription's invoicing currency, when creating a
-        subscription. Ex. pass in `10.00` to issue an invoice when usage amounts hit
+        subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
         $10.00 for a subscription that invoices in USD.
 
         Args:

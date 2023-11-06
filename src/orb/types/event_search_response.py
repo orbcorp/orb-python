@@ -5,7 +5,7 @@ from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = ["EventSearchResponse", "Data", "PaginationMetadata"]
+__all__ = ["EventSearchResponse", "Data"]
 
 
 class Data(BaseModel):
@@ -43,13 +43,5 @@ class Data(BaseModel):
     """
 
 
-class PaginationMetadata(BaseModel):
-    has_more: bool
-
-    next_cursor: Optional[str]
-
-
 class EventSearchResponse(BaseModel):
     data: List[Data]
-
-    pagination_metadata: PaginationMetadata
