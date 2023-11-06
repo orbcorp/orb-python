@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.28.1 (2023-11-06)
+
+Full Changelog: [v1.28.0...v1.28.1](https://github.com/orbcorp/orb-python/compare/v1.28.0...v1.28.1)
+
+### Bug Fixes
+
+* prevent TypeError in Python 3.8 (ABC is not subscriptable) ([#32](https://github.com/orbcorp/orb-python/issues/32)) ([f21abfa](https://github.com/orbcorp/orb-python/commit/f21abfae14e1897cd501e09a1dc3051e5c7e54ec))
+
+
+### Chores
+
+* **internal:** remove unused int/float conversion ([#29](https://github.com/orbcorp/orb-python/issues/29)) ([0b701e1](https://github.com/orbcorp/orb-python/commit/0b701e1812c7293fd313f759944e400e202eab69))
+
+
+### Documentation
+
+* **readme:** improve example snippets ([#31](https://github.com/orbcorp/orb-python/issues/31)) ([3815aad](https://github.com/orbcorp/orb-python/commit/3815aad75faa9ce55a499eaabb04c3c3f15b1701))
+
 ## 1.28.0 (2023-11-03)
 
 Full Changelog: [v1.27.0...v1.28.0](https://github.com/orbcorp/orb-python/compare/v1.27.0...v1.28.0)
