@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime
 
+import httpx
+
 from ..types import (
     MetricListResponse,
     MetricFetchResponse,
@@ -45,7 +47,7 @@ class Metrics(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> MetricCreateResponse:
         """
@@ -112,7 +114,7 @@ class Metrics(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[MetricListResponse]:
         """
         This endpoint is used to fetch [metric](../guides/concepts#metric) details given
@@ -165,7 +167,7 @@ class Metrics(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetricFetchResponse:
         """This endpoint is used to list [metrics](../guides/concepts##metric).
 
@@ -210,7 +212,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> MetricCreateResponse:
         """
@@ -277,7 +279,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[MetricListResponse, AsyncPage[MetricListResponse]]:
         """
         This endpoint is used to fetch [metric](../guides/concepts#metric) details given
@@ -330,7 +332,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetricFetchResponse:
         """This endpoint is used to list [metrics](../guides/concepts##metric).
 

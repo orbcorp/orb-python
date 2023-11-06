@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
+import httpx
+
 from .ledger import (
     Ledger,
     AsyncLedger,
@@ -49,7 +51,7 @@ class Credits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[CreditListResponse]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
@@ -98,7 +100,7 @@ class Credits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[CreditListByExternalIDResponse]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
@@ -157,7 +159,7 @@ class AsyncCredits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[CreditListResponse, AsyncPage[CreditListResponse]]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
@@ -206,7 +208,7 @@ class AsyncCredits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[CreditListByExternalIDResponse, AsyncPage[CreditListByExternalIDResponse]]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
