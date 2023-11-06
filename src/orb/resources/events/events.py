@@ -75,7 +75,7 @@ class Events(SyncAPIResource):
         event in cases where you need to:
 
         - update an event with new metadata as you iterate on your pricing model
-        - update an event based on the result of an external API call (ex. call to a
+        - update an event based on the result of an external API call (e.g. call to a
           payment gateway succeeded or failed)
 
         This amendment API is always audit-safe. The process will still retain the
@@ -174,7 +174,7 @@ class Events(SyncAPIResource):
         event in cases where you need to:
 
         - no longer bill for an event that was improperly reported
-        - no longer bill for an event based on the result of an external API call (ex.
+        - no longer bill for an event based on the result of an external API call (e.g.
           call to a payment gateway failed and the user should not be billed)
 
         If you want to only change specific properties of an event, but keep the event
@@ -478,14 +478,7 @@ class Events(SyncAPIResource):
     def search(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        timestamp_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        event_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        invoice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        event_ids: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -507,10 +500,6 @@ class Events(SyncAPIResource):
 
         - `event_ids`: This is an explicit array of IDs to filter by. Note that an
           event's ID is the `idempotency_key` that was originally used for ingestion.
-        - `invoice_id`: This is an issued Orb invoice ID (see also
-          [List Invoices](list-invoices)). Orb will fetch all events that were used to
-          calculate the invoice. In the common case, this will be a list of events whose
-          `timestamp` property falls within the billing period specified by the invoice.
 
         By default, Orb does not return _deprecated_ events in this endpoint.
 
@@ -518,19 +507,9 @@ class Events(SyncAPIResource):
         empty array for `data` instead.
 
         Args:
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
-          limit: The number of items to fetch. Defaults to 20.
-
           event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
               idempotency_key that was originally used for ingestion. Values in this array
               will be treated case sensitively.
-
-          invoice_id: This is an issued Orb invoice ID (see also List Invoices). Orb will fetch all
-              events that were used to calculate the invoice. In the common case, this will be
-              a list of events whose timestamp property falls within the billing period
-              specified by the invoice.
 
           extra_headers: Send extra headers
 
@@ -544,30 +523,13 @@ class Events(SyncAPIResource):
         """
         return self._post(
             "/events/search",
-            body=maybe_transform(
-                {
-                    "event_ids": event_ids,
-                    "invoice_id": invoice_id,
-                },
-                event_search_params.EventSearchParams,
-            ),
+            body=maybe_transform({"event_ids": event_ids}, event_search_params.EventSearchParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "timestamp_gt": timestamp_gt,
-                        "timestamp_gte": timestamp_gte,
-                        "timestamp_lt": timestamp_lt,
-                        "timestamp_lte": timestamp_lte,
-                    },
-                    event_search_params.EventSearchParams,
-                ),
             ),
             cast_to=EventSearchResponse,
         )
@@ -616,7 +578,7 @@ class AsyncEvents(AsyncAPIResource):
         event in cases where you need to:
 
         - update an event with new metadata as you iterate on your pricing model
-        - update an event based on the result of an external API call (ex. call to a
+        - update an event based on the result of an external API call (e.g. call to a
           payment gateway succeeded or failed)
 
         This amendment API is always audit-safe. The process will still retain the
@@ -715,7 +677,7 @@ class AsyncEvents(AsyncAPIResource):
         event in cases where you need to:
 
         - no longer bill for an event that was improperly reported
-        - no longer bill for an event based on the result of an external API call (ex.
+        - no longer bill for an event based on the result of an external API call (e.g.
           call to a payment gateway failed and the user should not be billed)
 
         If you want to only change specific properties of an event, but keep the event
@@ -1019,14 +981,7 @@ class AsyncEvents(AsyncAPIResource):
     async def search(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        timestamp_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timestamp_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        event_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        invoice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        event_ids: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1048,10 +1003,6 @@ class AsyncEvents(AsyncAPIResource):
 
         - `event_ids`: This is an explicit array of IDs to filter by. Note that an
           event's ID is the `idempotency_key` that was originally used for ingestion.
-        - `invoice_id`: This is an issued Orb invoice ID (see also
-          [List Invoices](list-invoices)). Orb will fetch all events that were used to
-          calculate the invoice. In the common case, this will be a list of events whose
-          `timestamp` property falls within the billing period specified by the invoice.
 
         By default, Orb does not return _deprecated_ events in this endpoint.
 
@@ -1059,19 +1010,9 @@ class AsyncEvents(AsyncAPIResource):
         empty array for `data` instead.
 
         Args:
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
-          limit: The number of items to fetch. Defaults to 20.
-
           event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
               idempotency_key that was originally used for ingestion. Values in this array
               will be treated case sensitively.
-
-          invoice_id: This is an issued Orb invoice ID (see also List Invoices). Orb will fetch all
-              events that were used to calculate the invoice. In the common case, this will be
-              a list of events whose timestamp property falls within the billing period
-              specified by the invoice.
 
           extra_headers: Send extra headers
 
@@ -1085,30 +1026,13 @@ class AsyncEvents(AsyncAPIResource):
         """
         return await self._post(
             "/events/search",
-            body=maybe_transform(
-                {
-                    "event_ids": event_ids,
-                    "invoice_id": invoice_id,
-                },
-                event_search_params.EventSearchParams,
-            ),
+            body=maybe_transform({"event_ids": event_ids}, event_search_params.EventSearchParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "timestamp_gt": timestamp_gt,
-                        "timestamp_gte": timestamp_gte,
-                        "timestamp_lt": timestamp_lt,
-                        "timestamp_lte": timestamp_lte,
-                    },
-                    event_search_params.EventSearchParams,
-                ),
             ),
             cast_to=EventSearchResponse,
         )
