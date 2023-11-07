@@ -299,7 +299,7 @@ customer = response.parse()  # get the object that `customers.create()` would ha
 print(customer.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/orbcorp/orb-python/src/orb/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/orbcorp/orb-python/tree/main/src/orb/_response.py) object.
 
 ### Configuring the HTTP client
 
