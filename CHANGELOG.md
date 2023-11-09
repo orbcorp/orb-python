@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.30.0 (2023-11-09)
+
+Full Changelog: [v1.29.0...v1.30.0](https://github.com/orbcorp/orb-python/compare/v1.29.0...v1.30.0)
+
+### Features
+
+* **api:** updates ([#41](https://github.com/orbcorp/orb-python/issues/41)) ([ea5d1a4](https://github.com/orbcorp/orb-python/commit/ea5d1a460b0c2ee26ed2844b3f19cbc65762b922))
+* **client:** support passing chunk size for binary responses ([#40](https://github.com/orbcorp/orb-python/issues/40)) ([6cc1be0](https://github.com/orbcorp/orb-python/commit/6cc1be01b788208d963cd8c4a300ca8c8649420d))
+* **client:** support passing httpx.Timeout to method timeout argument ([#35](https://github.com/orbcorp/orb-python/issues/35)) ([65c7fc9](https://github.com/orbcorp/orb-python/commit/65c7fc93f25d8d651f6dcb0472a98695d6d4acb6))
+
+
+### Chores
+
+* **docs:** fix github links ([#38](https://github.com/orbcorp/orb-python/issues/38)) ([2a83f73](https://github.com/orbcorp/orb-python/commit/2a83f73006fb0edbc063360b90bad706375ca318))
+* **internal:** fix some typos ([#37](https://github.com/orbcorp/orb-python/issues/37)) ([b0fc909](https://github.com/orbcorp/orb-python/commit/b0fc909f70c539d529b1eeb24aa4aa9683999dbd))
+* **internal:** improve github devcontainer setup ([#39](https://github.com/orbcorp/orb-python/issues/39)) ([3fabb8f](https://github.com/orbcorp/orb-python/commit/3fabb8f4bc47f418b7d4ec7833048589802298db))
+
 ## 1.29.0 (2023-11-06)
 
 Full Changelog: [v1.28.1...v1.29.0](https://github.com/orbcorp/orb-python/compare/v1.28.1...v1.29.0)
