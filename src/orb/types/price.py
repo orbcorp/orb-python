@@ -14,15 +14,15 @@ __all__ = [
     "UnitPrice",
     "UnitPriceBillableMetric",
     "UnitPriceItem",
-    "UnitPriceUnitConfig",
     "UnitPriceMaximum",
     "UnitPriceMinimum",
+    "UnitPriceUnitConfig",
     "PackagePrice",
     "PackagePriceBillableMetric",
     "PackagePriceItem",
-    "PackagePricePackageConfig",
     "PackagePriceMaximum",
     "PackagePriceMinimum",
+    "PackagePricePackageConfig",
     "MatrixPrice",
     "MatrixPriceBillableMetric",
     "MatrixPriceItem",
@@ -33,17 +33,17 @@ __all__ = [
     "TieredPrice",
     "TieredPriceBillableMetric",
     "TieredPriceItem",
-    "TieredPriceTieredConfig",
-    "TieredPriceTieredConfigTier",
     "TieredPriceMaximum",
     "TieredPriceMinimum",
+    "TieredPriceTieredConfig",
+    "TieredPriceTieredConfigTier",
     "TieredBpsPrice",
     "TieredBpsPriceBillableMetric",
     "TieredBpsPriceItem",
-    "TieredBpsPriceTieredBpsConfig",
-    "TieredBpsPriceTieredBpsConfigTier",
     "TieredBpsPriceMaximum",
     "TieredBpsPriceMinimum",
+    "TieredBpsPriceTieredBpsConfig",
+    "TieredBpsPriceTieredBpsConfigTier",
     "BpsPrice",
     "BpsPriceBillableMetric",
     "BpsPriceBpsConfig",
@@ -107,14 +107,6 @@ class UnitPriceItem(BaseModel):
     name: str
 
 
-class UnitPriceUnitConfig(BaseModel):
-    unit_amount: str
-    """Rate per unit of usage"""
-
-    scaling_factor: Optional[float] = None
-    """Multiplier to scale rated quantity by"""
-
-
 class UnitPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -137,6 +129,14 @@ class UnitPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class UnitPriceUnitConfig(BaseModel):
+    unit_amount: str
+    """Rate per unit of usage"""
+
+    scaling_factor: Optional[float] = None
+    """Multiplier to scale rated quantity by"""
+
+
 class UnitPrice(BaseModel):
     id: str
 
@@ -148,11 +148,21 @@ class UnitPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: UnitPriceItem
+
+    maximum: Optional[UnitPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[UnitPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["unit"] = FieldInfo(alias="model_type")
 
@@ -164,16 +174,6 @@ class UnitPrice(BaseModel):
 
     unit_config: UnitPriceUnitConfig
 
-    discount: Optional[Discount] = None
-
-    maximum: Optional[UnitPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[UnitPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
-
 
 class PackagePriceBillableMetric(BaseModel):
     id: str
@@ -183,18 +183,6 @@ class PackagePriceItem(BaseModel):
     id: str
 
     name: str
-
-
-class PackagePricePackageConfig(BaseModel):
-    package_amount: str
-    """A currency amount to rate usage by"""
-
-    package_size: Optional[int] = None
-    """An integer amount to represent package size.
-
-    For example, 1000 here would divide usage by 1000 before multiplying by
-    package_amount in rating
-    """
 
 
 class PackagePriceMaximum(BaseModel):
@@ -219,6 +207,18 @@ class PackagePriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class PackagePricePackageConfig(BaseModel):
+    package_amount: str
+    """A currency amount to rate usage by"""
+
+    package_size: Optional[int] = None
+    """An integer amount to represent package size.
+
+    For example, 1000 here would divide usage by 1000 before multiplying by
+    package_amount in rating
+    """
+
+
 class PackagePrice(BaseModel):
     id: str
 
@@ -230,11 +230,21 @@ class PackagePrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: PackagePriceItem
+
+    maximum: Optional[PackagePriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[PackagePriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["package"] = FieldInfo(alias="model_type")
 
@@ -245,16 +255,6 @@ class PackagePrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[PackagePriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[PackagePriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class MatrixPriceBillableMetric(BaseModel):
@@ -332,6 +332,8 @@ class MatrixPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
@@ -340,6 +342,14 @@ class MatrixPrice(BaseModel):
 
     matrix_config: MatrixPriceMatrixConfig
 
+    maximum: Optional[MatrixPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[MatrixPriceMinimum]
+
+    minimum_amount: Optional[str]
+
     price_model_type: Literal["matrix"] = FieldInfo(alias="model_type")
 
     name: str
@@ -347,16 +357,6 @@ class MatrixPrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[MatrixPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[MatrixPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class TieredPriceBillableMetric(BaseModel):
@@ -367,22 +367,6 @@ class TieredPriceItem(BaseModel):
     id: str
 
     name: str
-
-
-class TieredPriceTieredConfigTier(BaseModel):
-    first_unit: float
-    """Inclusive tier starting value"""
-
-    unit_amount: str
-    """Amount per unit"""
-
-    last_unit: Optional[float] = None
-    """Exclusive tier ending value. If null, this is treated as the last tier"""
-
-
-class TieredPriceTieredConfig(BaseModel):
-    tiers: List[TieredPriceTieredConfigTier]
-    """Tiers for rating based on total usage quantities into the specified tier"""
 
 
 class TieredPriceMaximum(BaseModel):
@@ -407,6 +391,22 @@ class TieredPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class TieredPriceTieredConfigTier(BaseModel):
+    first_unit: float
+    """Inclusive tier starting value"""
+
+    unit_amount: str
+    """Amount per unit"""
+
+    last_unit: Optional[float] = None
+    """Exclusive tier ending value. If null, this is treated as the last tier"""
+
+
+class TieredPriceTieredConfig(BaseModel):
+    tiers: List[TieredPriceTieredConfigTier]
+    """Tiers for rating based on total usage quantities into the specified tier"""
+
+
 class TieredPrice(BaseModel):
     id: str
 
@@ -418,11 +418,21 @@ class TieredPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: TieredPriceItem
+
+    maximum: Optional[TieredPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[TieredPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["tiered"] = FieldInfo(alias="model_type")
 
@@ -434,16 +444,6 @@ class TieredPrice(BaseModel):
 
     tiered_config: TieredPriceTieredConfig
 
-    discount: Optional[Discount] = None
-
-    maximum: Optional[TieredPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[TieredPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
-
 
 class TieredBpsPriceBillableMetric(BaseModel):
     id: str
@@ -453,28 +453,6 @@ class TieredBpsPriceItem(BaseModel):
     id: str
 
     name: str
-
-
-class TieredBpsPriceTieredBpsConfigTier(BaseModel):
-    bps: float
-    """Per-event basis point rate"""
-
-    minimum_amount: str
-    """Inclusive tier starting value"""
-
-    maximum_amount: Optional[str] = None
-    """Exclusive tier ending value"""
-
-    per_unit_maximum: Optional[str] = None
-    """Per unit maximum to charge"""
-
-
-class TieredBpsPriceTieredBpsConfig(BaseModel):
-    tiers: List[TieredBpsPriceTieredBpsConfigTier]
-    """
-    Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
-    tiers
-    """
 
 
 class TieredBpsPriceMaximum(BaseModel):
@@ -499,6 +477,28 @@ class TieredBpsPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class TieredBpsPriceTieredBpsConfigTier(BaseModel):
+    bps: float
+    """Per-event basis point rate"""
+
+    minimum_amount: str
+    """Inclusive tier starting value"""
+
+    maximum_amount: Optional[str] = None
+    """Exclusive tier ending value"""
+
+    per_unit_maximum: Optional[str] = None
+    """Per unit maximum to charge"""
+
+
+class TieredBpsPriceTieredBpsConfig(BaseModel):
+    tiers: List[TieredBpsPriceTieredBpsConfigTier]
+    """
+    Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
+    tiers
+    """
+
+
 class TieredBpsPrice(BaseModel):
     id: str
 
@@ -510,11 +510,21 @@ class TieredBpsPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: TieredBpsPriceItem
+
+    maximum: Optional[TieredBpsPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[TieredBpsPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["tiered_bps"] = FieldInfo(alias="model_type")
 
@@ -525,16 +535,6 @@ class TieredBpsPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     tiered_bps_config: TieredBpsPriceTieredBpsConfig
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[TieredBpsPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[TieredBpsPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class BpsPriceBillableMetric(BaseModel):
@@ -590,11 +590,21 @@ class BpsPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: BpsPriceItem
+
+    maximum: Optional[BpsPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[BpsPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["bps"] = FieldInfo(alias="model_type")
 
@@ -603,16 +613,6 @@ class BpsPrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[BpsPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[BpsPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class BulkBpsPriceBillableMetric(BaseModel):
@@ -679,11 +679,21 @@ class BulkBpsPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: BulkBpsPriceItem
+
+    maximum: Optional[BulkBpsPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[BulkBpsPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["bulk_bps"] = FieldInfo(alias="model_type")
 
@@ -692,16 +702,6 @@ class BulkBpsPrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[BulkBpsPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[BulkBpsPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class BulkPriceBillableMetric(BaseModel):
@@ -762,11 +762,21 @@ class BulkPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: BulkPriceItem
+
+    maximum: Optional[BulkPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[BulkPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["bulk"] = FieldInfo(alias="model_type")
 
@@ -775,16 +785,6 @@ class BulkPrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[BulkPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[BulkPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class TestRatingFunctionPriceBillableMetric(BaseModel):
@@ -830,11 +830,21 @@ class TestRatingFunctionPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: TestRatingFunctionPriceItem
+
+    maximum: Optional[TestRatingFunctionPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[TestRatingFunctionPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["test_rating_function"] = FieldInfo(alias="model_type")
 
@@ -845,16 +855,6 @@ class TestRatingFunctionPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     test_rating_function_config: Dict[str, object]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[TestRatingFunctionPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[TestRatingFunctionPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class FivetranExamplePriceBillableMetric(BaseModel):
@@ -900,6 +900,8 @@ class FivetranExamplePrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fivetran_example_config: Dict[str, object]
@@ -908,6 +910,14 @@ class FivetranExamplePrice(BaseModel):
 
     item: FivetranExamplePriceItem
 
+    maximum: Optional[FivetranExamplePriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[FivetranExamplePriceMinimum]
+
+    minimum_amount: Optional[str]
+
     price_model_type: Literal["fivetran_example"] = FieldInfo(alias="model_type")
 
     name: str
@@ -915,16 +925,6 @@ class FivetranExamplePrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[FivetranExamplePriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[FivetranExamplePriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class ThresholdTotalAmountPriceBillableMetric(BaseModel):
@@ -970,11 +970,21 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: ThresholdTotalAmountPriceItem
+
+    maximum: Optional[ThresholdTotalAmountPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[ThresholdTotalAmountPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["threshold_total_amount"] = FieldInfo(alias="model_type")
 
@@ -985,16 +995,6 @@ class ThresholdTotalAmountPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     threshold_total_amount_config: Dict[str, object]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[ThresholdTotalAmountPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[ThresholdTotalAmountPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class TieredPackagePriceBillableMetric(BaseModel):
@@ -1040,11 +1040,21 @@ class TieredPackagePrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: TieredPackagePriceItem
+
+    maximum: Optional[TieredPackagePriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[TieredPackagePriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["tiered_package"] = FieldInfo(alias="model_type")
 
@@ -1055,16 +1065,6 @@ class TieredPackagePrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     tiered_package_config: Dict[str, object]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[TieredPackagePriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[TieredPackagePriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class TieredWithMinimumPriceBillableMetric(BaseModel):
@@ -1110,11 +1110,21 @@ class TieredWithMinimumPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: TieredWithMinimumPriceItem
+
+    maximum: Optional[TieredWithMinimumPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[TieredWithMinimumPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["tiered_with_minimum"] = FieldInfo(alias="model_type")
 
@@ -1125,16 +1135,6 @@ class TieredWithMinimumPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     tiered_with_minimum_config: Dict[str, object]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[TieredWithMinimumPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[TieredWithMinimumPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 class PackageWithAllocationPriceBillableMetric(BaseModel):
@@ -1180,11 +1180,21 @@ class PackageWithAllocationPrice(BaseModel):
 
     currency: str
 
+    discount: Optional[Discount]
+
     external_price_id: Optional[str]
 
     fixed_price_quantity: Optional[float]
 
     item: PackageWithAllocationPriceItem
+
+    maximum: Optional[PackageWithAllocationPriceMaximum]
+
+    maximum_amount: Optional[str]
+
+    minimum: Optional[PackageWithAllocationPriceMinimum]
+
+    minimum_amount: Optional[str]
 
     price_model_type: Literal["package_with_allocation"] = FieldInfo(alias="model_type")
 
@@ -1195,16 +1205,6 @@ class PackageWithAllocationPrice(BaseModel):
     plan_phase_order: Optional[int]
 
     price_type: Literal["usage_price", "fixed_price"]
-
-    discount: Optional[Discount] = None
-
-    maximum: Optional[PackageWithAllocationPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    minimum: Optional[PackageWithAllocationPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
 
 
 Price = Union[

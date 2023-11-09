@@ -275,7 +275,6 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -296,7 +295,7 @@ class Customers(SyncAPIResource):
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
         `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-        `additional_emails` of an existing customer. "Other fields on a customer are
+        `additional_emails` of an existing customer. Other fields on a customer are
         currently immutable.
 
         Args:
@@ -311,10 +310,6 @@ class Customers(SyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
-
-          external_customer_id: An optional user-defined ID for this customer resource, used throughout the
-              system as an alias for this Customer. Use this field to identify a customer by
-              an existing identifier in your system.
 
           metadata: User-specified key value pairs, often useful for referencing internal resources
               or IDs. Returned as-is in the customer resource.
@@ -438,7 +433,6 @@ class Customers(SyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
-                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -656,7 +650,6 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -692,10 +685,6 @@ class Customers(SyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
-
-          external_customer_id: An optional user-defined ID for this customer resource, used throughout the
-              system as an alias for this Customer. Use this field to identify a customer by
-              an existing identifier in your system.
 
           metadata: User-specified key value pairs, often useful for referencing internal resources
               or IDs. Returned as-is in the customer resource.
@@ -819,7 +808,6 @@ class Customers(SyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
-                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1074,7 +1062,6 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1095,7 +1082,7 @@ class AsyncCustomers(AsyncAPIResource):
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
         `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-        `additional_emails` of an existing customer. "Other fields on a customer are
+        `additional_emails` of an existing customer. Other fields on a customer are
         currently immutable.
 
         Args:
@@ -1110,10 +1097,6 @@ class AsyncCustomers(AsyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
-
-          external_customer_id: An optional user-defined ID for this customer resource, used throughout the
-              system as an alias for this Customer. Use this field to identify a customer by
-              an existing identifier in your system.
 
           metadata: User-specified key value pairs, often useful for referencing internal resources
               or IDs. Returned as-is in the customer resource.
@@ -1237,7 +1220,6 @@ class AsyncCustomers(AsyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
-                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1455,7 +1437,6 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1491,10 +1472,6 @@ class AsyncCustomers(AsyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
-
-          external_customer_id: An optional user-defined ID for this customer resource, used throughout the
-              system as an alias for this Customer. Use this field to identify a customer by
-              an existing identifier in your system.
 
           metadata: User-specified key value pairs, often useful for referencing internal resources
               or IDs. Returned as-is in the customer resource.
@@ -1618,7 +1595,6 @@ class AsyncCustomers(AsyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
-                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,

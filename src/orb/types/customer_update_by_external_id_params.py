@@ -45,13 +45,6 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
 
     email_delivery: Optional[bool]
 
-    external_customer_id: Optional[str]
-    """
-    An optional user-defined ID for this customer resource, used throughout the
-    system as an alias for this Customer. Use this field to identify a customer by
-    an existing identifier in your system.
-    """
-
     metadata: Optional[object]
     """
     User-specified key value pairs, often useful for referencing internal resources
