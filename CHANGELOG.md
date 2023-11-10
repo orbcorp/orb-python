@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.30.1 (2023-11-10)
+
+Full Changelog: [v1.30.0...v1.30.1](https://github.com/orbcorp/orb-python/compare/v1.30.0...v1.30.1)
+
+### Bug Fixes
+
+* **models:** mark unknown fields as set in pydantic v1 ([#45](https://github.com/orbcorp/orb-python/issues/45)) ([c965317](https://github.com/orbcorp/orb-python/commit/c9653177220c301b99b95455a58c0cdd9088091e))
+
+
+### Chores
+
+* **internal:** base client updates ([#44](https://github.com/orbcorp/orb-python/issues/44)) ([79ff165](https://github.com/orbcorp/orb-python/commit/79ff1652c90c689452ed7e2ce264f72ae9c1bfe5))
+
+
+### Documentation
+
+* reword package description ([#42](https://github.com/orbcorp/orb-python/issues/42)) ([6994f49](https://github.com/orbcorp/orb-python/commit/6994f492fe7c0e890017bf0275990cc5a0ae147e))
+
 ## 1.30.0 (2023-11-09)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/orbcorp/orb-python/compare/v1.29.0...v1.30.0)
