@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.30.2 (2023-11-10)
+
+Full Changelog: [v1.30.1...v1.30.2](https://github.com/orbcorp/orb-python/compare/v1.30.1...v1.30.2)
+
+### Bug Fixes
+
+* **client:** serialise pydantic v1 default fields correctly in params ([#46](https://github.com/orbcorp/orb-python/issues/46)) ([dc058e3](https://github.com/orbcorp/orb-python/commit/dc058e30be77833522880b651a7eed16b23bc7c3))
+
 ## 1.30.1 (2023-11-10)
 
 Full Changelog: [v1.30.0...v1.30.1](https://github.com/orbcorp/orb-python/compare/v1.30.0...v1.30.1)
