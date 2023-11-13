@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.30.3 (2023-11-13)
+
+Full Changelog: [v1.30.2...v1.30.3](https://github.com/orbcorp/orb-python/compare/v1.30.2...v1.30.3)
+
+### Bug Fixes
+
+* **client:** retry if SSLWantReadError occurs in the async client ([#48](https://github.com/orbcorp/orb-python/issues/48)) ([52d5c13](https://github.com/orbcorp/orb-python/commit/52d5c134035252e12290930ffc7797f3e386f7cc))
+
 ## 1.30.2 (2023-11-10)
 
 Full Changelog: [v1.30.1...v1.30.2](https://github.com/orbcorp/orb-python/compare/v1.30.1...v1.30.2)
