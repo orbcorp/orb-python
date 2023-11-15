@@ -314,6 +314,7 @@ import httpx
 from orb import Orb
 
 client = Orb(
+    # Or use the `ORB_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=httpx.Client(
         proxies="http://my.test.proxy.example.com",
