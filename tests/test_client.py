@@ -25,6 +25,8 @@ from orb._base_client import (
     make_request_options,
 )
 
+from .utils import update_env
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
 
@@ -420,6 +422,11 @@ class TestOrb:
             "/foo", cast_to=httpx.Response, options=make_request_options(idempotency_key="custom-key")
         )
         assert response.request.headers.get("Idempotency-Key") == "custom-key"
+
+    def test_base_url_env(self) -> None:
+        with update_env(ORB_BASE_URL="http://localhost:5000/from/env"):
+            client = Orb(api_key=api_key, _strict_response_validation=True)
+            assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
@@ -974,6 +981,11 @@ class TestAsyncOrb:
             "/foo", cast_to=httpx.Response, options=make_request_options(idempotency_key="custom-key")
         )
         assert response.request.headers.get("Idempotency-Key") == "custom-key"
+
+    def test_base_url_env(self) -> None:
+        with update_env(ORB_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncOrb(api_key=api_key, _strict_response_validation=True)
+            assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",

@@ -91,6 +91,8 @@ class Orb(SyncAPIClient):
         self.api_key = api_key
 
         if base_url is None:
+            base_url = os.environ.get("ORB_BASE_URL")
+        if base_url is None:
             base_url = f"https://api.withorb.com/v1"
 
         super().__init__(
@@ -326,6 +328,8 @@ class AsyncOrb(AsyncAPIClient):
             )
         self.api_key = api_key
 
+        if base_url is None:
+            base_url = os.environ.get("ORB_BASE_URL")
         if base_url is None:
             base_url = f"https://api.withorb.com/v1"
 
