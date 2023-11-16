@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [here](https://www.withorb.com/https://docs.withorb.com/reference/api-reference).
+The API documentation can be found [here](https://docs.withorb.com/reference/api-reference).
 
 ## Installation
 
