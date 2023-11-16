@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.31.0 (2023-11-16)
+
+Full Changelog: [v1.30.3...v1.31.0](https://github.com/orbcorp/orb-python/compare/v1.30.3...v1.31.0)
+
+### Features
+
+* **api:** updates ([#55](https://github.com/orbcorp/orb-python/issues/55)) ([dbfb455](https://github.com/orbcorp/orb-python/commit/dbfb455e7019597b33f723b9d5682e378489eb2d))
+* **client:** support reading the base url from an env variable ([#54](https://github.com/orbcorp/orb-python/issues/54)) ([04d5ca5](https://github.com/orbcorp/orb-python/commit/04d5ca523c38a36e72c42587e323a55b7a9d09a4))
+
+
+### Chores
+
+* **internal:** fix devcontainer interpeter path ([#52](https://github.com/orbcorp/orb-python/issues/52)) ([a35fe95](https://github.com/orbcorp/orb-python/commit/a35fe959fe9bbe9a4ecd4a50148c4c5d447643b6))
+* **internal:** fix typo in NotGiven docstring ([#50](https://github.com/orbcorp/orb-python/issues/50)) ([7e1d704](https://github.com/orbcorp/orb-python/commit/7e1d704c9a4baebf09bb9b95d4e0baf5e2c9809e))
+
+
+### Documentation
+
+* fix code comment typo ([#53](https://github.com/orbcorp/orb-python/issues/53)) ([0171b18](https://github.com/orbcorp/orb-python/commit/0171b183ee377d4c1aaa9dab7d0c4faaa1b1c1f9))
+
 ## 1.30.3 (2023-11-13)
 
 Full Changelog: [v1.30.2...v1.30.3](https://github.com/orbcorp/orb-python/compare/v1.30.2...v1.30.3)
