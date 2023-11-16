@@ -215,6 +215,10 @@ class Customer(BaseModel):
     """
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     name: str
     """The full name of the customer"""

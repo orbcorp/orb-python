@@ -83,7 +83,7 @@ class TestLedger:
                 "net_terms": 0,
                 "memo": "string",
             },
-            metadata={},
+            metadata={"foo": "string"},
             per_unit_cost_basis="string",
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -115,7 +115,7 @@ class TestLedger:
             amount=0,
             entry_type="decrement",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -150,7 +150,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -184,7 +184,7 @@ class TestLedger:
             block_id="string",
             entry_type="void",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
             void_reason="refund",
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -219,7 +219,7 @@ class TestLedger:
             block_id="string",
             entry_type="amendment",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -258,7 +258,7 @@ class TestLedger:
                 "net_terms": 0,
                 "memo": "string",
             },
-            metadata={},
+            metadata={"foo": "string"},
             per_unit_cost_basis="string",
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -290,7 +290,7 @@ class TestLedger:
             amount=0,
             entry_type="decrement",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
@@ -325,7 +325,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
@@ -359,7 +359,7 @@ class TestLedger:
             block_id="string",
             entry_type="void",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
             void_reason="refund",
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -394,7 +394,7 @@ class TestLedger:
             block_id="string",
             entry_type="amendment",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
@@ -505,7 +505,7 @@ class TestAsyncLedger:
                 "net_terms": 0,
                 "memo": "string",
             },
-            metadata={},
+            metadata={"foo": "string"},
             per_unit_cost_basis="string",
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -537,7 +537,7 @@ class TestAsyncLedger:
             amount=0,
             entry_type="decrement",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -572,7 +572,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -606,7 +606,7 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="void",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
             void_reason="refund",
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -641,7 +641,7 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="amendment",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
@@ -680,7 +680,7 @@ class TestAsyncLedger:
                 "net_terms": 0,
                 "memo": "string",
             },
-            metadata={},
+            metadata={"foo": "string"},
             per_unit_cost_basis="string",
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -712,7 +712,7 @@ class TestAsyncLedger:
             amount=0,
             entry_type="decrement",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
@@ -747,7 +747,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
@@ -781,7 +781,7 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="void",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
             void_reason="refund",
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -816,7 +816,7 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="amendment",
             description="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 

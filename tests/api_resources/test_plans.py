@@ -63,7 +63,7 @@ class TestPlans:
             ],
             default_invoice_memo="string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
             net_terms=0,
         )
         assert_matches_type(Plan, plan, path=["response"])
@@ -99,7 +99,7 @@ class TestPlans:
         plan = client.plans.update(
             "string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(Plan, plan, path=["response"])
 
@@ -200,7 +200,7 @@ class TestAsyncPlans:
             ],
             default_invoice_memo="string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
             net_terms=0,
         )
         assert_matches_type(Plan, plan, path=["response"])
@@ -236,7 +236,7 @@ class TestAsyncPlans:
         plan = await client.plans.update(
             "string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(Plan, plan, path=["response"])
 

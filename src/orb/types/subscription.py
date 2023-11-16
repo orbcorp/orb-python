@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -522,11 +522,10 @@ class Subscription(BaseModel):
     maximum_intervals: List[MaximumInterval]
     """The maximum intervals for this subscription."""
 
-    metadata: object
+    metadata: Dict[str, str]
     """User specified key-value pairs.
 
-    If no metadata was specified at subscription creation time, this defaults to an
-    empty dictionary.
+    If not provided, this defaults to an empty dictionary.
     """
 
     minimum_intervals: List[MinimumInterval]

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -45,11 +45,8 @@ class CustomerUpdateParams(TypedDict, total=False):
 
     email_delivery: Optional[bool]
 
-    metadata: Optional[object]
-    """
-    User-specified key value pairs, often useful for referencing internal resources
-    or IDs. Returned as-is in the customer resource.
-    """
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     name: Optional[str]
     """The full name of the customer"""

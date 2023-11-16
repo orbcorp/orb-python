@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Union, Optional, cast, overload
+from typing import TYPE_CHECKING, Any, Dict, Union, Optional, cast, overload
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -206,7 +206,7 @@ class Ledger(SyncAPIResource):
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -346,7 +346,7 @@ class Ledger(SyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -371,7 +371,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         entry_type: Literal["decrement"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -499,7 +499,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -524,7 +524,7 @@ class Ledger(SyncAPIResource):
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -662,7 +662,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -685,7 +685,7 @@ class Ledger(SyncAPIResource):
         block_id: str,
         entry_type: Literal["void"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -816,7 +816,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -841,7 +841,7 @@ class Ledger(SyncAPIResource):
         block_id: str,
         entry_type: Literal["amendment"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -971,7 +971,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -1007,7 +1007,7 @@ class Ledger(SyncAPIResource):
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1067,7 +1067,7 @@ class Ledger(SyncAPIResource):
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1207,7 +1207,7 @@ class Ledger(SyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -1232,7 +1232,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         entry_type: Literal["decrement"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1360,7 +1360,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -1385,7 +1385,7 @@ class Ledger(SyncAPIResource):
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1523,7 +1523,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -1546,7 +1546,7 @@ class Ledger(SyncAPIResource):
         block_id: str,
         entry_type: Literal["void"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1677,7 +1677,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -1702,7 +1702,7 @@ class Ledger(SyncAPIResource):
         block_id: str,
         entry_type: Literal["amendment"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1832,7 +1832,7 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -1870,7 +1870,7 @@ class Ledger(SyncAPIResource):
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2250,7 +2250,7 @@ class AsyncLedger(AsyncAPIResource):
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2390,7 +2390,7 @@ class AsyncLedger(AsyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -2415,7 +2415,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         entry_type: Literal["decrement"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2543,7 +2543,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -2568,7 +2568,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2706,7 +2706,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -2729,7 +2729,7 @@ class AsyncLedger(AsyncAPIResource):
         block_id: str,
         entry_type: Literal["void"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2860,7 +2860,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -2885,7 +2885,7 @@ class AsyncLedger(AsyncAPIResource):
         block_id: str,
         entry_type: Literal["amendment"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3015,7 +3015,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -3051,7 +3051,7 @@ class AsyncLedger(AsyncAPIResource):
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3111,7 +3111,7 @@ class AsyncLedger(AsyncAPIResource):
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3251,7 +3251,7 @@ class AsyncLedger(AsyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -3276,7 +3276,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         entry_type: Literal["decrement"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3404,7 +3404,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -3429,7 +3429,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3567,7 +3567,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -3590,7 +3590,7 @@ class AsyncLedger(AsyncAPIResource):
         block_id: str,
         entry_type: Literal["void"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3721,7 +3721,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -3746,7 +3746,7 @@ class AsyncLedger(AsyncAPIResource):
         block_id: str,
         entry_type: Literal["amendment"],
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3876,7 +3876,7 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the ledger entry resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -3914,7 +3914,7 @@ class AsyncLedger(AsyncAPIResource):
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
         | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,

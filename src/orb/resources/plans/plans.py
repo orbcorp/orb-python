@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Union, Optional
+from typing import TYPE_CHECKING, Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -45,7 +45,7 @@ class Plans(SyncAPIResource):
         prices: List[plan_create_params.Price],
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -66,6 +66,8 @@ class Plans(SyncAPIResource):
               phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          metadata: User-specified key/value pairs for the resource.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -110,7 +112,7 @@ class Plans(SyncAPIResource):
         plan_id: str,
         *,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,6 +131,8 @@ class Plans(SyncAPIResource):
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
+
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -288,7 +292,7 @@ class AsyncPlans(AsyncAPIResource):
         prices: List[plan_create_params.Price],
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -309,6 +313,8 @@ class AsyncPlans(AsyncAPIResource):
               phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          metadata: User-specified key/value pairs for the resource.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -353,7 +359,7 @@ class AsyncPlans(AsyncAPIResource):
         plan_id: str,
         *,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -372,6 +378,8 @@ class AsyncPlans(AsyncAPIResource):
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
+
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
