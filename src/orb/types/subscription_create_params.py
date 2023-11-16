@@ -88,7 +88,8 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     invoicing_threshold: Optional[str]
 
-    metadata: Optional[object]
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     net_terms: Optional[int]
 

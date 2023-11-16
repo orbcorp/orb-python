@@ -32,7 +32,7 @@ class TestExternalPlanID:
         external_plan_id = client.plans.external_plan_id.update(
             "string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
@@ -79,7 +79,7 @@ class TestAsyncExternalPlanID:
         external_plan_id = await client.plans.external_plan_id.update(
             "string",
             external_plan_id="string",
-            metadata={},
+            metadata={"foo": "string"},
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 

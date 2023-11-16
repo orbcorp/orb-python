@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -878,7 +878,11 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     Free-form text which is available on the invoice PDF and the Orb invoice portal.
     """
 
-    metadata: object
+    metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     minimum: Optional[Minimum]
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Dict, Optional
 
 import httpx
 
@@ -32,7 +32,7 @@ class ExternalPlanID(SyncAPIResource):
         other_external_plan_id: str,
         *,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,6 +59,8 @@ class ExternalPlanID(SyncAPIResource):
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
+
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -144,7 +146,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         other_external_plan_id: str,
         *,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,6 +173,8 @@ class AsyncExternalPlanID(AsyncAPIResource):
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
+
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 

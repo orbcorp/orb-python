@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, List, Union, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Union, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -62,7 +62,7 @@ class Subscriptions(SyncAPIResource):
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -472,6 +472,8 @@ class Subscriptions(SyncAPIResource):
         Args:
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
+
+          metadata: User-specified key/value pairs for the resource.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -1665,7 +1667,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2075,6 +2077,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
+
+          metadata: User-specified key/value pairs for the resource.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
