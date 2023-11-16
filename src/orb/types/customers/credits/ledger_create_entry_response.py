@@ -68,6 +68,10 @@ class IncrementLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     starting_balance: float
 
@@ -108,6 +112,10 @@ class DecrementLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     starting_balance: float
 
@@ -154,6 +162,10 @@ class ExpirationChangeLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     new_block_expiry_date: datetime
 
@@ -196,6 +208,10 @@ class CreditBlockExpiryLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     starting_balance: float
 
@@ -236,6 +252,10 @@ class VoidLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     starting_balance: float
 
@@ -280,6 +300,10 @@ class VoidInitiatedLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     new_block_expiry_date: datetime
 
@@ -326,6 +350,10 @@ class AmendmentLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
+    """User specified key-value pairs.
+
+    If not provided, this defaults to an empty dictionary.
+    """
 
     starting_balance: float
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import Dict, Union, Optional
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -55,8 +55,8 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     basis.
     """
 
-    metadata: object
-    """User-specified key/value pairs for the ledger entry resource."""
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     per_unit_cost_basis: Optional[str]
     """Can only be specified when entry_type=increment.
@@ -99,8 +99,8 @@ class AddDecrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     for noting corrections as a result of an incident, etc.
     """
 
-    metadata: object
-    """User-specified key/value pairs for the ledger entry resource."""
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
 
 class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
@@ -138,8 +138,8 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     for noting corrections as a result of an incident, etc.
     """
 
-    metadata: object
-    """User-specified key/value pairs for the ledger entry resource."""
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
 
 class AddVoidCreditLedgerEntryRequestParams(TypedDict, total=False):
@@ -161,8 +161,8 @@ class AddVoidCreditLedgerEntryRequestParams(TypedDict, total=False):
     for noting corrections as a result of an incident, etc.
     """
 
-    metadata: object
-    """User-specified key/value pairs for the ledger entry resource."""
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     void_reason: Optional[Literal["refund"]]
     """Can only be specified when `entry_type=void`. The reason for the void."""
@@ -187,8 +187,8 @@ class AddAmendmentCreditLedgerEntryRequestParams(TypedDict, total=False):
     for noting corrections as a result of an incident, etc.
     """
 
-    metadata: object
-    """User-specified key/value pairs for the ledger entry resource."""
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
 
 LedgerCreateEntryByExternalIDParams = Union[

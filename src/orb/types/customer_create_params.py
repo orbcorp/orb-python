@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -59,11 +59,8 @@ class CustomerCreateParams(TypedDict, total=False):
     an existing identifier in your system.
     """
 
-    metadata: Optional[object]
-    """
-    User-specified key value pairs, often useful for referencing internal resources
-    or IDs. Returned as-is in the customer resource.
-    """
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
     """This is used for creating charges or invoices in an external system via Orb.

@@ -58,7 +58,8 @@ class PlanCreateParams(TypedDict, total=False):
 
     external_plan_id: Optional[str]
 
-    metadata: Optional[object]
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""
 
     net_terms: Optional[int]
     """

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, Optional
 from typing_extensions import TypedDict
 
 __all__ = ["ExternalPlanIDUpdateParams"]
@@ -16,4 +16,5 @@ class ExternalPlanIDUpdateParams(TypedDict, total=False):
     identifier in your system.
     """
 
-    metadata: Optional[object]
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource."""

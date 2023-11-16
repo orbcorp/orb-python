@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union, Optional
+from typing import TYPE_CHECKING, Dict, Union, Optional
 from datetime import datetime
 
 import httpx
@@ -41,7 +41,7 @@ class Metrics(SyncAPIResource):
         item_id: str,
         name: str,
         sql: str,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -65,8 +65,7 @@ class Metrics(SyncAPIResource):
 
           sql: A sql string defining the metric.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the metric resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 
@@ -206,7 +205,7 @@ class AsyncMetrics(AsyncAPIResource):
         item_id: str,
         name: str,
         sql: str,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -230,8 +229,7 @@ class AsyncMetrics(AsyncAPIResource):
 
           sql: A sql string defining the metric.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the metric resource.
+          metadata: User-specified key/value pairs for the resource.
 
           extra_headers: Send extra headers
 

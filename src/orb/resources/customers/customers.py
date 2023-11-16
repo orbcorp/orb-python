@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Union, Optional
+from typing import TYPE_CHECKING, Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -70,7 +70,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -121,8 +121,7 @@ class Customers(SyncAPIResource):
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -275,7 +274,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -311,8 +310,7 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           name: The full name of the customer
 
@@ -650,7 +648,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -686,8 +684,7 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           name: The full name of the customer
 
@@ -857,7 +854,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -908,8 +905,7 @@ class AsyncCustomers(AsyncAPIResource):
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -1062,7 +1058,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -1098,8 +1094,7 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           name: The full name of the customer
 
@@ -1437,7 +1432,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata: Optional[object] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -1473,8 +1468,7 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key value pairs, often useful for referencing internal resources
-              or IDs. Returned as-is in the customer resource.
+          metadata: User-specified key/value pairs for the resource.
 
           name: The full name of the customer
 
