@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.31.1 (2023-11-20)
+
+Full Changelog: [v1.31.0...v1.31.1](https://github.com/orbcorp/orb-python/compare/v1.31.0...v1.31.1)
+
+### Chores
+
+* **internal:** update some test values ([#60](https://github.com/orbcorp/orb-python/issues/60)) ([cf1e4a9](https://github.com/orbcorp/orb-python/commit/cf1e4a9a241eb6fdd66f42f05f5dbaa2c3fec2ed))
+* **internal:** update type hint for helper function ([#59](https://github.com/orbcorp/orb-python/issues/59)) ([191e197](https://github.com/orbcorp/orb-python/commit/191e19734a80480dfaa4ea614baef2d565264bea))
+
+
+### Documentation
+
+* **readme:** fix link to docs website ([#58](https://github.com/orbcorp/orb-python/issues/58)) ([4510e87](https://github.com/orbcorp/orb-python/commit/4510e8728e7282b16c9e91ca97b74106681b0666))
+* **readme:** minor updates ([#56](https://github.com/orbcorp/orb-python/issues/56)) ([0d09713](https://github.com/orbcorp/orb-python/commit/0d097132f1884d193e8fee9a781c29d8afe25f32))
+
 ## 1.31.0 (2023-11-16)
 
 Full Changelog: [v1.30.3...v1.31.0](https://github.com/orbcorp/orb-python/compare/v1.30.3...v1.31.0)
