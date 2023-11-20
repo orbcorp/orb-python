@@ -33,8 +33,8 @@ class TestCosts:
         cost = client.customers.costs.list(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(CostListResponse, cost, path=["response"])
@@ -60,8 +60,8 @@ class TestCosts:
         cost = client.customers.costs.list_by_external_id(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
@@ -93,8 +93,8 @@ class TestAsyncCosts:
         cost = await client.customers.costs.list(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(CostListResponse, cost, path=["response"])
@@ -120,8 +120,8 @@ class TestAsyncCosts:
         cost = await client.customers.costs.list_by_external_id(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
