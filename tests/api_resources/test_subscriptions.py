@@ -205,8 +205,8 @@ class TestSubscriptions:
         subscription = client.subscriptions.fetch_costs(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
@@ -271,8 +271,8 @@ class TestSubscriptions:
             limit=0,
             second_dimension_key="string",
             second_dimension_value="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
@@ -917,8 +917,8 @@ class TestAsyncSubscriptions:
         subscription = await client.subscriptions.fetch_costs(
             "string",
             group_by="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
@@ -983,8 +983,8 @@ class TestAsyncSubscriptions:
             limit=0,
             second_dimension_key="string",
             second_dimension_value="string",
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
+            timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
