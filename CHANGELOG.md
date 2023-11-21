@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.31.2 (2023-11-21)
+
+Full Changelog: [v1.31.1...v1.31.2](https://github.com/orbcorp/orb-python/compare/v1.31.1...v1.31.2)
+
+### Bug Fixes
+
+* **client:** attempt to parse unknown json content types ([#61](https://github.com/orbcorp/orb-python/issues/61)) ([2ff1f69](https://github.com/orbcorp/orb-python/commit/2ff1f69a8a7b6a138002cf8eef49d76e71a6bb2e))
+
 ## 1.31.1 (2023-11-20)
 
 Full Changelog: [v1.31.0...v1.31.1](https://github.com/orbcorp/orb-python/compare/v1.31.0...v1.31.1)
