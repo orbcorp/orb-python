@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import os
 import asyncio
-from typing import Union, Mapping
-from typing_extensions import override
+from typing import Any, Union, Mapping
+from typing_extensions import Self, override
 
 import httpx
 
@@ -145,12 +145,10 @@ class Orb(SyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> Orb:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -179,6 +177,7 @@ class Orb(SyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
@@ -383,12 +382,10 @@ class AsyncOrb(AsyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> AsyncOrb:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -417,6 +414,7 @@ class AsyncOrb(AsyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
