@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.32.0 (2023-11-22)
+
+Full Changelog: [v1.31.2...v1.32.0](https://github.com/orbcorp/orb-python/compare/v1.31.2...v1.32.0)
+
+### Features
+
+* **api:** updates ([#66](https://github.com/orbcorp/orb-python/issues/66)) ([cfefc76](https://github.com/orbcorp/orb-python/commit/cfefc763c7d1e08e280b076ee5c88274ab42c1a4))
+
+
+### Chores
+
+* **client:** improve copy method ([#63](https://github.com/orbcorp/orb-python/issues/63)) ([ae3eed5](https://github.com/orbcorp/orb-python/commit/ae3eed56e988ff66e793116c8a0c80c5b5d87869))
+* **package:** add license classifier metadata ([#65](https://github.com/orbcorp/orb-python/issues/65)) ([da28530](https://github.com/orbcorp/orb-python/commit/da28530b636f74e64a343957437daaeb80da49ef))
+
 ## 1.31.2 (2023-11-21)
 
 Full Changelog: [v1.31.1...v1.31.2](https://github.com/orbcorp/orb-python/compare/v1.31.1...v1.31.2)
