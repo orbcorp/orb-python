@@ -320,20 +320,20 @@ class TestSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -372,20 +372,20 @@ class TestSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -424,20 +424,20 @@ class TestSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -461,60 +461,60 @@ class TestSubscriptions:
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
                 },
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
                 },
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
@@ -1032,20 +1032,20 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -1084,20 +1084,20 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -1136,20 +1136,20 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "discounts": [
@@ -1173,60 +1173,60 @@ class TestAsyncSubscriptions:
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
                 },
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
                 },
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
-                    "start_date": parse_datetime("2023-05-01"),
-                    "end_date": parse_datetime("2023-07-10"),
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                         {
                             "quantity": 5,
-                            "effective_date": parse_datetime("2023-05-01"),
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                         },
                     ],
                     "billing_cycle_day": 0,
