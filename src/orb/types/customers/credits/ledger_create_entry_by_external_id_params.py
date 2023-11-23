@@ -56,7 +56,11 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource."""
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
     per_unit_cost_basis: Optional[str]
     """Can only be specified when entry_type=increment.
@@ -100,7 +104,11 @@ class AddDecrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource."""
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
@@ -139,7 +147,11 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource."""
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class AddVoidCreditLedgerEntryRequestParams(TypedDict, total=False):
@@ -162,7 +174,11 @@ class AddVoidCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource."""
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
     void_reason: Optional[Literal["refund"]]
     """Can only be specified when `entry_type=void`. The reason for the void."""
@@ -188,7 +204,11 @@ class AddAmendmentCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource."""
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 LedgerCreateEntryByExternalIDParams = Union[

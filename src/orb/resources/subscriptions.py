@@ -473,7 +473,9 @@ class Subscriptions(SyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -2078,7 +2080,9 @@ class AsyncSubscriptions(AsyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.

@@ -65,7 +65,9 @@ class Metrics(SyncAPIResource):
 
           sql: A sql string defining the metric.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -229,7 +231,9 @@ class AsyncMetrics(AsyncAPIResource):
 
           sql: A sql string defining the metric.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 

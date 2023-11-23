@@ -879,9 +879,11 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     """
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     minimum: Optional[Minimum]
