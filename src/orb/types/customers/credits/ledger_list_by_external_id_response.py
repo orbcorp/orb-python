@@ -68,9 +68,11 @@ class IncrementLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     starting_balance: float
@@ -112,9 +114,11 @@ class DecrementLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     starting_balance: float
@@ -162,9 +166,11 @@ class ExpirationChangeLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     new_block_expiry_date: datetime
@@ -208,9 +214,11 @@ class CreditBlockExpiryLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     starting_balance: float
@@ -252,9 +260,11 @@ class VoidLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     starting_balance: float
@@ -300,9 +310,11 @@ class VoidInitiatedLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     new_block_expiry_date: datetime
@@ -350,9 +362,11 @@ class AmendmentLedgerEntry(BaseModel):
     ledger_sequence_number: int
 
     metadata: Dict[str, str]
-    """User specified key-value pairs.
+    """User specified key-value pairs for the resource.
 
-    If not provided, this defaults to an empty dictionary.
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
     """
 
     starting_balance: float
