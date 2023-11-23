@@ -346,7 +346,9 @@ class Ledger(SyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -499,7 +501,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -662,7 +666,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -816,7 +822,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -971,7 +979,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1207,7 +1217,9 @@ class Ledger(SyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -1360,7 +1372,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1523,7 +1537,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1677,7 +1693,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -1832,7 +1850,9 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2390,7 +2410,9 @@ class AsyncLedger(AsyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -2543,7 +2565,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2706,7 +2730,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2860,7 +2886,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -3015,7 +3043,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -3251,7 +3281,9 @@ class AsyncLedger(AsyncAPIResource):
               per_unit_cost_basis, as the calculation of the invoice total is done on that
               basis.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
               paid for a single credit in this block
@@ -3404,7 +3436,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -3567,7 +3601,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -3721,7 +3757,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           void_reason: Can only be specified when `entry_type=void`. The reason for the void.
 
@@ -3876,7 +3914,9 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 

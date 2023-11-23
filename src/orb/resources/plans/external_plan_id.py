@@ -60,7 +60,9 @@ class ExternalPlanID(SyncAPIResource):
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -174,7 +176,9 @@ class AsyncExternalPlanID(AsyncAPIResource):
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 

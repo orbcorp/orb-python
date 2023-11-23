@@ -121,7 +121,9 @@ class Customers(SyncAPIResource):
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -310,7 +312,9 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           name: The full name of the customer
 
@@ -684,7 +688,9 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           name: The full name of the customer
 
@@ -905,7 +911,9 @@ class AsyncCustomers(AsyncAPIResource):
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -1094,7 +1102,9 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           name: The full name of the customer
 
@@ -1468,7 +1478,9 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           name: The full name of the customer
 

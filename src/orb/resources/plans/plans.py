@@ -67,7 +67,9 @@ class Plans(SyncAPIResource):
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -132,7 +134,9 @@ class Plans(SyncAPIResource):
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -314,7 +318,9 @@ class AsyncPlans(AsyncAPIResource):
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -379,7 +385,9 @@ class AsyncPlans(AsyncAPIResource):
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
 
-          metadata: User-specified key/value pairs for the resource.
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
