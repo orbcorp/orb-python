@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.33.0 (2023-11-28)
+
+Full Changelog: [v1.32.0...v1.33.0](https://github.com/orbcorp/orb-python/compare/v1.32.0...v1.33.0)
+
+### Features
+
+* **api:** updates ([#73](https://github.com/orbcorp/orb-python/issues/73)) ([1e4d614](https://github.com/orbcorp/orb-python/commit/1e4d6148fcb859c095fd46e21841aff004475430))
+
+
+### Chores
+
+* **deps:** bump mypy to v1.7.1 ([#72](https://github.com/orbcorp/orb-python/issues/72)) ([e7f7b47](https://github.com/orbcorp/orb-python/commit/e7f7b47e99c4e1ae73c09de6c83d8879e0172bae))
+* **internal:** options updates ([#67](https://github.com/orbcorp/orb-python/issues/67)) ([8f91e55](https://github.com/orbcorp/orb-python/commit/8f91e55e750372c77dfd98202cd445560343e747))
+* **internal:** revert recent options change ([#70](https://github.com/orbcorp/orb-python/issues/70)) ([6ff55a6](https://github.com/orbcorp/orb-python/commit/6ff55a6bff7f7281b6288cb7a3042fd51e3a29f0))
+* **internal:** send more detailed x-stainless headers ([#71](https://github.com/orbcorp/orb-python/issues/71)) ([7dd46f3](https://github.com/orbcorp/orb-python/commit/7dd46f3ed8ba12999cbb3376b48f01c12f7e80e3))
+
+
+### Documentation
+
+* **api:** update metadata docstrings ([#69](https://github.com/orbcorp/orb-python/issues/69)) ([cf25b7c](https://github.com/orbcorp/orb-python/commit/cf25b7c8280a5dae5796fc5506db794ccba3b425))
+
 ## 1.32.0 (2023-11-22)
 
 Full Changelog: [v1.31.2...v1.32.0](https://github.com/orbcorp/orb-python/compare/v1.31.2...v1.32.0)
