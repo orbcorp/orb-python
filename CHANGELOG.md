@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.33.1 (2023-11-30)
+
+Full Changelog: [v1.33.0...v1.33.1](https://github.com/orbcorp/orb-python/compare/v1.33.0...v1.33.1)
+
+### Bug Fixes
+
+* **client:** ensure retried requests are closed ([#78](https://github.com/orbcorp/orb-python/issues/78)) ([af69dbb](https://github.com/orbcorp/orb-python/commit/af69dbbf926375b4383badf61b22471ccca48661))
+
+
+### Chores
+
+* **internal:** add tests for proxy change ([#77](https://github.com/orbcorp/orb-python/issues/77)) ([3d80ca9](https://github.com/orbcorp/orb-python/commit/3d80ca9ba3dcadafe21c2066b7e605c27771edf9))
+* **internal:** update lock file ([#74](https://github.com/orbcorp/orb-python/issues/74)) ([d3c1761](https://github.com/orbcorp/orb-python/commit/d3c1761a169d423394d0ae6a7f30a0549d344029))
+* **internal:** updates to proxy helper ([#76](https://github.com/orbcorp/orb-python/issues/76)) ([80e0f3d](https://github.com/orbcorp/orb-python/commit/80e0f3dc784b29adc1b32005f5bfc75f51fff2e3))
+
 ## 1.33.0 (2023-11-28)
 
 Full Changelog: [v1.32.0...v1.33.0](https://github.com/orbcorp/orb-python/compare/v1.32.0...v1.33.0)
