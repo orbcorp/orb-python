@@ -21,11 +21,12 @@ pip install orb-billing
 The full API of this library can be found in [api.md](https://www.github.com/orbcorp/orb-python/blob/main/api.md).
 
 ```python
+import os
 from orb import Orb
 
 client = Orb(
-    # defaults to os.environ.get("ORB_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("ORB_API_KEY"),
 )
 
 customer = client.customers.create(
@@ -45,12 +46,13 @@ so that your API Key is not stored in source control.
 Simply import `AsyncOrb` instead of `Orb` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from orb import AsyncOrb
 
 client = AsyncOrb(
-    # defaults to os.environ.get("ORB_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("ORB_API_KEY"),
 )
 
 
