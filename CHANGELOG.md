@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.33.2 (2023-12-01)
+
+Full Changelog: [v1.33.1...v1.33.2](https://github.com/orbcorp/orb-python/compare/v1.33.1...v1.33.2)
+
+### Bug Fixes
+
+* **client:** correct base_url setter implementation ([#83](https://github.com/orbcorp/orb-python/issues/83)) ([83ad98c](https://github.com/orbcorp/orb-python/commit/83ad98c68e6103792d0e9739db105c82ae44f6f4))
+
+
+### Chores
+
+* **internal:** remove unused type var ([#82](https://github.com/orbcorp/orb-python/issues/82)) ([a9a3dbe](https://github.com/orbcorp/orb-python/commit/a9a3dbe325cbc0b3621469208871a616abe3979b))
+* **internal:** replace string concatenation with f-strings ([#81](https://github.com/orbcorp/orb-python/issues/81)) ([d290faf](https://github.com/orbcorp/orb-python/commit/d290faf226356c4968bca7308306ae02e6bcb600))
+
+
+### Documentation
+
+* **readme:** update example snippets ([#79](https://github.com/orbcorp/orb-python/issues/79)) ([da58b27](https://github.com/orbcorp/orb-python/commit/da58b276e4c352f5f1bacb03455277f33f872243))
+
 ## 1.33.1 (2023-11-30)
 
 Full Changelog: [v1.33.0...v1.33.1](https://github.com/orbcorp/orb-python/compare/v1.33.0...v1.33.1)
