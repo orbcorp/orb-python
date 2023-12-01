@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import List, Generic, TypeVar, Optional
+from typing import List, Generic, Optional
 from typing_extensions import override
 
 from ._types import ModelT
@@ -8,8 +8,6 @@ from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
 __all__ = ["SyncPage", "AsyncPage"]
-
-_BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
 
 
 class PagePaginationMetadata(BaseModel):
