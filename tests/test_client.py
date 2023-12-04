@@ -6,7 +6,7 @@ import os
 import json
 import asyncio
 import inspect
-from typing import Any, Dict, Union, cast
+from typing import Any, Union, cast
 from unittest import mock
 
 import httpx
@@ -348,7 +348,7 @@ class TestOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
@@ -362,7 +362,7 @@ class TestOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
@@ -376,7 +376,7 @@ class TestOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"foo": "2"}
 
     @pytest.mark.respx(base_url=base_url)
@@ -1010,7 +1010,7 @@ class TestAsyncOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
@@ -1024,7 +1024,7 @@ class TestAsyncOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
@@ -1038,7 +1038,7 @@ class TestAsyncOrb:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"foo": "2"}
 
     @pytest.mark.respx(base_url=base_url)
