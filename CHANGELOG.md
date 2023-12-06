@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.33.3 (2023-12-04)
+
+Full Changelog: [v1.33.2...v1.33.3](https://github.com/orbcorp/orb-python/compare/v1.33.2...v1.33.3)
+
+### Chores
+
+* **package:** lift anyio v4 restriction ([#84](https://github.com/orbcorp/orb-python/issues/84)) ([70cbb10](https://github.com/orbcorp/orb-python/commit/70cbb104fe927cebfa5e3d42a3c29f0ed4ab19ab))
+
 ## 1.33.2 (2023-12-01)
 
 Full Changelog: [v1.33.1...v1.33.2](https://github.com/orbcorp/orb-python/compare/v1.33.1...v1.33.2)
