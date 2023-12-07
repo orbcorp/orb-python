@@ -10,10 +10,7 @@ from orb import Orb, AsyncOrb
 from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers import (
-    CreditListResponse,
-    CreditListByExternalIDResponse,
-)
+from orb.types.customers import CreditListResponse, CreditListByExternalIDResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
