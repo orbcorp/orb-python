@@ -7,9 +7,7 @@ import os
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import (
-    Customer,
-)
+from orb.types import Customer
 from orb._utils import parse_datetime
 from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type

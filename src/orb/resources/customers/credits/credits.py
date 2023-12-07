@@ -6,22 +6,18 @@ from typing import TYPE_CHECKING, Optional
 
 import httpx
 
-from .ledger import Ledger, AsyncLedger, LedgerWithRawResponse, AsyncLedgerWithRawResponse
-from ...._types import (
-    NOT_GIVEN,
-    Body,
-    Query,
-    Headers,
-    NotGiven,
+from .ledger import (
+    Ledger,
+    AsyncLedger,
+    LedgerWithRawResponse,
+    AsyncLedgerWithRawResponse,
 )
+from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncPage, AsyncPage
-from ...._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers import (
     CreditListResponse,
     CreditListByExternalIDResponse,
