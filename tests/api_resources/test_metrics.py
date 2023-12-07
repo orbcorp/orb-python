@@ -7,7 +7,11 @@ import os
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import MetricListResponse, MetricFetchResponse, MetricCreateResponse
+from orb.types import (
+    MetricListResponse,
+    MetricFetchResponse,
+    MetricCreateResponse,
+)
 from orb._utils import parse_datetime
 from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
