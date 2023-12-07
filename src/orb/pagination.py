@@ -7,7 +7,7 @@ from ._types import ModelT
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
-__all__ = ["SyncPage", "AsyncPage"]
+__all__ = ["PagePaginationMetadata", "SyncPage", "AsyncPage"]
 
 
 class PagePaginationMetadata(BaseModel):
@@ -22,15 +22,20 @@ class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        return self.data
+        data = self.data
+        if not data:
+            return []
+        return data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        cursor = self.pagination_metadata.next_cursor
-        if not cursor:
+        next_cursor = None
+        if self.pagination_metadata is not None:  # pyright: ignore[reportUnnecessaryComparison]
+            next_cursor = self.pagination_metadata.next_cursor
+        if not next_cursor:
             return None
 
-        return PageInfo(params={"cursor": cursor})
+        return PageInfo(params={"cursor": next_cursor})
 
 
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
@@ -39,12 +44,17 @@ class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        return self.data
+        data = self.data
+        if not data:
+            return []
+        return data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        cursor = self.pagination_metadata.next_cursor
-        if not cursor:
+        next_cursor = None
+        if self.pagination_metadata is not None:  # pyright: ignore[reportUnnecessaryComparison]
+            next_cursor = self.pagination_metadata.next_cursor
+        if not next_cursor:
             return None
 
-        return PageInfo(params={"cursor": cursor})
+        return PageInfo(params={"cursor": next_cursor})
