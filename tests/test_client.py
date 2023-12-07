@@ -18,6 +18,7 @@ from orb import Orb, AsyncOrb, APIResponseValidationError
 from orb._client import Orb, AsyncOrb
 from orb._models import BaseModel, FinalRequestOptions
 from orb._exceptions import (
+    OrbError,
     APIStatusError,
     APITimeoutError,
     APIConnectionError,
@@ -260,7 +261,7 @@ class TestOrb:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
-        with pytest.raises(Exception):
+        with pytest.raises(OrbError):
             client2 = Orb(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
@@ -922,7 +923,7 @@ class TestAsyncOrb:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
-        with pytest.raises(Exception):
+        with pytest.raises(OrbError):
             client2 = AsyncOrb(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
