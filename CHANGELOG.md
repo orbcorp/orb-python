@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.33.4 (2023-12-08)
+
+Full Changelog: [v1.33.3...v1.33.4](https://github.com/orbcorp/orb-python/compare/v1.33.3...v1.33.4)
+
+### Bug Fixes
+
+* **errors:** properly assign APIError.body ([#94](https://github.com/orbcorp/orb-python/issues/94)) ([7ee4eea](https://github.com/orbcorp/orb-python/commit/7ee4eea7f164e0b0685149d1591571c6c9566d77))
+
+
+### Chores
+
+* **internal:** enable more lint rules ([#93](https://github.com/orbcorp/orb-python/issues/93)) ([a3dd337](https://github.com/orbcorp/orb-python/commit/a3dd3377f5246ba6d1302224981a45c9c3a9121d))
+* **internal:** minor updates to pagination ([#91](https://github.com/orbcorp/orb-python/issues/91)) ([cc341f4](https://github.com/orbcorp/orb-python/commit/cc341f40366a81e9f1db9bd4ad049d2228cc15b5))
+* **internal:** reformat imports ([#89](https://github.com/orbcorp/orb-python/issues/89)) ([26a17d4](https://github.com/orbcorp/orb-python/commit/26a17d4cd116a58ce16657bc8e189bbd4dda775a))
+* **internal:** reformat imports ([#92](https://github.com/orbcorp/orb-python/issues/92)) ([55b46bb](https://github.com/orbcorp/orb-python/commit/55b46bb375aee8a00d79177bad06c907d854b1fa))
+* **internal:** update formatting ([#90](https://github.com/orbcorp/orb-python/issues/90)) ([ce98611](https://github.com/orbcorp/orb-python/commit/ce98611dd7fe75931d01f7119244388c51224a74))
+
 ## 1.33.3 (2023-12-04)
 
 Full Changelog: [v1.33.2...v1.33.3](https://github.com/orbcorp/orb-python/compare/v1.33.2...v1.33.3)
