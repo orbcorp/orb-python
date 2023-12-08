@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.34.1 (2023-12-08)
+
+Full Changelog: [v1.34.0...v1.34.1](https://github.com/orbcorp/orb-python/compare/v1.34.0...v1.34.1)
+
+### Bug Fixes
+
+* avoid leaking memory when Client.with_options is used ([#97](https://github.com/orbcorp/orb-python/issues/97)) ([b65cdf2](https://github.com/orbcorp/orb-python/commit/b65cdf2017fa80622e879ad6c4c700cbe04fb329))
+
 ## 1.34.0 (2023-12-08)
 
 Full Changelog: [v1.33.4...v1.34.0](https://github.com/orbcorp/orb-python/compare/v1.33.4...v1.34.0)
