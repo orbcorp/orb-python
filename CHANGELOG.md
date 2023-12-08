@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.34.0 (2023-12-08)
+
+Full Changelog: [v1.33.4...v1.34.0](https://github.com/orbcorp/orb-python/compare/v1.33.4...v1.34.0)
+
+### Features
+
+* **api:** remove unsupported field ([#95](https://github.com/orbcorp/orb-python/issues/95)) ([fbb9a6a](https://github.com/orbcorp/orb-python/commit/fbb9a6ad26b452fbf8985007f770ed2c903e3b66))
+
 ## 1.33.4 (2023-12-08)
 
 Full Changelog: [v1.33.3...v1.33.4](https://github.com/orbcorp/orb-python/compare/v1.33.3...v1.33.4)
