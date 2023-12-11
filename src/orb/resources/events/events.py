@@ -481,6 +481,8 @@ class Events(SyncAPIResource):
         self,
         *,
         event_ids: List[str],
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -510,8 +512,15 @@ class Events(SyncAPIResource):
 
         Args:
           event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
-              idempotency_key that was originally used for ingestion. Values in this array
-              will be treated case sensitively.
+              idempotency_key that was originally used for ingestion, and this only supports
+              events that have not been amended. Values in this array will be treated case
+              sensitively.
+
+          timeframe_end: The end of the timeframe, exclusive, in which to search events. If not
+              specified, the current time is used.
+
+          timeframe_start: The start of the timeframe, inclusive, in which to search events. If not
+              specified, the one week ago is used.
 
           extra_headers: Send extra headers
 
@@ -525,7 +534,14 @@ class Events(SyncAPIResource):
         """
         return self._post(
             "/events/search",
-            body=maybe_transform({"event_ids": event_ids}, event_search_params.EventSearchParams),
+            body=maybe_transform(
+                {
+                    "event_ids": event_ids,
+                    "timeframe_end": timeframe_end,
+                    "timeframe_start": timeframe_start,
+                },
+                event_search_params.EventSearchParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -984,6 +1000,8 @@ class AsyncEvents(AsyncAPIResource):
         self,
         *,
         event_ids: List[str],
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1013,8 +1031,15 @@ class AsyncEvents(AsyncAPIResource):
 
         Args:
           event_ids: This is an explicit array of IDs to filter by. Note that an event's ID is the
-              idempotency_key that was originally used for ingestion. Values in this array
-              will be treated case sensitively.
+              idempotency_key that was originally used for ingestion, and this only supports
+              events that have not been amended. Values in this array will be treated case
+              sensitively.
+
+          timeframe_end: The end of the timeframe, exclusive, in which to search events. If not
+              specified, the current time is used.
+
+          timeframe_start: The start of the timeframe, inclusive, in which to search events. If not
+              specified, the one week ago is used.
 
           extra_headers: Send extra headers
 
@@ -1028,7 +1053,14 @@ class AsyncEvents(AsyncAPIResource):
         """
         return await self._post(
             "/events/search",
-            body=maybe_transform({"event_ids": event_ids}, event_search_params.EventSearchParams),
+            body=maybe_transform(
+                {
+                    "event_ids": event_ids,
+                    "timeframe_end": timeframe_end,
+                    "timeframe_start": timeframe_start,
+                },
+                event_search_params.EventSearchParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

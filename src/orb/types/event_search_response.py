@@ -16,7 +16,7 @@ class Data(BaseModel):
     for safe request retries.
     """
 
-    customer_id: str
+    customer_id: Optional[str]
     """The Orb Customer identifier"""
 
     event_name: str

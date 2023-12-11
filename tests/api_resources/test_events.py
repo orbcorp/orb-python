@@ -167,14 +167,23 @@ class TestEvents:
     @parametrize
     def test_method_search(self, client: Orb) -> None:
         event = client.events.search(
-            event_ids=["string", "string", "string"],
+            event_ids=["string"],
+        )
+        assert_matches_type(EventSearchResponse, event, path=["response"])
+
+    @parametrize
+    def test_method_search_with_all_params(self, client: Orb) -> None:
+        event = client.events.search(
+            event_ids=["string"],
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventSearchResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_search(self, client: Orb) -> None:
         response = client.events.with_raw_response.search(
-            event_ids=["string", "string", "string"],
+            event_ids=["string"],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
@@ -327,14 +336,23 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_search(self, client: AsyncOrb) -> None:
         event = await client.events.search(
-            event_ids=["string", "string", "string"],
+            event_ids=["string"],
+        )
+        assert_matches_type(EventSearchResponse, event, path=["response"])
+
+    @parametrize
+    async def test_method_search_with_all_params(self, client: AsyncOrb) -> None:
+        event = await client.events.search(
+            event_ids=["string"],
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventSearchResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_search(self, client: AsyncOrb) -> None:
         response = await client.events.with_raw_response.search(
-            event_ids=["string", "string", "string"],
+            event_ids=["string"],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
