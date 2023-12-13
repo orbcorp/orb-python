@@ -785,7 +785,7 @@ class Add(TypedDict, total=False):
     billing period.
     """
 
-    price: AddPrice
+    price: Optional[AddPrice]
     """The definition of a new price to create and add to the subscription."""
 
     price_id: Optional[str]
