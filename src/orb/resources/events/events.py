@@ -505,8 +505,6 @@ class Events(SyncAPIResource):
         - `event_ids`: This is an explicit array of IDs to filter by. Note that an
           event's ID is the `idempotency_key` that was originally used for ingestion.
 
-        By default, Orb does not return _deprecated_ events in this endpoint.
-
         By default, Orb will not throw a `404` if no events matched, Orb will return an
         empty array for `data` instead.
 
@@ -1023,8 +1021,6 @@ class AsyncEvents(AsyncAPIResource):
 
         - `event_ids`: This is an explicit array of IDs to filter by. Note that an
           event's ID is the `idempotency_key` that was originally used for ingestion.
-
-        By default, Orb does not return _deprecated_ events in this endpoint.
 
         By default, Orb will not throw a `404` if no events matched, Orb will return an
         empty array for `data` instead.
