@@ -788,16 +788,19 @@ class BulkPrice(BaseModel):
 
 
 class TestRatingFunctionPriceBillableMetric(BaseModel):
+    __test__ = False
     id: str
 
 
 class TestRatingFunctionPriceItem(BaseModel):
+    __test__ = False
     id: str
 
     name: str
 
 
 class TestRatingFunctionPriceMaximum(BaseModel):
+    __test__ = False
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
 
@@ -809,6 +812,7 @@ class TestRatingFunctionPriceMaximum(BaseModel):
 
 
 class TestRatingFunctionPriceMinimum(BaseModel):
+    __test__ = False
     applies_to_price_ids: List[str]
     """List of price_ids that this minimum amount applies to.
 
@@ -820,6 +824,7 @@ class TestRatingFunctionPriceMinimum(BaseModel):
 
 
 class TestRatingFunctionPrice(BaseModel):
+    __test__ = False
     id: str
 
     billable_metric: Optional[TestRatingFunctionPriceBillableMetric]
