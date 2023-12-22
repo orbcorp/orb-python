@@ -132,10 +132,7 @@ Methods:
 Types:
 
 ```python
-from orb.types.customers import (
-    BalanceTransactionCreateResponse,
-    BalanceTransactionListResponse,
-)
+from orb.types.customers import BalanceTransactionCreateResponse, BalanceTransactionListResponse
 ```
 
 Methods:
