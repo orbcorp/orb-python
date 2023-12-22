@@ -205,8 +205,8 @@ class TestOrb:
         ITERATIONS = 10
         for _ in range(ITERATIONS):
             build_request(options)
-            gc.collect()
 
+        gc.collect()
         snapshot_after = tracemalloc.take_snapshot()
 
         tracemalloc.stop()
@@ -867,8 +867,8 @@ class TestAsyncOrb:
         ITERATIONS = 10
         for _ in range(ITERATIONS):
             build_request(options)
-            gc.collect()
 
+        gc.collect()
         snapshot_after = tracemalloc.take_snapshot()
 
         tracemalloc.stop()
