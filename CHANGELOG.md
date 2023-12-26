@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.35.1 (2023-12-26)
+
+Full Changelog: [v1.35.0...v1.35.1](https://github.com/orbcorp/orb-python/compare/v1.35.0...v1.35.1)
+
+### Bug Fixes
+
+* use brackets instead of commas for array query params ([#116](https://github.com/orbcorp/orb-python/issues/116)) ([a03afeb](https://github.com/orbcorp/orb-python/commit/a03afeb4c13765e905a3e5fc8e52e1da4fa8e4be))
+
+
+### Chores
+
+* **ci:** run release workflow once per day ([#107](https://github.com/orbcorp/orb-python/issues/107)) ([8399dca](https://github.com/orbcorp/orb-python/commit/8399dcad701cac68076d88efba8aa2f6d456ad4b))
+* **internal:** add bin script ([#113](https://github.com/orbcorp/orb-python/issues/113)) ([ed19a63](https://github.com/orbcorp/orb-python/commit/ed19a63151d3f4119fa70b68459242030a4ba199))
+* **internal:** fix typos ([#111](https://github.com/orbcorp/orb-python/issues/111)) ([e2ba1db](https://github.com/orbcorp/orb-python/commit/e2ba1db59f6d8e86c625310d5017ece279788bd2))
+* **internal:** minor utils restructuring ([#110](https://github.com/orbcorp/orb-python/issues/110)) ([1946480](https://github.com/orbcorp/orb-python/commit/19464809e1a6d4ba122b767ed59551ec0509503e))
+* **internal:** updates to base client ([#108](https://github.com/orbcorp/orb-python/issues/108)) ([53ea238](https://github.com/orbcorp/orb-python/commit/53ea2380bb8280bd679255afed4300daeb1620ea))
+* **internal:** use ruff instead of black for formatting ([#115](https://github.com/orbcorp/orb-python/issues/115)) ([ed83783](https://github.com/orbcorp/orb-python/commit/ed837839d28c1191bb4656577b8d80a411ce82dd))
+* **package:** bump minimum typing-extensions to 4.7 ([#112](https://github.com/orbcorp/orb-python/issues/112)) ([440c756](https://github.com/orbcorp/orb-python/commit/440c756ffab480330f7a01dbbb129a26f41c1612))
+
+
+### Documentation
+
+* **api:** updates ([#109](https://github.com/orbcorp/orb-python/issues/109)) ([692c3e8](https://github.com/orbcorp/orb-python/commit/692c3e8ea49d3fe7dfc2f03d78be25cc2237fb9f))
+* avoid normalizing trailing space ([#106](https://github.com/orbcorp/orb-python/issues/106)) ([09fd3f8](https://github.com/orbcorp/orb-python/commit/09fd3f8e37d3138bd32532aba6729e24b208684c))
+* improve README timeout comment ([#101](https://github.com/orbcorp/orb-python/issues/101)) ([69a6970](https://github.com/orbcorp/orb-python/commit/69a6970e11ba88969a3c17dcd4374f8197b88dca))
+
+
+### Refactors
+
+* **client:** simplify cleanup ([#103](https://github.com/orbcorp/orb-python/issues/103)) ([54ac0dd](https://github.com/orbcorp/orb-python/commit/54ac0ddb1b703e011e84f184e6e90ee9f31e2055))
+* remove unused model types used in params ([#105](https://github.com/orbcorp/orb-python/issues/105)) ([e18a59e](https://github.com/orbcorp/orb-python/commit/e18a59e47125aafb2e81f29f45fe9e866c738d28))
+* simplify internal error handling ([#104](https://github.com/orbcorp/orb-python/issues/104)) ([cd0f847](https://github.com/orbcorp/orb-python/commit/cd0f8472457ac651c2fa44dc1e464cac78257c59))
+
 ## 1.35.0 (2023-12-11)
 
 Full Changelog: [v1.34.1...v1.35.0](https://github.com/orbcorp/orb-python/compare/v1.34.1...v1.35.0)
