@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.35.2 (2023-12-28)
+
+Full Changelog: [v1.35.1...v1.35.2](https://github.com/orbcorp/orb-python/compare/v1.35.1...v1.35.2)
+
+### Bug Fixes
+
+* **client:** correctly use custom http client auth ([#117](https://github.com/orbcorp/orb-python/issues/117)) ([863ebe8](https://github.com/orbcorp/orb-python/commit/863ebe87f4881f01afa7a39286a5b154ca047305))
+
 ## 1.35.1 (2023-12-26)
 
 Full Changelog: [v1.35.0...v1.35.1](https://github.com/orbcorp/orb-python/compare/v1.35.0...v1.35.1)
