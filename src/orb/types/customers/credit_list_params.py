@@ -9,6 +9,9 @@ __all__ = ["CreditListParams"]
 
 
 class CreditListParams(TypedDict, total=False):
+    currency: Optional[str]
+    """The ledger currency or custom pricing unit to use."""
+
     cursor: Optional[str]
     """Cursor for pagination.
 

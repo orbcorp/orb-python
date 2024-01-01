@@ -154,6 +154,8 @@ class Ledger(SyncAPIResource):
         entry will be added to the ledger to indicate the adjustment of credits.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -201,6 +203,7 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -331,6 +334,9 @@ class Ledger(SyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -372,6 +378,7 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -497,6 +504,9 @@ class Ledger(SyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -527,6 +537,7 @@ class Ledger(SyncAPIResource):
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -662,6 +673,9 @@ class Ledger(SyncAPIResource):
           block_id: The ID of the block affected by an expiration_change, used to differentiate
               between multiple blocks with the same `expiry_date`.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -690,6 +704,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
@@ -818,6 +833,9 @@ class Ledger(SyncAPIResource):
 
           block_id: The ID of the block to void.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -848,6 +866,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -975,6 +994,9 @@ class Ledger(SyncAPIResource):
 
           block_id: The ID of the block to reverse a decrement from.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1012,6 +1034,7 @@ class Ledger(SyncAPIResource):
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -1038,6 +1061,7 @@ class Ledger(SyncAPIResource):
                     {
                         "amount": amount,
                         "entry_type": entry_type,
+                        "currency": currency,
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
@@ -1070,6 +1094,7 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -1202,6 +1227,9 @@ class Ledger(SyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1243,6 +1271,7 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1368,6 +1397,9 @@ class Ledger(SyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1398,6 +1430,7 @@ class Ledger(SyncAPIResource):
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1533,6 +1566,9 @@ class Ledger(SyncAPIResource):
           block_id: The ID of the block affected by an expiration_change, used to differentiate
               between multiple blocks with the same `expiry_date`.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1561,6 +1597,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
@@ -1689,6 +1726,9 @@ class Ledger(SyncAPIResource):
 
           block_id: The ID of the block to void.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1719,6 +1759,7 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1846,6 +1887,9 @@ class Ledger(SyncAPIResource):
 
           block_id: The ID of the block to reverse a decrement from.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -1883,6 +1927,7 @@ class Ledger(SyncAPIResource):
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -1911,6 +1956,7 @@ class Ledger(SyncAPIResource):
                     {
                         "amount": amount,
                         "entry_type": entry_type,
+                        "currency": currency,
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
@@ -2052,6 +2098,8 @@ class Ledger(SyncAPIResource):
         entry will be added to the ledger to indicate the adjustment of credits.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -2218,6 +2266,8 @@ class AsyncLedger(AsyncAPIResource):
         entry will be added to the ledger to indicate the adjustment of credits.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -2265,6 +2315,7 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -2395,6 +2446,9 @@ class AsyncLedger(AsyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -2436,6 +2490,7 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2561,6 +2616,9 @@ class AsyncLedger(AsyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -2591,6 +2649,7 @@ class AsyncLedger(AsyncAPIResource):
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2726,6 +2785,9 @@ class AsyncLedger(AsyncAPIResource):
           block_id: The ID of the block affected by an expiration_change, used to differentiate
               between multiple blocks with the same `expiry_date`.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -2754,6 +2816,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
@@ -2882,6 +2945,9 @@ class AsyncLedger(AsyncAPIResource):
 
           block_id: The ID of the block to void.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -2912,6 +2978,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3039,6 +3106,9 @@ class AsyncLedger(AsyncAPIResource):
 
           block_id: The ID of the block to reverse a decrement from.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3076,6 +3146,7 @@ class AsyncLedger(AsyncAPIResource):
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -3102,6 +3173,7 @@ class AsyncLedger(AsyncAPIResource):
                     {
                         "amount": amount,
                         "entry_type": entry_type,
+                        "currency": currency,
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
@@ -3134,6 +3206,7 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -3266,6 +3339,9 @@ class AsyncLedger(AsyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3307,6 +3383,7 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3432,6 +3509,9 @@ class AsyncLedger(AsyncAPIResource):
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3462,6 +3542,7 @@ class AsyncLedger(AsyncAPIResource):
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3597,6 +3678,9 @@ class AsyncLedger(AsyncAPIResource):
           block_id: The ID of the block affected by an expiration_change, used to differentiate
               between multiple blocks with the same `expiry_date`.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3625,6 +3709,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
@@ -3753,6 +3838,9 @@ class AsyncLedger(AsyncAPIResource):
 
           block_id: The ID of the block to void.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3783,6 +3871,7 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3910,6 +3999,9 @@ class AsyncLedger(AsyncAPIResource):
 
           block_id: The ID of the block to reverse a decrement from.
 
+          currency: The currency or custom pricing unit to use for this ledger entry. If this is a
+              real-world currency, it must match the customer's invoicing currency.
+
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
@@ -3947,6 +4039,7 @@ class AsyncLedger(AsyncAPIResource):
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
@@ -3975,6 +4068,7 @@ class AsyncLedger(AsyncAPIResource):
                     {
                         "amount": amount,
                         "entry_type": entry_type,
+                        "currency": currency,
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
@@ -4116,6 +4210,8 @@ class AsyncLedger(AsyncAPIResource):
         entry will be added to the ledger to indicate the adjustment of credits.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 

@@ -28,6 +28,13 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
 
     entry_type: Required[Literal["increment"]]
 
+    currency: Optional[str]
+    """The currency or custom pricing unit to use for this ledger entry.
+
+    If this is a real-world currency, it must match the customer's invoicing
+    currency.
+    """
+
     description: Optional[str]
     """Optional metadata that can be specified when adding ledger results via the API.
 
@@ -96,6 +103,13 @@ class AddDecrementCreditLedgerEntryRequestParams(TypedDict, total=False):
 
     entry_type: Required[Literal["decrement"]]
 
+    currency: Optional[str]
+    """The currency or custom pricing unit to use for this ledger entry.
+
+    If this is a real-world currency, it must match the customer's invoicing
+    currency.
+    """
+
     description: Optional[str]
     """Optional metadata that can be specified when adding ledger results via the API.
 
@@ -139,6 +153,13 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     between multiple blocks with the same `expiry_date`.
     """
 
+    currency: Optional[str]
+    """The currency or custom pricing unit to use for this ledger entry.
+
+    If this is a real-world currency, it must match the customer's invoicing
+    currency.
+    """
+
     description: Optional[str]
     """Optional metadata that can be specified when adding ledger results via the API.
 
@@ -165,6 +186,13 @@ class AddVoidCreditLedgerEntryRequestParams(TypedDict, total=False):
     """The ID of the block to void."""
 
     entry_type: Required[Literal["void"]]
+
+    currency: Optional[str]
+    """The currency or custom pricing unit to use for this ledger entry.
+
+    If this is a real-world currency, it must match the customer's invoicing
+    currency.
+    """
 
     description: Optional[str]
     """Optional metadata that can be specified when adding ledger results via the API.
@@ -195,6 +223,13 @@ class AddAmendmentCreditLedgerEntryRequestParams(TypedDict, total=False):
     """The ID of the block to reverse a decrement from."""
 
     entry_type: Required[Literal["amendment"]]
+
+    currency: Optional[str]
+    """The currency or custom pricing unit to use for this ledger entry.
+
+    If this is a real-world currency, it must match the customer's invoicing
+    currency.
+    """
 
     description: Optional[str]
     """Optional metadata that can be specified when adding ledger results via the API.

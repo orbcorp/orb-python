@@ -44,6 +44,7 @@ class Credits(SyncAPIResource):
         self,
         customer_id: Optional[str],
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -57,6 +58,8 @@ class Credits(SyncAPIResource):
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -80,6 +83,7 @@ class Credits(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "currency": currency,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -93,6 +97,7 @@ class Credits(SyncAPIResource):
         self,
         external_customer_id: Optional[str],
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -106,6 +111,8 @@ class Credits(SyncAPIResource):
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -129,6 +136,7 @@ class Credits(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "currency": currency,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -152,6 +160,7 @@ class AsyncCredits(AsyncAPIResource):
         self,
         customer_id: Optional[str],
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -165,6 +174,8 @@ class AsyncCredits(AsyncAPIResource):
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -188,6 +199,7 @@ class AsyncCredits(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "currency": currency,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -201,6 +213,7 @@ class AsyncCredits(AsyncAPIResource):
         self,
         external_customer_id: Optional[str],
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -214,6 +227,8 @@ class AsyncCredits(AsyncAPIResource):
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
         Args:
+          currency: The ledger currency or custom pricing unit to use.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -237,6 +252,7 @@ class AsyncCredits(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "currency": currency,
                         "cursor": cursor,
                         "limit": limit,
                     },

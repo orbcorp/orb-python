@@ -21,6 +21,7 @@ class LedgerListByExternalIDParams(TypedDict, total=False):
     created_at_lte: Annotated[Union[str, datetime, None], PropertyInfo(alias="created_at[lte]", format="iso8601")]
 
     currency: Optional[str]
+    """The ledger currency or custom pricing unit to use."""
 
     cursor: Optional[str]
     """Cursor for pagination.
