@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.36.0 (2024-01-01)
+
+Full Changelog: [v1.35.2...v1.36.0](https://github.com/orbcorp/orb-python/compare/v1.35.2...v1.36.0)
+
+### Features
+
+* **api:** add currency fields ([#119](https://github.com/orbcorp/orb-python/issues/119)) ([35574d3](https://github.com/orbcorp/orb-python/commit/35574d339cff2ed011a17433af556ffed02af9b7))
+
 ## 1.35.2 (2023-12-28)
 
 Full Changelog: [v1.35.1...v1.35.2](https://github.com/orbcorp/orb-python/compare/v1.35.1...v1.35.2)
