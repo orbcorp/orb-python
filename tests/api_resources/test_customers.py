@@ -78,8 +78,8 @@ class TestCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
             timezone="string",
@@ -151,8 +151,8 @@ class TestCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
         )
@@ -294,8 +294,8 @@ class TestCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
         )
@@ -372,8 +372,8 @@ class TestAsyncCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
             timezone="string",
@@ -445,8 +445,8 @@ class TestAsyncCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
         )
@@ -588,8 +588,8 @@ class TestAsyncCustomers:
                 "country": "string",
             },
             tax_id={
-                "country": "AE",
-                "type": "ae_trn",
+                "country": "AD",
+                "type": "ad_nrt",
                 "value": "string",
             },
         )
