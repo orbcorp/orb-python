@@ -47,6 +47,7 @@ class ShippingAddress(BaseModel):
 
 class TaxID(BaseModel):
     country: Literal[
+        "AD",
         "AE",
         "AT",
         "AU",
@@ -110,6 +111,7 @@ class TaxID(BaseModel):
     ]
 
     type: Literal[
+        "ad_nrt",
         "ae_trn",
         "eu_vat",
         "au_abn",
@@ -251,6 +253,7 @@ class Customer(BaseModel):
 
     | Country              | Type         | Description                                                                                             |
     | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+    | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
     | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
     | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
     | Austria              | `eu_vat`     | European VAT number                                                                                     |

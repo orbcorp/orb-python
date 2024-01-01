@@ -75,6 +75,7 @@ class TestLedger:
             "string",
             amount=0,
             entry_type="increment",
+            currency="string",
             description="string",
             effective_date=parse_date("2019-12-27"),
             expiry_date=parse_date("2019-12-27"),
@@ -114,6 +115,7 @@ class TestLedger:
             "string",
             amount=0,
             entry_type="decrement",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -149,6 +151,7 @@ class TestLedger:
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -183,6 +186,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             entry_type="void",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
             void_reason="refund",
@@ -218,6 +222,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             entry_type="amendment",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -250,6 +255,7 @@ class TestLedger:
             "string",
             amount=0,
             entry_type="increment",
+            currency="string",
             description="string",
             effective_date=parse_date("2019-12-27"),
             expiry_date=parse_date("2019-12-27"),
@@ -289,6 +295,7 @@ class TestLedger:
             "string",
             amount=0,
             entry_type="decrement",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -324,6 +331,7 @@ class TestLedger:
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -358,6 +366,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             entry_type="void",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
             void_reason="refund",
@@ -393,6 +402,7 @@ class TestLedger:
             amount=0,
             block_id="string",
             entry_type="amendment",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -497,6 +507,7 @@ class TestAsyncLedger:
             "string",
             amount=0,
             entry_type="increment",
+            currency="string",
             description="string",
             effective_date=parse_date("2019-12-27"),
             expiry_date=parse_date("2019-12-27"),
@@ -536,6 +547,7 @@ class TestAsyncLedger:
             "string",
             amount=0,
             entry_type="decrement",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -571,6 +583,7 @@ class TestAsyncLedger:
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -605,6 +618,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             entry_type="void",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
             void_reason="refund",
@@ -640,6 +654,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             entry_type="amendment",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -672,6 +687,7 @@ class TestAsyncLedger:
             "string",
             amount=0,
             entry_type="increment",
+            currency="string",
             description="string",
             effective_date=parse_date("2019-12-27"),
             expiry_date=parse_date("2019-12-27"),
@@ -711,6 +727,7 @@ class TestAsyncLedger:
             "string",
             amount=0,
             entry_type="decrement",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -746,6 +763,7 @@ class TestAsyncLedger:
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )
@@ -780,6 +798,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             entry_type="void",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
             void_reason="refund",
@@ -815,6 +834,7 @@ class TestAsyncLedger:
             amount=0,
             block_id="string",
             entry_type="amendment",
+            currency="string",
             description="string",
             metadata={"foo": "string"},
         )

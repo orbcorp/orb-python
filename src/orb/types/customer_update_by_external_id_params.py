@@ -85,6 +85,7 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
 
     | Country              | Type         | Description                                                                                             |
     | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+    | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
     | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
     | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
     | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -212,6 +213,7 @@ class ShippingAddress(TypedDict, total=False):
 class TaxID(TypedDict, total=False):
     country: Required[
         Literal[
+            "AD",
             "AE",
             "AT",
             "AU",
@@ -277,6 +279,7 @@ class TaxID(TypedDict, total=False):
 
     type: Required[
         Literal[
+            "ad_nrt",
             "ae_trn",
             "eu_vat",
             "au_abn",

@@ -32,6 +32,7 @@ class TestCredits:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit = client.customers.credits.list(
             "string",
+            currency="string",
             cursor="string",
             limit=0,
         )
@@ -57,6 +58,7 @@ class TestCredits:
     def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
         credit = client.customers.credits.list_by_external_id(
             "string",
+            currency="string",
             cursor="string",
             limit=0,
         )
@@ -88,6 +90,7 @@ class TestAsyncCredits:
     async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
         credit = await client.customers.credits.list(
             "string",
+            currency="string",
             cursor="string",
             limit=0,
         )
@@ -113,6 +116,7 @@ class TestAsyncCredits:
     async def test_method_list_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
         credit = await client.customers.credits.list_by_external_id(
             "string",
+            currency="string",
             cursor="string",
             limit=0,
         )

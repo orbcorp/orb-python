@@ -55,6 +55,8 @@ class IncrementLedgerEntry(BaseModel):
 
     credit_block: IncrementLedgerEntryCreditBlock
 
+    currency: str
+
     customer: IncrementLedgerEntryCustomer
 
     description: Optional[str]
@@ -100,6 +102,8 @@ class DecrementLedgerEntry(BaseModel):
     created_at: datetime
 
     credit_block: DecrementLedgerEntryCreditBlock
+
+    currency: str
 
     customer: DecrementLedgerEntryCustomer
 
@@ -153,6 +157,8 @@ class ExpirationChangeLedgerEntry(BaseModel):
 
     credit_block: ExpirationChangeLedgerEntryCreditBlock
 
+    currency: str
+
     customer: ExpirationChangeLedgerEntryCustomer
 
     description: Optional[str]
@@ -201,6 +207,8 @@ class CreditBlockExpiryLedgerEntry(BaseModel):
 
     credit_block: CreditBlockExpiryLedgerEntryCreditBlock
 
+    currency: str
+
     customer: CreditBlockExpiryLedgerEntryCustomer
 
     description: Optional[str]
@@ -246,6 +254,8 @@ class VoidLedgerEntry(BaseModel):
     created_at: datetime
 
     credit_block: VoidLedgerEntryCreditBlock
+
+    currency: str
 
     customer: VoidLedgerEntryCustomer
 
@@ -296,6 +306,8 @@ class VoidInitiatedLedgerEntry(BaseModel):
     created_at: datetime
 
     credit_block: VoidInitiatedLedgerEntryCreditBlock
+
+    currency: str
 
     customer: VoidInitiatedLedgerEntryCustomer
 
@@ -348,6 +360,8 @@ class AmendmentLedgerEntry(BaseModel):
     created_at: datetime
 
     credit_block: AmendmentLedgerEntryCreditBlock
+
+    currency: str
 
     customer: AmendmentLedgerEntryCustomer
 

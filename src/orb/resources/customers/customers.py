@@ -139,6 +139,7 @@ class Customers(SyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -336,6 +337,7 @@ class Customers(SyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -712,6 +714,7 @@ class Customers(SyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -929,6 +932,7 @@ class AsyncCustomers(AsyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -1126,6 +1130,7 @@ class AsyncCustomers(AsyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
@@ -1502,6 +1507,7 @@ class AsyncCustomers(AsyncAPIResource):
 
               | Country              | Type         | Description                                                                                             |
               | -------------------- | ------------ | ------------------------------------------------------------------------------------------------------- |
+              | Andorra              | `ad_nrt`     | Andorran NRT number                                                                                     |
               | Australia            | `au_abn`     | Australian Business Number (AU ABN)                                                                     |
               | Australia            | `au_arn`     | Australian Taxation Office Reference Number                                                             |
               | Austria              | `eu_vat`     | European VAT number                                                                                     |
