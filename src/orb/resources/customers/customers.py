@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -27,6 +27,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -34,6 +35,7 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from .credits.credits import Credits, AsyncCredits
 from .balance_transactions import (
     BalanceTransactions,
     AsyncBalanceTransactions,
@@ -41,26 +43,29 @@ from .balance_transactions import (
     AsyncBalanceTransactionsWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Customers", "AsyncCustomers"]
 
 
 class Customers(SyncAPIResource):
-    costs: Costs
-    usage: Usage
-    credits: Credits
-    balance_transactions: BalanceTransactions
-    with_raw_response: CustomersWithRawResponse
+    @cached_property
+    def costs(self) -> Costs:
+        return Costs(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.costs = Costs(client)
-        self.usage = Usage(client)
-        self.credits = Credits(client)
-        self.balance_transactions = BalanceTransactions(client)
-        self.with_raw_response = CustomersWithRawResponse(self)
+    @cached_property
+    def usage(self) -> Usage:
+        return Usage(self._client)
+
+    @cached_property
+    def credits(self) -> Credits:
+        return Credits(self._client)
+
+    @cached_property
+    def balance_transactions(self) -> BalanceTransactions:
+        return BalanceTransactions(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> CustomersWithRawResponse:
+        return CustomersWithRawResponse(self)
 
     def create(
         self,
@@ -841,19 +846,25 @@ class Customers(SyncAPIResource):
 
 
 class AsyncCustomers(AsyncAPIResource):
-    costs: AsyncCosts
-    usage: AsyncUsage
-    credits: AsyncCredits
-    balance_transactions: AsyncBalanceTransactions
-    with_raw_response: AsyncCustomersWithRawResponse
+    @cached_property
+    def costs(self) -> AsyncCosts:
+        return AsyncCosts(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.costs = AsyncCosts(client)
-        self.usage = AsyncUsage(client)
-        self.credits = AsyncCredits(client)
-        self.balance_transactions = AsyncBalanceTransactions(client)
-        self.with_raw_response = AsyncCustomersWithRawResponse(self)
+    @cached_property
+    def usage(self) -> AsyncUsage:
+        return AsyncUsage(self._client)
+
+    @cached_property
+    def credits(self) -> AsyncCredits:
+        return AsyncCredits(self._client)
+
+    @cached_property
+    def balance_transactions(self) -> AsyncBalanceTransactions:
+        return AsyncBalanceTransactions(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncCustomersWithRawResponse:
+        return AsyncCustomersWithRawResponse(self)
 
     async def create(
         self,

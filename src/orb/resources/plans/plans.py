@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -17,6 +17,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -31,20 +32,17 @@ from .external_plan_id import (
     AsyncExternalPlanIDWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Plans", "AsyncPlans"]
 
 
 class Plans(SyncAPIResource):
-    external_plan_id: ExternalPlanID
-    with_raw_response: PlansWithRawResponse
+    @cached_property
+    def external_plan_id(self) -> ExternalPlanID:
+        return ExternalPlanID(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.external_plan_id = ExternalPlanID(client)
-        self.with_raw_response = PlansWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> PlansWithRawResponse:
+        return PlansWithRawResponse(self)
 
     def create(
         self,
@@ -289,13 +287,13 @@ class Plans(SyncAPIResource):
 
 
 class AsyncPlans(AsyncAPIResource):
-    external_plan_id: AsyncExternalPlanID
-    with_raw_response: AsyncPlansWithRawResponse
+    @cached_property
+    def external_plan_id(self) -> AsyncExternalPlanID:
+        return AsyncExternalPlanID(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.external_plan_id = AsyncExternalPlanID(client)
-        self.with_raw_response = AsyncPlansWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncPlansWithRawResponse:
+        return AsyncPlansWithRawResponse(self)
 
     async def create(
         self,

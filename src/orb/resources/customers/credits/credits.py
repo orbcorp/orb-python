@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import httpx
 
@@ -15,6 +15,7 @@ from ...._types import (
     NotGiven,
 )
 from ...._utils import maybe_transform
+from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncPage, AsyncPage
@@ -29,20 +30,17 @@ from ....types.customers import (
     credit_list_by_external_id_params,
 )
 
-if TYPE_CHECKING:
-    from ...._client import Orb, AsyncOrb
-
 __all__ = ["Credits", "AsyncCredits"]
 
 
 class Credits(SyncAPIResource):
-    ledger: Ledger
-    with_raw_response: CreditsWithRawResponse
+    @cached_property
+    def ledger(self) -> Ledger:
+        return Ledger(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.ledger = Ledger(client)
-        self.with_raw_response = CreditsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CreditsWithRawResponse:
+        return CreditsWithRawResponse(self)
 
     def list(
         self,
@@ -152,13 +150,13 @@ class Credits(SyncAPIResource):
 
 
 class AsyncCredits(AsyncAPIResource):
-    ledger: AsyncLedger
-    with_raw_response: AsyncCreditsWithRawResponse
+    @cached_property
+    def ledger(self) -> AsyncLedger:
+        return AsyncLedger(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.ledger = AsyncLedger(client)
-        self.with_raw_response = AsyncCreditsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCreditsWithRawResponse:
+        return AsyncCreditsWithRawResponse(self)
 
     def list(
         self,
