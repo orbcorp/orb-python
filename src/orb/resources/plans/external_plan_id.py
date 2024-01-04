@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import Dict, Optional
 
 import httpx
 
@@ -15,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...types.plans import external_plan_id_update_params
@@ -22,18 +23,13 @@ from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
 
 class ExternalPlanID(SyncAPIResource):
-    with_raw_response: ExternalPlanIDWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = ExternalPlanIDWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
+        return ExternalPlanIDWithRawResponse(self)
 
     def update(
         self,
@@ -145,11 +141,9 @@ class ExternalPlanID(SyncAPIResource):
 
 
 class AsyncExternalPlanID(AsyncAPIResource):
-    with_raw_response: AsyncExternalPlanIDWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncExternalPlanIDWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
+        return AsyncExternalPlanIDWithRawResponse(self)
 
     async def update(
         self,

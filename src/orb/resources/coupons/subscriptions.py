@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import httpx
 
@@ -15,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -24,18 +25,13 @@ from ..._base_client import (
 )
 from ...types.coupons import subscription_list_params
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
 
 class Subscriptions(SyncAPIResource):
-    with_raw_response: SubscriptionsWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = SubscriptionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> SubscriptionsWithRawResponse:
+        return SubscriptionsWithRawResponse(self)
 
     def list(
         self,
@@ -91,11 +87,9 @@ class Subscriptions(SyncAPIResource):
 
 
 class AsyncSubscriptions(AsyncAPIResource):
-    with_raw_response: AsyncSubscriptionsWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncSubscriptionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncSubscriptionsWithRawResponse:
+        return AsyncSubscriptionsWithRawResponse(self)
 
     def list(
         self,

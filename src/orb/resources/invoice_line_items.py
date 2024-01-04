@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union
+from typing import Union
 from datetime import date
 
 import httpx
 
-from ..types import (
-    InvoiceLineItemCreateResponse,
-    invoice_line_item_create_params,
-)
+from ..types import InvoiceLineItemCreateResponse, invoice_line_item_create_params
 from .._types import (
     NOT_GIVEN,
     Body,
@@ -19,24 +16,20 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Orb, AsyncOrb
-
 __all__ = ["InvoiceLineItems", "AsyncInvoiceLineItems"]
 
 
 class InvoiceLineItems(SyncAPIResource):
-    with_raw_response: InvoiceLineItemsWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = InvoiceLineItemsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> InvoiceLineItemsWithRawResponse:
+        return InvoiceLineItemsWithRawResponse(self)
 
     def create(
         self,
@@ -109,11 +102,9 @@ class InvoiceLineItems(SyncAPIResource):
 
 
 class AsyncInvoiceLineItems(AsyncAPIResource):
-    with_raw_response: AsyncInvoiceLineItemsWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncInvoiceLineItemsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncInvoiceLineItemsWithRawResponse:
+        return AsyncInvoiceLineItemsWithRawResponse(self)
 
     async def create(
         self,
