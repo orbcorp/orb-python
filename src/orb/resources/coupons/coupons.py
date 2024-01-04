@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import httpx
 
@@ -15,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -29,20 +30,17 @@ from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Coupons", "AsyncCoupons"]
 
 
 class Coupons(SyncAPIResource):
-    subscriptions: Subscriptions
-    with_raw_response: CouponsWithRawResponse
+    @cached_property
+    def subscriptions(self) -> Subscriptions:
+        return Subscriptions(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.subscriptions = Subscriptions(client)
-        self.with_raw_response = CouponsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CouponsWithRawResponse:
+        return CouponsWithRawResponse(self)
 
     def create(
         self,
@@ -242,13 +240,13 @@ class Coupons(SyncAPIResource):
 
 
 class AsyncCoupons(AsyncAPIResource):
-    subscriptions: AsyncSubscriptions
-    with_raw_response: AsyncCouponsWithRawResponse
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptions:
+        return AsyncSubscriptions(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.subscriptions = AsyncSubscriptions(client)
-        self.with_raw_response = AsyncCouponsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCouponsWithRawResponse:
+        return AsyncCouponsWithRawResponse(self)
 
     async def create(
         self,

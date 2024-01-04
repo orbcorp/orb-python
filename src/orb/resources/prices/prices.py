@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Dict, Optional, cast, overload
+from typing import Any, Dict, Optional, cast, overload
 from typing_extensions import Literal
 
 import httpx
@@ -16,6 +16,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import required_args, maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -30,20 +31,17 @@ from .external_price_id import (
     AsyncExternalPriceIDWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Prices", "AsyncPrices"]
 
 
 class Prices(SyncAPIResource):
-    external_price_id: ExternalPriceID
-    with_raw_response: PricesWithRawResponse
+    @cached_property
+    def external_price_id(self) -> ExternalPriceID:
+        return ExternalPriceID(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.external_price_id = ExternalPriceID(client)
-        self.with_raw_response = PricesWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> PricesWithRawResponse:
+        return PricesWithRawResponse(self)
 
     @overload
     def create(
@@ -1070,13 +1068,13 @@ class Prices(SyncAPIResource):
 
 
 class AsyncPrices(AsyncAPIResource):
-    external_price_id: AsyncExternalPriceID
-    with_raw_response: AsyncPricesWithRawResponse
+    @cached_property
+    def external_price_id(self) -> AsyncExternalPriceID:
+        return AsyncExternalPriceID(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.external_price_id = AsyncExternalPriceID(client)
-        self.with_raw_response = AsyncPricesWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncPricesWithRawResponse:
+        return AsyncPricesWithRawResponse(self)
 
     @overload
     async def create(

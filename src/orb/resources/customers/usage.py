@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
 
 import httpx
@@ -15,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -27,18 +28,13 @@ from ...types.customers import (
     usage_update_by_external_id_params,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Usage", "AsyncUsage"]
 
 
 class Usage(SyncAPIResource):
-    with_raw_response: UsageWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = UsageWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> UsageWithRawResponse:
+        return UsageWithRawResponse(self)
 
     def update(
         self,
@@ -344,11 +340,9 @@ class Usage(SyncAPIResource):
 
 
 class AsyncUsage(AsyncAPIResource):
-    with_raw_response: AsyncUsageWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncUsageWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncUsageWithRawResponse:
+        return AsyncUsageWithRawResponse(self)
 
     async def update(
         self,
