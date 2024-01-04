@@ -50,7 +50,7 @@ class Minimum(BaseModel):
 class SubLineItemMatrixSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
@@ -63,7 +63,7 @@ class SubLineItemMatrixSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[SubLineItemMatrixSubLineItemGrouping]
+    grouping: Optional[SubLineItemMatrixSubLineItemGrouping] = None
 
     matrix_config: SubLineItemMatrixSubLineItemMatrixConfig
 
@@ -77,14 +77,14 @@ class SubLineItemMatrixSubLineItem(BaseModel):
 class SubLineItemTierSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
 class SubLineItemTierSubLineItemTierConfig(BaseModel):
     first_unit: float
 
-    last_unit: Optional[float]
+    last_unit: Optional[float] = None
 
     unit_amount: str
 
@@ -93,7 +93,7 @@ class SubLineItemTierSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[SubLineItemTierSubLineItemGrouping]
+    grouping: Optional[SubLineItemTierSubLineItemGrouping] = None
 
     name: str
 
@@ -107,7 +107,7 @@ class SubLineItemTierSubLineItem(BaseModel):
 class SubLineItemOtherSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
@@ -115,7 +115,7 @@ class SubLineItemOtherSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[SubLineItemOtherSubLineItemGrouping]
+    grouping: Optional[SubLineItemOtherSubLineItemGrouping] = None
 
     name: str
 
@@ -134,7 +134,7 @@ class TaxAmount(BaseModel):
     tax_rate_description: str
     """The human-readable description of the applied tax rate."""
 
-    tax_rate_percentage: Optional[str]
+    tax_rate_percentage: Optional[str] = None
     """The tax rate percentage, out of 100."""
 
 
@@ -145,30 +145,30 @@ class InvoiceLineItemCreateResponse(BaseModel):
     amount: str
     """The final amount after any discounts or minimums."""
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
 
-    grouping: Optional[str]
+    grouping: Optional[str] = None
     """
     [DEPRECATED] For configured prices that are split by a grouping key, this will
     be populated with the key and a value. The `amount` and `subtotal` will be the
     values for this particular grouping.
     """
 
-    maximum: Optional[Maximum]
+    maximum: Optional[Maximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[Minimum]
+    minimum: Optional[Minimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     name: str
     """The name of the price associated with this line item."""
 
-    price: Optional[Price]
+    price: Optional[Price] = None
     """
     The Price resource represents a price that can be billed on a subscription,
     resulting in a charge on an invoice in the form of an invoice line item. Prices

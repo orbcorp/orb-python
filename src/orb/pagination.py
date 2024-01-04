@@ -13,7 +13,7 @@ __all__ = ["PagePaginationMetadata", "SyncPage", "AsyncPage"]
 class PagePaginationMetadata(BaseModel):
     has_more: bool
 
-    next_cursor: Optional[str]
+    next_cursor: Optional[str] = None
 
 
 class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):

@@ -40,9 +40,9 @@ class BalanceTransactionListResponse(BaseModel):
     created_at: datetime
     """The creation time of this transaction."""
 
-    credit_note: Optional[CreditNote]
+    credit_note: Optional[CreditNote] = None
 
-    description: Optional[str]
+    description: Optional[str] = None
     """An optional description provided for manual customer balance adjustments."""
 
     ending_balance: str
@@ -51,7 +51,7 @@ class BalanceTransactionListResponse(BaseModel):
     customer's currency.
     """
 
-    invoice: Optional[Invoice]
+    invoice: Optional[Invoice] = None
 
     starting_balance: str
     """
