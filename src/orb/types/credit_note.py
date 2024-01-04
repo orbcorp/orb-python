@@ -23,7 +23,7 @@ __all__ = [
 class Customer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class DiscountAppliesToPrice(BaseModel):
@@ -65,7 +65,7 @@ class LineItemSubLineItem(BaseModel):
 
     name: str
 
-    quantity: Optional[float]
+    quantity: Optional[float] = None
 
 
 class LineItemTaxAmount(BaseModel):
@@ -75,7 +75,7 @@ class LineItemTaxAmount(BaseModel):
     tax_rate_description: str
     """The human-readable description of the applied tax rate."""
 
-    tax_rate_percentage: Optional[str]
+    tax_rate_percentage: Optional[str] = None
     """The tax rate percentage, out of 100."""
 
 
@@ -92,7 +92,7 @@ class LineItem(BaseModel):
     name: str
     """The name of the corresponding invoice line item."""
 
-    quantity: Optional[float]
+    quantity: Optional[float] = None
     """An optional quantity credited."""
 
     sub_line_items: List[LineItemSubLineItem]
@@ -133,7 +133,7 @@ class CreditNote(BaseModel):
     credit_note_number: str
     """The unique identifier for credit notes."""
 
-    credit_note_pdf: Optional[str]
+    credit_note_pdf: Optional[str] = None
     """A URL to a PDF of the credit note."""
 
     customer: Customer
@@ -147,16 +147,16 @@ class CreditNote(BaseModel):
     line_items: List[LineItem]
     """All of the line items associated with this credit note."""
 
-    maximum_amount_adjustment: Optional[MaximumAmountAdjustment]
+    maximum_amount_adjustment: Optional[MaximumAmountAdjustment] = None
     """The maximum amount applied on the original invoice"""
 
-    memo: Optional[str]
+    memo: Optional[str] = None
     """An optional memo supplied on the credit note."""
 
-    minimum_amount_refunded: Optional[str]
+    minimum_amount_refunded: Optional[str] = None
     """Any credited amount from the applied minimum on the invoice."""
 
-    reason: Optional[Literal["Duplicate", "Fraudulent", "Order change", "Product unsatisfactory"]]
+    reason: Optional[Literal["Duplicate", "Fraudulent", "Order change", "Product unsatisfactory"]] = None
 
     subtotal: str
     """The total prior to any creditable invoice-level discounts or minimums."""
@@ -166,5 +166,5 @@ class CreditNote(BaseModel):
 
     type: Literal["refund", "adjustment"]
 
-    voided_at: Optional[datetime]
+    voided_at: Optional[datetime] = None
     """The time at which the credit note was voided in Orb, if applicable."""
