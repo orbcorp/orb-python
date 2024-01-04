@@ -12,7 +12,7 @@ __all__ = ["MetricListResponse"]
 class MetricListResponse(BaseModel):
     id: str
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     item: Item
     """The Item resource represents a sellable product or good.

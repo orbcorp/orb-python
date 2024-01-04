@@ -37,7 +37,7 @@ class DiscountIntervalAmountDiscountInterval(BaseModel):
 
     discount_type: Literal["amount"]
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the discount interval."""
 
     start_date: datetime
@@ -53,7 +53,7 @@ class DiscountIntervalPercentageDiscountInterval(BaseModel):
 
     discount_type: Literal["percentage"]
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the discount interval."""
 
     percentage_discount: float
@@ -75,7 +75,7 @@ class DiscountIntervalUsageDiscountInterval(BaseModel):
 
     discount_type: Literal["usage"]
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the discount interval."""
 
     start_date: datetime
@@ -96,7 +96,7 @@ DiscountInterval = Union[
 
 
 class FixedFeeQuantitySchedule(BaseModel):
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
 
     price_id: str
 
@@ -112,7 +112,7 @@ class MaximumInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this maximum interval applies to."""
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the maximum interval."""
 
     maximum_amount: str
@@ -132,7 +132,7 @@ class MinimumInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this minimum interval applies to."""
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the minimum interval."""
 
     minimum_amount: str
@@ -159,7 +159,7 @@ class PriceInterval(BaseModel):
     billing_cycle_day: int
     """The day of the month that Orb bills for this price"""
 
-    current_billing_period_end_date: Optional[datetime]
+    current_billing_period_end_date: Optional[datetime] = None
     """The end of the current billing period.
 
     This is an exclusive timestamp, such that the instant returned is exactly the
@@ -167,20 +167,20 @@ class PriceInterval(BaseModel):
     active.
     """
 
-    current_billing_period_start_date: Optional[datetime]
+    current_billing_period_start_date: Optional[datetime] = None
     """The start date of the current billing period.
 
     This is an inclusive timestamp; the instant returned is exactly the beginning of
     the billing period. Set to null if this price interval is not currently active.
     """
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The end date of the price interval.
 
     This is the date that Orb stops billing for this price.
     """
 
-    fixed_fee_quantity_transitions: Optional[List[PriceIntervalFixedFeeQuantityTransition]]
+    fixed_fee_quantity_transitions: Optional[List[PriceIntervalFixedFeeQuantityTransition]] = None
     """The fixed fee quantity transitions for this price interval.
 
     This is only relevant for fixed fees.
@@ -431,25 +431,25 @@ class PriceInterval(BaseModel):
 class RedeemedCoupon(BaseModel):
     coupon_id: str
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
 
     start_date: datetime
 
 
 class TrialInfo(BaseModel):
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
 
 
 class Subscription(BaseModel):
     id: str
 
-    active_plan_phase_order: Optional[int]
+    active_plan_phase_order: Optional[int] = None
     """
     The current plan phase that is active, only if the subscription's plan has
     phases.
     """
 
-    auto_collection: Optional[bool]
+    auto_collection: Optional[bool] = None
     """
     Determines whether issued invoices for this subscription will automatically be
     charged with the saved payment method on the due date. This property defaults to
@@ -466,14 +466,14 @@ class Subscription(BaseModel):
 
     created_at: datetime
 
-    current_billing_period_end_date: Optional[datetime]
+    current_billing_period_end_date: Optional[datetime] = None
     """The end of the current billing period.
 
     This is an exclusive timestamp, such that the instant returned is not part of
     the billing period. Set to null for subscriptions that are not currently active.
     """
 
-    current_billing_period_start_date: Optional[datetime]
+    current_billing_period_start_date: Optional[datetime] = None
     """The start date of the current billing period.
 
     This is an inclusive timestamp; the instant returned is exactly the beginning of
@@ -503,7 +503,7 @@ class Subscription(BaseModel):
     on what this timezone parameter influences within Orb.
     """
 
-    default_invoice_memo: Optional[str]
+    default_invoice_memo: Optional[str] = None
     """Determines the default memo on this subscriptions' invoices.
 
     Note that if this is not provided, it is determined by the plan configuration.
@@ -512,12 +512,12 @@ class Subscription(BaseModel):
     discount_intervals: List[DiscountInterval]
     """The discount intervals for this subscription."""
 
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
     """The date Orb stops billing for this subscription."""
 
     fixed_fee_quantity_schedule: List[FixedFeeQuantitySchedule]
 
-    invoicing_threshold: Optional[str]
+    invoicing_threshold: Optional[str] = None
 
     maximum_intervals: List[MaximumInterval]
     """The maximum intervals for this subscription."""
@@ -552,7 +552,7 @@ class Subscription(BaseModel):
     price_intervals: List[PriceInterval]
     """The price intervals for this subscription."""
 
-    redeemed_coupon: Optional[RedeemedCoupon]
+    redeemed_coupon: Optional[RedeemedCoupon] = None
 
     start_date: datetime
     """The date Orb starts billing for this subscription."""

@@ -9,20 +9,20 @@ __all__ = ["SubscriptionFetchScheduleResponse", "Plan"]
 
 
 class Plan(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
 
-    external_plan_id: Optional[str]
+    external_plan_id: Optional[str] = None
     """
     An optional user-defined ID for this plan resource, used throughout the system
     as an alias for this Plan. Use this field to identify a plan by an existing
     identifier in your system.
     """
 
-    name: Optional[str]
+    name: Optional[str] = None
 
 
 class SubscriptionFetchScheduleResponse(BaseModel):
-    end_date: Optional[datetime]
+    end_date: Optional[datetime] = None
 
     plan: Plan
 
