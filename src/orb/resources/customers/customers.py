@@ -18,14 +18,7 @@ from ...types import (
     customer_update_by_external_id_params,
 )
 from .credits import Credits, AsyncCredits, CreditsWithRawResponse, AsyncCreditsWithRawResponse
-from ..._types import (
-    NOT_GIVEN,
-    Body,
-    Query,
-    Headers,
-    NoneType,
-    NotGiven,
-)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
