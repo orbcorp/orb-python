@@ -25,13 +25,7 @@ from ..types import (
     subscription_update_fixed_fee_quantity_params,
     subscription_unschedule_fixed_fee_quantity_updates_params,
 )
-from .._types import (
-    NOT_GIVEN,
-    Body,
-    Query,
-    Headers,
-    NotGiven,
-)
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
