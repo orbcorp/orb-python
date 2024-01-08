@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.37.0 (2024-01-08)
+
+Full Changelog: [v1.36.0...v1.37.0](https://github.com/orbcorp/orb-python/compare/v1.36.0...v1.37.0)
+
+### Features
+
+* add `None` default value to nullable response properties ([#123](https://github.com/orbcorp/orb-python/issues/123)) ([823f95c](https://github.com/orbcorp/orb-python/commit/823f95c2b504524de1bc65e00ca088d2552fad7b))
+
+
+### Chores
+
+* **internal:** loosen type var restrictions ([#125](https://github.com/orbcorp/orb-python/issues/125)) ([60a2816](https://github.com/orbcorp/orb-python/commit/60a28169d5912c1a76f128c02012c062f507cb1f))
+* **internal:** replace isort with ruff ([#121](https://github.com/orbcorp/orb-python/issues/121)) ([42b60df](https://github.com/orbcorp/orb-python/commit/42b60dfa929e6806fbddf6138af4df5a1557f2d7))
+* use property declarations for resource members ([#124](https://github.com/orbcorp/orb-python/issues/124)) ([b60f5a8](https://github.com/orbcorp/orb-python/commit/b60f5a8a44687083c627d284fe3f7c105a3bbb84))
+
 ## 1.36.0 (2024-01-01)
 
 Full Changelog: [v1.35.2...v1.36.0](https://github.com/orbcorp/orb-python/compare/v1.35.2...v1.36.0)
