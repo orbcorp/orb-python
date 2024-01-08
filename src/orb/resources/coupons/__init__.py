@@ -1,11 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .coupons import (
-    Coupons,
-    AsyncCoupons,
-    CouponsWithRawResponse,
-    AsyncCouponsWithRawResponse,
-)
+from .coupons import Coupons, AsyncCoupons, CouponsWithRawResponse, AsyncCouponsWithRawResponse
 from .subscriptions import (
     Subscriptions,
     AsyncSubscriptions,

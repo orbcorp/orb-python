@@ -12,7 +12,7 @@ __all__ = ["BackfillFetchResponse"]
 class BackfillFetchResponse(BaseModel):
     id: str
 
-    close_time: Optional[datetime]
+    close_time: Optional[datetime] = None
     """If in the future, the time at which the backfill will automatically close.
 
     If in the past, the time at which the backfill was closed.
@@ -20,13 +20,13 @@ class BackfillFetchResponse(BaseModel):
 
     created_at: datetime
 
-    customer_id: Optional[str]
+    customer_id: Optional[str] = None
     """The customer ID this backfill is scoped to.
 
     If null, this backfill is not scoped to a single customer.
     """
 
-    reverted_at: Optional[datetime]
+    reverted_at: Optional[datetime] = None
     """The time at which this backfill was reverted."""
 
     status: Literal["pending", "reflected", "pending_revert", "reverted"]

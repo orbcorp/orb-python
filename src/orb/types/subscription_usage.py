@@ -80,7 +80,7 @@ class GroupedSubscriptionUsageData(BaseModel):
 class GroupedSubscriptionUsagePaginationMetadata(BaseModel):
     has_more: bool
 
-    next_cursor: Optional[str]
+    next_cursor: Optional[str] = None
 
 
 class GroupedSubscriptionUsage(BaseModel):

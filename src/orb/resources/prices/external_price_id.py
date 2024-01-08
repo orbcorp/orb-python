@@ -2,28 +2,26 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, cast
+from typing import Any, cast
 
 import httpx
 
 from ...types import Price
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
-
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
+from ..._base_client import (
+    make_request_options,
+)
 
 __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 
 
 class ExternalPriceID(SyncAPIResource):
-    with_raw_response: ExternalPriceIDWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = ExternalPriceIDWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ExternalPriceIDWithRawResponse:
+        return ExternalPriceIDWithRawResponse(self)
 
     def fetch(
         self,
@@ -64,11 +62,9 @@ class ExternalPriceID(SyncAPIResource):
 
 
 class AsyncExternalPriceID(AsyncAPIResource):
-    with_raw_response: AsyncExternalPriceIDWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncExternalPriceIDWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncExternalPriceIDWithRawResponse:
+        return AsyncExternalPriceIDWithRawResponse(self)
 
     async def fetch(
         self,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
 
 import httpx
@@ -18,30 +18,25 @@ from ...types import (
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
-from .backfills import (
-    Backfills,
-    AsyncBackfills,
-    BackfillsWithRawResponse,
-    AsyncBackfillsWithRawResponse,
-)
+from ..._compat import cached_property
+from .backfills import Backfills, AsyncBackfills, BackfillsWithRawResponse, AsyncBackfillsWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
-
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
+from ..._base_client import (
+    make_request_options,
+)
 
 __all__ = ["Events", "AsyncEvents"]
 
 
 class Events(SyncAPIResource):
-    backfills: Backfills
-    with_raw_response: EventsWithRawResponse
+    @cached_property
+    def backfills(self) -> Backfills:
+        return Backfills(self._client)
 
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.backfills = Backfills(client)
-        self.with_raw_response = EventsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> EventsWithRawResponse:
+        return EventsWithRawResponse(self)
 
     def update(
         self,
@@ -552,13 +547,13 @@ class Events(SyncAPIResource):
 
 
 class AsyncEvents(AsyncAPIResource):
-    backfills: AsyncBackfills
-    with_raw_response: AsyncEventsWithRawResponse
+    @cached_property
+    def backfills(self) -> AsyncBackfills:
+        return AsyncBackfills(self._client)
 
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.backfills = AsyncBackfills(client)
-        self.with_raw_response = AsyncEventsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncEventsWithRawResponse:
+        return AsyncEventsWithRawResponse(self)
 
     async def update(
         self,

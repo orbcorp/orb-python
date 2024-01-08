@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Dict, Union, Optional, cast, overload
+from typing import Any, Dict, Union, Optional, cast, overload
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -10,10 +10,14 @@ import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import required_args, maybe_transform
+from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncPage, AsyncPage
-from ...._base_client import AsyncPaginator, make_request_options
+from ...._base_client import (
+    AsyncPaginator,
+    make_request_options,
+)
 from ....types.customers.credits import (
     LedgerListResponse,
     LedgerCreateEntryResponse,
@@ -25,18 +29,13 @@ from ....types.customers.credits import (
     ledger_create_entry_by_external_id_params,
 )
 
-if TYPE_CHECKING:
-    from ...._client import Orb, AsyncOrb
-
 __all__ = ["Ledger", "AsyncLedger"]
 
 
 class Ledger(SyncAPIResource):
-    with_raw_response: LedgerWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = LedgerWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> LedgerWithRawResponse:
+        return LedgerWithRawResponse(self)
 
     def list(
         self,
@@ -2144,11 +2143,9 @@ class Ledger(SyncAPIResource):
 
 
 class AsyncLedger(AsyncAPIResource):
-    with_raw_response: AsyncLedgerWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncLedgerWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncLedgerWithRawResponse:
+        return AsyncLedgerWithRawResponse(self)
 
     def list(
         self,

@@ -2,6 +2,4 @@
 
 from __future__ import annotations
 
-from .external_plan_id_update_params import (
-    ExternalPlanIDUpdateParams as ExternalPlanIDUpdateParams,
-)
+from .external_plan_id_update_params import ExternalPlanIDUpdateParams as ExternalPlanIDUpdateParams

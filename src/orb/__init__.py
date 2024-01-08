@@ -3,17 +3,7 @@
 from . import types
 from ._types import NoneType, Transport, ProxiesTypes
 from ._utils import file_from_path
-from ._client import (
-    Orb,
-    Client,
-    Stream,
-    Timeout,
-    AsyncOrb,
-    Transport,
-    AsyncClient,
-    AsyncStream,
-    RequestOptions,
-)
+from ._client import Orb, Client, Stream, Timeout, AsyncOrb, Transport, AsyncClient, AsyncStream, RequestOptions
 from ._version import __title__, __version__
 from ._exceptions import (
     APIError,

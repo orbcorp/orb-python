@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union, Optional
+from typing import Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -10,10 +10,14 @@ import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ..._base_client import AsyncPaginator, make_request_options
+from ..._base_client import (
+    AsyncPaginator,
+    make_request_options,
+)
 from ...types.customers import (
     BalanceTransactionListResponse,
     BalanceTransactionCreateResponse,
@@ -21,18 +25,13 @@ from ...types.customers import (
     balance_transaction_create_params,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["BalanceTransactions", "AsyncBalanceTransactions"]
 
 
 class BalanceTransactions(SyncAPIResource):
-    with_raw_response: BalanceTransactionsWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = BalanceTransactionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> BalanceTransactionsWithRawResponse:
+        return BalanceTransactionsWithRawResponse(self)
 
     def create(
         self,
@@ -172,11 +171,9 @@ class BalanceTransactions(SyncAPIResource):
 
 
 class AsyncBalanceTransactions(AsyncAPIResource):
-    with_raw_response: AsyncBalanceTransactionsWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncBalanceTransactionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncBalanceTransactionsWithRawResponse:
+        return AsyncBalanceTransactionsWithRawResponse(self)
 
     async def create(
         self,

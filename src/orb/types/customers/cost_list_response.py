@@ -13,12 +13,12 @@ class DataPerPriceCostPriceGroup(BaseModel):
     grouping_key: str
     """Grouping key to break down a single price's costs"""
 
-    grouping_value: Optional[str]
+    grouping_value: Optional[str] = None
 
-    secondary_grouping_key: Optional[str]
+    secondary_grouping_key: Optional[str] = None
     """If the price is a matrix price, this is the second dimension key"""
 
-    secondary_grouping_value: Optional[str]
+    secondary_grouping_value: Optional[str] = None
 
     total: str
     """Total costs for this group for the timeframe.

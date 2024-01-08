@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Union, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 
 import httpx
@@ -16,23 +16,22 @@ from ..types import (
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
-
-if TYPE_CHECKING:
-    from .._client import Orb, AsyncOrb
+from .._base_client import (
+    AsyncPaginator,
+    make_request_options,
+)
 
 __all__ = ["Metrics", "AsyncMetrics"]
 
 
 class Metrics(SyncAPIResource):
-    with_raw_response: MetricsWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = MetricsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> MetricsWithRawResponse:
+        return MetricsWithRawResponse(self)
 
     def create(
         self,
@@ -194,11 +193,9 @@ class Metrics(SyncAPIResource):
 
 
 class AsyncMetrics(AsyncAPIResource):
-    with_raw_response: AsyncMetricsWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncMetricsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncMetricsWithRawResponse:
+        return AsyncMetricsWithRawResponse(self)
 
     async def create(
         self,

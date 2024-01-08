@@ -18,31 +18,31 @@ __all__ = [
 
 
 class BillingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
 
-    country: Optional[str]
+    country: Optional[str] = None
 
-    line1: Optional[str]
+    line1: Optional[str] = None
 
-    line2: Optional[str]
+    line2: Optional[str] = None
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
 
-    state: Optional[str]
+    state: Optional[str] = None
 
 
 class ShippingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
 
-    country: Optional[str]
+    country: Optional[str] = None
 
-    line1: Optional[str]
+    line1: Optional[str] = None
 
-    line2: Optional[str]
+    line2: Optional[str] = None
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
 
-    state: Optional[str]
+    state: Optional[str] = None
 
 
 class TaxID(BaseModel):
@@ -169,7 +169,7 @@ class TaxID(BaseModel):
 
 
 class AccountingSyncConfigurationAccountingProvider(BaseModel):
-    external_provider_id: Optional[str]
+    external_provider_id: Optional[str] = None
 
     provider_type: Literal["quickbooks", "netsuite"]
 
@@ -194,11 +194,11 @@ class Customer(BaseModel):
     balance: str
     """The customer's current balance in their currency."""
 
-    billing_address: Optional[BillingAddress]
+    billing_address: Optional[BillingAddress] = None
 
     created_at: datetime
 
-    currency: Optional[str]
+    currency: Optional[str] = None
 
     email: str
     """A valid customer email, to be used for notifications.
@@ -209,7 +209,7 @@ class Customer(BaseModel):
 
     email_delivery: bool
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
     """
     An optional user-defined ID for this customer resource, used throughout the
     system as an alias for this Customer. Use this field to identify a customer by
@@ -227,24 +227,24 @@ class Customer(BaseModel):
     name: str
     """The full name of the customer"""
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]] = None
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
     webapp.
     """
 
-    payment_provider_id: Optional[str]
+    payment_provider_id: Optional[str] = None
     """The ID of this customer in an external payments solution, such as Stripe.
 
     This is used for creating charges or invoices in the external system via Orb.
     """
 
-    portal_url: Optional[str]
+    portal_url: Optional[str] = None
 
-    shipping_address: Optional[ShippingAddress]
+    shipping_address: Optional[ShippingAddress] = None
 
-    tax_id: Optional[TaxID]
+    tax_id: Optional[TaxID] = None
     """
     Tax IDs are commonly required to be displayed on customer invoices, which are
     added to the headers of invoices.

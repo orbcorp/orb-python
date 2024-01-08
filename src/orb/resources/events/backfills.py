@@ -2,17 +2,21 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union, Optional
+from typing import Union, Optional
 from datetime import datetime
 
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ..._base_client import AsyncPaginator, make_request_options
+from ..._base_client import (
+    AsyncPaginator,
+    make_request_options,
+)
 from ...types.events import (
     BackfillListResponse,
     BackfillCloseResponse,
@@ -23,18 +27,13 @@ from ...types.events import (
     backfill_create_params,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Orb, AsyncOrb
-
 __all__ = ["Backfills", "AsyncBackfills"]
 
 
 class Backfills(SyncAPIResource):
-    with_raw_response: BackfillsWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = BackfillsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> BackfillsWithRawResponse:
+        return BackfillsWithRawResponse(self)
 
     def create(
         self,
@@ -303,11 +302,9 @@ class Backfills(SyncAPIResource):
 
 
 class AsyncBackfills(AsyncAPIResource):
-    with_raw_response: AsyncBackfillsWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncBackfillsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
+        return AsyncBackfillsWithRawResponse(self)
 
     async def create(
         self,

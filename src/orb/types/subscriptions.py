@@ -11,7 +11,7 @@ __all__ = ["Subscriptions", "PaginationMetadata"]
 class PaginationMetadata(BaseModel):
     has_more: bool
 
-    next_cursor: Optional[str]
+    next_cursor: Optional[str] = None
 
 
 class Subscriptions(BaseModel):

@@ -39,17 +39,17 @@ __all__ = [
 
 
 class AutoCollection(BaseModel):
-    enabled: Optional[bool]
+    enabled: Optional[bool] = None
     """True only if auto-collection is enabled for this invoice."""
 
-    next_attempt_at: Optional[datetime]
+    next_attempt_at: Optional[datetime] = None
     """
     If the invoice is scheduled for auto-collection, this field will reflect when
     the next attempt will occur. If dunning has been exhausted, or auto-collection
     is not enabled for this invoice, this field will be `null`.
     """
 
-    previously_attempted_at: Optional[datetime]
+    previously_attempted_at: Optional[datetime] = None
     """
     If Orb has ever attempted payment auto-collection for this invoice, this field
     will reflect when that attempt occurred. In conjunction with `next_attempt_at`,
@@ -61,17 +61,17 @@ class AutoCollection(BaseModel):
 
 
 class BillingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
 
-    country: Optional[str]
+    country: Optional[str] = None
 
-    line1: Optional[str]
+    line1: Optional[str] = None
 
-    line2: Optional[str]
+    line2: Optional[str] = None
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
 
-    state: Optional[str]
+    state: Optional[str] = None
 
 
 class CreditNote(BaseModel):
@@ -85,7 +85,7 @@ class CreditNote(BaseModel):
 
     type: str
 
-    voided_at: Optional[datetime]
+    voided_at: Optional[datetime] = None
     """
     If the credit note has a status of `void`, this gives a timestamp when the
     credit note was voided.
@@ -95,7 +95,7 @@ class CreditNote(BaseModel):
 class Customer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class CustomerBalanceTransactionCreditNote(BaseModel):
@@ -129,9 +129,9 @@ class CustomerBalanceTransaction(BaseModel):
     created_at: datetime
     """The creation time of this transaction."""
 
-    credit_note: Optional[CustomerBalanceTransactionCreditNote]
+    credit_note: Optional[CustomerBalanceTransactionCreditNote] = None
 
-    description: Optional[str]
+    description: Optional[str] = None
     """An optional description provided for manual customer balance adjustments."""
 
     ending_balance: str
@@ -140,7 +140,7 @@ class CustomerBalanceTransaction(BaseModel):
     customer's currency.
     """
 
-    invoice: Optional[CustomerBalanceTransactionInvoice]
+    invoice: Optional[CustomerBalanceTransactionInvoice] = None
 
     starting_balance: str
     """
@@ -299,7 +299,7 @@ class LineItemMinimum(BaseModel):
 class LineItemSubLineItemMatrixSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
@@ -312,7 +312,7 @@ class LineItemSubLineItemMatrixSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[LineItemSubLineItemMatrixSubLineItemGrouping]
+    grouping: Optional[LineItemSubLineItemMatrixSubLineItemGrouping] = None
 
     matrix_config: LineItemSubLineItemMatrixSubLineItemMatrixConfig
 
@@ -326,14 +326,14 @@ class LineItemSubLineItemMatrixSubLineItem(BaseModel):
 class LineItemSubLineItemTierSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
 class LineItemSubLineItemTierSubLineItemTierConfig(BaseModel):
     first_unit: float
 
-    last_unit: Optional[float]
+    last_unit: Optional[float] = None
 
     unit_amount: str
 
@@ -342,7 +342,7 @@ class LineItemSubLineItemTierSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[LineItemSubLineItemTierSubLineItemGrouping]
+    grouping: Optional[LineItemSubLineItemTierSubLineItemGrouping] = None
 
     name: str
 
@@ -356,7 +356,7 @@ class LineItemSubLineItemTierSubLineItem(BaseModel):
 class LineItemSubLineItemOtherSubLineItemGrouping(BaseModel):
     key: str
 
-    value: Optional[str]
+    value: Optional[str] = None
     """No value indicates the default group"""
 
 
@@ -364,7 +364,7 @@ class LineItemSubLineItemOtherSubLineItem(BaseModel):
     amount: str
     """The total amount for this sub line item."""
 
-    grouping: Optional[LineItemSubLineItemOtherSubLineItemGrouping]
+    grouping: Optional[LineItemSubLineItemOtherSubLineItemGrouping] = None
 
     name: str
 
@@ -385,7 +385,7 @@ class LineItemTaxAmount(BaseModel):
     tax_rate_description: str
     """The human-readable description of the applied tax rate."""
 
-    tax_rate_percentage: Optional[str]
+    tax_rate_percentage: Optional[str] = None
     """The tax rate percentage, out of 100."""
 
 
@@ -396,30 +396,30 @@ class LineItem(BaseModel):
     amount: str
     """The final amount after any discounts or minimums."""
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
 
-    grouping: Optional[str]
+    grouping: Optional[str] = None
     """
     [DEPRECATED] For configured prices that are split by a grouping key, this will
     be populated with the key and a value. The `amount` and `subtotal` will be the
     values for this particular grouping.
     """
 
-    maximum: Optional[LineItemMaximum]
+    maximum: Optional[LineItemMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[LineItemMinimum]
+    minimum: Optional[LineItemMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     name: str
     """The name of the price associated with this line item."""
 
-    price: Optional[Price]
+    price: Optional[Price] = None
     """
     The Price resource represents a price that can be billed on a subscription,
     resulting in a charge on an invoice in the form of an invoice line item. Prices
@@ -698,17 +698,17 @@ class Minimum(BaseModel):
 
 
 class ShippingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
 
-    country: Optional[str]
+    country: Optional[str] = None
 
-    line1: Optional[str]
+    line1: Optional[str] = None
 
-    line2: Optional[str]
+    line2: Optional[str] = None
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
 
-    state: Optional[str]
+    state: Optional[str] = None
 
 
 class Subscription(BaseModel):
@@ -726,7 +726,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
 
     auto_collection: AutoCollection
 
-    billing_address: Optional[BillingAddress]
+    billing_address: Optional[BillingAddress] = None
 
     created_at: datetime
     """The creation time of the resource in Orb."""
@@ -741,7 +741,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
 
     customer_balance_transactions: List[CustomerBalanceTransaction]
 
-    customer_tax_id: Optional[CustomerTaxID]
+    customer_tax_id: Optional[CustomerTaxID] = None
     """
     Tax IDs are commonly required to be displayed on customer invoices, which are
     added to the headers of invoices.
@@ -830,21 +830,21 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     | United States        | `us_ein`     | United States EIN                                                                                       |
     """
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
     discounts: List[Discount]
 
     due_date: datetime
     """When the invoice payment is due."""
 
-    eligible_to_issue_at: Optional[datetime]
+    eligible_to_issue_at: Optional[datetime] = None
     """
     If the invoice has a status of `draft`, this will be the time that the invoice
     will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
     true, the invoice will automatically begin issuing at this time.
     """
 
-    hosted_invoice_url: Optional[str]
+    hosted_invoice_url: Optional[str] = None
     """A URL for the invoice portal."""
 
     invoice_number: str
@@ -854,16 +854,16 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     account or customer.
     """
 
-    invoice_pdf: Optional[str]
+    invoice_pdf: Optional[str] = None
     """The link to download the PDF representation of the `Invoice`."""
 
-    issue_failed_at: Optional[datetime]
+    issue_failed_at: Optional[datetime] = None
     """
     If the invoice failed to issue, this will be the last time it failed to issue
     (even if it is now in a different state.)
     """
 
-    issued_at: Optional[datetime]
+    issued_at: Optional[datetime] = None
     """
     If the invoice has been issued, this will be the time it transitioned to
     `issued` (even if it is now in a different state.)
@@ -872,11 +872,11 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     line_items: List[LineItem]
     """The breakdown of prices in this invoice."""
 
-    maximum: Optional[Maximum]
+    maximum: Optional[Maximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    memo: Optional[str]
+    memo: Optional[str] = None
     """
     Free-form text which is available on the invoice PDF and the Orb invoice portal.
     """
@@ -889,45 +889,45 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    minimum: Optional[Minimum]
+    minimum: Optional[Minimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
-    paid_at: Optional[datetime]
+    paid_at: Optional[datetime] = None
     """
     If the invoice has a status of `paid`, this gives a timestamp when the invoice
     was paid.
     """
 
-    payment_failed_at: Optional[datetime]
+    payment_failed_at: Optional[datetime] = None
     """
     If payment was attempted on this invoice but failed, this will be the time of
     the most recent attempt.
     """
 
-    payment_started_at: Optional[datetime]
+    payment_started_at: Optional[datetime] = None
     """
     If payment was attempted on this invoice, this will be the start time of the
     most recent attempt. This field is especially useful for delayed-notification
     payment mechanisms (like bank transfers), where payment can take 3 days or more.
     """
 
-    scheduled_issue_at: Optional[datetime]
+    scheduled_issue_at: Optional[datetime] = None
     """
     If the invoice is in draft, this timestamp will reflect when the invoice is
     scheduled to be issued.
     """
 
-    shipping_address: Optional[ShippingAddress]
+    shipping_address: Optional[ShippingAddress] = None
 
     status: Literal["issued", "paid", "synced", "void", "draft"]
 
-    subscription: Optional[Subscription]
+    subscription: Optional[Subscription] = None
 
     subtotal: str
     """The total before any discounts and minimums are applied."""
 
-    sync_failed_at: Optional[datetime]
+    sync_failed_at: Optional[datetime] = None
     """
     If the invoice failed to sync, this will be the last time an external invoicing
     provider sync was attempted. This field will always be `null` for invoices using
@@ -940,7 +940,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     total: str
     """The total after any minimums and discounts have been applied."""
 
-    voided_at: Optional[datetime]
+    voided_at: Optional[datetime] = None
     """
     If the invoice has a status of `void`, this gives a timestamp when the invoice
     was voided.

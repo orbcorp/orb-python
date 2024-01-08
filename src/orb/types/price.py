@@ -140,7 +140,7 @@ class UnitPriceUnitConfig(BaseModel):
 class UnitPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[UnitPriceBillableMetric]
+    billable_metric: Optional[UnitPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -148,27 +148,27 @@ class UnitPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: UnitPriceItem
 
-    maximum: Optional[UnitPriceMaximum]
+    maximum: Optional[UnitPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[UnitPriceMinimum]
+    minimum: Optional[UnitPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["unit"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -222,7 +222,7 @@ class PackagePricePackageConfig(BaseModel):
 class PackagePrice(BaseModel):
     id: str
 
-    billable_metric: Optional[PackagePriceBillableMetric]
+    billable_metric: Optional[PackagePriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -230,21 +230,21 @@ class PackagePrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: PackagePriceItem
 
-    maximum: Optional[PackagePriceMaximum]
+    maximum: Optional[PackagePriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[PackagePriceMinimum]
+    minimum: Optional[PackagePriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["package"] = FieldInfo(alias="model_type")
 
@@ -252,7 +252,7 @@ class PackagePrice(BaseModel):
 
     package_config: PackagePricePackageConfig
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -324,7 +324,7 @@ class MatrixPriceMinimum(BaseModel):
 class MatrixPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[MatrixPriceBillableMetric]
+    billable_metric: Optional[MatrixPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -332,29 +332,29 @@ class MatrixPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: MatrixPriceItem
 
     matrix_config: MatrixPriceMatrixConfig
 
-    maximum: Optional[MatrixPriceMaximum]
+    maximum: Optional[MatrixPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[MatrixPriceMinimum]
+    minimum: Optional[MatrixPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["matrix"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -410,7 +410,7 @@ class TieredPriceTieredConfig(BaseModel):
 class TieredPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[TieredPriceBillableMetric]
+    billable_metric: Optional[TieredPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -418,27 +418,27 @@ class TieredPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: TieredPriceItem
 
-    maximum: Optional[TieredPriceMaximum]
+    maximum: Optional[TieredPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[TieredPriceMinimum]
+    minimum: Optional[TieredPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["tiered"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -502,7 +502,7 @@ class TieredBpsPriceTieredBpsConfig(BaseModel):
 class TieredBpsPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[TieredBpsPriceBillableMetric]
+    billable_metric: Optional[TieredBpsPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -510,27 +510,27 @@ class TieredBpsPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: TieredBpsPriceItem
 
-    maximum: Optional[TieredBpsPriceMaximum]
+    maximum: Optional[TieredBpsPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[TieredBpsPriceMinimum]
+    minimum: Optional[TieredBpsPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["tiered_bps"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -580,7 +580,7 @@ class BpsPriceMinimum(BaseModel):
 class BpsPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[BpsPriceBillableMetric]
+    billable_metric: Optional[BpsPriceBillableMetric] = None
 
     bps_config: BpsPriceBpsConfig
 
@@ -590,27 +590,27 @@ class BpsPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: BpsPriceItem
 
-    maximum: Optional[BpsPriceMaximum]
+    maximum: Optional[BpsPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[BpsPriceMinimum]
+    minimum: Optional[BpsPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["bps"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -669,7 +669,7 @@ class BulkBpsPriceMinimum(BaseModel):
 class BulkBpsPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[BulkBpsPriceBillableMetric]
+    billable_metric: Optional[BulkBpsPriceBillableMetric] = None
 
     bulk_bps_config: BulkBpsPriceBulkBpsConfig
 
@@ -679,27 +679,27 @@ class BulkBpsPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: BulkBpsPriceItem
 
-    maximum: Optional[BulkBpsPriceMaximum]
+    maximum: Optional[BulkBpsPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[BulkBpsPriceMinimum]
+    minimum: Optional[BulkBpsPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["bulk_bps"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -752,7 +752,7 @@ class BulkPriceMinimum(BaseModel):
 class BulkPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[BulkPriceBillableMetric]
+    billable_metric: Optional[BulkPriceBillableMetric] = None
 
     bulk_config: BulkPriceBulkConfig
 
@@ -762,27 +762,27 @@ class BulkPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: BulkPriceItem
 
-    maximum: Optional[BulkPriceMaximum]
+    maximum: Optional[BulkPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[BulkPriceMinimum]
+    minimum: Optional[BulkPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["bulk"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -827,7 +827,7 @@ class TestRatingFunctionPrice(BaseModel):
     __test__ = False
     id: str
 
-    billable_metric: Optional[TestRatingFunctionPriceBillableMetric]
+    billable_metric: Optional[TestRatingFunctionPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -835,27 +835,27 @@ class TestRatingFunctionPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: TestRatingFunctionPriceItem
 
-    maximum: Optional[TestRatingFunctionPriceMaximum]
+    maximum: Optional[TestRatingFunctionPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[TestRatingFunctionPriceMinimum]
+    minimum: Optional[TestRatingFunctionPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["test_rating_function"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -897,7 +897,7 @@ class FivetranExamplePriceMinimum(BaseModel):
 class FivetranExamplePrice(BaseModel):
     id: str
 
-    billable_metric: Optional[FivetranExamplePriceBillableMetric]
+    billable_metric: Optional[FivetranExamplePriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -905,29 +905,29 @@ class FivetranExamplePrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
     fivetran_example_config: Dict[str, object]
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: FivetranExamplePriceItem
 
-    maximum: Optional[FivetranExamplePriceMaximum]
+    maximum: Optional[FivetranExamplePriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[FivetranExamplePriceMinimum]
+    minimum: Optional[FivetranExamplePriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["fivetran_example"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -967,7 +967,7 @@ class ThresholdTotalAmountPriceMinimum(BaseModel):
 class ThresholdTotalAmountPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[ThresholdTotalAmountPriceBillableMetric]
+    billable_metric: Optional[ThresholdTotalAmountPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -975,27 +975,27 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: ThresholdTotalAmountPriceItem
 
-    maximum: Optional[ThresholdTotalAmountPriceMaximum]
+    maximum: Optional[ThresholdTotalAmountPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[ThresholdTotalAmountPriceMinimum]
+    minimum: Optional[ThresholdTotalAmountPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["threshold_total_amount"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -1037,7 +1037,7 @@ class TieredPackagePriceMinimum(BaseModel):
 class TieredPackagePrice(BaseModel):
     id: str
 
-    billable_metric: Optional[TieredPackagePriceBillableMetric]
+    billable_metric: Optional[TieredPackagePriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -1045,27 +1045,27 @@ class TieredPackagePrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: TieredPackagePriceItem
 
-    maximum: Optional[TieredPackagePriceMaximum]
+    maximum: Optional[TieredPackagePriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[TieredPackagePriceMinimum]
+    minimum: Optional[TieredPackagePriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["tiered_package"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -1107,7 +1107,7 @@ class TieredWithMinimumPriceMinimum(BaseModel):
 class TieredWithMinimumPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[TieredWithMinimumPriceBillableMetric]
+    billable_metric: Optional[TieredWithMinimumPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -1115,27 +1115,27 @@ class TieredWithMinimumPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: TieredWithMinimumPriceItem
 
-    maximum: Optional[TieredWithMinimumPriceMaximum]
+    maximum: Optional[TieredWithMinimumPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[TieredWithMinimumPriceMinimum]
+    minimum: Optional[TieredWithMinimumPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["tiered_with_minimum"] = FieldInfo(alias="model_type")
 
     name: str
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 
@@ -1177,7 +1177,7 @@ class PackageWithAllocationPriceMinimum(BaseModel):
 class PackageWithAllocationPrice(BaseModel):
     id: str
 
-    billable_metric: Optional[PackageWithAllocationPriceBillableMetric]
+    billable_metric: Optional[PackageWithAllocationPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
@@ -1185,21 +1185,21 @@ class PackageWithAllocationPrice(BaseModel):
 
     currency: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_price_id: Optional[str]
+    external_price_id: Optional[str] = None
 
-    fixed_price_quantity: Optional[float]
+    fixed_price_quantity: Optional[float] = None
 
     item: PackageWithAllocationPriceItem
 
-    maximum: Optional[PackageWithAllocationPriceMaximum]
+    maximum: Optional[PackageWithAllocationPriceMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[PackageWithAllocationPriceMinimum]
+    minimum: Optional[PackageWithAllocationPriceMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     price_model_type: Literal["package_with_allocation"] = FieldInfo(alias="model_type")
 
@@ -1207,7 +1207,7 @@ class PackageWithAllocationPrice(BaseModel):
 
     package_with_allocation_config: Dict[str, object]
 
-    plan_phase_order: Optional[int]
+    plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
 

@@ -16,13 +16,13 @@ class Data(BaseModel):
     for safe request retries.
     """
 
-    customer_id: Optional[str]
+    customer_id: Optional[str] = None
     """The Orb Customer identifier"""
 
     event_name: str
     """A name to meaningfully identify the action or event type."""
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
     """
     An alias for the Orb customer, whose mapping is specified when creating the
     customer

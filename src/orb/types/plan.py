@@ -22,16 +22,16 @@ __all__ = [
 
 
 class BasePlan(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
 
-    external_plan_id: Optional[str]
+    external_plan_id: Optional[str] = None
     """
     An optional user-defined ID for this plan resource, used throughout the system
     as an alias for this Plan. Use this field to identify a plan by an existing
     identifier in your system.
     """
 
-    name: Optional[str]
+    name: Optional[str] = None
 
 
 class Maximum(BaseModel):
@@ -81,25 +81,25 @@ class PlanPhaseMinimum(BaseModel):
 class PlanPhase(BaseModel):
     id: str
 
-    description: Optional[str]
+    description: Optional[str] = None
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    duration: Optional[int]
+    duration: Optional[int] = None
     """How many terms of length `duration_unit` this phase is active for.
 
     If null, this phase is evergreen and active indefinitely
     """
 
-    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "annual"]]
+    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "annual"]] = None
 
-    maximum: Optional[PlanPhaseMaximum]
+    maximum: Optional[PlanPhaseMaximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
-    minimum: Optional[PlanPhaseMinimum]
+    minimum: Optional[PlanPhaseMinimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     name: str
 
@@ -116,7 +116,7 @@ class Product(BaseModel):
 
 
 class TrialConfig(BaseModel):
-    trial_period: Optional[int]
+    trial_period: Optional[int] = None
 
     trial_period_unit: Literal["days"]
 
@@ -124,9 +124,9 @@ class TrialConfig(BaseModel):
 class Plan(BaseModel):
     id: str
 
-    base_plan: Optional[BasePlan]
+    base_plan: Optional[BasePlan] = None
 
-    base_plan_id: Optional[str]
+    base_plan_id: Optional[str] = None
     """
     The parent plan id if the given plan was created by overriding one or more of
     the parent's prices
@@ -140,7 +140,7 @@ class Plan(BaseModel):
     prices.
     """
 
-    default_invoice_memo: Optional[str]
+    default_invoice_memo: Optional[str] = None
     """
     The default memo text on the invoices corresponding to subscriptions on this
     plan. Note that each subscription may configure its own memo.
@@ -148,9 +148,9 @@ class Plan(BaseModel):
 
     description: str
 
-    discount: Optional[Discount]
+    discount: Optional[Discount] = None
 
-    external_plan_id: Optional[str]
+    external_plan_id: Optional[str] = None
     """
     An optional user-defined ID for this plan resource, used throughout the system
     as an alias for this Plan. Use this field to identify a plan by an existing
@@ -163,9 +163,9 @@ class Plan(BaseModel):
     Matches `currency` unless `currency` is a custom pricing unit.
     """
 
-    maximum: Optional[Maximum]
+    maximum: Optional[Maximum] = None
 
-    maximum_amount: Optional[str]
+    maximum_amount: Optional[str] = None
 
     metadata: Dict[str, str]
     """User specified key-value pairs for the resource.
@@ -175,13 +175,13 @@ class Plan(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    minimum: Optional[Minimum]
+    minimum: Optional[Minimum] = None
 
-    minimum_amount: Optional[str]
+    minimum_amount: Optional[str] = None
 
     name: str
 
-    net_terms: Optional[int]
+    net_terms: Optional[int] = None
     """Determines the difference between the invoice issue date and the due date.
 
     A value of "0" here signifies that invoices are due on issue, whereas a value of
@@ -190,7 +190,7 @@ class Plan(BaseModel):
     configuration.
     """
 
-    plan_phases: Optional[List[PlanPhase]]
+    plan_phases: Optional[List[PlanPhase]] = None
 
     prices: List[Price]
     """Prices for this plan.

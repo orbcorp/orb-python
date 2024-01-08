@@ -19,14 +19,7 @@ from typing import (
     Sequence,
     AsyncIterator,
 )
-from typing_extensions import (
-    Literal,
-    Protocol,
-    TypeAlias,
-    TypedDict,
-    override,
-    runtime_checkable,
-)
+from typing_extensions import Literal, Protocol, TypeAlias, TypedDict, override, runtime_checkable
 
 import httpx
 import pydantic
@@ -265,11 +258,6 @@ class RequestOptions(TypedDict, total=False):
     idempotency_key: str
 
 
-# Sentinel class used when the response type is an object with an unknown schema
-class UnknownResponse:
-    ...
-
-
 # Sentinel class used until PEP 0661 is accepted
 class NotGiven:
     """
@@ -346,7 +334,17 @@ HeadersLike = Union[Headers, HeadersLikeProtocol]
 
 ResponseT = TypeVar(
     "ResponseT",
-    bound="Union[str, None, BaseModel, List[Any], Dict[str, Any], Response, UnknownResponse, ModelBuilderProtocol, BinaryResponseContent]",
+    bound=Union[
+        object,
+        str,
+        None,
+        "BaseModel",
+        List[Any],
+        Dict[str, Any],
+        Response,
+        ModelBuilderProtocol,
+        BinaryResponseContent,
+    ],
 )
 
 StrBytesIntFloat = Union[str, bytes, int, float]

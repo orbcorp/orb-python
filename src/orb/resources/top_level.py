@@ -2,28 +2,24 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import TopLevelPingResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from .._base_client import make_request_options
-
-if TYPE_CHECKING:
-    from .._client import Orb, AsyncOrb
+from .._base_client import (
+    make_request_options,
+)
 
 __all__ = ["TopLevel", "AsyncTopLevel"]
 
 
 class TopLevel(SyncAPIResource):
-    with_raw_response: TopLevelWithRawResponse
-
-    def __init__(self, client: Orb) -> None:
-        super().__init__(client)
-        self.with_raw_response = TopLevelWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> TopLevelWithRawResponse:
+        return TopLevelWithRawResponse(self)
 
     def ping(
         self,
@@ -53,11 +49,9 @@ class TopLevel(SyncAPIResource):
 
 
 class AsyncTopLevel(AsyncAPIResource):
-    with_raw_response: AsyncTopLevelWithRawResponse
-
-    def __init__(self, client: AsyncOrb) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncTopLevelWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncTopLevelWithRawResponse:
+        return AsyncTopLevelWithRawResponse(self)
 
     async def ping(
         self,

@@ -35,15 +35,15 @@ __all__ = [
 class IncrementLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class IncrementLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class IncrementLedgerEntry(BaseModel):
@@ -59,7 +59,7 @@ class IncrementLedgerEntry(BaseModel):
 
     customer: IncrementLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -83,15 +83,15 @@ class IncrementLedgerEntry(BaseModel):
 class DecrementLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class DecrementLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class DecrementLedgerEntry(BaseModel):
@@ -107,7 +107,7 @@ class DecrementLedgerEntry(BaseModel):
 
     customer: DecrementLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -137,15 +137,15 @@ class DecrementLedgerEntry(BaseModel):
 class ExpirationChangeLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class ExpirationChangeLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class ExpirationChangeLedgerEntry(BaseModel):
@@ -161,7 +161,7 @@ class ExpirationChangeLedgerEntry(BaseModel):
 
     customer: ExpirationChangeLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -187,15 +187,15 @@ class ExpirationChangeLedgerEntry(BaseModel):
 class CreditBlockExpiryLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class CreditBlockExpiryLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class CreditBlockExpiryLedgerEntry(BaseModel):
@@ -211,7 +211,7 @@ class CreditBlockExpiryLedgerEntry(BaseModel):
 
     customer: CreditBlockExpiryLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -235,15 +235,15 @@ class CreditBlockExpiryLedgerEntry(BaseModel):
 class VoidLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class VoidLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class VoidLedgerEntry(BaseModel):
@@ -259,7 +259,7 @@ class VoidLedgerEntry(BaseModel):
 
     customer: VoidLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -281,21 +281,21 @@ class VoidLedgerEntry(BaseModel):
 
     void_amount: float
 
-    void_reason: Optional[str]
+    void_reason: Optional[str] = None
 
 
 class VoidInitiatedLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class VoidInitiatedLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class VoidInitiatedLedgerEntry(BaseModel):
@@ -311,7 +311,7 @@ class VoidInitiatedLedgerEntry(BaseModel):
 
     customer: VoidInitiatedLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
@@ -335,21 +335,21 @@ class VoidInitiatedLedgerEntry(BaseModel):
 
     void_amount: float
 
-    void_reason: Optional[str]
+    void_reason: Optional[str] = None
 
 
 class AmendmentLedgerEntryCreditBlock(BaseModel):
     id: str
 
-    expiry_date: Optional[datetime]
+    expiry_date: Optional[datetime] = None
 
-    per_unit_cost_basis: Optional[str]
+    per_unit_cost_basis: Optional[str] = None
 
 
 class AmendmentLedgerEntryCustomer(BaseModel):
     id: str
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[str] = None
 
 
 class AmendmentLedgerEntry(BaseModel):
@@ -365,7 +365,7 @@ class AmendmentLedgerEntry(BaseModel):
 
     customer: AmendmentLedgerEntryCustomer
 
-    description: Optional[str]
+    description: Optional[str] = None
 
     ending_balance: float
 
