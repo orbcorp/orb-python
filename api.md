@@ -312,3 +312,17 @@ Methods:
 - <code title="post /subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_fixed_fee_quantity_updates</a>(subscription_id, \*\*<a href="src/orb/types/subscription_unschedule_fixed_fee_quantity_updates_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="post /subscriptions/{subscription_id}/unschedule_pending_plan_changes">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_pending_plan_changes</a>(subscription_id) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="post /subscriptions/{subscription_id}/update_fixed_fee_quantity">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_fixed_fee_quantity</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_fixed_fee_quantity_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
+
+# Beta
+
+## Price
+
+Types:
+
+```python
+from orb.types.beta import EvaluatePriceGroup, PriceEvaluateResponse
+```
+
+Methods:
+
+- <code title="post /prices/{price_id}/evaluate">client.beta.price.<a href="./src/orb/resources/beta/price.py">evaluate</a>(price_id, \*\*<a href="src/orb/types/beta/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/beta/price_evaluate_response.py">PriceEvaluateResponse</a></code>

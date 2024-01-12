@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from .beta import Beta, AsyncBeta, BetaWithRawResponse, AsyncBetaWithRawResponse
 from .items import Items, AsyncItems, ItemsWithRawResponse, AsyncItemsWithRawResponse
 from .plans import Plans, AsyncPlans, PlansWithRawResponse, AsyncPlansWithRawResponse
 from .events import Events, AsyncEvents, EventsWithRawResponse, AsyncEventsWithRawResponse
@@ -72,4 +73,8 @@ __all__ = [
     "AsyncSubscriptions",
     "SubscriptionsWithRawResponse",
     "AsyncSubscriptionsWithRawResponse",
+    "Beta",
+    "AsyncBeta",
+    "BetaWithRawResponse",
+    "AsyncBetaWithRawResponse",
 ]

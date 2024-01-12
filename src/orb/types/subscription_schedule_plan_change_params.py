@@ -37,10 +37,6 @@ __all__ = [
     "PriceOverrideOverrideBulkPriceBulkConfig",
     "PriceOverrideOverrideBulkPriceBulkConfigTier",
     "PriceOverrideOverrideBulkPriceDiscount",
-    "PriceOverrideOverrideTestRatingFunctionPrice",
-    "PriceOverrideOverrideTestRatingFunctionPriceDiscount",
-    "PriceOverrideOverrideFivetranExamplePrice",
-    "PriceOverrideOverrideFivetranExamplePriceDiscount",
     "PriceOverrideOverrideThresholdTotalAmountPrice",
     "PriceOverrideOverrideThresholdTotalAmountPriceDiscount",
     "PriceOverrideOverrideTieredPackagePrice",
@@ -625,102 +621,6 @@ class PriceOverrideOverrideBulkPrice(TypedDict, total=False):
     """The subscription's override minimum amount for the plan."""
 
 
-class PriceOverrideOverrideTestRatingFunctionPriceDiscount(TypedDict, total=False):
-    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
-
-    amount_discount: Optional[str]
-    """Only available if discount_type is `amount`."""
-
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    percentage_discount: Optional[float]
-    """Only available if discount_type is `percentage`.
-
-    This is a number between 0 and 1.
-    """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
-
-    usage_discount: Optional[float]
-    """Only available if discount_type is `usage`.
-
-    Number of usage units that this discount is for
-    """
-
-
-class PriceOverrideOverrideTestRatingFunctionPrice(TypedDict, total=False):
-    id: Required[str]
-
-    model_type: Required[Literal["test_rating_function"]]
-
-    test_rating_function_config: Required[Dict[str, object]]
-
-    discount: Optional[PriceOverrideOverrideTestRatingFunctionPriceDiscount]
-    """The subscription's override discount for the plan."""
-
-    fixed_price_quantity: Optional[float]
-    """The starting quantity of the price, if the price is a fixed price."""
-
-    maximum_amount: Optional[str]
-    """The subscription's override maximum amount for the plan."""
-
-    minimum_amount: Optional[str]
-    """The subscription's override minimum amount for the plan."""
-
-
-class PriceOverrideOverrideFivetranExamplePriceDiscount(TypedDict, total=False):
-    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
-
-    amount_discount: Optional[str]
-    """Only available if discount_type is `amount`."""
-
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    percentage_discount: Optional[float]
-    """Only available if discount_type is `percentage`.
-
-    This is a number between 0 and 1.
-    """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
-
-    usage_discount: Optional[float]
-    """Only available if discount_type is `usage`.
-
-    Number of usage units that this discount is for
-    """
-
-
-class PriceOverrideOverrideFivetranExamplePrice(TypedDict, total=False):
-    id: Required[str]
-
-    fivetran_example_config: Required[Dict[str, object]]
-
-    model_type: Required[Literal["fivetran_example"]]
-
-    discount: Optional[PriceOverrideOverrideFivetranExamplePriceDiscount]
-    """The subscription's override discount for the plan."""
-
-    fixed_price_quantity: Optional[float]
-    """The starting quantity of the price, if the price is a fixed price."""
-
-    maximum_amount: Optional[str]
-    """The subscription's override maximum amount for the plan."""
-
-    minimum_amount: Optional[str]
-    """The subscription's override minimum amount for the plan."""
-
-
 class PriceOverrideOverrideThresholdTotalAmountPriceDiscount(TypedDict, total=False):
     discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
 
@@ -922,8 +822,6 @@ PriceOverride = Union[
     PriceOverrideOverrideBpsPrice,
     PriceOverrideOverrideBulkBpsPrice,
     PriceOverrideOverrideBulkPrice,
-    PriceOverrideOverrideTestRatingFunctionPrice,
-    PriceOverrideOverrideFivetranExamplePrice,
     PriceOverrideOverrideThresholdTotalAmountPrice,
     PriceOverrideOverrideTieredPackagePrice,
     PriceOverrideOverrideTieredWithMinimumPrice,

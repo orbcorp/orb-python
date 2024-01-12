@@ -59,6 +59,7 @@ class Orb(SyncAPIClient):
     plans: resources.Plans
     prices: resources.Prices
     subscriptions: resources.Subscriptions
+    beta: resources.Beta
     with_raw_response: OrbWithRawResponse
 
     # client options
@@ -127,6 +128,7 @@ class Orb(SyncAPIClient):
         self.plans = resources.Plans(self)
         self.prices = resources.Prices(self)
         self.subscriptions = resources.Subscriptions(self)
+        self.beta = resources.Beta(self)
         self.with_raw_response = OrbWithRawResponse(self)
 
     @property
@@ -295,6 +297,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: resources.AsyncPlans
     prices: resources.AsyncPrices
     subscriptions: resources.AsyncSubscriptions
+    beta: resources.AsyncBeta
     with_raw_response: AsyncOrbWithRawResponse
 
     # client options
@@ -363,6 +366,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = resources.AsyncPlans(self)
         self.prices = resources.AsyncPrices(self)
         self.subscriptions = resources.AsyncSubscriptions(self)
+        self.beta = resources.AsyncBeta(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
 
     @property
@@ -532,6 +536,7 @@ class OrbWithRawResponse:
         self.plans = resources.PlansWithRawResponse(client.plans)
         self.prices = resources.PricesWithRawResponse(client.prices)
         self.subscriptions = resources.SubscriptionsWithRawResponse(client.subscriptions)
+        self.beta = resources.BetaWithRawResponse(client.beta)
 
 
 class AsyncOrbWithRawResponse:
@@ -548,6 +553,7 @@ class AsyncOrbWithRawResponse:
         self.plans = resources.AsyncPlansWithRawResponse(client.plans)
         self.prices = resources.AsyncPricesWithRawResponse(client.prices)
         self.subscriptions = resources.AsyncSubscriptionsWithRawResponse(client.subscriptions)
+        self.beta = resources.AsyncBetaWithRawResponse(client.beta)
 
 
 Client = Orb
