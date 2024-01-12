@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.37.0 (2024-01-12)
+
+Full Changelog: [v1.36.0...v1.37.0](https://github.com/orbcorp/orb-python/compare/v1.36.0...v1.37.0)
+
+### Features
+
+* add `None` default value to nullable response properties ([#123](https://github.com/orbcorp/orb-python/issues/123)) ([823f95c](https://github.com/orbcorp/orb-python/commit/823f95c2b504524de1bc65e00ca088d2552fad7b))
+* **api:** add beta evaluate price endpoint ([#129](https://github.com/orbcorp/orb-python/issues/129)) ([5f8379a](https://github.com/orbcorp/orb-python/commit/5f8379a3acea6a9937219cb6878991a05a8c50b4))
+
+
+### Chores
+
+* add .keep files for examples and custom code directories ([#126](https://github.com/orbcorp/orb-python/issues/126)) ([672693d](https://github.com/orbcorp/orb-python/commit/672693d7c7cfec8d55d54ab328ea4c89f3527b55))
+* **client:** improve debug logging for failed requests ([#127](https://github.com/orbcorp/orb-python/issues/127)) ([b35adf9](https://github.com/orbcorp/orb-python/commit/b35adf9795ce2321640904d43eb4ff806c8a1af8))
+* **internal:** loosen type var restrictions ([#125](https://github.com/orbcorp/orb-python/issues/125)) ([60a2816](https://github.com/orbcorp/orb-python/commit/60a28169d5912c1a76f128c02012c062f507cb1f))
+* **internal:** replace isort with ruff ([#121](https://github.com/orbcorp/orb-python/issues/121)) ([42b60df](https://github.com/orbcorp/orb-python/commit/42b60dfa929e6806fbddf6138af4df5a1557f2d7))
+* use property declarations for resource members ([#124](https://github.com/orbcorp/orb-python/issues/124)) ([b60f5a8](https://github.com/orbcorp/orb-python/commit/b60f5a8a44687083c627d284fe3f7c105a3bbb84))
+
+
+### Documentation
+
+* **readme:** improve api reference ([#128](https://github.com/orbcorp/orb-python/issues/128)) ([5fbd017](https://github.com/orbcorp/orb-python/commit/5fbd01703a0dd0dd90f7359a703a8d6693c608ca))
+
 ## 1.36.0 (2024-01-01)
 
 Full Changelog: [v1.35.2...v1.36.0](https://github.com/orbcorp/orb-python/compare/v1.35.2...v1.36.0)
