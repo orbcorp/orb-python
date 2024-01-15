@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import TopLevelPingResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -20,6 +21,10 @@ class TopLevel(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TopLevelWithRawResponse:
         return TopLevelWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> TopLevelWithStreamingResponse:
+        return TopLevelWithStreamingResponse(self)
 
     def ping(
         self,
@@ -53,6 +58,10 @@ class AsyncTopLevel(AsyncAPIResource):
     def with_raw_response(self) -> AsyncTopLevelWithRawResponse:
         return AsyncTopLevelWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncTopLevelWithStreamingResponse:
+        return AsyncTopLevelWithStreamingResponse(self)
+
     async def ping(
         self,
         *,
@@ -82,13 +91,27 @@ class AsyncTopLevel(AsyncAPIResource):
 
 class TopLevelWithRawResponse:
     def __init__(self, top_level: TopLevel) -> None:
-        self.ping = to_raw_response_wrapper(
+        self.ping = _legacy_response.to_raw_response_wrapper(
             top_level.ping,
         )
 
 
 class AsyncTopLevelWithRawResponse:
     def __init__(self, top_level: AsyncTopLevel) -> None:
-        self.ping = async_to_raw_response_wrapper(
+        self.ping = _legacy_response.async_to_raw_response_wrapper(
+            top_level.ping,
+        )
+
+
+class TopLevelWithStreamingResponse:
+    def __init__(self, top_level: TopLevel) -> None:
+        self.ping = to_streamed_response_wrapper(
+            top_level.ping,
+        )
+
+
+class AsyncTopLevelWithStreamingResponse:
+    def __init__(self, top_level: AsyncTopLevel) -> None:
+        self.ping = async_to_streamed_response_wrapper(
             top_level.ping,
         )

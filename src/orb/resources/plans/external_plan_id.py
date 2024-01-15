@@ -6,12 +6,13 @@ from typing import Dict, Optional
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Plan
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...types.plans import external_plan_id_update_params
 from ..._base_client import (
     make_request_options,
@@ -24,6 +25,10 @@ class ExternalPlanID(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
         return ExternalPlanIDWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ExternalPlanIDWithStreamingResponse:
+        return ExternalPlanIDWithStreamingResponse(self)
 
     def update(
         self,
@@ -139,6 +144,10 @@ class AsyncExternalPlanID(AsyncAPIResource):
     def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
         return AsyncExternalPlanIDWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        return AsyncExternalPlanIDWithStreamingResponse(self)
+
     async def update(
         self,
         other_external_plan_id: str,
@@ -250,19 +259,39 @@ class AsyncExternalPlanID(AsyncAPIResource):
 
 class ExternalPlanIDWithRawResponse:
     def __init__(self, external_plan_id: ExternalPlanID) -> None:
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             external_plan_id.update,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             external_plan_id.fetch,
         )
 
 
 class AsyncExternalPlanIDWithRawResponse:
     def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             external_plan_id.update,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            external_plan_id.fetch,
+        )
+
+
+class ExternalPlanIDWithStreamingResponse:
+    def __init__(self, external_plan_id: ExternalPlanID) -> None:
+        self.update = to_streamed_response_wrapper(
+            external_plan_id.update,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            external_plan_id.fetch,
+        )
+
+
+class AsyncExternalPlanIDWithStreamingResponse:
+    def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
+        self.update = async_to_streamed_response_wrapper(
+            external_plan_id.update,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             external_plan_id.fetch,
         )

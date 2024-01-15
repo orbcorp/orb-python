@@ -19,6 +19,8 @@ from pydantic import ValidationError
 from orb import Orb, AsyncOrb, APIResponseValidationError
 from orb._client import Orb, AsyncOrb
 from orb._models import BaseModel, FinalRequestOptions
+from orb._response import APIResponse, AsyncAPIResponse
+from orb._constants import RAW_RESPONSE_HEADER
 from orb._exceptions import OrbError, APIStatusError, APITimeoutError, APIResponseValidationError
 from orb._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
 
@@ -217,6 +219,7 @@ class TestOrb:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "orb/_legacy_response.py",
                         "orb/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "orb/_compat.py",
@@ -675,6 +678,25 @@ class TestOrb:
 
     @mock.patch("orb._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response(self) -> None:
+        response = self.client.post(
+            "/customers",
+            body=dict(email="example-customer@withorb.com", name="My Customer"),
+            cast_to=APIResponse[bytes],
+            options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+        )
+
+        assert not cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 1
+
+        for _ in response.iter_bytes():
+            ...
+
+        assert cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 0
+
+    @mock.patch("orb._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/customers").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
@@ -683,7 +705,7 @@ class TestOrb:
                 "/customers",
                 body=dict(email="example-customer@withorb.com", name="My Customer"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -698,7 +720,7 @@ class TestOrb:
                 "/customers",
                 body=dict(email="example-customer@withorb.com", name="My Customer"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -879,6 +901,7 @@ class TestAsyncOrb:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "orb/_legacy_response.py",
                         "orb/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "orb/_compat.py",
@@ -1349,6 +1372,25 @@ class TestAsyncOrb:
 
     @mock.patch("orb._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response(self) -> None:
+        response = await self.client.post(
+            "/customers",
+            body=dict(email="example-customer@withorb.com", name="My Customer"),
+            cast_to=AsyncAPIResponse[bytes],
+            options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+        )
+
+        assert not cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 1
+
+        async for _ in response.iter_bytes():
+            ...
+
+        assert cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 0
+
+    @mock.patch("orb._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/customers").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
@@ -1357,7 +1399,7 @@ class TestAsyncOrb:
                 "/customers",
                 body=dict(email="example-customer@withorb.com", name="My Customer"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1372,7 +1414,7 @@ class TestAsyncOrb:
                 "/customers",
                 body=dict(email="example-customer@withorb.com", name="My Customer"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0

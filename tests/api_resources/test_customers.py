@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -94,9 +95,25 @@ class TestCustomers:
             email="string",
             name="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.create(
+            email="string",
+            name="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Orb) -> None:
@@ -165,9 +182,24 @@ class TestCustomers:
         response = client.customers.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -189,9 +221,22 @@ class TestCustomers:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.customers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(SyncPage[Customer], customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(SyncPage[Customer], customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_delete(self, client: Orb) -> None:
@@ -205,9 +250,24 @@ class TestCustomers:
         response = client.customers.with_raw_response.delete(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert customer is None
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.delete(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert customer is None
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -221,9 +281,24 @@ class TestCustomers:
         response = client.customers.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch_by_external_id(self, client: Orb) -> None:
@@ -237,9 +312,24 @@ class TestCustomers:
         response = client.customers.with_raw_response.fetch_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch_by_external_id(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.fetch_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update_by_external_id(self, client: Orb) -> None:
@@ -308,9 +398,24 @@ class TestCustomers:
         response = client.customers.with_raw_response.update_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_by_external_id(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.update_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCustomers:
@@ -388,9 +493,25 @@ class TestAsyncCustomers:
             email="string",
             name="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.create(
+            email="string",
+            name="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, client: AsyncOrb) -> None:
@@ -459,9 +580,24 @@ class TestAsyncCustomers:
         response = await client.customers.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -483,9 +619,22 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_list(self, client: AsyncOrb) -> None:
         response = await client.customers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_delete(self, client: AsyncOrb) -> None:
@@ -499,9 +648,24 @@ class TestAsyncCustomers:
         response = await client.customers.with_raw_response.delete(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert customer is None
+
+    @parametrize
+    async def test_streaming_response_delete(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.delete(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert customer is None
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
@@ -515,9 +679,24 @@ class TestAsyncCustomers:
         response = await client.customers.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch_by_external_id(self, client: AsyncOrb) -> None:
@@ -531,9 +710,24 @@ class TestAsyncCustomers:
         response = await client.customers.with_raw_response.fetch_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch_by_external_id(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.fetch_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
@@ -602,6 +796,21 @@ class TestAsyncCustomers:
         response = await client.customers.with_raw_response.update_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
         assert_matches_type(Customer, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_by_external_id(self, client: AsyncOrb) -> None:
+        async with client.customers.with_streaming_response.update_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(Customer, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

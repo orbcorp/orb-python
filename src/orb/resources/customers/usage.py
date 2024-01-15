@@ -7,11 +7,12 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -29,6 +30,10 @@ class Usage(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> UsageWithRawResponse:
         return UsageWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> UsageWithStreamingResponse:
+        return UsageWithStreamingResponse(self)
 
     def update(
         self,
@@ -338,6 +343,10 @@ class AsyncUsage(AsyncAPIResource):
     def with_raw_response(self) -> AsyncUsageWithRawResponse:
         return AsyncUsageWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncUsageWithStreamingResponse:
+        return AsyncUsageWithStreamingResponse(self)
+
     async def update(
         self,
         id: Optional[str],
@@ -643,19 +652,39 @@ class AsyncUsage(AsyncAPIResource):
 
 class UsageWithRawResponse:
     def __init__(self, usage: Usage) -> None:
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             usage.update,
         )
-        self.update_by_external_id = to_raw_response_wrapper(
+        self.update_by_external_id = _legacy_response.to_raw_response_wrapper(
             usage.update_by_external_id,
         )
 
 
 class AsyncUsageWithRawResponse:
     def __init__(self, usage: AsyncUsage) -> None:
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             usage.update,
         )
-        self.update_by_external_id = async_to_raw_response_wrapper(
+        self.update_by_external_id = _legacy_response.async_to_raw_response_wrapper(
+            usage.update_by_external_id,
+        )
+
+
+class UsageWithStreamingResponse:
+    def __init__(self, usage: Usage) -> None:
+        self.update = to_streamed_response_wrapper(
+            usage.update,
+        )
+        self.update_by_external_id = to_streamed_response_wrapper(
+            usage.update_by_external_id,
+        )
+
+
+class AsyncUsageWithStreamingResponse:
+    def __init__(self, usage: AsyncUsage) -> None:
+        self.update = async_to_streamed_response_wrapper(
+            usage.update,
+        )
+        self.update_by_external_id = async_to_streamed_response_wrapper(
             usage.update_by_external_id,
         )

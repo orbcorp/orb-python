@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -54,9 +55,25 @@ class TestBackfills:
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.events.backfills.with_streaming_response.create(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = response.parse()
+            assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -74,9 +91,22 @@ class TestBackfills:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.events.backfills.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.events.backfills.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = response.parse()
+            assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_close(self, client: Orb) -> None:
@@ -90,9 +120,24 @@ class TestBackfills:
         response = client.events.backfills.with_raw_response.close(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_streaming_response_close(self, client: Orb) -> None:
+        with client.events.backfills.with_streaming_response.close(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = response.parse()
+            assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -106,9 +151,24 @@ class TestBackfills:
         response = client.events.backfills.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.events.backfills.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = response.parse()
+            assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_revert(self, client: Orb) -> None:
@@ -122,9 +182,24 @@ class TestBackfills:
         response = client.events.backfills.with_raw_response.revert(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+    @parametrize
+    def test_streaming_response_revert(self, client: Orb) -> None:
+        with client.events.backfills.with_streaming_response.revert(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = response.parse()
+            assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncBackfills:
@@ -158,9 +233,25 @@ class TestAsyncBackfills:
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.events.backfills.with_streaming_response.create(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = await response.parse()
+            assert_matches_type(BackfillCreateResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -178,9 +269,22 @@ class TestAsyncBackfills:
     @parametrize
     async def test_raw_response_list(self, client: AsyncOrb) -> None:
         response = await client.events.backfills.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.events.backfills.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = await response.parse()
+            assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_close(self, client: AsyncOrb) -> None:
@@ -194,9 +298,24 @@ class TestAsyncBackfills:
         response = await client.events.backfills.with_raw_response.close(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_close(self, client: AsyncOrb) -> None:
+        async with client.events.backfills.with_streaming_response.close(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = await response.parse()
+            assert_matches_type(BackfillCloseResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
@@ -210,9 +329,24 @@ class TestAsyncBackfills:
         response = await client.events.backfills.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.events.backfills.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = await response.parse()
+            assert_matches_type(BackfillFetchResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_revert(self, client: AsyncOrb) -> None:
@@ -226,6 +360,21 @@ class TestAsyncBackfills:
         response = await client.events.backfills.with_raw_response.revert(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         backfill = response.parse()
         assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_revert(self, client: AsyncOrb) -> None:
+        async with client.events.backfills.with_streaming_response.revert(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            backfill = await response.parse()
+            assert_matches_type(BackfillRevertResponse, backfill, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

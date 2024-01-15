@@ -7,11 +7,12 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -34,6 +35,10 @@ class Backfills(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BackfillsWithRawResponse:
         return BackfillsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BackfillsWithStreamingResponse:
+        return BackfillsWithStreamingResponse(self)
 
     def create(
         self,
@@ -306,6 +311,10 @@ class AsyncBackfills(AsyncAPIResource):
     def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
         return AsyncBackfillsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncBackfillsWithStreamingResponse:
+        return AsyncBackfillsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -574,37 +583,75 @@ class AsyncBackfills(AsyncAPIResource):
 
 class BackfillsWithRawResponse:
     def __init__(self, backfills: Backfills) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             backfills.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             backfills.list,
         )
-        self.close = to_raw_response_wrapper(
+        self.close = _legacy_response.to_raw_response_wrapper(
             backfills.close,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             backfills.fetch,
         )
-        self.revert = to_raw_response_wrapper(
+        self.revert = _legacy_response.to_raw_response_wrapper(
             backfills.revert,
         )
 
 
 class AsyncBackfillsWithRawResponse:
     def __init__(self, backfills: AsyncBackfills) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             backfills.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             backfills.list,
         )
-        self.close = async_to_raw_response_wrapper(
+        self.close = _legacy_response.async_to_raw_response_wrapper(
             backfills.close,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
             backfills.fetch,
         )
-        self.revert = async_to_raw_response_wrapper(
+        self.revert = _legacy_response.async_to_raw_response_wrapper(
+            backfills.revert,
+        )
+
+
+class BackfillsWithStreamingResponse:
+    def __init__(self, backfills: Backfills) -> None:
+        self.create = to_streamed_response_wrapper(
+            backfills.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            backfills.list,
+        )
+        self.close = to_streamed_response_wrapper(
+            backfills.close,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            backfills.fetch,
+        )
+        self.revert = to_streamed_response_wrapper(
+            backfills.revert,
+        )
+
+
+class AsyncBackfillsWithStreamingResponse:
+    def __init__(self, backfills: AsyncBackfills) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            backfills.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            backfills.list,
+        )
+        self.close = async_to_streamed_response_wrapper(
+            backfills.close,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
+            backfills.fetch,
+        )
+        self.revert = async_to_streamed_response_wrapper(
             backfills.revert,
         )

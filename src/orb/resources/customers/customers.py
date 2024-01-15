@@ -8,8 +8,23 @@ from typing_extensions import Literal
 
 import httpx
 
-from .costs import Costs, AsyncCosts, CostsWithRawResponse, AsyncCostsWithRawResponse
-from .usage import Usage, AsyncUsage, UsageWithRawResponse, AsyncUsageWithRawResponse
+from ... import _legacy_response
+from .costs import (
+    Costs,
+    AsyncCosts,
+    CostsWithRawResponse,
+    AsyncCostsWithRawResponse,
+    CostsWithStreamingResponse,
+    AsyncCostsWithStreamingResponse,
+)
+from .usage import (
+    Usage,
+    AsyncUsage,
+    UsageWithRawResponse,
+    AsyncUsageWithRawResponse,
+    UsageWithStreamingResponse,
+    AsyncUsageWithStreamingResponse,
+)
 from ...types import (
     Customer,
     customer_list_params,
@@ -17,12 +32,19 @@ from ...types import (
     customer_update_params,
     customer_update_by_external_id_params,
 )
-from .credits import Credits, AsyncCredits, CreditsWithRawResponse, AsyncCreditsWithRawResponse
+from .credits import (
+    Credits,
+    AsyncCredits,
+    CreditsWithRawResponse,
+    AsyncCreditsWithRawResponse,
+    CreditsWithStreamingResponse,
+    AsyncCreditsWithStreamingResponse,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -34,6 +56,8 @@ from .balance_transactions import (
     AsyncBalanceTransactions,
     BalanceTransactionsWithRawResponse,
     AsyncBalanceTransactionsWithRawResponse,
+    BalanceTransactionsWithStreamingResponse,
+    AsyncBalanceTransactionsWithStreamingResponse,
 )
 
 __all__ = ["Customers", "AsyncCustomers"]
@@ -59,6 +83,10 @@ class Customers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CustomersWithRawResponse:
         return CustomersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CustomersWithStreamingResponse:
+        return CustomersWithStreamingResponse(self)
 
     def create(
         self,
@@ -859,6 +887,10 @@ class AsyncCustomers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCustomersWithRawResponse:
         return AsyncCustomersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCustomersWithStreamingResponse:
+        return AsyncCustomersWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -1644,25 +1676,25 @@ class CustomersWithRawResponse:
         self.credits = CreditsWithRawResponse(customers.credits)
         self.balance_transactions = BalanceTransactionsWithRawResponse(customers.balance_transactions)
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             customers.create,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             customers.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             customers.list,
         )
-        self.delete = to_raw_response_wrapper(
+        self.delete = _legacy_response.to_raw_response_wrapper(
             customers.delete,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             customers.fetch,
         )
-        self.fetch_by_external_id = to_raw_response_wrapper(
+        self.fetch_by_external_id = _legacy_response.to_raw_response_wrapper(
             customers.fetch_by_external_id,
         )
-        self.update_by_external_id = to_raw_response_wrapper(
+        self.update_by_external_id = _legacy_response.to_raw_response_wrapper(
             customers.update_by_external_id,
         )
 
@@ -1674,24 +1706,84 @@ class AsyncCustomersWithRawResponse:
         self.credits = AsyncCreditsWithRawResponse(customers.credits)
         self.balance_transactions = AsyncBalanceTransactionsWithRawResponse(customers.balance_transactions)
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             customers.create,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             customers.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             customers.list,
         )
-        self.delete = async_to_raw_response_wrapper(
+        self.delete = _legacy_response.async_to_raw_response_wrapper(
             customers.delete,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
             customers.fetch,
         )
-        self.fetch_by_external_id = async_to_raw_response_wrapper(
+        self.fetch_by_external_id = _legacy_response.async_to_raw_response_wrapper(
             customers.fetch_by_external_id,
         )
-        self.update_by_external_id = async_to_raw_response_wrapper(
+        self.update_by_external_id = _legacy_response.async_to_raw_response_wrapper(
+            customers.update_by_external_id,
+        )
+
+
+class CustomersWithStreamingResponse:
+    def __init__(self, customers: Customers) -> None:
+        self.costs = CostsWithStreamingResponse(customers.costs)
+        self.usage = UsageWithStreamingResponse(customers.usage)
+        self.credits = CreditsWithStreamingResponse(customers.credits)
+        self.balance_transactions = BalanceTransactionsWithStreamingResponse(customers.balance_transactions)
+
+        self.create = to_streamed_response_wrapper(
+            customers.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            customers.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            customers.list,
+        )
+        self.delete = to_streamed_response_wrapper(
+            customers.delete,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            customers.fetch,
+        )
+        self.fetch_by_external_id = to_streamed_response_wrapper(
+            customers.fetch_by_external_id,
+        )
+        self.update_by_external_id = to_streamed_response_wrapper(
+            customers.update_by_external_id,
+        )
+
+
+class AsyncCustomersWithStreamingResponse:
+    def __init__(self, customers: AsyncCustomers) -> None:
+        self.costs = AsyncCostsWithStreamingResponse(customers.costs)
+        self.usage = AsyncUsageWithStreamingResponse(customers.usage)
+        self.credits = AsyncCreditsWithStreamingResponse(customers.credits)
+        self.balance_transactions = AsyncBalanceTransactionsWithStreamingResponse(customers.balance_transactions)
+
+        self.create = async_to_streamed_response_wrapper(
+            customers.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            customers.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            customers.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            customers.delete,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
+            customers.fetch,
+        )
+        self.fetch_by_external_id = async_to_streamed_response_wrapper(
+            customers.fetch_by_external_id,
+        )
+        self.update_by_external_id = async_to_streamed_response_wrapper(
             customers.update_by_external_id,
         )

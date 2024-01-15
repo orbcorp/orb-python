@@ -61,6 +61,7 @@ class Orb(SyncAPIClient):
     subscriptions: resources.Subscriptions
     beta: resources.Beta
     with_raw_response: OrbWithRawResponse
+    with_streaming_response: OrbWithStreamedResponse
 
     # client options
     api_key: str
@@ -130,6 +131,7 @@ class Orb(SyncAPIClient):
         self.subscriptions = resources.Subscriptions(self)
         self.beta = resources.Beta(self)
         self.with_raw_response = OrbWithRawResponse(self)
+        self.with_streaming_response = OrbWithStreamedResponse(self)
 
     @property
     @override
@@ -299,6 +301,7 @@ class AsyncOrb(AsyncAPIClient):
     subscriptions: resources.AsyncSubscriptions
     beta: resources.AsyncBeta
     with_raw_response: AsyncOrbWithRawResponse
+    with_streaming_response: AsyncOrbWithStreamedResponse
 
     # client options
     api_key: str
@@ -368,6 +371,7 @@ class AsyncOrb(AsyncAPIClient):
         self.subscriptions = resources.AsyncSubscriptions(self)
         self.beta = resources.AsyncBeta(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
+        self.with_streaming_response = AsyncOrbWithStreamedResponse(self)
 
     @property
     @override
@@ -554,6 +558,40 @@ class AsyncOrbWithRawResponse:
         self.prices = resources.AsyncPricesWithRawResponse(client.prices)
         self.subscriptions = resources.AsyncSubscriptionsWithRawResponse(client.subscriptions)
         self.beta = resources.AsyncBetaWithRawResponse(client.beta)
+
+
+class OrbWithStreamedResponse:
+    def __init__(self, client: Orb) -> None:
+        self.top_level = resources.TopLevelWithStreamingResponse(client.top_level)
+        self.coupons = resources.CouponsWithStreamingResponse(client.coupons)
+        self.credit_notes = resources.CreditNotesWithStreamingResponse(client.credit_notes)
+        self.customers = resources.CustomersWithStreamingResponse(client.customers)
+        self.events = resources.EventsWithStreamingResponse(client.events)
+        self.invoice_line_items = resources.InvoiceLineItemsWithStreamingResponse(client.invoice_line_items)
+        self.invoices = resources.InvoicesWithStreamingResponse(client.invoices)
+        self.items = resources.ItemsWithStreamingResponse(client.items)
+        self.metrics = resources.MetricsWithStreamingResponse(client.metrics)
+        self.plans = resources.PlansWithStreamingResponse(client.plans)
+        self.prices = resources.PricesWithStreamingResponse(client.prices)
+        self.subscriptions = resources.SubscriptionsWithStreamingResponse(client.subscriptions)
+        self.beta = resources.BetaWithStreamingResponse(client.beta)
+
+
+class AsyncOrbWithStreamedResponse:
+    def __init__(self, client: AsyncOrb) -> None:
+        self.top_level = resources.AsyncTopLevelWithStreamingResponse(client.top_level)
+        self.coupons = resources.AsyncCouponsWithStreamingResponse(client.coupons)
+        self.credit_notes = resources.AsyncCreditNotesWithStreamingResponse(client.credit_notes)
+        self.customers = resources.AsyncCustomersWithStreamingResponse(client.customers)
+        self.events = resources.AsyncEventsWithStreamingResponse(client.events)
+        self.invoice_line_items = resources.AsyncInvoiceLineItemsWithStreamingResponse(client.invoice_line_items)
+        self.invoices = resources.AsyncInvoicesWithStreamingResponse(client.invoices)
+        self.items = resources.AsyncItemsWithStreamingResponse(client.items)
+        self.metrics = resources.AsyncMetricsWithStreamingResponse(client.metrics)
+        self.plans = resources.AsyncPlansWithStreamingResponse(client.plans)
+        self.prices = resources.AsyncPricesWithStreamingResponse(client.prices)
+        self.subscriptions = resources.AsyncSubscriptionsWithStreamingResponse(client.subscriptions)
+        self.beta = resources.AsyncBetaWithStreamingResponse(client.beta)
 
 
 Client = Orb

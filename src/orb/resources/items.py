@@ -6,12 +6,13 @@ from typing import Optional
 
 import httpx
 
+from .. import _legacy_response
 from ..types import Item, item_list_params, item_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -25,6 +26,10 @@ class Items(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ItemsWithRawResponse:
         return ItemsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ItemsWithStreamingResponse:
+        return ItemsWithStreamingResponse(self)
 
     def create(
         self,
@@ -153,6 +158,10 @@ class AsyncItems(AsyncAPIResource):
     def with_raw_response(self) -> AsyncItemsWithRawResponse:
         return AsyncItemsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncItemsWithStreamingResponse:
+        return AsyncItemsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -277,25 +286,51 @@ class AsyncItems(AsyncAPIResource):
 
 class ItemsWithRawResponse:
     def __init__(self, items: Items) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             items.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             items.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             items.fetch,
         )
 
 
 class AsyncItemsWithRawResponse:
     def __init__(self, items: AsyncItems) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             items.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             items.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            items.fetch,
+        )
+
+
+class ItemsWithStreamingResponse:
+    def __init__(self, items: Items) -> None:
+        self.create = to_streamed_response_wrapper(
+            items.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            items.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            items.fetch,
+        )
+
+
+class AsyncItemsWithStreamingResponse:
+    def __init__(self, items: AsyncItems) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            items.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            items.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             items.fetch,
         )

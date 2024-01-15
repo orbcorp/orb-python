@@ -8,12 +8,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Plan, plan_list_params, plan_create_params, plan_update_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -24,6 +25,8 @@ from .external_plan_id import (
     AsyncExternalPlanID,
     ExternalPlanIDWithRawResponse,
     AsyncExternalPlanIDWithRawResponse,
+    ExternalPlanIDWithStreamingResponse,
+    AsyncExternalPlanIDWithStreamingResponse,
 )
 
 __all__ = ["Plans", "AsyncPlans"]
@@ -37,6 +40,10 @@ class Plans(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PlansWithRawResponse:
         return PlansWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PlansWithStreamingResponse:
+        return PlansWithStreamingResponse(self)
 
     def create(
         self,
@@ -289,6 +296,10 @@ class AsyncPlans(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPlansWithRawResponse:
         return AsyncPlansWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPlansWithStreamingResponse:
+        return AsyncPlansWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -535,16 +546,16 @@ class PlansWithRawResponse:
     def __init__(self, plans: Plans) -> None:
         self.external_plan_id = ExternalPlanIDWithRawResponse(plans.external_plan_id)
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             plans.create,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             plans.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             plans.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             plans.fetch,
         )
 
@@ -553,15 +564,51 @@ class AsyncPlansWithRawResponse:
     def __init__(self, plans: AsyncPlans) -> None:
         self.external_plan_id = AsyncExternalPlanIDWithRawResponse(plans.external_plan_id)
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             plans.create,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             plans.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             plans.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            plans.fetch,
+        )
+
+
+class PlansWithStreamingResponse:
+    def __init__(self, plans: Plans) -> None:
+        self.external_plan_id = ExternalPlanIDWithStreamingResponse(plans.external_plan_id)
+
+        self.create = to_streamed_response_wrapper(
+            plans.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            plans.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            plans.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            plans.fetch,
+        )
+
+
+class AsyncPlansWithStreamingResponse:
+    def __init__(self, plans: AsyncPlans) -> None:
+        self.external_plan_id = AsyncExternalPlanIDWithStreamingResponse(plans.external_plan_id)
+
+        self.create = async_to_streamed_response_wrapper(
+            plans.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            plans.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            plans.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             plans.fetch,
         )

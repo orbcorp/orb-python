@@ -6,12 +6,13 @@ from typing import Optional
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Subscription
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -26,6 +27,10 @@ class Subscriptions(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SubscriptionsWithRawResponse:
         return SubscriptionsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> SubscriptionsWithStreamingResponse:
+        return SubscriptionsWithStreamingResponse(self)
 
     def list(
         self,
@@ -85,6 +90,10 @@ class AsyncSubscriptions(AsyncAPIResource):
     def with_raw_response(self) -> AsyncSubscriptionsWithRawResponse:
         return AsyncSubscriptionsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncSubscriptionsWithStreamingResponse:
+        return AsyncSubscriptionsWithStreamingResponse(self)
+
     def list(
         self,
         coupon_id: str,
@@ -140,13 +149,27 @@ class AsyncSubscriptions(AsyncAPIResource):
 
 class SubscriptionsWithRawResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             subscriptions.list,
         )
 
 
 class AsyncSubscriptionsWithRawResponse:
     def __init__(self, subscriptions: AsyncSubscriptions) -> None:
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            subscriptions.list,
+        )
+
+
+class SubscriptionsWithStreamingResponse:
+    def __init__(self, subscriptions: Subscriptions) -> None:
+        self.list = to_streamed_response_wrapper(
+            subscriptions.list,
+        )
+
+
+class AsyncSubscriptionsWithStreamingResponse:
+    def __init__(self, subscriptions: AsyncSubscriptions) -> None:
+        self.list = async_to_streamed_response_wrapper(
             subscriptions.list,
         )
