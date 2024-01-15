@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -43,9 +44,29 @@ class TestInvoiceLineItems:
             quantity=1,
             start_date=parse_date("2023-09-22"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invoice_line_item = response.parse()
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.invoice_line_items.with_streaming_response.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            name="Item Name",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice_line_item = response.parse()
+            assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncInvoiceLineItems:
@@ -75,6 +96,26 @@ class TestAsyncInvoiceLineItems:
             quantity=1,
             start_date=parse_date("2023-09-22"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invoice_line_item = response.parse()
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.invoice_line_items.with_streaming_response.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            name="Item Name",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice_line_item = await response.parse()
+            assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

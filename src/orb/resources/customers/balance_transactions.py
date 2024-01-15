@@ -8,11 +8,12 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -32,6 +33,10 @@ class BalanceTransactions(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BalanceTransactionsWithRawResponse:
         return BalanceTransactionsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BalanceTransactionsWithStreamingResponse:
+        return BalanceTransactionsWithStreamingResponse(self)
 
     def create(
         self,
@@ -175,6 +180,10 @@ class AsyncBalanceTransactions(AsyncAPIResource):
     def with_raw_response(self) -> AsyncBalanceTransactionsWithRawResponse:
         return AsyncBalanceTransactionsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncBalanceTransactionsWithStreamingResponse:
+        return AsyncBalanceTransactionsWithStreamingResponse(self)
+
     async def create(
         self,
         customer_id: str,
@@ -314,19 +323,39 @@ class AsyncBalanceTransactions(AsyncAPIResource):
 
 class BalanceTransactionsWithRawResponse:
     def __init__(self, balance_transactions: BalanceTransactions) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             balance_transactions.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             balance_transactions.list,
         )
 
 
 class AsyncBalanceTransactionsWithRawResponse:
     def __init__(self, balance_transactions: AsyncBalanceTransactions) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             balance_transactions.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            balance_transactions.list,
+        )
+
+
+class BalanceTransactionsWithStreamingResponse:
+    def __init__(self, balance_transactions: BalanceTransactions) -> None:
+        self.create = to_streamed_response_wrapper(
+            balance_transactions.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            balance_transactions.list,
+        )
+
+
+class AsyncBalanceTransactionsWithStreamingResponse:
+    def __init__(self, balance_transactions: AsyncBalanceTransactions) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            balance_transactions.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
             balance_transactions.list,
         )

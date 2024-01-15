@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -58,9 +59,29 @@ class TestCoupons:
             },
             redemption_code="HALFOFF",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.coupons.with_streaming_response.create(
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "percentage_discount": 0.15,
+            },
+            redemption_code="HALFOFF",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -80,9 +101,22 @@ class TestCoupons:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.coupons.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(SyncPage[Coupon], coupon, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.coupons.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = response.parse()
+            assert_matches_type(SyncPage[Coupon], coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_archive(self, client: Orb) -> None:
@@ -96,9 +130,24 @@ class TestCoupons:
         response = client.coupons.with_raw_response.archive(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    def test_streaming_response_archive(self, client: Orb) -> None:
+        with client.coupons.with_streaming_response.archive(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -112,9 +161,24 @@ class TestCoupons:
         response = client.coupons.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.coupons.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCoupons:
@@ -159,9 +223,29 @@ class TestAsyncCoupons:
             },
             redemption_code="HALFOFF",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.coupons.with_streaming_response.create(
+            discount={
+                "discount_type": "percentage",
+                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "percentage_discount": 0.15,
+            },
+            redemption_code="HALFOFF",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = await response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -181,9 +265,22 @@ class TestAsyncCoupons:
     @parametrize
     async def test_raw_response_list(self, client: AsyncOrb) -> None:
         response = await client.coupons.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.coupons.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = await response.parse()
+            assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_archive(self, client: AsyncOrb) -> None:
@@ -197,9 +294,24 @@ class TestAsyncCoupons:
         response = await client.coupons.with_raw_response.archive(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_archive(self, client: AsyncOrb) -> None:
+        async with client.coupons.with_streaming_response.archive(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = await response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
@@ -213,6 +325,21 @@ class TestAsyncCoupons:
         response = await client.coupons.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         coupon = response.parse()
         assert_matches_type(Coupon, coupon, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.coupons.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            coupon = await response.parse()
+            assert_matches_type(Coupon, coupon, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

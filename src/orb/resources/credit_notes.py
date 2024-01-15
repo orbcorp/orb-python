@@ -6,12 +6,13 @@ from typing import Optional
 
 import httpx
 
+from .. import _legacy_response
 from ..types import CreditNote, credit_note_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -25,6 +26,10 @@ class CreditNotes(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CreditNotesWithRawResponse:
         return CreditNotesWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CreditNotesWithStreamingResponse:
+        return CreditNotesWithStreamingResponse(self)
 
     def list(
         self,
@@ -115,6 +120,10 @@ class AsyncCreditNotes(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCreditNotesWithRawResponse:
         return AsyncCreditNotesWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCreditNotesWithStreamingResponse:
+        return AsyncCreditNotesWithStreamingResponse(self)
+
     def list(
         self,
         *,
@@ -201,19 +210,39 @@ class AsyncCreditNotes(AsyncAPIResource):
 
 class CreditNotesWithRawResponse:
     def __init__(self, credit_notes: CreditNotes) -> None:
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             credit_notes.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             credit_notes.fetch,
         )
 
 
 class AsyncCreditNotesWithRawResponse:
     def __init__(self, credit_notes: AsyncCreditNotes) -> None:
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             credit_notes.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            credit_notes.fetch,
+        )
+
+
+class CreditNotesWithStreamingResponse:
+    def __init__(self, credit_notes: CreditNotes) -> None:
+        self.list = to_streamed_response_wrapper(
+            credit_notes.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            credit_notes.fetch,
+        )
+
+
+class AsyncCreditNotesWithStreamingResponse:
+    def __init__(self, credit_notes: AsyncCreditNotes) -> None:
+        self.list = async_to_streamed_response_wrapper(
+            credit_notes.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             credit_notes.fetch,
         )

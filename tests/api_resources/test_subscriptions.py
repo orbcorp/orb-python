@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -119,9 +120,22 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.create()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.create() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -146,9 +160,22 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_cancel(self, client: Orb) -> None:
@@ -173,9 +200,25 @@ class TestSubscriptions:
             "string",
             cancel_option="end_of_subscription_term",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_cancel(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.cancel(
+            "string",
+            cancel_option="end_of_subscription_term",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -189,9 +232,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch_costs(self, client: Orb) -> None:
@@ -216,9 +274,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.fetch_costs(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch_costs(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.fetch_costs(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch_schedule(self, client: Orb) -> None:
@@ -245,9 +318,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.fetch_schedule(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch_schedule(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.fetch_schedule(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -283,9 +371,25 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.fetch_usage(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_streaming_response_fetch_usage(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.fetch_usage(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -529,9 +633,25 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.price_intervals(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_streaming_response_price_intervals(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.price_intervals(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_schedule_plan_change(self, client: Orb) -> None:
@@ -624,9 +744,25 @@ class TestSubscriptions:
             "string",
             change_option="requested_date",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_schedule_plan_change(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.schedule_plan_change(
+            "string",
+            change_option="requested_date",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_trigger_phase(self, client: Orb) -> None:
@@ -648,9 +784,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.trigger_phase(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_trigger_phase(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.trigger_phase(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_unschedule_cancellation(self, client: Orb) -> None:
@@ -664,9 +815,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.unschedule_cancellation(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_unschedule_cancellation(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.unschedule_cancellation(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
@@ -682,9 +848,25 @@ class TestSubscriptions:
             "string",
             price_id="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.unschedule_fixed_fee_quantity_updates(
+            "string",
+            price_id="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_unschedule_pending_plan_changes(self, client: Orb) -> None:
@@ -698,9 +880,24 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.unschedule_pending_plan_changes(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update_fixed_fee_quantity(self, client: Orb) -> None:
@@ -729,9 +926,26 @@ class TestSubscriptions:
             price_id="string",
             quantity=0,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_fixed_fee_quantity(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.update_fixed_fee_quantity(
+            "string",
+            price_id="string",
+            quantity=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncSubscriptions:
@@ -831,9 +1045,22 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_create(self, client: AsyncOrb) -> None:
         response = await client.subscriptions.with_raw_response.create()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.create() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -858,9 +1085,22 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_list(self, client: AsyncOrb) -> None:
         response = await client.subscriptions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_cancel(self, client: AsyncOrb) -> None:
@@ -885,9 +1125,25 @@ class TestAsyncSubscriptions:
             "string",
             cancel_option="end_of_subscription_term",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_cancel(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.cancel(
+            "string",
+            cancel_option="end_of_subscription_term",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
@@ -901,9 +1157,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch_costs(self, client: AsyncOrb) -> None:
@@ -928,9 +1199,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.fetch_costs(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch_costs(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.fetch_costs(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch_schedule(self, client: AsyncOrb) -> None:
@@ -957,9 +1243,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.fetch_schedule(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch_schedule(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.fetch_schedule(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -995,9 +1296,25 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.fetch_usage(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_streaming_response_fetch_usage(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.fetch_usage(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(SubscriptionUsage, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -1241,9 +1558,25 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.price_intervals(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_streaming_response_price_intervals(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.price_intervals(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_schedule_plan_change(self, client: AsyncOrb) -> None:
@@ -1336,9 +1669,25 @@ class TestAsyncSubscriptions:
             "string",
             change_option="requested_date",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_schedule_plan_change(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.schedule_plan_change(
+            "string",
+            change_option="requested_date",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_trigger_phase(self, client: AsyncOrb) -> None:
@@ -1360,9 +1709,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.trigger_phase(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_trigger_phase(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.trigger_phase(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_unschedule_cancellation(self, client: AsyncOrb) -> None:
@@ -1376,9 +1740,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.unschedule_cancellation(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_unschedule_cancellation(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.unschedule_cancellation(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_unschedule_fixed_fee_quantity_updates(self, client: AsyncOrb) -> None:
@@ -1394,9 +1773,25 @@ class TestAsyncSubscriptions:
             "string",
             price_id="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.unschedule_fixed_fee_quantity_updates(
+            "string",
+            price_id="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
@@ -1410,9 +1805,24 @@ class TestAsyncSubscriptions:
         response = await client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.unschedule_pending_plan_changes(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update_fixed_fee_quantity(self, client: AsyncOrb) -> None:
@@ -1441,6 +1851,23 @@ class TestAsyncSubscriptions:
             price_id="string",
             quantity=0,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_fixed_fee_quantity(self, client: AsyncOrb) -> None:
+        async with client.subscriptions.with_streaming_response.update_fixed_fee_quantity(
+            "string",
+            price_id="string",
+            quantity=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

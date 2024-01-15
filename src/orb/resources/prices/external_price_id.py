@@ -6,11 +6,12 @@ from typing import Any, cast
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Price
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -22,6 +23,10 @@ class ExternalPriceID(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ExternalPriceIDWithRawResponse:
         return ExternalPriceIDWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ExternalPriceIDWithStreamingResponse:
+        return ExternalPriceIDWithStreamingResponse(self)
 
     def fetch(
         self,
@@ -66,6 +71,10 @@ class AsyncExternalPriceID(AsyncAPIResource):
     def with_raw_response(self) -> AsyncExternalPriceIDWithRawResponse:
         return AsyncExternalPriceIDWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncExternalPriceIDWithStreamingResponse:
+        return AsyncExternalPriceIDWithStreamingResponse(self)
+
     async def fetch(
         self,
         external_price_id: str,
@@ -106,13 +115,27 @@ class AsyncExternalPriceID(AsyncAPIResource):
 
 class ExternalPriceIDWithRawResponse:
     def __init__(self, external_price_id: ExternalPriceID) -> None:
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             external_price_id.fetch,
         )
 
 
 class AsyncExternalPriceIDWithRawResponse:
     def __init__(self, external_price_id: AsyncExternalPriceID) -> None:
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            external_price_id.fetch,
+        )
+
+
+class ExternalPriceIDWithStreamingResponse:
+    def __init__(self, external_price_id: ExternalPriceID) -> None:
+        self.fetch = to_streamed_response_wrapper(
+            external_price_id.fetch,
+        )
+
+
+class AsyncExternalPriceIDWithStreamingResponse:
+    def __init__(self, external_price_id: AsyncExternalPriceID) -> None:
+        self.fetch = async_to_streamed_response_wrapper(
             external_price_id.fetch,
         )

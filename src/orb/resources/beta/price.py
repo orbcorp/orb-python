@@ -7,11 +7,12 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...types.beta import PriceEvaluateResponse, price_evaluate_params
 from ..._base_client import (
     make_request_options,
@@ -24,6 +25,10 @@ class Price(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PriceWithRawResponse:
         return PriceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PriceWithStreamingResponse:
+        return PriceWithStreamingResponse(self)
 
     def evaluate(
         self,
@@ -122,6 +127,10 @@ class AsyncPrice(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPriceWithRawResponse:
         return AsyncPriceWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPriceWithStreamingResponse:
+        return AsyncPriceWithStreamingResponse(self)
+
     async def evaluate(
         self,
         price_id: str,
@@ -216,13 +225,27 @@ class AsyncPrice(AsyncAPIResource):
 
 class PriceWithRawResponse:
     def __init__(self, price: Price) -> None:
-        self.evaluate = to_raw_response_wrapper(
+        self.evaluate = _legacy_response.to_raw_response_wrapper(
             price.evaluate,
         )
 
 
 class AsyncPriceWithRawResponse:
     def __init__(self, price: AsyncPrice) -> None:
-        self.evaluate = async_to_raw_response_wrapper(
+        self.evaluate = _legacy_response.async_to_raw_response_wrapper(
+            price.evaluate,
+        )
+
+
+class PriceWithStreamingResponse:
+    def __init__(self, price: Price) -> None:
+        self.evaluate = to_streamed_response_wrapper(
+            price.evaluate,
+        )
+
+
+class AsyncPriceWithStreamingResponse:
+    def __init__(self, price: AsyncPrice) -> None:
+        self.evaluate = async_to_streamed_response_wrapper(
             price.evaluate,
         )
