@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -51,9 +52,26 @@ class TestBalanceTransactions:
             amount="string",
             type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance_transaction = response.parse()
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.customers.balance_transactions.with_streaming_response.create(
+            "string",
+            amount="string",
+            type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance_transaction = response.parse()
+            assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -80,9 +98,24 @@ class TestBalanceTransactions:
         response = client.customers.balance_transactions.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance_transaction = response.parse()
         assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.customers.balance_transactions.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance_transaction = response.parse()
+            assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncBalanceTransactions:
@@ -116,9 +149,26 @@ class TestAsyncBalanceTransactions:
             amount="string",
             type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance_transaction = response.parse()
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.customers.balance_transactions.with_streaming_response.create(
+            "string",
+            amount="string",
+            type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance_transaction = await response.parse()
+            assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -145,6 +195,21 @@ class TestAsyncBalanceTransactions:
         response = await client.customers.balance_transactions.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance_transaction = response.parse()
         assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.customers.balance_transactions.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance_transaction = await response.parse()
+            assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

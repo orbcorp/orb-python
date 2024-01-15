@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -42,9 +43,24 @@ class TestSubscriptions:
         response = client.coupons.subscriptions.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.coupons.subscriptions.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncSubscriptions:
@@ -73,6 +89,21 @@ class TestAsyncSubscriptions:
         response = await client.coupons.subscriptions.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.coupons.subscriptions.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

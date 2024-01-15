@@ -7,6 +7,7 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ...types import (
     EventIngestResponse,
     EventSearchResponse,
@@ -19,9 +20,16 @@ from ...types import (
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
-from .backfills import Backfills, AsyncBackfills, BackfillsWithRawResponse, AsyncBackfillsWithRawResponse
+from .backfills import (
+    Backfills,
+    AsyncBackfills,
+    BackfillsWithRawResponse,
+    AsyncBackfillsWithRawResponse,
+    BackfillsWithStreamingResponse,
+    AsyncBackfillsWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -37,6 +45,10 @@ class Events(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EventsWithRawResponse:
         return EventsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EventsWithStreamingResponse:
+        return EventsWithStreamingResponse(self)
 
     def update(
         self,
@@ -555,6 +567,10 @@ class AsyncEvents(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEventsWithRawResponse:
         return AsyncEventsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEventsWithStreamingResponse:
+        return AsyncEventsWithStreamingResponse(self)
+
     async def update(
         self,
         event_id: str,
@@ -1067,16 +1083,16 @@ class EventsWithRawResponse:
     def __init__(self, events: Events) -> None:
         self.backfills = BackfillsWithRawResponse(events.backfills)
 
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             events.update,
         )
-        self.deprecate = to_raw_response_wrapper(
+        self.deprecate = _legacy_response.to_raw_response_wrapper(
             events.deprecate,
         )
-        self.ingest = to_raw_response_wrapper(
+        self.ingest = _legacy_response.to_raw_response_wrapper(
             events.ingest,
         )
-        self.search = to_raw_response_wrapper(
+        self.search = _legacy_response.to_raw_response_wrapper(
             events.search,
         )
 
@@ -1085,15 +1101,51 @@ class AsyncEventsWithRawResponse:
     def __init__(self, events: AsyncEvents) -> None:
         self.backfills = AsyncBackfillsWithRawResponse(events.backfills)
 
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             events.update,
         )
-        self.deprecate = async_to_raw_response_wrapper(
+        self.deprecate = _legacy_response.async_to_raw_response_wrapper(
             events.deprecate,
         )
-        self.ingest = async_to_raw_response_wrapper(
+        self.ingest = _legacy_response.async_to_raw_response_wrapper(
             events.ingest,
         )
-        self.search = async_to_raw_response_wrapper(
+        self.search = _legacy_response.async_to_raw_response_wrapper(
+            events.search,
+        )
+
+
+class EventsWithStreamingResponse:
+    def __init__(self, events: Events) -> None:
+        self.backfills = BackfillsWithStreamingResponse(events.backfills)
+
+        self.update = to_streamed_response_wrapper(
+            events.update,
+        )
+        self.deprecate = to_streamed_response_wrapper(
+            events.deprecate,
+        )
+        self.ingest = to_streamed_response_wrapper(
+            events.ingest,
+        )
+        self.search = to_streamed_response_wrapper(
+            events.search,
+        )
+
+
+class AsyncEventsWithStreamingResponse:
+    def __init__(self, events: AsyncEvents) -> None:
+        self.backfills = AsyncBackfillsWithStreamingResponse(events.backfills)
+
+        self.update = async_to_streamed_response_wrapper(
+            events.update,
+        )
+        self.deprecate = async_to_streamed_response_wrapper(
+            events.deprecate,
+        )
+        self.ingest = async_to_streamed_response_wrapper(
+            events.ingest,
+        )
+        self.search = async_to_streamed_response_wrapper(
             events.search,
         )

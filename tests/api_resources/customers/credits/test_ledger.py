@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -56,9 +57,24 @@ class TestLedger:
         response = client.customers.credits.ledger.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(SyncPage[LedgerListResponse], ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(SyncPage[LedgerListResponse], ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_overload_1(self, client: Orb) -> None:
@@ -96,9 +112,26 @@ class TestLedger:
             amount=0,
             entry_type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_overload_1(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_overload_2(self, client: Orb) -> None:
@@ -128,9 +161,26 @@ class TestLedger:
             amount=0,
             entry_type="decrement",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_overload_2(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_overload_3(self, client: Orb) -> None:
@@ -165,9 +215,27 @@ class TestLedger:
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_overload_3(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_overload_4(self, client: Orb) -> None:
@@ -201,9 +269,27 @@ class TestLedger:
             block_id="string",
             entry_type="void",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_overload_4(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_overload_5(self, client: Orb) -> None:
@@ -236,9 +322,27 @@ class TestLedger:
             block_id="string",
             entry_type="amendment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_overload_5(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_by_external_id_overload_1(self, client: Orb) -> None:
@@ -276,9 +380,26 @@ class TestLedger:
             amount=0,
             entry_type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_by_external_id_overload_1(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_by_external_id_overload_2(self, client: Orb) -> None:
@@ -308,9 +429,26 @@ class TestLedger:
             amount=0,
             entry_type="decrement",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_by_external_id_overload_2(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_by_external_id_overload_3(self, client: Orb) -> None:
@@ -345,9 +483,27 @@ class TestLedger:
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_by_external_id_overload_3(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_by_external_id_overload_4(self, client: Orb) -> None:
@@ -381,9 +537,27 @@ class TestLedger:
             block_id="string",
             entry_type="void",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_by_external_id_overload_4(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_create_entry_by_external_id_overload_5(self, client: Orb) -> None:
@@ -416,9 +590,27 @@ class TestLedger:
             block_id="string",
             entry_type="amendment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_entry_by_external_id_overload_5(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
@@ -449,9 +641,24 @@ class TestLedger:
         response = client.customers.credits.ledger.with_raw_response.list_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(SyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list_by_external_id(self, client: Orb) -> None:
+        with client.customers.credits.ledger.with_streaming_response.list_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = response.parse()
+            assert_matches_type(SyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncLedger:
@@ -488,9 +695,24 @@ class TestAsyncLedger:
         response = await client.customers.credits.ledger.with_raw_response.list(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.list(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_overload_1(self, client: AsyncOrb) -> None:
@@ -528,9 +750,26 @@ class TestAsyncLedger:
             amount=0,
             entry_type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_overload_1(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_overload_2(self, client: AsyncOrb) -> None:
@@ -560,9 +799,26 @@ class TestAsyncLedger:
             amount=0,
             entry_type="decrement",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_overload_2(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_overload_3(self, client: AsyncOrb) -> None:
@@ -597,9 +853,27 @@ class TestAsyncLedger:
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_overload_3(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_overload_4(self, client: AsyncOrb) -> None:
@@ -633,9 +907,27 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="void",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_overload_4(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_overload_5(self, client: AsyncOrb) -> None:
@@ -668,9 +960,27 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="amendment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_overload_5(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
@@ -708,9 +1018,26 @@ class TestAsyncLedger:
             amount=0,
             entry_type="increment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="increment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
@@ -740,9 +1067,26 @@ class TestAsyncLedger:
             amount=0,
             entry_type="decrement",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            entry_type="decrement",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
@@ -777,9 +1121,27 @@ class TestAsyncLedger:
             expiry_date=parse_date("2019-12-27"),
             target_expiry_date=parse_date("2019-12-27"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            entry_type="expiration_change",
+            expiry_date=parse_date("2019-12-27"),
+            target_expiry_date=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
@@ -813,9 +1175,27 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="void",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="void",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
@@ -848,9 +1228,27 @@ class TestAsyncLedger:
             block_id="string",
             entry_type="amendment",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+            "string",
+            amount=0,
+            block_id="string",
+            entry_type="amendment",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
@@ -881,6 +1279,21 @@ class TestAsyncLedger:
         response = await client.customers.credits.ledger.with_raw_response.list_by_external_id(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ledger = response.parse()
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list_by_external_id(self, client: AsyncOrb) -> None:
+        async with client.customers.credits.ledger.with_streaming_response.list_by_external_id(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ledger = await response.parse()
+            assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestExternalPriceID:
         response = client.prices.external_price_id.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
         assert_matches_type(Price, external_price_id, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.prices.external_price_id.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_price_id = response.parse()
+            assert_matches_type(Price, external_price_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncExternalPriceID:
@@ -54,6 +70,21 @@ class TestAsyncExternalPriceID:
         response = await client.prices.external_price_id.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
         assert_matches_type(Price, external_price_id, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.prices.external_price_id.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_price_id = await response.parse()
+            assert_matches_type(Price, external_price_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

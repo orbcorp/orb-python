@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -50,9 +51,26 @@ class TestPrice:
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
         assert_matches_type(PriceEvaluateResponse, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_evaluate(self, client: Orb) -> None:
+        with client.beta.price.with_streaming_response.evaluate(
+            "string",
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(PriceEvaluateResponse, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPrice:
@@ -89,6 +107,23 @@ class TestAsyncPrice:
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
         assert_matches_type(PriceEvaluateResponse, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_evaluate(self, client: AsyncOrb) -> None:
+        async with client.beta.price.with_streaming_response.evaluate(
+            "string",
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(PriceEvaluateResponse, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

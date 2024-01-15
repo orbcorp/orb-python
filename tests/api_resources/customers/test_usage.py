@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -102,9 +103,41 @@ class TestUsage:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         usage = response.parse()
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.customers.usage.with_streaming_response.update(
+            "string",
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            usage = response.parse()
+            assert_matches_type(UsageUpdateResponse, usage, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update_by_external_id(self, client: Orb) -> None:
@@ -184,9 +217,41 @@ class TestUsage:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         usage = response.parse()
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_by_external_id(self, client: Orb) -> None:
+        with client.customers.usage.with_streaming_response.update_by_external_id(
+            "string",
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            usage = response.parse()
+            assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncUsage:
@@ -272,9 +337,41 @@ class TestAsyncUsage:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         usage = response.parse()
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncOrb) -> None:
+        async with client.customers.usage.with_streaming_response.update(
+            "string",
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            usage = await response.parse()
+            assert_matches_type(UsageUpdateResponse, usage, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
@@ -354,6 +451,38 @@ class TestAsyncUsage:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         usage = response.parse()
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_by_external_id(self, client: AsyncOrb) -> None:
+        async with client.customers.usage.with_streaming_response.update_by_external_id(
+            "string",
+            events=[
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+                {
+                    "event_name": "string",
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "properties": {},
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            usage = await response.parse()
+            assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

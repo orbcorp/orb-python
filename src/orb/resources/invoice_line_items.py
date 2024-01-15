@@ -7,12 +7,13 @@ from datetime import date
 
 import httpx
 
+from .. import _legacy_response
 from ..types import InvoiceLineItemCreateResponse, invoice_line_item_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -24,6 +25,10 @@ class InvoiceLineItems(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InvoiceLineItemsWithRawResponse:
         return InvoiceLineItemsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InvoiceLineItemsWithStreamingResponse:
+        return InvoiceLineItemsWithStreamingResponse(self)
 
     def create(
         self,
@@ -100,6 +105,10 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInvoiceLineItemsWithRawResponse:
         return AsyncInvoiceLineItemsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInvoiceLineItemsWithStreamingResponse:
+        return AsyncInvoiceLineItemsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -172,13 +181,27 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
 
 class InvoiceLineItemsWithRawResponse:
     def __init__(self, invoice_line_items: InvoiceLineItems) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             invoice_line_items.create,
         )
 
 
 class AsyncInvoiceLineItemsWithRawResponse:
     def __init__(self, invoice_line_items: AsyncInvoiceLineItems) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            invoice_line_items.create,
+        )
+
+
+class InvoiceLineItemsWithStreamingResponse:
+    def __init__(self, invoice_line_items: InvoiceLineItems) -> None:
+        self.create = to_streamed_response_wrapper(
+            invoice_line_items.create,
+        )
+
+
+class AsyncInvoiceLineItemsWithStreamingResponse:
+    def __init__(self, invoice_line_items: AsyncInvoiceLineItems) -> None:
+        self.create = async_to_streamed_response_wrapper(
             invoice_line_items.create,
         )

@@ -7,6 +7,7 @@ from datetime import datetime
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     MetricListResponse,
     MetricFetchResponse,
@@ -18,7 +19,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -32,6 +33,10 @@ class Metrics(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MetricsWithRawResponse:
         return MetricsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> MetricsWithStreamingResponse:
+        return MetricsWithStreamingResponse(self)
 
     def create(
         self,
@@ -197,6 +202,10 @@ class AsyncMetrics(AsyncAPIResource):
     def with_raw_response(self) -> AsyncMetricsWithRawResponse:
         return AsyncMetricsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncMetricsWithStreamingResponse:
+        return AsyncMetricsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -358,25 +367,51 @@ class AsyncMetrics(AsyncAPIResource):
 
 class MetricsWithRawResponse:
     def __init__(self, metrics: Metrics) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             metrics.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             metrics.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             metrics.fetch,
         )
 
 
 class AsyncMetricsWithRawResponse:
     def __init__(self, metrics: AsyncMetrics) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             metrics.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             metrics.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            metrics.fetch,
+        )
+
+
+class MetricsWithStreamingResponse:
+    def __init__(self, metrics: Metrics) -> None:
+        self.create = to_streamed_response_wrapper(
+            metrics.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            metrics.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            metrics.fetch,
+        )
+
+
+class AsyncMetricsWithStreamingResponse:
+    def __init__(self, metrics: AsyncMetrics) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            metrics.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            metrics.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             metrics.fetch,
         )

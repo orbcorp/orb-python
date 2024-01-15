@@ -7,12 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Price, price_list_params, price_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import required_args, maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -23,6 +24,8 @@ from .external_price_id import (
     AsyncExternalPriceID,
     ExternalPriceIDWithRawResponse,
     AsyncExternalPriceIDWithRawResponse,
+    ExternalPriceIDWithStreamingResponse,
+    AsyncExternalPriceIDWithStreamingResponse,
 )
 
 __all__ = ["Prices", "AsyncPrices"]
@@ -36,6 +39,10 @@ class Prices(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PricesWithRawResponse:
         return PricesWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PricesWithStreamingResponse:
+        return PricesWithStreamingResponse(self)
 
     @overload
     def create(
@@ -1070,6 +1077,10 @@ class AsyncPrices(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPricesWithRawResponse:
         return AsyncPricesWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPricesWithStreamingResponse:
+        return AsyncPricesWithStreamingResponse(self)
+
     @overload
     async def create(
         self,
@@ -2098,13 +2109,13 @@ class PricesWithRawResponse:
     def __init__(self, prices: Prices) -> None:
         self.external_price_id = ExternalPriceIDWithRawResponse(prices.external_price_id)
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             prices.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             prices.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             prices.fetch,
         )
 
@@ -2113,12 +2124,42 @@ class AsyncPricesWithRawResponse:
     def __init__(self, prices: AsyncPrices) -> None:
         self.external_price_id = AsyncExternalPriceIDWithRawResponse(prices.external_price_id)
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             prices.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             prices.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            prices.fetch,
+        )
+
+
+class PricesWithStreamingResponse:
+    def __init__(self, prices: Prices) -> None:
+        self.external_price_id = ExternalPriceIDWithStreamingResponse(prices.external_price_id)
+
+        self.create = to_streamed_response_wrapper(
+            prices.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            prices.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            prices.fetch,
+        )
+
+
+class AsyncPricesWithStreamingResponse:
+    def __init__(self, prices: AsyncPrices) -> None:
+        self.external_price_id = AsyncExternalPriceIDWithStreamingResponse(prices.external_price_id)
+
+        self.create = async_to_streamed_response_wrapper(
+            prices.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            prices.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             prices.fetch,
         )

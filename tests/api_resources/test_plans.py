@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -83,9 +84,34 @@ class TestPlans:
                 }
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.plans.with_streaming_response.create(
+            currency="string",
+            name="string",
+            prices=[
+                {
+                    "name": "Annual fee",
+                    "item_id": "string",
+                    "cadence": "annual",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Orb) -> None:
@@ -108,9 +134,24 @@ class TestPlans:
         response = client.plans.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.plans.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -133,9 +174,22 @@ class TestPlans:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.plans.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(SyncPage[Plan], plan, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Orb) -> None:
+        with client.plans.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = response.parse()
+            assert_matches_type(SyncPage[Plan], plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -149,9 +203,24 @@ class TestPlans:
         response = client.plans.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    def test_streaming_response_fetch(self, client: Orb) -> None:
+        with client.plans.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPlans:
@@ -220,9 +289,34 @@ class TestAsyncPlans:
                 }
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
+        async with client.plans.with_streaming_response.create(
+            currency="string",
+            name="string",
+            prices=[
+                {
+                    "name": "Annual fee",
+                    "item_id": "string",
+                    "cadence": "annual",
+                    "model_type": "unit",
+                    "unit_config": {"unit_amount": "string"},
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = await response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, client: AsyncOrb) -> None:
@@ -245,9 +339,24 @@ class TestAsyncPlans:
         response = await client.plans.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncOrb) -> None:
+        async with client.plans.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = await response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
@@ -270,9 +379,22 @@ class TestAsyncPlans:
     @parametrize
     async def test_raw_response_list(self, client: AsyncOrb) -> None:
         response = await client.plans.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(AsyncPage[Plan], plan, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
+        async with client.plans.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = await response.parse()
+            assert_matches_type(AsyncPage[Plan], plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
@@ -286,6 +408,21 @@ class TestAsyncPlans:
         response = await client.plans.with_raw_response.fetch(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan = response.parse()
         assert_matches_type(Plan, plan, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
+        async with client.plans.with_streaming_response.fetch(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            plan = await response.parse()
+            assert_matches_type(Plan, plan, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

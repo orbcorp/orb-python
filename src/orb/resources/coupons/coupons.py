@@ -6,18 +6,21 @@ from typing import Optional
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Coupon, coupon_list_params, coupon_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from .subscriptions import (
     Subscriptions,
     AsyncSubscriptions,
     SubscriptionsWithRawResponse,
     AsyncSubscriptionsWithRawResponse,
+    SubscriptionsWithStreamingResponse,
+    AsyncSubscriptionsWithStreamingResponse,
 )
 from ..._base_client import (
     AsyncPaginator,
@@ -35,6 +38,10 @@ class Coupons(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CouponsWithRawResponse:
         return CouponsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CouponsWithStreamingResponse:
+        return CouponsWithStreamingResponse(self)
 
     def create(
         self,
@@ -242,6 +249,10 @@ class AsyncCoupons(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCouponsWithRawResponse:
         return AsyncCouponsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCouponsWithStreamingResponse:
+        return AsyncCouponsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -443,16 +454,16 @@ class CouponsWithRawResponse:
     def __init__(self, coupons: Coupons) -> None:
         self.subscriptions = SubscriptionsWithRawResponse(coupons.subscriptions)
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             coupons.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             coupons.list,
         )
-        self.archive = to_raw_response_wrapper(
+        self.archive = _legacy_response.to_raw_response_wrapper(
             coupons.archive,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             coupons.fetch,
         )
 
@@ -461,15 +472,51 @@ class AsyncCouponsWithRawResponse:
     def __init__(self, coupons: AsyncCoupons) -> None:
         self.subscriptions = AsyncSubscriptionsWithRawResponse(coupons.subscriptions)
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             coupons.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             coupons.list,
         )
-        self.archive = async_to_raw_response_wrapper(
+        self.archive = _legacy_response.async_to_raw_response_wrapper(
             coupons.archive,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
+            coupons.fetch,
+        )
+
+
+class CouponsWithStreamingResponse:
+    def __init__(self, coupons: Coupons) -> None:
+        self.subscriptions = SubscriptionsWithStreamingResponse(coupons.subscriptions)
+
+        self.create = to_streamed_response_wrapper(
+            coupons.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            coupons.list,
+        )
+        self.archive = to_streamed_response_wrapper(
+            coupons.archive,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            coupons.fetch,
+        )
+
+
+class AsyncCouponsWithStreamingResponse:
+    def __init__(self, coupons: AsyncCoupons) -> None:
+        self.subscriptions = AsyncSubscriptionsWithStreamingResponse(coupons.subscriptions)
+
+        self.create = async_to_streamed_response_wrapper(
+            coupons.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            coupons.list,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            coupons.archive,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
             coupons.fetch,
         )

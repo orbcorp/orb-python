@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     Invoice,
     InvoiceFetchUpcomingResponse,
@@ -20,7 +21,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -34,6 +35,10 @@ class Invoices(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InvoicesWithRawResponse:
         return InvoicesWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InvoicesWithStreamingResponse:
+        return InvoicesWithStreamingResponse(self)
 
     def create(
         self,
@@ -428,6 +433,10 @@ class AsyncInvoices(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInvoicesWithRawResponse:
         return AsyncInvoicesWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInvoicesWithStreamingResponse:
+        return AsyncInvoicesWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -818,49 +827,99 @@ class AsyncInvoices(AsyncAPIResource):
 
 class InvoicesWithRawResponse:
     def __init__(self, invoices: Invoices) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             invoices.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             invoices.list,
         )
-        self.fetch = to_raw_response_wrapper(
+        self.fetch = _legacy_response.to_raw_response_wrapper(
             invoices.fetch,
         )
-        self.fetch_upcoming = to_raw_response_wrapper(
+        self.fetch_upcoming = _legacy_response.to_raw_response_wrapper(
             invoices.fetch_upcoming,
         )
-        self.issue = to_raw_response_wrapper(
+        self.issue = _legacy_response.to_raw_response_wrapper(
             invoices.issue,
         )
-        self.mark_paid = to_raw_response_wrapper(
+        self.mark_paid = _legacy_response.to_raw_response_wrapper(
             invoices.mark_paid,
         )
-        self.void = to_raw_response_wrapper(
+        self.void = _legacy_response.to_raw_response_wrapper(
             invoices.void,
         )
 
 
 class AsyncInvoicesWithRawResponse:
     def __init__(self, invoices: AsyncInvoices) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             invoices.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             invoices.list,
         )
-        self.fetch = async_to_raw_response_wrapper(
+        self.fetch = _legacy_response.async_to_raw_response_wrapper(
             invoices.fetch,
         )
-        self.fetch_upcoming = async_to_raw_response_wrapper(
+        self.fetch_upcoming = _legacy_response.async_to_raw_response_wrapper(
             invoices.fetch_upcoming,
         )
-        self.issue = async_to_raw_response_wrapper(
+        self.issue = _legacy_response.async_to_raw_response_wrapper(
             invoices.issue,
         )
-        self.mark_paid = async_to_raw_response_wrapper(
+        self.mark_paid = _legacy_response.async_to_raw_response_wrapper(
             invoices.mark_paid,
         )
-        self.void = async_to_raw_response_wrapper(
+        self.void = _legacy_response.async_to_raw_response_wrapper(
+            invoices.void,
+        )
+
+
+class InvoicesWithStreamingResponse:
+    def __init__(self, invoices: Invoices) -> None:
+        self.create = to_streamed_response_wrapper(
+            invoices.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            invoices.list,
+        )
+        self.fetch = to_streamed_response_wrapper(
+            invoices.fetch,
+        )
+        self.fetch_upcoming = to_streamed_response_wrapper(
+            invoices.fetch_upcoming,
+        )
+        self.issue = to_streamed_response_wrapper(
+            invoices.issue,
+        )
+        self.mark_paid = to_streamed_response_wrapper(
+            invoices.mark_paid,
+        )
+        self.void = to_streamed_response_wrapper(
+            invoices.void,
+        )
+
+
+class AsyncInvoicesWithStreamingResponse:
+    def __init__(self, invoices: AsyncInvoices) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            invoices.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            invoices.list,
+        )
+        self.fetch = async_to_streamed_response_wrapper(
+            invoices.fetch,
+        )
+        self.fetch_upcoming = async_to_streamed_response_wrapper(
+            invoices.fetch_upcoming,
+        )
+        self.issue = async_to_streamed_response_wrapper(
+            invoices.issue,
+        )
+        self.mark_paid = async_to_streamed_response_wrapper(
+            invoices.mark_paid,
+        )
+        self.void = async_to_streamed_response_wrapper(
             invoices.void,
         )
