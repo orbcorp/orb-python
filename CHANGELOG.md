@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.38.0 (2024-01-15)
+
+Full Changelog: [v1.37.0...v1.38.0](https://github.com/orbcorp/orb-python/compare/v1.37.0...v1.38.0)
+
+### Features
+
+* **api:** updates ([#133](https://github.com/orbcorp/orb-python/issues/133)) ([ace1234](https://github.com/orbcorp/orb-python/commit/ace12344fddc86150429c497f64f7fca030fc24e))
+* **client:** add support for streaming raw responses ([#132](https://github.com/orbcorp/orb-python/issues/132)) ([171a504](https://github.com/orbcorp/orb-python/commit/171a504c2c74724fbedcd82d3696e8e1acf18eb9))
+
+
+### Chores
+
+* formatting ([#130](https://github.com/orbcorp/orb-python/issues/130)) ([4ae6c11](https://github.com/orbcorp/orb-python/commit/4ae6c1177b9d67e82baa44c4560e1372bfbd2f0a))
+
 ## 1.37.0 (2024-01-12)
 
 Full Changelog: [v1.36.0...v1.37.0](https://github.com/orbcorp/orb-python/compare/v1.36.0...v1.37.0)
