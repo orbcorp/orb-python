@@ -65,6 +65,8 @@ class Subscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
             f"/coupons/{coupon_id}/subscriptions",
             page=SyncPage[Subscription],
@@ -127,6 +129,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
             f"/coupons/{coupon_id}/subscriptions",
             page=AsyncPage[Subscription],

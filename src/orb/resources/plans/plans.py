@@ -156,6 +156,8 @@ class Plans(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._put(
             f"/plans/{plan_id}",
             body=maybe_transform(
@@ -278,6 +280,8 @@ class Plans(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._get(
             f"/plans/{plan_id}",
             options=make_request_options(
@@ -411,6 +415,8 @@ class AsyncPlans(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._put(
             f"/plans/{plan_id}",
             body=maybe_transform(
@@ -533,6 +539,8 @@ class AsyncPlans(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._get(
             f"/plans/{plan_id}",
             options=make_request_options(

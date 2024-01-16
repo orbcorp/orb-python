@@ -188,6 +188,8 @@ class Metrics(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return self._get(
             f"/metrics/{metric_id}",
             options=make_request_options(
@@ -356,6 +358,8 @@ class AsyncMetrics(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return await self._get(
             f"/metrics/{metric_id}",
             options=make_request_options(

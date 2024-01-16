@@ -144,6 +144,8 @@ class Items(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
         return self._get(
             f"/items/{item_id}",
             options=make_request_options(
@@ -275,6 +277,8 @@ class AsyncItems(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
         return await self._get(
             f"/items/{item_id}",
             options=make_request_options(

@@ -207,6 +207,8 @@ class Costs(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get(
             f"/customers/{customer_id}/costs",
             options=make_request_options(
@@ -398,6 +400,10 @@ class Costs(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return self._get(
             f"/customers/external_customer_id/{external_customer_id}/costs",
             options=make_request_options(
@@ -599,6 +605,8 @@ class AsyncCosts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._get(
             f"/customers/{customer_id}/costs",
             options=make_request_options(
@@ -790,6 +798,10 @@ class AsyncCosts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return await self._get(
             f"/customers/external_customer_id/{external_customer_id}/costs",
             options=make_request_options(

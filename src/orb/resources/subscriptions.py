@@ -695,6 +695,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/cancel",
             body=maybe_transform(
@@ -738,6 +740,8 @@ class Subscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
             f"/subscriptions/{subscription_id}",
             options=make_request_options(
@@ -793,6 +797,8 @@ class Subscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
             f"/subscriptions/{subscription_id}/costs",
             options=make_request_options(
@@ -850,6 +856,8 @@ class Subscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
             f"/subscriptions/{subscription_id}/schedule",
             page=SyncPage[SubscriptionFetchScheduleResponse],
@@ -1125,6 +1133,8 @@ class Subscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return cast(
             SubscriptionUsage,
             self._get(
@@ -1244,6 +1254,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/price_intervals",
             body=maybe_transform(
@@ -1369,6 +1381,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/schedule_plan_change",
             body=maybe_transform(
@@ -1429,6 +1443,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
             body=maybe_transform(
@@ -1475,6 +1491,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_cancellation",
             options=make_request_options(
@@ -1519,6 +1537,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
             body=maybe_transform(
@@ -1562,6 +1582,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
             options=make_request_options(
@@ -1627,6 +1649,8 @@ class Subscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
             body=maybe_transform(
@@ -2304,6 +2328,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/cancel",
             body=maybe_transform(
@@ -2347,6 +2373,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
             f"/subscriptions/{subscription_id}",
             options=make_request_options(
@@ -2402,6 +2430,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
             f"/subscriptions/{subscription_id}/costs",
             options=make_request_options(
@@ -2459,6 +2489,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
             f"/subscriptions/{subscription_id}/schedule",
             page=AsyncPage[SubscriptionFetchScheduleResponse],
@@ -2734,6 +2766,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return cast(
             SubscriptionUsage,
             await self._get(
@@ -2853,6 +2887,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/price_intervals",
             body=maybe_transform(
@@ -2978,6 +3014,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/schedule_plan_change",
             body=maybe_transform(
@@ -3038,6 +3076,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
             body=maybe_transform(
@@ -3084,6 +3124,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_cancellation",
             options=make_request_options(
@@ -3128,6 +3170,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
             body=maybe_transform(
@@ -3171,6 +3215,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
             options=make_request_options(
@@ -3236,6 +3282,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
             body=maybe_transform(

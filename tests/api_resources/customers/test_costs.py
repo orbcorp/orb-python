@@ -68,6 +68,13 @@ class TestCosts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_list(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.costs.with_raw_response.list(
+                "",
+            )
+
+    @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
         cost = client.customers.costs.list_by_external_id(
             "string",
@@ -108,6 +115,13 @@ class TestCosts:
             assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_list_by_external_id(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            client.customers.costs.with_raw_response.list_by_external_id(
+                "",
+            )
 
 
 class TestAsyncCosts:
@@ -158,6 +172,13 @@ class TestAsyncCosts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_list(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.costs.with_raw_response.list(
+                "",
+            )
+
+    @parametrize
     async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
         cost = await client.customers.costs.list_by_external_id(
             "string",
@@ -198,3 +219,10 @@ class TestAsyncCosts:
             assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_list_by_external_id(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            await client.customers.costs.with_raw_response.list_by_external_id(
+                "",
+            )

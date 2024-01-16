@@ -150,6 +150,13 @@ class TestCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_archive(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            client.coupons.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         coupon = client.coupons.fetch(
             "string",
@@ -179,6 +186,13 @@ class TestCoupons:
             assert_matches_type(Coupon, coupon, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            client.coupons.with_raw_response.fetch(
+                "",
+            )
 
 
 class TestAsyncCoupons:
@@ -314,6 +328,13 @@ class TestAsyncCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_archive(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            await client.coupons.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         coupon = await client.coupons.fetch(
             "string",
@@ -343,3 +364,10 @@ class TestAsyncCoupons:
             assert_matches_type(Coupon, coupon, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            await client.coupons.with_raw_response.fetch(
+                "",
+            )
