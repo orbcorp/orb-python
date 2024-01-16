@@ -140,6 +140,30 @@ class TestUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.customers.usage.with_raw_response.update(
+                "",
+                events=[
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                ],
+            )
+
+    @parametrize
     def test_method_update_by_external_id(self, client: Orb) -> None:
         usage = client.customers.usage.update_by_external_id(
             "string",
@@ -252,6 +276,30 @@ class TestUsage:
             assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_by_external_id(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.customers.usage.with_raw_response.update_by_external_id(
+                "",
+                events=[
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                ],
+            )
 
 
 class TestAsyncUsage:
@@ -374,6 +422,30 @@ class TestAsyncUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_update(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await client.customers.usage.with_raw_response.update(
+                "",
+                events=[
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                ],
+            )
+
+    @parametrize
     async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
         usage = await client.customers.usage.update_by_external_id(
             "string",
@@ -486,3 +558,27 @@ class TestAsyncUsage:
             assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_by_external_id(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await client.customers.usage.with_raw_response.update_by_external_id(
+                "",
+                events=[
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                    {
+                        "event_name": "string",
+                        "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                        "properties": {},
+                    },
+                ],
+            )

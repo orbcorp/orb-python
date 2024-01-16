@@ -221,6 +221,14 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_cancel(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.cancel(
+                "",
+                cancel_option="end_of_subscription_term",
+            )
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch(
             "string",
@@ -250,6 +258,13 @@ class TestSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.fetch(
+                "",
+            )
 
     @parametrize
     def test_method_fetch_costs(self, client: Orb) -> None:
@@ -294,6 +309,13 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_fetch_costs(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.fetch_costs(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch_schedule(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_schedule(
             "string",
@@ -336,6 +358,13 @@ class TestSubscriptions:
             assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_fetch_schedule(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.fetch_schedule(
+                "",
+            )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -390,6 +419,14 @@ class TestSubscriptions:
             assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_path_params_fetch_usage(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.fetch_usage(
+                "",
+            )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -653,6 +690,14 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    def test_path_params_price_intervals(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.price_intervals(
+                "",
+            )
+
     @parametrize
     def test_method_schedule_plan_change(self, client: Orb) -> None:
         subscription = client.subscriptions.schedule_plan_change(
@@ -765,6 +810,14 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_schedule_plan_change(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.schedule_plan_change(
+                "",
+                change_option="requested_date",
+            )
+
+    @parametrize
     def test_method_trigger_phase(self, client: Orb) -> None:
         subscription = client.subscriptions.trigger_phase(
             "string",
@@ -804,6 +857,13 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_trigger_phase(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.trigger_phase(
+                "",
+            )
+
+    @parametrize
     def test_method_unschedule_cancellation(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_cancellation(
             "string",
@@ -833,6 +893,13 @@ class TestSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_unschedule_cancellation(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.unschedule_cancellation(
+                "",
+            )
 
     @parametrize
     def test_method_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
@@ -869,6 +936,14 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
+                "",
+                price_id="string",
+            )
+
+    @parametrize
     def test_method_unschedule_pending_plan_changes(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_pending_plan_changes(
             "string",
@@ -898,6 +973,13 @@ class TestSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_unschedule_pending_plan_changes(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
+                "",
+            )
 
     @parametrize
     def test_method_update_fixed_fee_quantity(self, client: Orb) -> None:
@@ -946,6 +1028,15 @@ class TestSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_fixed_fee_quantity(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.update_fixed_fee_quantity(
+                "",
+                price_id="string",
+                quantity=0,
+            )
 
 
 class TestAsyncSubscriptions:
@@ -1146,6 +1237,14 @@ class TestAsyncSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_cancel(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.cancel(
+                "",
+                cancel_option="end_of_subscription_term",
+            )
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.fetch(
             "string",
@@ -1175,6 +1274,13 @@ class TestAsyncSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.fetch(
+                "",
+            )
 
     @parametrize
     async def test_method_fetch_costs(self, client: AsyncOrb) -> None:
@@ -1219,6 +1325,13 @@ class TestAsyncSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_fetch_costs(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.fetch_costs(
+                "",
+            )
+
+    @parametrize
     async def test_method_fetch_schedule(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.fetch_schedule(
             "string",
@@ -1261,6 +1374,13 @@ class TestAsyncSubscriptions:
             assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch_schedule(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.fetch_schedule(
+                "",
+            )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -1315,6 +1435,14 @@ class TestAsyncSubscriptions:
             assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_path_params_fetch_usage(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.fetch_usage(
+                "",
+            )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -1578,6 +1706,14 @@ class TestAsyncSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Incorrect example breaks Prism")
+    @parametrize
+    async def test_path_params_price_intervals(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.price_intervals(
+                "",
+            )
+
     @parametrize
     async def test_method_schedule_plan_change(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.schedule_plan_change(
@@ -1690,6 +1826,14 @@ class TestAsyncSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_schedule_plan_change(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.schedule_plan_change(
+                "",
+                change_option="requested_date",
+            )
+
+    @parametrize
     async def test_method_trigger_phase(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.trigger_phase(
             "string",
@@ -1729,6 +1873,13 @@ class TestAsyncSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_trigger_phase(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.trigger_phase(
+                "",
+            )
+
+    @parametrize
     async def test_method_unschedule_cancellation(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.unschedule_cancellation(
             "string",
@@ -1758,6 +1909,13 @@ class TestAsyncSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_unschedule_cancellation(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.unschedule_cancellation(
+                "",
+            )
 
     @parametrize
     async def test_method_unschedule_fixed_fee_quantity_updates(self, client: AsyncOrb) -> None:
@@ -1794,6 +1952,14 @@ class TestAsyncSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_unschedule_fixed_fee_quantity_updates(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
+                "",
+                price_id="string",
+            )
+
+    @parametrize
     async def test_method_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
         subscription = await client.subscriptions.unschedule_pending_plan_changes(
             "string",
@@ -1823,6 +1989,13 @@ class TestAsyncSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_unschedule_pending_plan_changes(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
+                "",
+            )
 
     @parametrize
     async def test_method_update_fixed_fee_quantity(self, client: AsyncOrb) -> None:
@@ -1871,3 +2044,12 @@ class TestAsyncSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_fixed_fee_quantity(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await client.subscriptions.with_raw_response.update_fixed_fee_quantity(
+                "",
+                price_id="string",
+                quantity=0,
+            )

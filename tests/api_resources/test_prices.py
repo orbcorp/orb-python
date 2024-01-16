@@ -1085,6 +1085,13 @@ class TestPrices:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
+            client.prices.with_raw_response.fetch(
+                "",
+            )
+
 
 class TestAsyncPrices:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -2153,3 +2160,10 @@ class TestAsyncPrices:
             assert_matches_type(Price, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
+            await client.prices.with_raw_response.fetch(
+                "",
+            )

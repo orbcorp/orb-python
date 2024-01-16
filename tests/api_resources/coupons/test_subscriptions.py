@@ -62,6 +62,13 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_list(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            client.coupons.subscriptions.with_raw_response.list(
+                "",
+            )
+
 
 class TestAsyncSubscriptions:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -107,3 +114,10 @@ class TestAsyncSubscriptions:
             assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_list(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
+            await client.coupons.subscriptions.with_raw_response.list(
+                "",
+            )

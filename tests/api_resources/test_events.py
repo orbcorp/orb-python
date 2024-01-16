@@ -80,6 +80,16 @@ class TestEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
+            client.events.with_raw_response.update(
+                "",
+                event_name="string",
+                properties={},
+                timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            )
+
+    @parametrize
     def test_method_deprecate(self, client: Orb) -> None:
         event = client.events.deprecate(
             "string",
@@ -109,6 +119,13 @@ class TestEvents:
             assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_deprecate(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
+            client.events.with_raw_response.deprecate(
+                "",
+            )
 
     @parametrize
     def test_method_ingest(self, client: Orb) -> None:
@@ -331,6 +348,16 @@ class TestAsyncEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_update(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
+            await client.events.with_raw_response.update(
+                "",
+                event_name="string",
+                properties={},
+                timestamp=parse_datetime("2020-12-09T16:09:53Z"),
+            )
+
+    @parametrize
     async def test_method_deprecate(self, client: AsyncOrb) -> None:
         event = await client.events.deprecate(
             "string",
@@ -360,6 +387,13 @@ class TestAsyncEvents:
             assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_deprecate(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
+            await client.events.with_raw_response.deprecate(
+                "",
+            )
 
     @parametrize
     async def test_method_ingest(self, client: AsyncOrb) -> None:

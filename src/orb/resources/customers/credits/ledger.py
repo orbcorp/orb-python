@@ -173,6 +173,8 @@ class Ledger(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/ledger",
             page=SyncPage[LedgerListResponse],
@@ -1057,6 +1059,8 @@ class Ledger(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return cast(
             LedgerCreateEntryResponse,
             self._post(
@@ -1952,6 +1956,10 @@ class Ledger(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return cast(
             LedgerCreateEntryByExternalIDResponse,
             self._post(
@@ -2117,6 +2125,10 @@ class Ledger(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
             page=SyncPage[LedgerListByExternalIDResponse],
@@ -2287,6 +2299,8 @@ class AsyncLedger(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/ledger",
             page=AsyncPage[LedgerListResponse],
@@ -3171,6 +3185,8 @@ class AsyncLedger(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return cast(
             LedgerCreateEntryResponse,
             await self._post(
@@ -4066,6 +4082,10 @@ class AsyncLedger(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return cast(
             LedgerCreateEntryByExternalIDResponse,
             await self._post(
@@ -4231,6 +4251,10 @@ class AsyncLedger(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
             page=AsyncPage[LedgerListByExternalIDResponse],

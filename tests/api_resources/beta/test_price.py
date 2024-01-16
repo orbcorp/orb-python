@@ -72,6 +72,15 @@ class TestPrice:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_evaluate(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
+            client.beta.price.with_raw_response.evaluate(
+                "",
+                timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+                timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            )
+
 
 class TestAsyncPrice:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -127,3 +136,12 @@ class TestAsyncPrice:
             assert_matches_type(PriceEvaluateResponse, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_evaluate(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
+            await client.beta.price.with_raw_response.evaluate(
+                "",
+                timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+                timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            )

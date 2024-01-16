@@ -1056,6 +1056,8 @@ class Prices(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
             Price,
             self._get(
@@ -2093,6 +2095,8 @@ class AsyncPrices(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
             Price,
             await self._get(

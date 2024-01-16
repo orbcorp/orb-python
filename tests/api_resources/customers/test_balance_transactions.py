@@ -74,6 +74,15 @@ class TestBalanceTransactions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_create(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.balance_transactions.with_raw_response.create(
+                "",
+                amount="string",
+                type="increment",
+            )
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.list(
             "string",
@@ -116,6 +125,13 @@ class TestBalanceTransactions:
             assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_list(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.balance_transactions.with_raw_response.list(
+                "",
+            )
 
 
 class TestAsyncBalanceTransactions:
@@ -171,6 +187,15 @@ class TestAsyncBalanceTransactions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_create(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.balance_transactions.with_raw_response.create(
+                "",
+                amount="string",
+                type="increment",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         balance_transaction = await client.customers.balance_transactions.list(
             "string",
@@ -213,3 +238,10 @@ class TestAsyncBalanceTransactions:
             assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_list(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.balance_transactions.with_raw_response.list(
+                "",
+            )

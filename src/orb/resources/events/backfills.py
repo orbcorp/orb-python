@@ -217,6 +217,8 @@ class Backfills(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._post(
             f"/events/backfills/{backfill_id}/close",
             options=make_request_options(
@@ -252,6 +254,8 @@ class Backfills(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._get(
             f"/events/backfills/{backfill_id}",
             options=make_request_options(
@@ -293,6 +297,8 @@ class Backfills(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._post(
             f"/events/backfills/{backfill_id}/revert",
             options=make_request_options(
@@ -492,6 +498,8 @@ class AsyncBackfills(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._post(
             f"/events/backfills/{backfill_id}/close",
             options=make_request_options(
@@ -527,6 +535,8 @@ class AsyncBackfills(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._get(
             f"/events/backfills/{backfill_id}",
             options=make_request_options(
@@ -568,6 +578,8 @@ class AsyncBackfills(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not backfill_id:
+            raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._post(
             f"/events/backfills/{backfill_id}/revert",
             options=make_request_options(

@@ -77,6 +77,10 @@ class ExternalPlanID(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not other_external_plan_id:
+            raise ValueError(
+                f"Expected a non-empty value for `other_external_plan_id` but received {other_external_plan_id!r}"
+            )
         return self._put(
             f"/plans/external_plan_id/{other_external_plan_id}",
             body=maybe_transform(
@@ -130,6 +134,8 @@ class ExternalPlanID(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_plan_id:
+            raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return self._get(
             f"/plans/external_plan_id/{external_plan_id}",
             options=make_request_options(
@@ -195,6 +201,10 @@ class AsyncExternalPlanID(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not other_external_plan_id:
+            raise ValueError(
+                f"Expected a non-empty value for `other_external_plan_id` but received {other_external_plan_id!r}"
+            )
         return await self._put(
             f"/plans/external_plan_id/{other_external_plan_id}",
             body=maybe_transform(
@@ -248,6 +258,8 @@ class AsyncExternalPlanID(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_plan_id:
+            raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return await self._get(
             f"/plans/external_plan_id/{external_plan_id}",
             options=make_request_options(

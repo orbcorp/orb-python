@@ -193,6 +193,8 @@ class Coupons(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._post(
             f"/coupons/{coupon_id}/archive",
             options=make_request_options(
@@ -231,6 +233,8 @@ class Coupons(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get(
             f"/coupons/{coupon_id}",
             options=make_request_options(
@@ -403,6 +407,8 @@ class AsyncCoupons(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return await self._post(
             f"/coupons/{coupon_id}/archive",
             options=make_request_options(
@@ -441,6 +447,8 @@ class AsyncCoupons(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not coupon_id:
+            raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return await self._get(
             f"/coupons/{coupon_id}",
             options=make_request_options(
