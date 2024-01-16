@@ -137,6 +137,8 @@ class Events(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._put(
             f"/events/{event_id}",
             body=maybe_transform(
@@ -221,6 +223,8 @@ class Events(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._put(
             f"/events/{event_id}/deprecate",
             options=make_request_options(
@@ -658,6 +662,8 @@ class AsyncEvents(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._put(
             f"/events/{event_id}",
             body=maybe_transform(
@@ -742,6 +748,8 @@ class AsyncEvents(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._put(
             f"/events/{event_id}/deprecate",
             options=make_request_options(

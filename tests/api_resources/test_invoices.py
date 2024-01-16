@@ -283,6 +283,13 @@ class TestInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.fetch(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch_upcoming(self, client: Orb) -> None:
         invoice = client.invoices.fetch_upcoming()
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
@@ -346,6 +353,13 @@ class TestInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_issue(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.issue(
+                "",
+            )
+
+    @parametrize
     def test_method_mark_paid(self, client: Orb) -> None:
         invoice = client.invoices.mark_paid(
             "string",
@@ -386,6 +400,16 @@ class TestInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_mark_paid(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.mark_paid(
+                "",
+                external_id="external_payment_id_123",
+                notes="string",
+                payment_received_date=parse_date("2023-09-22"),
+            )
+
+    @parametrize
     def test_method_void(self, client: Orb) -> None:
         invoice = client.invoices.void(
             "string",
@@ -415,6 +439,13 @@ class TestInvoices:
             assert_matches_type(Invoice, invoice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_void(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.void(
+                "",
+            )
 
 
 class TestAsyncInvoices:
@@ -679,6 +710,13 @@ class TestAsyncInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await client.invoices.with_raw_response.fetch(
+                "",
+            )
+
+    @parametrize
     async def test_method_fetch_upcoming(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.fetch_upcoming()
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
@@ -742,6 +780,13 @@ class TestAsyncInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_issue(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await client.invoices.with_raw_response.issue(
+                "",
+            )
+
+    @parametrize
     async def test_method_mark_paid(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.mark_paid(
             "string",
@@ -782,6 +827,16 @@ class TestAsyncInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_mark_paid(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await client.invoices.with_raw_response.mark_paid(
+                "",
+                external_id="external_payment_id_123",
+                notes="string",
+                payment_received_date=parse_date("2023-09-22"),
+            )
+
+    @parametrize
     async def test_method_void(self, client: AsyncOrb) -> None:
         invoice = await client.invoices.void(
             "string",
@@ -811,3 +866,10 @@ class TestAsyncInvoices:
             assert_matches_type(Invoice, invoice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_void(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await client.invoices.with_raw_response.void(
+                "",
+            )

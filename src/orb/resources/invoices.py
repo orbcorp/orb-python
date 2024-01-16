@@ -234,6 +234,8 @@ class Invoices(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._get(
             f"/invoices/{invoice_id}",
             options=make_request_options(
@@ -313,6 +315,8 @@ class Invoices(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/issue",
             options=make_request_options(
@@ -362,6 +366,8 @@ class Invoices(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/mark_paid",
             body=maybe_transform(
@@ -415,6 +421,8 @@ class Invoices(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/void",
             options=make_request_options(
@@ -631,6 +639,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._get(
             f"/invoices/{invoice_id}",
             options=make_request_options(
@@ -710,6 +720,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/issue",
             options=make_request_options(
@@ -759,6 +771,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/mark_paid",
             body=maybe_transform(
@@ -812,6 +826,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/void",
             options=make_request_options(

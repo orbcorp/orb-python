@@ -98,6 +98,8 @@ class Price(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return self._post(
             f"/prices/{price_id}/evaluate",
             body=maybe_transform(
@@ -199,6 +201,8 @@ class AsyncPrice(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return await self._post(
             f"/prices/{price_id}/evaluate",
             body=maybe_transform(

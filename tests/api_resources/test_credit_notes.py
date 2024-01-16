@@ -86,6 +86,13 @@ class TestCreditNotes:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `credit_note_id` but received ''"):
+            client.credit_notes.with_raw_response.fetch(
+                "",
+            )
+
 
 class TestAsyncCreditNotes:
     strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -155,3 +162,10 @@ class TestAsyncCreditNotes:
             assert_matches_type(CreditNote, credit_note, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `credit_note_id` but received ''"):
+            await client.credit_notes.with_raw_response.fetch(
+                "",
+            )

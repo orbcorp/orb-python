@@ -106,6 +106,8 @@ class CreditNotes(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not credit_note_id:
+            raise ValueError(f"Expected a non-empty value for `credit_note_id` but received {credit_note_id!r}")
         return self._get(
             f"/credit_notes/{credit_note_id}",
             options=make_request_options(
@@ -199,6 +201,8 @@ class AsyncCreditNotes(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not credit_note_id:
+            raise ValueError(f"Expected a non-empty value for `credit_note_id` but received {credit_note_id!r}")
         return await self._get(
             f"/credit_notes/{credit_note_id}",
             options=make_request_options(

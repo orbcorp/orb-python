@@ -166,6 +166,8 @@ class Usage(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._patch(
             f"/customers/{id}/usage",
             body=maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
@@ -317,6 +319,8 @@ class Usage(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._patch(
             f"/customers/external_customer_id/{id}/usage",
             body=maybe_transform({"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams),
@@ -478,6 +482,8 @@ class AsyncUsage(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
             f"/customers/{id}/usage",
             body=maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
@@ -629,6 +635,8 @@ class AsyncUsage(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
             f"/customers/external_customer_id/{id}/usage",
             body=maybe_transform({"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams),

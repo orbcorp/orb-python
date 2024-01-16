@@ -81,6 +81,8 @@ class Credits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits",
             page=SyncPage[CreditListResponse],
@@ -134,6 +136,10 @@ class Credits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits",
             page=SyncPage[CreditListByExternalIDResponse],
@@ -201,6 +207,8 @@ class AsyncCredits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits",
             page=AsyncPage[CreditListResponse],
@@ -254,6 +262,10 @@ class AsyncCredits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits",
             page=AsyncPage[CreditListByExternalIDResponse],

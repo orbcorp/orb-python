@@ -70,6 +70,8 @@ class BalanceTransactions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._post(
             f"/customers/{customer_id}/balance_transactions",
             body=maybe_transform(
@@ -151,6 +153,8 @@ class BalanceTransactions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/balance_transactions",
             page=SyncPage[BalanceTransactionListResponse],
@@ -216,6 +220,8 @@ class AsyncBalanceTransactions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._post(
             f"/customers/{customer_id}/balance_transactions",
             body=maybe_transform(
@@ -297,6 +303,8 @@ class AsyncBalanceTransactions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/balance_transactions",
             page=AsyncPage[BalanceTransactionListResponse],

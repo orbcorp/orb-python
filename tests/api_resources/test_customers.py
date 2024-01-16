@@ -202,6 +202,13 @@ class TestCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.with_raw_response.update(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         customer = client.customers.list()
         assert_matches_type(SyncPage[Customer], customer, path=["response"])
@@ -270,6 +277,13 @@ class TestCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_delete(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         customer = client.customers.fetch(
             "string",
@@ -301,6 +315,13 @@ class TestCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_fetch(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.with_raw_response.fetch(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch_by_external_id(self, client: Orb) -> None:
         customer = client.customers.fetch_by_external_id(
             "string",
@@ -330,6 +351,13 @@ class TestCustomers:
             assert_matches_type(Customer, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_fetch_by_external_id(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            client.customers.with_raw_response.fetch_by_external_id(
+                "",
+            )
 
     @parametrize
     def test_method_update_by_external_id(self, client: Orb) -> None:
@@ -416,6 +444,13 @@ class TestCustomers:
             assert_matches_type(Customer, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_by_external_id(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.customers.with_raw_response.update_by_external_id(
+                "",
+            )
 
 
 class TestAsyncCustomers:
@@ -600,6 +635,13 @@ class TestAsyncCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_update(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.with_raw_response.update(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncOrb) -> None:
         customer = await client.customers.list()
         assert_matches_type(AsyncPage[Customer], customer, path=["response"])
@@ -668,6 +710,13 @@ class TestAsyncCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_delete(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
     async def test_method_fetch(self, client: AsyncOrb) -> None:
         customer = await client.customers.fetch(
             "string",
@@ -699,6 +748,13 @@ class TestAsyncCustomers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await client.customers.with_raw_response.fetch(
+                "",
+            )
+
+    @parametrize
     async def test_method_fetch_by_external_id(self, client: AsyncOrb) -> None:
         customer = await client.customers.fetch_by_external_id(
             "string",
@@ -728,6 +784,13 @@ class TestAsyncCustomers:
             assert_matches_type(Customer, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_fetch_by_external_id(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            await client.customers.with_raw_response.fetch_by_external_id(
+                "",
+            )
 
     @parametrize
     async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
@@ -814,3 +877,10 @@ class TestAsyncCustomers:
             assert_matches_type(Customer, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_by_external_id(self, client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await client.customers.with_raw_response.update_by_external_id(
+                "",
+            )
