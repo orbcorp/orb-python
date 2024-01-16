@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.38.1 (2024-01-16)
+
+Full Changelog: [v1.38.0...v1.38.1](https://github.com/orbcorp/orb-python/compare/v1.38.0...v1.38.1)
+
+### Bug Fixes
+
+* **client:** ensure path params are non-empty ([#134](https://github.com/orbcorp/orb-python/issues/134)) ([f318392](https://github.com/orbcorp/orb-python/commit/f318392b5ff32e4b53a021773220fda59aae0920))
+
 ## 1.38.0 (2024-01-15)
 
 Full Changelog: [v1.37.0...v1.38.0](https://github.com/orbcorp/orb-python/compare/v1.37.0...v1.38.0)
