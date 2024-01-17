@@ -1089,7 +1089,7 @@ class AsyncEvents(AsyncAPIResource):
 
 class EventsWithRawResponse:
     def __init__(self, events: Events) -> None:
-        self.backfills = BackfillsWithRawResponse(events.backfills)
+        self._events = events
 
         self.update = _legacy_response.to_raw_response_wrapper(
             events.update,
@@ -1104,10 +1104,14 @@ class EventsWithRawResponse:
             events.search,
         )
 
+    @cached_property
+    def backfills(self) -> BackfillsWithRawResponse:
+        return BackfillsWithRawResponse(self._events.backfills)
+
 
 class AsyncEventsWithRawResponse:
     def __init__(self, events: AsyncEvents) -> None:
-        self.backfills = AsyncBackfillsWithRawResponse(events.backfills)
+        self._events = events
 
         self.update = _legacy_response.async_to_raw_response_wrapper(
             events.update,
@@ -1122,10 +1126,14 @@ class AsyncEventsWithRawResponse:
             events.search,
         )
 
+    @cached_property
+    def backfills(self) -> AsyncBackfillsWithRawResponse:
+        return AsyncBackfillsWithRawResponse(self._events.backfills)
+
 
 class EventsWithStreamingResponse:
     def __init__(self, events: Events) -> None:
-        self.backfills = BackfillsWithStreamingResponse(events.backfills)
+        self._events = events
 
         self.update = to_streamed_response_wrapper(
             events.update,
@@ -1140,10 +1148,14 @@ class EventsWithStreamingResponse:
             events.search,
         )
 
+    @cached_property
+    def backfills(self) -> BackfillsWithStreamingResponse:
+        return BackfillsWithStreamingResponse(self._events.backfills)
+
 
 class AsyncEventsWithStreamingResponse:
     def __init__(self, events: AsyncEvents) -> None:
-        self.backfills = AsyncBackfillsWithStreamingResponse(events.backfills)
+        self._events = events
 
         self.update = async_to_streamed_response_wrapper(
             events.update,
@@ -1157,3 +1169,7 @@ class AsyncEventsWithStreamingResponse:
         self.search = async_to_streamed_response_wrapper(
             events.search,
         )
+
+    @cached_property
+    def backfills(self) -> AsyncBackfillsWithStreamingResponse:
+        return AsyncBackfillsWithStreamingResponse(self._events.backfills)

@@ -2111,7 +2111,7 @@ class AsyncPrices(AsyncAPIResource):
 
 class PricesWithRawResponse:
     def __init__(self, prices: Prices) -> None:
-        self.external_price_id = ExternalPriceIDWithRawResponse(prices.external_price_id)
+        self._prices = prices
 
         self.create = _legacy_response.to_raw_response_wrapper(
             prices.create,
@@ -2123,10 +2123,14 @@ class PricesWithRawResponse:
             prices.fetch,
         )
 
+    @cached_property
+    def external_price_id(self) -> ExternalPriceIDWithRawResponse:
+        return ExternalPriceIDWithRawResponse(self._prices.external_price_id)
+
 
 class AsyncPricesWithRawResponse:
     def __init__(self, prices: AsyncPrices) -> None:
-        self.external_price_id = AsyncExternalPriceIDWithRawResponse(prices.external_price_id)
+        self._prices = prices
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             prices.create,
@@ -2138,10 +2142,14 @@ class AsyncPricesWithRawResponse:
             prices.fetch,
         )
 
+    @cached_property
+    def external_price_id(self) -> AsyncExternalPriceIDWithRawResponse:
+        return AsyncExternalPriceIDWithRawResponse(self._prices.external_price_id)
+
 
 class PricesWithStreamingResponse:
     def __init__(self, prices: Prices) -> None:
-        self.external_price_id = ExternalPriceIDWithStreamingResponse(prices.external_price_id)
+        self._prices = prices
 
         self.create = to_streamed_response_wrapper(
             prices.create,
@@ -2153,10 +2161,14 @@ class PricesWithStreamingResponse:
             prices.fetch,
         )
 
+    @cached_property
+    def external_price_id(self) -> ExternalPriceIDWithStreamingResponse:
+        return ExternalPriceIDWithStreamingResponse(self._prices.external_price_id)
+
 
 class AsyncPricesWithStreamingResponse:
     def __init__(self, prices: AsyncPrices) -> None:
-        self.external_price_id = AsyncExternalPriceIDWithStreamingResponse(prices.external_price_id)
+        self._prices = prices
 
         self.create = async_to_streamed_response_wrapper(
             prices.create,
@@ -2167,3 +2179,7 @@ class AsyncPricesWithStreamingResponse:
         self.fetch = async_to_streamed_response_wrapper(
             prices.fetch,
         )
+
+    @cached_property
+    def external_price_id(self) -> AsyncExternalPriceIDWithStreamingResponse:
+        return AsyncExternalPriceIDWithStreamingResponse(self._prices.external_price_id)

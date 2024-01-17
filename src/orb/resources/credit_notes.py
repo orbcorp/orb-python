@@ -214,6 +214,8 @@ class AsyncCreditNotes(AsyncAPIResource):
 
 class CreditNotesWithRawResponse:
     def __init__(self, credit_notes: CreditNotes) -> None:
+        self._credit_notes = credit_notes
+
         self.list = _legacy_response.to_raw_response_wrapper(
             credit_notes.list,
         )
@@ -224,6 +226,8 @@ class CreditNotesWithRawResponse:
 
 class AsyncCreditNotesWithRawResponse:
     def __init__(self, credit_notes: AsyncCreditNotes) -> None:
+        self._credit_notes = credit_notes
+
         self.list = _legacy_response.async_to_raw_response_wrapper(
             credit_notes.list,
         )
@@ -234,6 +238,8 @@ class AsyncCreditNotesWithRawResponse:
 
 class CreditNotesWithStreamingResponse:
     def __init__(self, credit_notes: CreditNotes) -> None:
+        self._credit_notes = credit_notes
+
         self.list = to_streamed_response_wrapper(
             credit_notes.list,
         )
@@ -244,6 +250,8 @@ class CreditNotesWithStreamingResponse:
 
 class AsyncCreditNotesWithStreamingResponse:
     def __init__(self, credit_notes: AsyncCreditNotes) -> None:
+        self._credit_notes = credit_notes
+
         self.list = async_to_streamed_response_wrapper(
             credit_notes.list,
         )

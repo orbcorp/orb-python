@@ -181,6 +181,8 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
 
 class InvoiceLineItemsWithRawResponse:
     def __init__(self, invoice_line_items: InvoiceLineItems) -> None:
+        self._invoice_line_items = invoice_line_items
+
         self.create = _legacy_response.to_raw_response_wrapper(
             invoice_line_items.create,
         )
@@ -188,6 +190,8 @@ class InvoiceLineItemsWithRawResponse:
 
 class AsyncInvoiceLineItemsWithRawResponse:
     def __init__(self, invoice_line_items: AsyncInvoiceLineItems) -> None:
+        self._invoice_line_items = invoice_line_items
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             invoice_line_items.create,
         )
@@ -195,6 +199,8 @@ class AsyncInvoiceLineItemsWithRawResponse:
 
 class InvoiceLineItemsWithStreamingResponse:
     def __init__(self, invoice_line_items: InvoiceLineItems) -> None:
+        self._invoice_line_items = invoice_line_items
+
         self.create = to_streamed_response_wrapper(
             invoice_line_items.create,
         )
@@ -202,6 +208,8 @@ class InvoiceLineItemsWithStreamingResponse:
 
 class AsyncInvoiceLineItemsWithStreamingResponse:
     def __init__(self, invoice_line_items: AsyncInvoiceLineItems) -> None:
+        self._invoice_line_items = invoice_line_items
+
         self.create = async_to_streamed_response_wrapper(
             invoice_line_items.create,
         )

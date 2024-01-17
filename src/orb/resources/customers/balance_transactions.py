@@ -331,6 +331,8 @@ class AsyncBalanceTransactions(AsyncAPIResource):
 
 class BalanceTransactionsWithRawResponse:
     def __init__(self, balance_transactions: BalanceTransactions) -> None:
+        self._balance_transactions = balance_transactions
+
         self.create = _legacy_response.to_raw_response_wrapper(
             balance_transactions.create,
         )
@@ -341,6 +343,8 @@ class BalanceTransactionsWithRawResponse:
 
 class AsyncBalanceTransactionsWithRawResponse:
     def __init__(self, balance_transactions: AsyncBalanceTransactions) -> None:
+        self._balance_transactions = balance_transactions
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             balance_transactions.create,
         )
@@ -351,6 +355,8 @@ class AsyncBalanceTransactionsWithRawResponse:
 
 class BalanceTransactionsWithStreamingResponse:
     def __init__(self, balance_transactions: BalanceTransactions) -> None:
+        self._balance_transactions = balance_transactions
+
         self.create = to_streamed_response_wrapper(
             balance_transactions.create,
         )
@@ -361,6 +367,8 @@ class BalanceTransactionsWithStreamingResponse:
 
 class AsyncBalanceTransactionsWithStreamingResponse:
     def __init__(self, balance_transactions: AsyncBalanceTransactions) -> None:
+        self._balance_transactions = balance_transactions
+
         self.create = async_to_streamed_response_wrapper(
             balance_transactions.create,
         )

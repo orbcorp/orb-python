@@ -460,7 +460,7 @@ class AsyncCoupons(AsyncAPIResource):
 
 class CouponsWithRawResponse:
     def __init__(self, coupons: Coupons) -> None:
-        self.subscriptions = SubscriptionsWithRawResponse(coupons.subscriptions)
+        self._coupons = coupons
 
         self.create = _legacy_response.to_raw_response_wrapper(
             coupons.create,
@@ -475,10 +475,14 @@ class CouponsWithRawResponse:
             coupons.fetch,
         )
 
+    @cached_property
+    def subscriptions(self) -> SubscriptionsWithRawResponse:
+        return SubscriptionsWithRawResponse(self._coupons.subscriptions)
+
 
 class AsyncCouponsWithRawResponse:
     def __init__(self, coupons: AsyncCoupons) -> None:
-        self.subscriptions = AsyncSubscriptionsWithRawResponse(coupons.subscriptions)
+        self._coupons = coupons
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             coupons.create,
@@ -493,10 +497,14 @@ class AsyncCouponsWithRawResponse:
             coupons.fetch,
         )
 
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptionsWithRawResponse:
+        return AsyncSubscriptionsWithRawResponse(self._coupons.subscriptions)
+
 
 class CouponsWithStreamingResponse:
     def __init__(self, coupons: Coupons) -> None:
-        self.subscriptions = SubscriptionsWithStreamingResponse(coupons.subscriptions)
+        self._coupons = coupons
 
         self.create = to_streamed_response_wrapper(
             coupons.create,
@@ -511,10 +519,14 @@ class CouponsWithStreamingResponse:
             coupons.fetch,
         )
 
+    @cached_property
+    def subscriptions(self) -> SubscriptionsWithStreamingResponse:
+        return SubscriptionsWithStreamingResponse(self._coupons.subscriptions)
+
 
 class AsyncCouponsWithStreamingResponse:
     def __init__(self, coupons: AsyncCoupons) -> None:
-        self.subscriptions = AsyncSubscriptionsWithStreamingResponse(coupons.subscriptions)
+        self._coupons = coupons
 
         self.create = async_to_streamed_response_wrapper(
             coupons.create,
@@ -528,3 +540,7 @@ class AsyncCouponsWithStreamingResponse:
         self.fetch = async_to_streamed_response_wrapper(
             coupons.fetch,
         )
+
+    @cached_property
+    def subscriptions(self) -> AsyncSubscriptionsWithStreamingResponse:
+        return AsyncSubscriptionsWithStreamingResponse(self._coupons.subscriptions)

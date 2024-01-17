@@ -119,6 +119,8 @@ class AsyncExternalPriceID(AsyncAPIResource):
 
 class ExternalPriceIDWithRawResponse:
     def __init__(self, external_price_id: ExternalPriceID) -> None:
+        self._external_price_id = external_price_id
+
         self.fetch = _legacy_response.to_raw_response_wrapper(
             external_price_id.fetch,
         )
@@ -126,6 +128,8 @@ class ExternalPriceIDWithRawResponse:
 
 class AsyncExternalPriceIDWithRawResponse:
     def __init__(self, external_price_id: AsyncExternalPriceID) -> None:
+        self._external_price_id = external_price_id
+
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             external_price_id.fetch,
         )
@@ -133,6 +137,8 @@ class AsyncExternalPriceIDWithRawResponse:
 
 class ExternalPriceIDWithStreamingResponse:
     def __init__(self, external_price_id: ExternalPriceID) -> None:
+        self._external_price_id = external_price_id
+
         self.fetch = to_streamed_response_wrapper(
             external_price_id.fetch,
         )
@@ -140,6 +146,8 @@ class ExternalPriceIDWithStreamingResponse:
 
 class AsyncExternalPriceIDWithStreamingResponse:
     def __init__(self, external_price_id: AsyncExternalPriceID) -> None:
+        self._external_price_id = external_price_id
+
         self.fetch = async_to_streamed_response_wrapper(
             external_price_id.fetch,
         )

@@ -91,6 +91,8 @@ class AsyncTopLevel(AsyncAPIResource):
 
 class TopLevelWithRawResponse:
     def __init__(self, top_level: TopLevel) -> None:
+        self._top_level = top_level
+
         self.ping = _legacy_response.to_raw_response_wrapper(
             top_level.ping,
         )
@@ -98,6 +100,8 @@ class TopLevelWithRawResponse:
 
 class AsyncTopLevelWithRawResponse:
     def __init__(self, top_level: AsyncTopLevel) -> None:
+        self._top_level = top_level
+
         self.ping = _legacy_response.async_to_raw_response_wrapper(
             top_level.ping,
         )
@@ -105,6 +109,8 @@ class AsyncTopLevelWithRawResponse:
 
 class TopLevelWithStreamingResponse:
     def __init__(self, top_level: TopLevel) -> None:
+        self._top_level = top_level
+
         self.ping = to_streamed_response_wrapper(
             top_level.ping,
         )
@@ -112,6 +118,8 @@ class TopLevelWithStreamingResponse:
 
 class AsyncTopLevelWithStreamingResponse:
     def __init__(self, top_level: AsyncTopLevel) -> None:
+        self._top_level = top_level
+
         self.ping = async_to_streamed_response_wrapper(
             top_level.ping,
         )

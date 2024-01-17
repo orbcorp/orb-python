@@ -3308,6 +3308,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
 class SubscriptionsWithRawResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
+        self._subscriptions = subscriptions
+
         self.create = _legacy_response.to_raw_response_wrapper(
             subscriptions.create,
         )
@@ -3354,6 +3356,8 @@ class SubscriptionsWithRawResponse:
 
 class AsyncSubscriptionsWithRawResponse:
     def __init__(self, subscriptions: AsyncSubscriptions) -> None:
+        self._subscriptions = subscriptions
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.create,
         )
@@ -3400,6 +3404,8 @@ class AsyncSubscriptionsWithRawResponse:
 
 class SubscriptionsWithStreamingResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
+        self._subscriptions = subscriptions
+
         self.create = to_streamed_response_wrapper(
             subscriptions.create,
         )
@@ -3446,6 +3452,8 @@ class SubscriptionsWithStreamingResponse:
 
 class AsyncSubscriptionsWithStreamingResponse:
     def __init__(self, subscriptions: AsyncSubscriptions) -> None:
+        self._subscriptions = subscriptions
+
         self.create = async_to_streamed_response_wrapper(
             subscriptions.create,
         )
