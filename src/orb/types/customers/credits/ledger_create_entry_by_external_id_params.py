@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Optional
-from datetime import date
+from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
@@ -42,17 +42,14 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     for noting corrections as a result of an incident, etc.
     """
 
-    effective_date: Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]
+    effective_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """
-    A future date (specified in YYYY-MM-DD format) that denotes when this credit
-    balance should become available for use.
+    An ISO 8601 format date that denotes when this credit balance should become
+    available for use.
     """
 
-    expiry_date: Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]
-    """
-    A future date (specified in YYYY-MM-DD format) that denotes when this credit
-    balance should expire.
-    """
+    expiry_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+    """An ISO 8601 format date that denotes when this credit balance should expire."""
 
     invoice_settings: Optional[AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
     """
@@ -128,11 +125,8 @@ class AddDecrementCreditLedgerEntryRequestParams(TypedDict, total=False):
 class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     entry_type: Required[Literal["expiration_change"]]
 
-    expiry_date: Required[Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]]
-    """
-    A future date (specified in YYYY-MM-DD format) that identifies the origination
-    credit block to expire
-    """
+    expiry_date: Required[Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]]
+    """An ISO 8601 format date that identifies the origination credit block to expire"""
 
     target_expiry_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """

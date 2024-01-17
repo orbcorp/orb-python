@@ -100,8 +100,8 @@ class TestLedger:
             entry_type="increment",
             currency="string",
             description="string",
-            effective_date=parse_date("2019-12-27"),
-            expiry_date=parse_date("2019-12-27"),
+            effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -212,7 +212,7 @@ class TestLedger:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -222,7 +222,7 @@ class TestLedger:
         ledger = client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
@@ -237,7 +237,7 @@ class TestLedger:
         response = client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
 
@@ -251,7 +251,7 @@ class TestLedger:
         with client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         ) as response:
             assert not response.is_closed
@@ -268,7 +268,7 @@ class TestLedger:
             client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 entry_type="expiration_change",
-                expiry_date=parse_date("2019-12-27"),
+                expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
                 target_expiry_date=parse_date("2019-12-27"),
             )
 
@@ -416,8 +416,8 @@ class TestLedger:
             entry_type="increment",
             currency="string",
             description="string",
-            effective_date=parse_date("2019-12-27"),
-            expiry_date=parse_date("2019-12-27"),
+            effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -528,7 +528,7 @@ class TestLedger:
         ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -538,7 +538,7 @@ class TestLedger:
         ledger = client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
@@ -553,7 +553,7 @@ class TestLedger:
         response = client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
 
@@ -567,7 +567,7 @@ class TestLedger:
         with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         ) as response:
             assert not response.is_closed
@@ -584,7 +584,7 @@ class TestLedger:
             client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 entry_type="expiration_change",
-                expiry_date=parse_date("2019-12-27"),
+                expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
                 target_expiry_date=parse_date("2019-12-27"),
             )
 
@@ -848,8 +848,8 @@ class TestAsyncLedger:
             entry_type="increment",
             currency="string",
             description="string",
-            effective_date=parse_date("2019-12-27"),
-            expiry_date=parse_date("2019-12-27"),
+            effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -960,7 +960,7 @@ class TestAsyncLedger:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
@@ -970,7 +970,7 @@ class TestAsyncLedger:
         ledger = await client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
@@ -985,7 +985,7 @@ class TestAsyncLedger:
         response = await client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
 
@@ -999,7 +999,7 @@ class TestAsyncLedger:
         async with client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         ) as response:
             assert not response.is_closed
@@ -1016,7 +1016,7 @@ class TestAsyncLedger:
             await client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 entry_type="expiration_change",
-                expiry_date=parse_date("2019-12-27"),
+                expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
                 target_expiry_date=parse_date("2019-12-27"),
             )
 
@@ -1164,8 +1164,8 @@ class TestAsyncLedger:
             entry_type="increment",
             currency="string",
             description="string",
-            effective_date=parse_date("2019-12-27"),
-            expiry_date=parse_date("2019-12-27"),
+            effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -1276,7 +1276,7 @@ class TestAsyncLedger:
         ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
@@ -1286,7 +1286,7 @@ class TestAsyncLedger:
         ledger = await client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
             amount=0,
             block_id="string",
@@ -1301,7 +1301,7 @@ class TestAsyncLedger:
         response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         )
 
@@ -1315,7 +1315,7 @@ class TestAsyncLedger:
         async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
-            expiry_date=parse_date("2019-12-27"),
+            expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             target_expiry_date=parse_date("2019-12-27"),
         ) as response:
             assert not response.is_closed
@@ -1332,7 +1332,7 @@ class TestAsyncLedger:
             await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 entry_type="expiration_change",
-                expiry_date=parse_date("2019-12-27"),
+                expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
                 target_expiry_date=parse_date("2019-12-27"),
             )
 
