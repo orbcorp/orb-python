@@ -211,8 +211,8 @@ class Ledger(SyncAPIResource):
         entry_type: Literal["increment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -347,11 +347,10 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          effective_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should become available for use.
+          effective_date: An ISO 8601 format date that denotes when this credit balance should become
+              available for use.
 
-          expiry_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should expire.
+          expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -539,7 +538,7 @@ class Ledger(SyncAPIResource):
         customer_id: Optional[str],
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, date, None],
+        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -666,8 +665,7 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: A future date (specified in YYYY-MM-DD format) that identifies the origination
-              credit block to expire
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
@@ -1042,8 +1040,8 @@ class Ledger(SyncAPIResource):
         | Literal["amendment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -1104,8 +1102,8 @@ class Ledger(SyncAPIResource):
         entry_type: Literal["increment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -1242,11 +1240,10 @@ class Ledger(SyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          effective_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should become available for use.
+          effective_date: An ISO 8601 format date that denotes when this credit balance should become
+              available for use.
 
-          expiry_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should expire.
+          expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -1434,7 +1431,7 @@ class Ledger(SyncAPIResource):
         external_customer_id: Optional[str],
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, date, None],
+        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1561,8 +1558,7 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: A future date (specified in YYYY-MM-DD format) that identifies the origination
-              credit block to expire
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
@@ -1937,8 +1933,8 @@ class Ledger(SyncAPIResource):
         | Literal["amendment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -2337,8 +2333,8 @@ class AsyncLedger(AsyncAPIResource):
         entry_type: Literal["increment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -2473,11 +2469,10 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          effective_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should become available for use.
+          effective_date: An ISO 8601 format date that denotes when this credit balance should become
+              available for use.
 
-          expiry_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should expire.
+          expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -2665,7 +2660,7 @@ class AsyncLedger(AsyncAPIResource):
         customer_id: Optional[str],
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, date, None],
+        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2792,8 +2787,7 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: A future date (specified in YYYY-MM-DD format) that identifies the origination
-              credit block to expire
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
@@ -3168,8 +3162,8 @@ class AsyncLedger(AsyncAPIResource):
         | Literal["amendment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -3230,8 +3224,8 @@ class AsyncLedger(AsyncAPIResource):
         entry_type: Literal["increment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -3368,11 +3362,10 @@ class AsyncLedger(AsyncAPIResource):
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
 
-          effective_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should become available for use.
+          effective_date: An ISO 8601 format date that denotes when this credit balance should become
+              available for use.
 
-          expiry_date: A future date (specified in YYYY-MM-DD format) that denotes when this credit
-              balance should expire.
+          expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -3560,7 +3553,7 @@ class AsyncLedger(AsyncAPIResource):
         external_customer_id: Optional[str],
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, date, None],
+        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3687,8 +3680,7 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: A future date (specified in YYYY-MM-DD format) that identifies the origination
-              credit block to expire
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
@@ -4063,8 +4055,8 @@ class AsyncLedger(AsyncAPIResource):
         | Literal["amendment"],
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
