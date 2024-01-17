@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.39.0 (2024-01-17)
+
+Full Changelog: [v1.38.1...v1.39.0](https://github.com/orbcorp/orb-python/compare/v1.38.1...v1.39.0)
+
+### Features
+
+* **api:** updates ([#139](https://github.com/orbcorp/orb-python/issues/139)) ([ab7998f](https://github.com/orbcorp/orb-python/commit/ab7998fa311038357c124fe556b9cd1a664d826b))
+
+
+### Chores
+
+* add write_to_file binary helper method ([#138](https://github.com/orbcorp/orb-python/issues/138)) ([f48014d](https://github.com/orbcorp/orb-python/commit/f48014d0792e01dde7206088ab672c6012d00deb))
+* **internal:** updates to proxy helper ([#136](https://github.com/orbcorp/orb-python/issues/136)) ([15d29d5](https://github.com/orbcorp/orb-python/commit/15d29d513cd6b58fee06b6165bc2ce16fba7e096))
+
 ## 1.38.1 (2024-01-16)
 
 Full Changelog: [v1.38.0...v1.38.1](https://github.com/orbcorp/orb-python/compare/v1.38.0...v1.38.1)
