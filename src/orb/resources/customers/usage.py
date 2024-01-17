@@ -660,6 +660,8 @@ class AsyncUsage(AsyncAPIResource):
 
 class UsageWithRawResponse:
     def __init__(self, usage: Usage) -> None:
+        self._usage = usage
+
         self.update = _legacy_response.to_raw_response_wrapper(
             usage.update,
         )
@@ -670,6 +672,8 @@ class UsageWithRawResponse:
 
 class AsyncUsageWithRawResponse:
     def __init__(self, usage: AsyncUsage) -> None:
+        self._usage = usage
+
         self.update = _legacy_response.async_to_raw_response_wrapper(
             usage.update,
         )
@@ -680,6 +684,8 @@ class AsyncUsageWithRawResponse:
 
 class UsageWithStreamingResponse:
     def __init__(self, usage: Usage) -> None:
+        self._usage = usage
+
         self.update = to_streamed_response_wrapper(
             usage.update,
         )
@@ -690,6 +696,8 @@ class UsageWithStreamingResponse:
 
 class AsyncUsageWithStreamingResponse:
     def __init__(self, usage: AsyncUsage) -> None:
+        self._usage = usage
+
         self.update = async_to_streamed_response_wrapper(
             usage.update,
         )

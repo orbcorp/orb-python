@@ -595,6 +595,8 @@ class AsyncBackfills(AsyncAPIResource):
 
 class BackfillsWithRawResponse:
     def __init__(self, backfills: Backfills) -> None:
+        self._backfills = backfills
+
         self.create = _legacy_response.to_raw_response_wrapper(
             backfills.create,
         )
@@ -614,6 +616,8 @@ class BackfillsWithRawResponse:
 
 class AsyncBackfillsWithRawResponse:
     def __init__(self, backfills: AsyncBackfills) -> None:
+        self._backfills = backfills
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             backfills.create,
         )
@@ -633,6 +637,8 @@ class AsyncBackfillsWithRawResponse:
 
 class BackfillsWithStreamingResponse:
     def __init__(self, backfills: Backfills) -> None:
+        self._backfills = backfills
+
         self.create = to_streamed_response_wrapper(
             backfills.create,
         )
@@ -652,6 +658,8 @@ class BackfillsWithStreamingResponse:
 
 class AsyncBackfillsWithStreamingResponse:
     def __init__(self, backfills: AsyncBackfills) -> None:
+        self._backfills = backfills
+
         self.create = async_to_streamed_response_wrapper(
             backfills.create,
         )

@@ -1695,10 +1695,7 @@ class AsyncCustomers(AsyncAPIResource):
 
 class CustomersWithRawResponse:
     def __init__(self, customers: Customers) -> None:
-        self.costs = CostsWithRawResponse(customers.costs)
-        self.usage = UsageWithRawResponse(customers.usage)
-        self.credits = CreditsWithRawResponse(customers.credits)
-        self.balance_transactions = BalanceTransactionsWithRawResponse(customers.balance_transactions)
+        self._customers = customers
 
         self.create = _legacy_response.to_raw_response_wrapper(
             customers.create,
@@ -1722,13 +1719,26 @@ class CustomersWithRawResponse:
             customers.update_by_external_id,
         )
 
+    @cached_property
+    def costs(self) -> CostsWithRawResponse:
+        return CostsWithRawResponse(self._customers.costs)
+
+    @cached_property
+    def usage(self) -> UsageWithRawResponse:
+        return UsageWithRawResponse(self._customers.usage)
+
+    @cached_property
+    def credits(self) -> CreditsWithRawResponse:
+        return CreditsWithRawResponse(self._customers.credits)
+
+    @cached_property
+    def balance_transactions(self) -> BalanceTransactionsWithRawResponse:
+        return BalanceTransactionsWithRawResponse(self._customers.balance_transactions)
+
 
 class AsyncCustomersWithRawResponse:
     def __init__(self, customers: AsyncCustomers) -> None:
-        self.costs = AsyncCostsWithRawResponse(customers.costs)
-        self.usage = AsyncUsageWithRawResponse(customers.usage)
-        self.credits = AsyncCreditsWithRawResponse(customers.credits)
-        self.balance_transactions = AsyncBalanceTransactionsWithRawResponse(customers.balance_transactions)
+        self._customers = customers
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             customers.create,
@@ -1752,13 +1762,26 @@ class AsyncCustomersWithRawResponse:
             customers.update_by_external_id,
         )
 
+    @cached_property
+    def costs(self) -> AsyncCostsWithRawResponse:
+        return AsyncCostsWithRawResponse(self._customers.costs)
+
+    @cached_property
+    def usage(self) -> AsyncUsageWithRawResponse:
+        return AsyncUsageWithRawResponse(self._customers.usage)
+
+    @cached_property
+    def credits(self) -> AsyncCreditsWithRawResponse:
+        return AsyncCreditsWithRawResponse(self._customers.credits)
+
+    @cached_property
+    def balance_transactions(self) -> AsyncBalanceTransactionsWithRawResponse:
+        return AsyncBalanceTransactionsWithRawResponse(self._customers.balance_transactions)
+
 
 class CustomersWithStreamingResponse:
     def __init__(self, customers: Customers) -> None:
-        self.costs = CostsWithStreamingResponse(customers.costs)
-        self.usage = UsageWithStreamingResponse(customers.usage)
-        self.credits = CreditsWithStreamingResponse(customers.credits)
-        self.balance_transactions = BalanceTransactionsWithStreamingResponse(customers.balance_transactions)
+        self._customers = customers
 
         self.create = to_streamed_response_wrapper(
             customers.create,
@@ -1782,13 +1805,26 @@ class CustomersWithStreamingResponse:
             customers.update_by_external_id,
         )
 
+    @cached_property
+    def costs(self) -> CostsWithStreamingResponse:
+        return CostsWithStreamingResponse(self._customers.costs)
+
+    @cached_property
+    def usage(self) -> UsageWithStreamingResponse:
+        return UsageWithStreamingResponse(self._customers.usage)
+
+    @cached_property
+    def credits(self) -> CreditsWithStreamingResponse:
+        return CreditsWithStreamingResponse(self._customers.credits)
+
+    @cached_property
+    def balance_transactions(self) -> BalanceTransactionsWithStreamingResponse:
+        return BalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)
+
 
 class AsyncCustomersWithStreamingResponse:
     def __init__(self, customers: AsyncCustomers) -> None:
-        self.costs = AsyncCostsWithStreamingResponse(customers.costs)
-        self.usage = AsyncUsageWithStreamingResponse(customers.usage)
-        self.credits = AsyncCreditsWithStreamingResponse(customers.credits)
-        self.balance_transactions = AsyncBalanceTransactionsWithStreamingResponse(customers.balance_transactions)
+        self._customers = customers
 
         self.create = async_to_streamed_response_wrapper(
             customers.create,
@@ -1811,3 +1847,19 @@ class AsyncCustomersWithStreamingResponse:
         self.update_by_external_id = async_to_streamed_response_wrapper(
             customers.update_by_external_id,
         )
+
+    @cached_property
+    def costs(self) -> AsyncCostsWithStreamingResponse:
+        return AsyncCostsWithStreamingResponse(self._customers.costs)
+
+    @cached_property
+    def usage(self) -> AsyncUsageWithStreamingResponse:
+        return AsyncUsageWithStreamingResponse(self._customers.usage)
+
+    @cached_property
+    def credits(self) -> AsyncCreditsWithStreamingResponse:
+        return AsyncCreditsWithStreamingResponse(self._customers.credits)
+
+    @cached_property
+    def balance_transactions(self) -> AsyncBalanceTransactionsWithStreamingResponse:
+        return AsyncBalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)

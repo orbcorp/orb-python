@@ -552,7 +552,7 @@ class AsyncPlans(AsyncAPIResource):
 
 class PlansWithRawResponse:
     def __init__(self, plans: Plans) -> None:
-        self.external_plan_id = ExternalPlanIDWithRawResponse(plans.external_plan_id)
+        self._plans = plans
 
         self.create = _legacy_response.to_raw_response_wrapper(
             plans.create,
@@ -567,10 +567,14 @@ class PlansWithRawResponse:
             plans.fetch,
         )
 
+    @cached_property
+    def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
+        return ExternalPlanIDWithRawResponse(self._plans.external_plan_id)
+
 
 class AsyncPlansWithRawResponse:
     def __init__(self, plans: AsyncPlans) -> None:
-        self.external_plan_id = AsyncExternalPlanIDWithRawResponse(plans.external_plan_id)
+        self._plans = plans
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             plans.create,
@@ -585,10 +589,14 @@ class AsyncPlansWithRawResponse:
             plans.fetch,
         )
 
+    @cached_property
+    def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
+        return AsyncExternalPlanIDWithRawResponse(self._plans.external_plan_id)
+
 
 class PlansWithStreamingResponse:
     def __init__(self, plans: Plans) -> None:
-        self.external_plan_id = ExternalPlanIDWithStreamingResponse(plans.external_plan_id)
+        self._plans = plans
 
         self.create = to_streamed_response_wrapper(
             plans.create,
@@ -603,10 +611,14 @@ class PlansWithStreamingResponse:
             plans.fetch,
         )
 
+    @cached_property
+    def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
+        return ExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
+
 
 class AsyncPlansWithStreamingResponse:
     def __init__(self, plans: AsyncPlans) -> None:
-        self.external_plan_id = AsyncExternalPlanIDWithStreamingResponse(plans.external_plan_id)
+        self._plans = plans
 
         self.create = async_to_streamed_response_wrapper(
             plans.create,
@@ -620,3 +632,7 @@ class AsyncPlansWithStreamingResponse:
         self.fetch = async_to_streamed_response_wrapper(
             plans.fetch,
         )
+
+    @cached_property
+    def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        return AsyncExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)

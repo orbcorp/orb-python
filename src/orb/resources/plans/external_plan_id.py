@@ -271,6 +271,8 @@ class AsyncExternalPlanID(AsyncAPIResource):
 
 class ExternalPlanIDWithRawResponse:
     def __init__(self, external_plan_id: ExternalPlanID) -> None:
+        self._external_plan_id = external_plan_id
+
         self.update = _legacy_response.to_raw_response_wrapper(
             external_plan_id.update,
         )
@@ -281,6 +283,8 @@ class ExternalPlanIDWithRawResponse:
 
 class AsyncExternalPlanIDWithRawResponse:
     def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
+        self._external_plan_id = external_plan_id
+
         self.update = _legacy_response.async_to_raw_response_wrapper(
             external_plan_id.update,
         )
@@ -291,6 +295,8 @@ class AsyncExternalPlanIDWithRawResponse:
 
 class ExternalPlanIDWithStreamingResponse:
     def __init__(self, external_plan_id: ExternalPlanID) -> None:
+        self._external_plan_id = external_plan_id
+
         self.update = to_streamed_response_wrapper(
             external_plan_id.update,
         )
@@ -301,6 +307,8 @@ class ExternalPlanIDWithStreamingResponse:
 
 class AsyncExternalPlanIDWithStreamingResponse:
     def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
+        self._external_plan_id = external_plan_id
+
         self.update = async_to_streamed_response_wrapper(
             external_plan_id.update,
         )
