@@ -843,6 +843,8 @@ class AsyncInvoices(AsyncAPIResource):
 
 class InvoicesWithRawResponse:
     def __init__(self, invoices: Invoices) -> None:
+        self._invoices = invoices
+
         self.create = _legacy_response.to_raw_response_wrapper(
             invoices.create,
         )
@@ -868,6 +870,8 @@ class InvoicesWithRawResponse:
 
 class AsyncInvoicesWithRawResponse:
     def __init__(self, invoices: AsyncInvoices) -> None:
+        self._invoices = invoices
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             invoices.create,
         )
@@ -893,6 +897,8 @@ class AsyncInvoicesWithRawResponse:
 
 class InvoicesWithStreamingResponse:
     def __init__(self, invoices: Invoices) -> None:
+        self._invoices = invoices
+
         self.create = to_streamed_response_wrapper(
             invoices.create,
         )
@@ -918,6 +924,8 @@ class InvoicesWithStreamingResponse:
 
 class AsyncInvoicesWithStreamingResponse:
     def __init__(self, invoices: AsyncInvoices) -> None:
+        self._invoices = invoices
+
         self.create = async_to_streamed_response_wrapper(
             invoices.create,
         )

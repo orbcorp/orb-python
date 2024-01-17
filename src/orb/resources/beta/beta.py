@@ -46,19 +46,35 @@ class AsyncBeta(AsyncAPIResource):
 
 class BetaWithRawResponse:
     def __init__(self, beta: Beta) -> None:
-        self.price = PriceWithRawResponse(beta.price)
+        self._beta = beta
+
+    @cached_property
+    def price(self) -> PriceWithRawResponse:
+        return PriceWithRawResponse(self._beta.price)
 
 
 class AsyncBetaWithRawResponse:
     def __init__(self, beta: AsyncBeta) -> None:
-        self.price = AsyncPriceWithRawResponse(beta.price)
+        self._beta = beta
+
+    @cached_property
+    def price(self) -> AsyncPriceWithRawResponse:
+        return AsyncPriceWithRawResponse(self._beta.price)
 
 
 class BetaWithStreamingResponse:
     def __init__(self, beta: Beta) -> None:
-        self.price = PriceWithStreamingResponse(beta.price)
+        self._beta = beta
+
+    @cached_property
+    def price(self) -> PriceWithStreamingResponse:
+        return PriceWithStreamingResponse(self._beta.price)
 
 
 class AsyncBetaWithStreamingResponse:
     def __init__(self, beta: AsyncBeta) -> None:
-        self.price = AsyncPriceWithStreamingResponse(beta.price)
+        self._beta = beta
+
+    @cached_property
+    def price(self) -> AsyncPriceWithStreamingResponse:
+        return AsyncPriceWithStreamingResponse(self._beta.price)

@@ -371,6 +371,8 @@ class AsyncMetrics(AsyncAPIResource):
 
 class MetricsWithRawResponse:
     def __init__(self, metrics: Metrics) -> None:
+        self._metrics = metrics
+
         self.create = _legacy_response.to_raw_response_wrapper(
             metrics.create,
         )
@@ -384,6 +386,8 @@ class MetricsWithRawResponse:
 
 class AsyncMetricsWithRawResponse:
     def __init__(self, metrics: AsyncMetrics) -> None:
+        self._metrics = metrics
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             metrics.create,
         )
@@ -397,6 +401,8 @@ class AsyncMetricsWithRawResponse:
 
 class MetricsWithStreamingResponse:
     def __init__(self, metrics: Metrics) -> None:
+        self._metrics = metrics
+
         self.create = to_streamed_response_wrapper(
             metrics.create,
         )
@@ -410,6 +416,8 @@ class MetricsWithStreamingResponse:
 
 class AsyncMetricsWithStreamingResponse:
     def __init__(self, metrics: AsyncMetrics) -> None:
+        self._metrics = metrics
+
         self.create = async_to_streamed_response_wrapper(
             metrics.create,
         )

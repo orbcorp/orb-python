@@ -825,6 +825,8 @@ class AsyncCosts(AsyncAPIResource):
 
 class CostsWithRawResponse:
     def __init__(self, costs: Costs) -> None:
+        self._costs = costs
+
         self.list = _legacy_response.to_raw_response_wrapper(
             costs.list,
         )
@@ -835,6 +837,8 @@ class CostsWithRawResponse:
 
 class AsyncCostsWithRawResponse:
     def __init__(self, costs: AsyncCosts) -> None:
+        self._costs = costs
+
         self.list = _legacy_response.async_to_raw_response_wrapper(
             costs.list,
         )
@@ -845,6 +849,8 @@ class AsyncCostsWithRawResponse:
 
 class CostsWithStreamingResponse:
     def __init__(self, costs: Costs) -> None:
+        self._costs = costs
+
         self.list = to_streamed_response_wrapper(
             costs.list,
         )
@@ -855,6 +861,8 @@ class CostsWithStreamingResponse:
 
 class AsyncCostsWithStreamingResponse:
     def __init__(self, costs: AsyncCosts) -> None:
+        self._costs = costs
+
         self.list = async_to_streamed_response_wrapper(
             costs.list,
         )

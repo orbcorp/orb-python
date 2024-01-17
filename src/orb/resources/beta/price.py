@@ -229,6 +229,8 @@ class AsyncPrice(AsyncAPIResource):
 
 class PriceWithRawResponse:
     def __init__(self, price: Price) -> None:
+        self._price = price
+
         self.evaluate = _legacy_response.to_raw_response_wrapper(
             price.evaluate,
         )
@@ -236,6 +238,8 @@ class PriceWithRawResponse:
 
 class AsyncPriceWithRawResponse:
     def __init__(self, price: AsyncPrice) -> None:
+        self._price = price
+
         self.evaluate = _legacy_response.async_to_raw_response_wrapper(
             price.evaluate,
         )
@@ -243,6 +247,8 @@ class AsyncPriceWithRawResponse:
 
 class PriceWithStreamingResponse:
     def __init__(self, price: Price) -> None:
+        self._price = price
+
         self.evaluate = to_streamed_response_wrapper(
             price.evaluate,
         )
@@ -250,6 +256,8 @@ class PriceWithStreamingResponse:
 
 class AsyncPriceWithStreamingResponse:
     def __init__(self, price: AsyncPrice) -> None:
+        self._price = price
+
         self.evaluate = async_to_streamed_response_wrapper(
             price.evaluate,
         )

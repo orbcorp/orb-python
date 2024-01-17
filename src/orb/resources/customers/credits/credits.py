@@ -289,7 +289,7 @@ class AsyncCredits(AsyncAPIResource):
 
 class CreditsWithRawResponse:
     def __init__(self, credits: Credits) -> None:
-        self.ledger = LedgerWithRawResponse(credits.ledger)
+        self._credits = credits
 
         self.list = _legacy_response.to_raw_response_wrapper(
             credits.list,
@@ -298,10 +298,14 @@ class CreditsWithRawResponse:
             credits.list_by_external_id,
         )
 
+    @cached_property
+    def ledger(self) -> LedgerWithRawResponse:
+        return LedgerWithRawResponse(self._credits.ledger)
+
 
 class AsyncCreditsWithRawResponse:
     def __init__(self, credits: AsyncCredits) -> None:
-        self.ledger = AsyncLedgerWithRawResponse(credits.ledger)
+        self._credits = credits
 
         self.list = _legacy_response.async_to_raw_response_wrapper(
             credits.list,
@@ -310,10 +314,14 @@ class AsyncCreditsWithRawResponse:
             credits.list_by_external_id,
         )
 
+    @cached_property
+    def ledger(self) -> AsyncLedgerWithRawResponse:
+        return AsyncLedgerWithRawResponse(self._credits.ledger)
+
 
 class CreditsWithStreamingResponse:
     def __init__(self, credits: Credits) -> None:
-        self.ledger = LedgerWithStreamingResponse(credits.ledger)
+        self._credits = credits
 
         self.list = to_streamed_response_wrapper(
             credits.list,
@@ -322,10 +330,14 @@ class CreditsWithStreamingResponse:
             credits.list_by_external_id,
         )
 
+    @cached_property
+    def ledger(self) -> LedgerWithStreamingResponse:
+        return LedgerWithStreamingResponse(self._credits.ledger)
+
 
 class AsyncCreditsWithStreamingResponse:
     def __init__(self, credits: AsyncCredits) -> None:
-        self.ledger = AsyncLedgerWithStreamingResponse(credits.ledger)
+        self._credits = credits
 
         self.list = async_to_streamed_response_wrapper(
             credits.list,
@@ -333,3 +345,7 @@ class AsyncCreditsWithStreamingResponse:
         self.list_by_external_id = async_to_streamed_response_wrapper(
             credits.list_by_external_id,
         )
+
+    @cached_property
+    def ledger(self) -> AsyncLedgerWithStreamingResponse:
+        return AsyncLedgerWithStreamingResponse(self._credits.ledger)
