@@ -9,18 +9,14 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import Coupon
-from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestCoupons:
-    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Orb) -> None:
@@ -196,13 +192,11 @@ class TestCoupons:
 
 
 class TestAsyncCoupons:
-    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.create(
+    async def test_method_create(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.create(
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
@@ -213,8 +207,8 @@ class TestAsyncCoupons:
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.create(
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
@@ -228,8 +222,8 @@ class TestAsyncCoupons:
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncOrb) -> None:
-        response = await client.coupons.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
+        response = await async_client.coupons.with_raw_response.create(
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
@@ -244,8 +238,8 @@ class TestAsyncCoupons:
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncOrb) -> None:
-        async with client.coupons.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
+        async with async_client.coupons.with_streaming_response.create(
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
@@ -262,13 +256,13 @@ class TestAsyncCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_list(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.list()
+    async def test_method_list(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.list()
         assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.list(
             cursor="string",
             limit=0,
             redemption_code="string",
@@ -277,8 +271,8 @@ class TestAsyncCoupons:
         assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncOrb) -> None:
-        response = await client.coupons.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
+        response = await async_client.coupons.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -286,8 +280,8 @@ class TestAsyncCoupons:
         assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
-        async with client.coupons.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
+        async with async_client.coupons.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -297,15 +291,15 @@ class TestAsyncCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_archive(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.archive(
+    async def test_method_archive(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.archive(
             "string",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_raw_response_archive(self, client: AsyncOrb) -> None:
-        response = await client.coupons.with_raw_response.archive(
+    async def test_raw_response_archive(self, async_client: AsyncOrb) -> None:
+        response = await async_client.coupons.with_raw_response.archive(
             "string",
         )
 
@@ -315,8 +309,8 @@ class TestAsyncCoupons:
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_streaming_response_archive(self, client: AsyncOrb) -> None:
-        async with client.coupons.with_streaming_response.archive(
+    async def test_streaming_response_archive(self, async_client: AsyncOrb) -> None:
+        async with async_client.coupons.with_streaming_response.archive(
             "string",
         ) as response:
             assert not response.is_closed
@@ -328,22 +322,22 @@ class TestAsyncCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_archive(self, client: AsyncOrb) -> None:
+    async def test_path_params_archive(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
-            await client.coupons.with_raw_response.archive(
+            await async_client.coupons.with_raw_response.archive(
                 "",
             )
 
     @parametrize
-    async def test_method_fetch(self, client: AsyncOrb) -> None:
-        coupon = await client.coupons.fetch(
+    async def test_method_fetch(self, async_client: AsyncOrb) -> None:
+        coupon = await async_client.coupons.fetch(
             "string",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
-        response = await client.coupons.with_raw_response.fetch(
+    async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
+        response = await async_client.coupons.with_raw_response.fetch(
             "string",
         )
 
@@ -353,8 +347,8 @@ class TestAsyncCoupons:
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
-    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
-        async with client.coupons.with_streaming_response.fetch(
+    async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
+        async with async_client.coupons.with_streaming_response.fetch(
             "string",
         ) as response:
             assert not response.is_closed
@@ -366,8 +360,8 @@ class TestAsyncCoupons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+    async def test_path_params_fetch(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
-            await client.coupons.with_raw_response.fetch(
+            await async_client.coupons.with_raw_response.fetch(
                 "",
             )

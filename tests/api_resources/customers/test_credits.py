@@ -8,7 +8,6 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers import (
@@ -17,13 +16,10 @@ from orb.types.customers import (
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestCredits:
-    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -123,20 +119,18 @@ class TestCredits:
 
 
 class TestAsyncCredits:
-    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list(self, client: AsyncOrb) -> None:
-        credit = await client.customers.credits.list(
+    async def test_method_list(self, async_client: AsyncOrb) -> None:
+        credit = await async_client.customers.credits.list(
             "string",
         )
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
-        credit = await client.customers.credits.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
+        credit = await async_client.customers.credits.list(
             "string",
             currency="string",
             cursor="string",
@@ -145,8 +139,8 @@ class TestAsyncCredits:
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.with_raw_response.list(
+    async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.with_raw_response.list(
             "string",
         )
 
@@ -156,8 +150,8 @@ class TestAsyncCredits:
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.with_streaming_response.list(
+    async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.with_streaming_response.list(
             "string",
         ) as response:
             assert not response.is_closed
@@ -169,22 +163,22 @@ class TestAsyncCredits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, client: AsyncOrb) -> None:
+    async def test_path_params_list(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.with_raw_response.list(
+            await async_client.customers.credits.with_raw_response.list(
                 "",
             )
 
     @parametrize
-    async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
-        credit = await client.customers.credits.list_by_external_id(
+    async def test_method_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        credit = await async_client.customers.credits.list_by_external_id(
             "string",
         )
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
     @parametrize
-    async def test_method_list_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
-        credit = await client.customers.credits.list_by_external_id(
+    async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
+        credit = await async_client.customers.credits.list_by_external_id(
             "string",
             currency="string",
             cursor="string",
@@ -193,8 +187,8 @@ class TestAsyncCredits:
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_external_id(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.with_raw_response.list_by_external_id(
+    async def test_raw_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.with_raw_response.list_by_external_id(
             "string",
         )
 
@@ -204,8 +198,8 @@ class TestAsyncCredits:
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_external_id(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.with_streaming_response.list_by_external_id(
+    async def test_streaming_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.with_streaming_response.list_by_external_id(
             "string",
         ) as response:
             assert not response.is_closed
@@ -217,8 +211,8 @@ class TestAsyncCredits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_external_id(self, client: AsyncOrb) -> None:
+    async def test_path_params_list_by_external_id(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.with_raw_response.list_by_external_id(
+            await async_client.customers.credits.with_raw_response.list_by_external_id(
                 "",
             )
