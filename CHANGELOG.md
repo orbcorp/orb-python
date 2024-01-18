@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.39.1 (2024-01-18)
+
+Full Changelog: [v1.39.0...v1.39.1](https://github.com/orbcorp/orb-python/compare/v1.39.0...v1.39.1)
+
+### Bug Fixes
+
+* **ci:** ignore stainless-app edits to release PR title ([#146](https://github.com/orbcorp/orb-python/issues/146)) ([5a2e2b5](https://github.com/orbcorp/orb-python/commit/5a2e2b58b7763a99907ae3a3a8afd6a19789cb62))
+
+
+### Chores
+
+* **internal:** fix typing util function ([#140](https://github.com/orbcorp/orb-python/issues/140)) ([31a83a9](https://github.com/orbcorp/orb-python/commit/31a83a9d24ba25004ab234dc1b555a03d7333a1f))
+* **internal:** remove redundant client test ([#142](https://github.com/orbcorp/orb-python/issues/142)) ([e315f4e](https://github.com/orbcorp/orb-python/commit/e315f4e00c4e2a45a657d56df3a22813264632a3))
+* **internal:** share client instances between all tests ([#145](https://github.com/orbcorp/orb-python/issues/145)) ([64a4cb6](https://github.com/orbcorp/orb-python/commit/64a4cb6dfc3b5947701dba25dbe8c37b6050eb38))
+* **internal:** speculative retry-after-ms support ([#143](https://github.com/orbcorp/orb-python/issues/143)) ([d7affe9](https://github.com/orbcorp/orb-python/commit/d7affe9e3fae951027d43307df10420143e69042))
+* lazy load raw resource class properties ([#144](https://github.com/orbcorp/orb-python/issues/144)) ([72734a3](https://github.com/orbcorp/orb-python/commit/72734a340d158aae1e039d615a72bff2b9d89454))
+
 ## 1.39.0 (2024-01-17)
 
 Full Changelog: [v1.38.1...v1.39.0](https://github.com/orbcorp/orb-python/compare/v1.38.1...v1.39.0)
