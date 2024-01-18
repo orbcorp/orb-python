@@ -9,7 +9,6 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
-from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.types.customers import (
     UsageUpdateResponse,
@@ -17,13 +16,10 @@ from orb.types.customers import (
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestUsage:
-    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_update(self, client: Orb) -> None:
@@ -303,13 +299,11 @@ class TestUsage:
 
 
 class TestAsyncUsage:
-    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_update(self, client: AsyncOrb) -> None:
-        usage = await client.customers.usage.update(
+    async def test_method_update(self, async_client: AsyncOrb) -> None:
+        usage = await async_client.customers.usage.update(
             "string",
             events=[
                 {
@@ -332,8 +326,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncOrb) -> None:
-        usage = await client.customers.usage.update(
+    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
+        usage = await async_client.customers.usage.update(
             "string",
             events=[
                 {
@@ -364,8 +358,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncOrb) -> None:
-        response = await client.customers.usage.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.usage.with_raw_response.update(
             "string",
             events=[
                 {
@@ -392,8 +386,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateResponse, usage, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncOrb) -> None:
-        async with client.customers.usage.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.usage.with_streaming_response.update(
             "string",
             events=[
                 {
@@ -422,9 +416,9 @@ class TestAsyncUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncOrb) -> None:
+    async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await client.customers.usage.with_raw_response.update(
+            await async_client.customers.usage.with_raw_response.update(
                 "",
                 events=[
                     {
@@ -446,8 +440,8 @@ class TestAsyncUsage:
             )
 
     @parametrize
-    async def test_method_update_by_external_id(self, client: AsyncOrb) -> None:
-        usage = await client.customers.usage.update_by_external_id(
+    async def test_method_update_by_external_id(self, async_client: AsyncOrb) -> None:
+        usage = await async_client.customers.usage.update_by_external_id(
             "string",
             events=[
                 {
@@ -470,8 +464,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
     @parametrize
-    async def test_method_update_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
-        usage = await client.customers.usage.update_by_external_id(
+    async def test_method_update_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
+        usage = await async_client.customers.usage.update_by_external_id(
             "string",
             events=[
                 {
@@ -502,8 +496,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
     @parametrize
-    async def test_raw_response_update_by_external_id(self, client: AsyncOrb) -> None:
-        response = await client.customers.usage.with_raw_response.update_by_external_id(
+    async def test_raw_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.usage.with_raw_response.update_by_external_id(
             "string",
             events=[
                 {
@@ -530,8 +524,8 @@ class TestAsyncUsage:
         assert_matches_type(UsageUpdateByExternalIDResponse, usage, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update_by_external_id(self, client: AsyncOrb) -> None:
-        async with client.customers.usage.with_streaming_response.update_by_external_id(
+    async def test_streaming_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.usage.with_streaming_response.update_by_external_id(
             "string",
             events=[
                 {
@@ -560,9 +554,9 @@ class TestAsyncUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update_by_external_id(self, client: AsyncOrb) -> None:
+    async def test_path_params_update_by_external_id(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await client.customers.usage.with_raw_response.update_by_external_id(
+            await async_client.customers.usage.with_raw_response.update_by_external_id(
                 "",
                 events=[
                     {

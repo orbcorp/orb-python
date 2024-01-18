@@ -9,7 +9,6 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb._utils import parse_date, parse_datetime
-from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers.credits import (
@@ -20,13 +19,10 @@ from orb.types.customers.credits import (
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestLedger:
-    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
@@ -772,20 +768,18 @@ class TestLedger:
 
 
 class TestAsyncLedger:
-    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.list(
+    async def test_method_list(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.list(
             "string",
         )
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.list(
             "string",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -801,8 +795,8 @@ class TestAsyncLedger:
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.list(
+    async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.list(
             "string",
         )
 
@@ -812,8 +806,8 @@ class TestAsyncLedger:
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.list(
+    async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.list(
             "string",
         ) as response:
             assert not response.is_closed
@@ -825,15 +819,15 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, client: AsyncOrb) -> None:
+    async def test_path_params_list(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.list(
+            await async_client.customers.credits.ledger.with_raw_response.list(
                 "",
             )
 
     @parametrize
-    async def test_method_create_entry_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_overload_1(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             entry_type="increment",
@@ -841,8 +835,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_with_all_params_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_with_all_params_overload_1(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             entry_type="increment",
@@ -861,8 +855,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_overload_1(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+    async def test_raw_response_create_entry_overload_1(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             amount=0,
             entry_type="increment",
@@ -874,8 +868,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_overload_1(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+    async def test_streaming_response_create_entry_overload_1(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             amount=0,
             entry_type="increment",
@@ -889,17 +883,17 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_overload_1(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_overload_1(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 amount=0,
                 entry_type="increment",
             )
 
     @parametrize
-    async def test_method_create_entry_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_overload_2(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             entry_type="decrement",
@@ -907,8 +901,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_with_all_params_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_with_all_params_overload_2(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             entry_type="decrement",
@@ -919,8 +913,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_overload_2(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+    async def test_raw_response_create_entry_overload_2(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             amount=0,
             entry_type="decrement",
@@ -932,8 +926,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_overload_2(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+    async def test_streaming_response_create_entry_overload_2(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             amount=0,
             entry_type="decrement",
@@ -947,17 +941,17 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_overload_2(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_overload_2(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 amount=0,
                 entry_type="decrement",
             )
 
     @parametrize
-    async def test_method_create_entry_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_overload_3(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -966,8 +960,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_with_all_params_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_with_all_params_overload_3(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -981,8 +975,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_overload_3(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+    async def test_raw_response_create_entry_overload_3(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -995,8 +989,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_overload_3(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+    async def test_streaming_response_create_entry_overload_3(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1011,9 +1005,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_overload_3(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_overload_3(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 entry_type="expiration_change",
                 expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1021,8 +1015,8 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_create_entry_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_overload_4(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1031,8 +1025,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_with_all_params_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_with_all_params_overload_4(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1045,8 +1039,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_overload_4(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+    async def test_raw_response_create_entry_overload_4(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1059,8 +1053,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_overload_4(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+    async def test_streaming_response_create_entry_overload_4(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1075,9 +1069,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_overload_4(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_overload_4(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 amount=0,
                 block_id="string",
@@ -1085,8 +1079,8 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_create_entry_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_overload_5(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1095,8 +1089,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_with_all_params_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry(
+    async def test_method_create_entry_with_all_params_overload_5(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1108,8 +1102,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_overload_5(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry(
+    async def test_raw_response_create_entry_overload_5(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1122,8 +1116,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_overload_5(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry(
+    async def test_streaming_response_create_entry_overload_5(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry(
             "string",
             amount=0,
             block_id="string",
@@ -1138,9 +1132,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_overload_5(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_overload_5(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry(
                 "",
                 amount=0,
                 block_id="string",
@@ -1148,8 +1142,8 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_overload_1(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -1157,8 +1151,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_external_id_with_all_params_overload_1(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_1(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -1177,8 +1171,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+    async def test_raw_response_create_entry_by_external_id_overload_1(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -1190,8 +1184,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+    async def test_streaming_response_create_entry_by_external_id_overload_1(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="increment",
@@ -1205,17 +1199,17 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_by_external_id_overload_1(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_by_external_id_overload_1(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 amount=0,
                 entry_type="increment",
             )
 
     @parametrize
-    async def test_method_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_overload_2(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
@@ -1223,8 +1217,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_external_id_with_all_params_overload_2(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_2(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
@@ -1235,8 +1229,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+    async def test_raw_response_create_entry_by_external_id_overload_2(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
@@ -1248,8 +1242,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+    async def test_streaming_response_create_entry_by_external_id_overload_2(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             amount=0,
             entry_type="decrement",
@@ -1263,17 +1257,17 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_by_external_id_overload_2(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_by_external_id_overload_2(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 amount=0,
                 entry_type="decrement",
             )
 
     @parametrize
-    async def test_method_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_overload_3(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1282,8 +1276,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_external_id_with_all_params_overload_3(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_3(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1297,8 +1291,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+    async def test_raw_response_create_entry_by_external_id_overload_3(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1311,8 +1305,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+    async def test_streaming_response_create_entry_by_external_id_overload_3(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             entry_type="expiration_change",
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1327,9 +1321,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_by_external_id_overload_3(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_by_external_id_overload_3(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 entry_type="expiration_change",
                 expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1337,8 +1331,8 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_overload_4(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1347,8 +1341,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_external_id_with_all_params_overload_4(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_4(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1361,8 +1355,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+    async def test_raw_response_create_entry_by_external_id_overload_4(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1375,8 +1369,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+    async def test_streaming_response_create_entry_by_external_id_overload_4(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1391,9 +1385,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_by_external_id_overload_4(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_by_external_id_overload_4(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 amount=0,
                 block_id="string",
@@ -1401,8 +1395,8 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_overload_5(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1411,8 +1405,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_method_create_entry_by_external_id_with_all_params_overload_5(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.create_entry_by_external_id(
+    async def test_method_create_entry_by_external_id_with_all_params_overload_5(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1424,8 +1418,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+    async def test_raw_response_create_entry_by_external_id_overload_5(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1438,8 +1432,8 @@ class TestAsyncLedger:
         assert_matches_type(LedgerCreateEntryByExternalIDResponse, ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
+    async def test_streaming_response_create_entry_by_external_id_overload_5(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.create_entry_by_external_id(
             "string",
             amount=0,
             block_id="string",
@@ -1454,9 +1448,9 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_entry_by_external_id_overload_5(self, client: AsyncOrb) -> None:
+    async def test_path_params_create_entry_by_external_id_overload_5(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.create_entry_by_external_id(
                 "",
                 amount=0,
                 block_id="string",
@@ -1464,15 +1458,15 @@ class TestAsyncLedger:
             )
 
     @parametrize
-    async def test_method_list_by_external_id(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.list_by_external_id(
+    async def test_method_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.list_by_external_id(
             "string",
         )
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_method_list_by_external_id_with_all_params(self, client: AsyncOrb) -> None:
-        ledger = await client.customers.credits.ledger.list_by_external_id(
+    async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
+        ledger = await async_client.customers.credits.ledger.list_by_external_id(
             "string",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1488,8 +1482,8 @@ class TestAsyncLedger:
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_external_id(self, client: AsyncOrb) -> None:
-        response = await client.customers.credits.ledger.with_raw_response.list_by_external_id(
+    async def test_raw_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.credits.ledger.with_raw_response.list_by_external_id(
             "string",
         )
 
@@ -1499,8 +1493,8 @@ class TestAsyncLedger:
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_external_id(self, client: AsyncOrb) -> None:
-        async with client.customers.credits.ledger.with_streaming_response.list_by_external_id(
+    async def test_streaming_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.credits.ledger.with_streaming_response.list_by_external_id(
             "string",
         ) as response:
             assert not response.is_closed
@@ -1512,8 +1506,8 @@ class TestAsyncLedger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_external_id(self, client: AsyncOrb) -> None:
+    async def test_path_params_list_by_external_id(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
-            await client.customers.credits.ledger.with_raw_response.list_by_external_id(
+            await async_client.customers.credits.ledger.with_raw_response.list_by_external_id(
                 "",
             )

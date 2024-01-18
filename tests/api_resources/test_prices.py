@@ -9,18 +9,14 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import Price
-from orb._client import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestPrices:
-    strict_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Orb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create_overload_1(self, client: Orb) -> None:
@@ -1094,13 +1090,11 @@ class TestPrices:
 
 
 class TestAsyncPrices:
-    strict_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncOrb(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create_overload_1(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_1(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1111,8 +1105,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_1(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_1(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1131,8 +1125,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_1(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_1(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1147,8 +1141,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_1(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_1(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1165,8 +1159,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_2(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_2(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1177,8 +1171,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_2(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_2(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1197,8 +1191,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_2(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_2(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1213,8 +1207,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_2(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_2(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1231,8 +1225,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_3(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_3(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1260,8 +1254,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_3(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_3(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1298,8 +1292,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_3(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_3(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1331,8 +1325,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_3(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_3(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1366,8 +1360,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_4(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_4(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1393,8 +1387,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_4(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_4(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1428,8 +1422,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_4(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_4(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1459,8 +1453,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_4(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_4(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1492,8 +1486,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_5(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_5(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1519,8 +1513,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_5(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_5(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1557,8 +1551,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_5(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_5(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1588,8 +1582,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_5(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_5(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1621,8 +1615,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_6(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_6(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bps_config={"bps": 0},
             cadence="annual",
             currency="string",
@@ -1633,8 +1627,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_6(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bps_config={
                 "bps": 0,
                 "per_unit_maximum": "string",
@@ -1653,8 +1647,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_6(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             bps_config={"bps": 0},
             cadence="annual",
             currency="string",
@@ -1669,8 +1663,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_6(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             bps_config={"bps": 0},
             cadence="annual",
             currency="string",
@@ -1687,8 +1681,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_7(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
             currency="string",
@@ -1699,8 +1693,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_7(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bulk_bps_config={
                 "tiers": [
                     {
@@ -1734,8 +1728,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_7(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
             currency="string",
@@ -1750,8 +1744,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_7(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
             currency="string",
@@ -1768,8 +1762,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_8(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
@@ -1780,8 +1774,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_8(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bulk_config={
                 "tiers": [
                     {
@@ -1812,8 +1806,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_8(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
@@ -1828,8 +1822,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_8(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
@@ -1846,8 +1840,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_9(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1858,8 +1852,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_9(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1875,8 +1869,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_9(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1891,8 +1885,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_9(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1909,8 +1903,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_10(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_10(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1921,8 +1915,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_10(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_10(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1938,8 +1932,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_10(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_10(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1954,8 +1948,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_10(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_10(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1972,8 +1966,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_11(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_11(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -1984,8 +1978,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_11(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_11(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2001,8 +1995,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_11(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_11(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2017,8 +2011,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_11(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_11(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2035,8 +2029,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_12(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_overload_12(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2047,8 +2041,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_12(self, client: AsyncOrb) -> None:
-        price = await client.prices.create(
+    async def test_method_create_with_all_params_overload_12(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2064,8 +2058,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_12(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.create(
+    async def test_raw_response_create_overload_12(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2080,8 +2074,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_12(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.create(
+    async def test_streaming_response_create_overload_12(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
             item_id="string",
@@ -2098,21 +2092,21 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_list(self, client: AsyncOrb) -> None:
-        price = await client.prices.list()
+    async def test_method_list(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.list()
         assert_matches_type(AsyncPage[Price], price, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncOrb) -> None:
-        price = await client.prices.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.list(
             cursor="string",
             limit=0,
         )
         assert_matches_type(AsyncPage[Price], price, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2120,8 +2114,8 @@ class TestAsyncPrices:
         assert_matches_type(AsyncPage[Price], price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -2131,15 +2125,15 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_fetch(self, client: AsyncOrb) -> None:
-        price = await client.prices.fetch(
+    async def test_method_fetch(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.fetch(
             "string",
         )
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_fetch(self, client: AsyncOrb) -> None:
-        response = await client.prices.with_raw_response.fetch(
+    async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.fetch(
             "string",
         )
 
@@ -2149,8 +2143,8 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_fetch(self, client: AsyncOrb) -> None:
-        async with client.prices.with_streaming_response.fetch(
+    async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.fetch(
             "string",
         ) as response:
             assert not response.is_closed
@@ -2162,8 +2156,8 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_fetch(self, client: AsyncOrb) -> None:
+    async def test_path_params_fetch(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
-            await client.prices.with_raw_response.fetch(
+            await async_client.prices.with_raw_response.fetch(
                 "",
             )
