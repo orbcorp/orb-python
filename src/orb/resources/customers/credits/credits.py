@@ -15,6 +15,14 @@ from .ledger import (
     LedgerWithStreamingResponse,
     AsyncLedgerWithStreamingResponse,
 )
+from .top_ups import (
+    TopUps,
+    AsyncTopUps,
+    TopUpsWithRawResponse,
+    AsyncTopUpsWithRawResponse,
+    TopUpsWithStreamingResponse,
+    AsyncTopUpsWithStreamingResponse,
+)
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._compat import cached_property
@@ -39,6 +47,10 @@ class Credits(SyncAPIResource):
     @cached_property
     def ledger(self) -> Ledger:
         return Ledger(self._client)
+
+    @cached_property
+    def top_ups(self) -> TopUps:
+        return TopUps(self._client)
 
     @cached_property
     def with_raw_response(self) -> CreditsWithRawResponse:
@@ -165,6 +177,10 @@ class AsyncCredits(AsyncAPIResource):
     @cached_property
     def ledger(self) -> AsyncLedger:
         return AsyncLedger(self._client)
+
+    @cached_property
+    def top_ups(self) -> AsyncTopUps:
+        return AsyncTopUps(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncCreditsWithRawResponse:
@@ -302,6 +318,10 @@ class CreditsWithRawResponse:
     def ledger(self) -> LedgerWithRawResponse:
         return LedgerWithRawResponse(self._credits.ledger)
 
+    @cached_property
+    def top_ups(self) -> TopUpsWithRawResponse:
+        return TopUpsWithRawResponse(self._credits.top_ups)
+
 
 class AsyncCreditsWithRawResponse:
     def __init__(self, credits: AsyncCredits) -> None:
@@ -317,6 +337,10 @@ class AsyncCreditsWithRawResponse:
     @cached_property
     def ledger(self) -> AsyncLedgerWithRawResponse:
         return AsyncLedgerWithRawResponse(self._credits.ledger)
+
+    @cached_property
+    def top_ups(self) -> AsyncTopUpsWithRawResponse:
+        return AsyncTopUpsWithRawResponse(self._credits.top_ups)
 
 
 class CreditsWithStreamingResponse:
@@ -334,6 +358,10 @@ class CreditsWithStreamingResponse:
     def ledger(self) -> LedgerWithStreamingResponse:
         return LedgerWithStreamingResponse(self._credits.ledger)
 
+    @cached_property
+    def top_ups(self) -> TopUpsWithStreamingResponse:
+        return TopUpsWithStreamingResponse(self._credits.top_ups)
+
 
 class AsyncCreditsWithStreamingResponse:
     def __init__(self, credits: AsyncCredits) -> None:
@@ -349,3 +377,7 @@ class AsyncCreditsWithStreamingResponse:
     @cached_property
     def ledger(self) -> AsyncLedgerWithStreamingResponse:
         return AsyncLedgerWithStreamingResponse(self._credits.ledger)
+
+    @cached_property
+    def top_ups(self) -> AsyncTopUpsWithStreamingResponse:
+        return AsyncTopUpsWithStreamingResponse(self._credits.top_ups)
