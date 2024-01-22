@@ -32,7 +32,6 @@ class TestCosts:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         cost = client.customers.costs.list(
             "string",
-            group_by="string",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -81,7 +80,6 @@ class TestCosts:
     def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
         cost = client.customers.costs.list_by_external_id(
             "string",
-            group_by="string",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -134,7 +132,6 @@ class TestAsyncCosts:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         cost = await async_client.customers.costs.list(
             "string",
-            group_by="string",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -183,7 +180,6 @@ class TestAsyncCosts:
     async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
         cost = await async_client.customers.costs.list_by_external_id(
             "string",
-            group_by="string",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",

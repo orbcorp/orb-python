@@ -16,6 +16,14 @@ from .credits import (
     CreditsWithStreamingResponse,
     AsyncCreditsWithStreamingResponse,
 )
+from .top_ups import (
+    TopUps,
+    AsyncTopUps,
+    TopUpsWithRawResponse,
+    AsyncTopUpsWithRawResponse,
+    TopUpsWithStreamingResponse,
+    AsyncTopUpsWithStreamingResponse,
+)
 
 __all__ = [
     "Ledger",
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncLedgerWithRawResponse",
     "LedgerWithStreamingResponse",
     "AsyncLedgerWithStreamingResponse",
+    "TopUps",
+    "AsyncTopUps",
+    "TopUpsWithRawResponse",
+    "AsyncTopUpsWithRawResponse",
+    "TopUpsWithStreamingResponse",
+    "AsyncTopUpsWithStreamingResponse",
     "Credits",
     "AsyncCredits",
     "CreditsWithRawResponse",

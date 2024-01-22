@@ -754,7 +754,6 @@ class Subscriptions(SyncAPIResource):
         self,
         subscription_id: str,
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -778,8 +777,6 @@ class Subscriptions(SyncAPIResource):
         same day).
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -808,7 +805,6 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
@@ -2387,7 +2383,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -2411,8 +2406,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         same day).
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -2441,7 +2434,6 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
