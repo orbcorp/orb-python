@@ -12,9 +12,6 @@ __all__ = ["CostListParams"]
 
 
 class CostListParams(TypedDict, total=False):
-    group_by: Optional[str]
-    """Groups per-price costs by the key provided."""
-
     timeframe_end: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """Costs returned are exclusive of `timeframe_end`."""
 

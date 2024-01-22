@@ -127,6 +127,28 @@ Methods:
 - <code title="post /customers/external_customer_id/{external_customer_id}/credits/ledger_entry">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">create_entry_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_create_entry_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_create_entry_by_external_id_response.py">LedgerCreateEntryByExternalIDResponse</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}/credits/ledger">client.customers.credits.ledger.<a href="./src/orb/resources/customers/credits/ledger.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/ledger_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/ledger_list_by_external_id_response.py">SyncPage[LedgerListByExternalIDResponse]</a></code>
 
+### TopUps
+
+Types:
+
+```python
+from orb.types.customers.credits import (
+    TopUpCreateResponse,
+    TopUpListResponse,
+    TopUpCreateByExternalIDResponse,
+    TopUpListByExternalIDResponse,
+)
+```
+
+Methods:
+
+- <code title="post /customers/{customer_id}/credits/top_ups">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">create</a>(customer_id, \*\*<a href="src/orb/types/customers/credits/top_up_create_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/top_up_create_response.py">TopUpCreateResponse</a></code>
+- <code title="get /customers/{customer_id}/credits/top_ups">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/credits/top_up_list_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/top_up_list_response.py">SyncPage[TopUpListResponse]</a></code>
+- <code title="delete /customers/{customer_id}/credits/top_ups/{top_up_id}">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">delete</a>(top_up_id, \*, customer_id) -> None</code>
+- <code title="post /customers/external_customer_id/{external_customer_id}/credits/top_ups">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">create_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/top_up_create_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/top_up_create_by_external_id_response.py">TopUpCreateByExternalIDResponse</a></code>
+- <code title="delete /customers/external_customer_id/{external_customer_id}/credits/top_ups/{top_up_id}">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">delete_by_external_id</a>(top_up_id, \*, external_customer_id) -> None</code>
+- <code title="get /customers/external_customer_id/{external_customer_id}/credits/top_ups">client.customers.credits.top_ups.<a href="./src/orb/resources/customers/credits/top_ups.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credits/top_up_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credits/top_up_list_by_external_id_response.py">SyncPage[TopUpListByExternalIDResponse]</a></code>
+
 ## BalanceTransactions
 
 Types:

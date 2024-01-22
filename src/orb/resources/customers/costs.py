@@ -40,7 +40,6 @@ class Costs(SyncAPIResource):
         self,
         customer_id: Optional[str],
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -188,8 +187,6 @@ class Costs(SyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -218,7 +215,6 @@ class Costs(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
@@ -233,7 +229,6 @@ class Costs(SyncAPIResource):
         self,
         external_customer_id: Optional[str],
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -381,8 +376,6 @@ class Costs(SyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -413,7 +406,6 @@ class Costs(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
@@ -438,7 +430,6 @@ class AsyncCosts(AsyncAPIResource):
         self,
         customer_id: Optional[str],
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -586,8 +577,6 @@ class AsyncCosts(AsyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -616,7 +605,6 @@ class AsyncCosts(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
@@ -631,7 +619,6 @@ class AsyncCosts(AsyncAPIResource):
         self,
         external_customer_id: Optional[str],
         *,
-        group_by: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -779,8 +766,6 @@ class AsyncCosts(AsyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          group_by: Groups per-price costs by the key provided.
-
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -811,7 +796,6 @@ class AsyncCosts(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "group_by": group_by,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
