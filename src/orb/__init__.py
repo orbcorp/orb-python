@@ -4,6 +4,7 @@ from . import types
 from ._types import NoneType, Transport, ProxiesTypes
 from ._utils import file_from_path
 from ._client import Orb, Client, Stream, Timeout, AsyncOrb, Transport, AsyncClient, AsyncStream, RequestOptions
+from ._models import BaseModel
 from ._version import __title__, __version__
 from ._response import APIResponse as APIResponse, AsyncAPIResponse as AsyncAPIResponse
 from ._exceptions import (
@@ -78,6 +79,7 @@ __all__ = [
     "Orb",
     "AsyncOrb",
     "file_from_path",
+    "BaseModel",
 ]
 
 _setup_logging()
