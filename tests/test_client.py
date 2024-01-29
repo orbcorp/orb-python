@@ -712,7 +712,7 @@ class TestOrb:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/customers",
-                body=dict(email="example-customer@withorb.com", name="My Customer"),
+                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -727,7 +727,7 @@ class TestOrb:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/customers",
-                body=dict(email="example-customer@withorb.com", name="My Customer"),
+                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1416,7 +1416,7 @@ class TestAsyncOrb:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/customers",
-                body=dict(email="example-customer@withorb.com", name="My Customer"),
+                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1431,7 +1431,7 @@ class TestAsyncOrb:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/customers",
-                body=dict(email="example-customer@withorb.com", name="My Customer"),
+                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
