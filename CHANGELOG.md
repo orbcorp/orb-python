@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.41.0 (2024-01-30)
+
+Full Changelog: [v1.40.0...v1.41.0](https://github.com/orbcorp/orb-python/compare/v1.40.0...v1.41.0)
+
+### Features
+
+* **api:** price schema updates ([#156](https://github.com/orbcorp/orb-python/issues/156)) ([e995c09](https://github.com/orbcorp/orb-python/commit/e995c090615a17b3f622b001639ff1a3f619006e))
+
 ## 1.40.0 (2024-01-30)
 
 Full Changelog: [v1.39.1...v1.40.0](https://github.com/orbcorp/orb-python/compare/v1.39.1...v1.40.0)
