@@ -152,6 +152,7 @@ class TestCustomers:
             currency="string",
             email="string",
             email_delivery=True,
+            external_customer_id="string",
             metadata={"foo": "string"},
             name="string",
             payment_provider="quickbooks",
@@ -396,6 +397,7 @@ class TestCustomers:
             currency="string",
             email="string",
             email_delivery=True,
+            external_customer_id="string",
             metadata={"foo": "string"},
             name="string",
             payment_provider="quickbooks",
@@ -446,6 +448,7 @@ class TestCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.customers.with_raw_response.update_by_external_id(
                 "",
+                external_customer_id="",
             )
 
 
@@ -583,6 +586,7 @@ class TestAsyncCustomers:
             currency="string",
             email="string",
             email_delivery=True,
+            external_customer_id="string",
             metadata={"foo": "string"},
             name="string",
             payment_provider="quickbooks",
@@ -827,6 +831,7 @@ class TestAsyncCustomers:
             currency="string",
             email="string",
             email_delivery=True,
+            external_customer_id="string",
             metadata={"foo": "string"},
             name="string",
             payment_provider="quickbooks",
@@ -877,4 +882,5 @@ class TestAsyncCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.customers.with_raw_response.update_by_external_id(
                 "",
+                external_customer_id="",
             )
