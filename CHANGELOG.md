@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.40.0 (2024-01-30)
+
+Full Changelog: [v1.39.1...v1.40.0](https://github.com/orbcorp/orb-python/compare/v1.39.1...v1.40.0)
+
+### Features
+
+* **api:** add `external_customer_id` ([#155](https://github.com/orbcorp/orb-python/issues/155)) ([0e74ce3](https://github.com/orbcorp/orb-python/commit/0e74ce35a735c8900b291a476b4099b3bed6bc64))
+* **client:** enable follow redirects by default ([#150](https://github.com/orbcorp/orb-python/issues/150)) ([94c7376](https://github.com/orbcorp/orb-python/commit/94c737641bd7bd06c388ed8bb549e84a6ee35e61))
+* **client:** support parsing custom response types ([#153](https://github.com/orbcorp/orb-python/issues/153)) ([da133ec](https://github.com/orbcorp/orb-python/commit/da133ec1c09a43ee47462862981864b0661aa3a2))
+
+
+### Chores
+
+* **internal:** add internal helpers ([#147](https://github.com/orbcorp/orb-python/issues/147)) ([bf87d8e](https://github.com/orbcorp/orb-python/commit/bf87d8e4067e77bfa2ace0f4c8904e4994c28996))
+* **internal:** cast type in mocked test ([#154](https://github.com/orbcorp/orb-python/issues/154)) ([579cda7](https://github.com/orbcorp/orb-python/commit/579cda758208204d9817e8bfffed19e88f526aca))
+* **internal:** enable ruff type checking misuse lint rule ([#152](https://github.com/orbcorp/orb-python/issues/152)) ([a98b037](https://github.com/orbcorp/orb-python/commit/a98b037cc8689969a7f482a1476df3e280cb1696))
+* **internal:** support multipart data with overlapping keys ([#151](https://github.com/orbcorp/orb-python/issues/151)) ([988e720](https://github.com/orbcorp/orb-python/commit/988e72066d898cb2c86913a255d3cccc72e3aba5))
+
+
+### Refactors
+
+* remove unnecessary builtin import ([#149](https://github.com/orbcorp/orb-python/issues/149)) ([285bbc2](https://github.com/orbcorp/orb-python/commit/285bbc2397151118d8fdbf5b5475673566d4cba8))
+
 ## 1.39.1 (2024-01-18)
 
 Full Changelog: [v1.39.0...v1.39.1](https://github.com/orbcorp/orb-python/compare/v1.39.0...v1.39.1)
