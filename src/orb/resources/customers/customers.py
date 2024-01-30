@@ -308,6 +308,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -343,6 +344,9 @@ class Customers(SyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
+
+          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
+              past or current subscriptions.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -470,6 +474,7 @@ class Customers(SyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
+                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -695,6 +700,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -730,6 +736,9 @@ class Customers(SyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
+
+          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
+              past or current subscriptions.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -857,6 +866,7 @@ class Customers(SyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
+                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1123,6 +1133,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1158,6 +1169,9 @@ class AsyncCustomers(AsyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
+
+          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
+              past or current subscriptions.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1285,6 +1299,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
+                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1510,6 +1525,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1545,6 +1561,9 @@ class AsyncCustomers(AsyncAPIResource):
               set at creation time, will be set at subscription creation time.
 
           email: A valid customer email, to be used for invoicing and notifications.
+
+          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
+              past or current subscriptions.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1672,6 +1691,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "currency": currency,
                     "email": email,
                     "email_delivery": email_delivery,
+                    "external_customer_id": external_customer_id,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
