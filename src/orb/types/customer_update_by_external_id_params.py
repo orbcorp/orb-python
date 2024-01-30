@@ -45,6 +45,13 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
 
     email_delivery: Optional[bool]
 
+    external_customer_id: Optional[str]
+    """The external customer ID.
+
+    This can only be set if empty and the customer has no past or current
+    subscriptions.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
