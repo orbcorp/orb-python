@@ -203,3 +203,5 @@ class Plan(BaseModel):
     status: Literal["active", "archived", "draft"]
 
     trial_config: TrialConfig
+
+    version: int
