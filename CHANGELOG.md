@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.42.0 (2024-02-01)
+
+Full Changelog: [v1.41.0...v1.42.0](https://github.com/orbcorp/orb-python/compare/v1.41.0...v1.42.0)
+
+### Features
+
+* **api:** add `version` to plan ([#160](https://github.com/orbcorp/orb-python/issues/160)) ([de490e8](https://github.com/orbcorp/orb-python/commit/de490e80dd640df0a12132bbccaf692f3312db77))
+
+
+### Chores
+
+* **internal:** support pre-release versioning ([#158](https://github.com/orbcorp/orb-python/issues/158)) ([3dd41bb](https://github.com/orbcorp/orb-python/commit/3dd41bb0c9673ed434bdb95fc11391f735148117))
+
 ## 1.41.0 (2024-01-30)
 
 Full Changelog: [v1.40.0...v1.41.0](https://github.com/orbcorp/orb-python/compare/v1.40.0...v1.41.0)
