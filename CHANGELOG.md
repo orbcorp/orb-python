@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.42.1 (2024-02-04)
+
+Full Changelog: [v1.42.0...v1.42.1](https://github.com/orbcorp/orb-python/compare/v1.42.0...v1.42.1)
+
+### Bug Fixes
+
+* prevent crash when platform.architecture() is not allowed ([#163](https://github.com/orbcorp/orb-python/issues/163)) ([20629a0](https://github.com/orbcorp/orb-python/commit/20629a05e67981b09a3b506ae32e5d3d64ca9420))
+
+
+### Chores
+
+* **interal:** make link to api.md relative ([#161](https://github.com/orbcorp/orb-python/issues/161)) ([7710cdc](https://github.com/orbcorp/orb-python/commit/7710cdcad2adeaa76d1ff7f7ee6e149a5e67c451))
+
 ## 1.42.0 (2024-02-01)
 
 Full Changelog: [v1.41.0...v1.42.0](https://github.com/orbcorp/orb-python/compare/v1.41.0...v1.42.0)
