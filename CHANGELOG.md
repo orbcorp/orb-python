@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.42.2 (2024-02-06)
+
+Full Changelog: [v1.42.1...v1.42.2](https://github.com/orbcorp/orb-python/compare/v1.42.1...v1.42.2)
+
+### Bug Fixes
+
+* **types:** loosen most List params types to Iterable ([#167](https://github.com/orbcorp/orb-python/issues/167)) ([ee5959e](https://github.com/orbcorp/orb-python/commit/ee5959e48c748cd89010d8a4e74b9b366746dde9))
+
+
+### Chores
+
+* **internal:** add lint command ([#166](https://github.com/orbcorp/orb-python/issues/166)) ([0cc21f7](https://github.com/orbcorp/orb-python/commit/0cc21f78e4a17364ad89917f5a9f32a4ecc039a3))
+* **internal:** support serialising iterable types ([#164](https://github.com/orbcorp/orb-python/issues/164)) ([246a496](https://github.com/orbcorp/orb-python/commit/246a496c589b015931f273912d31fefacfe08a93))
+
 ## 1.42.1 (2024-02-04)
 
 Full Changelog: [v1.42.0...v1.42.1](https://github.com/orbcorp/orb-python/compare/v1.42.0...v1.42.1)
