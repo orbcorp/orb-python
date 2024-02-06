@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -25,7 +25,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     the customer's timezone.
     """
 
-    line_items: Required[List[LineItem]]
+    line_items: Required[Iterable[LineItem]]
 
     net_terms: Required[int]
     """

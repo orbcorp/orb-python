@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import List, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -45,7 +45,7 @@ class Invoices(SyncAPIResource):
         *,
         currency: str,
         invoice_date: Union[str, datetime],
-        line_items: List[invoice_create_params.LineItem],
+        line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -450,7 +450,7 @@ class AsyncInvoices(AsyncAPIResource):
         *,
         currency: str,
         invoice_date: Union[str, datetime],
-        line_items: List[invoice_create_params.LineItem],
+        line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,

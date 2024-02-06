@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Union, Optional, cast
+from typing import Any, Dict, Union, Iterable, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -70,7 +70,7 @@ class Subscriptions(SyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        price_overrides: Optional[List[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1166,8 +1166,8 @@ class Subscriptions(SyncAPIResource):
         self,
         subscription_id: str,
         *,
-        add: List[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
-        edit: List[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1287,7 +1287,8 @@ class Subscriptions(SyncAPIResource):
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        price_overrides: Optional[List[subscription_schedule_plan_change_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1699,7 +1700,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        price_overrides: Optional[List[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2795,8 +2796,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
-        add: List[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
-        edit: List[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2916,7 +2917,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[str] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        price_overrides: Optional[List[subscription_schedule_plan_change_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

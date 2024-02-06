@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -48,10 +48,10 @@ __all__ = [
 
 
 class SubscriptionPriceIntervalsParams(TypedDict, total=False):
-    add: List[Add]
+    add: Iterable[Add]
     """A list of price intervals to add to the subscription."""
 
-    edit: List[Edit]
+    edit: Iterable[Edit]
     """A list of price intervals to edit on the subscription."""
 
 
@@ -223,7 +223,7 @@ class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     dimensions: Required[List[Optional[str]]]
     """One or two event property values to evaluate matrix groups by"""
 
-    matrix_values: Required[List[AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue]]
+    matrix_values: Required[Iterable[AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
 
     scaling_factor: Optional[float]
@@ -287,7 +287,7 @@ class AddPriceNewFloatingTieredPriceTieredConfigTier(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPriceTieredConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewFloatingTieredPriceTieredConfigTier]]
+    tiers: Required[Iterable[AddPriceNewFloatingTieredPriceTieredConfigTier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
@@ -348,7 +348,7 @@ class AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier(TypedDict, total=Fals
 
 
 class AddPriceNewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier]]
+    tiers: Required[Iterable[AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier]]
     """
     Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
     tiers
@@ -459,7 +459,7 @@ class AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
 
 
 class AddPriceNewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier]]
+    tiers: Required[Iterable[AddPriceNewFloatingBulkBpsPriceBulkBpsConfigTier]]
     """
     Tiers for a bulk BPS pricing model where all usage is aggregated to a single
     tier based on total volume
@@ -517,7 +517,7 @@ class AddPriceNewFloatingBulkPriceBulkConfigTier(TypedDict, total=False):
 
 
 class AddPriceNewFloatingBulkPriceBulkConfig(TypedDict, total=False):
-    tiers: Required[List[AddPriceNewFloatingBulkPriceBulkConfigTier]]
+    tiers: Required[Iterable[AddPriceNewFloatingBulkPriceBulkConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 
 
@@ -756,7 +756,7 @@ class Add(TypedDict, total=False):
     This is the date that the price will start billing on the subscription.
     """
 
-    discounts: Optional[List[AddDiscount]]
+    discounts: Optional[Iterable[AddDiscount]]
     """A list of discounts to initialize on the price interval."""
 
     end_date: Annotated[
@@ -770,7 +770,7 @@ class Add(TypedDict, total=False):
     external_price_id: Optional[str]
     """The external price id of the price to add to the subscription."""
 
-    fixed_fee_quantity_transitions: Optional[List[AddFixedFeeQuantityTransition]]
+    fixed_fee_quantity_transitions: Optional[Iterable[AddFixedFeeQuantityTransition]]
     """A list of fixed fee quantity transitions to initialize on the price interval."""
 
     maximum_amount: Optional[float]
@@ -819,7 +819,7 @@ class Edit(TypedDict, total=False):
     If not specified, the start date will not be updated.
     """
 
-    fixed_fee_quantity_transitions: Optional[List[EditFixedFeeQuantityTransition]]
+    fixed_fee_quantity_transitions: Optional[Iterable[EditFixedFeeQuantityTransition]]
     """A list of fixed fee quantity transitions to use for this price interval.
 
     Note that this list will overwrite all existing fixed fee quantity transitions
