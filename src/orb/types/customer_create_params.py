@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -187,7 +187,7 @@ class AccountingSyncConfigurationAccountingProvider(TypedDict, total=False):
 
 
 class AccountingSyncConfiguration(TypedDict, total=False):
-    accounting_providers: Optional[List[AccountingSyncConfigurationAccountingProvider]]
+    accounting_providers: Optional[Iterable[AccountingSyncConfigurationAccountingProvider]]
 
     excluded: Optional[bool]
 

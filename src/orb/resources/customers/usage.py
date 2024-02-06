@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import Union, Iterable, Optional
 from datetime import datetime
 
 import httpx
@@ -39,7 +39,7 @@ class Usage(SyncAPIResource):
         self,
         id: Optional[str],
         *,
-        events: List[usage_update_params.Event],
+        events: Iterable[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -192,7 +192,7 @@ class Usage(SyncAPIResource):
         self,
         id: Optional[str],
         *,
-        events: List[usage_update_by_external_id_params.Event],
+        events: Iterable[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -355,7 +355,7 @@ class AsyncUsage(AsyncAPIResource):
         self,
         id: Optional[str],
         *,
-        events: List[usage_update_params.Event],
+        events: Iterable[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -508,7 +508,7 @@ class AsyncUsage(AsyncAPIResource):
         self,
         id: Optional[str],
         *,
-        events: List[usage_update_by_external_id_params.Event],
+        events: Iterable[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

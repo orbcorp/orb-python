@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -103,7 +103,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     Note that either this property or `external_plan_id` must be specified.
     """
 
-    price_overrides: Optional[List[PriceOverride]]
+    price_overrides: Optional[Iterable[PriceOverride]]
     """Optionally provide a list of overrides for prices on the plan"""
 
 
@@ -245,7 +245,7 @@ class PriceOverrideOverrideMatrixPriceMatrixConfig(TypedDict, total=False):
     dimensions: Required[List[Optional[str]]]
     """One or two event property values to evaluate matrix groups by"""
 
-    matrix_values: Required[List[PriceOverrideOverrideMatrixPriceMatrixConfigMatrixValue]]
+    matrix_values: Required[Iterable[PriceOverrideOverrideMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
 
     scaling_factor: Optional[float]
@@ -315,7 +315,7 @@ class PriceOverrideOverrideTieredPriceTieredConfigTier(TypedDict, total=False):
 
 
 class PriceOverrideOverrideTieredPriceTieredConfig(TypedDict, total=False):
-    tiers: Required[List[PriceOverrideOverrideTieredPriceTieredConfigTier]]
+    tiers: Required[Iterable[PriceOverrideOverrideTieredPriceTieredConfigTier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
@@ -382,7 +382,7 @@ class PriceOverrideOverrideTieredBpsPriceTieredBpsConfigTier(TypedDict, total=Fa
 
 
 class PriceOverrideOverrideTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
-    tiers: Required[List[PriceOverrideOverrideTieredBpsPriceTieredBpsConfigTier]]
+    tiers: Required[Iterable[PriceOverrideOverrideTieredBpsPriceTieredBpsConfigTier]]
     """
     Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
     tiers
@@ -505,7 +505,7 @@ class PriceOverrideOverrideBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False)
 
 
 class PriceOverrideOverrideBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
-    tiers: Required[List[PriceOverrideOverrideBulkBpsPriceBulkBpsConfigTier]]
+    tiers: Required[Iterable[PriceOverrideOverrideBulkBpsPriceBulkBpsConfigTier]]
     """
     Tiers for a bulk BPS pricing model where all usage is aggregated to a single
     tier based on total volume
@@ -569,7 +569,7 @@ class PriceOverrideOverrideBulkPriceBulkConfigTier(TypedDict, total=False):
 
 
 class PriceOverrideOverrideBulkPriceBulkConfig(TypedDict, total=False):
-    tiers: Required[List[PriceOverrideOverrideBulkPriceBulkConfigTier]]
+    tiers: Required[Iterable[PriceOverrideOverrideBulkPriceBulkConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 
 

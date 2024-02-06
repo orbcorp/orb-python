@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import List, Union, Iterable, Optional
 from datetime import datetime
 
 import httpx
@@ -240,7 +240,7 @@ class Events(SyncAPIResource):
     def ingest(
         self,
         *,
-        events: List[event_ingest_params.Event],
+        events: Iterable[event_ingest_params.Event],
         backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
         debug: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -765,7 +765,7 @@ class AsyncEvents(AsyncAPIResource):
     async def ingest(
         self,
         *,
-        events: List[event_ingest_params.Event],
+        events: Iterable[event_ingest_params.Event],
         backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
         debug: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

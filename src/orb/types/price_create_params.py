@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -203,7 +203,7 @@ class NewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     dimensions: Required[List[Optional[str]]]
     """One or two event property values to evaluate matrix groups by"""
 
-    matrix_values: Required[List[NewFloatingMatrixPriceMatrixConfigMatrixValue]]
+    matrix_values: Required[Iterable[NewFloatingMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
 
     scaling_factor: Optional[float]
@@ -267,7 +267,7 @@ class NewFloatingTieredPriceTieredConfigTier(TypedDict, total=False):
 
 
 class NewFloatingTieredPriceTieredConfig(TypedDict, total=False):
-    tiers: Required[List[NewFloatingTieredPriceTieredConfigTier]]
+    tiers: Required[Iterable[NewFloatingTieredPriceTieredConfigTier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
@@ -328,7 +328,7 @@ class NewFloatingTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
 
 
 class NewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
-    tiers: Required[List[NewFloatingTieredBpsPriceTieredBpsConfigTier]]
+    tiers: Required[Iterable[NewFloatingTieredBpsPriceTieredBpsConfigTier]]
     """
     Tiers for a Graduated BPS pricing model, where usage is bucketed into specified
     tiers
@@ -439,7 +439,7 @@ class NewFloatingBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
 
 
 class NewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
-    tiers: Required[List[NewFloatingBulkBpsPriceBulkBpsConfigTier]]
+    tiers: Required[Iterable[NewFloatingBulkBpsPriceBulkBpsConfigTier]]
     """
     Tiers for a bulk BPS pricing model where all usage is aggregated to a single
     tier based on total volume
@@ -497,7 +497,7 @@ class NewFloatingBulkPriceBulkConfigTier(TypedDict, total=False):
 
 
 class NewFloatingBulkPriceBulkConfig(TypedDict, total=False):
-    tiers: Required[List[NewFloatingBulkPriceBulkConfigTier]]
+    tiers: Required[Iterable[NewFloatingBulkPriceBulkConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 
 

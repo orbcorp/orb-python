@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -50,7 +50,7 @@ class Plans(SyncAPIResource):
         *,
         currency: str,
         name: str,
-        prices: List[plan_create_params.Price],
+        prices: Iterable[plan_create_params.Price],
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -309,7 +309,7 @@ class AsyncPlans(AsyncAPIResource):
         *,
         currency: str,
         name: str,
-        prices: List[plan_create_params.Price],
+        prices: Iterable[plan_create_params.Price],
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
