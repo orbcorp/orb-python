@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -12,7 +12,7 @@ __all__ = ["UsageUpdateParams", "Event"]
 
 
 class UsageUpdateParams(TypedDict, total=False):
-    events: Required[List[Event]]
+    events: Required[Iterable[Event]]
     """Events to update"""
 
     timeframe_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
