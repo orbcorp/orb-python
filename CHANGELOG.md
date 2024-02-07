@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.42.3 (2024-02-07)
+
+Full Changelog: [v1.42.2...v1.42.3](https://github.com/orbcorp/orb-python/compare/v1.42.2...v1.42.3)
+
+### Bug Fixes
+
+* change status serialization behavior ([#168](https://github.com/orbcorp/orb-python/issues/168)) ([fb5348b](https://github.com/orbcorp/orb-python/commit/fb5348bc15be70b3d5165916013d0f597265ad00))
+
 ## 1.42.2 (2024-02-06)
 
 Full Changelog: [v1.42.1...v1.42.2](https://github.com/orbcorp/orb-python/compare/v1.42.1...v1.42.2)
