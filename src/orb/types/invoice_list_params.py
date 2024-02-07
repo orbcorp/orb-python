@@ -52,8 +52,6 @@ class InvoiceListParams(TypedDict, total=False):
     limit: int
     """The number of items to fetch. Defaults to 20."""
 
-    status: Annotated[
-        Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]], PropertyInfo(alias="status[]")
-    ]
+    status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]]
 
     subscription_id: Optional[str]
