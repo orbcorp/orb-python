@@ -1,5 +1,66 @@
 # Changelog
 
+## 0.0.1 (2024-02-15)
+
+Full Changelog: [...abc-v0.0.1](https://github.com/orbcorp/orb-python/compare/...abc-v0.0.1)
+
+### Features
+
+* add `None` default value to nullable response properties ([#123](https://github.com/orbcorp/orb-python/issues/123)) ([bb30383](https://github.com/orbcorp/orb-python/commit/bb30383a4d6c22a214e8a8b0b8be918abf6dc1f8))
+* **api:** add `external_customer_id` ([#155](https://github.com/orbcorp/orb-python/issues/155)) ([bbb2b27](https://github.com/orbcorp/orb-python/commit/bbb2b273b1a1040d1f28e988bd4ba127e9544846))
+* **api:** add `version` to plan ([#160](https://github.com/orbcorp/orb-python/issues/160)) ([789fd3c](https://github.com/orbcorp/orb-python/commit/789fd3cc16ae7a70d34806c2ac6049233240a795))
+* **api:** add beta evaluate price endpoint ([#129](https://github.com/orbcorp/orb-python/issues/129)) ([81a1ad3](https://github.com/orbcorp/orb-python/commit/81a1ad3615e42067cdcc33d4ea4c8f98edc0fc3b))
+* **api:** add currency fields ([#119](https://github.com/orbcorp/orb-python/issues/119)) ([cca829b](https://github.com/orbcorp/orb-python/commit/cca829bd03ff099ef8cdbdbdbaa6f776ce2e1971))
+* **api:** price schema updates ([#156](https://github.com/orbcorp/orb-python/issues/156)) ([e765ff5](https://github.com/orbcorp/orb-python/commit/e765ff5188468e7ee2f2ae709b1799a16f83dc70))
+* **api:** remove unsupported field ([#95](https://github.com/orbcorp/orb-python/issues/95)) ([3a7182d](https://github.com/orbcorp/orb-python/commit/3a7182da4c9a1cf0ab2467d5a4f438601de5f695))
+* **api:** remove unsupported params ([#33](https://github.com/orbcorp/orb-python/issues/33)) ([b543a4a](https://github.com/orbcorp/orb-python/commit/b543a4a9d4dae7bb4de77ea834a7876dbb5e34ea))
+* **api:** updates ([#13](https://github.com/orbcorp/orb-python/issues/13)) ([028b445](https://github.com/orbcorp/orb-python/commit/028b4454865af03b1487fbb06b7fddf244817d8b))
+* **api:** updates ([#133](https://github.com/orbcorp/orb-python/issues/133)) ([233c371](https://github.com/orbcorp/orb-python/commit/233c371d6ba7ff0979b666059ae8cae8a3301dbb))
+* **api:** updates ([#139](https://github.com/orbcorp/orb-python/issues/139)) ([8f11913](https://github.com/orbcorp/orb-python/commit/8f1191364a5f965390d543a87e0dea4e4c218467))
+* **api:** updates ([#41](https://github.com/orbcorp/orb-python/issues/41)) ([6fa62f5](https://github.com/orbcorp/orb-python/commit/6fa62f5ce0889168cfb3cbe8dc3fe6b481afc3ab))
+* **api:** updates ([#55](https://github.com/orbcorp/orb-python/issues/55)) ([c4aead0](https://github.com/orbcorp/orb-python/commit/c4aead096d71fd98894ec3927d4e9ce9b8d672f2))
+* **api:** updates ([#66](https://github.com/orbcorp/orb-python/issues/66)) ([65cd6ee](https://github.com/orbcorp/orb-python/commit/65cd6eef7a8b7199f3298c52f897f0b067cca225))
+* **api:** updates ([#73](https://github.com/orbcorp/orb-python/issues/73)) ([8111a20](https://github.com/orbcorp/orb-python/commit/8111a20b678bae2c5fc3b383d94b73e9dfb0d24e))
+* **api:** updates ([#8](https://github.com/orbcorp/orb-python/issues/8)) ([6277147](https://github.com/orbcorp/orb-python/commit/6277147e7d03e74867339684adabe7e6e98d039a))
+* **api:** updates ([#99](https://github.com/orbcorp/orb-python/issues/99)) ([b6e752a](https://github.com/orbcorp/orb-python/commit/b6e752af7f8319ad87f48984d6dffc37ff6a6dc7))
+* **client:** add support for streaming raw responses ([#132](https://github.com/orbcorp/orb-python/issues/132)) ([c952056](https://github.com/orbcorp/orb-python/commit/c95205609c87d02a8a332118133c4084cddfe93f))
+* **client:** adjust retry behavior to be exponential backoff ([#4](https://github.com/orbcorp/orb-python/issues/4)) ([c2d507d](https://github.com/orbcorp/orb-python/commit/c2d507d2c02cd9b2abde5cb09cfb0cdb542fe8b0))
+* **client:** allow binary returns ([#26](https://github.com/orbcorp/orb-python/issues/26)) ([2a00845](https://github.com/orbcorp/orb-python/commit/2a008459ec8b7777234f8e16eb4afdd222098e6d))
+* **client:** enable follow redirects by default ([#150](https://github.com/orbcorp/orb-python/issues/150)) ([fdeba93](https://github.com/orbcorp/orb-python/commit/fdeba9317a933189891f70e8f763685e0e7f29b8))
+* **client:** improve file upload types ([#3](https://github.com/orbcorp/orb-python/issues/3)) ([c069dbd](https://github.com/orbcorp/orb-python/commit/c069dbdd4881b08d2c1d54c2a3edd2d892930ee9))
+* **client:** improve retry behaviour ([#6](https://github.com/orbcorp/orb-python/issues/6)) ([f945929](https://github.com/orbcorp/orb-python/commit/f945929adc1cfeda8e7475b4551a613ae9215892))
+* **client:** support parsing custom response types ([#153](https://github.com/orbcorp/orb-python/issues/153)) ([58ec02b](https://github.com/orbcorp/orb-python/commit/58ec02b7402a4fef8796c14b23c7674ae7a82e49))
+* **client:** support passing BaseModels to request params at runtime ([#27](https://github.com/orbcorp/orb-python/issues/27)) ([8adf54e](https://github.com/orbcorp/orb-python/commit/8adf54eca23e7af99504485403250884a1c50c18))
+* **client:** support passing chunk size for binary responses ([#40](https://github.com/orbcorp/orb-python/issues/40)) ([4385c41](https://github.com/orbcorp/orb-python/commit/4385c412ff00e02d63e1769d37481d37656ce3b4))
+* **client:** support passing httpx.Timeout to method timeout argument ([#35](https://github.com/orbcorp/orb-python/issues/35)) ([7392c32](https://github.com/orbcorp/orb-python/commit/7392c3237e2c51c915b875d0ad8794fc90d20c21))
+* **client:** support reading the base url from an env variable ([#54](https://github.com/orbcorp/orb-python/issues/54)) ([f3ce13e](https://github.com/orbcorp/orb-python/commit/f3ce13e5a3a411c7c1ad344ee3294635e7897e7a))
+* **github:** include a devcontainer setup ([#25](https://github.com/orbcorp/orb-python/issues/25)) ([b1a5a6c](https://github.com/orbcorp/orb-python/commit/b1a5a6c5f286e9cdd0799106fe323367d741cc42))
+* **init:** initial commit ([33d4af6](https://github.com/orbcorp/orb-python/commit/33d4af66059edfeffd6b39f058867d1babfd8fa9))
+* **package:** add classifiers ([#16](https://github.com/orbcorp/orb-python/issues/16)) ([b020093](https://github.com/orbcorp/orb-python/commit/b02009382ca130051eec94710a53ae525c188fdf))
+
+
+### Bug Fixes
+
+* avoid leaking memory when Client.with_options is used ([#97](https://github.com/orbcorp/orb-python/issues/97)) ([3c44a61](https://github.com/orbcorp/orb-python/commit/3c44a61dd9019e583d2a3cead6053c1d7903182a))
+* **binaries:** don't synchronously block in astream_to_file ([#28](https://github.com/orbcorp/orb-python/issues/28)) ([a63dc23](https://github.com/orbcorp/orb-python/commit/a63dc23d67712f84b4652447d988bd7449226035))
+* change status serialization behavior ([#168](https://github.com/orbcorp/orb-python/issues/168)) ([8c4c57a](https://github.com/orbcorp/orb-python/commit/8c4c57afbf20a9e9eff5076db24dd0b0e66ab606))
+* **ci:** ignore stainless-app edits to release PR title ([#146](https://github.com/orbcorp/orb-python/issues/146)) ([c55f8fd](https://github.com/orbcorp/orb-python/commit/c55f8fd5469edde52d050fa373ae7af139bcd25c))
+* **client:** attempt to parse unknown json content types ([#61](https://github.com/orbcorp/orb-python/issues/61)) ([ef4fc99](https://github.com/orbcorp/orb-python/commit/ef4fc999a961d2b6919ab6d8d96bcf997103037e))
+* **client:** correct base_url setter implementation ([#83](https://github.com/orbcorp/orb-python/issues/83)) ([44767ac](https://github.com/orbcorp/orb-python/commit/44767acf59fc879a0cb605658138ffe82ef57837))
+* **client:** correctly use custom http client auth ([#117](https://github.com/orbcorp/orb-python/issues/117)) ([7f382a9](https://github.com/orbcorp/orb-python/commit/7f382a91603f97a2a37e8158894787ece549f324))
+* **client:** ensure path params are non-empty ([#134](https://github.com/orbcorp/orb-python/issues/134)) ([f86298f](https://github.com/orbcorp/orb-python/commit/f86298fc796ad6dd6587e7f55e7d02f2cd8e2f4f))
+* **client:** ensure retried requests are closed ([#78](https://github.com/orbcorp/orb-python/issues/78)) ([fd84eba](https://github.com/orbcorp/orb-python/commit/fd84ebacdc7fbba940f6dc76b567a2d7009ea562))
+* **client:** include more detail in error messages ([#12](https://github.com/orbcorp/orb-python/issues/12)) ([cbecaf8](https://github.com/orbcorp/orb-python/commit/cbecaf8bb89cb2b308773e1b664ce2d588d320a6))
+* **client:** retry if SSLWantReadError occurs in the async client ([#48](https://github.com/orbcorp/orb-python/issues/48)) ([2f6c2af](https://github.com/orbcorp/orb-python/commit/2f6c2af227233f8c25db85c7cb4a52800bc290ab))
+* **client:** serialise pydantic v1 default fields correctly in params ([#46](https://github.com/orbcorp/orb-python/issues/46)) ([da14007](https://github.com/orbcorp/orb-python/commit/da140077ad01c50145894671616ab801c031c3bb))
+* **errors:** properly assign APIError.body ([#94](https://github.com/orbcorp/orb-python/issues/94)) ([659eba3](https://github.com/orbcorp/orb-python/commit/659eba359fe39b48d93e8fc4ae2306a0c4763408))
+* **models:** mark unknown fields as set in pydantic v1 ([#45](https://github.com/orbcorp/orb-python/issues/45)) ([dc668ef](https://github.com/orbcorp/orb-python/commit/dc668efb85a83e775c6ef729828d0c9bd681a12e))
+* prevent crash when platform.architecture() is not allowed ([#163](https://github.com/orbcorp/orb-python/issues/163)) ([38c953a](https://github.com/orbcorp/orb-python/commit/38c953ad498cb2aa832e8ed31efa05312e749c3a))
+* prevent TypeError in Python 3.8 (ABC is not subscriptable) ([#32](https://github.com/orbcorp/orb-python/issues/32)) ([3a6a751](https://github.com/orbcorp/orb-python/commit/3a6a751b9715841ae8343dbf2a2d40ff07909894))
+* rename customer.credits.ledger.create_entry_by_exteral_id and RequestValidationErrors ([#9](https://github.com/orbcorp/orb-python/issues/9)) ([a0a1968](https://github.com/orbcorp/orb-python/commit/a0a196819f08a11d50eee0e1778b1ff98c779bb6))
+* **types:** loosen most List params types to Iterable ([#167](https://github.com/orbcorp/orb-python/issues/167)) ([1a6d303](https://github.com/orbcorp/orb-python/commit/1a6d3036ef8c78b5bcb7b084189b4825b98bbff8))
+* use brackets instead of commas for array query params ([#116](https://github.com/orbcorp/orb-python/issues/116)) ([bfd1bf4](https://github.com/orbcorp/orb-python/commit/bfd1bf4f7cb71784a5a8034c784695a53b6ff63a))
+
 ## 1.42.3 (2024-02-07)
 
 Full Changelog: [v1.42.2...v1.42.3](https://github.com/orbcorp/orb-python/compare/v1.42.2...v1.42.3)
