@@ -13,6 +13,7 @@ The REST API documentation can be found [on docs.withorb.com](https://docs.witho
 ## Installation
 
 ```sh
+# install from PyPI
 pip install orb-billing
 ```
 
