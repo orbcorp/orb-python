@@ -18,7 +18,10 @@ from ..types import (
     invoice_fetch_upcoming_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -502,7 +505,7 @@ class AsyncInvoices(AsyncAPIResource):
         """
         return await self._post(
             "/invoices",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "currency": currency,
                     "invoice_date": invoice_date,
@@ -681,7 +684,7 @@ class AsyncInvoices(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {"subscription_id": subscription_id}, invoice_fetch_upcoming_params.InvoiceFetchUpcomingParams
                 ),
             ),
@@ -775,7 +778,7 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/mark_paid",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "external_id": external_id,
                     "notes": notes,

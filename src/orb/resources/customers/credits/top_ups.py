@@ -9,7 +9,10 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ...._utils import maybe_transform
+from ...._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -473,7 +476,7 @@ class AsyncTopUps(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._post(
             f"/customers/{customer_id}/credits/top_ups",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "amount": amount,
                     "currency": currency,
@@ -653,7 +656,7 @@ class AsyncTopUps(AsyncAPIResource):
             )
         return await self._post(
             f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "amount": amount,
                     "currency": currency,
