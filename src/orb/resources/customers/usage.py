@@ -9,7 +9,10 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -486,14 +489,14 @@ class AsyncUsage(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
             f"/customers/{id}/usage",
-            body=maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
+            body=await async_maybe_transform({"events": events}, usage_update_params.UsageUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
@@ -639,14 +642,16 @@ class AsyncUsage(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
             f"/customers/external_customer_id/{id}/usage",
-            body=maybe_transform({"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams),
+            body=await async_maybe_transform(
+                {"events": events}, usage_update_by_external_id_params.UsageUpdateByExternalIDParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,

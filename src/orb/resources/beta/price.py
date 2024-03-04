@@ -9,7 +9,10 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -205,7 +208,7 @@ class AsyncPrice(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return await self._post(
             f"/prices/{price_id}/evaluate",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "timeframe_end": timeframe_end,
                     "timeframe_start": timeframe_start,
