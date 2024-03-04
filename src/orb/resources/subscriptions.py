@@ -27,7 +27,10 @@ from ..types import (
     subscription_unschedule_fixed_fee_quantity_updates_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -2128,7 +2131,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         """
         return await self._post(
             "/subscriptions",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
@@ -2329,7 +2332,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/cancel",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "cancel_option": cancel_option,
                     "cancellation_date": cancellation_date,
@@ -2433,7 +2436,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
@@ -2770,7 +2773,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     extra_query=extra_query,
                     extra_body=extra_body,
                     timeout=timeout,
-                    query=maybe_transform(
+                    query=await async_maybe_transform(
                         {
                             "billable_metric_id": billable_metric_id,
                             "cursor": cursor,
@@ -2884,7 +2887,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/price_intervals",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "add": add,
                     "edit": edit,
@@ -3012,7 +3015,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/schedule_plan_change",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "change_option": change_option,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
@@ -3074,7 +3077,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {"effective_date": effective_date}, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams
             ),
             options=make_request_options(
@@ -3168,7 +3171,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {"price_id": price_id},
                 subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
             ),
@@ -3280,7 +3283,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "price_id": price_id,
                     "quantity": quantity,

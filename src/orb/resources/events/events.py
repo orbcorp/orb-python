@@ -18,7 +18,10 @@ from ...types import (
     event_update_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from .backfills import (
     Backfills,
@@ -666,7 +669,7 @@ class AsyncEvents(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._put(
             f"/events/{event_id}",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "event_name": event_name,
                     "properties": properties,
@@ -995,14 +998,14 @@ class AsyncEvents(AsyncAPIResource):
         """
         return await self._post(
             "/ingest",
-            body=maybe_transform({"events": events}, event_ingest_params.EventIngestParams),
+            body=await async_maybe_transform({"events": events}, event_ingest_params.EventIngestParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "backfill_id": backfill_id,
                         "debug": debug,
@@ -1068,7 +1071,7 @@ class AsyncEvents(AsyncAPIResource):
         """
         return await self._post(
             "/events/search",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "event_ids": event_ids,
                     "timeframe_end": timeframe_end,

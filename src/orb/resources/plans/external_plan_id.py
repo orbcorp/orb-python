@@ -9,7 +9,10 @@ import httpx
 from ... import _legacy_response
 from ...types import Plan
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -207,7 +210,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
             )
         return await self._put(
             f"/plans/external_plan_id/{other_external_plan_id}",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
