@@ -1018,6 +1018,132 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_create_overload_13(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_13(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_13(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_13(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_14(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_14(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_14(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_14(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         price = client.prices.list()
         assert_matches_type(SyncPage[Price], price, path=["response"])
@@ -2082,6 +2208,132 @@ class TestAsyncPrices:
             model_type="package_with_allocation",
             name="Annual fee",
             package_with_allocation_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_13(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_13(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_package_with_minimum",
+            name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_14(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_14(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_14(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_14(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="unit_with_percent",
+            name="Annual fee",
+            unit_with_percent_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

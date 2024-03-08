@@ -84,6 +84,11 @@ __all__ = [
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
     "PackageWithAllocationPriceMinimum",
+    "UnitWithPercentPrice",
+    "UnitWithPercentPriceBillableMetric",
+    "UnitWithPercentPriceItem",
+    "UnitWithPercentPriceMaximum",
+    "UnitWithPercentPriceMinimum",
 ]
 
 
@@ -1057,6 +1062,76 @@ class PackageWithAllocationPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
+class UnitWithPercentPriceBillableMetric(BaseModel):
+    id: str
+
+
+class UnitWithPercentPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class UnitWithPercentPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class UnitWithPercentPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class UnitWithPercentPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[UnitWithPercentPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    created_at: datetime
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: UnitWithPercentPriceItem
+
+    maximum: Optional[UnitWithPercentPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[UnitWithPercentPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["unit_with_percent"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    unit_with_percent_config: Dict[str, object]
+
+
 Price = Union[
     UnitPrice,
     PackagePrice,
@@ -1070,4 +1145,5 @@ Price = Union[
     TieredPackagePrice,
     TieredWithMinimumPrice,
     PackageWithAllocationPrice,
+    UnitWithPercentPrice,
 ]
