@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.43.0 (2024-03-09)
+
+Full Changelog: [v1.42.3...v1.43.0](https://github.com/orbcorp/orb-python/compare/v1.42.3...v1.43.0)
+
+### Features
+
+* **api:** updates ([#189](https://github.com/orbcorp/orb-python/issues/189)) ([3b9e36f](https://github.com/orbcorp/orb-python/commit/3b9e36f1fbca43b9e29794778178056d94870b2e))
+
+
+### Chores
+
+* **ci:** uses Stainless GitHub App for releases ([#172](https://github.com/orbcorp/orb-python/issues/172)) ([d5b9f5f](https://github.com/orbcorp/orb-python/commit/d5b9f5fff40d93d4aad599b38b8771284619d01d))
+* **client:** improve error message for invalid http_client argument ([#184](https://github.com/orbcorp/orb-python/issues/184)) ([17dacf2](https://github.com/orbcorp/orb-python/commit/17dacf22512f6bb7d3cc0c87905f92d964a84a76))
+* **client:** use anyio.sleep instead of asyncio.sleep ([#178](https://github.com/orbcorp/orb-python/issues/178)) ([677ef7e](https://github.com/orbcorp/orb-python/commit/677ef7e68840dd04cfbd7cae8e6a5af9998bc306))
+* **docs:** mention install from git repo ([#181](https://github.com/orbcorp/orb-python/issues/181)) ([795ae88](https://github.com/orbcorp/orb-python/commit/795ae882855d557105339689155110f4506da4c2))
+* export NOT_GIVEN sentinel value ([#188](https://github.com/orbcorp/orb-python/issues/188)) ([7a739b9](https://github.com/orbcorp/orb-python/commit/7a739b9a3b0a06704e02944c1af01930335c2b97))
+* **internal:** add core support for deserializing into number response ([#185](https://github.com/orbcorp/orb-python/issues/185)) ([247964e](https://github.com/orbcorp/orb-python/commit/247964ea68575e12ba5aad7c39675a48e3653474))
+* **internal:** bump pyright ([#177](https://github.com/orbcorp/orb-python/issues/177)) ([f5c6f0c](https://github.com/orbcorp/orb-python/commit/f5c6f0c3b5a432933a053f227d630df20582c4c4))
+* **internal:** bump pyright ([#186](https://github.com/orbcorp/orb-python/issues/186)) ([03ff063](https://github.com/orbcorp/orb-python/commit/03ff063b02838b75a1e8f602aae312afd12e44b6))
+* **internal:** bump rye to v0.24.0 ([#175](https://github.com/orbcorp/orb-python/issues/175)) ([450508a](https://github.com/orbcorp/orb-python/commit/450508a34a4838b92c54ff10ba439f6d60808b04))
+* **internal:** minor core client restructuring ([#179](https://github.com/orbcorp/orb-python/issues/179)) ([ace9451](https://github.com/orbcorp/orb-python/commit/ace945177ced39721f2eb8ea1ddd9b9b448b73bd))
+* **internal:** refactor release environment script ([#173](https://github.com/orbcorp/orb-python/issues/173)) ([2503fbc](https://github.com/orbcorp/orb-python/commit/2503fbc1c20524c9057ab5a1ef25bb279ee35827))
+* **internal:** split up transforms into sync / async ([#182](https://github.com/orbcorp/orb-python/issues/182)) ([17a94e7](https://github.com/orbcorp/orb-python/commit/17a94e75d071908b7e9048d26a26adaf16f2b52c))
+* **internal:** support more input types ([#183](https://github.com/orbcorp/orb-python/issues/183)) ([fc2721e](https://github.com/orbcorp/orb-python/commit/fc2721e1638b3c79d5e22f573923c09142196c43))
+* **internal:** support parsing Annotated types ([#187](https://github.com/orbcorp/orb-python/issues/187)) ([9982119](https://github.com/orbcorp/orb-python/commit/9982119ec618bba15f0e1cfa1eac9adc5168206a))
+* **internal:** update deps ([#176](https://github.com/orbcorp/orb-python/issues/176)) ([abdbcc6](https://github.com/orbcorp/orb-python/commit/abdbcc69bb3efc80fabe4980c6eacc3cf8725dbd))
+
+
+### Documentation
+
+* add CONTRIBUTING.md ([#170](https://github.com/orbcorp/orb-python/issues/170)) ([87d1adf](https://github.com/orbcorp/orb-python/commit/87d1adfaaeb7afaf4741e9e26afb07ac7962b6c1))
+* **contributing:** improve wording ([#180](https://github.com/orbcorp/orb-python/issues/180)) ([ff322f1](https://github.com/orbcorp/orb-python/commit/ff322f16b36dba9051c6c6c7c49d2c34419317ca))
+
 ## 1.42.3 (2024-02-07)
 
 Full Changelog: [v1.42.2...v1.42.3](https://github.com/orbcorp/orb-python/compare/v1.42.2...v1.42.3)
