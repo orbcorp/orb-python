@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.44.0 (2024-03-11)
+
+Full Changelog: [v1.43.0...v1.44.0](https://github.com/orbcorp/orb-python/compare/v1.43.0...v1.44.0)
+
+### Features
+
+* **api:** updates ([#192](https://github.com/orbcorp/orb-python/issues/192)) ([876b19f](https://github.com/orbcorp/orb-python/commit/876b19f71822f752eb33e106466ac766cc73e148))
+
+
+### Chores
+
+* **internal:** improve deserialisation of discriminated unions ([#190](https://github.com/orbcorp/orb-python/issues/190)) ([5b96dd5](https://github.com/orbcorp/orb-python/commit/5b96dd5f664fb69a0db1a990e184a6bfbcb5b499))
+
 ## 1.43.0 (2024-03-09)
 
 Full Changelog: [v1.42.3...v1.43.0](https://github.com/orbcorp/orb-python/compare/v1.42.3...v1.43.0)
