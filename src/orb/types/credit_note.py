@@ -13,7 +13,6 @@ __all__ = [
     "DiscountAppliesToPrice",
     "LineItem",
     "LineItemDiscount",
-    "LineItemSubLineItem",
     "LineItemTaxAmount",
     "MaximumAmountAdjustment",
     "MaximumAmountAdjustmentAppliesToPrice",
@@ -60,14 +59,6 @@ class LineItemDiscount(BaseModel):
     reason: Optional[str] = None
 
 
-class LineItemSubLineItem(BaseModel):
-    amount: str
-
-    name: str
-
-    quantity: Optional[float] = None
-
-
 class LineItemTaxAmount(BaseModel):
     amount: str
     """The amount of additional tax incurred by this tax rate."""
@@ -94,9 +85,6 @@ class LineItem(BaseModel):
 
     quantity: Optional[float] = None
     """An optional quantity credited."""
-
-    sub_line_items: List[LineItemSubLineItem]
-    """Any sub line items that may be credited."""
 
     subtotal: str
     """The amount of the line item, excluding any line item minimums and discounts."""
