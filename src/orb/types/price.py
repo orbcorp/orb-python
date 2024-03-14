@@ -89,6 +89,13 @@ __all__ = [
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
     "UnitWithPercentPriceMinimum",
+    "MatrixWithAllocationPrice",
+    "MatrixWithAllocationPriceBillableMetric",
+    "MatrixWithAllocationPriceItem",
+    "MatrixWithAllocationPriceMatrixWithAllocationConfig",
+    "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
+    "MatrixWithAllocationPriceMaximum",
+    "MatrixWithAllocationPriceMinimum",
 ]
 
 
@@ -1132,6 +1139,111 @@ class UnitWithPercentPrice(BaseModel):
     unit_with_percent_config: Dict[str, object]
 
 
+class MatrixWithAllocationPriceBillableMetric(BaseModel):
+    id: str
+
+
+class MatrixWithAllocationPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue(BaseModel):
+    dimension_values: List[Optional[str]]
+    """One or two matrix keys to filter usage to this Matrix value by.
+
+    For example, ["region", "tier"] could be used to filter cloud usage by a cloud
+    region and an instance tier.
+    """
+
+    unit_amount: str
+    """Unit price for the specified dimension_values"""
+
+    scaling_factor: Optional[float] = None
+    """Optional multiplier to scale rated quantities by"""
+
+
+class MatrixWithAllocationPriceMatrixWithAllocationConfig(BaseModel):
+    allocation: float
+    """Allocation to be used to calculate the price"""
+
+    default_unit_amount: str
+    """Default per unit rate for any usage not bucketed into a specified matrix_value"""
+
+    dimensions: List[Optional[str]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    matrix_values: List[MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]
+    """Matrix values for specified matrix grouping keys"""
+
+    scaling_factor: Optional[float] = None
+    """
+    Default optional multiplier to scale rated quantities that fall into the default
+    bucket by
+    """
+
+
+class MatrixWithAllocationPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class MatrixWithAllocationPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class MatrixWithAllocationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[MatrixWithAllocationPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    created_at: datetime
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: MatrixWithAllocationPriceItem
+
+    matrix_with_allocation_config: MatrixWithAllocationPriceMatrixWithAllocationConfig
+
+    maximum: Optional[MatrixWithAllocationPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[MatrixWithAllocationPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["matrix_with_allocation"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+
 Price = Union[
     UnitPrice,
     PackagePrice,
@@ -1146,4 +1258,5 @@ Price = Union[
     TieredWithMinimumPrice,
     PackageWithAllocationPrice,
     UnitWithPercentPrice,
+    MatrixWithAllocationPrice,
 ]
