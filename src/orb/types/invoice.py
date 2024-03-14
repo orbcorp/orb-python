@@ -79,6 +79,9 @@ class CreditNote(BaseModel):
 
     credit_note_number: str
 
+    memo: Optional[str] = None
+    """An optional memo supplied on the credit note."""
+
     reason: str
 
     total: str

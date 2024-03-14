@@ -78,7 +78,7 @@ class LineItem(BaseModel):
     """The amount of the line item, including any line item minimums and discounts."""
 
     discounts: List[LineItemDiscount]
-    """Any line items discounts from the invoice's line item."""
+    """Any line item discounts from the invoice's line item."""
 
     name: str
     """The name of the corresponding invoice line item."""

@@ -14,6 +14,9 @@ __all__ = [
     "NewFloatingMatrixPrice",
     "NewFloatingMatrixPriceMatrixConfig",
     "NewFloatingMatrixPriceMatrixConfigMatrixValue",
+    "NewFloatingMatrixWithAllocationPrice",
+    "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig",
+    "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
     "NewFloatingTieredPrice",
     "NewFloatingTieredPriceTieredConfig",
     "NewFloatingTieredPriceTieredConfigTier",
@@ -206,6 +209,83 @@ class NewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     """One or two event property values to evaluate matrix groups by"""
 
     matrix_values: Required[Iterable[NewFloatingMatrixPriceMatrixConfigMatrixValue]]
+    """Matrix values for specified matrix grouping keys"""
+
+    scaling_factor: Optional[float]
+    """
+    Default optional multiplier to scale rated quantities that fall into the default
+    bucket by
+    """
+
+
+class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the plan will be associated with."""
+
+    matrix_with_allocation_config: Required[NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig]
+
+    model_type: Required[Literal["matrix_with_allocation"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+
+class NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue(TypedDict, total=False):
+    dimension_values: Required[List[Optional[str]]]
+    """One or two matrix keys to filter usage to this Matrix value by.
+
+    For example, ["region", "tier"] could be used to filter cloud usage by a cloud
+    region and an instance tier.
+    """
+
+    unit_amount: Required[str]
+    """Unit price for the specified dimension_values"""
+
+    scaling_factor: Optional[float]
+    """Optional multiplier to scale rated quantities by"""
+
+
+class NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(TypedDict, total=False):
+    allocation: Required[float]
+    """Allocation to be used to calculate the price"""
+
+    default_unit_amount: Required[str]
+    """Default per unit rate for any usage not bucketed into a specified matrix_value"""
+
+    dimensions: Required[List[Optional[str]]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    matrix_values: Required[Iterable[NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
 
     scaling_factor: Optional[float]
@@ -759,6 +839,7 @@ PriceCreateParams = Union[
     NewFloatingUnitPrice,
     NewFloatingPackagePrice,
     NewFloatingMatrixPrice,
+    NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
     NewFloatingTieredBpsPrice,
     NewFloatingBpsPrice,
