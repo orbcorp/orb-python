@@ -265,6 +265,76 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "monthly", "quarterly", "one_time"],
         currency: str,
         item_id: str,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
+        model_type: Literal["matrix_with_allocation"],
+        name: str,
+        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
+        fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
+        invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """This endpoint is used to create a [price](../reference/price).
+
+        A price created
+        using this endpoint is always an add-on, meaning that it’s not associated with a
+        specific plan and can instead be individually added to subscriptions, including
+        subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](../reference/price) for the specification of different
+        price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the plan will be associated with.
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    def create(
+        self,
+        *,
+        cadence: Literal["annual", "monthly", "quarterly", "one_time"],
+        currency: str,
+        item_id: str,
         model_type: Literal["tiered"],
         name: str,
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
@@ -1032,6 +1102,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_config"],
         ["cadence", "currency", "item_id", "matrix_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "matrix_with_allocation_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_bps_config"],
         ["bps_config", "cadence", "currency", "item_id", "model_type", "name"],
@@ -1053,6 +1124,7 @@ class Prices(SyncAPIResource):
         model_type: Literal["unit"]
         | Literal["package"]
         | Literal["matrix"]
+        | Literal["matrix_with_allocation"]
         | Literal["tiered"]
         | Literal["tiered_bps"]
         | Literal["bps"]
@@ -1073,6 +1145,8 @@ class Prices(SyncAPIResource):
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
+        | NotGiven = NOT_GIVEN,
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
         bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
@@ -1111,6 +1185,7 @@ class Prices(SyncAPIResource):
                         "invoice_grouping_key": invoice_grouping_key,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
+                        "matrix_with_allocation_config": matrix_with_allocation_config,
                         "tiered_config": tiered_config,
                         "tiered_bps_config": tiered_bps_config,
                         "bps_config": bps_config,
@@ -1452,6 +1527,76 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "monthly", "quarterly", "one_time"],
         currency: str,
         item_id: str,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
+        model_type: Literal["matrix_with_allocation"],
+        name: str,
+        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
+        fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
+        invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """This endpoint is used to create a [price](../reference/price).
+
+        A price created
+        using this endpoint is always an add-on, meaning that it’s not associated with a
+        specific plan and can instead be individually added to subscriptions, including
+        subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](../reference/price) for the specification of different
+        price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the plan will be associated with.
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    async def create(
+        self,
+        *,
+        cadence: Literal["annual", "monthly", "quarterly", "one_time"],
+        currency: str,
+        item_id: str,
         model_type: Literal["tiered"],
         name: str,
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
@@ -2219,6 +2364,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_config"],
         ["cadence", "currency", "item_id", "matrix_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "matrix_with_allocation_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_bps_config"],
         ["bps_config", "cadence", "currency", "item_id", "model_type", "name"],
@@ -2240,6 +2386,7 @@ class AsyncPrices(AsyncAPIResource):
         model_type: Literal["unit"]
         | Literal["package"]
         | Literal["matrix"]
+        | Literal["matrix_with_allocation"]
         | Literal["tiered"]
         | Literal["tiered_bps"]
         | Literal["bps"]
@@ -2260,6 +2407,8 @@ class AsyncPrices(AsyncAPIResource):
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
+        | NotGiven = NOT_GIVEN,
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
         bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
@@ -2298,6 +2447,7 @@ class AsyncPrices(AsyncAPIResource):
                         "invoice_grouping_key": invoice_grouping_key,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
+                        "matrix_with_allocation_config": matrix_with_allocation_config,
                         "tiered_config": tiered_config,
                         "tiered_bps_config": tiered_bps_config,
                         "bps_config": bps_config,

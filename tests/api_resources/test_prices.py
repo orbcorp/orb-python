@@ -291,24 +291,27 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -318,27 +321,31 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "scaling_factor": 0,
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -353,24 +360,27 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         )
 
         assert response.is_closed is True
@@ -384,24 +394,27 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -417,21 +430,21 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_bps",
+            model_type="tiered",
             name="Annual fee",
-            tiered_bps_config={
+            tiered_config={
                 "tiers": [
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                 ]
             },
@@ -444,27 +457,24 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_bps",
+            model_type="tiered",
             name="Annual fee",
-            tiered_bps_config={
+            tiered_config={
                 "tiers": [
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                 ]
             },
@@ -482,6 +492,135 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
+            model_type="tiered",
+            name="Annual fee",
+            tiered_config={
+                "tiers": [
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                ]
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_5(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered",
+            name="Annual fee",
+            tiered_config={
+                "tiers": [
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                ]
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_6(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_bps",
+            name="Annual fee",
+            tiered_bps_config={
+                "tiers": [
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                ]
+            },
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_bps",
+            name="Annual fee",
+            tiered_bps_config={
+                "tiers": [
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                ]
+            },
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_6(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
             model_type="tiered_bps",
             name="Annual fee",
             tiered_bps_config={
@@ -508,7 +647,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_5(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_6(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
@@ -541,7 +680,7 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_overload_6(self, client: Orb) -> None:
+    def test_method_create_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -553,7 +692,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
             bps_config={
                 "bps": 0,
@@ -573,7 +712,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_6(self, client: Orb) -> None:
+    def test_raw_response_create_overload_7(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -589,7 +728,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_6(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_7(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -607,7 +746,7 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_overload_7(self, client: Orb) -> None:
+    def test_method_create_overload_8(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -619,7 +758,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_bps_config={
                 "tiers": [
@@ -654,7 +793,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_7(self, client: Orb) -> None:
+    def test_raw_response_create_overload_8(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -670,7 +809,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_7(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_8(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -688,7 +827,7 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_overload_8(self, client: Orb) -> None:
+    def test_method_create_overload_9(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
@@ -700,7 +839,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_config={
                 "tiers": [
@@ -732,77 +871,14 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_8(self, client: Orb) -> None:
-        response = client.prices.with_raw_response.create(
-            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="bulk",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_overload_8(self, client: Orb) -> None:
-        with client.prices.with_streaming_response.create(
-            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="bulk",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_create_overload_9(self, client: Orb) -> None:
-        price = client.prices.create(
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="threshold_total_amount",
-            name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
-        price = client.prices.create(
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="threshold_total_amount",
-            name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
-            billable_metric_id="string",
-            billed_in_advance=True,
-            external_price_id="string",
-            fixed_price_quantity=0,
-            invoice_grouping_key="string",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
     def test_raw_response_create_overload_9(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
+            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="threshold_total_amount",
+            model_type="bulk",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -813,12 +889,12 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_9(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
+            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="threshold_total_amount",
+            model_type="bulk",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -834,9 +910,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -846,9 +922,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -863,9 +939,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -879,9 +955,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -897,9 +973,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -909,9 +985,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -926,9 +1002,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -942,9 +1018,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -960,9 +1036,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -972,9 +1048,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -989,9 +1065,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1005,9 +1081,9 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1023,6 +1099,69 @@ class TestPrices:
             cadence="annual",
             currency="string",
             item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_13(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_13(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_13(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_14(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
             model_type="tiered_package_with_minimum",
             name="Annual fee",
             tiered_package_with_minimum_config={"foo": "bar"},
@@ -1030,7 +1169,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_13(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_14(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
             currency="string",
@@ -1047,7 +1186,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_13(self, client: Orb) -> None:
+    def test_raw_response_create_overload_14(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
@@ -1063,7 +1202,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_13(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_14(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
@@ -1081,7 +1220,7 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_overload_14(self, client: Orb) -> None:
+    def test_method_create_overload_15(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
             currency="string",
@@ -1093,7 +1232,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_14(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_15(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
             currency="string",
@@ -1110,7 +1249,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_14(self, client: Orb) -> None:
+    def test_raw_response_create_overload_15(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
@@ -1126,7 +1265,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_14(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_15(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
@@ -1491,24 +1630,27 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1518,27 +1660,31 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "string",
+                        "scaling_factor": 0,
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "scaling_factor": 0,
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -1553,24 +1699,27 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         )
 
         assert response.is_closed is True
@@ -1584,24 +1733,27 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered",
-            name="Annual fee",
-            tiered_config={
-                "tiers": [
+            matrix_with_allocation_config={
+                "dimensions": ["string", "string", "string"],
+                "default_unit_amount": "string",
+                "matrix_values": [
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
                     {
-                        "first_unit": 0,
                         "unit_amount": "string",
+                        "dimension_values": ["string", "string", "string"],
                     },
-                ]
+                ],
+                "allocation": 0,
             },
+            model_type="matrix_with_allocation",
+            name="Annual fee",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1617,21 +1769,21 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_bps",
+            model_type="tiered",
             name="Annual fee",
-            tiered_bps_config={
+            tiered_config={
                 "tiers": [
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "bps": 0,
+                        "first_unit": 0,
+                        "unit_amount": "string",
                     },
                 ]
             },
@@ -1644,27 +1796,24 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_bps",
+            model_type="tiered",
             name="Annual fee",
-            tiered_bps_config={
+            tiered_config={
                 "tiers": [
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                     {
-                        "minimum_amount": "string",
-                        "maximum_amount": "string",
-                        "bps": 0,
-                        "per_unit_maximum": "string",
+                        "first_unit": 0,
+                        "last_unit": 0,
+                        "unit_amount": "string",
                     },
                 ]
             },
@@ -1682,6 +1831,135 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
+            model_type="tiered",
+            name="Annual fee",
+            tiered_config={
+                "tiers": [
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                ]
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_5(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered",
+            name="Annual fee",
+            tiered_config={
+                "tiers": [
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                    {
+                        "first_unit": 0,
+                        "unit_amount": "string",
+                    },
+                ]
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_6(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_bps",
+            name="Annual fee",
+            tiered_bps_config={
+                "tiers": [
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "bps": 0,
+                    },
+                ]
+            },
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="tiered_bps",
+            name="Annual fee",
+            tiered_bps_config={
+                "tiers": [
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                    {
+                        "minimum_amount": "string",
+                        "maximum_amount": "string",
+                        "bps": 0,
+                        "per_unit_maximum": "string",
+                    },
+                ]
+            },
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
             model_type="tiered_bps",
             name="Annual fee",
             tiered_bps_config={
@@ -1708,7 +1986,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_5(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
@@ -1741,7 +2019,7 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_6(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -1753,7 +2031,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bps_config={
                 "bps": 0,
@@ -1773,7 +2051,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -1789,7 +2067,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bps_config={"bps": 0},
             cadence="annual",
@@ -1807,7 +2085,7 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -1819,7 +2097,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_bps_config={
                 "tiers": [
@@ -1854,7 +2132,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -1870,7 +2148,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bulk_bps_config={"tiers": [{"bps": 0}, {"bps": 0}, {"bps": 0}]},
             cadence="annual",
@@ -1888,7 +2166,7 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
@@ -1900,7 +2178,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_config={
                 "tiers": [
@@ -1932,77 +2210,14 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
-        response = await async_client.prices.with_raw_response.create(
-            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="bulk",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
-        async with async_client.prices.with_streaming_response.create(
-            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="bulk",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="threshold_total_amount",
-            name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            cadence="annual",
-            currency="string",
-            item_id="string",
-            model_type="threshold_total_amount",
-            name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
-            billable_metric_id="string",
-            billed_in_advance=True,
-            external_price_id="string",
-            fixed_price_quantity=0,
-            invoice_grouping_key="string",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
     async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
+            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="threshold_total_amount",
+            model_type="bulk",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2013,12 +2228,12 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
+            bulk_config={"tiers": [{"unit_amount": "string"}, {"unit_amount": "string"}, {"unit_amount": "string"}]},
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="threshold_total_amount",
+            model_type="bulk",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2034,9 +2249,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2046,9 +2261,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -2063,9 +2278,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2079,9 +2294,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_package",
+            model_type="threshold_total_amount",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2097,9 +2312,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2109,9 +2324,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -2126,9 +2341,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2142,9 +2357,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="tiered_with_minimum",
+            model_type="tiered_package",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            tiered_package_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2160,9 +2375,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2172,9 +2387,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -2189,9 +2404,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2205,9 +2420,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
-            model_type="package_with_allocation",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2223,6 +2438,69 @@ class TestAsyncPrices:
             cadence="annual",
             currency="string",
             item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_13(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+            billable_metric_id="string",
+            billed_in_advance=True,
+            external_price_id="string",
+            fixed_price_quantity=0,
+            invoice_grouping_key="string",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
+            model_type="package_with_allocation",
+            name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_14(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="string",
+            item_id="string",
             model_type="tiered_package_with_minimum",
             name="Annual fee",
             tiered_package_with_minimum_config={"foo": "bar"},
@@ -2230,7 +2508,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_13(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_14(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
             currency="string",
@@ -2247,7 +2525,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_14(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
@@ -2263,7 +2541,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_13(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_14(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
@@ -2281,7 +2559,7 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_14(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_overload_15(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
             currency="string",
@@ -2293,7 +2571,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_14(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_15(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
             currency="string",
@@ -2310,7 +2588,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_14(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_15(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="string",
@@ -2326,7 +2604,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_14(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_15(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="string",
