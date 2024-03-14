@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.45.0 (2024-03-14)
+
+Full Changelog: [v1.44.0...v1.45.0](https://github.com/orbcorp/orb-python/compare/v1.44.0...v1.45.0)
+
+### Features
+
+* **api:** add matrix with allocation price ([#193](https://github.com/orbcorp/orb-python/issues/193)) ([45cc072](https://github.com/orbcorp/orb-python/commit/45cc0723c18b50506456591498798a1fa4994bff))
+
 ## 1.44.0 (2024-03-11)
 
 Full Changelog: [v1.43.0...v1.44.0](https://github.com/orbcorp/orb-python/compare/v1.43.0...v1.44.0)
