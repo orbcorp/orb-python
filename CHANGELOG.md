@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.46.0 (2024-03-15)
+
+Full Changelog: [v1.45.0...v1.46.0](https://github.com/orbcorp/orb-python/compare/v1.45.0...v1.46.0)
+
+### Features
+
+* **api:** create invoice metadata param ([#195](https://github.com/orbcorp/orb-python/issues/195)) ([e5504a6](https://github.com/orbcorp/orb-python/commit/e5504a69a54c4b5b6548ec7e4914c5dfb58cdd09))
+
 ## 1.45.0 (2024-03-14)
 
 Full Changelog: [v1.44.0...v1.45.0](https://github.com/orbcorp/orb-python/compare/v1.44.0...v1.45.0)
