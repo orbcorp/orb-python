@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -49,6 +49,13 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     memo: Optional[str]
     """An optional memo to attach to the invoice."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
     will_auto_issue: bool
     """When true, this invoice will automatically be issued upon creation.
