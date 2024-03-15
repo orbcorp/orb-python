@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -53,6 +53,7 @@ class Invoices(SyncAPIResource):
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         will_auto_issue: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -85,6 +86,10 @@ class Invoices(SyncAPIResource):
 
           memo: An optional memo to attach to the invoice.
 
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           will_auto_issue: When true, this invoice will automatically be issued upon creation. When false,
               the resulting invoice will require manual review to issue. Defaulted to false.
 
@@ -109,6 +114,7 @@ class Invoices(SyncAPIResource):
                     "customer_id": customer_id,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
+                    "metadata": metadata,
                     "will_auto_issue": will_auto_issue,
                 },
                 invoice_create_params.InvoiceCreateParams,
@@ -464,6 +470,7 @@ class AsyncInvoices(AsyncAPIResource):
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         will_auto_issue: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -496,6 +503,10 @@ class AsyncInvoices(AsyncAPIResource):
 
           memo: An optional memo to attach to the invoice.
 
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           will_auto_issue: When true, this invoice will automatically be issued upon creation. When false,
               the resulting invoice will require manual review to issue. Defaulted to false.
 
@@ -520,6 +531,7 @@ class AsyncInvoices(AsyncAPIResource):
                     "customer_id": customer_id,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
+                    "metadata": metadata,
                     "will_auto_issue": will_auto_issue,
                 },
                 invoice_create_params.InvoiceCreateParams,

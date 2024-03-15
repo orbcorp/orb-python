@@ -107,6 +107,7 @@ class TestInvoices:
             customer_id="4khy3nwzktxv7",
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
+            metadata={"foo": "string"},
             will_auto_issue=False,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -532,6 +533,7 @@ class TestAsyncInvoices:
             customer_id="4khy3nwzktxv7",
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
+            metadata={"foo": "string"},
             will_auto_issue=False,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
