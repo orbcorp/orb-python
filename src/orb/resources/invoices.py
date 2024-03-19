@@ -234,9 +234,6 @@ class Invoices(SyncAPIResource):
         This endpoint is used to fetch an [`Invoice`](../guides/concepts#invoice) given
         an identifier.
 
-        This endpoint supports returning ApiCachedUsageData (see
-        api/cache_control_utils.py)
-
         Args:
           extra_headers: Send extra headers
 
@@ -271,9 +268,6 @@ class Invoices(SyncAPIResource):
         This endpoint can be used to fetch the upcoming
         [invoice](../guides/concepts#invoice) for the current billing period given a
         subscription.
-
-        This endpoint supports returning ApiCachedUsageData (see
-        api/cache_control_utils.py)
 
         Args:
           extra_headers: Send extra headers
@@ -651,9 +645,6 @@ class AsyncInvoices(AsyncAPIResource):
         This endpoint is used to fetch an [`Invoice`](../guides/concepts#invoice) given
         an identifier.
 
-        This endpoint supports returning ApiCachedUsageData (see
-        api/cache_control_utils.py)
-
         Args:
           extra_headers: Send extra headers
 
@@ -688,9 +679,6 @@ class AsyncInvoices(AsyncAPIResource):
         This endpoint can be used to fetch the upcoming
         [invoice](../guides/concepts#invoice) for the current billing period given a
         subscription.
-
-        This endpoint supports returning ApiCachedUsageData (see
-        api/cache_control_utils.py)
 
         Args:
           extra_headers: Send extra headers
