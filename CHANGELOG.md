@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.47.0 (2024-03-21)
+
+Full Changelog: [v1.46.0...v1.47.0](https://github.com/orbcorp/orb-python/compare/v1.46.0...v1.47.0)
+
+### Features
+
+* **api:** introduce credits status ([d15d875](https://github.com/orbcorp/orb-python/commit/d15d875ee628eb8a3af8d3a2e67126b069984d1c))
+* **api:** remove `scaling_factor` ([#205](https://github.com/orbcorp/orb-python/issues/205)) ([d15d875](https://github.com/orbcorp/orb-python/commit/d15d875ee628eb8a3af8d3a2e67126b069984d1c))
+
+
+### Performance Improvements
+
+* cache TypeAdapters ([#197](https://github.com/orbcorp/orb-python/issues/197)) ([536a387](https://github.com/orbcorp/orb-python/commit/536a38777b2b9fb5dc944eb712e9f31e389cc52f))
+
+
+### Chores
+
+* **internal:** construct error properties instead of using the raw response ([#204](https://github.com/orbcorp/orb-python/issues/204)) ([e5438a9](https://github.com/orbcorp/orb-python/commit/e5438a9958ba21a35c90d40edc4438450e91601b))
+* **internal:** loosen input type for util function ([#202](https://github.com/orbcorp/orb-python/issues/202)) ([6d48c20](https://github.com/orbcorp/orb-python/commit/6d48c20cb8f0b64aaa2ce57804076987b422f9f4))
+* **internal:** update generated pragma comment ([#200](https://github.com/orbcorp/orb-python/issues/200)) ([336a736](https://github.com/orbcorp/orb-python/commit/336a736ae99e6c54353da05891a0a68a78339cd0))
+
+
+### Documentation
+
+* fix typo in CONTRIBUTING.md ([#199](https://github.com/orbcorp/orb-python/issues/199)) ([5ffe938](https://github.com/orbcorp/orb-python/commit/5ffe9386e8baec7f94bcb0505ee25c153004767f))
+* **readme:** document how to make undocumented requests ([#203](https://github.com/orbcorp/orb-python/issues/203)) ([9757d20](https://github.com/orbcorp/orb-python/commit/9757d20415f0ad8f42109d207800f6546be56ff4))
+* updated invoice description ([#201](https://github.com/orbcorp/orb-python/issues/201)) ([ba19ce0](https://github.com/orbcorp/orb-python/commit/ba19ce050fedf92e06a6775d4b51f9b43b0a4d8d))
+
 ## 1.46.0 (2024-03-15)
 
 Full Changelog: [v1.45.0...v1.46.0](https://github.com/orbcorp/orb-python/compare/v1.45.0...v1.46.0)
