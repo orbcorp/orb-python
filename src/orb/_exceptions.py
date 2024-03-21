@@ -8,6 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ._utils import is_mapping
+from ._models import construct_type
 
 __all__ = [
     "BadRequestError",
@@ -136,10 +137,16 @@ class ConstraintViolation(BadRequestError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#400-constraint-violation"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class DuplicateResourceCreation(BadRequestError):
@@ -155,10 +162,16 @@ class DuplicateResourceCreation(BadRequestError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#400-duplicate-resource-creation"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class FeatureNotAvailable(BadRequestError):
@@ -174,10 +187,16 @@ class FeatureNotAvailable(BadRequestError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#404-feature-not-available"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class RequestValidationError(BadRequestError):
@@ -195,11 +214,17 @@ class RequestValidationError(BadRequestError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.validation_errors = cast(Any, data.get("validation_errors"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#400-request-validation-errors"],
+                value=data.get("type"),
+            ),
+        )
+        self.validation_errors = cast(Any, construct_type(type_=List[object], value=data.get("validation_errors")))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class OrbAuthenticationError(AuthenticationError):
@@ -215,10 +240,16 @@ class OrbAuthenticationError(AuthenticationError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[401], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#401-authentication-error"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class ResourceNotFound(NotFoundError):
@@ -234,10 +265,16 @@ class ResourceNotFound(NotFoundError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.title = cast(Any, data.get("title"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
+        self.status = cast(Any, construct_type(type_=Literal[404], value=data.get("status")))
+        self.title = cast(Any, construct_type(type_=str, value=data.get("title")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#404-resource-not-found"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
 
 
 class URLNotFound(NotFoundError):
@@ -253,10 +290,16 @@ class URLNotFound(NotFoundError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[404], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#404-url-not-found"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class ResourceConflict(ConflictError):
@@ -272,10 +315,16 @@ class ResourceConflict(ConflictError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[409], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#409-resource-conflict"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class RequestTooLarge(APIStatusError):
@@ -291,10 +340,16 @@ class RequestTooLarge(APIStatusError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[413], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#413-request-too-large"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class ResourceTooLarge(APIStatusError):
@@ -310,10 +365,16 @@ class ResourceTooLarge(APIStatusError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[413], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#413-resource-too-large"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class TooManyRequests(RateLimitError):
@@ -329,10 +390,16 @@ class TooManyRequests(RateLimitError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[429], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#429-too-many-requests"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
 
 
 class OrbInternalServerError(InternalServerError):
@@ -348,7 +415,13 @@ class OrbInternalServerError(InternalServerError):
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         super().__init__(message, response=response, body=body)
 
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.detail = cast(Any, data.get("detail"))
-        self.title = cast(Any, data.get("title"))
+        self.status = cast(Any, construct_type(type_=Literal[500], value=data.get("status")))
+        self.type = cast(
+            Any,
+            construct_type(
+                type_=Literal["https://docs.withorb.com/reference/error-responses#500-internal-server-error"],
+                value=data.get("type"),
+            ),
+        )
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.title = cast(Any, construct_type(type_=Optional[str], value=data.get("title")))
