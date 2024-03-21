@@ -78,9 +78,6 @@ class PriceNewPlanUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
-    scaling_factor: Optional[float]
-    """Multiplier to scale rated quantity by"""
-
 
 class PriceNewPlanUnitPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
@@ -183,9 +180,6 @@ class PriceNewPlanMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float]
-    """Optional multiplier to scale rated quantities by"""
-
 
 class PriceNewPlanMatrixPriceMatrixConfig(TypedDict, total=False):
     default_unit_amount: Required[str]
@@ -196,12 +190,6 @@ class PriceNewPlanMatrixPriceMatrixConfig(TypedDict, total=False):
 
     matrix_values: Required[Iterable[PriceNewPlanMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float]
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class PriceNewPlanMatrixPrice(TypedDict, total=False):

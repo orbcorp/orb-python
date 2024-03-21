@@ -342,9 +342,9 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
-        external_id: Optional[str],
-        notes: Optional[str],
         payment_received_date: Union[str, date],
+        external_id: Optional[str] | NotGiven = NOT_GIVEN,
+        notes: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -359,11 +359,11 @@ class Invoices(SyncAPIResource):
         only be done to invoices that are in the `issued` status.
 
         Args:
+          payment_received_date: A date string to specify the date of the payment.
+
           external_id: An optional external ID to associate with the payment.
 
           notes: An optional note to associate with the payment.
-
-          payment_received_date: A date string to specify the date of the payment.
 
           extra_headers: Send extra headers
 
@@ -381,9 +381,9 @@ class Invoices(SyncAPIResource):
             f"/invoices/{invoice_id}/mark_paid",
             body=maybe_transform(
                 {
+                    "payment_received_date": payment_received_date,
                     "external_id": external_id,
                     "notes": notes,
-                    "payment_received_date": payment_received_date,
                 },
                 invoice_mark_paid_params.InvoiceMarkPaidParams,
             ),
@@ -753,9 +753,9 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
-        external_id: Optional[str],
-        notes: Optional[str],
         payment_received_date: Union[str, date],
+        external_id: Optional[str] | NotGiven = NOT_GIVEN,
+        notes: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -770,11 +770,11 @@ class AsyncInvoices(AsyncAPIResource):
         only be done to invoices that are in the `issued` status.
 
         Args:
+          payment_received_date: A date string to specify the date of the payment.
+
           external_id: An optional external ID to associate with the payment.
 
           notes: An optional note to associate with the payment.
-
-          payment_received_date: A date string to specify the date of the payment.
 
           extra_headers: Send extra headers
 
@@ -792,9 +792,9 @@ class AsyncInvoices(AsyncAPIResource):
             f"/invoices/{invoice_id}/mark_paid",
             body=await async_maybe_transform(
                 {
+                    "payment_received_date": payment_received_date,
                     "external_id": external_id,
                     "notes": notes,
-                    "payment_received_date": payment_received_date,
                 },
                 invoice_mark_paid_params.InvoiceMarkPaidParams,
             ),

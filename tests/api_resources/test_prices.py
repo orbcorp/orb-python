@@ -38,10 +38,7 @@ class TestPrices:
             item_id="string",
             model_type="unit",
             name="Annual fee",
-            unit_config={
-                "unit_amount": "string",
-                "scaling_factor": 0,
-            },
+            unit_config={"unit_amount": "string"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -191,21 +188,17 @@ class TestPrices:
                 "matrix_values": [
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                 ],
-                "scaling_factor": 0,
             },
             model_type="matrix",
             name="Annual fee",
@@ -327,21 +320,17 @@ class TestPrices:
                 "matrix_values": [
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                 ],
-                "scaling_factor": 0,
                 "allocation": 0,
             },
             model_type="matrix_with_allocation",
@@ -1377,10 +1366,7 @@ class TestAsyncPrices:
             item_id="string",
             model_type="unit",
             name="Annual fee",
-            unit_config={
-                "unit_amount": "string",
-                "scaling_factor": 0,
-            },
+            unit_config={"unit_amount": "string"},
             billable_metric_id="string",
             billed_in_advance=True,
             external_price_id="string",
@@ -1530,21 +1516,17 @@ class TestAsyncPrices:
                 "matrix_values": [
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                 ],
-                "scaling_factor": 0,
             },
             model_type="matrix",
             name="Annual fee",
@@ -1666,21 +1648,17 @@ class TestAsyncPrices:
                 "matrix_values": [
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                     {
                         "unit_amount": "string",
-                        "scaling_factor": 0,
                         "dimension_values": ["string", "string", "string"],
                     },
                 ],
-                "scaling_factor": 0,
                 "allocation": 0,
             },
             model_type="matrix_with_allocation",

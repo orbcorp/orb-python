@@ -113,9 +113,6 @@ class PriceOverrideOverrideUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
-    scaling_factor: Optional[float]
-    """Multiplier to scale rated quantity by"""
-
 
 class PriceOverrideOverrideUnitPriceDiscount(TypedDict, total=False):
     discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
@@ -236,9 +233,6 @@ class PriceOverrideOverrideMatrixPriceMatrixConfigMatrixValue(TypedDict, total=F
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float]
-    """Optional multiplier to scale rated quantities by"""
-
 
 class PriceOverrideOverrideMatrixPriceMatrixConfig(TypedDict, total=False):
     default_unit_amount: Required[str]
@@ -249,12 +243,6 @@ class PriceOverrideOverrideMatrixPriceMatrixConfig(TypedDict, total=False):
 
     matrix_values: Required[Iterable[PriceOverrideOverrideMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float]
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class PriceOverrideOverrideMatrixPriceDiscount(TypedDict, total=False):
