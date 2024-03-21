@@ -65,10 +65,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -84,10 +81,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -103,10 +97,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -450,10 +441,7 @@ class TestSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -502,10 +490,7 @@ class TestSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -554,10 +539,7 @@ class TestSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -731,10 +713,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -750,10 +729,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -769,10 +745,7 @@ class TestSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
         )
@@ -1078,10 +1051,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -1097,10 +1067,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -1116,10 +1083,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1463,10 +1427,7 @@ class TestAsyncSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1515,10 +1476,7 @@ class TestAsyncSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1567,10 +1525,7 @@ class TestAsyncSubscriptions:
                         "invoice_grouping_key": "string",
                         "cadence": "annual",
                         "model_type": "unit",
-                        "unit_config": {
-                            "unit_amount": "string",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1744,10 +1699,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -1763,10 +1715,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "id": "string",
@@ -1782,10 +1731,7 @@ class TestAsyncSubscriptions:
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
         )

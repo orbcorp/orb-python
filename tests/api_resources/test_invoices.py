@@ -73,10 +73,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -85,10 +82,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -97,10 +91,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
             net_terms=0,
@@ -360,9 +351,17 @@ class TestInvoices:
     def test_method_mark_paid(self, client: Orb) -> None:
         invoice = client.invoices.mark_paid(
             "string",
+            payment_received_date=parse_date("2023-09-22"),
+        )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    def test_method_mark_paid_with_all_params(self, client: Orb) -> None:
+        invoice = client.invoices.mark_paid(
+            "string",
+            payment_received_date=parse_date("2023-09-22"),
             external_id="external_payment_id_123",
             notes="string",
-            payment_received_date=parse_date("2023-09-22"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -370,8 +369,6 @@ class TestInvoices:
     def test_raw_response_mark_paid(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.mark_paid(
             "string",
-            external_id="external_payment_id_123",
-            notes="string",
             payment_received_date=parse_date("2023-09-22"),
         )
 
@@ -384,8 +381,6 @@ class TestInvoices:
     def test_streaming_response_mark_paid(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.mark_paid(
             "string",
-            external_id="external_payment_id_123",
-            notes="string",
             payment_received_date=parse_date("2023-09-22"),
         ) as response:
             assert not response.is_closed
@@ -401,8 +396,6 @@ class TestInvoices:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.invoices.with_raw_response.mark_paid(
                 "",
-                external_id="external_payment_id_123",
-                notes="string",
                 payment_received_date=parse_date("2023-09-22"),
             )
 
@@ -499,10 +492,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -511,10 +501,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -523,10 +510,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 },
             ],
             net_terms=0,
@@ -786,9 +770,17 @@ class TestAsyncInvoices:
     async def test_method_mark_paid(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.mark_paid(
             "string",
+            payment_received_date=parse_date("2023-09-22"),
+        )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_method_mark_paid_with_all_params(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.mark_paid(
+            "string",
+            payment_received_date=parse_date("2023-09-22"),
             external_id="external_payment_id_123",
             notes="string",
-            payment_received_date=parse_date("2023-09-22"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -796,8 +788,6 @@ class TestAsyncInvoices:
     async def test_raw_response_mark_paid(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.mark_paid(
             "string",
-            external_id="external_payment_id_123",
-            notes="string",
             payment_received_date=parse_date("2023-09-22"),
         )
 
@@ -810,8 +800,6 @@ class TestAsyncInvoices:
     async def test_streaming_response_mark_paid(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.mark_paid(
             "string",
-            external_id="external_payment_id_123",
-            notes="string",
             payment_received_date=parse_date("2023-09-22"),
         ) as response:
             assert not response.is_closed
@@ -827,8 +815,6 @@ class TestAsyncInvoices:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.invoices.with_raw_response.mark_paid(
                 "",
-                external_id="external_payment_id_123",
-                notes="string",
                 payment_received_date=parse_date("2023-09-22"),
             )
 

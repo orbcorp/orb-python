@@ -400,7 +400,7 @@ class PriceInterval(BaseModel):
     }
     ```
 
-    ### Fixed fees
+    ## Fixed fees
 
     Fixed fees are prices that are applied independent of usage quantities, and
     follow unit pricing. They also have an additional parameter

@@ -52,10 +52,7 @@ class TestPlans:
                     "invoice_grouping_key": "string",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 }
             ],
             default_invoice_memo="string",
@@ -269,10 +266,7 @@ class TestAsyncPlans:
                     "invoice_grouping_key": "string",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {
-                        "unit_amount": "string",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "string"},
                 }
             ],
             default_invoice_memo="string",
