@@ -106,9 +106,6 @@ class AddPriceNewFloatingUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
-    scaling_factor: Optional[float]
-    """Multiplier to scale rated quantity by"""
-
 
 class AddPriceNewFloatingUnitPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
@@ -217,9 +214,6 @@ class AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue(TypedDict, total=Fal
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float]
-    """Optional multiplier to scale rated quantities by"""
-
 
 class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     default_unit_amount: Required[str]
@@ -230,12 +224,6 @@ class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
 
     matrix_values: Required[Iterable[AddPriceNewFloatingMatrixPriceMatrixConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float]
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class AddPriceNewFloatingMatrixPrice(TypedDict, total=False):
@@ -291,9 +279,6 @@ class AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatr
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float]
-    """Optional multiplier to scale rated quantities by"""
-
 
 class AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(TypedDict, total=False):
     allocation: Required[float]
@@ -307,12 +292,6 @@ class AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(Typ
 
     matrix_values: Required[Iterable[AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float]
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class AddPriceNewFloatingMatrixWithAllocationPrice(TypedDict, total=False):

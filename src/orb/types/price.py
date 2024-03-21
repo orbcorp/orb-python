@@ -135,9 +135,6 @@ class UnitPriceUnitConfig(BaseModel):
     unit_amount: str
     """Rate per unit of usage"""
 
-    scaling_factor: Optional[float] = None
-    """Multiplier to scale rated quantity by"""
-
 
 class UnitPrice(BaseModel):
     id: str
@@ -280,9 +277,6 @@ class MatrixPriceMatrixConfigMatrixValue(BaseModel):
     unit_amount: str
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float] = None
-    """Optional multiplier to scale rated quantities by"""
-
 
 class MatrixPriceMatrixConfig(BaseModel):
     default_unit_amount: str
@@ -293,12 +287,6 @@ class MatrixPriceMatrixConfig(BaseModel):
 
     matrix_values: List[MatrixPriceMatrixConfigMatrixValue]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float] = None
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class MatrixPriceMaximum(BaseModel):
@@ -1160,9 +1148,6 @@ class MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue(BaseModel):
     unit_amount: str
     """Unit price for the specified dimension_values"""
 
-    scaling_factor: Optional[float] = None
-    """Optional multiplier to scale rated quantities by"""
-
 
 class MatrixWithAllocationPriceMatrixWithAllocationConfig(BaseModel):
     allocation: float
@@ -1176,12 +1161,6 @@ class MatrixWithAllocationPriceMatrixWithAllocationConfig(BaseModel):
 
     matrix_values: List[MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]
     """Matrix values for specified matrix grouping keys"""
-
-    scaling_factor: Optional[float] = None
-    """
-    Default optional multiplier to scale rated quantities that fall into the default
-    bucket by
-    """
 
 
 class MatrixWithAllocationPriceMaximum(BaseModel):

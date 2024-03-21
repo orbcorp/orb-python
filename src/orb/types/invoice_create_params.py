@@ -69,9 +69,6 @@ class LineItemUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
-    scaling_factor: Optional[float]
-    """Multiplier to scale rated quantity by"""
-
 
 class LineItem(TypedDict, total=False):
     end_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
