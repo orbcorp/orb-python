@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.47.1 (2024-03-25)
+
+Full Changelog: [v1.47.0...v1.47.1](https://github.com/orbcorp/orb-python/compare/v1.47.0...v1.47.1)
+
+### Bug Fixes
+
+* revert regression with 3.7 support ([#209](https://github.com/orbcorp/orb-python/issues/209)) ([11f44da](https://github.com/orbcorp/orb-python/commit/11f44da6ff3ca5f9f3d762a216fc0e434ae78ba0))
+
+
+### Chores
+
+* **internal:** formatting change ([#206](https://github.com/orbcorp/orb-python/issues/206)) ([b4bfd91](https://github.com/orbcorp/orb-python/commit/b4bfd91467762d409b0d1d699d914aeb5d730e72))
+
+
+### Documentation
+
+* **contributing:** fix typo ([#208](https://github.com/orbcorp/orb-python/issues/208)) ([1d2f286](https://github.com/orbcorp/orb-python/commit/1d2f2866dee4556bc0c3124ec73aca49d62b138a))
+
 ## 1.47.0 (2024-03-21)
 
 Full Changelog: [v1.46.0...v1.47.0](https://github.com/orbcorp/orb-python/compare/v1.46.0...v1.47.0)
