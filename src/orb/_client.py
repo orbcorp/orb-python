@@ -65,11 +65,13 @@ class Orb(SyncAPIClient):
 
     # client options
     api_key: str
+    webhook_secret: str | None
 
     def __init__(
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -89,7 +91,9 @@ class Orb(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous orb client instance.
 
-        This automatically infers the `api_key` argument from the `ORB_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `ORB_API_KEY`
+        - `webhook_secret` from `ORB_WEBHOOK_SECRET`
         """
         if api_key is None:
             api_key = os.environ.get("ORB_API_KEY")
@@ -98,6 +102,10 @@ class Orb(SyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the ORB_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_secret is None:
+            webhook_secret = os.environ.get("ORB_WEBHOOK_SECRET")
+        self.webhook_secret = webhook_secret
 
         if base_url is None:
             base_url = os.environ.get("ORB_BASE_URL")
@@ -157,6 +165,7 @@ class Orb(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -191,6 +200,7 @@ class Orb(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -305,11 +315,13 @@ class AsyncOrb(AsyncAPIClient):
 
     # client options
     api_key: str
+    webhook_secret: str | None
 
     def __init__(
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -329,7 +341,9 @@ class AsyncOrb(AsyncAPIClient):
     ) -> None:
         """Construct a new async orb client instance.
 
-        This automatically infers the `api_key` argument from the `ORB_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `ORB_API_KEY`
+        - `webhook_secret` from `ORB_WEBHOOK_SECRET`
         """
         if api_key is None:
             api_key = os.environ.get("ORB_API_KEY")
@@ -338,6 +352,10 @@ class AsyncOrb(AsyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the ORB_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_secret is None:
+            webhook_secret = os.environ.get("ORB_WEBHOOK_SECRET")
+        self.webhook_secret = webhook_secret
 
         if base_url is None:
             base_url = os.environ.get("ORB_BASE_URL")
@@ -397,6 +415,7 @@ class AsyncOrb(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -431,6 +450,7 @@ class AsyncOrb(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
