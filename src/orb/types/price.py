@@ -74,6 +74,11 @@ __all__ = [
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
     "TieredPackagePriceMinimum",
+    "GroupedTieredPrice",
+    "GroupedTieredPriceBillableMetric",
+    "GroupedTieredPriceItem",
+    "GroupedTieredPriceMaximum",
+    "GroupedTieredPriceMinimum",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceBillableMetric",
     "TieredWithMinimumPriceItem",
@@ -917,6 +922,76 @@ class TieredPackagePrice(BaseModel):
     tiered_package_config: Dict[str, object]
 
 
+class GroupedTieredPriceBillableMetric(BaseModel):
+    id: str
+
+
+class GroupedTieredPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class GroupedTieredPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class GroupedTieredPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class GroupedTieredPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[GroupedTieredPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    created_at: datetime
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    grouped_tiered_config: Dict[str, object]
+
+    item: GroupedTieredPriceItem
+
+    maximum: Optional[GroupedTieredPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[GroupedTieredPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["grouped_tiered"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+
 class TieredWithMinimumPriceBillableMetric(BaseModel):
     id: str
 
@@ -1234,6 +1309,7 @@ Price = Union[
     BulkPrice,
     ThresholdTotalAmountPrice,
     TieredPackagePrice,
+    GroupedTieredPrice,
     TieredWithMinimumPrice,
     PackageWithAllocationPrice,
     UnitWithPercentPrice,
