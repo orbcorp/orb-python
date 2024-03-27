@@ -33,6 +33,7 @@ __all__ = [
     "NewFloatingBulkPriceBulkConfigTier",
     "NewFloatingThresholdTotalAmountPrice",
     "NewFloatingTieredPackagePrice",
+    "NewFloatingGroupedTieredPrice",
     "NewFloatingTieredWithMinimumPrice",
     "NewFloatingPackageWithAllocationPrice",
     "NewFloatingTieredPackageWithMinimumPrice",
@@ -646,6 +647,48 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
+class NewFloatingGroupedTieredPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    grouped_tiered_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the plan will be associated with."""
+
+    model_type: Required[Literal["grouped_tiered"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+
 class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
@@ -826,6 +869,7 @@ PriceCreateParams = Union[
     NewFloatingBulkPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
+    NewFloatingGroupedTieredPrice,
     NewFloatingTieredWithMinimumPrice,
     NewFloatingPackageWithAllocationPrice,
     NewFloatingTieredPackageWithMinimumPrice,

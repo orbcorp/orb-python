@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.48.0 (2024-03-27)
+
+Full Changelog: [v1.47.1...v1.48.0](https://github.com/orbcorp/orb-python/compare/v1.47.1...v1.48.0)
+
+### Features
+
+* **api:** updates ([#210](https://github.com/orbcorp/orb-python/issues/210)) ([5b302c6](https://github.com/orbcorp/orb-python/commit/5b302c6eded8517c30f599d71dbd3b7bd7bb0cc7))
+* **client:** add webhook secret argument ([#212](https://github.com/orbcorp/orb-python/issues/212)) ([b611a6c](https://github.com/orbcorp/orb-python/commit/b611a6cc05461d9f671013d30ffb064c12585902))
+
 ## 1.47.1 (2024-03-25)
 
 Full Changelog: [v1.47.0...v1.47.1](https://github.com/orbcorp/orb-python/compare/v1.47.0...v1.47.1)
