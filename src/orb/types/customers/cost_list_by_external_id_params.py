@@ -12,10 +12,10 @@ __all__ = ["CostListByExternalIDParams"]
 
 
 class CostListByExternalIDParams(TypedDict, total=False):
-    timeframe_end: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+    timeframe_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Costs returned are exclusive of `timeframe_end`."""
 
-    timeframe_start: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+    timeframe_start: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Costs returned are inclusive of `timeframe_start`."""
 
     view_mode: Optional[Literal["periodic", "cumulative"]]
