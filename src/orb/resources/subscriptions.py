@@ -757,8 +757,8 @@ class Subscriptions(SyncAPIResource):
         self,
         subscription_id: str,
         *,
-        timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2387,8 +2387,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
-        timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
