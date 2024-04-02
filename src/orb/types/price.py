@@ -84,6 +84,11 @@ __all__ = [
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
     "TieredWithMinimumPriceMinimum",
+    "TieredPackageWithMinimumPrice",
+    "TieredPackageWithMinimumPriceBillableMetric",
+    "TieredPackageWithMinimumPriceItem",
+    "TieredPackageWithMinimumPriceMaximum",
+    "TieredPackageWithMinimumPriceMinimum",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceBillableMetric",
     "PackageWithAllocationPriceItem",
@@ -1062,6 +1067,76 @@ class TieredWithMinimumPrice(BaseModel):
     tiered_with_minimum_config: Dict[str, object]
 
 
+class TieredPackageWithMinimumPriceBillableMetric(BaseModel):
+    id: str
+
+
+class TieredPackageWithMinimumPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class TieredPackageWithMinimumPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class TieredPackageWithMinimumPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class TieredPackageWithMinimumPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[TieredPackageWithMinimumPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    created_at: datetime
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: TieredPackageWithMinimumPriceItem
+
+    maximum: Optional[TieredPackageWithMinimumPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[TieredPackageWithMinimumPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["tiered_package_with_minimum"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    tiered_package_with_minimum_config: Dict[str, object]
+
+
 class PackageWithAllocationPriceBillableMetric(BaseModel):
     id: str
 
@@ -1311,6 +1386,7 @@ Price = Union[
     TieredPackagePrice,
     GroupedTieredPrice,
     TieredWithMinimumPrice,
+    TieredPackageWithMinimumPrice,
     PackageWithAllocationPrice,
     UnitWithPercentPrice,
     MatrixWithAllocationPrice,
