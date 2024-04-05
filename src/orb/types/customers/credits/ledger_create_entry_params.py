@@ -69,7 +69,8 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     per_unit_cost_basis: Optional[str]
     """Can only be specified when entry_type=increment.
 
-    How much, in USD, a customer paid for a single credit in this block
+    How much, in the customer's currency, a customer paid for a single credit in
+    this block
     """
 
 
