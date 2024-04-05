@@ -365,8 +365,8 @@ class Ledger(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
-              paid for a single credit in this block
+          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in the customer's
+              currency, a customer paid for a single credit in this block
 
           extra_headers: Send extra headers
 
@@ -1258,8 +1258,8 @@ class Ledger(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
-              paid for a single credit in this block
+          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in the customer's
+              currency, a customer paid for a single credit in this block
 
           extra_headers: Send extra headers
 
@@ -2487,8 +2487,8 @@ class AsyncLedger(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
-              paid for a single credit in this block
+          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in the customer's
+              currency, a customer paid for a single credit in this block
 
           extra_headers: Send extra headers
 
@@ -3380,8 +3380,8 @@ class AsyncLedger(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in USD, a customer
-              paid for a single credit in this block
+          per_unit_cost_basis: Can only be specified when entry_type=increment. How much, in the customer's
+              currency, a customer paid for a single credit in this block
 
           extra_headers: Send extra headers
 
