@@ -860,6 +860,8 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     invoice_pdf: Optional[str] = None
     """The link to download the PDF representation of the `Invoice`."""
 
+    invoice_source: Literal["subscription", "partial", "one_off"]
+
     issue_failed_at: Optional[datetime] = None
     """
     If the invoice failed to issue, this will be the last time it failed to issue
