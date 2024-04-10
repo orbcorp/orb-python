@@ -57,3 +57,9 @@ class InvoiceSettings(TypedDict, total=False):
 
     memo: Optional[str]
     """An optional memo to display on the invoice."""
+
+    require_successful_payment: bool
+    """
+    If true, new credit blocks created by this top-up will require that the
+    corresponding invoice is paid before they can be drawn down from.
+    """
