@@ -25,6 +25,12 @@ class InvoiceSettings(BaseModel):
     memo: Optional[str] = None
     """An optional memo to display on the invoice."""
 
+    require_successful_payment: Optional[bool] = None
+    """
+    If true, new credit blocks created by this top-up will require that the
+    corresponding invoice is paid before they can be drawn down from.
+    """
+
 
 class TopUpCreateResponse(BaseModel):
     id: str
