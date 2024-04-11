@@ -13,18 +13,21 @@ __all__ = [
     "Price",
     "UnitPrice",
     "UnitPriceBillableMetric",
+    "UnitPriceCreditAllocation",
     "UnitPriceItem",
     "UnitPriceMaximum",
     "UnitPriceMinimum",
     "UnitPriceUnitConfig",
     "PackagePrice",
     "PackagePriceBillableMetric",
+    "PackagePriceCreditAllocation",
     "PackagePriceItem",
     "PackagePriceMaximum",
     "PackagePriceMinimum",
     "PackagePricePackageConfig",
     "MatrixPrice",
     "MatrixPriceBillableMetric",
+    "MatrixPriceCreditAllocation",
     "MatrixPriceItem",
     "MatrixPriceMatrixConfig",
     "MatrixPriceMatrixConfigMatrixValue",
@@ -32,6 +35,7 @@ __all__ = [
     "MatrixPriceMinimum",
     "TieredPrice",
     "TieredPriceBillableMetric",
+    "TieredPriceCreditAllocation",
     "TieredPriceItem",
     "TieredPriceMaximum",
     "TieredPriceMinimum",
@@ -39,6 +43,7 @@ __all__ = [
     "TieredPriceTieredConfigTier",
     "TieredBpsPrice",
     "TieredBpsPriceBillableMetric",
+    "TieredBpsPriceCreditAllocation",
     "TieredBpsPriceItem",
     "TieredBpsPriceMaximum",
     "TieredBpsPriceMinimum",
@@ -47,6 +52,7 @@ __all__ = [
     "BpsPrice",
     "BpsPriceBillableMetric",
     "BpsPriceBpsConfig",
+    "BpsPriceCreditAllocation",
     "BpsPriceItem",
     "BpsPriceMaximum",
     "BpsPriceMinimum",
@@ -54,6 +60,7 @@ __all__ = [
     "BulkBpsPriceBillableMetric",
     "BulkBpsPriceBulkBpsConfig",
     "BulkBpsPriceBulkBpsConfigTier",
+    "BulkBpsPriceCreditAllocation",
     "BulkBpsPriceItem",
     "BulkBpsPriceMaximum",
     "BulkBpsPriceMinimum",
@@ -61,46 +68,55 @@ __all__ = [
     "BulkPriceBillableMetric",
     "BulkPriceBulkConfig",
     "BulkPriceBulkConfigTier",
+    "BulkPriceCreditAllocation",
     "BulkPriceItem",
     "BulkPriceMaximum",
     "BulkPriceMinimum",
     "ThresholdTotalAmountPrice",
     "ThresholdTotalAmountPriceBillableMetric",
+    "ThresholdTotalAmountPriceCreditAllocation",
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
     "ThresholdTotalAmountPriceMinimum",
     "TieredPackagePrice",
     "TieredPackagePriceBillableMetric",
+    "TieredPackagePriceCreditAllocation",
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
     "TieredPackagePriceMinimum",
     "GroupedTieredPrice",
     "GroupedTieredPriceBillableMetric",
+    "GroupedTieredPriceCreditAllocation",
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
     "GroupedTieredPriceMinimum",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceBillableMetric",
+    "TieredWithMinimumPriceCreditAllocation",
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
     "TieredWithMinimumPriceMinimum",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceBillableMetric",
+    "TieredPackageWithMinimumPriceCreditAllocation",
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
     "TieredPackageWithMinimumPriceMinimum",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceBillableMetric",
+    "PackageWithAllocationPriceCreditAllocation",
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
     "PackageWithAllocationPriceMinimum",
     "UnitWithPercentPrice",
     "UnitWithPercentPriceBillableMetric",
+    "UnitWithPercentPriceCreditAllocation",
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
     "UnitWithPercentPriceMinimum",
     "MatrixWithAllocationPrice",
     "MatrixWithAllocationPriceBillableMetric",
+    "MatrixWithAllocationPriceCreditAllocation",
     "MatrixWithAllocationPriceItem",
     "MatrixWithAllocationPriceMatrixWithAllocationConfig",
     "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
@@ -111,6 +127,12 @@ __all__ = [
 
 class UnitPriceBillableMetric(BaseModel):
     id: str
+
+
+class UnitPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class UnitPriceItem(BaseModel):
@@ -155,6 +177,8 @@ class UnitPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[UnitPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -186,6 +210,12 @@ class UnitPrice(BaseModel):
 
 class PackagePriceBillableMetric(BaseModel):
     id: str
+
+
+class PackagePriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class PackagePriceItem(BaseModel):
@@ -237,6 +267,8 @@ class PackagePrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[PackagePriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -268,6 +300,12 @@ class PackagePrice(BaseModel):
 
 class MatrixPriceBillableMetric(BaseModel):
     id: str
+
+
+class MatrixPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class MatrixPriceItem(BaseModel):
@@ -330,6 +368,8 @@ class MatrixPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[MatrixPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -361,6 +401,12 @@ class MatrixPrice(BaseModel):
 
 class TieredPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class TieredPriceItem(BaseModel):
@@ -416,6 +462,8 @@ class TieredPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[TieredPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -447,6 +495,12 @@ class TieredPrice(BaseModel):
 
 class TieredBpsPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredBpsPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class TieredBpsPriceItem(BaseModel):
@@ -508,6 +562,8 @@ class TieredBpsPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[TieredBpsPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -549,6 +605,12 @@ class BpsPriceBpsConfig(BaseModel):
     """Optional currency amount maximum to cap spend per event"""
 
 
+class BpsPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
 class BpsPriceItem(BaseModel):
     id: str
 
@@ -587,6 +649,8 @@ class BpsPrice(BaseModel):
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
     created_at: datetime
+
+    credit_allocation: Optional[BpsPriceCreditAllocation] = None
 
     currency: str
 
@@ -638,6 +702,12 @@ class BulkBpsPriceBulkBpsConfig(BaseModel):
     """
 
 
+class BulkBpsPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
 class BulkBpsPriceItem(BaseModel):
     id: str
 
@@ -676,6 +746,8 @@ class BulkBpsPrice(BaseModel):
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
     created_at: datetime
+
+    credit_allocation: Optional[BulkBpsPriceCreditAllocation] = None
 
     currency: str
 
@@ -721,6 +793,12 @@ class BulkPriceBulkConfig(BaseModel):
     """Bulk tiers for rating based on total usage volume"""
 
 
+class BulkPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
 class BulkPriceItem(BaseModel):
     id: str
 
@@ -760,6 +838,8 @@ class BulkPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[BulkPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -789,6 +869,12 @@ class BulkPrice(BaseModel):
 
 class ThresholdTotalAmountPriceBillableMetric(BaseModel):
     id: str
+
+
+class ThresholdTotalAmountPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class ThresholdTotalAmountPriceItem(BaseModel):
@@ -828,6 +914,8 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[ThresholdTotalAmountPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -859,6 +947,12 @@ class ThresholdTotalAmountPrice(BaseModel):
 
 class TieredPackagePriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPackagePriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class TieredPackagePriceItem(BaseModel):
@@ -898,6 +992,8 @@ class TieredPackagePrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[TieredPackagePriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -929,6 +1025,12 @@ class TieredPackagePrice(BaseModel):
 
 class GroupedTieredPriceBillableMetric(BaseModel):
     id: str
+
+
+class GroupedTieredPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class GroupedTieredPriceItem(BaseModel):
@@ -968,6 +1070,8 @@ class GroupedTieredPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[GroupedTieredPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -999,6 +1103,12 @@ class GroupedTieredPrice(BaseModel):
 
 class TieredWithMinimumPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredWithMinimumPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class TieredWithMinimumPriceItem(BaseModel):
@@ -1038,6 +1148,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[TieredWithMinimumPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -1069,6 +1181,12 @@ class TieredWithMinimumPrice(BaseModel):
 
 class TieredPackageWithMinimumPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPackageWithMinimumPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class TieredPackageWithMinimumPriceItem(BaseModel):
@@ -1108,6 +1226,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[TieredPackageWithMinimumPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -1139,6 +1259,12 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
 class PackageWithAllocationPriceBillableMetric(BaseModel):
     id: str
+
+
+class PackageWithAllocationPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class PackageWithAllocationPriceItem(BaseModel):
@@ -1178,6 +1304,8 @@ class PackageWithAllocationPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[PackageWithAllocationPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -1209,6 +1337,12 @@ class PackageWithAllocationPrice(BaseModel):
 
 class UnitWithPercentPriceBillableMetric(BaseModel):
     id: str
+
+
+class UnitWithPercentPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class UnitWithPercentPriceItem(BaseModel):
@@ -1248,6 +1382,8 @@ class UnitWithPercentPrice(BaseModel):
 
     created_at: datetime
 
+    credit_allocation: Optional[UnitWithPercentPriceCreditAllocation] = None
+
     currency: str
 
     discount: Optional[Discount] = None
@@ -1279,6 +1415,12 @@ class UnitWithPercentPrice(BaseModel):
 
 class MatrixWithAllocationPriceBillableMetric(BaseModel):
     id: str
+
+
+class MatrixWithAllocationPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
 
 
 class MatrixWithAllocationPriceItem(BaseModel):
@@ -1343,6 +1485,8 @@ class MatrixWithAllocationPrice(BaseModel):
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
     created_at: datetime
+
+    credit_allocation: Optional[MatrixWithAllocationPriceCreditAllocation] = None
 
     currency: str
 
