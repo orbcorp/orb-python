@@ -14,6 +14,8 @@ class CreditListResponse(BaseModel):
 
     balance: float
 
+    effective_date: Optional[datetime] = None
+
     expiry_date: Optional[datetime] = None
 
     per_unit_cost_basis: Optional[str] = None
