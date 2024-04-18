@@ -4,6 +4,7 @@ from typing import List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
+from .shared import PaginationMetadata
 from .._models import BaseModel
 
 __all__ = [
@@ -17,7 +18,6 @@ __all__ = [
     "GroupedSubscriptionUsageDataBillableMetric",
     "GroupedSubscriptionUsageDataMetricGroup",
     "GroupedSubscriptionUsageDataUsage",
-    "GroupedSubscriptionUsagePaginationMetadata",
 ]
 
 
@@ -77,16 +77,10 @@ class GroupedSubscriptionUsageData(BaseModel):
     view_mode: Literal["periodic", "cumulative"]
 
 
-class GroupedSubscriptionUsagePaginationMetadata(BaseModel):
-    has_more: bool
-
-    next_cursor: Optional[str] = None
-
-
 class GroupedSubscriptionUsage(BaseModel):
     data: List[GroupedSubscriptionUsageData]
 
-    pagination_metadata: Optional[GroupedSubscriptionUsagePaginationMetadata] = None
+    pagination_metadata: Optional[PaginationMetadata] = None
 
 
 SubscriptionUsage = Union[UngroupedSubscriptionUsage, GroupedSubscriptionUsage]
