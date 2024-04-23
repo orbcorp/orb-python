@@ -48,7 +48,7 @@ class Ledger(SyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -209,7 +209,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         entry_type: Literal["increment"],
@@ -383,7 +383,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         entry_type: Literal["decrement"],
@@ -539,7 +539,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
         expiry_date: Union[str, datetime, None],
@@ -707,7 +707,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -869,7 +869,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -1034,7 +1034,7 @@ class Ledger(SyncAPIResource):
     )
     def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float | None | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
@@ -1100,7 +1100,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         entry_type: Literal["increment"],
@@ -1276,7 +1276,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         entry_type: Literal["decrement"],
@@ -1432,7 +1432,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
         expiry_date: Union[str, datetime, None],
@@ -1600,7 +1600,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -1762,7 +1762,7 @@ class Ledger(SyncAPIResource):
     @overload
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -1927,7 +1927,7 @@ class Ledger(SyncAPIResource):
     )
     def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float | None | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
@@ -1996,7 +1996,7 @@ class Ledger(SyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -2170,7 +2170,7 @@ class AsyncLedger(AsyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -2331,7 +2331,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         entry_type: Literal["increment"],
@@ -2505,7 +2505,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         entry_type: Literal["decrement"],
@@ -2661,7 +2661,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
         expiry_date: Union[str, datetime, None],
@@ -2829,7 +2829,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -2991,7 +2991,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -3156,7 +3156,7 @@ class AsyncLedger(AsyncAPIResource):
     )
     async def create_entry(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: float | None | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
@@ -3222,7 +3222,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         entry_type: Literal["increment"],
@@ -3398,7 +3398,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         entry_type: Literal["decrement"],
@@ -3554,7 +3554,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
         expiry_date: Union[str, datetime, None],
@@ -3722,7 +3722,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -3884,7 +3884,7 @@ class AsyncLedger(AsyncAPIResource):
     @overload
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float,
         block_id: str,
@@ -4049,7 +4049,7 @@ class AsyncLedger(AsyncAPIResource):
     )
     async def create_entry_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: float | None | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
@@ -4118,7 +4118,7 @@ class AsyncLedger(AsyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
