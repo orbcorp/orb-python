@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .shared import Discount
 from .._models import BaseModel
+from .shared.discount import Discount
 
 __all__ = [
     "Price",

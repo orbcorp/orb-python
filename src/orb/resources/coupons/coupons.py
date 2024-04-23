@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from ... import _legacy_response
-from ...types import Coupon, coupon_list_params, coupon_create_params
+from ...types import coupon_list_params, coupon_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -29,6 +29,7 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.coupon import Coupon
 
 __all__ = ["Coupons", "AsyncCoupons"]
 

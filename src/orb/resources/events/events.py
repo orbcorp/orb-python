@@ -8,15 +8,7 @@ from datetime import datetime
 import httpx
 
 from ... import _legacy_response
-from ...types import (
-    EventIngestResponse,
-    EventSearchResponse,
-    EventUpdateResponse,
-    EventDeprecateResponse,
-    event_ingest_params,
-    event_search_params,
-    event_update_params,
-)
+from ...types import event_ingest_params, event_search_params, event_update_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -36,6 +28,10 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
+from ...types.event_ingest_response import EventIngestResponse
+from ...types.event_search_response import EventSearchResponse
+from ...types.event_update_response import EventUpdateResponse
+from ...types.event_deprecate_response import EventDeprecateResponse
 
 __all__ = ["Events", "AsyncEvents"]
 

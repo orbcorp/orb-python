@@ -11,10 +11,10 @@ from orb import Orb, AsyncOrb
 from orb._utils import parse_date, parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers.credits import (
-    LedgerListResponse,
-    LedgerCreateEntryResponse,
-    LedgerListByExternalIDResponse,
+from orb.types.customers.credits.ledger_list_response import LedgerListResponse
+from orb.types.customers.credits.ledger_create_entry_response import LedgerCreateEntryResponse
+from orb.types.customers.credits.ledger_list_by_external_id_response import LedgerListByExternalIDResponse
+from orb.types.customers.credits.ledger_create_entry_by_external_id_response import (
     LedgerCreateEntryByExternalIDResponse,
 )
 

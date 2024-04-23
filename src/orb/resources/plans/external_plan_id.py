@@ -7,7 +7,6 @@ from typing import Dict, Optional
 import httpx
 
 from ... import _legacy_response
-from ...types import Plan
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -16,6 +15,7 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ...types.plan import Plan
 from ...types.plans import external_plan_id_update_params
 from ..._base_client import (
     make_request_options,

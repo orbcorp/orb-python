@@ -22,12 +22,9 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.customers import (
-    BalanceTransactionListResponse,
-    BalanceTransactionCreateResponse,
-    balance_transaction_list_params,
-    balance_transaction_create_params,
-)
+from ...types.customers import balance_transaction_list_params, balance_transaction_create_params
+from ...types.customers.balance_transaction_list_response import BalanceTransactionListResponse
+from ...types.customers.balance_transaction_create_response import BalanceTransactionCreateResponse
 
 __all__ = ["BalanceTransactions", "AsyncBalanceTransactions"]
 

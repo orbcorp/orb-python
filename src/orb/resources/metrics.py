@@ -8,13 +8,7 @@ from datetime import datetime
 import httpx
 
 from .. import _legacy_response
-from ..types import (
-    MetricListResponse,
-    MetricFetchResponse,
-    MetricCreateResponse,
-    metric_list_params,
-    metric_create_params,
-)
+from ..types import metric_list_params, metric_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -28,6 +22,9 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.metric_list_response import MetricListResponse
+from ..types.metric_fetch_response import MetricFetchResponse
+from ..types.metric_create_response import MetricCreateResponse
 
 __all__ = ["Metrics", "AsyncMetrics"]
 

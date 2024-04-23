@@ -26,7 +26,6 @@ from .usage import (
     AsyncUsageWithStreamingResponse,
 )
 from ...types import (
-    Customer,
     customer_list_params,
     customer_create_params,
     customer_update_params,
@@ -54,6 +53,7 @@ from ..._base_client import (
     make_request_options,
 )
 from .credits.credits import Credits, AsyncCredits
+from ...types.customer import Customer
 from .balance_transactions import (
     BalanceTransactions,
     AsyncBalanceTransactions,
