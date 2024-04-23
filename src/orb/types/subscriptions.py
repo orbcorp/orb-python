@@ -2,9 +2,9 @@
 
 from typing import List
 
-from .shared import PaginationMetadata
 from .._models import BaseModel
 from .subscription import Subscription
+from .shared.pagination_metadata import PaginationMetadata
 
 __all__ = ["Subscriptions"]
 

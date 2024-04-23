@@ -16,10 +16,11 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.beta import PriceEvaluateResponse, price_evaluate_params
+from ...types.beta import price_evaluate_params
 from ..._base_client import (
     make_request_options,
 )
+from ...types.beta.price_evaluate_response import PriceEvaluateResponse
 
 __all__ = ["Price", "AsyncPrice"]
 
