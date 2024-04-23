@@ -6,6 +6,7 @@ from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .shared import BillingCycleRelativeDate
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -941,7 +942,7 @@ AddPrice = Union[
 
 class Add(TypedDict, total=False):
     start_date: Required[
-        Annotated[Union[Union[str, datetime], Literal["start_of_term", "end_of_term"]], PropertyInfo(format="iso8601")]
+        Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
     ]
     """The start date of the price interval.
 
@@ -951,9 +952,7 @@ class Add(TypedDict, total=False):
     discounts: Optional[Iterable[AddDiscount]]
     """A list of discounts to initialize on the price interval."""
 
-    end_date: Annotated[
-        Union[Union[str, datetime], Literal["start_of_term", "end_of_term"], None], PropertyInfo(format="iso8601")
-    ]
+    end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
     """The end date of the price interval.
 
     This is the date that the price will stop billing on the subscription.
@@ -1003,9 +1002,7 @@ class Edit(TypedDict, total=False):
     overlapping price intervals must have the same billing cycle day.
     """
 
-    end_date: Annotated[
-        Union[Union[str, datetime], Literal["start_of_term", "end_of_term"], None], PropertyInfo(format="iso8601")
-    ]
+    end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
     """The updated end date of this price interval.
 
     If not specified, the start date will not be updated.
@@ -1018,9 +1015,7 @@ class Edit(TypedDict, total=False):
     on the price interval.
     """
 
-    start_date: Annotated[
-        Union[Union[str, datetime], Literal["start_of_term", "end_of_term"]], PropertyInfo(format="iso8601")
-    ]
+    start_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
     """The updated start date of this price interval.
 
     If not specified, the start date will not be updated.
