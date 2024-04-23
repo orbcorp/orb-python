@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from orb.types import Discount, PaginationMetadata
+from orb.types import BillingCycleRelativeDate, Discount, PaginationMetadata
 ```
 
 # TopLevel
