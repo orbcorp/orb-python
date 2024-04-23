@@ -46,7 +46,7 @@ class TopUps(SyncAPIResource):
 
     def create(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: str,
         currency: str,
@@ -128,7 +128,7 @@ class TopUps(SyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -182,7 +182,7 @@ class TopUps(SyncAPIResource):
         self,
         top_up_id: str,
         *,
-        customer_id: Optional[str],
+        customer_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,7 +224,7 @@ class TopUps(SyncAPIResource):
 
     def create_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: str,
         currency: str,
@@ -310,7 +310,7 @@ class TopUps(SyncAPIResource):
         self,
         top_up_id: str,
         *,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -354,7 +354,7 @@ class TopUps(SyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -418,7 +418,7 @@ class AsyncTopUps(AsyncAPIResource):
 
     async def create(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         amount: str,
         currency: str,
@@ -500,7 +500,7 @@ class AsyncTopUps(AsyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -554,7 +554,7 @@ class AsyncTopUps(AsyncAPIResource):
         self,
         top_up_id: str,
         *,
-        customer_id: Optional[str],
+        customer_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -596,7 +596,7 @@ class AsyncTopUps(AsyncAPIResource):
 
     async def create_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         amount: str,
         currency: str,
@@ -682,7 +682,7 @@ class AsyncTopUps(AsyncAPIResource):
         self,
         top_up_id: str,
         *,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -726,7 +726,7 @@ class AsyncTopUps(AsyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
