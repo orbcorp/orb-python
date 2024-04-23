@@ -53,6 +53,7 @@ class TestPlans:
                     "cadence": "annual",
                     "model_type": "unit",
                     "unit_config": {"unit_amount": "string"},
+                    "currency": "string",
                 }
             ],
             default_invoice_memo="string",
@@ -267,6 +268,7 @@ class TestAsyncPlans:
                     "cadence": "annual",
                     "model_type": "unit",
                     "unit_config": {"unit_amount": "string"},
+                    "currency": "string",
                 }
             ],
             default_invoice_memo="string",
