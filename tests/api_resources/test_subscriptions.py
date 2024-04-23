@@ -125,6 +125,56 @@ class TestSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_update(self, client: Orb) -> None:
+        subscription = client.subscriptions.update(
+            "string",
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Orb) -> None:
+        subscription = client.subscriptions.update(
+            "string",
+            auto_collection=True,
+            default_invoice_memo="string",
+            invoicing_threshold="10.00",
+            metadata={"foo": "string"},
+            net_terms=0,
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.update(
+            "string",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.update(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         subscription = client.subscriptions.list()
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
@@ -1109,6 +1159,56 @@ class TestAsyncSubscriptions:
             assert_matches_type(Subscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.update(
+            "string",
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.update(
+            "string",
+            auto_collection=True,
+            default_invoice_memo="string",
+            invoicing_threshold="10.00",
+            metadata={"foo": "string"},
+            net_terms=0,
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
+        response = await async_client.subscriptions.with_raw_response.update(
+            "string",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
+        async with async_client.subscriptions.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await async_client.subscriptions.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:

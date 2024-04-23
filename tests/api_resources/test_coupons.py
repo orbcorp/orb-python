@@ -23,8 +23,7 @@ class TestCoupons:
         coupon = client.coupons.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         )
@@ -35,9 +34,7 @@ class TestCoupons:
         coupon = client.coupons.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "reason": "string",
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
             duration_in_months=12,
@@ -50,8 +47,7 @@ class TestCoupons:
         response = client.coupons.with_raw_response.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         )
@@ -66,8 +62,7 @@ class TestCoupons:
         with client.coupons.with_streaming_response.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         ) as response:
@@ -199,8 +194,7 @@ class TestAsyncCoupons:
         coupon = await async_client.coupons.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         )
@@ -211,9 +205,7 @@ class TestAsyncCoupons:
         coupon = await async_client.coupons.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "reason": "string",
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
             duration_in_months=12,
@@ -226,8 +218,7 @@ class TestAsyncCoupons:
         response = await async_client.coupons.with_raw_response.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         )
@@ -242,8 +233,7 @@ class TestAsyncCoupons:
         async with async_client.coupons.with_streaming_response.create(
             discount={
                 "discount_type": "percentage",
-                "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "percentage_discount": 0.15,
+                "percentage_discount": 0,
             },
             redemption_code="HALFOFF",
         ) as response:
