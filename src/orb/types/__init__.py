@@ -6,7 +6,11 @@ from .item import Item as Item
 from .plan import Plan as Plan
 from .price import Price as Price
 from .coupon import Coupon as Coupon
-from .shared import Discount as Discount, PaginationMetadata as PaginationMetadata
+from .shared import (
+    Discount as Discount,
+    PaginationMetadata as PaginationMetadata,
+    BillingCycleRelativeDate as BillingCycleRelativeDate,
+)
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .credit_note import CreditNote as CreditNote
