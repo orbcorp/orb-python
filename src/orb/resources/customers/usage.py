@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
@@ -40,7 +40,7 @@ class Usage(SyncAPIResource):
 
     def update(
         self,
-        id: Optional[str],
+        id: str,
         *,
         events: Iterable[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -193,7 +193,7 @@ class Usage(SyncAPIResource):
 
     def update_by_external_id(
         self,
-        id: Optional[str],
+        id: str,
         *,
         events: Iterable[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -356,7 +356,7 @@ class AsyncUsage(AsyncAPIResource):
 
     async def update(
         self,
-        id: Optional[str],
+        id: str,
         *,
         events: Iterable[usage_update_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -509,7 +509,7 @@ class AsyncUsage(AsyncAPIResource):
 
     async def update_by_external_id(
         self,
-        id: Optional[str],
+        id: str,
         *,
         events: Iterable[usage_update_by_external_id_params.Event],
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,

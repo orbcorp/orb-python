@@ -41,7 +41,7 @@ class Costs(SyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -230,7 +230,7 @@ class Costs(SyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -431,7 +431,7 @@ class AsyncCosts(AsyncAPIResource):
 
     async def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -620,7 +620,7 @@ class AsyncCosts(AsyncAPIResource):
 
     async def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,

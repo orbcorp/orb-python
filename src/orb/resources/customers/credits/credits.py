@@ -62,7 +62,7 @@ class Credits(SyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
@@ -117,7 +117,7 @@ class Credits(SyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
@@ -192,7 +192,7 @@ class AsyncCredits(AsyncAPIResource):
 
     def list(
         self,
-        customer_id: Optional[str],
+        customer_id: str,
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
@@ -247,7 +247,7 @@ class AsyncCredits(AsyncAPIResource):
 
     def list_by_external_id(
         self,
-        external_customer_id: Optional[str],
+        external_customer_id: str,
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
