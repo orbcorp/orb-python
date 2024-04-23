@@ -105,6 +105,12 @@ class PriceNewPlanUnitPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -154,6 +160,12 @@ class PriceNewPlanPackagePrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]
@@ -218,6 +230,12 @@ class PriceNewPlanMatrixPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -271,6 +289,12 @@ class PriceNewPlanTieredPrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]
@@ -334,6 +358,12 @@ class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -379,6 +409,12 @@ class PriceNewPlanBpsPrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]
@@ -439,6 +475,12 @@ class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -491,6 +533,12 @@ class PriceNewPlanBulkPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -528,6 +576,12 @@ class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]
@@ -569,6 +623,12 @@ class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -606,6 +666,12 @@ class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]
@@ -647,6 +713,12 @@ class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -684,6 +756,12 @@ class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
     """
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
+    """
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
     """
 
     external_price_id: Optional[str]

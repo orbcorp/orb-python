@@ -17,6 +17,7 @@ from ..types import (
     subscription_list_params,
     subscription_cancel_params,
     subscription_create_params,
+    subscription_update_params,
     subscription_fetch_costs_params,
     subscription_fetch_usage_params,
     subscription_trigger_phase_params,
@@ -525,6 +526,83 @@ class Subscriptions(SyncAPIResource):
                     "start_date": start_date,
                 },
                 subscription_create_params.SubscriptionCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Subscription,
+        )
+
+    def update(
+        self,
+        subscription_id: str,
+        *,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
+        """
+        This endpoint can be used to update the `metadata`, `net terms`,
+        `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
+        on a subscription.
+
+        Args:
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. This property defaults to
+              the plan's behavior.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
+
+          invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
+              be issued for the subscription. If not specified, invoices will only be issued
+              at the end of the billing period.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          net_terms: Determines the difference between the invoice issue date for subscription
+              invoices as the date that they are due. A value of `0` here represents that the
+              invoice is due on issue, whereas a value of `30` represents that the customer
+              has a month to pay the invoice.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return self._put(
+            f"/subscriptions/{subscription_id}",
+            body=maybe_transform(
+                {
+                    "auto_collection": auto_collection,
+                    "default_invoice_memo": default_invoice_memo,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                subscription_update_params.SubscriptionUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -2166,6 +2244,83 @@ class AsyncSubscriptions(AsyncAPIResource):
             cast_to=Subscription,
         )
 
+    async def update(
+        self,
+        subscription_id: str,
+        *,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
+        """
+        This endpoint can be used to update the `metadata`, `net terms`,
+        `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
+        on a subscription.
+
+        Args:
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. This property defaults to
+              the plan's behavior.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
+
+          invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
+              be issued for the subscription. If not specified, invoices will only be issued
+              at the end of the billing period.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          net_terms: Determines the difference between the invoice issue date for subscription
+              invoices as the date that they are due. A value of `0` here represents that the
+              invoice is due on issue, whereas a value of `30` represents that the customer
+              has a month to pay the invoice.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return await self._put(
+            f"/subscriptions/{subscription_id}",
+            body=await async_maybe_transform(
+                {
+                    "auto_collection": auto_collection,
+                    "default_invoice_memo": default_invoice_memo,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                subscription_update_params.SubscriptionUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Subscription,
+        )
+
     def list(
         self,
         *,
@@ -3310,6 +3465,9 @@ class SubscriptionsWithRawResponse:
         self.create = _legacy_response.to_raw_response_wrapper(
             subscriptions.create,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            subscriptions.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             subscriptions.list,
         )
@@ -3357,6 +3515,9 @@ class AsyncSubscriptionsWithRawResponse:
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.create,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            subscriptions.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.list,
@@ -3406,6 +3567,9 @@ class SubscriptionsWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             subscriptions.create,
         )
+        self.update = to_streamed_response_wrapper(
+            subscriptions.update,
+        )
         self.list = to_streamed_response_wrapper(
             subscriptions.list,
         )
@@ -3453,6 +3617,9 @@ class AsyncSubscriptionsWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             subscriptions.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            subscriptions.update,
         )
         self.list = async_to_streamed_response_wrapper(
             subscriptions.list,
