@@ -10,10 +10,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    Subscription,
-    SubscriptionUsage,
-    SubscriptionFetchCostsResponse,
-    SubscriptionFetchScheduleResponse,
     subscription_list_params,
     subscription_cancel_params,
     subscription_create_params,
@@ -40,6 +36,10 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.subscription import Subscription
+from ..types.subscription_usage import SubscriptionUsage
+from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
+from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 

@@ -10,8 +10,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    Invoice,
-    InvoiceFetchUpcomingResponse,
     invoice_list_params,
     invoice_create_params,
     invoice_mark_paid_params,
@@ -30,6 +28,8 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.invoice import Invoice
+from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
 __all__ = ["Invoices", "AsyncInvoices"]
 

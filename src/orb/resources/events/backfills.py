@@ -21,15 +21,12 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.events import (
-    BackfillListResponse,
-    BackfillCloseResponse,
-    BackfillFetchResponse,
-    BackfillCreateResponse,
-    BackfillRevertResponse,
-    backfill_list_params,
-    backfill_create_params,
-)
+from ...types.events import backfill_list_params, backfill_create_params
+from ...types.events.backfill_list_response import BackfillListResponse
+from ...types.events.backfill_close_response import BackfillCloseResponse
+from ...types.events.backfill_fetch_response import BackfillFetchResponse
+from ...types.events.backfill_create_response import BackfillCreateResponse
+from ...types.events.backfill_revert_response import BackfillRevertResponse
 
 __all__ = ["Backfills", "AsyncBackfills"]
 

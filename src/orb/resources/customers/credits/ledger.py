@@ -24,14 +24,16 @@ from ...._base_client import (
     make_request_options,
 )
 from ....types.customers.credits import (
-    LedgerListResponse,
-    LedgerCreateEntryResponse,
-    LedgerListByExternalIDResponse,
-    LedgerCreateEntryByExternalIDResponse,
     ledger_list_params,
     ledger_create_entry_params,
     ledger_list_by_external_id_params,
     ledger_create_entry_by_external_id_params,
+)
+from ....types.customers.credits.ledger_list_response import LedgerListResponse
+from ....types.customers.credits.ledger_create_entry_response import LedgerCreateEntryResponse
+from ....types.customers.credits.ledger_list_by_external_id_response import LedgerListByExternalIDResponse
+from ....types.customers.credits.ledger_create_entry_by_external_id_response import (
+    LedgerCreateEntryByExternalIDResponse,
 )
 
 __all__ = ["Ledger", "AsyncLedger"]

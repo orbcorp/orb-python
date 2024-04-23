@@ -5,8 +5,8 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .price import Price
-from .shared import Discount
 from .._models import BaseModel
+from .shared.discount import Discount
 
 __all__ = [
     "Invoice",

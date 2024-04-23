@@ -11,13 +11,11 @@ from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.events import (
-    BackfillListResponse,
-    BackfillCloseResponse,
-    BackfillFetchResponse,
-    BackfillCreateResponse,
-    BackfillRevertResponse,
-)
+from orb.types.events.backfill_list_response import BackfillListResponse
+from orb.types.events.backfill_close_response import BackfillCloseResponse
+from orb.types.events.backfill_fetch_response import BackfillFetchResponse
+from orb.types.events.backfill_create_response import BackfillCreateResponse
+from orb.types.events.backfill_revert_response import BackfillRevertResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

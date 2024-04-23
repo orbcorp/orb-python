@@ -7,7 +7,6 @@ from typing import Optional
 import httpx
 
 from ... import _legacy_response
-from ...types import Subscription
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
@@ -19,6 +18,7 @@ from ..._base_client import (
     make_request_options,
 )
 from ...types.coupons import subscription_list_params
+from ...types.subscription import Subscription
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 

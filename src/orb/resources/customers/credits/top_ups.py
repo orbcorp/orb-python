@@ -22,15 +22,15 @@ from ...._base_client import (
     make_request_options,
 )
 from ....types.customers.credits import (
-    TopUpListResponse,
-    TopUpCreateResponse,
-    TopUpListByExternalIDResponse,
-    TopUpCreateByExternalIDResponse,
     top_up_list_params,
     top_up_create_params,
     top_up_list_by_external_id_params,
     top_up_create_by_external_id_params,
 )
+from ....types.customers.credits.top_up_list_response import TopUpListResponse
+from ....types.customers.credits.top_up_create_response import TopUpCreateResponse
+from ....types.customers.credits.top_up_list_by_external_id_response import TopUpListByExternalIDResponse
+from ....types.customers.credits.top_up_create_by_external_id_response import TopUpCreateByExternalIDResponse
 
 __all__ = ["TopUps", "AsyncTopUps"]
 
