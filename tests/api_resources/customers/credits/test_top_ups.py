@@ -10,12 +10,10 @@ import pytest
 from orb import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers.credits import (
-    TopUpListResponse,
-    TopUpCreateResponse,
-    TopUpListByExternalIDResponse,
-    TopUpCreateByExternalIDResponse,
-)
+from orb.types.customers.credits.top_up_list_response import TopUpListResponse
+from orb.types.customers.credits.top_up_create_response import TopUpCreateResponse
+from orb.types.customers.credits.top_up_list_by_external_id_response import TopUpListByExternalIDResponse
+from orb.types.customers.credits.top_up_create_by_external_id_response import TopUpCreateByExternalIDResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

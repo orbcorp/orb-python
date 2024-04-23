@@ -4,8 +4,8 @@ from typing import List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from .shared import PaginationMetadata
 from .._models import BaseModel
+from .shared.pagination_metadata import PaginationMetadata
 
 __all__ = [
     "SubscriptionUsage",

@@ -8,7 +8,7 @@ from datetime import date
 import httpx
 
 from .. import _legacy_response
-from ..types import InvoiceLineItemCreateResponse, invoice_line_item_create_params
+from ..types import invoice_line_item_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -20,6 +20,7 @@ from .._response import to_streamed_response_wrapper, async_to_streamed_response
 from .._base_client import (
     make_request_options,
 )
+from ..types.invoice_line_item_create_response import InvoiceLineItemCreateResponse
 
 __all__ = ["InvoiceLineItems", "AsyncInvoiceLineItems"]
 

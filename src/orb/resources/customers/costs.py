@@ -20,12 +20,9 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.customers import (
-    CostListResponse,
-    CostListByExternalIDResponse,
-    cost_list_params,
-    cost_list_by_external_id_params,
-)
+from ...types.customers import cost_list_params, cost_list_by_external_id_params
+from ...types.customers.cost_list_response import CostListResponse
+from ...types.customers.cost_list_by_external_id_response import CostListByExternalIDResponse
 
 __all__ = ["Costs", "AsyncCosts"]
 

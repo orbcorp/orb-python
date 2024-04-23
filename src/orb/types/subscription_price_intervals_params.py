@@ -6,8 +6,8 @@ from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from .shared import BillingCycleRelativeDate
 from .._utils import PropertyInfo
+from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
 
 __all__ = [
     "SubscriptionPriceIntervalsParams",
