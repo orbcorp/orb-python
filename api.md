@@ -321,6 +321,7 @@ from orb.types import (
 Methods:
 
 - <code title="post /subscriptions">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">create</a>(\*\*<a href="src/orb/types/subscription_create_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
+- <code title="put /subscriptions/{subscription_id}">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="get /subscriptions">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">list</a>(\*\*<a href="src/orb/types/subscription_list_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">SyncPage[Subscription]</a></code>
 - <code title="post /subscriptions/{subscription_id}/cancel">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">cancel</a>(subscription_id, \*\*<a href="src/orb/types/subscription_cancel_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="get /subscriptions/{subscription_id}">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch</a>(subscription_id) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
