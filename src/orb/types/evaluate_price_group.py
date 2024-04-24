@@ -2,7 +2,7 @@
 
 from typing import List, Union
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
 __all__ = ["EvaluatePriceGroup"]
 
