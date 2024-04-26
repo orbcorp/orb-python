@@ -26,6 +26,9 @@ class BackfillFetchResponse(BaseModel):
     If null, this backfill is not scoped to a single customer.
     """
 
+    events_ingested: int
+    """The number of events ingested in this backfill."""
+
     reverted_at: Optional[datetime] = None
     """The time at which this backfill was reverted."""
 
