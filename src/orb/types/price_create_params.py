@@ -70,6 +70,9 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -117,6 +120,9 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -134,7 +140,7 @@ class NewFloatingPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
     """A currency amount to rate usage by"""
 
-    package_size: Optional[int]
+    package_size: Required[int]
     """An integer amount to represent package size.
 
     For example, 1000 here would divide usage by 1000 before multiplying by
@@ -170,6 +176,9 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -235,6 +244,9 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -304,6 +316,9 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -361,6 +376,9 @@ class NewFloatingTieredBpsPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -426,6 +444,9 @@ class NewFloatingBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -475,6 +496,9 @@ class NewFloatingBulkBpsPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -537,6 +561,9 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -592,6 +619,9 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -633,6 +663,9 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -676,6 +709,9 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -717,6 +753,9 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -760,6 +799,9 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -802,6 +844,9 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -843,6 +888,9 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     external_price_id: Optional[str]
     """An alias for the price."""
