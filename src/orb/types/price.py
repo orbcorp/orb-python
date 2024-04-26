@@ -175,6 +175,8 @@ class UnitPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[UnitPriceCreditAllocation] = None
@@ -250,7 +252,7 @@ class PackagePricePackageConfig(BaseModel):
     package_amount: str
     """A currency amount to rate usage by"""
 
-    package_size: Optional[int] = None
+    package_size: int
     """An integer amount to represent package size.
 
     For example, 1000 here would divide usage by 1000 before multiplying by
@@ -264,6 +266,8 @@ class PackagePrice(BaseModel):
     billable_metric: Optional[PackagePriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -366,6 +370,8 @@ class MatrixPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[MatrixPriceCreditAllocation] = None
@@ -459,6 +465,8 @@ class TieredPrice(BaseModel):
     billable_metric: Optional[TieredPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -560,6 +568,8 @@ class TieredBpsPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[TieredBpsPriceCreditAllocation] = None
@@ -647,6 +657,8 @@ class BpsPrice(BaseModel):
     bps_config: BpsPriceBpsConfig
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -745,6 +757,8 @@ class BulkBpsPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[BulkBpsPriceCreditAllocation] = None
@@ -836,6 +850,8 @@ class BulkPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[BulkPriceCreditAllocation] = None
@@ -911,6 +927,8 @@ class ThresholdTotalAmountPrice(BaseModel):
     billable_metric: Optional[ThresholdTotalAmountPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -990,6 +1008,8 @@ class TieredPackagePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[TieredPackagePriceCreditAllocation] = None
@@ -1067,6 +1087,8 @@ class GroupedTieredPrice(BaseModel):
     billable_metric: Optional[GroupedTieredPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -1146,6 +1168,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[TieredWithMinimumPriceCreditAllocation] = None
@@ -1223,6 +1247,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
     billable_metric: Optional[TieredPackageWithMinimumPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -1302,6 +1328,8 @@ class PackageWithAllocationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
 
+    conversion_rate: Optional[float] = None
+
     created_at: datetime
 
     credit_allocation: Optional[PackageWithAllocationPriceCreditAllocation] = None
@@ -1379,6 +1407,8 @@ class UnitWithPercentPrice(BaseModel):
     billable_metric: Optional[UnitWithPercentPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 
@@ -1483,6 +1513,8 @@ class MatrixWithAllocationPrice(BaseModel):
     billable_metric: Optional[MatrixWithAllocationPriceBillableMetric] = None
 
     cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
 
     created_at: datetime
 

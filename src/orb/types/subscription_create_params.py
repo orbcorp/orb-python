@@ -149,6 +149,15 @@ class PriceOverrideOverrideUnitPrice(TypedDict, total=False):
 
     unit_config: Required[PriceOverrideOverrideUnitPriceUnitConfig]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideUnitPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -166,7 +175,7 @@ class PriceOverrideOverridePackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
     """A currency amount to rate usage by"""
 
-    package_size: Optional[int]
+    package_size: Required[int]
     """An integer amount to represent package size.
 
     For example, 1000 here would divide usage by 1000 before multiplying by
@@ -208,6 +217,15 @@ class PriceOverrideOverridePackagePrice(TypedDict, total=False):
     model_type: Required[Literal["package"]]
 
     package_config: Required[PriceOverrideOverridePackagePricePackageConfig]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverridePackagePriceDiscount]
     """The subscription's override discount for the plan."""
@@ -280,6 +298,15 @@ class PriceOverrideOverrideMatrixPrice(TypedDict, total=False):
 
     model_type: Required[Literal["matrix"]]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideMatrixPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -343,6 +370,15 @@ class PriceOverrideOverrideTieredPrice(TypedDict, total=False):
     model_type: Required[Literal["tiered"]]
 
     tiered_config: Required[PriceOverrideOverrideTieredPriceTieredConfig]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverrideTieredPriceDiscount]
     """The subscription's override discount for the plan."""
@@ -414,6 +450,15 @@ class PriceOverrideOverrideTieredBpsPrice(TypedDict, total=False):
 
     tiered_bps_config: Required[PriceOverrideOverrideTieredBpsPriceTieredBpsConfig]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideTieredBpsPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -469,6 +514,15 @@ class PriceOverrideOverrideBpsPrice(TypedDict, total=False):
     bps_config: Required[PriceOverrideOverrideBpsPriceBpsConfig]
 
     model_type: Required[Literal["bps"]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverrideBpsPriceDiscount]
     """The subscription's override discount for the plan."""
@@ -537,6 +591,15 @@ class PriceOverrideOverrideBulkBpsPrice(TypedDict, total=False):
 
     model_type: Required[Literal["bulk_bps"]]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideBulkBpsPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -598,6 +661,15 @@ class PriceOverrideOverrideBulkPrice(TypedDict, total=False):
 
     model_type: Required[Literal["bulk"]]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideBulkPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -645,6 +717,15 @@ class PriceOverrideOverrideThresholdTotalAmountPrice(TypedDict, total=False):
     model_type: Required[Literal["threshold_total_amount"]]
 
     threshold_total_amount_config: Required[Dict[str, object]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverrideThresholdTotalAmountPriceDiscount]
     """The subscription's override discount for the plan."""
@@ -694,6 +775,15 @@ class PriceOverrideOverrideTieredPackagePrice(TypedDict, total=False):
 
     tiered_package_config: Required[Dict[str, object]]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverrideTieredPackagePriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -741,6 +831,15 @@ class PriceOverrideOverrideTieredWithMinimumPrice(TypedDict, total=False):
     model_type: Required[Literal["tiered_with_minimum"]]
 
     tiered_with_minimum_config: Required[Dict[str, object]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverrideTieredWithMinimumPriceDiscount]
     """The subscription's override discount for the plan."""
@@ -790,6 +889,15 @@ class PriceOverrideOverridePackageWithAllocationPrice(TypedDict, total=False):
 
     package_with_allocation_config: Required[Dict[str, object]]
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
     discount: Optional[PriceOverrideOverridePackageWithAllocationPriceDiscount]
     """The subscription's override discount for the plan."""
 
@@ -837,6 +945,15 @@ class PriceOverrideOverrideUnitWithPercentPrice(TypedDict, total=False):
     model_type: Required[Literal["unit_with_percent"]]
 
     unit_with_percent_config: Required[Dict[str, object]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
 
     discount: Optional[PriceOverrideOverrideUnitWithPercentPriceDiscount]
     """The subscription's override discount for the plan."""

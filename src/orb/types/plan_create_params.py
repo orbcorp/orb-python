@@ -105,6 +105,9 @@ class PriceNewPlanUnitPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -128,7 +131,7 @@ class PriceNewPlanPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
     """A currency amount to rate usage by"""
 
-    package_size: Optional[int]
+    package_size: Required[int]
     """An integer amount to represent package size.
 
     For example, 1000 here would divide usage by 1000 before multiplying by
@@ -161,6 +164,9 @@ class PriceNewPlanPackagePrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
@@ -230,6 +236,9 @@ class PriceNewPlanMatrixPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -290,6 +299,9 @@ class PriceNewPlanTieredPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
@@ -358,6 +370,9 @@ class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -410,6 +425,9 @@ class PriceNewPlanBpsPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
@@ -475,6 +493,9 @@ class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -533,6 +554,9 @@ class PriceNewPlanBulkPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -577,6 +601,9 @@ class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
@@ -623,6 +650,9 @@ class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -667,6 +697,9 @@ class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
@@ -713,6 +746,9 @@ class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
     currency: Optional[str]
     """
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -757,6 +793,9 @@ class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
     If the Price represents a fixed cost, the price will be billed in-advance if
     this is true, and in-arrears if this is false.
     """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """

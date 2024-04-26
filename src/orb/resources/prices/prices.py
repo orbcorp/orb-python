@@ -63,6 +63,7 @@ class Prices(SyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -101,6 +102,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -133,6 +136,7 @@ class Prices(SyncAPIResource):
         package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -171,6 +175,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -203,6 +209,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -241,6 +248,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -273,6 +282,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -311,6 +321,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -343,6 +355,7 @@ class Prices(SyncAPIResource):
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -381,6 +394,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -413,6 +428,7 @@ class Prices(SyncAPIResource):
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -451,6 +467,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -483,6 +501,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -521,6 +540,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -553,6 +574,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -591,6 +613,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -623,6 +647,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -661,6 +686,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -693,6 +720,7 @@ class Prices(SyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -731,6 +759,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -763,6 +793,7 @@ class Prices(SyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -801,6 +832,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -833,6 +866,7 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -871,6 +905,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -903,6 +939,7 @@ class Prices(SyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -941,6 +978,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -973,6 +1012,7 @@ class Prices(SyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1011,6 +1051,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1043,6 +1085,7 @@ class Prices(SyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1081,6 +1124,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1113,6 +1158,7 @@ class Prices(SyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1151,6 +1197,8 @@ class Prices(SyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1215,6 +1263,7 @@ class Prices(SyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1256,6 +1305,7 @@ class Prices(SyncAPIResource):
                         "unit_config": unit_config,
                         "billable_metric_id": billable_metric_id,
                         "billed_in_advance": billed_in_advance,
+                        "conversion_rate": conversion_rate,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
@@ -1492,6 +1542,7 @@ class AsyncPrices(AsyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1530,6 +1581,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1562,6 +1615,7 @@ class AsyncPrices(AsyncAPIResource):
         package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1600,6 +1654,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1632,6 +1688,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1670,6 +1727,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1702,6 +1761,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1740,6 +1800,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1772,6 +1834,7 @@ class AsyncPrices(AsyncAPIResource):
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1810,6 +1873,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1842,6 +1907,7 @@ class AsyncPrices(AsyncAPIResource):
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1880,6 +1946,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1912,6 +1980,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1950,6 +2019,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -1982,6 +2053,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2020,6 +2092,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2052,6 +2126,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2090,6 +2165,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2122,6 +2199,7 @@ class AsyncPrices(AsyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2160,6 +2238,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2192,6 +2272,7 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2230,6 +2311,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2262,6 +2345,7 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2300,6 +2384,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2332,6 +2418,7 @@ class AsyncPrices(AsyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2370,6 +2457,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2402,6 +2491,7 @@ class AsyncPrices(AsyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2440,6 +2530,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2472,6 +2564,7 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2510,6 +2603,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2542,6 +2637,7 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2580,6 +2676,8 @@ class AsyncPrices(AsyncAPIResource):
 
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
 
@@ -2644,6 +2742,7 @@ class AsyncPrices(AsyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2685,6 +2784,7 @@ class AsyncPrices(AsyncAPIResource):
                         "unit_config": unit_config,
                         "billable_metric_id": billable_metric_id,
                         "billed_in_advance": billed_in_advance,
+                        "conversion_rate": conversion_rate,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
