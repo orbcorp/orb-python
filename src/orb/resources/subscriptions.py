@@ -1413,6 +1413,11 @@ class Subscriptions(SyncAPIResource):
         default for the plan. The request format for price overrides, maximums, and
         minimums are the same as those in [subscription creation](create-subscription).
 
+        ## Scheduling multiple plan changes
+
+        When scheduling multiple plan changes with the same date, the latest plan change
+        on that day takes effect.
+
         ## Prorations for in-advance fees
 
         By default, Orb calculates the prorated difference in any fixed fees when making
@@ -3119,6 +3124,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         customer has negotiated a new or different minimum or maximum spend cap than the
         default for the plan. The request format for price overrides, maximums, and
         minimums are the same as those in [subscription creation](create-subscription).
+
+        ## Scheduling multiple plan changes
+
+        When scheduling multiple plan changes with the same date, the latest plan change
+        on that day takes effect.
 
         ## Prorations for in-advance fees
 
