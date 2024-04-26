@@ -10,8 +10,10 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
-from orb.types.customers.cost_list_response import CostListResponse
-from orb.types.customers.cost_list_by_external_id_response import CostListByExternalIDResponse
+from orb.types.customers import (
+    CostListResponse,
+    CostListByExternalIDResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
