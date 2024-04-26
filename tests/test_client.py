@@ -17,7 +17,6 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from orb import Orb, AsyncOrb, APIResponseValidationError
-from orb._client import Orb, AsyncOrb
 from orb._models import BaseModel, FinalRequestOptions
 from orb._constants import RAW_RESPONSE_HEADER
 from orb._exceptions import OrbError, APIStatusError, APITimeoutError, APIResponseValidationError
