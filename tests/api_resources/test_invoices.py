@@ -8,11 +8,13 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb.types import (
+    Invoice,
+    InvoiceFetchUpcomingResponse,
+)
 from orb._utils import parse_date, parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.invoice import Invoice
-from orb.types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

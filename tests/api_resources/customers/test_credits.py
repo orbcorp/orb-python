@@ -10,8 +10,10 @@ import pytest
 from orb import Orb, AsyncOrb
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers.credit_list_response import CreditListResponse
-from orb.types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
+from orb.types.customers import (
+    CreditListResponse,
+    CreditListByExternalIDResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
