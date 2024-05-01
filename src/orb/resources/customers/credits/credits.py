@@ -74,6 +74,9 @@ class Credits(SyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string.
+
         Args:
           currency: The ledger currency or custom pricing unit to use.
 
@@ -128,6 +131,9 @@ class Credits(SyncAPIResource):
     ) -> SyncPage[CreditListByExternalIDResponse]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
@@ -204,6 +210,9 @@ class AsyncCredits(AsyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string.
+
         Args:
           currency: The ledger currency or custom pricing unit to use.
 
@@ -258,6 +267,9 @@ class AsyncCredits(AsyncAPIResource):
     ) -> AsyncPaginator[CreditListByExternalIDResponse, AsyncPage[CreditListByExternalIDResponse]]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
