@@ -276,7 +276,7 @@ client = Orb(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).customers.create(
+client.with_options(timeout=5.0).customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
 )
