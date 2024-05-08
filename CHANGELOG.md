@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.49.0 (2024-05-08)
+
+Full Changelog: [v1.48.0...v1.49.0](https://github.com/orbcorp/orb-python/compare/v1.48.0...v1.49.0)
+
+### Features
+
+* **api:** add method to enable alerts ([#255](https://github.com/orbcorp/orb-python/issues/255)) ([8531900](https://github.com/orbcorp/orb-python/commit/853190015924d67b6264db3f3f60cc143e037a6e))
+
 ## 1.48.0 (2024-05-03)
 
 Full Changelog: [v1.47.1...v1.48.0](https://github.com/orbcorp/orb-python/compare/v1.47.1...v1.48.0)
