@@ -59,6 +59,7 @@ class Orb(SyncAPIClient):
     plans: resources.Plans
     prices: resources.Prices
     subscriptions: resources.Subscriptions
+    alerts: resources.Alerts
     with_raw_response: OrbWithRawResponse
     with_streaming_response: OrbWithStreamedResponse
 
@@ -138,6 +139,7 @@ class Orb(SyncAPIClient):
         self.plans = resources.Plans(self)
         self.prices = resources.Prices(self)
         self.subscriptions = resources.Subscriptions(self)
+        self.alerts = resources.Alerts(self)
         self.with_raw_response = OrbWithRawResponse(self)
         self.with_streaming_response = OrbWithStreamedResponse(self)
 
@@ -309,6 +311,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: resources.AsyncPlans
     prices: resources.AsyncPrices
     subscriptions: resources.AsyncSubscriptions
+    alerts: resources.AsyncAlerts
     with_raw_response: AsyncOrbWithRawResponse
     with_streaming_response: AsyncOrbWithStreamedResponse
 
@@ -388,6 +391,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = resources.AsyncPlans(self)
         self.prices = resources.AsyncPrices(self)
         self.subscriptions = resources.AsyncSubscriptions(self)
+        self.alerts = resources.AsyncAlerts(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
         self.with_streaming_response = AsyncOrbWithStreamedResponse(self)
 
@@ -560,6 +564,7 @@ class OrbWithRawResponse:
         self.plans = resources.PlansWithRawResponse(client.plans)
         self.prices = resources.PricesWithRawResponse(client.prices)
         self.subscriptions = resources.SubscriptionsWithRawResponse(client.subscriptions)
+        self.alerts = resources.AlertsWithRawResponse(client.alerts)
 
 
 class AsyncOrbWithRawResponse:
@@ -576,6 +581,7 @@ class AsyncOrbWithRawResponse:
         self.plans = resources.AsyncPlansWithRawResponse(client.plans)
         self.prices = resources.AsyncPricesWithRawResponse(client.prices)
         self.subscriptions = resources.AsyncSubscriptionsWithRawResponse(client.subscriptions)
+        self.alerts = resources.AsyncAlertsWithRawResponse(client.alerts)
 
 
 class OrbWithStreamedResponse:
@@ -592,6 +598,7 @@ class OrbWithStreamedResponse:
         self.plans = resources.PlansWithStreamingResponse(client.plans)
         self.prices = resources.PricesWithStreamingResponse(client.prices)
         self.subscriptions = resources.SubscriptionsWithStreamingResponse(client.subscriptions)
+        self.alerts = resources.AlertsWithStreamingResponse(client.alerts)
 
 
 class AsyncOrbWithStreamedResponse:
@@ -608,6 +615,7 @@ class AsyncOrbWithStreamedResponse:
         self.plans = resources.AsyncPlansWithStreamingResponse(client.plans)
         self.prices = resources.AsyncPricesWithStreamingResponse(client.prices)
         self.subscriptions = resources.AsyncSubscriptionsWithStreamingResponse(client.subscriptions)
+        self.alerts = resources.AsyncAlertsWithStreamingResponse(client.alerts)
 
 
 Client = Orb
