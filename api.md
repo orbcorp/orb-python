@@ -343,3 +343,15 @@ Methods:
 
 - <code>client.webhooks.<a href="./src/orb/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
 - <code>client.webhooks.<a href="./src/orb/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
+
+# Alerts
+
+Types:
+
+```python
+from orb.types import Alert
+```
+
+Methods:
+
+- <code title="post /alerts/{alert_configuration_id}/enable">client.alerts.<a href="./src/orb/resources/alerts.py">enable</a>(alert_configuration_id) -> <a href="./src/orb/types/alert.py">Alert</a></code>
