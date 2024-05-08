@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .item import Item as Item
 from .plan import Plan as Plan
+from .alert import Alert as Alert
 from .price import Price as Price
 from .coupon import Coupon as Coupon
 from .shared import (
