@@ -10,7 +10,7 @@ __all__ = ["Alert", "Threshold"]
 
 
 class Threshold(BaseModel):
-    value: int
+    value: float
     """The value at which an alert will fire.
 
     For credit balance alerts, the alert will fire at or below this value. For usage
@@ -29,17 +29,19 @@ class Alert(BaseModel):
     """The name of the currency the credit balance for this alert is denominated in."""
 
     customer: Optional[Dict[str, Optional[str]]] = None
-    """The customer that the alert is scoped to."""
+    """The customer the alert applies to."""
 
     enabled: bool
     """Whether the alert is enabled or disabled."""
 
     metric: Optional[Dict[str, Optional[str]]] = None
+    """The metric the alert applies to."""
 
     plan: Optional[Dict[str, Optional[str]]] = None
-    """The plan that the alert is scoped to."""
+    """The plan the alert applies to."""
 
     subscription: Optional[Dict[str, Optional[str]]] = None
+    """The subscription the alert applies to."""
 
     thresholds: Optional[List[Threshold]] = None
     """
@@ -47,5 +49,11 @@ class Alert(BaseModel):
     triggered.
     """
 
-    type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"]
+    type: Literal[
+        "usage_exceeded",
+        "cost_exceeded",
+        "credit_balance_depleted",
+        "credit_balance_dropped",
+        "credit_balance_recovered",
+    ]
     """The type of alert. This must be a valid alert type."""
