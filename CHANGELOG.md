@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.50.0 (2024-05-09)
+
+Full Changelog: [v1.49.0...v1.50.0](https://github.com/orbcorp/orb-python/compare/v1.49.0...v1.50.0)
+
+### Features
+
+* **api:** add alert methods and models ([#261](https://github.com/orbcorp/orb-python/issues/261)) ([fca2f46](https://github.com/orbcorp/orb-python/commit/fca2f46382d5f88213d2b214cef88b8d6ac4902f))
+
+
+### Chores
+
+* **internal:** remove redundant decorator args ([#259](https://github.com/orbcorp/orb-python/issues/259)) ([944e9fd](https://github.com/orbcorp/orb-python/commit/944e9fdc862b5628afd4924a3dfe66870f5030c5))
+
 ## 1.49.0 (2024-05-08)
 
 Full Changelog: [v1.48.0...v1.49.0](https://github.com/orbcorp/orb-python/compare/v1.48.0...v1.49.0)
