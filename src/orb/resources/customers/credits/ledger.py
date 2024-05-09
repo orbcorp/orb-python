@@ -1029,9 +1029,7 @@ class Ledger(SyncAPIResource):
 
     @required_args(
         ["amount", "entry_type"],
-        ["amount", "entry_type"],
         ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
     def create_entry(
@@ -1922,9 +1920,7 @@ class Ledger(SyncAPIResource):
 
     @required_args(
         ["amount", "entry_type"],
-        ["amount", "entry_type"],
         ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
     def create_entry_by_external_id(
@@ -3151,9 +3147,7 @@ class AsyncLedger(AsyncAPIResource):
 
     @required_args(
         ["amount", "entry_type"],
-        ["amount", "entry_type"],
         ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
     async def create_entry(
@@ -4044,9 +4038,7 @@ class AsyncLedger(AsyncAPIResource):
 
     @required_args(
         ["amount", "entry_type"],
-        ["amount", "entry_type"],
         ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
         ["amount", "block_id", "entry_type"],
     )
     async def create_entry_by_external_id(
