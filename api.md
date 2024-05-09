@@ -354,4 +354,11 @@ from orb.types import Alert
 
 Methods:
 
-- <code title="post /alerts/{alert_configuration_id}/enable">client.alerts.<a href="./src/orb/resources/alerts.py">enable</a>(alert_configuration_id) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="get /alerts/{alert_id}">client.alerts.<a href="./src/orb/resources/alerts.py">retrieve</a>(alert_id) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="get /alerts">client.alerts.<a href="./src/orb/resources/alerts.py">list</a>(\*\*<a href="src/orb/types/alert_list_params.py">params</a>) -> <a href="./src/orb/types/alert.py">SyncPage[Alert]</a></code>
+- <code title="post /alerts/customer_id/{customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_customer</a>(customer_id, \*\*<a href="src/orb/types/alert_create_for_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/external_customer_id/{external_customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_external_customer</a>(external_customer_id, \*\*<a href="src/orb/types/alert_create_for_external_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/plan_id/{plan_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_plan</a>(plan_id, \*\*<a href="src/orb/types/alert_create_for_plan_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/subscription_id/{subscription_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_subscription</a>(subscription_id, \*\*<a href="src/orb/types/alert_create_for_subscription_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/{alert_configuration_id}/disable">client.alerts.<a href="./src/orb/resources/alerts.py">disable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_disable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/{alert_configuration_id}/enable">client.alerts.<a href="./src/orb/resources/alerts.py">enable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_enable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
