@@ -129,11 +129,11 @@ class Costs(SyncAPIResource):
 
         ## Timeframe bounds
 
-        If no timeframe bounds are specified, the response will default to the current
-        billing period for the customer's subscription. For subscriptions that have
-        ended, this will be the billing period when they were last active. If the
-        subscription starts or ends within the timeframe, the response will only include
-        windows where the subscription is active.
+        For an active subscription, both timeframes should be specified in the request.
+        If a subscription starts or ends within the timeframe, the response will only
+        include windows where the subscription is active. If a subscription has ended,
+        no timeframe bounds need to be specified and the response will default to the
+        billing period when the subscription was last active.
 
         As noted above, `timeframe_start` for a given cumulative datapoint is always the
         beginning of the billing period, and `timeframe_end` is incremented one day at a
@@ -318,11 +318,11 @@ class Costs(SyncAPIResource):
 
         ## Timeframe bounds
 
-        If no timeframe bounds are specified, the response will default to the current
-        billing period for the customer's subscription. For subscriptions that have
-        ended, this will be the billing period when they were last active. If the
-        subscription starts or ends within the timeframe, the response will only include
-        windows where the subscription is active.
+        For an active subscription, both timeframes should be specified in the request.
+        If a subscription starts or ends within the timeframe, the response will only
+        include windows where the subscription is active. If a subscription has ended,
+        no timeframe bounds need to be specified and the response will default to the
+        billing period when the subscription was last active.
 
         As noted above, `timeframe_start` for a given cumulative datapoint is always the
         beginning of the billing period, and `timeframe_end` is incremented one day at a
@@ -519,11 +519,11 @@ class AsyncCosts(AsyncAPIResource):
 
         ## Timeframe bounds
 
-        If no timeframe bounds are specified, the response will default to the current
-        billing period for the customer's subscription. For subscriptions that have
-        ended, this will be the billing period when they were last active. If the
-        subscription starts or ends within the timeframe, the response will only include
-        windows where the subscription is active.
+        For an active subscription, both timeframes should be specified in the request.
+        If a subscription starts or ends within the timeframe, the response will only
+        include windows where the subscription is active. If a subscription has ended,
+        no timeframe bounds need to be specified and the response will default to the
+        billing period when the subscription was last active.
 
         As noted above, `timeframe_start` for a given cumulative datapoint is always the
         beginning of the billing period, and `timeframe_end` is incremented one day at a
@@ -708,11 +708,11 @@ class AsyncCosts(AsyncAPIResource):
 
         ## Timeframe bounds
 
-        If no timeframe bounds are specified, the response will default to the current
-        billing period for the customer's subscription. For subscriptions that have
-        ended, this will be the billing period when they were last active. If the
-        subscription starts or ends within the timeframe, the response will only include
-        windows where the subscription is active.
+        For an active subscription, both timeframes should be specified in the request.
+        If a subscription starts or ends within the timeframe, the response will only
+        include windows where the subscription is active. If a subscription has ended,
+        no timeframe bounds need to be specified and the response will default to the
+        billing period when the subscription was last active.
 
         As noted above, `timeframe_start` for a given cumulative datapoint is always the
         beginning of the billing period, and `timeframe_end` is incremented one day at a
