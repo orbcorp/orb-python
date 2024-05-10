@@ -77,8 +77,6 @@ class TestAlerts:
             customer_id="string",
             external_customer_id="string",
             limit=0,
-            plan_id="string",
-            plan_version=0,
             subscription_id="string",
         )
         assert_matches_type(SyncPage[Alert], alert, path=["response"])
@@ -218,63 +216,6 @@ class TestAlerts:
             )
 
     @parametrize
-    def test_method_create_for_plan(self, client: Orb) -> None:
-        alert = client.alerts.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    def test_method_create_for_plan_with_all_params(self, client: Orb) -> None:
-        alert = client.alerts.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-            metric_id="string",
-            plan_version=0,
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_for_plan(self, client: Orb) -> None:
-        response = client.alerts.with_raw_response.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_for_plan(self, client: Orb) -> None:
-        with client.alerts.with_streaming_response.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_create_for_plan(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            client.alerts.with_raw_response.create_for_plan(
-                "",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="string",
-            )
-
-    @parametrize
     def test_method_create_for_subscription(self, client: Orb) -> None:
         alert = client.alerts.create_for_subscription(
             "string",
@@ -338,14 +279,6 @@ class TestAlerts:
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
-    def test_method_disable_with_all_params(self, client: Orb) -> None:
-        alert = client.alerts.disable(
-            "string",
-            subscription_id="string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
     def test_raw_response_disable(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.disable(
             "string",
@@ -382,14 +315,6 @@ class TestAlerts:
     def test_method_enable(self, client: Orb) -> None:
         alert = client.alerts.enable(
             "string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    def test_method_enable_with_all_params(self, client: Orb) -> None:
-        alert = client.alerts.enable(
-            "string",
-            subscription_id="string",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -486,8 +411,6 @@ class TestAsyncAlerts:
             customer_id="string",
             external_customer_id="string",
             limit=0,
-            plan_id="string",
-            plan_version=0,
             subscription_id="string",
         )
         assert_matches_type(AsyncPage[Alert], alert, path=["response"])
@@ -627,63 +550,6 @@ class TestAsyncAlerts:
             )
 
     @parametrize
-    async def test_method_create_for_plan(self, async_client: AsyncOrb) -> None:
-        alert = await async_client.alerts.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    async def test_method_create_for_plan_with_all_params(self, async_client: AsyncOrb) -> None:
-        alert = await async_client.alerts.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-            metric_id="string",
-            plan_version=0,
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_for_plan(self, async_client: AsyncOrb) -> None:
-        response = await async_client.alerts.with_raw_response.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_for_plan(self, async_client: AsyncOrb) -> None:
-        async with async_client.alerts.with_streaming_response.create_for_plan(
-            "string",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_create_for_plan(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            await async_client.alerts.with_raw_response.create_for_plan(
-                "",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="string",
-            )
-
-    @parametrize
     async def test_method_create_for_subscription(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_subscription(
             "string",
@@ -747,14 +613,6 @@ class TestAsyncAlerts:
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
-    async def test_method_disable_with_all_params(self, async_client: AsyncOrb) -> None:
-        alert = await async_client.alerts.disable(
-            "string",
-            subscription_id="string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
     async def test_raw_response_disable(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.disable(
             "string",
@@ -791,14 +649,6 @@ class TestAsyncAlerts:
     async def test_method_enable(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.enable(
             "string",
-        )
-        assert_matches_type(Alert, alert, path=["response"])
-
-    @parametrize
-    async def test_method_enable_with_all_params(self, async_client: AsyncOrb) -> None:
-        alert = await async_client.alerts.enable(
-            "string",
-            subscription_id="string",
         )
         assert_matches_type(Alert, alert, path=["response"])
 

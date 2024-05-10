@@ -27,13 +27,11 @@ from .metric_list_params import MetricListParams as MetricListParams
 from .plan_create_params import PlanCreateParams as PlanCreateParams
 from .plan_update_params import PlanUpdateParams as PlanUpdateParams
 from .subscription_usage import SubscriptionUsage as SubscriptionUsage
-from .alert_enable_params import AlertEnableParams as AlertEnableParams
 from .event_ingest_params import EventIngestParams as EventIngestParams
 from .event_search_params import EventSearchParams as EventSearchParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .price_create_params import PriceCreateParams as PriceCreateParams
-from .alert_disable_params import AlertDisableParams as AlertDisableParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
@@ -57,7 +55,6 @@ from .subscription_list_params import SubscriptionListParams as SubscriptionList
 from .subscription_cancel_params import SubscriptionCancelParams as SubscriptionCancelParams
 from .subscription_create_params import SubscriptionCreateParams as SubscriptionCreateParams
 from .subscription_update_params import SubscriptionUpdateParams as SubscriptionUpdateParams
-from .alert_create_for_plan_params import AlertCreateForPlanParams as AlertCreateForPlanParams
 from .invoice_fetch_upcoming_params import InvoiceFetchUpcomingParams as InvoiceFetchUpcomingParams
 from .invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse as InvoiceFetchUpcomingResponse
 from .invoice_line_item_create_params import InvoiceLineItemCreateParams as InvoiceLineItemCreateParams
