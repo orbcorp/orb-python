@@ -26,7 +26,7 @@ class Alert(BaseModel):
     """The creation time of the resource in Orb."""
 
     currency: Optional[str] = None
-    """The name of the currency the credit balance for this alert is denominated in."""
+    """The name of the currency the credit balance or invoice cost is denominated in."""
 
     customer: Optional[Dict[str, Optional[str]]] = None
     """The customer the alert applies to."""

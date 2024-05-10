@@ -84,6 +84,10 @@ class Backfills(SyncAPIResource):
         backfill. If `false`, newly ingested events will be added to the existing
         events.
 
+        If a `customer_id` or `external_customer_id` is specified, the backfill will
+        only affect events for that customer. If neither is specified, the backfill will
+        affect all customers.
+
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
 
@@ -364,6 +368,10 @@ class AsyncBackfills(AsyncAPIResource):
         timeframe will be replaced with the newly ingested events associated with the
         backfill. If `false`, newly ingested events will be added to the existing
         events.
+
+        If a `customer_id` or `external_customer_id` is specified, the backfill will
+        only affect events for that customer. If neither is specified, the backfill will
+        affect all customers.
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
