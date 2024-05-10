@@ -10,9 +10,6 @@ import httpx
 from .. import _legacy_response
 from ..types import (
     alert_list_params,
-    alert_enable_params,
-    alert_disable_params,
-    alert_create_for_plan_params,
     alert_create_for_customer_params,
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
@@ -88,8 +85,6 @@ class Alerts(SyncAPIResource):
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        plan_version: Optional[int] | NotGiven = NOT_GIVEN,
         subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -121,10 +116,6 @@ class Alerts(SyncAPIResource):
 
           limit: The number of items to fetch. Defaults to 20.
 
-          plan_id: Fetch alerts scoped to this plan_id
-
-          plan_version: If provided alongside plan_id, only the alerts that are scoped to the specified plan_version will be returned.
-
           subscription_id: Fetch alerts scoped to this subscription_id
 
           extra_headers: Send extra headers
@@ -153,8 +144,6 @@ class Alerts(SyncAPIResource):
                         "customer_id": customer_id,
                         "external_customer_id": external_customer_id,
                         "limit": limit,
-                        "plan_id": plan_id,
-                        "plan_version": plan_version,
                         "subscription_id": subscription_id,
                     },
                     alert_list_params.AlertListParams,
@@ -297,81 +286,6 @@ class Alerts(SyncAPIResource):
             cast_to=Alert,
         )
 
-    def create_for_plan(
-        self,
-        plan_id: str,
-        *,
-        thresholds: Iterable[alert_create_for_plan_params.Threshold],
-        type: str,
-        metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        plan_version: Optional[int] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Alert:
-        """This endpoint is used to create alerts at the plan level.
-
-        Plan level alerts are
-        automatically propagated to all subscriptions associated with the plan. These
-        alerts are scoped to a specific plan version; if no version is specified, the
-        active plan version is used.
-
-        Plan level alerts can be of two types: `usage_exceeded` or `cost_exceeded`. A
-        `usage_exceeded` alert is scoped to a particular metric and is triggered when
-        the usage of that metric exceeds predefined thresholds during the current
-        billing cycle. A `cost_exceeded` alert is triggered when the total amount due
-        during the current billing cycle surpasses predefined thresholds.
-        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
-        plan can have one `cost_exceeded` alert and one `usage_exceeded` alert per
-        metric that is a part of the plan.
-
-        Args:
-          thresholds: The thresholds for the alert.
-
-          type: The thresholds that define the values at which the alert will be triggered.
-
-          metric_id: The metric to track usage for.
-
-          plan_version: The plan version to create alerts for. If not specified, the default will be the
-              plan's active plan version.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not plan_id:
-            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
-        return self._post(
-            f"/alerts/plan_id/{plan_id}",
-            body=maybe_transform(
-                {
-                    "thresholds": thresholds,
-                    "type": type,
-                    "metric_id": metric_id,
-                    "plan_version": plan_version,
-                },
-                alert_create_for_plan_params.AlertCreateForPlanParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Alert,
-        )
-
     def create_for_subscription(
         self,
         subscription_id: str,
@@ -443,7 +357,6 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -456,8 +369,6 @@ class Alerts(SyncAPIResource):
         This endpoint can be used to disable an alert.
 
         Args:
-          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -480,7 +391,6 @@ class Alerts(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform({"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams),
             ),
             cast_to=Alert,
         )
@@ -489,7 +399,6 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -502,8 +411,6 @@ class Alerts(SyncAPIResource):
         This endpoint can be used to enable an alert.
 
         Args:
-          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -526,7 +433,6 @@ class Alerts(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform({"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams),
             ),
             cast_to=Alert,
         )
@@ -585,8 +491,6 @@ class AsyncAlerts(AsyncAPIResource):
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        plan_version: Optional[int] | NotGiven = NOT_GIVEN,
         subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -618,10 +522,6 @@ class AsyncAlerts(AsyncAPIResource):
 
           limit: The number of items to fetch. Defaults to 20.
 
-          plan_id: Fetch alerts scoped to this plan_id
-
-          plan_version: If provided alongside plan_id, only the alerts that are scoped to the specified plan_version will be returned.
-
           subscription_id: Fetch alerts scoped to this subscription_id
 
           extra_headers: Send extra headers
@@ -650,8 +550,6 @@ class AsyncAlerts(AsyncAPIResource):
                         "customer_id": customer_id,
                         "external_customer_id": external_customer_id,
                         "limit": limit,
-                        "plan_id": plan_id,
-                        "plan_version": plan_version,
                         "subscription_id": subscription_id,
                     },
                     alert_list_params.AlertListParams,
@@ -794,81 +692,6 @@ class AsyncAlerts(AsyncAPIResource):
             cast_to=Alert,
         )
 
-    async def create_for_plan(
-        self,
-        plan_id: str,
-        *,
-        thresholds: Iterable[alert_create_for_plan_params.Threshold],
-        type: str,
-        metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        plan_version: Optional[int] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Alert:
-        """This endpoint is used to create alerts at the plan level.
-
-        Plan level alerts are
-        automatically propagated to all subscriptions associated with the plan. These
-        alerts are scoped to a specific plan version; if no version is specified, the
-        active plan version is used.
-
-        Plan level alerts can be of two types: `usage_exceeded` or `cost_exceeded`. A
-        `usage_exceeded` alert is scoped to a particular metric and is triggered when
-        the usage of that metric exceeds predefined thresholds during the current
-        billing cycle. A `cost_exceeded` alert is triggered when the total amount due
-        during the current billing cycle surpasses predefined thresholds.
-        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
-        plan can have one `cost_exceeded` alert and one `usage_exceeded` alert per
-        metric that is a part of the plan.
-
-        Args:
-          thresholds: The thresholds for the alert.
-
-          type: The thresholds that define the values at which the alert will be triggered.
-
-          metric_id: The metric to track usage for.
-
-          plan_version: The plan version to create alerts for. If not specified, the default will be the
-              plan's active plan version.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not plan_id:
-            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
-        return await self._post(
-            f"/alerts/plan_id/{plan_id}",
-            body=await async_maybe_transform(
-                {
-                    "thresholds": thresholds,
-                    "type": type,
-                    "metric_id": metric_id,
-                    "plan_version": plan_version,
-                },
-                alert_create_for_plan_params.AlertCreateForPlanParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Alert,
-        )
-
     async def create_for_subscription(
         self,
         subscription_id: str,
@@ -940,7 +763,6 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -953,8 +775,6 @@ class AsyncAlerts(AsyncAPIResource):
         This endpoint can be used to disable an alert.
 
         Args:
-          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -977,9 +797,6 @@ class AsyncAlerts(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=await async_maybe_transform(
-                    {"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams
-                ),
             ),
             cast_to=Alert,
         )
@@ -988,7 +805,6 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1001,8 +817,6 @@ class AsyncAlerts(AsyncAPIResource):
         This endpoint can be used to enable an alert.
 
         Args:
-          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1025,9 +839,6 @@ class AsyncAlerts(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=await async_maybe_transform(
-                    {"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams
-                ),
             ),
             cast_to=Alert,
         )
@@ -1048,9 +859,6 @@ class AlertsWithRawResponse:
         )
         self.create_for_external_customer = _legacy_response.to_raw_response_wrapper(
             alerts.create_for_external_customer,
-        )
-        self.create_for_plan = _legacy_response.to_raw_response_wrapper(
-            alerts.create_for_plan,
         )
         self.create_for_subscription = _legacy_response.to_raw_response_wrapper(
             alerts.create_for_subscription,
@@ -1079,9 +887,6 @@ class AsyncAlertsWithRawResponse:
         self.create_for_external_customer = _legacy_response.async_to_raw_response_wrapper(
             alerts.create_for_external_customer,
         )
-        self.create_for_plan = _legacy_response.async_to_raw_response_wrapper(
-            alerts.create_for_plan,
-        )
         self.create_for_subscription = _legacy_response.async_to_raw_response_wrapper(
             alerts.create_for_subscription,
         )
@@ -1109,9 +914,6 @@ class AlertsWithStreamingResponse:
         self.create_for_external_customer = to_streamed_response_wrapper(
             alerts.create_for_external_customer,
         )
-        self.create_for_plan = to_streamed_response_wrapper(
-            alerts.create_for_plan,
-        )
         self.create_for_subscription = to_streamed_response_wrapper(
             alerts.create_for_subscription,
         )
@@ -1138,9 +940,6 @@ class AsyncAlertsWithStreamingResponse:
         )
         self.create_for_external_customer = async_to_streamed_response_wrapper(
             alerts.create_for_external_customer,
-        )
-        self.create_for_plan = async_to_streamed_response_wrapper(
-            alerts.create_for_plan,
         )
         self.create_for_subscription = async_to_streamed_response_wrapper(
             alerts.create_for_subscription,
