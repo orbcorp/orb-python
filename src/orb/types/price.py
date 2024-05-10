@@ -2,10 +2,11 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated
 
 from pydantic import Field as FieldInfo
 
+from .._utils import PropertyInfo
 from .._models import BaseModel
 from .shared.discount import Discount
 
@@ -1549,21 +1550,24 @@ class MatrixWithAllocationPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
-Price = Union[
-    UnitPrice,
-    PackagePrice,
-    MatrixPrice,
-    TieredPrice,
-    TieredBpsPrice,
-    BpsPrice,
-    BulkBpsPrice,
-    BulkPrice,
-    ThresholdTotalAmountPrice,
-    TieredPackagePrice,
-    GroupedTieredPrice,
-    TieredWithMinimumPrice,
-    TieredPackageWithMinimumPrice,
-    PackageWithAllocationPrice,
-    UnitWithPercentPrice,
-    MatrixWithAllocationPrice,
+Price = Annotated[
+    Union[
+        UnitPrice,
+        PackagePrice,
+        MatrixPrice,
+        TieredPrice,
+        TieredBpsPrice,
+        BpsPrice,
+        BulkBpsPrice,
+        BulkPrice,
+        ThresholdTotalAmountPrice,
+        TieredPackagePrice,
+        GroupedTieredPrice,
+        TieredWithMinimumPrice,
+        TieredPackageWithMinimumPrice,
+        PackageWithAllocationPrice,
+        UnitWithPercentPrice,
+        MatrixWithAllocationPrice,
+    ],
+    PropertyInfo(discriminator="price_model_type"),
 ]

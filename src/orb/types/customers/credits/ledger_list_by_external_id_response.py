@@ -2,8 +2,9 @@
 
 from typing import Dict, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated
 
+from ...._utils import PropertyInfo
 from ...._models import BaseModel
 
 __all__ = [
@@ -386,12 +387,15 @@ class AmendmentLedgerEntry(BaseModel):
     starting_balance: float
 
 
-LedgerListByExternalIDResponse = Union[
-    IncrementLedgerEntry,
-    DecrementLedgerEntry,
-    ExpirationChangeLedgerEntry,
-    CreditBlockExpiryLedgerEntry,
-    VoidLedgerEntry,
-    VoidInitiatedLedgerEntry,
-    AmendmentLedgerEntry,
+LedgerListByExternalIDResponse = Annotated[
+    Union[
+        IncrementLedgerEntry,
+        DecrementLedgerEntry,
+        ExpirationChangeLedgerEntry,
+        CreditBlockExpiryLedgerEntry,
+        VoidLedgerEntry,
+        VoidInitiatedLedgerEntry,
+        AmendmentLedgerEntry,
+    ],
+    PropertyInfo(discriminator="entry_type"),
 ]

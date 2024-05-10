@@ -2,9 +2,10 @@
 
 from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated
 
 from .price import Price
+from .._utils import PropertyInfo
 from .._models import BaseModel
 from .shared.discount import Discount
 
@@ -124,7 +125,10 @@ class SubLineItemOtherSubLineItem(BaseModel):
     type: Literal["'null'"]
 
 
-SubLineItem = Union[SubLineItemMatrixSubLineItem, SubLineItemTierSubLineItem, SubLineItemOtherSubLineItem]
+SubLineItem = Annotated[
+    Union[SubLineItemMatrixSubLineItem, SubLineItemTierSubLineItem, SubLineItemOtherSubLineItem],
+    PropertyInfo(discriminator="type"),
+]
 
 
 class TaxAmount(BaseModel):

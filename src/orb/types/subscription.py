@@ -2,10 +2,11 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated
 
 from .plan import Plan
 from .price import Price
+from .._utils import PropertyInfo
 from .._models import BaseModel
 from .customer import Customer
 
@@ -88,10 +89,13 @@ class DiscountIntervalUsageDiscountInterval(BaseModel):
     """
 
 
-DiscountInterval = Union[
-    DiscountIntervalAmountDiscountInterval,
-    DiscountIntervalPercentageDiscountInterval,
-    DiscountIntervalUsageDiscountInterval,
+DiscountInterval = Annotated[
+    Union[
+        DiscountIntervalAmountDiscountInterval,
+        DiscountIntervalPercentageDiscountInterval,
+        DiscountIntervalUsageDiscountInterval,
+    ],
+    PropertyInfo(discriminator="discount_type"),
 ]
 
 
