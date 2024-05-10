@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.50.1 (2024-05-10)
+
+Full Changelog: [v1.50.0...v1.50.1](https://github.com/orbcorp/orb-python/compare/v1.50.0...v1.50.1)
+
+### Bug Fixes
+
+* **api:** remove alert parameters and method that aren't supported by the live API ([#267](https://github.com/orbcorp/orb-python/issues/267)) ([0719f0d](https://github.com/orbcorp/orb-python/commit/0719f0df752a85aee84067b3c50c1c879de1cebd))
+
+
+### Chores
+
+* **docs:** improve alert endpoints descriptions ([#263](https://github.com/orbcorp/orb-python/issues/263)) ([633b79d](https://github.com/orbcorp/orb-python/commit/633b79d89acc1c7c80768ee65464f93014b80b5a))
+* rebuild project due to oas spec rename ([#266](https://github.com/orbcorp/orb-python/issues/266)) ([60072ac](https://github.com/orbcorp/orb-python/commit/60072ac2e0a3dc8ae6c0af9c8919ee77438a8d47))
+* **types:** add union discriminator metadata ([#265](https://github.com/orbcorp/orb-python/issues/265)) ([4cfa964](https://github.com/orbcorp/orb-python/commit/4cfa96454f09914d15405b1d2bb3fe26d95cd2bc))
+
 ## 1.50.0 (2024-05-09)
 
 Full Changelog: [v1.49.0...v1.50.0](https://github.com/orbcorp/orb-python/compare/v1.49.0...v1.50.0)
