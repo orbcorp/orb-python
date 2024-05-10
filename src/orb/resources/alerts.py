@@ -99,18 +99,17 @@ class Alerts(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[Alert]:
         """
-        This endpoint returns a list of all
-        [`alerts`](https://docs.withorb.com/guides/product-catalog/configuring-alerts).
+        This endpoint returns a list of alerts within Orb.
+
+        The request must specify one of `customer_id`, `external_customer_id`, or
+        `subscription_id`.
+
+        If querying by subscripion_id, the endpoint will return the subscription level
+        alerts as well as the plan level alerts associated with the subscription.
 
         The list of alerts is ordered starting from the most recently created alert.
         This endpoint follows Orb's
         [standardized pagination format](../reference/pagination).
-
-        The request must specify one of customer_id, external_customer_id,
-        subscription_id, or plan_id
-
-        If querying by subscripion_id, the endpoint will return the subscription level
-        alerts as well as the plan level alerts associated with the subscription.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -323,11 +322,12 @@ class Alerts(SyncAPIResource):
 
         Plan level alerts can be of two types: `usage_exceeded` or `cost_exceeded`. A
         `usage_exceeded` alert is scoped to a particular metric and is triggered when
-        the usage of that metric exceeds a predefined thresholds during the current
-        invoice cycle. A `cost_exceeded` alert is triggered when the total cost of the
-        subscription on the plan surpasses predefined thresholds in the current invoice
-        cycle.Each plan can have one `cost_exceeded` alert and one `usage_exceeded`
-        alert per metric that is apart of the plan.
+        the usage of that metric exceeds predefined thresholds during the current
+        billing cycle. A `cost_exceeded` alert is triggered when the total amount due
+        during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        plan can have one `cost_exceeded` alert and one `usage_exceeded` alert per
+        metric that is a part of the plan.
 
         Args:
           thresholds: The thresholds for the alert.
@@ -336,7 +336,8 @@ class Alerts(SyncAPIResource):
 
           metric_id: The metric to track usage for.
 
-          plan_version: The plan version to create alerts for. If not specified, the default will be the plan's active plan version.
+          plan_version: The plan version to create alerts for. If not specified, the default will be the
+              plan's active plan version.
 
           extra_headers: Send extra headers
 
@@ -391,13 +392,13 @@ class Alerts(SyncAPIResource):
 
         Subscription level alerts can be one of two types: `usage_exceeded` or
         `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-        is triggered when the usage of that metric exceeds a predefined thresholds
-        during the current invoice cycle. A `cost_exceeded` alert is triggered when the
-        total cost of the subscription surpasses predefined thresholds in the current
-        invoice cycle. Each subscription can have one `cost_exceeded` alert and one
-        `usage_exceeded` alert per metric that is apart of the subscription. Alerts are
-        triggered based on usage or cost conditions met during the current invoice
-        cycle.
+        is triggered when the usage of that metric exceeds predefined thresholds during
+        the current billing cycle. A `cost_exceeded` alert is triggered when the total
+        amount due during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
+        per metric that is a part of the subscription. Alerts are triggered based on
+        usage or cost conditions met during the current billing cycle.
 
         Args:
           thresholds: The thresholds for the alert.
@@ -454,11 +455,6 @@ class Alerts(SyncAPIResource):
         """
         This endpoint can be used to disable an alert.
 
-        By default, disabling a plan level alert will apply to all subscriptions on that
-        plan. In order to toggle a plan level alert for a specific subscription, the
-        client must provide the plan level alert id as well as the subscription_id
-        parameter.
-
         Args:
           subscription_id: Used to update the status of a plan alert scoped to this subscription_id
 
@@ -504,11 +500,6 @@ class Alerts(SyncAPIResource):
     ) -> Alert:
         """
         This endpoint can be used to enable an alert.
-
-        By default, enabling a plan level alert will apply to all subscriptions on that
-        plan. In order to toggle a plan level alert for a specific subscription, the
-        client must provide the plan level alert id as well as the subscription_id
-        parameter.
 
         Args:
           subscription_id: Used to update the status of a plan alert scoped to this subscription_id
@@ -605,18 +596,17 @@ class AsyncAlerts(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Alert, AsyncPage[Alert]]:
         """
-        This endpoint returns a list of all
-        [`alerts`](https://docs.withorb.com/guides/product-catalog/configuring-alerts).
+        This endpoint returns a list of alerts within Orb.
+
+        The request must specify one of `customer_id`, `external_customer_id`, or
+        `subscription_id`.
+
+        If querying by subscripion_id, the endpoint will return the subscription level
+        alerts as well as the plan level alerts associated with the subscription.
 
         The list of alerts is ordered starting from the most recently created alert.
         This endpoint follows Orb's
         [standardized pagination format](../reference/pagination).
-
-        The request must specify one of customer_id, external_customer_id,
-        subscription_id, or plan_id
-
-        If querying by subscripion_id, the endpoint will return the subscription level
-        alerts as well as the plan level alerts associated with the subscription.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -829,11 +819,12 @@ class AsyncAlerts(AsyncAPIResource):
 
         Plan level alerts can be of two types: `usage_exceeded` or `cost_exceeded`. A
         `usage_exceeded` alert is scoped to a particular metric and is triggered when
-        the usage of that metric exceeds a predefined thresholds during the current
-        invoice cycle. A `cost_exceeded` alert is triggered when the total cost of the
-        subscription on the plan surpasses predefined thresholds in the current invoice
-        cycle.Each plan can have one `cost_exceeded` alert and one `usage_exceeded`
-        alert per metric that is apart of the plan.
+        the usage of that metric exceeds predefined thresholds during the current
+        billing cycle. A `cost_exceeded` alert is triggered when the total amount due
+        during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        plan can have one `cost_exceeded` alert and one `usage_exceeded` alert per
+        metric that is a part of the plan.
 
         Args:
           thresholds: The thresholds for the alert.
@@ -842,7 +833,8 @@ class AsyncAlerts(AsyncAPIResource):
 
           metric_id: The metric to track usage for.
 
-          plan_version: The plan version to create alerts for. If not specified, the default will be the plan's active plan version.
+          plan_version: The plan version to create alerts for. If not specified, the default will be the
+              plan's active plan version.
 
           extra_headers: Send extra headers
 
@@ -897,13 +889,13 @@ class AsyncAlerts(AsyncAPIResource):
 
         Subscription level alerts can be one of two types: `usage_exceeded` or
         `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-        is triggered when the usage of that metric exceeds a predefined thresholds
-        during the current invoice cycle. A `cost_exceeded` alert is triggered when the
-        total cost of the subscription surpasses predefined thresholds in the current
-        invoice cycle. Each subscription can have one `cost_exceeded` alert and one
-        `usage_exceeded` alert per metric that is apart of the subscription. Alerts are
-        triggered based on usage or cost conditions met during the current invoice
-        cycle.
+        is triggered when the usage of that metric exceeds predefined thresholds during
+        the current billing cycle. A `cost_exceeded` alert is triggered when the total
+        amount due during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
+        per metric that is a part of the subscription. Alerts are triggered based on
+        usage or cost conditions met during the current billing cycle.
 
         Args:
           thresholds: The thresholds for the alert.
@@ -960,11 +952,6 @@ class AsyncAlerts(AsyncAPIResource):
         """
         This endpoint can be used to disable an alert.
 
-        By default, disabling a plan level alert will apply to all subscriptions on that
-        plan. In order to toggle a plan level alert for a specific subscription, the
-        client must provide the plan level alert id as well as the subscription_id
-        parameter.
-
         Args:
           subscription_id: Used to update the status of a plan alert scoped to this subscription_id
 
@@ -1012,11 +999,6 @@ class AsyncAlerts(AsyncAPIResource):
     ) -> Alert:
         """
         This endpoint can be used to enable an alert.
-
-        By default, enabling a plan level alert will apply to all subscriptions on that
-        plan. In order to toggle a plan level alert for a specific subscription, the
-        client must provide the plan level alert id as well as the subscription_id
-        parameter.
 
         Args:
           subscription_id: Used to update the status of a plan alert scoped to this subscription_id
