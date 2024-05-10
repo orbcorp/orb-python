@@ -36,14 +36,5 @@ class AlertListParams(TypedDict, total=False):
     limit: int
     """The number of items to fetch. Defaults to 20."""
 
-    plan_id: Optional[str]
-    """Fetch alerts scoped to this plan_id"""
-
-    plan_version: Optional[int]
-    """
-    If provided alongside plan_id, only the alerts that are scoped to the specified
-    plan_version will be returned.
-    """
-
     subscription_id: Optional[str]
     """Fetch alerts scoped to this subscription_id"""
