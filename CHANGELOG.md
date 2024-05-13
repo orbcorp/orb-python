@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.51.0 (2024-05-13)
+
+Full Changelog: [v1.50.1...v1.51.0](https://github.com/orbcorp/orb-python/compare/v1.50.1...v1.51.0)
+
+### Features
+
+* **api:** updates ([#270](https://github.com/orbcorp/orb-python/issues/270)) ([cc12356](https://github.com/orbcorp/orb-python/commit/cc12356f4d04c4b97ae7eb9ebaf92abdd4192658))
+
+
+### Chores
+
+* **docs:** add SECURITY.md ([#268](https://github.com/orbcorp/orb-python/issues/268)) ([57ed634](https://github.com/orbcorp/orb-python/commit/57ed634ffbe8be758a1123359f5e61c7e09f7eb7))
+
 ## 1.50.1 (2024-05-10)
 
 Full Changelog: [v1.50.0...v1.50.1](https://github.com/orbcorp/orb-python/compare/v1.50.0...v1.50.1)
