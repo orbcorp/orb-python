@@ -48,7 +48,7 @@ class TestSubscriptions:
             invoicing_threshold="string",
             metadata={"foo": "string"},
             net_terms=0,
-            per_credit_overage_amount="string",
+            per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
@@ -195,7 +195,7 @@ class TestSubscriptions:
             cursor="string",
             customer_id="string",
             external_customer_id="string",
-            limit=0,
+            limit=1,
             status="active",
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
@@ -369,7 +369,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.fetch_schedule(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
             start_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -755,7 +755,7 @@ class TestSubscriptions:
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=2,
             invoicing_threshold="10.00",
-            per_credit_overage_amount="string",
+            per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
@@ -1099,7 +1099,7 @@ class TestAsyncSubscriptions:
             invoicing_threshold="string",
             metadata={"foo": "string"},
             net_terms=0,
-            per_credit_overage_amount="string",
+            per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
@@ -1246,7 +1246,7 @@ class TestAsyncSubscriptions:
             cursor="string",
             customer_id="string",
             external_customer_id="string",
-            limit=0,
+            limit=1,
             status="active",
         )
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
@@ -1420,7 +1420,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.fetch_schedule(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
             start_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1806,7 +1806,7 @@ class TestAsyncSubscriptions:
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=2,
             invoicing_threshold="10.00",
-            per_credit_overage_amount="string",
+            per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {

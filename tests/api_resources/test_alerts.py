@@ -76,7 +76,7 @@ class TestAlerts:
             cursor="string",
             customer_id="string",
             external_customer_id="string",
-            limit=0,
+            limit=1,
             subscription_id="string",
         )
         assert_matches_type(SyncPage[Alert], alert, path=["response"])
@@ -410,7 +410,7 @@ class TestAsyncAlerts:
             cursor="string",
             customer_id="string",
             external_customer_id="string",
-            limit=0,
+            limit=1,
             subscription_id="string",
         )
         assert_matches_type(AsyncPage[Alert], alert, path=["response"])

@@ -30,7 +30,7 @@ class TestSubscriptions:
         subscription = client.coupons.subscriptions.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
 
@@ -81,7 +81,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.coupons.subscriptions.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
 

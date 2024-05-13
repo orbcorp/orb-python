@@ -43,7 +43,7 @@ class TestLedger:
             cursor="string",
             entry_status="committed",
             entry_type="increment",
-            limit=0,
+            limit=1,
             minimum_amount="string",
         )
         assert_matches_type(SyncPage[LedgerListResponse], ledger, path=["response"])
@@ -732,7 +732,7 @@ class TestLedger:
             cursor="string",
             entry_status="committed",
             entry_type="increment",
-            limit=0,
+            limit=1,
             minimum_amount="string",
         )
         assert_matches_type(SyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])
@@ -791,7 +791,7 @@ class TestAsyncLedger:
             cursor="string",
             entry_status="committed",
             entry_type="increment",
-            limit=0,
+            limit=1,
             minimum_amount="string",
         )
         assert_matches_type(AsyncPage[LedgerListResponse], ledger, path=["response"])
@@ -1480,7 +1480,7 @@ class TestAsyncLedger:
             cursor="string",
             entry_status="committed",
             entry_type="increment",
-            limit=0,
+            limit=1,
             minimum_amount="string",
         )
         assert_matches_type(AsyncPage[LedgerListByExternalIDResponse], ledger, path=["response"])

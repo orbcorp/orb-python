@@ -218,7 +218,7 @@ class TestCustomers:
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Customer], customer, path=["response"])
 
@@ -652,7 +652,7 @@ class TestAsyncCustomers:
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Customer], customer, path=["response"])
 
