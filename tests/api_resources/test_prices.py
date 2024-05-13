@@ -1369,7 +1369,7 @@ class TestPrices:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         price = client.prices.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Price], price, path=["response"])
 
@@ -2844,7 +2844,7 @@ class TestAsyncPrices:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Price], price, path=["response"])
 

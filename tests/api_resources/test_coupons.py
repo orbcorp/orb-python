@@ -38,7 +38,7 @@ class TestCoupons:
             },
             redemption_code="HALFOFF",
             duration_in_months=12,
-            max_redemptions=0,
+            max_redemptions=1,
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
@@ -83,7 +83,7 @@ class TestCoupons:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         coupon = client.coupons.list(
             cursor="string",
-            limit=0,
+            limit=1,
             redemption_code="string",
             show_archived=True,
         )
@@ -209,7 +209,7 @@ class TestAsyncCoupons:
             },
             redemption_code="HALFOFF",
             duration_in_months=12,
-            max_redemptions=0,
+            max_redemptions=1,
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
@@ -254,7 +254,7 @@ class TestAsyncCoupons:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         coupon = await async_client.coupons.list(
             cursor="string",
-            limit=0,
+            limit=1,
             redemption_code="string",
             show_archived=True,
         )
