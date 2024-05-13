@@ -27,7 +27,7 @@ class TestCreditNotes:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit_note = client.credit_notes.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[CreditNote], credit_note, path=["response"])
 
@@ -102,7 +102,7 @@ class TestAsyncCreditNotes:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         credit_note = await async_client.credit_notes.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[CreditNote], credit_note, path=["response"])
 

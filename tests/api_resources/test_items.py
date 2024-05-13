@@ -58,7 +58,7 @@ class TestItems:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         item = client.items.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Item], item, path=["response"])
 
@@ -164,7 +164,7 @@ class TestAsyncItems:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Item], item, path=["response"])
 

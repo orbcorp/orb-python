@@ -124,7 +124,7 @@ class TestTopUps:
         top_up = client.customers.credits.top_ups.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[TopUpListResponse], top_up, path=["response"])
 
@@ -356,7 +356,7 @@ class TestTopUps:
         top_up = client.customers.credits.top_ups.list_by_external_id(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
 
@@ -496,7 +496,7 @@ class TestAsyncTopUps:
         top_up = await async_client.customers.credits.top_ups.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[TopUpListResponse], top_up, path=["response"])
 
@@ -728,7 +728,7 @@ class TestAsyncTopUps:
         top_up = await async_client.customers.credits.top_ups.list_by_external_id(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
 

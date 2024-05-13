@@ -95,7 +95,7 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     net_terms: Optional[int]
 
-    per_credit_overage_amount: Optional[str]
+    per_credit_overage_amount: Optional[float]
 
     plan_id: Optional[str]
     """The plan that the given subscription should be switched to.
