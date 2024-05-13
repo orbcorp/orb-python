@@ -213,7 +213,7 @@ class TestInvoices:
             invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
-            limit=0,
+            limit=1,
             status=["draft", "issued", "paid"],
             subscription_id="string",
         )
@@ -632,7 +632,7 @@ class TestAsyncInvoices:
             invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
-            limit=0,
+            limit=1,
             status=["draft", "issued", "paid"],
             subscription_id="string",
         )

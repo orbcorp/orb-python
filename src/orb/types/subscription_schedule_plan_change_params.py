@@ -97,7 +97,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     at the end of the billing period.
     """
 
-    per_credit_overage_amount: Optional[str]
+    per_credit_overage_amount: Optional[float]
 
     plan_id: Optional[str]
     """The plan that the given subscription should be switched to.

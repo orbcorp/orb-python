@@ -90,7 +90,7 @@ class TestBalanceTransactions:
         balance_transaction = client.customers.balance_transactions.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
             operation_time_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -201,7 +201,7 @@ class TestAsyncBalanceTransactions:
         balance_transaction = await async_client.customers.balance_transactions.list(
             "string",
             cursor="string",
-            limit=0,
+            limit=1,
             operation_time_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_lt=parse_datetime("2019-12-27T18:11:19.117Z"),

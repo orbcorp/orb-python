@@ -168,7 +168,7 @@ class TestPlans:
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="string",
-            limit=0,
+            limit=1,
             status="active",
         )
         assert_matches_type(SyncPage[Plan], plan, path=["response"])
@@ -384,7 +384,7 @@ class TestAsyncPlans:
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="string",
-            limit=0,
+            limit=1,
             status="active",
         )
         assert_matches_type(AsyncPage[Plan], plan, path=["response"])
