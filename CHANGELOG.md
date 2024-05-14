@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.52.0 (2024-05-14)
+
+Full Changelog: [v1.51.0...v1.52.0](https://github.com/orbcorp/orb-python/compare/v1.51.0...v1.52.0)
+
+### Features
+
+* **api:** updates ([#273](https://github.com/orbcorp/orb-python/issues/273)) ([199805d](https://github.com/orbcorp/orb-python/commit/199805d51549536bf508776452ddc72933507ace))
+
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#271](https://github.com/orbcorp/orb-python/issues/271)) ([c40750a](https://github.com/orbcorp/orb-python/commit/c40750a90bb962d63bd4531d24d69e6b9e930a9f))
+
 ## 1.51.0 (2024-05-13)
 
 Full Changelog: [v1.50.1...v1.51.0](https://github.com/orbcorp/orb-python/compare/v1.50.1...v1.51.0)
