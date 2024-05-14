@@ -9,13 +9,13 @@ from .._models import BaseModel
 __all__ = [
     "CreditNote",
     "Customer",
-    "Discount",
-    "DiscountAppliesToPrice",
     "LineItem",
-    "LineItemDiscount",
     "LineItemTaxAmount",
+    "LineItemDiscount",
     "MaximumAmountAdjustment",
     "MaximumAmountAdjustmentAppliesToPrice",
+    "Discount",
+    "DiscountAppliesToPrice",
 ]
 
 
@@ -25,22 +25,15 @@ class Customer(BaseModel):
     external_customer_id: Optional[str] = None
 
 
-class DiscountAppliesToPrice(BaseModel):
-    id: str
+class LineItemTaxAmount(BaseModel):
+    amount: str
+    """The amount of additional tax incurred by this tax rate."""
 
-    name: str
+    tax_rate_description: str
+    """The human-readable description of the applied tax rate."""
 
-
-class Discount(BaseModel):
-    amount_applied: str
-
-    discount_type: Literal["percentage"]
-
-    percentage_discount: float
-
-    applies_to_prices: Optional[List[DiscountAppliesToPrice]] = None
-
-    reason: Optional[str] = None
+    tax_rate_percentage: Optional[str] = None
+    """The tax rate percentage, out of 100."""
 
 
 class LineItemDiscount(BaseModel):
@@ -59,26 +52,12 @@ class LineItemDiscount(BaseModel):
     reason: Optional[str] = None
 
 
-class LineItemTaxAmount(BaseModel):
-    amount: str
-    """The amount of additional tax incurred by this tax rate."""
-
-    tax_rate_description: str
-    """The human-readable description of the applied tax rate."""
-
-    tax_rate_percentage: Optional[str] = None
-    """The tax rate percentage, out of 100."""
-
-
 class LineItem(BaseModel):
     id: str
     """The Orb id of this resource."""
 
     amount: str
     """The amount of the line item, including any line item minimums and discounts."""
-
-    discounts: List[LineItemDiscount]
-    """Any line item discounts from the invoice's line item."""
 
     name: str
     """The name of the corresponding invoice line item."""
@@ -91,6 +70,9 @@ class LineItem(BaseModel):
 
     tax_amounts: List[LineItemTaxAmount]
     """Any tax amounts applied onto the line item."""
+
+    discounts: Optional[List[LineItemDiscount]] = None
+    """Any line item discounts from the invoice's line item."""
 
 
 class MaximumAmountAdjustmentAppliesToPrice(BaseModel):
@@ -111,6 +93,24 @@ class MaximumAmountAdjustment(BaseModel):
     reason: Optional[str] = None
 
 
+class DiscountAppliesToPrice(BaseModel):
+    id: str
+
+    name: str
+
+
+class Discount(BaseModel):
+    amount_applied: str
+
+    discount_type: Literal["percentage"]
+
+    percentage_discount: float
+
+    applies_to_prices: Optional[List[DiscountAppliesToPrice]] = None
+
+    reason: Optional[str] = None
+
+
 class CreditNote(BaseModel):
     id: str
     """The Orb id of this credit note."""
@@ -125,9 +125,6 @@ class CreditNote(BaseModel):
     """A URL to a PDF of the credit note."""
 
     customer: Customer
-
-    discounts: List[Discount]
-    """Any discounts applied on the original invoice."""
 
     invoice_id: str
     """The id of the invoice resource that this credit note is applied to."""
@@ -156,3 +153,6 @@ class CreditNote(BaseModel):
 
     voided_at: Optional[datetime] = None
     """The time at which the credit note was voided in Orb, if applicable."""
+
+    discounts: Optional[List[Discount]] = None
+    """Any discounts applied on the original invoice."""
