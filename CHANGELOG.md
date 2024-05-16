@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.53.0 (2024-05-16)
+
+Full Changelog: [v1.52.0...v1.53.0](https://github.com/orbcorp/orb-python/compare/v1.52.0...v1.53.0)
+
+### Features
+
+* **api:** updates ([#276](https://github.com/orbcorp/orb-python/issues/276)) ([b82fbca](https://github.com/orbcorp/orb-python/commit/b82fbca25bf22a6ca49b5cdcc32f916ce8a880d9))
+
+
+### Chores
+
+* **internal:** add slightly better logging to scripts ([#274](https://github.com/orbcorp/orb-python/issues/274)) ([af172ca](https://github.com/orbcorp/orb-python/commit/af172ca303ee54e6d453bbeee9d0b77e93fcfdf6))
+
 ## 1.52.0 (2024-05-14)
 
 Full Changelog: [v1.51.0...v1.52.0](https://github.com/orbcorp/orb-python/compare/v1.51.0...v1.52.0)
