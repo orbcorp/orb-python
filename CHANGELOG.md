@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.54.0 (2024-05-22)
+
+Full Changelog: [v1.53.0...v1.54.0](https://github.com/orbcorp/orb-python/compare/v1.53.0...v1.54.0)
+
+### Features
+
+* **api:** add adjustment interval to subscriptions ([#277](https://github.com/orbcorp/orb-python/issues/277)) ([7248240](https://github.com/orbcorp/orb-python/commit/7248240a566b0907f20a3c1639b7c5fa6129bb29))
+
 ## 1.53.0 (2024-05-16)
 
 Full Changelog: [v1.52.0...v1.53.0](https://github.com/orbcorp/orb-python/compare/v1.52.0...v1.53.0)
