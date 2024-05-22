@@ -12,6 +12,13 @@ from .customer import Customer
 
 __all__ = [
     "Subscription",
+    "AdjustmentInterval",
+    "AdjustmentIntervalAdjustment",
+    "AdjustmentIntervalAdjustmentAmountDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentPercentageDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentUsageDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentMinimumAdjustment",
+    "AdjustmentIntervalAdjustmentMaximumAdjustment",
     "DiscountInterval",
     "DiscountIntervalAmountDiscountInterval",
     "DiscountIntervalPercentageDiscountInterval",
@@ -24,6 +31,116 @@ __all__ = [
     "RedeemedCoupon",
     "TrialInfo",
 ]
+
+
+class AdjustmentIntervalAdjustmentAmountDiscountAdjustment(BaseModel):
+    adjustment_type: Literal["amount_discount"]
+
+    amount_discount: str
+    """
+    The amount by which to discount the prices this adjustment applies to in a given
+    billing period.
+    """
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class AdjustmentIntervalAdjustmentPercentageDiscountAdjustment(BaseModel):
+    adjustment_type: Literal["percentage_discount"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    percentage_discount: float
+    """
+    The percentage (as a value between 0 and 1) by which to discount the price
+    intervals this adjustment applies to in a given billing period.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class AdjustmentIntervalAdjustmentUsageDiscountAdjustment(BaseModel):
+    adjustment_type: Literal["usage_discount"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+    usage_discount: float
+    """
+    The number of usage units by which to discount the price this adjustment applies
+    to in a given billing period.
+    """
+
+
+class AdjustmentIntervalAdjustmentMinimumAdjustment(BaseModel):
+    adjustment_type: Literal["minimum"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    item_id: str
+    """The item ID that revenue from this minimum will be attributed to."""
+
+    minimum_amount: str
+    """
+    The minimum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class AdjustmentIntervalAdjustmentMaximumAdjustment(BaseModel):
+    adjustment_type: Literal["maximum"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    maximum_amount: str
+    """
+    The maximum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+AdjustmentIntervalAdjustment = Annotated[
+    Union[
+        AdjustmentIntervalAdjustmentAmountDiscountAdjustment,
+        AdjustmentIntervalAdjustmentPercentageDiscountAdjustment,
+        AdjustmentIntervalAdjustmentUsageDiscountAdjustment,
+        AdjustmentIntervalAdjustmentMinimumAdjustment,
+        AdjustmentIntervalAdjustmentMaximumAdjustment,
+    ],
+    PropertyInfo(discriminator="adjustment_type"),
+]
+
+
+class AdjustmentInterval(BaseModel):
+    id: str
+
+    adjustment: AdjustmentIntervalAdjustment
+
+    applies_to_price_interval_ids: List[str]
+    """The price interval IDs that this adjustment applies to."""
+
+    end_date: Optional[datetime] = None
+    """The end date of the adjustment interval."""
+
+    start_date: datetime
+    """The start date of the adjustment interval."""
 
 
 class DiscountIntervalAmountDiscountInterval(BaseModel):
@@ -452,6 +569,9 @@ class Subscription(BaseModel):
     The current plan phase that is active, only if the subscription's plan has
     phases.
     """
+
+    adjustment_intervals: List[AdjustmentInterval]
+    """The adjustment intervals for this subscription."""
 
     auto_collection: Optional[bool] = None
     """
