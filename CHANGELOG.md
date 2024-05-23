@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.55.0 (2024-05-23)
+
+Full Changelog: [v1.54.0...v1.55.0](https://github.com/orbcorp/orb-python/compare/v1.54.0...v1.55.0)
+
+### Features
+
+* **api:** updates ([#281](https://github.com/orbcorp/orb-python/issues/281)) ([9293cda](https://github.com/orbcorp/orb-python/commit/9293cdab4af46bc5dbeb1f8dbc7d6dfc1ebf43d6))
+
+
+### Chores
+
+* **ci:** update rye install location ([#279](https://github.com/orbcorp/orb-python/issues/279)) ([a69dda3](https://github.com/orbcorp/orb-python/commit/a69dda372329408a5e8f5c25da8fb740297d4fd5))
+
 ## 1.54.0 (2024-05-22)
 
 Full Changelog: [v1.53.0...v1.54.0](https://github.com/orbcorp/orb-python/compare/v1.53.0...v1.54.0)
