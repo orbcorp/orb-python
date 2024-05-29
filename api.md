@@ -245,6 +245,7 @@ from orb.types import Item
 Methods:
 
 - <code title="post /items">client.items.<a href="./src/orb/resources/items.py">create</a>(\*\*<a href="src/orb/types/item_create_params.py">params</a>) -> <a href="./src/orb/types/item.py">Item</a></code>
+- <code title="put /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">update</a>(item_id, \*\*<a href="src/orb/types/item_update_params.py">params</a>) -> <a href="./src/orb/types/item.py">Item</a></code>
 - <code title="get /items">client.items.<a href="./src/orb/resources/items.py">list</a>(\*\*<a href="src/orb/types/item_list_params.py">params</a>) -> <a href="./src/orb/types/item.py">SyncPage[Item]</a></code>
 - <code title="get /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">fetch</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 
