@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, Iterable, Optional
 
 import httpx
 
 from .. import _legacy_response
-from ..types import item_list_params, item_create_params
+from ..types import item_list_params, item_create_params, item_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -66,6 +66,60 @@ class Items(SyncAPIResource):
         return self._post(
             "/items",
             body=maybe_transform({"name": name}, item_create_params.ItemCreateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
+    def update(
+        self,
+        item_id: str,
+        *,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """Update items
+
+        Args:
+          metadata: User-specified key/value pairs for the resource.
+
+        Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
+        return self._put(
+            f"/items/{item_id}",
+            body=maybe_transform(
+                {
+                    "external_connections": external_connections,
+                    "metadata": metadata,
+                },
+                item_update_params.ItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -209,6 +263,60 @@ class AsyncItems(AsyncAPIResource):
             cast_to=Item,
         )
 
+    async def update(
+        self,
+        item_id: str,
+        *,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """Update items
+
+        Args:
+          metadata: User-specified key/value pairs for the resource.
+
+        Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
+        return await self._put(
+            f"/items/{item_id}",
+            body=await async_maybe_transform(
+                {
+                    "external_connections": external_connections,
+                    "metadata": metadata,
+                },
+                item_update_params.ItemUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
     def list(
         self,
         *,
@@ -299,6 +407,9 @@ class ItemsWithRawResponse:
         self.create = _legacy_response.to_raw_response_wrapper(
             items.create,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            items.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             items.list,
         )
@@ -313,6 +424,9 @@ class AsyncItemsWithRawResponse:
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             items.create,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            items.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             items.list,
@@ -329,6 +443,9 @@ class ItemsWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             items.create,
         )
+        self.update = to_streamed_response_wrapper(
+            items.update,
+        )
         self.list = to_streamed_response_wrapper(
             items.list,
         )
@@ -343,6 +460,9 @@ class AsyncItemsWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             items.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            items.update,
         )
         self.list = async_to_streamed_response_wrapper(
             items.list,

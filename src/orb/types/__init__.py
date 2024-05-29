@@ -23,6 +23,7 @@ from .alert_list_params import AlertListParams as AlertListParams
 from .price_list_params import PriceListParams as PriceListParams
 from .coupon_list_params import CouponListParams as CouponListParams
 from .item_create_params import ItemCreateParams as ItemCreateParams
+from .item_update_params import ItemUpdateParams as ItemUpdateParams
 from .metric_list_params import MetricListParams as MetricListParams
 from .plan_create_params import PlanCreateParams as PlanCreateParams
 from .plan_update_params import PlanUpdateParams as PlanUpdateParams
