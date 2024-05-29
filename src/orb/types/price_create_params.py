@@ -38,6 +38,8 @@ __all__ = [
     "NewFloatingPackageWithAllocationPrice",
     "NewFloatingTieredPackageWithMinimumPrice",
     "NewFloatingUnitWithPercentPrice",
+    "NewFloatingTieredWithProrationPrice",
+    "NewFloatingUnitWithProrationPrice",
 ]
 
 
@@ -905,6 +907,96 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     """The property used to group this price on an invoice"""
 
 
+class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the plan will be associated with."""
+
+    model_type: Required[Literal["tiered_with_proration"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    tiered_with_proration_config: Required[Dict[str, object]]
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+
+class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the plan will be associated with."""
+
+    model_type: Required[Literal["unit_with_proration"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    unit_with_proration_config: Required[Dict[str, object]]
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+
 PriceCreateParams = Union[
     NewFloatingUnitPrice,
     NewFloatingPackagePrice,
@@ -922,4 +1014,6 @@ PriceCreateParams = Union[
     NewFloatingPackageWithAllocationPrice,
     NewFloatingTieredPackageWithMinimumPrice,
     NewFloatingUnitWithPercentPrice,
+    NewFloatingTieredWithProrationPrice,
+    NewFloatingUnitWithProrationPrice,
 ]

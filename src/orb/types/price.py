@@ -123,6 +123,18 @@ __all__ = [
     "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
     "MatrixWithAllocationPriceMaximum",
     "MatrixWithAllocationPriceMinimum",
+    "TieredWithProrationPrice",
+    "TieredWithProrationPriceBillableMetric",
+    "TieredWithProrationPriceCreditAllocation",
+    "TieredWithProrationPriceItem",
+    "TieredWithProrationPriceMaximum",
+    "TieredWithProrationPriceMinimum",
+    "UnitWithProrationPrice",
+    "UnitWithProrationPriceBillableMetric",
+    "UnitWithProrationPriceCreditAllocation",
+    "UnitWithProrationPriceItem",
+    "UnitWithProrationPriceMaximum",
+    "UnitWithProrationPriceMinimum",
 ]
 
 
@@ -1550,6 +1562,166 @@ class MatrixWithAllocationPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
+class TieredWithProrationPriceBillableMetric(BaseModel):
+    id: str
+
+
+class TieredWithProrationPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class TieredWithProrationPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class TieredWithProrationPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class TieredWithProrationPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class TieredWithProrationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[TieredWithProrationPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[TieredWithProrationPriceCreditAllocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: TieredWithProrationPriceItem
+
+    maximum: Optional[TieredWithProrationPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[TieredWithProrationPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["tiered_with_proration"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    tiered_with_proration_config: Dict[str, object]
+
+
+class UnitWithProrationPriceBillableMetric(BaseModel):
+    id: str
+
+
+class UnitWithProrationPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class UnitWithProrationPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class UnitWithProrationPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class UnitWithProrationPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class UnitWithProrationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[UnitWithProrationPriceBillableMetric] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[UnitWithProrationPriceCreditAllocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: UnitWithProrationPriceItem
+
+    maximum: Optional[UnitWithProrationPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    minimum: Optional[UnitWithProrationPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["unit_with_proration"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    unit_with_proration_config: Dict[str, object]
+
+
 Price = Annotated[
     Union[
         UnitPrice,
@@ -1568,6 +1740,8 @@ Price = Annotated[
         PackageWithAllocationPrice,
         UnitWithPercentPrice,
         MatrixWithAllocationPrice,
+        TieredWithProrationPrice,
+        UnitWithProrationPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]
