@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.56.0 (2024-05-29)
+
+Full Changelog: [v1.55.0...v1.56.0](https://github.com/orbcorp/orb-python/compare/v1.55.0...v1.56.0)
+
+### Features
+
+* **api:** pricing model updates ([4dc829a](https://github.com/orbcorp/orb-python/commit/4dc829ad67edf6b4384c6b4432edb7f73c847167))
+* **api:** update item endpoint ([#287](https://github.com/orbcorp/orb-python/issues/287)) ([4dc829a](https://github.com/orbcorp/orb-python/commit/4dc829ad67edf6b4384c6b4432edb7f73c847167))
+
+
+### Chores
+
+* **ci:** update rye install location ([#282](https://github.com/orbcorp/orb-python/issues/282)) ([667cef5](https://github.com/orbcorp/orb-python/commit/667cef59e90027b25829b2dd2bfcdd5917f68627))
+* **internal:** bump pyright ([#284](https://github.com/orbcorp/orb-python/issues/284)) ([ef316cc](https://github.com/orbcorp/orb-python/commit/ef316cc860ed7571788a4fbb5509a273f5ac731c))
+* **internal:** update bootstrap script ([#286](https://github.com/orbcorp/orb-python/issues/286)) ([72edfe5](https://github.com/orbcorp/orb-python/commit/72edfe561c937aeec2006986b64c7cb18bc8655f))
+
+
+### Documentation
+
+* **contributing:** update references to rye-up.com ([#285](https://github.com/orbcorp/orb-python/issues/285)) ([5502012](https://github.com/orbcorp/orb-python/commit/55020125e1397497a437de9fcce80f31f341c7d8))
+
 ## 1.55.0 (2024-05-23)
 
 Full Changelog: [v1.54.0...v1.55.0](https://github.com/orbcorp/orb-python/compare/v1.54.0...v1.55.0)
