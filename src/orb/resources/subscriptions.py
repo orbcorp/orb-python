@@ -1248,7 +1248,9 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1319,7 +1321,11 @@ class Subscriptions(SyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -1338,7 +1344,9 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),
@@ -2960,7 +2968,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3031,7 +3041,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -3050,7 +3064,9 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),

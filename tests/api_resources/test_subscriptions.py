@@ -635,6 +635,35 @@ class TestSubscriptions:
                     "maximum_amount": 0,
                 },
             ],
+            add_adjustments=[
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            ],
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
@@ -695,6 +724,23 @@ class TestSubscriptions:
                         },
                     ],
                     "billing_cycle_day": 0,
+                },
+            ],
+            edit_adjustments=[
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
         )
@@ -1686,6 +1732,35 @@ class TestAsyncSubscriptions:
                     "maximum_amount": 0,
                 },
             ],
+            add_adjustments=[
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            ],
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
@@ -1746,6 +1821,23 @@ class TestAsyncSubscriptions:
                         },
                     ],
                     "billing_cycle_day": 0,
+                },
+            ],
+            edit_adjustments=[
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
         )

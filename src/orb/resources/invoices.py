@@ -10,6 +10,7 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
+    shared_params,
     invoice_list_params,
     invoice_create_params,
     invoice_mark_paid_params,
@@ -51,6 +52,7 @@ class Invoices(SyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        discount: Optional[shared_params.Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -80,6 +82,8 @@ class Invoices(SyncAPIResource):
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
+
+          discount: An optional discount to attach to the invoice.
 
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
@@ -112,6 +116,7 @@ class Invoices(SyncAPIResource):
                     "line_items": line_items,
                     "net_terms": net_terms,
                     "customer_id": customer_id,
+                    "discount": discount,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
@@ -462,6 +467,7 @@ class AsyncInvoices(AsyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        discount: Optional[shared_params.Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -491,6 +497,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
+
+          discount: An optional discount to attach to the invoice.
 
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
@@ -523,6 +531,7 @@ class AsyncInvoices(AsyncAPIResource):
                     "line_items": line_items,
                     "net_terms": net_terms,
                     "customer_id": customer_id,
+                    "discount": discount,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
