@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -81,7 +81,6 @@ class Items(SyncAPIResource):
         item_id: str,
         *,
         external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,15 +89,10 @@ class Items(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Item:
-        """Update items
+        """
+        Update items
 
         Args:
-          metadata: User-specified key/value pairs for the resource.
-
-        Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -113,13 +107,7 @@ class Items(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
         return self._put(
             f"/items/{item_id}",
-            body=maybe_transform(
-                {
-                    "external_connections": external_connections,
-                    "metadata": metadata,
-                },
-                item_update_params.ItemUpdateParams,
-            ),
+            body=maybe_transform({"external_connections": external_connections}, item_update_params.ItemUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -268,7 +256,6 @@ class AsyncItems(AsyncAPIResource):
         item_id: str,
         *,
         external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -277,15 +264,10 @@ class AsyncItems(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Item:
-        """Update items
+        """
+        Update items
 
         Args:
-          metadata: User-specified key/value pairs for the resource.
-
-        Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -301,11 +283,7 @@ class AsyncItems(AsyncAPIResource):
         return await self._put(
             f"/items/{item_id}",
             body=await async_maybe_transform(
-                {
-                    "external_connections": external_connections,
-                    "metadata": metadata,
-                },
-                item_update_params.ItemUpdateParams,
+                {"external_connections": external_connections}, item_update_params.ItemUpdateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
