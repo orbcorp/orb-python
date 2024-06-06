@@ -50,6 +50,9 @@ class AutoCollection(BaseModel):
     is not enabled for this invoice, this field will be `null`.
     """
 
+    num_attempts: Optional[int] = None
+    """Number of auto-collection payment attempts."""
+
     previously_attempted_at: Optional[datetime] = None
     """
     If Orb has ever attempted payment auto-collection for this invoice, this field

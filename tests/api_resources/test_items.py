@@ -71,28 +71,6 @@ class TestItems:
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
-    def test_method_update_with_all_params(self, client: Orb) -> None:
-        item = client.items.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Item, item, path=["response"])
-
-    @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.items.with_raw_response.update(
             "string",
@@ -289,28 +267,6 @@ class TestAsyncItems:
                     "external_entity_id": "string",
                 },
             ],
-        )
-        assert_matches_type(Item, item, path=["response"])
-
-    @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
-        item = await async_client.items.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
-            metadata={"foo": "string"},
         )
         assert_matches_type(Item, item, path=["response"])
 
