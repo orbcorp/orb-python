@@ -90,7 +90,7 @@ class Items(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        Update items
+        This endpoint can be used to update properties on the Item.
 
         Args:
           extra_headers: Send extra headers
@@ -265,7 +265,7 @@ class AsyncItems(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        Update items
+        This endpoint can be used to update properties on the Item.
 
         Args:
           extra_headers: Send extra headers
