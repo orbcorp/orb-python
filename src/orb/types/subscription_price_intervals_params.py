@@ -12,6 +12,7 @@ from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
 __all__ = [
     "SubscriptionPriceIntervalsParams",
     "Add",
+    "AddAllocationPrice",
     "AddDiscount",
     "AddDiscountAmountDiscountCreationParams",
     "AddDiscountPercentageDiscountCreationParams",
@@ -75,6 +76,26 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
 
     edit_adjustments: Iterable[EditAdjustment]
     """A list of adjustments to edit on the subscription."""
+
+
+class AddAllocationPrice(TypedDict, total=False):
+    amount: Required[float]
+    """An amount of the currency to allocate to the customer at the specified cadence."""
+
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual"]]
+    """The cadence at which to allocate the amount to the customer."""
+
+    currency: Required[str]
+    """
+    An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+    this price.
+    """
+
+    expires_at_end_of_cadence: Required[bool]
+    """
+    Whether the allocated amount should expire at the end of the cadence or roll
+    over to the next period.
+    """
 
 
 class AddDiscountAmountDiscountCreationParams(TypedDict, total=False):
@@ -1103,6 +1124,9 @@ class Add(TypedDict, total=False):
 
     This is the date that the price will start billing on the subscription.
     """
+
+    allocation_price: Optional[AddAllocationPrice]
+    """The definition of a new allocation price to create and add to the subscription."""
 
     discounts: Optional[Iterable[AddDiscount]]
     """A list of discounts to initialize on the price interval."""
