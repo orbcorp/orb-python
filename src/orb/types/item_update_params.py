@@ -9,7 +9,9 @@ __all__ = ["ItemUpdateParams", "ExternalConnection"]
 
 
 class ItemUpdateParams(TypedDict, total=False):
-    external_connections: Required[Optional[Iterable[ExternalConnection]]]
+    external_connections: Optional[Iterable[ExternalConnection]]
+
+    name: Optional[str]
 
 
 class ExternalConnection(TypedDict, total=False):
