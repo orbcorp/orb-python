@@ -80,7 +80,8 @@ class Items(SyncAPIResource):
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -107,7 +108,13 @@ class Items(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
         return self._put(
             f"/items/{item_id}",
-            body=maybe_transform({"external_connections": external_connections}, item_update_params.ItemUpdateParams),
+            body=maybe_transform(
+                {
+                    "external_connections": external_connections,
+                    "name": name,
+                },
+                item_update_params.ItemUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -255,7 +262,8 @@ class AsyncItems(AsyncAPIResource):
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -283,7 +291,11 @@ class AsyncItems(AsyncAPIResource):
         return await self._put(
             f"/items/{item_id}",
             body=await async_maybe_transform(
-                {"external_connections": external_connections}, item_update_params.ItemUpdateParams
+                {
+                    "external_connections": external_connections,
+                    "name": name,
+                },
+                item_update_params.ItemUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
