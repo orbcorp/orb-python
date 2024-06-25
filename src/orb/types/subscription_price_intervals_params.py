@@ -79,7 +79,7 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
 
 
 class AddAllocationPrice(TypedDict, total=False):
-    amount: Required[float]
+    amount: Required[str]
     """An amount of the currency to allocate to the customer at the specified cadence."""
 
     cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual"]]
