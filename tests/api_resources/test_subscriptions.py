@@ -503,7 +503,7 @@ class TestSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
@@ -559,7 +559,7 @@ class TestSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
@@ -615,7 +615,7 @@ class TestSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1618,7 +1618,7 @@ class TestAsyncSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1674,7 +1674,7 @@ class TestAsyncSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1730,7 +1730,7 @@ class TestAsyncSubscriptions:
                     },
                     "allocation_price": {
                         "currency": "USD",
-                        "amount": 0,
+                        "amount": "10.00",
                         "cadence": "monthly",
                         "expires_at_end_of_cadence": True,
                     },
