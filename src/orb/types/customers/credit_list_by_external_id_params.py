@@ -19,5 +19,8 @@ class CreditListByExternalIDParams(TypedDict, total=False):
     request.
     """
 
+    include_all_blocks: bool
+    """Include all blocks, not just active ones."""
+
     limit: int
     """The number of items to fetch. Defaults to 20."""
