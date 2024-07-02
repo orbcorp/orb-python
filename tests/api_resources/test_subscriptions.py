@@ -501,55 +501,11 @@ class TestSubscriptions:
                         "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "fixed_fee_quantity_transitions": [
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    "discounts": [
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                    ],
-                    "minimum_amount": 0,
-                    "maximum_amount": 0,
-                },
-                {
-                    "price_id": "h74gfhdjvn7ujokd",
-                    "external_price_id": "external_price_id",
-                    "price": {
-                        "external_price_id": "string",
-                        "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
-                        "billed_in_advance": True,
-                        "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
-                        "cadence": "annual",
-                        "conversion_rate": 0,
-                        "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -601,6 +557,12 @@ class TestSubscriptions:
                         "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
@@ -633,6 +595,91 @@ class TestSubscriptions:
                     ],
                     "minimum_amount": 0,
                     "maximum_amount": 0,
+                },
+                {
+                    "price_id": "h74gfhdjvn7ujokd",
+                    "external_price_id": "external_price_id",
+                    "price": {
+                        "external_price_id": "string",
+                        "name": "Annual fee",
+                        "billable_metric_id": "string",
+                        "item_id": "string",
+                        "billed_in_advance": True,
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "string",
+                        "cadence": "annual",
+                        "conversion_rate": 0,
+                        "model_type": "unit",
+                        "unit_config": {"unit_amount": "string"},
+                        "currency": "string",
+                    },
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "fixed_fee_quantity_transitions": [
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                    ],
+                    "discounts": [
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                    ],
+                    "minimum_amount": 0,
+                    "maximum_amount": 0,
+                },
+            ],
+            add_adjustments=[
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
             edit=[
@@ -695,6 +742,23 @@ class TestSubscriptions:
                         },
                     ],
                     "billing_cycle_day": 0,
+                },
+            ],
+            edit_adjustments=[
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
         )
@@ -1552,55 +1616,11 @@ class TestAsyncSubscriptions:
                         "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "fixed_fee_quantity_transitions": [
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                        {
-                            "quantity": 5,
-                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                        },
-                    ],
-                    "discounts": [
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                        {
-                            "discount_type": "amount",
-                            "amount_discount": 0,
-                        },
-                    ],
-                    "minimum_amount": 0,
-                    "maximum_amount": 0,
-                },
-                {
-                    "price_id": "h74gfhdjvn7ujokd",
-                    "external_price_id": "external_price_id",
-                    "price": {
-                        "external_price_id": "string",
-                        "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
-                        "billed_in_advance": True,
-                        "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
-                        "cadence": "annual",
-                        "conversion_rate": 0,
-                        "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1652,6 +1672,12 @@ class TestAsyncSubscriptions:
                         "unit_config": {"unit_amount": "string"},
                         "currency": "string",
                     },
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "fixed_fee_quantity_transitions": [
@@ -1684,6 +1710,91 @@ class TestAsyncSubscriptions:
                     ],
                     "minimum_amount": 0,
                     "maximum_amount": 0,
+                },
+                {
+                    "price_id": "h74gfhdjvn7ujokd",
+                    "external_price_id": "external_price_id",
+                    "price": {
+                        "external_price_id": "string",
+                        "name": "Annual fee",
+                        "billable_metric_id": "string",
+                        "item_id": "string",
+                        "billed_in_advance": True,
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "string",
+                        "cadence": "annual",
+                        "conversion_rate": 0,
+                        "model_type": "unit",
+                        "unit_config": {"unit_amount": "string"},
+                        "currency": "string",
+                    },
+                    "allocation_price": {
+                        "currency": "USD",
+                        "amount": "10.00",
+                        "cadence": "monthly",
+                        "expires_at_end_of_cadence": True,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "fixed_fee_quantity_transitions": [
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                        {
+                            "quantity": 5,
+                            "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                        },
+                    ],
+                    "discounts": [
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                        {
+                            "discount_type": "amount",
+                            "amount_discount": 0,
+                        },
+                    ],
+                    "minimum_amount": 0,
+                    "maximum_amount": 0,
+                },
+            ],
+            add_adjustments=[
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment": {
+                        "applies_to_price_ids": ["price_1", "price_2"],
+                        "adjustment_type": "percentage_discount",
+                        "percentage_discount": 0,
+                    },
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
             edit=[
@@ -1746,6 +1857,23 @@ class TestAsyncSubscriptions:
                         },
                     ],
                     "billing_cycle_day": 0,
+                },
+            ],
+            edit_adjustments=[
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                {
+                    "adjustment_interval_id": "sdfs6wdjvn7ujokd",
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             ],
         )

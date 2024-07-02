@@ -18,6 +18,8 @@ class CreditListByExternalIDResponse(BaseModel):
 
     expiry_date: Optional[datetime] = None
 
+    maximum_initial_balance: Optional[float] = None
+
     per_unit_cost_basis: Optional[str] = None
 
     status: Literal["active", "pending_payment"]

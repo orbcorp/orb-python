@@ -6,6 +6,7 @@ from typing import Dict, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..types import shared_params
 from .._utils import PropertyInfo
 
 __all__ = ["InvoiceCreateParams", "LineItem", "LineItemUnitConfig"]
@@ -40,6 +41,9 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     One of `customer_id` and `external_customer_id` are required.
     """
+
+    discount: Optional[shared_params.Discount]
+    """An optional discount to attach to the invoice."""
 
     external_customer_id: Optional[str]
     """The `external_customer_id` of the `Customer` to create this invoice for.

@@ -1248,7 +1248,9 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1283,6 +1285,21 @@ class Subscriptions(SyncAPIResource):
         Additionally, a discount, minimum, or maximum can be specified on the price
         interval. This will only apply to this price interval, not any other price
         intervals on the subscription.
+
+        ## Adjustment intervals
+
+        An adjustment interval represents the time period that a particular adjustment
+        (a discount, minimum, or maximum) applies to the prices on a subscription.
+        Adjustment intervals can be added to a subscription by specifying them in the
+        `add_adjustments` array, or modified via the `edit_adjustments` array. When
+        creating an adjustment interval, you'll need to provide the definition of the
+        new adjustment (the type of adjustment, and which prices it applies to), as well
+        as the start and end dates for the adjustment interval. The start and end dates
+        of an existing adjustment interval can be edited via the `edit_adjustments`
+        field (just like price intervals). (To "change" the amount of a discount,
+        minimum, or maximum, then, you'll need to end the existing interval, and create
+        a new adjustment interval with the new amount and a start date that matches the
+        end date of the previous interval.)
 
         ## Editing price intervals
 
@@ -1319,7 +1336,11 @@ class Subscriptions(SyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -1338,7 +1359,9 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),
@@ -2960,7 +2983,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2995,6 +3020,21 @@ class AsyncSubscriptions(AsyncAPIResource):
         Additionally, a discount, minimum, or maximum can be specified on the price
         interval. This will only apply to this price interval, not any other price
         intervals on the subscription.
+
+        ## Adjustment intervals
+
+        An adjustment interval represents the time period that a particular adjustment
+        (a discount, minimum, or maximum) applies to the prices on a subscription.
+        Adjustment intervals can be added to a subscription by specifying them in the
+        `add_adjustments` array, or modified via the `edit_adjustments` array. When
+        creating an adjustment interval, you'll need to provide the definition of the
+        new adjustment (the type of adjustment, and which prices it applies to), as well
+        as the start and end dates for the adjustment interval. The start and end dates
+        of an existing adjustment interval can be edited via the `edit_adjustments`
+        field (just like price intervals). (To "change" the amount of a discount,
+        minimum, or maximum, then, you'll need to end the existing interval, and create
+        a new adjustment interval with the new amount and a start date that matches the
+        end date of the previous interval.)
 
         ## Editing price intervals
 
@@ -3031,7 +3071,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -3050,7 +3094,9 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),

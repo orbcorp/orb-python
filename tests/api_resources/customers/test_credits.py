@@ -34,6 +34,7 @@ class TestCredits:
             "string",
             currency="string",
             cursor="string",
+            include_all_blocks=True,
             limit=1,
         )
         assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
@@ -82,6 +83,7 @@ class TestCredits:
             "string",
             currency="string",
             cursor="string",
+            include_all_blocks=True,
             limit=1,
         )
         assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
@@ -134,6 +136,7 @@ class TestAsyncCredits:
             "string",
             currency="string",
             cursor="string",
+            include_all_blocks=True,
             limit=1,
         )
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
@@ -182,6 +185,7 @@ class TestAsyncCredits:
             "string",
             currency="string",
             cursor="string",
+            include_all_blocks=True,
             limit=1,
         )
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])

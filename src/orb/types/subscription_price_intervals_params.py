@@ -12,6 +12,7 @@ from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
 __all__ = [
     "SubscriptionPriceIntervalsParams",
     "Add",
+    "AddAllocationPrice",
     "AddDiscount",
     "AddDiscountAmountDiscountCreationParams",
     "AddDiscountPercentageDiscountCreationParams",
@@ -51,8 +52,15 @@ __all__ = [
     "AddPriceNewFloatingUnitWithPercentPrice",
     "AddPriceNewFloatingTieredWithProrationPrice",
     "AddPriceNewFloatingUnitWithProrationPrice",
+    "AddAdjustment",
+    "AddAdjustmentAdjustment",
+    "AddAdjustmentAdjustmentNewPercentageDiscount",
+    "AddAdjustmentAdjustmentNewAmountDiscount",
+    "AddAdjustmentAdjustmentNewMinimum",
+    "AddAdjustmentAdjustmentNewMaximum",
     "Edit",
     "EditFixedFeeQuantityTransition",
+    "EditAdjustment",
 ]
 
 
@@ -60,8 +68,34 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
     add: Iterable[Add]
     """A list of price intervals to add to the subscription."""
 
+    add_adjustments: Iterable[AddAdjustment]
+    """A list of adjustments to add to the subscription."""
+
     edit: Iterable[Edit]
     """A list of price intervals to edit on the subscription."""
+
+    edit_adjustments: Iterable[EditAdjustment]
+    """A list of adjustments to edit on the subscription."""
+
+
+class AddAllocationPrice(TypedDict, total=False):
+    amount: Required[str]
+    """An amount of the currency to allocate to the customer at the specified cadence."""
+
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual"]]
+    """The cadence at which to allocate the amount to the customer."""
+
+    currency: Required[str]
+    """
+    An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+    this price.
+    """
+
+    expires_at_end_of_cadence: Required[bool]
+    """
+    Whether the allocated amount should expire at the end of the cadence or roll
+    over to the next period.
+    """
 
 
 class AddDiscountAmountDiscountCreationParams(TypedDict, total=False):
@@ -112,7 +146,7 @@ class AddPriceNewFloatingUnitPriceUnitConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -169,7 +203,7 @@ class AddPriceNewFloatingPackagePricePackageConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -237,7 +271,7 @@ class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -308,7 +342,7 @@ class AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(Typ
 
 
 class AddPriceNewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -369,7 +403,7 @@ class AddPriceNewFloatingTieredPriceTieredConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -436,7 +470,7 @@ class AddPriceNewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredBpsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -491,7 +525,7 @@ class AddPriceNewFloatingBpsPriceBpsConfig(TypedDict, total=False):
 class AddPriceNewFloatingBpsPrice(TypedDict, total=False):
     bps_config: Required[AddPriceNewFloatingBpsPriceBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -555,7 +589,7 @@ class AddPriceNewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
 class AddPriceNewFloatingBulkBpsPrice(TypedDict, total=False):
     bulk_bps_config: Required[AddPriceNewFloatingBulkBpsPriceBulkBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -613,7 +647,7 @@ class AddPriceNewFloatingBulkPriceBulkConfig(TypedDict, total=False):
 class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
     bulk_config: Required[AddPriceNewFloatingBulkPriceBulkConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -656,7 +690,7 @@ class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -701,7 +735,7 @@ class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -746,7 +780,7 @@ class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -791,7 +825,7 @@ class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -836,7 +870,7 @@ class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -881,7 +915,7 @@ class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -926,7 +960,7 @@ class AddPriceNewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitWithPercentPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -971,7 +1005,7 @@ class AddPriceNewFloatingUnitWithPercentPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1016,7 +1050,7 @@ class AddPriceNewFloatingTieredWithProrationPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1091,6 +1125,9 @@ class Add(TypedDict, total=False):
     This is the date that the price will start billing on the subscription.
     """
 
+    allocation_price: Optional[AddAllocationPrice]
+    """The definition of a new allocation price to create and add to the subscription."""
+
     discounts: Optional[Iterable[AddDiscount]]
     """A list of discounts to initialize on the price interval."""
 
@@ -1123,6 +1160,74 @@ class Add(TypedDict, total=False):
 
     price_id: Optional[str]
     """The id of the price to add to the subscription."""
+
+
+class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["percentage_discount"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    percentage_discount: Required[float]
+
+
+class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["amount_discount"]]
+
+    amount_discount: Required[str]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+
+class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
+    adjustment_type: Required[Literal["minimum"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    item_id: Required[str]
+    """The item ID that revenue from this minimum will be attributed to."""
+
+    minimum_amount: Required[str]
+
+
+class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
+    adjustment_type: Required[Literal["maximum"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    maximum_amount: Required[str]
+
+
+AddAdjustmentAdjustment = Union[
+    AddAdjustmentAdjustmentNewPercentageDiscount,
+    AddAdjustmentAdjustmentNewAmountDiscount,
+    AddAdjustmentAdjustmentNewMinimum,
+    AddAdjustmentAdjustmentNewMaximum,
+]
+
+
+class AddAdjustment(TypedDict, total=False):
+    adjustment: Required[AddAdjustmentAdjustment]
+    """The definition of a new adjustment to create and add to the subscription."""
+
+    start_date: Required[
+        Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
+    ]
+    """The start date of the adjustment interval.
+
+    This is the date that the adjustment will start affecting prices on the
+    subscription.
+    """
+
+    end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
+    """The end date of the adjustment interval.
+
+    This is the date that the adjustment will stop affecting prices on the
+    subscription.
+    """
 
 
 class EditFixedFeeQuantityTransition(TypedDict, total=False):
@@ -1159,6 +1264,23 @@ class Edit(TypedDict, total=False):
 
     start_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
     """The updated start date of this price interval.
+
+    If not specified, the start date will not be updated.
+    """
+
+
+class EditAdjustment(TypedDict, total=False):
+    adjustment_interval_id: Required[str]
+    """The id of the adjustment interval to edit."""
+
+    end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
+    """The updated end date of this adjustment interval.
+
+    If not specified, the start date will not be updated.
+    """
+
+    start_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
+    """The updated start date of this adjustment interval.
 
     If not specified, the start date will not be updated.
     """
