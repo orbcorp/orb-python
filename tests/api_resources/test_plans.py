@@ -61,6 +61,7 @@ class TestPlans:
             external_plan_id="string",
             metadata={"foo": "string"},
             net_terms=0,
+            status="active",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
@@ -277,6 +278,7 @@ class TestAsyncPlans:
             external_plan_id="string",
             metadata={"foo": "string"},
             net_terms=0,
+            status="active",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
