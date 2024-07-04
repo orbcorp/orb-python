@@ -75,6 +75,12 @@ class PlanCreateParams(TypedDict, total=False):
     to 0.
     """
 
+    status: Literal["active", "draft"]
+    """The status of the plan to create (either active or draft).
+
+    If not specified, this defaults to active.
+    """
+
 
 class PriceNewPlanUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]

@@ -59,6 +59,7 @@ class Plans(SyncAPIResource):
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -87,6 +88,9 @@ class Plans(SyncAPIResource):
               date for the invoice. If you intend the invoice to be due on issue, set this
               to 0.
 
+          status: The status of the plan to create (either active or draft). If not specified,
+              this defaults to active.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -108,6 +112,7 @@ class Plans(SyncAPIResource):
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
+                    "status": status,
                 },
                 plan_create_params.PlanCreateParams,
             ),
@@ -318,6 +323,7 @@ class AsyncPlans(AsyncAPIResource):
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -346,6 +352,9 @@ class AsyncPlans(AsyncAPIResource):
               date for the invoice. If you intend the invoice to be due on issue, set this
               to 0.
 
+          status: The status of the plan to create (either active or draft). If not specified,
+              this defaults to active.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -367,6 +376,7 @@ class AsyncPlans(AsyncAPIResource):
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
+                    "status": status,
                 },
                 plan_create_params.PlanCreateParams,
             ),
