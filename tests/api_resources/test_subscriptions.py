@@ -34,76 +34,76 @@ class TestSubscriptions:
         subscription = client.subscriptions.create(
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
-            aws_region="string",
-            coupon_redemption_code="string",
+            aws_region="aws_region",
+            coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
-            customer_id="string",
-            default_invoice_memo="string",
+            customer_id="customer_id",
+            default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             external_marketplace="google",
-            external_marketplace_reporting_id="string",
+            external_marketplace_reporting_id="external_marketplace_reporting_id",
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=0,
-            invoicing_threshold="string",
+            invoicing_threshold="invoicing_threshold",
             metadata={"foo": "string"},
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -133,16 +133,16 @@ class TestSubscriptions:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         subscription = client.subscriptions.update(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.update(
-            "string",
+            subscription_id="subscription_id",
             auto_collection=True,
-            default_invoice_memo="string",
+            default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
             net_terms=0,
@@ -152,7 +152,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.update(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -163,7 +163,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.update(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -177,7 +177,7 @@ class TestSubscriptions:
     def test_path_params_update(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.update(
-                "",
+                subscription_id="",
             )
 
     @parametrize
@@ -192,9 +192,9 @@ class TestSubscriptions:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
-            customer_id="string",
-            external_customer_id="string",
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
             limit=1,
             status="active",
         )
@@ -223,7 +223,7 @@ class TestSubscriptions:
     @parametrize
     def test_method_cancel(self, client: Orb) -> None:
         subscription = client.subscriptions.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -231,7 +231,7 @@ class TestSubscriptions:
     @parametrize
     def test_method_cancel_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -240,7 +240,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_cancel(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
 
@@ -252,7 +252,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_cancel(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         ) as response:
             assert not response.is_closed
@@ -267,21 +267,21 @@ class TestSubscriptions:
     def test_path_params_cancel(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.cancel(
-                "",
+                subscription_id="",
                 cancel_option="end_of_subscription_term",
             )
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.fetch(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -292,7 +292,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.fetch(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -312,14 +312,14 @@ class TestSubscriptions:
     @parametrize
     def test_method_fetch_costs(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
 
     @parametrize
     def test_method_fetch_costs_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -329,7 +329,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_fetch_costs(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -340,7 +340,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_fetch_costs(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -354,21 +354,21 @@ class TestSubscriptions:
     def test_path_params_fetch_costs(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.fetch_costs(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     def test_method_fetch_schedule(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
     @parametrize
     def test_method_fetch_schedule_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_schedule(
-            "string",
-            cursor="string",
+            subscription_id="subscription_id",
+            cursor="cursor",
             limit=1,
             start_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -380,7 +380,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_fetch_schedule(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -391,7 +391,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_fetch_schedule(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -405,14 +405,14 @@ class TestSubscriptions:
     def test_path_params_fetch_schedule(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.fetch_schedule(
-                "",
+                subscription_id="",
             )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
     def test_method_fetch_usage(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
@@ -420,16 +420,16 @@ class TestSubscriptions:
     @parametrize
     def test_method_fetch_usage_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_usage(
-            "string",
-            billable_metric_id="string",
-            cursor="string",
-            first_dimension_key="string",
-            first_dimension_value="string",
+            subscription_id="subscription_id",
+            billable_metric_id="billable_metric_id",
+            cursor="cursor",
+            first_dimension_key="first_dimension_key",
+            first_dimension_value="first_dimension_value",
             granularity="day",
-            group_by="string",
+            group_by="group_by",
             limit=0,
-            second_dimension_key="string",
-            second_dimension_value="string",
+            second_dimension_key="second_dimension_key",
+            second_dimension_value="second_dimension_value",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -440,7 +440,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_fetch_usage(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -452,7 +452,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_fetch_usage(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -467,14 +467,14 @@ class TestSubscriptions:
     def test_path_params_fetch_usage(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.fetch_usage(
-                "",
+                subscription_id="",
             )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
     def test_method_price_intervals(self, client: Orb) -> None:
         subscription = client.subscriptions.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -482,24 +482,24 @@ class TestSubscriptions:
     @parametrize
     def test_method_price_intervals_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.price_intervals(
-            "string",
+            subscription_id="subscription_id",
             add=[
                 {
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -544,18 +544,18 @@ class TestSubscriptions:
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -600,18 +600,18 @@ class TestSubscriptions:
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -768,7 +768,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_price_intervals(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -780,7 +780,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_price_intervals(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -795,13 +795,13 @@ class TestSubscriptions:
     def test_path_params_price_intervals(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.price_intervals(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     def test_method_schedule_plan_change(self, client: Orb) -> None:
         subscription = client.subscriptions.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -809,12 +809,12 @@ class TestSubscriptions:
     @parametrize
     def test_method_schedule_plan_change_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
             align_billing_with_plan_change_date=True,
             billing_cycle_alignment="unchanged",
             change_date="2017-07-21T17:32:28Z",
-            coupon_redemption_code="string",
+            coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=2,
@@ -823,58 +823,58 @@ class TestSubscriptions:
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
         )
@@ -883,7 +883,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_schedule_plan_change(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         )
 
@@ -895,7 +895,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_schedule_plan_change(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         ) as response:
             assert not response.is_closed
@@ -910,21 +910,21 @@ class TestSubscriptions:
     def test_path_params_schedule_plan_change(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.schedule_plan_change(
-                "",
+                subscription_id="",
                 change_option="requested_date",
             )
 
     @parametrize
     def test_method_trigger_phase(self, client: Orb) -> None:
         subscription = client.subscriptions.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_method_trigger_phase_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
             effective_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -932,7 +932,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_trigger_phase(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -943,7 +943,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_trigger_phase(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -957,20 +957,20 @@ class TestSubscriptions:
     def test_path_params_trigger_phase(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.trigger_phase(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     def test_method_unschedule_cancellation(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_cancellation(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_cancellation(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.unschedule_cancellation(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -981,7 +981,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_unschedule_cancellation(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.unschedule_cancellation(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1001,16 +1001,16 @@ class TestSubscriptions:
     @parametrize
     def test_method_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         )
 
         assert response.is_closed is True
@@ -1021,8 +1021,8 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1036,21 +1036,21 @@ class TestSubscriptions:
     def test_path_params_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
-                "",
-                price_id="string",
+                subscription_id="",
+                price_id="price_id",
             )
 
     @parametrize
     def test_method_unschedule_pending_plan_changes(self, client: Orb) -> None:
         subscription = client.subscriptions.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -1061,7 +1061,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1081,8 +1081,8 @@ class TestSubscriptions:
     @parametrize
     def test_method_update_fixed_fee_quantity(self, client: Orb) -> None:
         subscription = client.subscriptions.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -1090,8 +1090,8 @@ class TestSubscriptions:
     @parametrize
     def test_method_update_fixed_fee_quantity_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
@@ -1101,8 +1101,8 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_update_fixed_fee_quantity(self, client: Orb) -> None:
         response = client.subscriptions.with_raw_response.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         )
 
@@ -1114,8 +1114,8 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_update_fixed_fee_quantity(self, client: Orb) -> None:
         with client.subscriptions.with_streaming_response.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         ) as response:
             assert not response.is_closed
@@ -1130,8 +1130,8 @@ class TestSubscriptions:
     def test_path_params_update_fixed_fee_quantity(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.update_fixed_fee_quantity(
-                "",
-                price_id="string",
+                subscription_id="",
+                price_id="price_id",
                 quantity=0,
             )
 
@@ -1149,76 +1149,76 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.create(
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
-            aws_region="string",
-            coupon_redemption_code="string",
+            aws_region="aws_region",
+            coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
-            customer_id="string",
-            default_invoice_memo="string",
+            customer_id="customer_id",
+            default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             external_marketplace="google",
-            external_marketplace_reporting_id="string",
+            external_marketplace_reporting_id="external_marketplace_reporting_id",
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=0,
-            invoicing_threshold="string",
+            invoicing_threshold="invoicing_threshold",
             metadata={"foo": "string"},
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1248,16 +1248,16 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.update(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.update(
-            "string",
+            subscription_id="subscription_id",
             auto_collection=True,
-            default_invoice_memo="string",
+            default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
             net_terms=0,
@@ -1267,7 +1267,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.update(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -1278,7 +1278,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.update(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1292,7 +1292,7 @@ class TestAsyncSubscriptions:
     async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.update(
-                "",
+                subscription_id="",
             )
 
     @parametrize
@@ -1307,9 +1307,9 @@ class TestAsyncSubscriptions:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
-            customer_id="string",
-            external_customer_id="string",
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
             limit=1,
             status="active",
         )
@@ -1338,7 +1338,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_cancel(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -1346,7 +1346,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_cancel_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -1355,7 +1355,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
 
@@ -1367,7 +1367,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.cancel(
-            "string",
+            subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         ) as response:
             assert not response.is_closed
@@ -1382,21 +1382,21 @@ class TestAsyncSubscriptions:
     async def test_path_params_cancel(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.cancel(
-                "",
+                subscription_id="",
                 cancel_option="end_of_subscription_term",
             )
 
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.fetch(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -1407,7 +1407,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.fetch(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1427,14 +1427,14 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_fetch_costs(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SubscriptionFetchCostsResponse, subscription, path=["response"])
 
     @parametrize
     async def test_method_fetch_costs_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -1444,7 +1444,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_fetch_costs(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -1455,7 +1455,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_fetch_costs(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.fetch_costs(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1469,21 +1469,21 @@ class TestAsyncSubscriptions:
     async def test_path_params_fetch_costs(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.fetch_costs(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     async def test_method_fetch_schedule(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(AsyncPage[SubscriptionFetchScheduleResponse], subscription, path=["response"])
 
     @parametrize
     async def test_method_fetch_schedule_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_schedule(
-            "string",
-            cursor="string",
+            subscription_id="subscription_id",
+            cursor="cursor",
             limit=1,
             start_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1495,7 +1495,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_fetch_schedule(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -1506,7 +1506,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_fetch_schedule(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.fetch_schedule(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1520,14 +1520,14 @@ class TestAsyncSubscriptions:
     async def test_path_params_fetch_schedule(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.fetch_schedule(
-                "",
+                subscription_id="",
             )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
     async def test_method_fetch_usage(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SubscriptionUsage, subscription, path=["response"])
 
@@ -1535,16 +1535,16 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_fetch_usage_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_usage(
-            "string",
-            billable_metric_id="string",
-            cursor="string",
-            first_dimension_key="string",
-            first_dimension_value="string",
+            subscription_id="subscription_id",
+            billable_metric_id="billable_metric_id",
+            cursor="cursor",
+            first_dimension_key="first_dimension_key",
+            first_dimension_value="first_dimension_value",
             granularity="day",
-            group_by="string",
+            group_by="group_by",
             limit=0,
-            second_dimension_key="string",
-            second_dimension_value="string",
+            second_dimension_key="second_dimension_key",
+            second_dimension_value="second_dimension_value",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -1555,7 +1555,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_fetch_usage(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -1567,7 +1567,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_fetch_usage(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.fetch_usage(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1582,14 +1582,14 @@ class TestAsyncSubscriptions:
     async def test_path_params_fetch_usage(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.fetch_usage(
-                "",
+                subscription_id="",
             )
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
     async def test_method_price_intervals(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -1597,24 +1597,24 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_price_intervals_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.price_intervals(
-            "string",
+            subscription_id="subscription_id",
             add=[
                 {
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -1659,18 +1659,18 @@ class TestAsyncSubscriptions:
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -1715,18 +1715,18 @@ class TestAsyncSubscriptions:
                     "price_id": "h74gfhdjvn7ujokd",
                     "external_price_id": "external_price_id",
                     "price": {
-                        "external_price_id": "string",
+                        "external_price_id": "external_price_id",
                         "name": "Annual fee",
-                        "billable_metric_id": "string",
-                        "item_id": "string",
+                        "billable_metric_id": "billable_metric_id",
+                        "item_id": "item_id",
                         "billed_in_advance": True,
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "string",
+                        "invoice_grouping_key": "invoice_grouping_key",
                         "cadence": "annual",
                         "conversion_rate": 0,
                         "model_type": "unit",
-                        "unit_config": {"unit_amount": "string"},
-                        "currency": "string",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "currency": "currency",
                     },
                     "allocation_price": {
                         "currency": "USD",
@@ -1883,7 +1883,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_price_intervals(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -1895,7 +1895,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_price_intervals(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.price_intervals(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1910,13 +1910,13 @@ class TestAsyncSubscriptions:
     async def test_path_params_price_intervals(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.price_intervals(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     async def test_method_schedule_plan_change(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -1924,12 +1924,12 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_schedule_plan_change_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
             align_billing_with_plan_change_date=True,
             billing_cycle_alignment="unchanged",
             change_date="2017-07-21T17:32:28Z",
-            coupon_redemption_code="string",
+            coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
             external_plan_id="ZMwNQefe7J3ecf7W",
             initial_phase_order=2,
@@ -1938,58 +1938,58 @@ class TestAsyncSubscriptions:
             plan_id="ZMwNQefe7J3ecf7W",
             price_overrides=[
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
-                    "id": "string",
+                    "id": "id",
                     "model_type": "unit",
                     "minimum_amount": "1.23",
                     "maximum_amount": "1.23",
-                    "currency": "string",
+                    "currency": "currency",
                     "conversion_rate": 0,
                     "discount": {
                         "discount_type": "percentage",
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "string",
+                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
-                        "amount_discount": "string",
+                        "amount_discount": "amount_discount",
                         "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                     },
                     "fixed_price_quantity": 2,
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
         )
@@ -1998,7 +1998,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_schedule_plan_change(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         )
 
@@ -2010,7 +2010,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_schedule_plan_change(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.schedule_plan_change(
-            "string",
+            subscription_id="subscription_id",
             change_option="requested_date",
         ) as response:
             assert not response.is_closed
@@ -2025,21 +2025,21 @@ class TestAsyncSubscriptions:
     async def test_path_params_schedule_plan_change(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.schedule_plan_change(
-                "",
+                subscription_id="",
                 change_option="requested_date",
             )
 
     @parametrize
     async def test_method_trigger_phase(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_trigger_phase_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
             effective_date=parse_date("2019-12-27"),
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -2047,7 +2047,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_trigger_phase(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         )
 
         assert response.is_closed is True
@@ -2058,7 +2058,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_trigger_phase(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.trigger_phase(
-            "string",
+            subscription_id="subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2072,20 +2072,20 @@ class TestAsyncSubscriptions:
     async def test_path_params_trigger_phase(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.trigger_phase(
-                "",
+                subscription_id="",
             )
 
     @parametrize
     async def test_method_unschedule_cancellation(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.unschedule_cancellation(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_cancellation(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.unschedule_cancellation(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -2096,7 +2096,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_unschedule_cancellation(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.unschedule_cancellation(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2116,16 +2116,16 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         )
 
         assert response.is_closed is True
@@ -2136,8 +2136,8 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.unschedule_fixed_fee_quantity_updates(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2151,21 +2151,21 @@ class TestAsyncSubscriptions:
     async def test_path_params_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.unschedule_fixed_fee_quantity_updates(
-                "",
-                price_id="string",
+                subscription_id="",
+                price_id="price_id",
             )
 
     @parametrize
     async def test_method_unschedule_pending_plan_changes(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_pending_plan_changes(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         )
 
         assert response.is_closed is True
@@ -2176,7 +2176,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_unschedule_pending_plan_changes(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.unschedule_pending_plan_changes(
-            "string",
+            "subscription_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2196,8 +2196,8 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
@@ -2205,8 +2205,8 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_update_fixed_fee_quantity_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
@@ -2216,8 +2216,8 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
         response = await async_client.subscriptions.with_raw_response.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         )
 
@@ -2229,8 +2229,8 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
         async with async_client.subscriptions.with_streaming_response.update_fixed_fee_quantity(
-            "string",
-            price_id="string",
+            subscription_id="subscription_id",
+            price_id="price_id",
             quantity=0,
         ) as response:
             assert not response.is_closed
@@ -2245,7 +2245,7 @@ class TestAsyncSubscriptions:
     async def test_path_params_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.update_fixed_fee_quantity(
-                "",
-                price_id="string",
+                subscription_id="",
+                price_id="price_id",
                 quantity=0,
             )

@@ -20,15 +20,15 @@ class TestExternalPlanID:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         external_plan_id = client.plans.external_plan_id.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         external_plan_id = client.plans.external_plan_id.update(
-            "string",
-            external_plan_id="string",
+            other_external_plan_id="external_plan_id",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
@@ -36,7 +36,7 @@ class TestExternalPlanID:
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.plans.external_plan_id.with_raw_response.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         )
 
         assert response.is_closed is True
@@ -47,7 +47,7 @@ class TestExternalPlanID:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.plans.external_plan_id.with_streaming_response.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -63,21 +63,21 @@ class TestExternalPlanID:
             ValueError, match=r"Expected a non-empty value for `other_external_plan_id` but received ''"
         ):
             client.plans.external_plan_id.with_raw_response.update(
-                "",
+                other_external_plan_id="",
                 external_plan_id="",
             )
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         external_plan_id = client.plans.external_plan_id.fetch(
-            "string",
+            "external_plan_id",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.plans.external_plan_id.with_raw_response.fetch(
-            "string",
+            "external_plan_id",
         )
 
         assert response.is_closed is True
@@ -88,7 +88,7 @@ class TestExternalPlanID:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.plans.external_plan_id.with_streaming_response.fetch(
-            "string",
+            "external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,15 +112,15 @@ class TestAsyncExternalPlanID:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         external_plan_id = await async_client.plans.external_plan_id.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         external_plan_id = await async_client.plans.external_plan_id.update(
-            "string",
-            external_plan_id="string",
+            other_external_plan_id="external_plan_id",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
@@ -128,7 +128,7 @@ class TestAsyncExternalPlanID:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.plans.external_plan_id.with_raw_response.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         )
 
         assert response.is_closed is True
@@ -139,7 +139,7 @@ class TestAsyncExternalPlanID:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.plans.external_plan_id.with_streaming_response.update(
-            "string",
+            other_external_plan_id="external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,21 +155,21 @@ class TestAsyncExternalPlanID:
             ValueError, match=r"Expected a non-empty value for `other_external_plan_id` but received ''"
         ):
             await async_client.plans.external_plan_id.with_raw_response.update(
-                "",
+                other_external_plan_id="",
                 external_plan_id="",
             )
 
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         external_plan_id = await async_client.plans.external_plan_id.fetch(
-            "string",
+            "external_plan_id",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.plans.external_plan_id.with_raw_response.fetch(
-            "string",
+            "external_plan_id",
         )
 
         assert response.is_closed is True
@@ -180,7 +180,7 @@ class TestAsyncExternalPlanID:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.plans.external_plan_id.with_streaming_response.fetch(
-            "string",
+            "external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

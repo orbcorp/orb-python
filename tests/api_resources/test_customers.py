@@ -24,72 +24,72 @@ class TestCustomers:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string", "string", "string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
+            currency="currency",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
-            timezone="string",
+            timezone="timezone",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.customers.with_raw_response.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         )
 
         assert response.is_closed is True
@@ -100,8 +100,8 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.customers.with_streaming_response.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,62 +114,62 @@ class TestCustomers:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         customer = client.customers.update(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         customer = client.customers.update(
-            "string",
+            customer_id="customer_id",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
-            email="string",
+            currency="currency",
+            email="email",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
-            name="string",
+            name="name",
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -177,7 +177,7 @@ class TestCustomers:
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.customers.with_raw_response.update(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -188,7 +188,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.customers.with_streaming_response.update(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -202,7 +202,7 @@ class TestCustomers:
     def test_path_params_update(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.with_raw_response.update(
-                "",
+                customer_id="",
             )
 
     @parametrize
@@ -217,7 +217,7 @@ class TestCustomers:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[Customer], customer, path=["response"])
@@ -245,14 +245,14 @@ class TestCustomers:
     @parametrize
     def test_method_delete(self, client: Orb) -> None:
         customer = client.customers.delete(
-            "string",
+            "customer_id",
         )
         assert customer is None
 
     @parametrize
     def test_raw_response_delete(self, client: Orb) -> None:
         response = client.customers.with_raw_response.delete(
-            "string",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -263,7 +263,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_delete(self, client: Orb) -> None:
         with client.customers.with_streaming_response.delete(
-            "string",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -283,14 +283,14 @@ class TestCustomers:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         customer = client.customers.fetch(
-            "string",
+            "customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.customers.with_raw_response.fetch(
-            "string",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -301,7 +301,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.customers.with_streaming_response.fetch(
-            "string",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -321,14 +321,14 @@ class TestCustomers:
     @parametrize
     def test_method_fetch_by_external_id(self, client: Orb) -> None:
         customer = client.customers.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_raw_response_fetch_by_external_id(self, client: Orb) -> None:
         response = client.customers.with_raw_response.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         )
 
         assert response.is_closed is True
@@ -339,7 +339,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_fetch_by_external_id(self, client: Orb) -> None:
         with client.customers.with_streaming_response.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -359,62 +359,62 @@ class TestCustomers:
     @parametrize
     def test_method_update_by_external_id(self, client: Orb) -> None:
         customer = client.customers.update_by_external_id(
-            "string",
+            id="external_customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     def test_method_update_by_external_id_with_all_params(self, client: Orb) -> None:
         customer = client.customers.update_by_external_id(
-            "string",
+            id="external_customer_id",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
-            email="string",
+            currency="currency",
+            email="email",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
-            name="string",
+            name="name",
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -422,7 +422,7 @@ class TestCustomers:
     @parametrize
     def test_raw_response_update_by_external_id(self, client: Orb) -> None:
         response = client.customers.with_raw_response.update_by_external_id(
-            "string",
+            id="external_customer_id",
         )
 
         assert response.is_closed is True
@@ -433,7 +433,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_update_by_external_id(self, client: Orb) -> None:
         with client.customers.with_streaming_response.update_by_external_id(
-            "string",
+            id="external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -447,7 +447,7 @@ class TestCustomers:
     def test_path_params_update_by_external_id(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.customers.with_raw_response.update_by_external_id(
-                "",
+                id="",
                 external_customer_id="",
             )
 
@@ -458,72 +458,72 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string", "string", "string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
+            currency="currency",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
-            timezone="string",
+            timezone="timezone",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         )
 
         assert response.is_closed is True
@@ -534,8 +534,8 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.create(
-            email="string",
-            name="string",
+            email="email",
+            name="name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -548,62 +548,62 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.update(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.update(
-            "string",
+            customer_id="customer_id",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
-            email="string",
+            currency="currency",
+            email="email",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
-            name="string",
+            name="name",
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -611,7 +611,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.update(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -622,7 +622,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.update(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -636,7 +636,7 @@ class TestAsyncCustomers:
     async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.with_raw_response.update(
-                "",
+                customer_id="",
             )
 
     @parametrize
@@ -651,7 +651,7 @@ class TestAsyncCustomers:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[Customer], customer, path=["response"])
@@ -679,14 +679,14 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_delete(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.delete(
-            "string",
+            "customer_id",
         )
         assert customer is None
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.delete(
-            "string",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -697,7 +697,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.delete(
-            "string",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -717,14 +717,14 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.fetch(
-            "string",
+            "customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.fetch(
-            "string",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -735,7 +735,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.fetch(
-            "string",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -755,14 +755,14 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_fetch_by_external_id(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch_by_external_id(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         )
 
         assert response.is_closed is True
@@ -773,7 +773,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_fetch_by_external_id(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.fetch_by_external_id(
-            "string",
+            "external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -793,62 +793,62 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_update_by_external_id(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.update_by_external_id(
-            "string",
+            id="external_customer_id",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
     @parametrize
     async def test_method_update_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.update_by_external_id(
-            "string",
+            id="external_customer_id",
             accounting_sync_configuration={
                 "excluded": True,
                 "accounting_providers": [
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                     {
-                        "provider_type": "string",
-                        "external_provider_id": "string",
+                        "provider_type": "provider_type",
+                        "external_provider_id": "external_provider_id",
                     },
                 ],
             },
             additional_emails=["string"],
             auto_collection=True,
             billing_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
-            currency="string",
-            email="string",
+            currency="currency",
+            email="email",
             email_delivery=True,
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             metadata={"foo": "string"},
-            name="string",
+            name="name",
             payment_provider="quickbooks",
-            payment_provider_id="string",
+            payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
             },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
-                "value": "string",
+                "value": "value",
             },
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -856,7 +856,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.update_by_external_id(
-            "string",
+            id="external_customer_id",
         )
 
         assert response.is_closed is True
@@ -867,7 +867,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.update_by_external_id(
-            "string",
+            id="external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -881,6 +881,6 @@ class TestAsyncCustomers:
     async def test_path_params_update_by_external_id(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.customers.with_raw_response.update_by_external_id(
-                "",
+                id="",
                 external_customer_id="",
             )

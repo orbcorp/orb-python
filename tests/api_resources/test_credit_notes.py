@@ -26,7 +26,7 @@ class TestCreditNotes:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit_note = client.credit_notes.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[CreditNote], credit_note, path=["response"])
@@ -54,14 +54,14 @@ class TestCreditNotes:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         credit_note = client.credit_notes.fetch(
-            "string",
+            "credit_note_id",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.credit_notes.with_raw_response.fetch(
-            "string",
+            "credit_note_id",
         )
 
         assert response.is_closed is True
@@ -72,7 +72,7 @@ class TestCreditNotes:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.credit_notes.with_streaming_response.fetch(
-            "string",
+            "credit_note_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -101,7 +101,7 @@ class TestAsyncCreditNotes:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         credit_note = await async_client.credit_notes.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[CreditNote], credit_note, path=["response"])
@@ -129,14 +129,14 @@ class TestAsyncCreditNotes:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         credit_note = await async_client.credit_notes.fetch(
-            "string",
+            "credit_note_id",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.credit_notes.with_raw_response.fetch(
-            "string",
+            "credit_note_id",
         )
 
         assert response.is_closed is True
@@ -147,7 +147,7 @@ class TestAsyncCreditNotes:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.credit_notes.with_streaming_response.fetch(
-            "string",
+            "credit_note_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

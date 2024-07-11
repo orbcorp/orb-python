@@ -24,14 +24,14 @@ class TestAlerts:
     @parametrize
     def test_method_retrieve(self, client: Orb) -> None:
         alert = client.alerts.retrieve(
-            "string",
+            "alert_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.retrieve(
-            "string",
+            "alert_id",
         )
 
         assert response.is_closed is True
@@ -42,7 +42,7 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_retrieve(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.retrieve(
-            "string",
+            "alert_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -73,11 +73,11 @@ class TestAlerts:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
-            customer_id="string",
-            external_customer_id="string",
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
             limit=1,
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SyncPage[Alert], alert, path=["response"])
 
@@ -106,18 +106,18 @@ class TestAlerts:
     @parametrize
     def test_method_create_for_customer(self, client: Orb) -> None:
         alert = client.alerts.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_customer_with_all_params(self, client: Orb) -> None:
         alert = client.alerts.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -125,9 +125,9 @@ class TestAlerts:
     @parametrize
     def test_raw_response_create_for_customer(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -138,9 +138,9 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_create_for_customer(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -154,26 +154,26 @@ class TestAlerts:
     def test_path_params_create_for_customer(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.alerts.with_raw_response.create_for_customer(
-                "",
-                currency="string",
-                type="string",
+                customer_id="",
+                currency="currency",
+                type="type",
             )
 
     @parametrize
     def test_method_create_for_external_customer(self, client: Orb) -> None:
         alert = client.alerts.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_external_customer_with_all_params(self, client: Orb) -> None:
         alert = client.alerts.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -181,9 +181,9 @@ class TestAlerts:
     @parametrize
     def test_raw_response_create_for_external_customer(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -194,9 +194,9 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_create_for_external_customer(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -210,36 +210,36 @@ class TestAlerts:
     def test_path_params_create_for_external_customer(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             client.alerts.with_raw_response.create_for_external_customer(
-                "",
-                currency="string",
-                type="string",
+                external_customer_id="",
+                currency="currency",
+                type="type",
             )
 
     @parametrize
     def test_method_create_for_subscription(self, client: Orb) -> None:
         alert = client.alerts.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_subscription_with_all_params(self, client: Orb) -> None:
         alert = client.alerts.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-            metric_id="string",
+            type="type",
+            metric_id="metric_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_create_for_subscription(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -250,9 +250,9 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_create_for_subscription(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -266,22 +266,22 @@ class TestAlerts:
     def test_path_params_create_for_subscription(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.alerts.with_raw_response.create_for_subscription(
-                "",
+                subscription_id="",
                 thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="string",
+                type="type",
             )
 
     @parametrize
     def test_method_disable(self, client: Orb) -> None:
         alert = client.alerts.disable(
-            "string",
+            "alert_configuration_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_disable(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.disable(
-            "string",
+            "alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -292,7 +292,7 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_disable(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.disable(
-            "string",
+            "alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -314,14 +314,14 @@ class TestAlerts:
     @parametrize
     def test_method_enable(self, client: Orb) -> None:
         alert = client.alerts.enable(
-            "string",
+            "alert_configuration_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_enable(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.enable(
-            "string",
+            "alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -332,7 +332,7 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_enable(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.enable(
-            "string",
+            "alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -358,14 +358,14 @@ class TestAsyncAlerts:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.retrieve(
-            "string",
+            "alert_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.retrieve(
-            "string",
+            "alert_id",
         )
 
         assert response.is_closed is True
@@ -376,7 +376,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.retrieve(
-            "string",
+            "alert_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -407,11 +407,11 @@ class TestAsyncAlerts:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
-            customer_id="string",
-            external_customer_id="string",
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
             limit=1,
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(AsyncPage[Alert], alert, path=["response"])
 
@@ -440,18 +440,18 @@ class TestAsyncAlerts:
     @parametrize
     async def test_method_create_for_customer(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_customer_with_all_params(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -459,9 +459,9 @@ class TestAsyncAlerts:
     @parametrize
     async def test_raw_response_create_for_customer(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -472,9 +472,9 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_create_for_customer(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.create_for_customer(
-            "string",
-            currency="string",
-            type="string",
+            customer_id="customer_id",
+            currency="currency",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -488,26 +488,26 @@ class TestAsyncAlerts:
     async def test_path_params_create_for_customer(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.alerts.with_raw_response.create_for_customer(
-                "",
-                currency="string",
-                type="string",
+                customer_id="",
+                currency="currency",
+                type="type",
             )
 
     @parametrize
     async def test_method_create_for_external_customer(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_external_customer_with_all_params(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -515,9 +515,9 @@ class TestAsyncAlerts:
     @parametrize
     async def test_raw_response_create_for_external_customer(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -528,9 +528,9 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_create_for_external_customer(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.create_for_external_customer(
-            "string",
-            currency="string",
-            type="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -544,36 +544,36 @@ class TestAsyncAlerts:
     async def test_path_params_create_for_external_customer(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             await async_client.alerts.with_raw_response.create_for_external_customer(
-                "",
-                currency="string",
-                type="string",
+                external_customer_id="",
+                currency="currency",
+                type="type",
             )
 
     @parametrize
     async def test_method_create_for_subscription(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_subscription_with_all_params(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
-            metric_id="string",
+            type="type",
+            metric_id="metric_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         )
 
         assert response.is_closed is True
@@ -584,9 +584,9 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.create_for_subscription(
-            "string",
+            subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="string",
+            type="type",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -600,22 +600,22 @@ class TestAsyncAlerts:
     async def test_path_params_create_for_subscription(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.alerts.with_raw_response.create_for_subscription(
-                "",
+                subscription_id="",
                 thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="string",
+                type="type",
             )
 
     @parametrize
     async def test_method_disable(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.disable(
-            "string",
+            "alert_configuration_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_disable(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.disable(
-            "string",
+            "alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -626,7 +626,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_disable(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.disable(
-            "string",
+            "alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -648,14 +648,14 @@ class TestAsyncAlerts:
     @parametrize
     async def test_method_enable(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.enable(
-            "string",
+            "alert_configuration_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_enable(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.enable(
-            "string",
+            "alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -666,7 +666,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_enable(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.enable(
-            "string",
+            "alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
