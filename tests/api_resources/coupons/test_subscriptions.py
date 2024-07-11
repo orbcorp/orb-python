@@ -21,15 +21,15 @@ class TestSubscriptions:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         subscription = client.coupons.subscriptions.list(
-            "string",
+            coupon_id="coupon_id",
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         subscription = client.coupons.subscriptions.list(
-            "string",
-            cursor="string",
+            coupon_id="coupon_id",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
@@ -37,7 +37,7 @@ class TestSubscriptions:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.coupons.subscriptions.with_raw_response.list(
-            "string",
+            coupon_id="coupon_id",
         )
 
         assert response.is_closed is True
@@ -48,7 +48,7 @@ class TestSubscriptions:
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
         with client.coupons.subscriptions.with_streaming_response.list(
-            "string",
+            coupon_id="coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,7 +62,7 @@ class TestSubscriptions:
     def test_path_params_list(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
             client.coupons.subscriptions.with_raw_response.list(
-                "",
+                coupon_id="",
             )
 
 
@@ -72,15 +72,15 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.coupons.subscriptions.list(
-            "string",
+            coupon_id="coupon_id",
         )
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.coupons.subscriptions.list(
-            "string",
-            cursor="string",
+            coupon_id="coupon_id",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
@@ -88,7 +88,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
         response = await async_client.coupons.subscriptions.with_raw_response.list(
-            "string",
+            coupon_id="coupon_id",
         )
 
         assert response.is_closed is True
@@ -99,7 +99,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
         async with async_client.coupons.subscriptions.with_streaming_response.list(
-            "string",
+            coupon_id="coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -113,5 +113,5 @@ class TestAsyncSubscriptions:
     async def test_path_params_list(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `coupon_id` but received ''"):
             await async_client.coupons.subscriptions.with_raw_response.list(
-                "",
+                coupon_id="",
             )

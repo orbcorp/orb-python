@@ -26,8 +26,8 @@ class TestEvents:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         event = client.events.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
@@ -36,20 +36,20 @@ class TestEvents:
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         event = client.events.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
-            customer_id="string",
-            external_customer_id="string",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
         )
         assert_matches_type(EventUpdateResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.events.with_raw_response.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
@@ -62,8 +62,8 @@ class TestEvents:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.events.with_streaming_response.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         ) as response:
@@ -79,8 +79,8 @@ class TestEvents:
     def test_path_params_update(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
             client.events.with_raw_response.update(
-                "",
-                event_name="string",
+                event_id="",
+                event_name="event_name",
                 properties={},
                 timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             )
@@ -88,14 +88,14 @@ class TestEvents:
     @parametrize
     def test_method_deprecate(self, client: Orb) -> None:
         event = client.events.deprecate(
-            "string",
+            "event_id",
         )
         assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_deprecate(self, client: Orb) -> None:
         response = client.events.with_raw_response.deprecate(
-            "string",
+            "event_id",
         )
 
         assert response.is_closed is True
@@ -106,7 +106,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_deprecate(self, client: Orb) -> None:
         with client.events.with_streaming_response.deprecate(
-            "string",
+            "event_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -128,22 +128,22 @@ class TestEvents:
         event = client.events.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         )
@@ -154,31 +154,31 @@ class TestEvents:
         event = client.events.ingest(
             events=[
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
-            backfill_id="string",
+            backfill_id="backfill_id",
             debug=True,
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
@@ -188,22 +188,22 @@ class TestEvents:
         response = client.events.with_raw_response.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         )
@@ -218,22 +218,22 @@ class TestEvents:
         with client.events.with_streaming_response.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         ) as response:
@@ -292,8 +292,8 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         event = await async_client.events.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
@@ -302,20 +302,20 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         event = await async_client.events.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
-            customer_id="string",
-            external_customer_id="string",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
         )
         assert_matches_type(EventUpdateResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.events.with_raw_response.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
@@ -328,8 +328,8 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.events.with_streaming_response.update(
-            "string",
-            event_name="string",
+            event_id="event_id",
+            event_name="event_name",
             properties={},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         ) as response:
@@ -345,8 +345,8 @@ class TestAsyncEvents:
     async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_id` but received ''"):
             await async_client.events.with_raw_response.update(
-                "",
-                event_name="string",
+                event_id="",
+                event_name="event_name",
                 properties={},
                 timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             )
@@ -354,14 +354,14 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_deprecate(self, async_client: AsyncOrb) -> None:
         event = await async_client.events.deprecate(
-            "string",
+            "event_id",
         )
         assert_matches_type(EventDeprecateResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_deprecate(self, async_client: AsyncOrb) -> None:
         response = await async_client.events.with_raw_response.deprecate(
-            "string",
+            "event_id",
         )
 
         assert response.is_closed is True
@@ -372,7 +372,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_deprecate(self, async_client: AsyncOrb) -> None:
         async with async_client.events.with_streaming_response.deprecate(
-            "string",
+            "event_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -394,22 +394,22 @@ class TestAsyncEvents:
         event = await async_client.events.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         )
@@ -420,31 +420,31 @@ class TestAsyncEvents:
         event = await async_client.events.ingest(
             events=[
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "customer_id": "string",
-                    "external_customer_id": "string",
-                    "event_name": "string",
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
-            backfill_id="string",
+            backfill_id="backfill_id",
             debug=True,
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
@@ -454,22 +454,22 @@ class TestAsyncEvents:
         response = await async_client.events.with_raw_response.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         )
@@ -484,22 +484,22 @@ class TestAsyncEvents:
         async with async_client.events.with_streaming_response.ingest(
             events=[
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
                 {
-                    "event_name": "string",
+                    "event_name": "event_name",
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "properties": {},
-                    "idempotency_key": "string",
+                    "idempotency_key": "idempotency_key",
                 },
             ],
         ) as response:

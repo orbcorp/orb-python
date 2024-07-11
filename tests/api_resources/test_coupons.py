@@ -82,9 +82,9 @@ class TestCoupons:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         coupon = client.coupons.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            redemption_code="string",
+            redemption_code="redemption_code",
             show_archived=True,
         )
         assert_matches_type(SyncPage[Coupon], coupon, path=["response"])
@@ -112,14 +112,14 @@ class TestCoupons:
     @parametrize
     def test_method_archive(self, client: Orb) -> None:
         coupon = client.coupons.archive(
-            "string",
+            "coupon_id",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Orb) -> None:
         response = client.coupons.with_raw_response.archive(
-            "string",
+            "coupon_id",
         )
 
         assert response.is_closed is True
@@ -130,7 +130,7 @@ class TestCoupons:
     @parametrize
     def test_streaming_response_archive(self, client: Orb) -> None:
         with client.coupons.with_streaming_response.archive(
-            "string",
+            "coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -150,14 +150,14 @@ class TestCoupons:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         coupon = client.coupons.fetch(
-            "string",
+            "coupon_id",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.coupons.with_raw_response.fetch(
-            "string",
+            "coupon_id",
         )
 
         assert response.is_closed is True
@@ -168,7 +168,7 @@ class TestCoupons:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.coupons.with_streaming_response.fetch(
-            "string",
+            "coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -253,9 +253,9 @@ class TestAsyncCoupons:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         coupon = await async_client.coupons.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            redemption_code="string",
+            redemption_code="redemption_code",
             show_archived=True,
         )
         assert_matches_type(AsyncPage[Coupon], coupon, path=["response"])
@@ -283,14 +283,14 @@ class TestAsyncCoupons:
     @parametrize
     async def test_method_archive(self, async_client: AsyncOrb) -> None:
         coupon = await async_client.coupons.archive(
-            "string",
+            "coupon_id",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncOrb) -> None:
         response = await async_client.coupons.with_raw_response.archive(
-            "string",
+            "coupon_id",
         )
 
         assert response.is_closed is True
@@ -301,7 +301,7 @@ class TestAsyncCoupons:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncOrb) -> None:
         async with async_client.coupons.with_streaming_response.archive(
-            "string",
+            "coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -321,14 +321,14 @@ class TestAsyncCoupons:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         coupon = await async_client.coupons.fetch(
-            "string",
+            "coupon_id",
         )
         assert_matches_type(Coupon, coupon, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.coupons.with_raw_response.fetch(
-            "string",
+            "coupon_id",
         )
 
         assert response.is_closed is True
@@ -339,7 +339,7 @@ class TestAsyncCoupons:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.coupons.with_streaming_response.fetch(
-            "string",
+            "coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
