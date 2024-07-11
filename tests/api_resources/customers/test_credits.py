@@ -24,16 +24,16 @@ class TestCredits:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         credit = client.customers.credits.list(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(SyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit = client.customers.credits.list(
-            "string",
-            currency="string",
-            cursor="string",
+            customer_id="customer_id",
+            currency="currency",
+            cursor="cursor",
             include_all_blocks=True,
             limit=1,
         )
@@ -42,7 +42,7 @@ class TestCredits:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.customers.credits.with_raw_response.list(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestCredits:
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
         with client.customers.credits.with_streaming_response.list(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,22 +67,22 @@ class TestCredits:
     def test_path_params_list(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.credits.with_raw_response.list(
-                "",
+                customer_id="",
             )
 
     @parametrize
     def test_method_list_by_external_id(self, client: Orb) -> None:
         credit = client.customers.credits.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         )
         assert_matches_type(SyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
     @parametrize
     def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
         credit = client.customers.credits.list_by_external_id(
-            "string",
-            currency="string",
-            cursor="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            cursor="cursor",
             include_all_blocks=True,
             limit=1,
         )
@@ -91,7 +91,7 @@ class TestCredits:
     @parametrize
     def test_raw_response_list_by_external_id(self, client: Orb) -> None:
         response = client.customers.credits.with_raw_response.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         )
 
         assert response.is_closed is True
@@ -102,7 +102,7 @@ class TestCredits:
     @parametrize
     def test_streaming_response_list_by_external_id(self, client: Orb) -> None:
         with client.customers.credits.with_streaming_response.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -116,7 +116,7 @@ class TestCredits:
     def test_path_params_list_by_external_id(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             client.customers.credits.with_raw_response.list_by_external_id(
-                "",
+                external_customer_id="",
             )
 
 
@@ -126,16 +126,16 @@ class TestAsyncCredits:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         credit = await async_client.customers.credits.list(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(AsyncPage[CreditListResponse], credit, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         credit = await async_client.customers.credits.list(
-            "string",
-            currency="string",
-            cursor="string",
+            customer_id="customer_id",
+            currency="currency",
+            cursor="cursor",
             include_all_blocks=True,
             limit=1,
         )
@@ -144,7 +144,7 @@ class TestAsyncCredits:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.credits.with_raw_response.list(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -155,7 +155,7 @@ class TestAsyncCredits:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.credits.with_streaming_response.list(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -169,22 +169,22 @@ class TestAsyncCredits:
     async def test_path_params_list(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.credits.with_raw_response.list(
-                "",
+                customer_id="",
             )
 
     @parametrize
     async def test_method_list_by_external_id(self, async_client: AsyncOrb) -> None:
         credit = await async_client.customers.credits.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         )
         assert_matches_type(AsyncPage[CreditListByExternalIDResponse], credit, path=["response"])
 
     @parametrize
     async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
         credit = await async_client.customers.credits.list_by_external_id(
-            "string",
-            currency="string",
-            cursor="string",
+            external_customer_id="external_customer_id",
+            currency="currency",
+            cursor="cursor",
             include_all_blocks=True,
             limit=1,
         )
@@ -193,7 +193,7 @@ class TestAsyncCredits:
     @parametrize
     async def test_raw_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.credits.with_raw_response.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         )
 
         assert response.is_closed is True
@@ -204,7 +204,7 @@ class TestAsyncCredits:
     @parametrize
     async def test_streaming_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.credits.with_streaming_response.list_by_external_id(
-            "string",
+            external_customer_id="external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -218,5 +218,5 @@ class TestAsyncCredits:
     async def test_path_params_list_by_external_id(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             await async_client.customers.credits.with_raw_response.list_by_external_id(
-                "",
+                external_customer_id="",
             )

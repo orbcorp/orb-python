@@ -27,7 +27,7 @@ class TestMetrics:
     def test_method_create(self, client: Orb) -> None:
         metric = client.metrics.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
@@ -37,7 +37,7 @@ class TestMetrics:
     def test_method_create_with_all_params(self, client: Orb) -> None:
         metric = client.metrics.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
@@ -48,7 +48,7 @@ class TestMetrics:
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.metrics.with_raw_response.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
@@ -62,7 +62,7 @@ class TestMetrics:
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.metrics.with_streaming_response.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         ) as response:
@@ -86,7 +86,7 @@ class TestMetrics:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[MetricListResponse], metric, path=["response"])
@@ -114,14 +114,14 @@ class TestMetrics:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         metric = client.metrics.fetch(
-            "string",
+            "metric_id",
         )
         assert_matches_type(MetricFetchResponse, metric, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.metrics.with_raw_response.fetch(
-            "string",
+            "metric_id",
         )
 
         assert response.is_closed is True
@@ -132,7 +132,7 @@ class TestMetrics:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.metrics.with_streaming_response.fetch(
-            "string",
+            "metric_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -157,7 +157,7 @@ class TestAsyncMetrics:
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         metric = await async_client.metrics.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
@@ -167,7 +167,7 @@ class TestAsyncMetrics:
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         metric = await async_client.metrics.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
@@ -178,7 +178,7 @@ class TestAsyncMetrics:
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.metrics.with_raw_response.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
@@ -192,7 +192,7 @@ class TestAsyncMetrics:
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.metrics.with_streaming_response.create(
             description="Sum of bytes downloaded in fast mode",
-            item_id="string",
+            item_id="item_id",
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         ) as response:
@@ -216,7 +216,7 @@ class TestAsyncMetrics:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[MetricListResponse], metric, path=["response"])
@@ -244,14 +244,14 @@ class TestAsyncMetrics:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         metric = await async_client.metrics.fetch(
-            "string",
+            "metric_id",
         )
         assert_matches_type(MetricFetchResponse, metric, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.metrics.with_raw_response.fetch(
-            "string",
+            "metric_id",
         )
 
         assert response.is_closed is True
@@ -262,7 +262,7 @@ class TestAsyncMetrics:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.metrics.with_streaming_response.fetch(
-            "string",
+            "metric_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

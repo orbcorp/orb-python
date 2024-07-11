@@ -35,7 +35,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -44,7 +44,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -53,7 +53,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -73,7 +73,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -82,7 +82,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -91,7 +91,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -99,7 +99,7 @@ class TestInvoices:
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "reason": "string",
+                "reason": "reason",
                 "percentage_discount": 0.15,
             },
             external_customer_id="external-customer-id",
@@ -122,7 +122,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -131,7 +131,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -140,7 +140,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -164,7 +164,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -173,7 +173,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -182,7 +182,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -203,17 +203,17 @@ class TestInvoices:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.list(
-            amount="string",
-            amount_gt="string",
-            amount_lt="string",
-            cursor="string",
-            customer_id="string",
+            amount="amount",
+            amount_gt="amount[gt]",
+            amount_lt="amount[lt]",
+            cursor="cursor",
+            customer_id="customer_id",
             date_type="due_date",
             due_date=parse_date("2019-12-27"),
-            due_date_window="string",
+            due_date_window="due_date_window",
             due_date_gt=parse_date("2019-12-27"),
             due_date_lt=parse_date("2019-12-27"),
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             invoice_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -221,7 +221,7 @@ class TestInvoices:
             is_recurring=True,
             limit=1,
             status=["draft", "issued", "paid"],
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(SyncPage[Invoice], invoice, path=["response"])
 
@@ -248,14 +248,14 @@ class TestInvoices:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         invoice = client.invoices.fetch(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.fetch(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -266,7 +266,7 @@ class TestInvoices:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.fetch(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -291,7 +291,7 @@ class TestInvoices:
     @parametrize
     def test_method_fetch_upcoming_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.fetch_upcoming(
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
 
@@ -318,14 +318,14 @@ class TestInvoices:
     @parametrize
     def test_method_issue(self, client: Orb) -> None:
         invoice = client.invoices.issue(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     def test_raw_response_issue(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.issue(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -336,7 +336,7 @@ class TestInvoices:
     @parametrize
     def test_streaming_response_issue(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.issue(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -356,7 +356,7 @@ class TestInvoices:
     @parametrize
     def test_method_mark_paid(self, client: Orb) -> None:
         invoice = client.invoices.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -364,17 +364,17 @@ class TestInvoices:
     @parametrize
     def test_method_mark_paid_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
             external_id="external_payment_id_123",
-            notes="string",
+            notes="notes",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     def test_raw_response_mark_paid(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         )
 
@@ -386,7 +386,7 @@ class TestInvoices:
     @parametrize
     def test_streaming_response_mark_paid(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         ) as response:
             assert not response.is_closed
@@ -401,21 +401,21 @@ class TestInvoices:
     def test_path_params_mark_paid(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.invoices.with_raw_response.mark_paid(
-                "",
+                invoice_id="",
                 payment_received_date=parse_date("2023-09-22"),
             )
 
     @parametrize
     def test_method_void(self, client: Orb) -> None:
         invoice = client.invoices.void(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     def test_raw_response_void(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.void(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -426,7 +426,7 @@ class TestInvoices:
     @parametrize
     def test_streaming_response_void(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.void(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -460,7 +460,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -469,7 +469,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -478,7 +478,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -498,7 +498,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -507,7 +507,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -516,7 +516,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -524,7 +524,7 @@ class TestAsyncInvoices:
             discount={
                 "discount_type": "percentage",
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
-                "reason": "string",
+                "reason": "reason",
                 "percentage_discount": 0.15,
             },
             external_customer_id="external-customer-id",
@@ -547,7 +547,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -556,7 +556,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -565,7 +565,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -589,7 +589,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -598,7 +598,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
                 {
                     "start_date": parse_date("2023-09-22"),
@@ -607,7 +607,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "item_id": "4khy3nwzktxv7",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 },
             ],
             net_terms=0,
@@ -628,17 +628,17 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.list(
-            amount="string",
-            amount_gt="string",
-            amount_lt="string",
-            cursor="string",
-            customer_id="string",
+            amount="amount",
+            amount_gt="amount[gt]",
+            amount_lt="amount[lt]",
+            cursor="cursor",
+            customer_id="customer_id",
             date_type="due_date",
             due_date=parse_date("2019-12-27"),
-            due_date_window="string",
+            due_date_window="due_date_window",
             due_date_gt=parse_date("2019-12-27"),
             due_date_lt=parse_date("2019-12-27"),
-            external_customer_id="string",
+            external_customer_id="external_customer_id",
             invoice_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -646,7 +646,7 @@ class TestAsyncInvoices:
             is_recurring=True,
             limit=1,
             status=["draft", "issued", "paid"],
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(AsyncPage[Invoice], invoice, path=["response"])
 
@@ -673,14 +673,14 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.fetch(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.fetch(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -691,7 +691,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.fetch(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -716,7 +716,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_fetch_upcoming_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.fetch_upcoming(
-            subscription_id="string",
+            subscription_id="subscription_id",
         )
         assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
 
@@ -743,14 +743,14 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_issue(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.issue(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     async def test_raw_response_issue(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.issue(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -761,7 +761,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_streaming_response_issue(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.issue(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -781,7 +781,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_mark_paid(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -789,17 +789,17 @@ class TestAsyncInvoices:
     @parametrize
     async def test_method_mark_paid_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
             external_id="external_payment_id_123",
-            notes="string",
+            notes="notes",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     async def test_raw_response_mark_paid(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         )
 
@@ -811,7 +811,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_streaming_response_mark_paid(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.mark_paid(
-            "string",
+            invoice_id="invoice_id",
             payment_received_date=parse_date("2023-09-22"),
         ) as response:
             assert not response.is_closed
@@ -826,21 +826,21 @@ class TestAsyncInvoices:
     async def test_path_params_mark_paid(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.invoices.with_raw_response.mark_paid(
-                "",
+                invoice_id="",
                 payment_received_date=parse_date("2023-09-22"),
             )
 
     @parametrize
     async def test_method_void(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.void(
-            "string",
+            "invoice_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
     @parametrize
     async def test_raw_response_void(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.void(
-            "string",
+            "invoice_id",
         )
 
         assert response.is_closed is True
@@ -851,7 +851,7 @@ class TestAsyncInvoices:
     @parametrize
     async def test_streaming_response_void(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.void(
-            "string",
+            "invoice_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
