@@ -29,10 +29,7 @@ from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncPage, AsyncPage
-from ...._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers import credit_list_params, credit_list_by_external_id_params
 from ....types.customers.credit_list_response import CreditListResponse
 from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
