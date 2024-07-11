@@ -17,9 +17,7 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...types.plan import Plan
 from ...types.plans import external_plan_id_update_params
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 
 __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
