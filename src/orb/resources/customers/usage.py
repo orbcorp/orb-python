@@ -16,9 +16,7 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 from ...types.customers import usage_update_params, usage_update_by_external_id_params
 from ...types.customers.usage_update_response import UsageUpdateResponse
 from ...types.customers.usage_update_by_external_id_response import UsageUpdateByExternalIDResponse
