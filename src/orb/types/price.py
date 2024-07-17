@@ -208,6 +208,14 @@ class UnitPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[UnitPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -299,6 +307,14 @@ class PackagePrice(BaseModel):
     maximum: Optional[PackagePriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[PackagePriceMinimum] = None
 
@@ -405,6 +421,14 @@ class MatrixPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[MatrixPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -498,6 +522,14 @@ class TieredPrice(BaseModel):
     maximum: Optional[TieredPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[TieredPriceMinimum] = None
 
@@ -601,6 +633,14 @@ class TieredBpsPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredBpsPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -690,6 +730,14 @@ class BpsPrice(BaseModel):
     maximum: Optional[BpsPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[BpsPriceMinimum] = None
 
@@ -790,6 +838,14 @@ class BulkBpsPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[BulkBpsPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -883,6 +939,14 @@ class BulkPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[BulkPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -960,6 +1024,14 @@ class ThresholdTotalAmountPrice(BaseModel):
     maximum: Optional[ThresholdTotalAmountPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[ThresholdTotalAmountPriceMinimum] = None
 
@@ -1040,6 +1112,14 @@ class TieredPackagePrice(BaseModel):
     maximum: Optional[TieredPackagePriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[TieredPackagePriceMinimum] = None
 
@@ -1123,6 +1203,14 @@ class GroupedTieredPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[GroupedTieredPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1200,6 +1288,14 @@ class TieredWithMinimumPrice(BaseModel):
     maximum: Optional[TieredWithMinimumPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[TieredWithMinimumPriceMinimum] = None
 
@@ -1281,6 +1377,14 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredPackageWithMinimumPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1361,6 +1465,14 @@ class PackageWithAllocationPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[PackageWithAllocationPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1440,6 +1552,14 @@ class UnitWithPercentPrice(BaseModel):
     maximum: Optional[UnitWithPercentPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[UnitWithPercentPriceMinimum] = None
 
@@ -1549,6 +1669,14 @@ class MatrixWithAllocationPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[MatrixWithAllocationPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1626,6 +1754,14 @@ class TieredWithProrationPrice(BaseModel):
     maximum: Optional[TieredWithProrationPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[TieredWithProrationPriceMinimum] = None
 
@@ -1706,6 +1842,14 @@ class UnitWithProrationPrice(BaseModel):
     maximum: Optional[UnitWithProrationPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[UnitWithProrationPriceMinimum] = None
 

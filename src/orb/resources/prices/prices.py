@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import price_list_params, price_create_params, price_evaluate_params
+from ...types import price_list_params, price_create_params, price_update_params, price_evaluate_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     required_args,
@@ -64,6 +64,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,6 +109,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -137,6 +142,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -181,6 +187,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -210,6 +220,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -254,6 +265,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -283,6 +298,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -327,6 +343,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -356,6 +376,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -400,6 +421,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -429,6 +454,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -473,6 +499,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -502,6 +532,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -546,6 +577,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -575,6 +610,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -619,6 +655,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -648,6 +688,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -692,6 +733,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -721,6 +766,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -765,6 +811,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -794,6 +844,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -838,6 +889,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -867,6 +922,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -911,6 +967,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -940,6 +1000,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -984,6 +1045,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1013,6 +1078,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1057,6 +1123,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1086,6 +1156,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1130,6 +1201,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1159,6 +1234,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1203,6 +1279,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1232,6 +1312,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1276,6 +1357,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1305,6 +1390,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1349,6 +1435,10 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1414,6 +1504,7 @@ class Prices(SyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
         matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
@@ -1458,6 +1549,7 @@ class Prices(SyncAPIResource):
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
+                        "metadata": metadata,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
                         "matrix_with_allocation_config": matrix_with_allocation_config,
@@ -1478,6 +1570,58 @@ class Prices(SyncAPIResource):
                     },
                     price_create_params.PriceCreateParams,
                 ),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    idempotency_key=idempotency_key,
+                ),
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
+    def update(
+        self,
+        price_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """This endpoint allows you to update the `metadata` property on a price.
+
+        If you
+        pass null for the metadata value, it will clear any existing metadata for that
+        price.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
+        return cast(
+            Price,
+            self._put(
+                f"/prices/{price_id}",
+                body=maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
                 options=make_request_options(
                     extra_headers=extra_headers,
                     extra_query=extra_query,
@@ -1697,6 +1841,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1741,6 +1886,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1770,6 +1919,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1814,6 +1964,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1843,6 +1997,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1887,6 +2042,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1916,6 +2075,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1960,6 +2120,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -1989,6 +2153,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2033,6 +2198,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2062,6 +2231,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2106,6 +2276,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2135,6 +2309,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2179,6 +2354,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2208,6 +2387,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2252,6 +2432,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2281,6 +2465,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2325,6 +2510,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2354,6 +2543,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2398,6 +2588,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2427,6 +2621,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2471,6 +2666,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2500,6 +2699,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2544,6 +2744,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2573,6 +2777,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2617,6 +2822,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2646,6 +2855,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2690,6 +2900,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2719,6 +2933,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2763,6 +2978,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2792,6 +3011,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2836,6 +3056,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2865,6 +3089,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2909,6 +3134,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -2938,6 +3167,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2982,6 +3212,10 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
 
           extra_headers: Send extra headers
 
@@ -3047,6 +3281,7 @@ class AsyncPrices(AsyncAPIResource):
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
         matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
@@ -3091,6 +3326,7 @@ class AsyncPrices(AsyncAPIResource):
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
+                        "metadata": metadata,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
                         "matrix_with_allocation_config": matrix_with_allocation_config,
@@ -3111,6 +3347,58 @@ class AsyncPrices(AsyncAPIResource):
                     },
                     price_create_params.PriceCreateParams,
                 ),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    idempotency_key=idempotency_key,
+                ),
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
+    async def update(
+        self,
+        price_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """This endpoint allows you to update the `metadata` property on a price.
+
+        If you
+        pass null for the metadata value, it will clear any existing metadata for that
+        price.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not price_id:
+            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
+        return cast(
+            Price,
+            await self._put(
+                f"/prices/{price_id}",
+                body=await async_maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
                 options=make_request_options(
                     extra_headers=extra_headers,
                     extra_query=extra_query,
@@ -3308,6 +3596,9 @@ class PricesWithRawResponse:
         self.create = _legacy_response.to_raw_response_wrapper(
             prices.create,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            prices.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             prices.list,
         )
@@ -3329,6 +3620,9 @@ class AsyncPricesWithRawResponse:
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             prices.create,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            prices.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             prices.list,
@@ -3352,6 +3646,9 @@ class PricesWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             prices.create,
         )
+        self.update = to_streamed_response_wrapper(
+            prices.update,
+        )
         self.list = to_streamed_response_wrapper(
             prices.list,
         )
@@ -3373,6 +3670,9 @@ class AsyncPricesWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             prices.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            prices.update,
         )
         self.list = async_to_streamed_response_wrapper(
             prices.list,

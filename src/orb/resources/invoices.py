@@ -13,6 +13,7 @@ from ..types import (
     shared_params,
     invoice_list_params,
     invoice_create_params,
+    invoice_update_params,
     invoice_mark_paid_params,
     invoice_fetch_upcoming_params,
 )
@@ -121,6 +122,57 @@ class Invoices(SyncAPIResource):
                 },
                 invoice_create_params.InvoiceCreateParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
+    def update(
+        self,
+        invoice_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """This endpoint allows you to update the `metadata` property on an invoice.
+
+        If you
+        pass null for the metadata value, it will clear any existing metadata for that
+        invoice.
+
+        `metadata` can be modified regardless of invoice state.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return self._put(
+            f"/invoices/{invoice_id}",
+            body=maybe_transform({"metadata": metadata}, invoice_update_params.InvoiceUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -546,6 +598,57 @@ class AsyncInvoices(AsyncAPIResource):
             cast_to=Invoice,
         )
 
+    async def update(
+        self,
+        invoice_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """This endpoint allows you to update the `metadata` property on an invoice.
+
+        If you
+        pass null for the metadata value, it will clear any existing metadata for that
+        invoice.
+
+        `metadata` can be modified regardless of invoice state.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return await self._put(
+            f"/invoices/{invoice_id}",
+            body=await async_maybe_transform({"metadata": metadata}, invoice_update_params.InvoiceUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
     def list(
         self,
         *,
@@ -869,6 +972,9 @@ class InvoicesWithRawResponse:
         self.create = _legacy_response.to_raw_response_wrapper(
             invoices.create,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            invoices.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             invoices.list,
         )
@@ -895,6 +1001,9 @@ class AsyncInvoicesWithRawResponse:
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             invoices.create,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            invoices.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             invoices.list,
@@ -923,6 +1032,9 @@ class InvoicesWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             invoices.create,
         )
+        self.update = to_streamed_response_wrapper(
+            invoices.update,
+        )
         self.list = to_streamed_response_wrapper(
             invoices.list,
         )
@@ -949,6 +1061,9 @@ class AsyncInvoicesWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             invoices.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            invoices.update,
         )
         self.list = async_to_streamed_response_wrapper(
             invoices.list,

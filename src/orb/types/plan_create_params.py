@@ -134,6 +134,13 @@ class PriceNewPlanUnitPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
@@ -193,6 +200,13 @@ class PriceNewPlanPackagePrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
@@ -265,6 +279,13 @@ class PriceNewPlanMatrixPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
@@ -328,6 +349,13 @@ class PriceNewPlanTieredPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
@@ -399,6 +427,13 @@ class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanBpsPriceBpsConfig(TypedDict, total=False):
     bps: Required[float]
@@ -454,6 +489,13 @@ class PriceNewPlanBpsPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
@@ -522,6 +564,13 @@ class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanBulkPriceBulkConfigTier(TypedDict, total=False):
     unit_amount: Required[str]
@@ -583,6 +632,13 @@ class PriceNewPlanBulkPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
@@ -630,6 +686,13 @@ class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
@@ -679,6 +742,13 @@ class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
@@ -726,6 +796,13 @@ class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
@@ -775,6 +852,13 @@ class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
@@ -822,6 +906,13 @@ class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
@@ -871,6 +962,13 @@ class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
@@ -918,6 +1016,13 @@ class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 Price = Union[
