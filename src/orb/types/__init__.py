@@ -33,6 +33,7 @@ from .event_search_params import EventSearchParams as EventSearchParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
 from .price_create_params import PriceCreateParams as PriceCreateParams
+from .price_update_params import PriceUpdateParams as PriceUpdateParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
@@ -42,6 +43,7 @@ from .event_ingest_response import EventIngestResponse as EventIngestResponse
 from .event_search_response import EventSearchResponse as EventSearchResponse
 from .event_update_response import EventUpdateResponse as EventUpdateResponse
 from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
+from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .metric_fetch_response import MetricFetchResponse as MetricFetchResponse
 from .price_evaluate_params import PriceEvaluateParams as PriceEvaluateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
