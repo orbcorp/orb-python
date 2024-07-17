@@ -43,6 +43,7 @@ class TestPlans:
             name="name",
             prices=[
                 {
+                    "metadata": {"foo": "string"},
                     "external_price_id": "external_price_id",
                     "name": "Annual fee",
                     "billable_metric_id": "billable_metric_id",
@@ -260,6 +261,7 @@ class TestAsyncPlans:
             name="name",
             prices=[
                 {
+                    "metadata": {"foo": "string"},
                     "external_price_id": "external_price_id",
                     "name": "Annual fee",
                     "billable_metric_id": "billable_metric_id",
