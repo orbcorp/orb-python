@@ -86,7 +86,7 @@ List methods in the Orb API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-import orb
+from orb import Orb
 
 client = Orb()
 
@@ -102,7 +102,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-import orb
+from orb import AsyncOrb
 
 client = AsyncOrb()
 
