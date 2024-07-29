@@ -82,7 +82,7 @@ class AddAllocationPrice(TypedDict, total=False):
     amount: Required[str]
     """An amount of the currency to allocate to the customer at the specified cadence."""
 
-    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence at which to allocate the amount to the customer."""
 
     currency: Required[str]
