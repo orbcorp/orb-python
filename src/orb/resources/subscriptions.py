@@ -960,12 +960,10 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
         group_by: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
         second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -1180,15 +1178,9 @@ class Subscriptions(SyncAPIResource):
               single billable metric. Note that both `group_by` and `billable_metric_id` must
               be specified together.
 
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
           granularity: This determines the windowing of usage reporting.
 
           group_by: Groups per-price usage by the key provided.
-
-          limit: If including a `group_by`, the number of groups to fetch data for. Defaults
-              to 1000.
 
           timeframe_end: Usage returned is exclusive of `timeframe_end`.
 
@@ -1221,12 +1213,10 @@ class Subscriptions(SyncAPIResource):
                     query=maybe_transform(
                         {
                             "billable_metric_id": billable_metric_id,
-                            "cursor": cursor,
                             "first_dimension_key": first_dimension_key,
                             "first_dimension_value": first_dimension_value,
                             "granularity": granularity,
                             "group_by": group_by,
-                            "limit": limit,
                             "second_dimension_key": second_dimension_key,
                             "second_dimension_value": second_dimension_value,
                             "timeframe_end": timeframe_end,
@@ -1380,7 +1370,7 @@ class Subscriptions(SyncAPIResource):
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        change_date: Optional[str] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2695,12 +2685,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
         group_by: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
         second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -2915,15 +2903,9 @@ class AsyncSubscriptions(AsyncAPIResource):
               single billable metric. Note that both `group_by` and `billable_metric_id` must
               be specified together.
 
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
           granularity: This determines the windowing of usage reporting.
 
           group_by: Groups per-price usage by the key provided.
-
-          limit: If including a `group_by`, the number of groups to fetch data for. Defaults
-              to 1000.
 
           timeframe_end: Usage returned is exclusive of `timeframe_end`.
 
@@ -2956,12 +2938,10 @@ class AsyncSubscriptions(AsyncAPIResource):
                     query=await async_maybe_transform(
                         {
                             "billable_metric_id": billable_metric_id,
-                            "cursor": cursor,
                             "first_dimension_key": first_dimension_key,
                             "first_dimension_value": first_dimension_value,
                             "granularity": granularity,
                             "group_by": group_by,
-                            "limit": limit,
                             "second_dimension_key": second_dimension_key,
                             "second_dimension_value": second_dimension_value,
                             "timeframe_end": timeframe_end,
@@ -3115,7 +3095,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        change_date: Optional[str] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,

@@ -81,19 +81,6 @@ Methods:
 - <code title="get /customers/{customer_id}/costs">client.customers.costs.<a href="./src/orb/resources/customers/costs.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/cost_list_params.py">params</a>) -> <a href="./src/orb/types/customers/cost_list_response.py">CostListResponse</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}/costs">client.customers.costs.<a href="./src/orb/resources/customers/costs.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/cost_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/cost_list_by_external_id_response.py">CostListByExternalIDResponse</a></code>
 
-## Usage
-
-Types:
-
-```python
-from orb.types.customers import UsageUpdateResponse, UsageUpdateByExternalIDResponse
-```
-
-Methods:
-
-- <code title="patch /customers/{customer_id}/usage">client.customers.usage.<a href="./src/orb/resources/customers/usage.py">update</a>(id, \*\*<a href="src/orb/types/customers/usage_update_params.py">params</a>) -> <a href="./src/orb/types/customers/usage_update_response.py">UsageUpdateResponse</a></code>
-- <code title="patch /customers/external_customer_id/{external_customer_id}/usage">client.customers.usage.<a href="./src/orb/resources/customers/usage.py">update_by_external_id</a>(id, \*\*<a href="src/orb/types/customers/usage_update_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/usage_update_by_external_id_response.py">UsageUpdateByExternalIDResponse</a></code>
-
 ## Credits
 
 Types:
