@@ -75,6 +75,12 @@ class PlanCreateParams(TypedDict, total=False):
     to 0.
     """
 
+    status: Literal["active", "draft"]
+    """The status of the plan to create (either active or draft).
+
+    If not specified, this defaults to active.
+    """
+
 
 class PriceNewPlanUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
@@ -82,7 +88,7 @@ class PriceNewPlanUnitPriceUnitConfig(TypedDict, total=False):
 
 
 class PriceNewPlanUnitPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -128,6 +134,13 @@ class PriceNewPlanUnitPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
@@ -142,7 +155,7 @@ class PriceNewPlanPackagePricePackageConfig(TypedDict, total=False):
 
 
 class PriceNewPlanPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -188,6 +201,13 @@ class PriceNewPlanPackagePrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanMatrixPriceMatrixConfigMatrixValue(TypedDict, total=False):
     dimension_values: Required[List[Optional[str]]]
@@ -213,7 +233,7 @@ class PriceNewPlanMatrixPriceMatrixConfig(TypedDict, total=False):
 
 
 class PriceNewPlanMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -259,6 +279,13 @@ class PriceNewPlanMatrixPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
@@ -277,7 +304,7 @@ class PriceNewPlanTieredPriceTieredConfig(TypedDict, total=False):
 
 
 class PriceNewPlanTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -323,6 +350,13 @@ class PriceNewPlanTieredPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredBpsPriceTieredBpsConfigTier(TypedDict, total=False):
     bps: Required[float]
@@ -347,7 +381,7 @@ class PriceNewPlanTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
 
 
 class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -393,6 +427,13 @@ class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanBpsPriceBpsConfig(TypedDict, total=False):
     bps: Required[float]
@@ -405,7 +446,7 @@ class PriceNewPlanBpsPriceBpsConfig(TypedDict, total=False):
 class PriceNewPlanBpsPrice(TypedDict, total=False):
     bps_config: Required[PriceNewPlanBpsPriceBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -449,6 +490,13 @@ class PriceNewPlanBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanBulkBpsPriceBulkBpsConfigTier(TypedDict, total=False):
     bps: Required[float]
@@ -472,7 +520,7 @@ class PriceNewPlanBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
 class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     bulk_bps_config: Required[PriceNewPlanBulkBpsPriceBulkBpsConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -516,6 +564,13 @@ class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanBulkPriceBulkConfigTier(TypedDict, total=False):
     unit_amount: Required[str]
@@ -533,7 +588,7 @@ class PriceNewPlanBulkPriceBulkConfig(TypedDict, total=False):
 class PriceNewPlanBulkPrice(TypedDict, total=False):
     bulk_config: Required[PriceNewPlanBulkPriceBulkConfig]
 
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -577,9 +632,16 @@ class PriceNewPlanBulkPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -625,9 +687,16 @@ class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -673,9 +742,16 @@ class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -721,9 +797,16 @@ class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -769,9 +852,16 @@ class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -817,9 +907,16 @@ class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -865,9 +962,16 @@ class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
 
 class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -912,6 +1016,13 @@ class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
 
 Price = Union[

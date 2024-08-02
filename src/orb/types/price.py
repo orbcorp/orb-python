@@ -14,6 +14,7 @@ __all__ = [
     "Price",
     "UnitPrice",
     "UnitPriceBillableMetric",
+    "UnitPriceBillingCycleConfiguration",
     "UnitPriceCreditAllocation",
     "UnitPriceItem",
     "UnitPriceMaximum",
@@ -21,6 +22,7 @@ __all__ = [
     "UnitPriceUnitConfig",
     "PackagePrice",
     "PackagePriceBillableMetric",
+    "PackagePriceBillingCycleConfiguration",
     "PackagePriceCreditAllocation",
     "PackagePriceItem",
     "PackagePriceMaximum",
@@ -28,6 +30,7 @@ __all__ = [
     "PackagePricePackageConfig",
     "MatrixPrice",
     "MatrixPriceBillableMetric",
+    "MatrixPriceBillingCycleConfiguration",
     "MatrixPriceCreditAllocation",
     "MatrixPriceItem",
     "MatrixPriceMatrixConfig",
@@ -36,6 +39,7 @@ __all__ = [
     "MatrixPriceMinimum",
     "TieredPrice",
     "TieredPriceBillableMetric",
+    "TieredPriceBillingCycleConfiguration",
     "TieredPriceCreditAllocation",
     "TieredPriceItem",
     "TieredPriceMaximum",
@@ -44,6 +48,7 @@ __all__ = [
     "TieredPriceTieredConfigTier",
     "TieredBpsPrice",
     "TieredBpsPriceBillableMetric",
+    "TieredBpsPriceBillingCycleConfiguration",
     "TieredBpsPriceCreditAllocation",
     "TieredBpsPriceItem",
     "TieredBpsPriceMaximum",
@@ -52,6 +57,7 @@ __all__ = [
     "TieredBpsPriceTieredBpsConfigTier",
     "BpsPrice",
     "BpsPriceBillableMetric",
+    "BpsPriceBillingCycleConfiguration",
     "BpsPriceBpsConfig",
     "BpsPriceCreditAllocation",
     "BpsPriceItem",
@@ -59,6 +65,7 @@ __all__ = [
     "BpsPriceMinimum",
     "BulkBpsPrice",
     "BulkBpsPriceBillableMetric",
+    "BulkBpsPriceBillingCycleConfiguration",
     "BulkBpsPriceBulkBpsConfig",
     "BulkBpsPriceBulkBpsConfigTier",
     "BulkBpsPriceCreditAllocation",
@@ -67,6 +74,7 @@ __all__ = [
     "BulkBpsPriceMinimum",
     "BulkPrice",
     "BulkPriceBillableMetric",
+    "BulkPriceBillingCycleConfiguration",
     "BulkPriceBulkConfig",
     "BulkPriceBulkConfigTier",
     "BulkPriceCreditAllocation",
@@ -75,48 +83,56 @@ __all__ = [
     "BulkPriceMinimum",
     "ThresholdTotalAmountPrice",
     "ThresholdTotalAmountPriceBillableMetric",
+    "ThresholdTotalAmountPriceBillingCycleConfiguration",
     "ThresholdTotalAmountPriceCreditAllocation",
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
     "ThresholdTotalAmountPriceMinimum",
     "TieredPackagePrice",
     "TieredPackagePriceBillableMetric",
+    "TieredPackagePriceBillingCycleConfiguration",
     "TieredPackagePriceCreditAllocation",
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
     "TieredPackagePriceMinimum",
     "GroupedTieredPrice",
     "GroupedTieredPriceBillableMetric",
+    "GroupedTieredPriceBillingCycleConfiguration",
     "GroupedTieredPriceCreditAllocation",
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
     "GroupedTieredPriceMinimum",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceBillableMetric",
+    "TieredWithMinimumPriceBillingCycleConfiguration",
     "TieredWithMinimumPriceCreditAllocation",
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
     "TieredWithMinimumPriceMinimum",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceBillableMetric",
+    "TieredPackageWithMinimumPriceBillingCycleConfiguration",
     "TieredPackageWithMinimumPriceCreditAllocation",
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
     "TieredPackageWithMinimumPriceMinimum",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceBillableMetric",
+    "PackageWithAllocationPriceBillingCycleConfiguration",
     "PackageWithAllocationPriceCreditAllocation",
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
     "PackageWithAllocationPriceMinimum",
     "UnitWithPercentPrice",
     "UnitWithPercentPriceBillableMetric",
+    "UnitWithPercentPriceBillingCycleConfiguration",
     "UnitWithPercentPriceCreditAllocation",
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
     "UnitWithPercentPriceMinimum",
     "MatrixWithAllocationPrice",
     "MatrixWithAllocationPriceBillableMetric",
+    "MatrixWithAllocationPriceBillingCycleConfiguration",
     "MatrixWithAllocationPriceCreditAllocation",
     "MatrixWithAllocationPriceItem",
     "MatrixWithAllocationPriceMatrixWithAllocationConfig",
@@ -125,12 +141,14 @@ __all__ = [
     "MatrixWithAllocationPriceMinimum",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceBillableMetric",
+    "TieredWithProrationPriceBillingCycleConfiguration",
     "TieredWithProrationPriceCreditAllocation",
     "TieredWithProrationPriceItem",
     "TieredWithProrationPriceMaximum",
     "TieredWithProrationPriceMinimum",
     "UnitWithProrationPrice",
     "UnitWithProrationPriceBillableMetric",
+    "UnitWithProrationPriceBillingCycleConfiguration",
     "UnitWithProrationPriceCreditAllocation",
     "UnitWithProrationPriceItem",
     "UnitWithProrationPriceMaximum",
@@ -140,6 +158,12 @@ __all__ = [
 
 class UnitPriceBillableMetric(BaseModel):
     id: str
+
+
+class UnitPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class UnitPriceCreditAllocation(BaseModel):
@@ -186,7 +210,9 @@ class UnitPrice(BaseModel):
 
     billable_metric: Optional[UnitPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[UnitPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -208,6 +234,14 @@ class UnitPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[UnitPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -225,6 +259,12 @@ class UnitPrice(BaseModel):
 
 class PackagePriceBillableMetric(BaseModel):
     id: str
+
+
+class PackagePriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class PackagePriceCreditAllocation(BaseModel):
@@ -278,7 +318,9 @@ class PackagePrice(BaseModel):
 
     billable_metric: Optional[PackagePriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[PackagePriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -300,6 +342,14 @@ class PackagePrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[PackagePriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -317,6 +367,12 @@ class PackagePrice(BaseModel):
 
 class MatrixPriceBillableMetric(BaseModel):
     id: str
+
+
+class MatrixPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class MatrixPriceCreditAllocation(BaseModel):
@@ -381,7 +437,9 @@ class MatrixPrice(BaseModel):
 
     billable_metric: Optional[MatrixPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[MatrixPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -405,6 +463,14 @@ class MatrixPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[MatrixPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -420,6 +486,12 @@ class MatrixPrice(BaseModel):
 
 class TieredPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredPriceCreditAllocation(BaseModel):
@@ -477,7 +549,9 @@ class TieredPrice(BaseModel):
 
     billable_metric: Optional[TieredPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -499,6 +573,14 @@ class TieredPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -516,6 +598,12 @@ class TieredPrice(BaseModel):
 
 class TieredBpsPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredBpsPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredBpsPriceCreditAllocation(BaseModel):
@@ -579,7 +667,9 @@ class TieredBpsPrice(BaseModel):
 
     billable_metric: Optional[TieredBpsPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredBpsPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -601,6 +691,14 @@ class TieredBpsPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredBpsPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -618,6 +716,12 @@ class TieredBpsPrice(BaseModel):
 
 class BpsPriceBillableMetric(BaseModel):
     id: str
+
+
+class BpsPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class BpsPriceBpsConfig(BaseModel):
@@ -667,9 +771,11 @@ class BpsPrice(BaseModel):
 
     billable_metric: Optional[BpsPriceBillableMetric] = None
 
+    billing_cycle_configuration: Optional[BpsPriceBillingCycleConfiguration] = None
+
     bps_config: BpsPriceBpsConfig
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -691,6 +797,14 @@ class BpsPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[BpsPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -706,6 +820,12 @@ class BpsPrice(BaseModel):
 
 class BulkBpsPriceBillableMetric(BaseModel):
     id: str
+
+
+class BulkBpsPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class BulkBpsPriceBulkBpsConfigTier(BaseModel):
@@ -766,9 +886,11 @@ class BulkBpsPrice(BaseModel):
 
     billable_metric: Optional[BulkBpsPriceBillableMetric] = None
 
+    billing_cycle_configuration: Optional[BulkBpsPriceBillingCycleConfiguration] = None
+
     bulk_bps_config: BulkBpsPriceBulkBpsConfig
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -790,6 +912,14 @@ class BulkBpsPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[BulkBpsPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -805,6 +935,12 @@ class BulkBpsPrice(BaseModel):
 
 class BulkPriceBillableMetric(BaseModel):
     id: str
+
+
+class BulkPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class BulkPriceBulkConfigTier(BaseModel):
@@ -859,9 +995,11 @@ class BulkPrice(BaseModel):
 
     billable_metric: Optional[BulkPriceBillableMetric] = None
 
+    billing_cycle_configuration: Optional[BulkPriceBillingCycleConfiguration] = None
+
     bulk_config: BulkPriceBulkConfig
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -883,6 +1021,14 @@ class BulkPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[BulkPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -898,6 +1044,12 @@ class BulkPrice(BaseModel):
 
 class ThresholdTotalAmountPriceBillableMetric(BaseModel):
     id: str
+
+
+class ThresholdTotalAmountPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class ThresholdTotalAmountPriceCreditAllocation(BaseModel):
@@ -939,7 +1091,9 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     billable_metric: Optional[ThresholdTotalAmountPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[ThresholdTotalAmountPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -961,6 +1115,14 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[ThresholdTotalAmountPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -978,6 +1140,12 @@ class ThresholdTotalAmountPrice(BaseModel):
 
 class TieredPackagePriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPackagePriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredPackagePriceCreditAllocation(BaseModel):
@@ -1019,7 +1187,9 @@ class TieredPackagePrice(BaseModel):
 
     billable_metric: Optional[TieredPackagePriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredPackagePriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1041,6 +1211,14 @@ class TieredPackagePrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredPackagePriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1058,6 +1236,12 @@ class TieredPackagePrice(BaseModel):
 
 class GroupedTieredPriceBillableMetric(BaseModel):
     id: str
+
+
+class GroupedTieredPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class GroupedTieredPriceCreditAllocation(BaseModel):
@@ -1099,7 +1283,9 @@ class GroupedTieredPrice(BaseModel):
 
     billable_metric: Optional[GroupedTieredPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[GroupedTieredPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1123,6 +1309,14 @@ class GroupedTieredPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[GroupedTieredPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1138,6 +1332,12 @@ class GroupedTieredPrice(BaseModel):
 
 class TieredWithMinimumPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredWithMinimumPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredWithMinimumPriceCreditAllocation(BaseModel):
@@ -1179,7 +1379,9 @@ class TieredWithMinimumPrice(BaseModel):
 
     billable_metric: Optional[TieredWithMinimumPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredWithMinimumPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1201,6 +1403,14 @@ class TieredWithMinimumPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredWithMinimumPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1218,6 +1428,12 @@ class TieredWithMinimumPrice(BaseModel):
 
 class TieredPackageWithMinimumPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredPackageWithMinimumPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredPackageWithMinimumPriceCreditAllocation(BaseModel):
@@ -1259,7 +1475,9 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     billable_metric: Optional[TieredPackageWithMinimumPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredPackageWithMinimumPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1281,6 +1499,14 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredPackageWithMinimumPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1298,6 +1524,12 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
 class PackageWithAllocationPriceBillableMetric(BaseModel):
     id: str
+
+
+class PackageWithAllocationPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class PackageWithAllocationPriceCreditAllocation(BaseModel):
@@ -1339,7 +1571,9 @@ class PackageWithAllocationPrice(BaseModel):
 
     billable_metric: Optional[PackageWithAllocationPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[PackageWithAllocationPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1361,6 +1595,14 @@ class PackageWithAllocationPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[PackageWithAllocationPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1378,6 +1620,12 @@ class PackageWithAllocationPrice(BaseModel):
 
 class UnitWithPercentPriceBillableMetric(BaseModel):
     id: str
+
+
+class UnitWithPercentPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class UnitWithPercentPriceCreditAllocation(BaseModel):
@@ -1419,7 +1667,9 @@ class UnitWithPercentPrice(BaseModel):
 
     billable_metric: Optional[UnitWithPercentPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[UnitWithPercentPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1441,6 +1691,14 @@ class UnitWithPercentPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[UnitWithPercentPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1458,6 +1716,12 @@ class UnitWithPercentPrice(BaseModel):
 
 class MatrixWithAllocationPriceBillableMetric(BaseModel):
     id: str
+
+
+class MatrixWithAllocationPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class MatrixWithAllocationPriceCreditAllocation(BaseModel):
@@ -1525,7 +1789,9 @@ class MatrixWithAllocationPrice(BaseModel):
 
     billable_metric: Optional[MatrixWithAllocationPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[MatrixWithAllocationPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1549,6 +1815,14 @@ class MatrixWithAllocationPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[MatrixWithAllocationPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1564,6 +1838,12 @@ class MatrixWithAllocationPrice(BaseModel):
 
 class TieredWithProrationPriceBillableMetric(BaseModel):
     id: str
+
+
+class TieredWithProrationPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredWithProrationPriceCreditAllocation(BaseModel):
@@ -1605,7 +1885,9 @@ class TieredWithProrationPrice(BaseModel):
 
     billable_metric: Optional[TieredWithProrationPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[TieredWithProrationPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1627,6 +1909,14 @@ class TieredWithProrationPrice(BaseModel):
 
     maximum_amount: Optional[str] = None
 
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
     minimum: Optional[TieredWithProrationPriceMinimum] = None
 
     minimum_amount: Optional[str] = None
@@ -1644,6 +1934,12 @@ class TieredWithProrationPrice(BaseModel):
 
 class UnitWithProrationPriceBillableMetric(BaseModel):
     id: str
+
+
+class UnitWithProrationPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class UnitWithProrationPriceCreditAllocation(BaseModel):
@@ -1685,7 +1981,9 @@ class UnitWithProrationPrice(BaseModel):
 
     billable_metric: Optional[UnitWithProrationPriceBillableMetric] = None
 
-    cadence: Literal["one_time", "monthly", "quarterly", "annual"]
+    billing_cycle_configuration: Optional[UnitWithProrationPriceBillingCycleConfiguration] = None
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     conversion_rate: Optional[float] = None
 
@@ -1706,6 +2004,14 @@ class UnitWithProrationPrice(BaseModel):
     maximum: Optional[UnitWithProrationPriceMaximum] = None
 
     maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     minimum: Optional[UnitWithProrationPriceMinimum] = None
 

@@ -32,10 +32,7 @@ from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
-from .._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.subscription import Subscription
 from ..types.subscription_usage import SubscriptionUsage
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
@@ -963,12 +960,10 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
         group_by: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
         second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -1183,15 +1178,9 @@ class Subscriptions(SyncAPIResource):
               single billable metric. Note that both `group_by` and `billable_metric_id` must
               be specified together.
 
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
           granularity: This determines the windowing of usage reporting.
 
           group_by: Groups per-price usage by the key provided.
-
-          limit: If including a `group_by`, the number of groups to fetch data for. Defaults
-              to 1000.
 
           timeframe_end: Usage returned is exclusive of `timeframe_end`.
 
@@ -1224,12 +1213,10 @@ class Subscriptions(SyncAPIResource):
                     query=maybe_transform(
                         {
                             "billable_metric_id": billable_metric_id,
-                            "cursor": cursor,
                             "first_dimension_key": first_dimension_key,
                             "first_dimension_value": first_dimension_value,
                             "granularity": granularity,
                             "group_by": group_by,
-                            "limit": limit,
                             "second_dimension_key": second_dimension_key,
                             "second_dimension_value": second_dimension_value,
                             "timeframe_end": timeframe_end,
@@ -1248,7 +1235,9 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1283,6 +1272,21 @@ class Subscriptions(SyncAPIResource):
         Additionally, a discount, minimum, or maximum can be specified on the price
         interval. This will only apply to this price interval, not any other price
         intervals on the subscription.
+
+        ## Adjustment intervals
+
+        An adjustment interval represents the time period that a particular adjustment
+        (a discount, minimum, or maximum) applies to the prices on a subscription.
+        Adjustment intervals can be added to a subscription by specifying them in the
+        `add_adjustments` array, or modified via the `edit_adjustments` array. When
+        creating an adjustment interval, you'll need to provide the definition of the
+        new adjustment (the type of adjustment, and which prices it applies to), as well
+        as the start and end dates for the adjustment interval. The start and end dates
+        of an existing adjustment interval can be edited via the `edit_adjustments`
+        field (just like price intervals). (To "change" the amount of a discount,
+        minimum, or maximum, then, you'll need to end the existing interval, and create
+        a new adjustment interval with the new amount and a start date that matches the
+        end date of the previous interval.)
 
         ## Editing price intervals
 
@@ -1319,7 +1323,11 @@ class Subscriptions(SyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -1338,7 +1346,9 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),
@@ -1360,7 +1370,7 @@ class Subscriptions(SyncAPIResource):
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        change_date: Optional[str] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2675,12 +2685,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
         group_by: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
         second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
         second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -2895,15 +2903,9 @@ class AsyncSubscriptions(AsyncAPIResource):
               single billable metric. Note that both `group_by` and `billable_metric_id` must
               be specified together.
 
-          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
-              from the initial request.
-
           granularity: This determines the windowing of usage reporting.
 
           group_by: Groups per-price usage by the key provided.
-
-          limit: If including a `group_by`, the number of groups to fetch data for. Defaults
-              to 1000.
 
           timeframe_end: Usage returned is exclusive of `timeframe_end`.
 
@@ -2936,12 +2938,10 @@ class AsyncSubscriptions(AsyncAPIResource):
                     query=await async_maybe_transform(
                         {
                             "billable_metric_id": billable_metric_id,
-                            "cursor": cursor,
                             "first_dimension_key": first_dimension_key,
                             "first_dimension_value": first_dimension_value,
                             "granularity": granularity,
                             "group_by": group_by,
-                            "limit": limit,
                             "second_dimension_key": second_dimension_key,
                             "second_dimension_value": second_dimension_value,
                             "timeframe_end": timeframe_end,
@@ -2960,7 +2960,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2995,6 +2997,21 @@ class AsyncSubscriptions(AsyncAPIResource):
         Additionally, a discount, minimum, or maximum can be specified on the price
         interval. This will only apply to this price interval, not any other price
         intervals on the subscription.
+
+        ## Adjustment intervals
+
+        An adjustment interval represents the time period that a particular adjustment
+        (a discount, minimum, or maximum) applies to the prices on a subscription.
+        Adjustment intervals can be added to a subscription by specifying them in the
+        `add_adjustments` array, or modified via the `edit_adjustments` array. When
+        creating an adjustment interval, you'll need to provide the definition of the
+        new adjustment (the type of adjustment, and which prices it applies to), as well
+        as the start and end dates for the adjustment interval. The start and end dates
+        of an existing adjustment interval can be edited via the `edit_adjustments`
+        field (just like price intervals). (To "change" the amount of a discount,
+        minimum, or maximum, then, you'll need to end the existing interval, and create
+        a new adjustment interval with the new amount and a start date that matches the
+        end date of the previous interval.)
 
         ## Editing price intervals
 
@@ -3031,7 +3048,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           add: A list of price intervals to add to the subscription.
 
+          add_adjustments: A list of adjustments to add to the subscription.
+
           edit: A list of price intervals to edit on the subscription.
+
+          edit_adjustments: A list of adjustments to edit on the subscription.
 
           extra_headers: Send extra headers
 
@@ -3050,7 +3071,9 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "add": add,
+                    "add_adjustments": add_adjustments,
                     "edit": edit,
+                    "edit_adjustments": edit_adjustments,
                 },
                 subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
             ),
@@ -3072,7 +3095,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        change_date: Optional[str] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,

@@ -52,64 +52,36 @@ class TestItems:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         item = client.items.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         item = client.items.update(
-            "string",
+            item_id="item_id",
             external_connections=[
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
             ],
-            metadata={"foo": "string"},
+            name="name",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.items.with_raw_response.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         )
 
         assert response.is_closed is True
@@ -120,21 +92,7 @@ class TestItems:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.items.with_streaming_response.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,21 +106,7 @@ class TestItems:
     def test_path_params_update(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `item_id` but received ''"):
             client.items.with_raw_response.update(
-                "",
-                external_connections=[
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                ],
+                item_id="",
             )
 
     @parametrize
@@ -173,7 +117,7 @@ class TestItems:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         item = client.items.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[Item], item, path=["response"])
@@ -201,14 +145,14 @@ class TestItems:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         item = client.items.fetch(
-            "string",
+            "item_id",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.items.with_raw_response.fetch(
-            "string",
+            "item_id",
         )
 
         assert response.is_closed is True
@@ -219,7 +163,7 @@ class TestItems:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.items.with_streaming_response.fetch(
-            "string",
+            "item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -274,64 +218,36 @@ class TestAsyncItems:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.update(
-            "string",
+            item_id="item_id",
             external_connections=[
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
                 {
                     "external_connection_name": "stripe",
-                    "external_entity_id": "string",
+                    "external_entity_id": "external_entity_id",
                 },
             ],
-            metadata={"foo": "string"},
+            name="name",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.items.with_raw_response.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         )
 
         assert response.is_closed is True
@@ -342,21 +258,7 @@ class TestAsyncItems:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.items.with_streaming_response.update(
-            "string",
-            external_connections=[
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "string",
-                },
-            ],
+            item_id="item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -370,21 +272,7 @@ class TestAsyncItems:
     async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `item_id` but received ''"):
             await async_client.items.with_raw_response.update(
-                "",
-                external_connections=[
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                    {
-                        "external_connection_name": "stripe",
-                        "external_entity_id": "string",
-                    },
-                ],
+                item_id="",
             )
 
     @parametrize
@@ -395,7 +283,7 @@ class TestAsyncItems:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[Item], item, path=["response"])
@@ -423,14 +311,14 @@ class TestAsyncItems:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.fetch(
-            "string",
+            "item_id",
         )
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.items.with_raw_response.fetch(
-            "string",
+            "item_id",
         )
 
         assert response.is_closed is True
@@ -441,7 +329,7 @@ class TestAsyncItems:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.items.with_streaming_response.fetch(
-            "string",
+            "item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

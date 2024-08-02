@@ -91,7 +91,7 @@ class PlanPhase(BaseModel):
     If null, this phase is evergreen and active indefinitely
     """
 
-    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "annual"]] = None
+    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "semi_annual", "annual"]] = None
 
     maximum: Optional[PlanPhaseMaximum] = None
 

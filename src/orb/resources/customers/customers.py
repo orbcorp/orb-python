@@ -17,14 +17,6 @@ from .costs import (
     CostsWithStreamingResponse,
     AsyncCostsWithStreamingResponse,
 )
-from .usage import (
-    Usage,
-    AsyncUsage,
-    UsageWithRawResponse,
-    AsyncUsageWithRawResponse,
-    UsageWithStreamingResponse,
-    AsyncUsageWithStreamingResponse,
-)
 from ...types import (
     customer_list_params,
     customer_create_params,
@@ -48,10 +40,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ..._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ..._base_client import AsyncPaginator, make_request_options
 from .credits.credits import Credits, AsyncCredits
 from ...types.customer import Customer
 from .balance_transactions import (
@@ -70,10 +59,6 @@ class Customers(SyncAPIResource):
     @cached_property
     def costs(self) -> Costs:
         return Costs(self._client)
-
-    @cached_property
-    def usage(self) -> Usage:
-        return Usage(self._client)
 
     @cached_property
     def credits(self) -> Credits:
@@ -955,10 +940,6 @@ class AsyncCustomers(AsyncAPIResource):
     @cached_property
     def costs(self) -> AsyncCosts:
         return AsyncCosts(self._client)
-
-    @cached_property
-    def usage(self) -> AsyncUsage:
-        return AsyncUsage(self._client)
 
     @cached_property
     def credits(self) -> AsyncCredits:
@@ -1867,10 +1848,6 @@ class CustomersWithRawResponse:
         return CostsWithRawResponse(self._customers.costs)
 
     @cached_property
-    def usage(self) -> UsageWithRawResponse:
-        return UsageWithRawResponse(self._customers.usage)
-
-    @cached_property
     def credits(self) -> CreditsWithRawResponse:
         return CreditsWithRawResponse(self._customers.credits)
 
@@ -1908,10 +1885,6 @@ class AsyncCustomersWithRawResponse:
     @cached_property
     def costs(self) -> AsyncCostsWithRawResponse:
         return AsyncCostsWithRawResponse(self._customers.costs)
-
-    @cached_property
-    def usage(self) -> AsyncUsageWithRawResponse:
-        return AsyncUsageWithRawResponse(self._customers.usage)
 
     @cached_property
     def credits(self) -> AsyncCreditsWithRawResponse:
@@ -1953,10 +1926,6 @@ class CustomersWithStreamingResponse:
         return CostsWithStreamingResponse(self._customers.costs)
 
     @cached_property
-    def usage(self) -> UsageWithStreamingResponse:
-        return UsageWithStreamingResponse(self._customers.usage)
-
-    @cached_property
     def credits(self) -> CreditsWithStreamingResponse:
         return CreditsWithStreamingResponse(self._customers.credits)
 
@@ -1994,10 +1963,6 @@ class AsyncCustomersWithStreamingResponse:
     @cached_property
     def costs(self) -> AsyncCostsWithStreamingResponse:
         return AsyncCostsWithStreamingResponse(self._customers.costs)
-
-    @cached_property
-    def usage(self) -> AsyncUsageWithStreamingResponse:
-        return AsyncUsageWithStreamingResponse(self._customers.usage)
 
     @cached_property
     def credits(self) -> AsyncCreditsWithStreamingResponse:

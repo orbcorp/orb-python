@@ -22,15 +22,15 @@ class TestPlans:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         plan = client.plans.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         )
@@ -39,43 +39,45 @@ class TestPlans:
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         plan = client.plans.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
-                    "external_price_id": "string",
+                    "metadata": {"foo": "string"},
+                    "external_price_id": "external_price_id",
                     "name": "Annual fee",
-                    "billable_metric_id": "string",
-                    "item_id": "string",
+                    "billable_metric_id": "billable_metric_id",
+                    "item_id": "item_id",
                     "billed_in_advance": True,
                     "fixed_price_quantity": 0,
-                    "invoice_grouping_key": "string",
+                    "invoice_grouping_key": "invoice_grouping_key",
                     "cadence": "annual",
                     "conversion_rate": 0,
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
-                    "currency": "string",
+                    "unit_config": {"unit_amount": "unit_amount"},
+                    "currency": "currency",
                 }
             ],
-            default_invoice_memo="string",
-            external_plan_id="string",
+            default_invoice_memo="default_invoice_memo",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
             net_terms=0,
+            status="active",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.plans.with_raw_response.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         )
@@ -88,15 +90,15 @@ class TestPlans:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.plans.with_streaming_response.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         ) as response:
@@ -111,15 +113,15 @@ class TestPlans:
     @parametrize
     def test_method_update(self, client: Orb) -> None:
         plan = client.plans.update(
-            "string",
+            plan_id="plan_id",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
         plan = client.plans.update(
-            "string",
-            external_plan_id="string",
+            plan_id="plan_id",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Plan, plan, path=["response"])
@@ -127,7 +129,7 @@ class TestPlans:
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.plans.with_raw_response.update(
-            "string",
+            plan_id="plan_id",
         )
 
         assert response.is_closed is True
@@ -138,7 +140,7 @@ class TestPlans:
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.plans.with_streaming_response.update(
-            "string",
+            plan_id="plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -152,7 +154,7 @@ class TestPlans:
     def test_path_params_update(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
             client.plans.with_raw_response.update(
-                "",
+                plan_id="",
             )
 
     @parametrize
@@ -167,7 +169,7 @@ class TestPlans:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status="active",
         )
@@ -196,14 +198,14 @@ class TestPlans:
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         plan = client.plans.fetch(
-            "string",
+            "plan_id",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
         response = client.plans.with_raw_response.fetch(
-            "string",
+            "plan_id",
         )
 
         assert response.is_closed is True
@@ -214,7 +216,7 @@ class TestPlans:
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
         with client.plans.with_streaming_response.fetch(
-            "string",
+            "plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -238,15 +240,15 @@ class TestAsyncPlans:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         )
@@ -255,43 +257,45 @@ class TestAsyncPlans:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
-                    "external_price_id": "string",
+                    "metadata": {"foo": "string"},
+                    "external_price_id": "external_price_id",
                     "name": "Annual fee",
-                    "billable_metric_id": "string",
-                    "item_id": "string",
+                    "billable_metric_id": "billable_metric_id",
+                    "item_id": "item_id",
                     "billed_in_advance": True,
                     "fixed_price_quantity": 0,
-                    "invoice_grouping_key": "string",
+                    "invoice_grouping_key": "invoice_grouping_key",
                     "cadence": "annual",
                     "conversion_rate": 0,
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
-                    "currency": "string",
+                    "unit_config": {"unit_amount": "unit_amount"},
+                    "currency": "currency",
                 }
             ],
-            default_invoice_memo="string",
-            external_plan_id="string",
+            default_invoice_memo="default_invoice_memo",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
             net_terms=0,
+            status="active",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.plans.with_raw_response.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         )
@@ -304,15 +308,15 @@ class TestAsyncPlans:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.plans.with_streaming_response.create(
-            currency="string",
-            name="string",
+            currency="currency",
+            name="name",
             prices=[
                 {
                     "name": "Annual fee",
-                    "item_id": "string",
+                    "item_id": "item_id",
                     "cadence": "annual",
                     "model_type": "unit",
-                    "unit_config": {"unit_amount": "string"},
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
         ) as response:
@@ -327,15 +331,15 @@ class TestAsyncPlans:
     @parametrize
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.update(
-            "string",
+            plan_id="plan_id",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.update(
-            "string",
-            external_plan_id="string",
+            plan_id="plan_id",
+            external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Plan, plan, path=["response"])
@@ -343,7 +347,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.plans.with_raw_response.update(
-            "string",
+            plan_id="plan_id",
         )
 
         assert response.is_closed is True
@@ -354,7 +358,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.plans.with_streaming_response.update(
-            "string",
+            plan_id="plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -368,7 +372,7 @@ class TestAsyncPlans:
     async def test_path_params_update(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
             await async_client.plans.with_raw_response.update(
-                "",
+                plan_id="",
             )
 
     @parametrize
@@ -383,7 +387,7 @@ class TestAsyncPlans:
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status="active",
         )
@@ -412,14 +416,14 @@ class TestAsyncPlans:
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.fetch(
-            "string",
+            "plan_id",
         )
         assert_matches_type(Plan, plan, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
         response = await async_client.plans.with_raw_response.fetch(
-            "string",
+            "plan_id",
         )
 
         assert response.is_closed is True
@@ -430,7 +434,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
         async with async_client.plans.with_streaming_response.fetch(
-            "string",
+            "plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

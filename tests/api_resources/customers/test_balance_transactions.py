@@ -25,8 +25,8 @@ class TestBalanceTransactions:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         )
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
@@ -34,18 +34,18 @@ class TestBalanceTransactions:
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
-            description="string",
+            description="description",
         )
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.customers.balance_transactions.with_raw_response.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         )
 
@@ -57,8 +57,8 @@ class TestBalanceTransactions:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.customers.balance_transactions.with_streaming_response.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         ) as response:
             assert not response.is_closed
@@ -73,23 +73,23 @@ class TestBalanceTransactions:
     def test_path_params_create(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.balance_transactions.with_raw_response.create(
-                "",
-                amount="string",
+                customer_id="",
+                amount="amount",
                 type="increment",
             )
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.list(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(SyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         balance_transaction = client.customers.balance_transactions.list(
-            "string",
-            cursor="string",
+            customer_id="customer_id",
+            cursor="cursor",
             limit=1,
             operation_time_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -101,7 +101,7 @@ class TestBalanceTransactions:
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
         response = client.customers.balance_transactions.with_raw_response.list(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -112,7 +112,7 @@ class TestBalanceTransactions:
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
         with client.customers.balance_transactions.with_streaming_response.list(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -126,7 +126,7 @@ class TestBalanceTransactions:
     def test_path_params_list(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.balance_transactions.with_raw_response.list(
-                "",
+                customer_id="",
             )
 
 
@@ -136,8 +136,8 @@ class TestAsyncBalanceTransactions:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         balance_transaction = await async_client.customers.balance_transactions.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         )
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
@@ -145,18 +145,18 @@ class TestAsyncBalanceTransactions:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         balance_transaction = await async_client.customers.balance_transactions.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
-            description="string",
+            description="description",
         )
         assert_matches_type(BalanceTransactionCreateResponse, balance_transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.balance_transactions.with_raw_response.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         )
 
@@ -168,8 +168,8 @@ class TestAsyncBalanceTransactions:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.balance_transactions.with_streaming_response.create(
-            "string",
-            amount="string",
+            customer_id="customer_id",
+            amount="amount",
             type="increment",
         ) as response:
             assert not response.is_closed
@@ -184,23 +184,23 @@ class TestAsyncBalanceTransactions:
     async def test_path_params_create(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.balance_transactions.with_raw_response.create(
-                "",
-                amount="string",
+                customer_id="",
+                amount="amount",
                 type="increment",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         balance_transaction = await async_client.customers.balance_transactions.list(
-            "string",
+            customer_id="customer_id",
         )
         assert_matches_type(AsyncPage[BalanceTransactionListResponse], balance_transaction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         balance_transaction = await async_client.customers.balance_transactions.list(
-            "string",
-            cursor="string",
+            customer_id="customer_id",
+            cursor="cursor",
             limit=1,
             operation_time_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             operation_time_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -212,7 +212,7 @@ class TestAsyncBalanceTransactions:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.balance_transactions.with_raw_response.list(
-            "string",
+            customer_id="customer_id",
         )
 
         assert response.is_closed is True
@@ -223,7 +223,7 @@ class TestAsyncBalanceTransactions:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.balance_transactions.with_streaming_response.list(
-            "string",
+            customer_id="customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -237,5 +237,5 @@ class TestAsyncBalanceTransactions:
     async def test_path_params_list(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.balance_transactions.with_raw_response.list(
-                "",
+                customer_id="",
             )

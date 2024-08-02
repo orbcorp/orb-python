@@ -29,10 +29,7 @@ from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncPage, AsyncPage
-from ...._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers import credit_list_params, credit_list_by_external_id_params
 from ....types.customers.credit_list_response import CreditListResponse
 from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
@@ -63,6 +60,7 @@ class Credits(SyncAPIResource):
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        include_all_blocks: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -82,6 +80,8 @@ class Credits(SyncAPIResource):
 
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
+
+          include_all_blocks: Include all blocks, not just active ones.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -107,6 +107,7 @@ class Credits(SyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
                     credit_list_params.CreditListParams,
@@ -121,6 +122,7 @@ class Credits(SyncAPIResource):
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        include_all_blocks: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -140,6 +142,8 @@ class Credits(SyncAPIResource):
 
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
+
+          include_all_blocks: Include all blocks, not just active ones.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -167,6 +171,7 @@ class Credits(SyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
                     credit_list_by_external_id_params.CreditListByExternalIDParams,
@@ -199,6 +204,7 @@ class AsyncCredits(AsyncAPIResource):
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        include_all_blocks: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -218,6 +224,8 @@ class AsyncCredits(AsyncAPIResource):
 
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
+
+          include_all_blocks: Include all blocks, not just active ones.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -243,6 +251,7 @@ class AsyncCredits(AsyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
                     credit_list_params.CreditListParams,
@@ -257,6 +266,7 @@ class AsyncCredits(AsyncAPIResource):
         *,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        include_all_blocks: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -276,6 +286,8 @@ class AsyncCredits(AsyncAPIResource):
 
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
+
+          include_all_blocks: Include all blocks, not just active ones.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -303,6 +315,7 @@ class AsyncCredits(AsyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
                     credit_list_by_external_id_params.CreditListByExternalIDParams,

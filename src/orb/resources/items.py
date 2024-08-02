@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -18,10 +18,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from ..types.item import Item
-from .._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["Items", "AsyncItems"]
 
@@ -80,8 +77,8 @@ class Items(SyncAPIResource):
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,15 +87,10 @@ class Items(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Item:
-        """Update items
+        """
+        This endpoint can be used to update properties on the Item.
 
         Args:
-          metadata: User-specified key/value pairs for the resource.
-
-        Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -116,7 +108,7 @@ class Items(SyncAPIResource):
             body=maybe_transform(
                 {
                     "external_connections": external_connections,
-                    "metadata": metadata,
+                    "name": name,
                 },
                 item_update_params.ItemUpdateParams,
             ),
@@ -267,8 +259,8 @@ class AsyncItems(AsyncAPIResource):
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[item_update_params.ExternalConnection]],
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -277,15 +269,10 @@ class AsyncItems(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Item:
-        """Update items
+        """
+        This endpoint can be used to update properties on the Item.
 
         Args:
-          metadata: User-specified key/value pairs for the resource.
-
-        Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -303,7 +290,7 @@ class AsyncItems(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "external_connections": external_connections,
-                    "metadata": metadata,
+                    "name": name,
                 },
                 item_update_params.ItemUpdateParams,
             ),

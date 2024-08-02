@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = [
     "SubscriptionSchedulePlanChangeParams",
@@ -66,7 +69,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     billing cycle alignment.
     """
 
-    change_date: Optional[str]
+    change_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date that the plan change should take effect.
 
     This parameter can only be passed if the `change_option` is `requested_date`.

@@ -1,5 +1,72 @@
 # Changelog
 
+## 2.0.0 (2024-08-02)
+
+Full Changelog: [v1.56.0...v2.0.0](https://github.com/orbcorp/orb-python/compare/v1.56.0...v2.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** remove methods 'customers.usage.create' and 'customers.usage.update_by_external_id' ([#330](https://github.com/orbcorp/orb-python/issues/330))
+* **api:** endpoint expects amount of new allocation price to be a string, not a number ([#297](https://github.com/orbcorp/orb-python/issues/297))
+* **api:** add semi_annual cadence and remove metadata from update items ([#288](https://github.com/orbcorp/orb-python/issues/288))
+
+### Features
+
+* **api:** add 'status' to plan creation params ([#310](https://github.com/orbcorp/orb-python/issues/310)) ([561898f](https://github.com/orbcorp/orb-python/commit/561898f1fa75d83d83f0c1c50d382d04cbaff7d2))
+* **api:** add cadence enum value 'custom' ([#327](https://github.com/orbcorp/orb-python/issues/327)) ([e1df500](https://github.com/orbcorp/orb-python/commit/e1df500b8f268eef2a0a8d65851ce903919f8bd2))
+* **api:** add methods to prices and invoices ([#321](https://github.com/orbcorp/orb-python/issues/321)) ([0eaba5f](https://github.com/orbcorp/orb-python/commit/0eaba5fe665bf54bd02748587153bb42b080dc2d))
+* **api:** add semi_annual cadence and remove metadata from update items ([#288](https://github.com/orbcorp/orb-python/issues/288)) ([4b07848](https://github.com/orbcorp/orb-python/commit/4b07848ecc9d2a4899e20710e121d5cdc984de79))
+* **api:** add support for adding allocation price to subscription ([#295](https://github.com/orbcorp/orb-python/issues/295)) ([7e16ef5](https://github.com/orbcorp/orb-python/commit/7e16ef55cd743b63b0ee8f0a9e45052c610998fb))
+* **api:** add support for query param include_all_blocks ([#301](https://github.com/orbcorp/orb-python/issues/301)) ([1b7b6a3](https://github.com/orbcorp/orb-python/commit/1b7b6a3236226bdd7bf7bd00d041a0c0a99f24bf))
+* **api:** deprecate methods 'customers.usage.create' and 'customers.usage.update_by_external_id' ([#329](https://github.com/orbcorp/orb-python/issues/329)) ([1cc12f1](https://github.com/orbcorp/orb-python/commit/1cc12f133f42ef99910ed4bf5f8e7bf0b42ab34e))
+* **api:** external connections made optional when updating items ([#296](https://github.com/orbcorp/orb-python/issues/296)) ([9076f38](https://github.com/orbcorp/orb-python/commit/9076f38ee750cf1f59d6260befb9931d3f878743))
+* **api:** remove methods 'customers.usage.create' and 'customers.usage.update_by_external_id' ([#330](https://github.com/orbcorp/orb-python/issues/330)) ([62e5158](https://github.com/orbcorp/orb-python/commit/62e5158e1febd96d28081bd2c7faf023a410088d))
+* **api:** updates ([#291](https://github.com/orbcorp/orb-python/issues/291)) ([38aaf34](https://github.com/orbcorp/orb-python/commit/38aaf34361e649e4111f8a4038afe82867c8d4d8))
+
+
+### Bug Fixes
+
+* **api:** endpoint expects amount of new allocation price to be a string, not a number ([#297](https://github.com/orbcorp/orb-python/issues/297)) ([cb8992b](https://github.com/orbcorp/orb-python/commit/cb8992bf23e9639a27d885e110966cb01acc3e61))
+* **build:** include more files in sdist builds ([#300](https://github.com/orbcorp/orb-python/issues/300)) ([922476f](https://github.com/orbcorp/orb-python/commit/922476f4690435b72b12c6a06a92108cf9368d1a))
+* **client/async:** avoid blocking io call for platform headers ([#294](https://github.com/orbcorp/orb-python/issues/294)) ([89f4bfe](https://github.com/orbcorp/orb-python/commit/89f4bfe6516912f25d0bbe6e8ecf3343a2e05300))
+* **client:** always respect content-type multipart/form-data if provided ([#308](https://github.com/orbcorp/orb-python/issues/308)) ([9d980df](https://github.com/orbcorp/orb-python/commit/9d980dfe52c7e0a9cfdbd9dbed32540589353d1d))
+* **docs:** fix link to advanced python httpx docs ([#298](https://github.com/orbcorp/orb-python/issues/298)) ([55cff13](https://github.com/orbcorp/orb-python/commit/55cff139e8175d1dce02004c9715a42006bbb11c))
+* temporarily patch upstream version to fix broken release flow ([#299](https://github.com/orbcorp/orb-python/issues/299)) ([b0c95aa](https://github.com/orbcorp/orb-python/commit/b0c95aa994d16c17486bbd999115114174fd2eac))
+
+
+### Chores
+
+* **ci:** also run workflows for PRs targeting `next` ([#314](https://github.com/orbcorp/orb-python/issues/314)) ([4fc3bcb](https://github.com/orbcorp/orb-python/commit/4fc3bcb9dc201a36e907a56983cb0cf8498c1f54))
+* **ci:** limit release doctor target branches ([#323](https://github.com/orbcorp/orb-python/issues/323)) ([fdf2291](https://github.com/orbcorp/orb-python/commit/fdf2291d68f4d0e119ff8ae4c6022f2ed95ca071))
+* **ci:** update rye to v0.35.0 ([#309](https://github.com/orbcorp/orb-python/issues/309)) ([540ff37](https://github.com/orbcorp/orb-python/commit/540ff3705d0f986577012bde92cfd2a60c45825d))
+* **deps:** bump anyio to v4.4.0 ([#303](https://github.com/orbcorp/orb-python/issues/303)) ([e02d74d](https://github.com/orbcorp/orb-python/commit/e02d74db5b900a2d7a8a3d3bbdb0356ab78db978))
+* **docs:** document how to do per-request http client customization ([#322](https://github.com/orbcorp/orb-python/issues/322)) ([30320ae](https://github.com/orbcorp/orb-python/commit/30320ae1074928dc95ee1e23ed6aea8bf47759fd))
+* **docs:** improve Coupon description ([#293](https://github.com/orbcorp/orb-python/issues/293)) ([5aa0f32](https://github.com/orbcorp/orb-python/commit/5aa0f328e70673ff0c928bd2b704b1e3822b480c))
+* **docs:** minor update to formatting of API link in README ([#318](https://github.com/orbcorp/orb-python/issues/318)) ([67d26e4](https://github.com/orbcorp/orb-python/commit/67d26e4c49d1a0e3b482e660c50ad1bfe99c434f))
+* **docs:** updates price intervals docs ([#302](https://github.com/orbcorp/orb-python/issues/302)) ([a05b099](https://github.com/orbcorp/orb-python/commit/a05b09901baddddec77db515ae7102dec167014e))
+* fix error message import example ([#326](https://github.com/orbcorp/orb-python/issues/326)) ([4993ac4](https://github.com/orbcorp/orb-python/commit/4993ac4368cfe41249931e45aa7b030c0dceddce))
+* gitignore test server logs ([#305](https://github.com/orbcorp/orb-python/issues/305)) ([9a8b82f](https://github.com/orbcorp/orb-python/commit/9a8b82f869b9bb975920f994b0bf8585196445d4))
+* **internal:** add a `default_query` method ([#292](https://github.com/orbcorp/orb-python/issues/292)) ([8aa1d73](https://github.com/orbcorp/orb-python/commit/8aa1d7356132d6221b32654616669b8fa1aee9f7))
+* **internal:** add helper function ([#312](https://github.com/orbcorp/orb-python/issues/312)) ([3d9704e](https://github.com/orbcorp/orb-python/commit/3d9704eaa3fc9acdd900a0e2357785ac93b18d6a))
+* **internal:** add helper method for constructing `BaseModel`s ([#307](https://github.com/orbcorp/orb-python/issues/307)) ([73a4593](https://github.com/orbcorp/orb-python/commit/73a4593797c5bbca315f6ed846427e388c0445ec))
+* **internal:** add reflection helper function ([#304](https://github.com/orbcorp/orb-python/issues/304)) ([986bd84](https://github.com/orbcorp/orb-python/commit/986bd84dcb22d9413430f578c28a5adccadaacfd))
+* **internal:** add rich as a dev dependency ([#306](https://github.com/orbcorp/orb-python/issues/306)) ([d2a2f3f](https://github.com/orbcorp/orb-python/commit/d2a2f3fe411cb3d57b15c7f3bfd102523def0e8f))
+* **internal:** add type construction helper ([#328](https://github.com/orbcorp/orb-python/issues/328)) ([6094016](https://github.com/orbcorp/orb-python/commit/60940163e63ef9798cfb7f177088892933000844))
+* **internal:** minor import restructuring ([#315](https://github.com/orbcorp/orb-python/issues/315)) ([eeee65e](https://github.com/orbcorp/orb-python/commit/eeee65e7b30438c9133f47f0aa86b35e54878506))
+* **internal:** minor options / compat functions updates ([#317](https://github.com/orbcorp/orb-python/issues/317)) ([2a05873](https://github.com/orbcorp/orb-python/commit/2a05873d80ae4e8bebdbcd2adb7cd1817377cc11))
+* **internal:** minor request options handling changes ([#311](https://github.com/orbcorp/orb-python/issues/311)) ([cfcc3eb](https://github.com/orbcorp/orb-python/commit/cfcc3ebc299a387decd8812879a8ad851dc7d6da))
+* **internal:** update formatting ([#319](https://github.com/orbcorp/orb-python/issues/319)) ([f212cc8](https://github.com/orbcorp/orb-python/commit/f212cc89ee7b8b783e0fad9fb09d3e772abdf1f4))
+* **internal:** update formatting ([#320](https://github.com/orbcorp/orb-python/issues/320)) ([6dc313b](https://github.com/orbcorp/orb-python/commit/6dc313bc36ba258ae2522b649387ff6f42cee818))
+* **internal:** update mypy ([#313](https://github.com/orbcorp/orb-python/issues/313)) ([e98ba62](https://github.com/orbcorp/orb-python/commit/e98ba6215dea14581b1d3b54b570a5f176948003))
+* **tests:** update prism version ([#325](https://github.com/orbcorp/orb-python/issues/325)) ([a26627c](https://github.com/orbcorp/orb-python/commit/a26627c3b271916424bdd72b4087a51e3b36fc72))
+
+
+### Documentation
+
+* **examples:** use named params more ([#316](https://github.com/orbcorp/orb-python/issues/316)) ([a451ed6](https://github.com/orbcorp/orb-python/commit/a451ed63406c95767251f976805496a1cf300b5d))
+* **readme:** fix example snippet imports ([#324](https://github.com/orbcorp/orb-python/issues/324)) ([47e954d](https://github.com/orbcorp/orb-python/commit/47e954df9d22f1b9cef2883b72479bd10a6a6b69))
+* small updates ([#290](https://github.com/orbcorp/orb-python/issues/290)) ([4beb928](https://github.com/orbcorp/orb-python/commit/4beb9285099ff26ed8ca6a9f178f34daf87f053f))
+
 ## 1.56.0 (2024-05-29)
 
 Full Changelog: [v1.55.0...v1.56.0](https://github.com/orbcorp/orb-python/compare/v1.55.0...v1.56.0)

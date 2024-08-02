@@ -17,10 +17,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ..._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.events import backfill_list_params, backfill_create_params
 from ...types.events.backfill_list_response import BackfillListResponse
 from ...types.events.backfill_close_response import BackfillCloseResponse

@@ -81,19 +81,6 @@ Methods:
 - <code title="get /customers/{customer_id}/costs">client.customers.costs.<a href="./src/orb/resources/customers/costs.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/cost_list_params.py">params</a>) -> <a href="./src/orb/types/customers/cost_list_response.py">CostListResponse</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}/costs">client.customers.costs.<a href="./src/orb/resources/customers/costs.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/cost_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/cost_list_by_external_id_response.py">CostListByExternalIDResponse</a></code>
 
-## Usage
-
-Types:
-
-```python
-from orb.types.customers import UsageUpdateResponse, UsageUpdateByExternalIDResponse
-```
-
-Methods:
-
-- <code title="patch /customers/{customer_id}/usage">client.customers.usage.<a href="./src/orb/resources/customers/usage.py">update</a>(id, \*\*<a href="src/orb/types/customers/usage_update_params.py">params</a>) -> <a href="./src/orb/types/customers/usage_update_response.py">UsageUpdateResponse</a></code>
-- <code title="patch /customers/external_customer_id/{external_customer_id}/usage">client.customers.usage.<a href="./src/orb/resources/customers/usage.py">update_by_external_id</a>(id, \*\*<a href="src/orb/types/customers/usage_update_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/usage_update_by_external_id_response.py">UsageUpdateByExternalIDResponse</a></code>
-
 ## Credits
 
 Types:
@@ -227,6 +214,7 @@ from orb.types import Invoice, InvoiceFetchUpcomingResponse
 Methods:
 
 - <code title="post /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">create</a>(\*\*<a href="src/orb/types/invoice_create_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
+- <code title="put /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">update</a>(invoice_id, \*\*<a href="src/orb/types/invoice_update_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 - <code title="get /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">list</a>(\*\*<a href="src/orb/types/invoice_list_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">SyncPage[Invoice]</a></code>
 - <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 - <code title="get /invoices/upcoming">client.invoices.<a href="./src/orb/resources/invoices.py">fetch_upcoming</a>(\*\*<a href="src/orb/types/invoice_fetch_upcoming_params.py">params</a>) -> <a href="./src/orb/types/invoice_fetch_upcoming_response.py">InvoiceFetchUpcomingResponse</a></code>
@@ -296,6 +284,7 @@ from orb.types import EvaluatePriceGroup, Price, PriceEvaluateResponse
 Methods:
 
 - <code title="post /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">create</a>(\*\*<a href="src/orb/types/price_create_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
+- <code title="put /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">update</a>(price_id, \*\*<a href="src/orb/types/price_update_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
 - <code title="get /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">list</a>(\*\*<a href="src/orb/types/price_list_params.py">params</a>) -> <a href="./src/orb/types/price.py">SyncPage[Price]</a></code>
 - <code title="post /prices/{price_id}/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate</a>(price_id, \*\*<a href="src/orb/types/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_response.py">PriceEvaluateResponse</a></code>
 - <code title="get /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">fetch</a>(price_id) -> <a href="./src/orb/types/price.py">Price</a></code>
@@ -304,6 +293,7 @@ Methods:
 
 Methods:
 
+- <code title="put /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">update</a>(external_price_id, \*\*<a href="src/orb/types/prices/external_price_id_update_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
 - <code title="get /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">fetch</a>(external_price_id) -> <a href="./src/orb/types/price.py">Price</a></code>
 
 # Subscriptions
