@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Union, Iterable
 from datetime import datetime
 
@@ -33,6 +34,9 @@ class Usage(SyncAPIResource):
     def with_streaming_response(self) -> UsageWithStreamingResponse:
         return UsageWithStreamingResponse(self)
 
+    @typing_extensions.deprecated(
+        "This method will be removed in a future release. Please use the 'events.backfills.create' instead."
+    )
     def update(
         self,
         id: str,
@@ -186,6 +190,9 @@ class Usage(SyncAPIResource):
             cast_to=UsageUpdateResponse,
         )
 
+    @typing_extensions.deprecated(
+        "This method will be removed in a future release. Please use the 'events.backfills.create' instead."
+    )
     def update_by_external_id(
         self,
         id: str,
@@ -349,6 +356,9 @@ class AsyncUsage(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncUsageWithStreamingResponse:
         return AsyncUsageWithStreamingResponse(self)
 
+    @typing_extensions.deprecated(
+        "This method will be removed in a future release. Please use the 'events.backfills.create' instead."
+    )
     async def update(
         self,
         id: str,
@@ -502,6 +512,9 @@ class AsyncUsage(AsyncAPIResource):
             cast_to=UsageUpdateResponse,
         )
 
+    @typing_extensions.deprecated(
+        "This method will be removed in a future release. Please use the 'events.backfills.create' instead."
+    )
     async def update_by_external_id(
         self,
         id: str,
@@ -662,11 +675,15 @@ class UsageWithRawResponse:
     def __init__(self, usage: Usage) -> None:
         self._usage = usage
 
-        self.update = _legacy_response.to_raw_response_wrapper(
-            usage.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.to_raw_response_wrapper(
+                usage.update  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update_by_external_id = _legacy_response.to_raw_response_wrapper(
-            usage.update_by_external_id,
+        self.update_by_external_id = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.to_raw_response_wrapper(
+                usage.update_by_external_id  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -674,11 +691,15 @@ class AsyncUsageWithRawResponse:
     def __init__(self, usage: AsyncUsage) -> None:
         self._usage = usage
 
-        self.update = _legacy_response.async_to_raw_response_wrapper(
-            usage.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.async_to_raw_response_wrapper(
+                usage.update  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update_by_external_id = _legacy_response.async_to_raw_response_wrapper(
-            usage.update_by_external_id,
+        self.update_by_external_id = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.async_to_raw_response_wrapper(
+                usage.update_by_external_id  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -686,11 +707,15 @@ class UsageWithStreamingResponse:
     def __init__(self, usage: Usage) -> None:
         self._usage = usage
 
-        self.update = to_streamed_response_wrapper(
-            usage.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                usage.update  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update_by_external_id = to_streamed_response_wrapper(
-            usage.update_by_external_id,
+        self.update_by_external_id = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                usage.update_by_external_id  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -698,9 +723,13 @@ class AsyncUsageWithStreamingResponse:
     def __init__(self, usage: AsyncUsage) -> None:
         self._usage = usage
 
-        self.update = async_to_streamed_response_wrapper(
-            usage.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                usage.update  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update_by_external_id = async_to_streamed_response_wrapper(
-            usage.update_by_external_id,
+        self.update_by_external_id = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                usage.update_by_external_id  # pyright: ignore[reportDeprecated],
+            )
         )
