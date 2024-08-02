@@ -88,7 +88,7 @@ class PriceNewPlanUnitPriceUnitConfig(TypedDict, total=False):
 
 
 class PriceNewPlanUnitPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -155,7 +155,7 @@ class PriceNewPlanPackagePricePackageConfig(TypedDict, total=False):
 
 
 class PriceNewPlanPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -233,7 +233,7 @@ class PriceNewPlanMatrixPriceMatrixConfig(TypedDict, total=False):
 
 
 class PriceNewPlanMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -304,7 +304,7 @@ class PriceNewPlanTieredPriceTieredConfig(TypedDict, total=False):
 
 
 class PriceNewPlanTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -381,7 +381,7 @@ class PriceNewPlanTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
 
 
 class PriceNewPlanTieredBpsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -446,7 +446,7 @@ class PriceNewPlanBpsPriceBpsConfig(TypedDict, total=False):
 class PriceNewPlanBpsPrice(TypedDict, total=False):
     bps_config: Required[PriceNewPlanBpsPriceBpsConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -520,7 +520,7 @@ class PriceNewPlanBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
 class PriceNewPlanBulkBpsPrice(TypedDict, total=False):
     bulk_bps_config: Required[PriceNewPlanBulkBpsPriceBulkBpsConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -588,7 +588,7 @@ class PriceNewPlanBulkPriceBulkConfig(TypedDict, total=False):
 class PriceNewPlanBulkPrice(TypedDict, total=False):
     bulk_config: Required[PriceNewPlanBulkPriceBulkConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -641,7 +641,7 @@ class PriceNewPlanBulkPrice(TypedDict, total=False):
 
 
 class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -696,7 +696,7 @@ class PriceNewPlanThresholdTotalAmountPrice(TypedDict, total=False):
 
 
 class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -751,7 +751,7 @@ class PriceNewPlanTieredPackagePrice(TypedDict, total=False):
 
 
 class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -806,7 +806,7 @@ class PriceNewPlanTieredWithMinimumPrice(TypedDict, total=False):
 
 
 class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -861,7 +861,7 @@ class PriceNewPlanUnitWithPercentPrice(TypedDict, total=False):
 
 
 class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -916,7 +916,7 @@ class PriceNewPlanPackageWithAllocationPrice(TypedDict, total=False):
 
 
 class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -971,7 +971,7 @@ class PriceNewPlanTierWithProrationPrice(TypedDict, total=False):
 
 
 class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
