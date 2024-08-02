@@ -72,8 +72,7 @@ class Events(SyncAPIResource):
         This endpoint will mark the existing event as ignored, and Orb will only use the
         new event passed in the body of this request as the source of truth for that
         `event_id`. Note that a single event can be amended any number of times, so the
-        same event can be overwritten in subsequent calls to this endpoint, or
-        overwritten using the [Amend customer usage](amend-usage) endpoint. Only a
+        same event can be overwritten in subsequent calls to this endpoint. Only a
         single event with a given `event_id` will be considered the source of truth at
         any given time.
 
@@ -108,6 +107,9 @@ class Events(SyncAPIResource):
         - The event's `timestamp` must fall within the customer's current subscription's
           billing period, or within the grace period of the customer's current
           subscription's previous billing period.
+        - By default, no more than 100 events can be amended for a single customer in a
+          100 day period. For higher volume updates, consider using the
+          [event backfill](create-backfill) endpoint.
 
         Args:
           event_name: A name to meaningfully identify the action or event type.
@@ -208,6 +210,9 @@ class Events(SyncAPIResource):
           ingestion request must identify a Customer resource within Orb, even if this
           event was ingested during the initial integration period. We do not allow
           deprecating events for customers not in the Orb system.
+        - By default, no more than 100 events can be deprecated for a single customer in
+          a 100 day period. For higher volume updates, consider using the
+          [event backfill](create-backfill) endpoint.
 
         Args:
           extra_headers: Send extra headers
@@ -597,8 +602,7 @@ class AsyncEvents(AsyncAPIResource):
         This endpoint will mark the existing event as ignored, and Orb will only use the
         new event passed in the body of this request as the source of truth for that
         `event_id`. Note that a single event can be amended any number of times, so the
-        same event can be overwritten in subsequent calls to this endpoint, or
-        overwritten using the [Amend customer usage](amend-usage) endpoint. Only a
+        same event can be overwritten in subsequent calls to this endpoint. Only a
         single event with a given `event_id` will be considered the source of truth at
         any given time.
 
@@ -633,6 +637,9 @@ class AsyncEvents(AsyncAPIResource):
         - The event's `timestamp` must fall within the customer's current subscription's
           billing period, or within the grace period of the customer's current
           subscription's previous billing period.
+        - By default, no more than 100 events can be amended for a single customer in a
+          100 day period. For higher volume updates, consider using the
+          [event backfill](create-backfill) endpoint.
 
         Args:
           event_name: A name to meaningfully identify the action or event type.
@@ -733,6 +740,9 @@ class AsyncEvents(AsyncAPIResource):
           ingestion request must identify a Customer resource within Orb, even if this
           event was ingested during the initial integration period. We do not allow
           deprecating events for customers not in the Orb system.
+        - By default, no more than 100 events can be deprecated for a single customer in
+          a 100 day period. For higher volume updates, consider using the
+          [event backfill](create-backfill) endpoint.
 
         Args:
           extra_headers: Send extra headers

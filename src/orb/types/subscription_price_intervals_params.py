@@ -146,7 +146,7 @@ class AddPriceNewFloatingUnitPriceUnitConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -210,7 +210,7 @@ class AddPriceNewFloatingPackagePricePackageConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -285,7 +285,7 @@ class AddPriceNewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -363,7 +363,7 @@ class AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(Typ
 
 
 class AddPriceNewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -431,7 +431,7 @@ class AddPriceNewFloatingTieredPriceTieredConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -505,7 +505,7 @@ class AddPriceNewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredBpsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -567,7 +567,7 @@ class AddPriceNewFloatingBpsPriceBpsConfig(TypedDict, total=False):
 class AddPriceNewFloatingBpsPrice(TypedDict, total=False):
     bps_config: Required[AddPriceNewFloatingBpsPriceBpsConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -638,7 +638,7 @@ class AddPriceNewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
 class AddPriceNewFloatingBulkBpsPrice(TypedDict, total=False):
     bulk_bps_config: Required[AddPriceNewFloatingBulkBpsPriceBulkBpsConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -703,7 +703,7 @@ class AddPriceNewFloatingBulkPriceBulkConfig(TypedDict, total=False):
 class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
     bulk_config: Required[AddPriceNewFloatingBulkPriceBulkConfig]
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -753,7 +753,7 @@ class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -805,7 +805,7 @@ class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -857,7 +857,7 @@ class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -909,7 +909,7 @@ class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -961,7 +961,7 @@ class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1013,7 +1013,7 @@ class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1065,7 +1065,7 @@ class AddPriceNewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitWithPercentPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1117,7 +1117,7 @@ class AddPriceNewFloatingUnitWithPercentPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingTieredWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1169,7 +1169,7 @@ class AddPriceNewFloatingTieredWithProrationPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingUnitWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time"]]
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]

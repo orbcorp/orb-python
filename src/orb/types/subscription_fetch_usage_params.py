@@ -19,13 +19,6 @@ class SubscriptionFetchUsageParams(TypedDict, total=False):
     be specified together.
     """
 
-    cursor: Optional[str]
-    """Cursor for pagination.
-
-    This can be populated by the `next_cursor` value returned from the initial
-    request.
-    """
-
     first_dimension_key: Optional[str]
 
     first_dimension_value: Optional[str]
@@ -35,12 +28,6 @@ class SubscriptionFetchUsageParams(TypedDict, total=False):
 
     group_by: Optional[str]
     """Groups per-price usage by the key provided."""
-
-    limit: Optional[int]
-    """If including a `group_by`, the number of groups to fetch data for.
-
-    Defaults to 1000.
-    """
 
     second_dimension_key: Optional[str]
 
