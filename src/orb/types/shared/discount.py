@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from ..._utils import PropertyInfo
 from ..._models import BaseModel
@@ -78,6 +78,6 @@ class AmountDiscount(BaseModel):
     reason: Optional[str] = None
 
 
-Discount = Annotated[
+Discount: TypeAlias = Annotated[
     Union[PercentageDiscount, TrialDiscount, UsageDiscount, AmountDiscount], PropertyInfo(discriminator="discount_type")
 ]

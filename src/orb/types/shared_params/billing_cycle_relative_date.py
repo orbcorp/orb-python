@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 __all__ = ["BillingCycleRelativeDate"]
 
-BillingCycleRelativeDate = Literal["start_of_term", "end_of_term"]
+BillingCycleRelativeDate: TypeAlias = Literal["start_of_term", "end_of_term"]
