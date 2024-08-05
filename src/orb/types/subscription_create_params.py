@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -968,7 +968,7 @@ class PriceOverrideOverrideUnitWithPercentPrice(TypedDict, total=False):
     """The subscription's override minimum amount for the plan."""
 
 
-PriceOverride = Union[
+PriceOverride: TypeAlias = Union[
     PriceOverrideOverrideUnitPrice,
     PriceOverrideOverridePackagePrice,
     PriceOverrideOverrideMatrixPrice,

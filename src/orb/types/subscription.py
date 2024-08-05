@@ -2,7 +2,7 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from .plan import Plan
 from .price import Price
@@ -116,7 +116,7 @@ class AdjustmentIntervalAdjustmentMaximumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
-AdjustmentIntervalAdjustment = Annotated[
+AdjustmentIntervalAdjustment: TypeAlias = Annotated[
     Union[
         AdjustmentIntervalAdjustmentAmountDiscountAdjustment,
         AdjustmentIntervalAdjustmentPercentageDiscountAdjustment,
@@ -206,7 +206,7 @@ class DiscountIntervalUsageDiscountInterval(BaseModel):
     """
 
 
-DiscountInterval = Annotated[
+DiscountInterval: TypeAlias = Annotated[
     Union[
         DiscountIntervalAmountDiscountInterval,
         DiscountIntervalPercentageDiscountInterval,
