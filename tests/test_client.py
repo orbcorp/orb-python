@@ -17,6 +17,7 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from orb import Orb, AsyncOrb, APIResponseValidationError
+from orb._types import Omit
 from orb._models import BaseModel, FinalRequestOptions
 from orb._constants import RAW_RESPONSE_HEADER
 from orb._exceptions import OrbError, APIStatusError, APITimeoutError, APIResponseValidationError
@@ -319,7 +320,8 @@ class TestOrb:
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
         with pytest.raises(OrbError):
-            client2 = Orb(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"ORB_API_KEY": Omit()}):
+                client2 = Orb(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
@@ -1076,7 +1078,8 @@ class TestAsyncOrb:
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
         with pytest.raises(OrbError):
-            client2 = AsyncOrb(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"ORB_API_KEY": Omit()}):
+                client2 = AsyncOrb(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
