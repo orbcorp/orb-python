@@ -2,7 +2,7 @@
 
 from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
 from .shared.pagination_metadata import PaginationMetadata
@@ -83,4 +83,4 @@ class GroupedSubscriptionUsage(BaseModel):
     pagination_metadata: Optional[PaginationMetadata] = None
 
 
-SubscriptionUsage = Union[UngroupedSubscriptionUsage, GroupedSubscriptionUsage]
+SubscriptionUsage: TypeAlias = Union[UngroupedSubscriptionUsage, GroupedSubscriptionUsage]
