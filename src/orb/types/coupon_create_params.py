@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Union, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = ["CouponCreateParams", "Discount", "DiscountNewCouponPercentageDiscount", "DiscountNewCouponAmountDiscount"]
 
@@ -39,4 +39,4 @@ class DiscountNewCouponAmountDiscount(TypedDict, total=False):
     discount_type: Required[Literal["amount"]]
 
 
-Discount = Union[DiscountNewCouponPercentageDiscount, DiscountNewCouponAmountDiscount]
+Discount: TypeAlias = Union[DiscountNewCouponPercentageDiscount, DiscountNewCouponAmountDiscount]

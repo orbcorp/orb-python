@@ -2,7 +2,7 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from .price import Price
 from .._utils import PropertyInfo
@@ -416,7 +416,7 @@ class LineItemSubLineItemOtherSubLineItem(BaseModel):
     type: Literal["'null'"]
 
 
-LineItemSubLineItem = Annotated[
+LineItemSubLineItem: TypeAlias = Annotated[
     Union[
         LineItemSubLineItemMatrixSubLineItem, LineItemSubLineItemTierSubLineItem, LineItemSubLineItemOtherSubLineItem
     ],

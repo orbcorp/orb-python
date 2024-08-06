@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
 from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
@@ -125,7 +125,7 @@ class AddDiscountUsageDiscountCreationParams(TypedDict, total=False):
     """
 
 
-AddDiscount = Union[
+AddDiscount: TypeAlias = Union[
     AddDiscountAmountDiscountCreationParams,
     AddDiscountPercentageDiscountCreationParams,
     AddDiscountUsageDiscountCreationParams,
@@ -1220,7 +1220,7 @@ class AddPriceNewFloatingUnitWithProrationPrice(TypedDict, total=False):
     """
 
 
-AddPrice = Union[
+AddPrice: TypeAlias = Union[
     AddPriceNewFloatingUnitPrice,
     AddPriceNewFloatingPackagePrice,
     AddPriceNewFloatingMatrixPrice,
@@ -1327,7 +1327,7 @@ class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     maximum_amount: Required[str]
 
 
-AddAdjustmentAdjustment = Union[
+AddAdjustmentAdjustment: TypeAlias = Union[
     AddAdjustmentAdjustmentNewPercentageDiscount,
     AddAdjustmentAdjustmentNewAmountDiscount,
     AddAdjustmentAdjustmentNewMinimum,

@@ -2,7 +2,7 @@
 
 from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from .._utils import PropertyInfo
 from .._models import BaseModel
@@ -43,7 +43,7 @@ class DiscountAmountDiscount(BaseModel):
     reason: Optional[str] = None
 
 
-Discount = Annotated[
+Discount: TypeAlias = Annotated[
     Union[DiscountPercentageDiscount, DiscountAmountDiscount], PropertyInfo(discriminator="discount_type")
 ]
 

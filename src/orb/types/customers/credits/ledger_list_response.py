@@ -2,7 +2,7 @@
 
 from typing import Dict, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from ...._utils import PropertyInfo
 from ...._models import BaseModel
@@ -387,7 +387,7 @@ class AmendmentLedgerEntry(BaseModel):
     starting_balance: float
 
 
-LedgerListResponse = Annotated[
+LedgerListResponse: TypeAlias = Annotated[
     Union[
         IncrementLedgerEntry,
         DecrementLedgerEntry,

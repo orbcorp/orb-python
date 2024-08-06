@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "PlanCreateParams",
@@ -1025,7 +1025,7 @@ class PriceNewPlanUnitWithProrationPrice(TypedDict, total=False):
     """
 
 
-Price = Union[
+Price: TypeAlias = Union[
     PriceNewPlanUnitPrice,
     PriceNewPlanPackagePrice,
     PriceNewPlanMatrixPrice,

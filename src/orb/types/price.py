@@ -2,7 +2,7 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -2028,7 +2028,7 @@ class UnitWithProrationPrice(BaseModel):
     unit_with_proration_config: Dict[str, object]
 
 
-Price = Annotated[
+Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
         PackagePrice,

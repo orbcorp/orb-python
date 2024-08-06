@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Union, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = ["Discount", "PercentageDiscount", "TrialDiscount", "UsageDiscount", "AmountDiscount"]
 
@@ -77,4 +77,4 @@ class AmountDiscount(TypedDict, total=False):
     reason: Optional[str]
 
 
-Discount = Union[PercentageDiscount, TrialDiscount, UsageDiscount, AmountDiscount]
+Discount: TypeAlias = Union[PercentageDiscount, TrialDiscount, UsageDiscount, AmountDiscount]

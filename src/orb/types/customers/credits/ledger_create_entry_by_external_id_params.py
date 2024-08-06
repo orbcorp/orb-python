@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, Union, Optional
 from datetime import date, datetime
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ...._utils import PropertyInfo
 
@@ -247,7 +247,7 @@ class AddAmendmentCreditLedgerEntryRequestParams(TypedDict, total=False):
     """
 
 
-LedgerCreateEntryByExternalIDParams = Union[
+LedgerCreateEntryByExternalIDParams: TypeAlias = Union[
     AddIncrementCreditLedgerEntryRequestParams,
     AddDecrementCreditLedgerEntryRequestParams,
     AddExpirationChangeCreditLedgerEntryRequestParams,
