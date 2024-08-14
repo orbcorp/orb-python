@@ -108,7 +108,7 @@ class TestAlerts:
         alert = client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -117,7 +117,7 @@ class TestAlerts:
         alert = client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -127,7 +127,7 @@ class TestAlerts:
         response = client.alerts.with_raw_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -140,7 +140,7 @@ class TestAlerts:
         with client.alerts.with_streaming_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -156,7 +156,7 @@ class TestAlerts:
             client.alerts.with_raw_response.create_for_customer(
                 customer_id="",
                 currency="currency",
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
@@ -164,7 +164,7 @@ class TestAlerts:
         alert = client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -173,7 +173,7 @@ class TestAlerts:
         alert = client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -183,7 +183,7 @@ class TestAlerts:
         response = client.alerts.with_raw_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -196,7 +196,7 @@ class TestAlerts:
         with client.alerts.with_streaming_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -212,7 +212,7 @@ class TestAlerts:
             client.alerts.with_raw_response.create_for_external_customer(
                 external_customer_id="",
                 currency="currency",
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
@@ -220,7 +220,7 @@ class TestAlerts:
         alert = client.alerts.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -229,7 +229,7 @@ class TestAlerts:
         alert = client.alerts.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
             metric_id="metric_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -239,7 +239,7 @@ class TestAlerts:
         response = client.alerts.with_raw_response.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -252,7 +252,7 @@ class TestAlerts:
         with client.alerts.with_streaming_response.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -268,7 +268,7 @@ class TestAlerts:
             client.alerts.with_raw_response.create_for_subscription(
                 subscription_id="",
                 thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
@@ -442,7 +442,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -451,7 +451,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -461,7 +461,7 @@ class TestAsyncAlerts:
         response = await async_client.alerts.with_raw_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -474,7 +474,7 @@ class TestAsyncAlerts:
         async with async_client.alerts.with_streaming_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -490,7 +490,7 @@ class TestAsyncAlerts:
             await async_client.alerts.with_raw_response.create_for_customer(
                 customer_id="",
                 currency="currency",
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
@@ -498,7 +498,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -507,7 +507,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -517,7 +517,7 @@ class TestAsyncAlerts:
         response = await async_client.alerts.with_raw_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -530,7 +530,7 @@ class TestAsyncAlerts:
         async with async_client.alerts.with_streaming_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -546,7 +546,7 @@ class TestAsyncAlerts:
             await async_client.alerts.with_raw_response.create_for_external_customer(
                 external_customer_id="",
                 currency="currency",
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
@@ -554,7 +554,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -563,7 +563,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
             metric_id="metric_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -573,7 +573,7 @@ class TestAsyncAlerts:
         response = await async_client.alerts.with_raw_response.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         )
 
         assert response.is_closed is True
@@ -586,7 +586,7 @@ class TestAsyncAlerts:
         async with async_client.alerts.with_streaming_response.create_for_subscription(
             subscription_id="subscription_id",
             thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-            type="type",
+            type="usage_exceeded",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -602,7 +602,7 @@ class TestAsyncAlerts:
             await async_client.alerts.with_raw_response.create_for_subscription(
                 subscription_id="",
                 thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
-                type="type",
+                type="usage_exceeded",
             )
 
     @parametrize
