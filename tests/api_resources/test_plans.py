@@ -26,10 +26,10 @@ class TestPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
@@ -43,19 +43,19 @@ class TestPlans:
             name="name",
             prices=[
                 {
-                    "metadata": {"foo": "string"},
-                    "external_price_id": "external_price_id",
-                    "name": "Annual fee",
-                    "billable_metric_id": "billable_metric_id",
+                    "cadence": "annual",
                     "item_id": "item_id",
+                    "model_type": "unit",
+                    "name": "Annual fee",
+                    "unit_config": {"unit_amount": "unit_amount"},
+                    "billable_metric_id": "billable_metric_id",
                     "billed_in_advance": True,
+                    "conversion_rate": 0,
+                    "currency": "currency",
+                    "external_price_id": "external_price_id",
                     "fixed_price_quantity": 0,
                     "invoice_grouping_key": "invoice_grouping_key",
-                    "cadence": "annual",
-                    "conversion_rate": 0,
-                    "model_type": "unit",
-                    "unit_config": {"unit_amount": "unit_amount"},
-                    "currency": "currency",
+                    "metadata": {"foo": "string"},
                 }
             ],
             default_invoice_memo="default_invoice_memo",
@@ -73,10 +73,10 @@ class TestPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
@@ -94,10 +94,10 @@ class TestPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
@@ -244,10 +244,10 @@ class TestAsyncPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
@@ -261,19 +261,19 @@ class TestAsyncPlans:
             name="name",
             prices=[
                 {
-                    "metadata": {"foo": "string"},
-                    "external_price_id": "external_price_id",
-                    "name": "Annual fee",
-                    "billable_metric_id": "billable_metric_id",
+                    "cadence": "annual",
                     "item_id": "item_id",
+                    "model_type": "unit",
+                    "name": "Annual fee",
+                    "unit_config": {"unit_amount": "unit_amount"},
+                    "billable_metric_id": "billable_metric_id",
                     "billed_in_advance": True,
+                    "conversion_rate": 0,
+                    "currency": "currency",
+                    "external_price_id": "external_price_id",
                     "fixed_price_quantity": 0,
                     "invoice_grouping_key": "invoice_grouping_key",
-                    "cadence": "annual",
-                    "conversion_rate": 0,
-                    "model_type": "unit",
-                    "unit_config": {"unit_amount": "unit_amount"},
-                    "currency": "currency",
+                    "metadata": {"foo": "string"},
                 }
             ],
             default_invoice_memo="default_invoice_memo",
@@ -291,10 +291,10 @@ class TestAsyncPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
@@ -312,10 +312,10 @@ class TestAsyncPlans:
             name="name",
             prices=[
                 {
-                    "name": "Annual fee",
-                    "item_id": "item_id",
                     "cadence": "annual",
+                    "item_id": "item_id",
                     "model_type": "unit",
+                    "name": "Annual fee",
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
