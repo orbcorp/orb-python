@@ -171,20 +171,20 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -200,20 +200,20 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -236,20 +236,20 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -269,20 +269,20 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -304,23 +304,23 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -334,23 +334,23 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -371,23 +371,23 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -405,23 +405,23 @@ class TestPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -473,18 +473,18 @@ class TestPrices:
                 "tiers": [
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                 ]
             },
@@ -573,16 +573,16 @@ class TestPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -600,21 +600,21 @@ class TestPrices:
             tiered_bps_config={
                 "tiers": [
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                 ]
@@ -640,16 +640,16 @@ class TestPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -671,16 +671,16 @@ class TestPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -779,18 +779,18 @@ class TestPrices:
             bulk_bps_config={
                 "tiers": [
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                 ]
@@ -868,16 +868,16 @@ class TestPrices:
             bulk_config={
                 "tiers": [
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                 ]
             },
@@ -1856,20 +1856,20 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -1885,20 +1885,20 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -1921,20 +1921,20 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -1954,20 +1954,20 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_config={
-                "dimensions": ["string", "string", "string"],
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
             },
@@ -1989,23 +1989,23 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -2019,23 +2019,23 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -2056,23 +2056,23 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -2090,23 +2090,23 @@ class TestAsyncPrices:
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
-                "dimensions": ["string", "string", "string"],
+                "allocation": 0,
                 "default_unit_amount": "default_unit_amount",
+                "dimensions": ["string", "string", "string"],
                 "matrix_values": [
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                     {
-                        "unit_amount": "unit_amount",
                         "dimension_values": ["string", "string", "string"],
+                        "unit_amount": "unit_amount",
                     },
                 ],
-                "allocation": 0,
             },
             model_type="matrix_with_allocation",
             name="Annual fee",
@@ -2158,18 +2158,18 @@ class TestAsyncPrices:
                 "tiers": [
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                     {
                         "first_unit": 0,
-                        "last_unit": 0,
                         "unit_amount": "unit_amount",
+                        "last_unit": 0,
                     },
                 ]
             },
@@ -2258,16 +2258,16 @@ class TestAsyncPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -2285,21 +2285,21 @@ class TestAsyncPrices:
             tiered_bps_config={
                 "tiers": [
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
+                        "bps": 0,
                         "minimum_amount": "minimum_amount",
                         "maximum_amount": "maximum_amount",
-                        "bps": 0,
                         "per_unit_maximum": "per_unit_maximum",
                     },
                 ]
@@ -2325,16 +2325,16 @@ class TestAsyncPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -2356,16 +2356,16 @@ class TestAsyncPrices:
             tiered_bps_config={
                 "tiers": [
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                     {
-                        "minimum_amount": "minimum_amount",
                         "bps": 0,
+                        "minimum_amount": "minimum_amount",
                     },
                 ]
             },
@@ -2464,18 +2464,18 @@ class TestAsyncPrices:
             bulk_bps_config={
                 "tiers": [
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                     {
-                        "maximum_amount": "maximum_amount",
                         "bps": 0,
+                        "maximum_amount": "maximum_amount",
                         "per_unit_maximum": "per_unit_maximum",
                     },
                 ]
@@ -2553,16 +2553,16 @@ class TestAsyncPrices:
             bulk_config={
                 "tiers": [
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                     {
-                        "maximum_units": 0,
                         "unit_amount": "unit_amount",
+                        "maximum_units": 0,
                     },
                 ]
             },

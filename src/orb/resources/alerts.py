@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Iterable, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -154,7 +155,13 @@ class Alerts(SyncAPIResource):
         customer_id: str,
         *,
         currency: str,
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -179,9 +186,9 @@ class Alerts(SyncAPIResource):
         Args:
           currency: The case sensitive currency or custom pricing unit to use for this alert.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
           extra_headers: Send extra headers
 
@@ -220,7 +227,13 @@ class Alerts(SyncAPIResource):
         external_customer_id: str,
         *,
         currency: str,
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -245,9 +258,9 @@ class Alerts(SyncAPIResource):
         Args:
           currency: The case sensitive currency or custom pricing unit to use for this alert.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
           extra_headers: Send extra headers
 
@@ -288,7 +301,13 @@ class Alerts(SyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[alert_create_for_subscription_params.Threshold],
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -312,9 +331,9 @@ class Alerts(SyncAPIResource):
         usage or cost conditions met during the current billing cycle.
 
         Args:
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
           metric_id: The metric to track usage for.
 
@@ -560,7 +579,13 @@ class AsyncAlerts(AsyncAPIResource):
         customer_id: str,
         *,
         currency: str,
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -585,9 +610,9 @@ class AsyncAlerts(AsyncAPIResource):
         Args:
           currency: The case sensitive currency or custom pricing unit to use for this alert.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
           extra_headers: Send extra headers
 
@@ -626,7 +651,13 @@ class AsyncAlerts(AsyncAPIResource):
         external_customer_id: str,
         *,
         currency: str,
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -651,9 +682,9 @@ class AsyncAlerts(AsyncAPIResource):
         Args:
           currency: The case sensitive currency or custom pricing unit to use for this alert.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
           extra_headers: Send extra headers
 
@@ -694,7 +725,13 @@ class AsyncAlerts(AsyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[alert_create_for_subscription_params.Threshold],
-        type: str,
+        type: Literal[
+            "usage_exceeded",
+            "cost_exceeded",
+            "credit_balance_depleted",
+            "credit_balance_dropped",
+            "credit_balance_recovered",
+        ],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -718,9 +755,9 @@ class AsyncAlerts(AsyncAPIResource):
         usage or cost conditions met during the current billing cycle.
 
         Args:
-          thresholds: The thresholds for the alert.
+          thresholds: The thresholds that define the values at which the alert will be triggered.
 
-          type: The thresholds that define the values at which the alert will be triggered.
+          type: The type of alert to create. This must be a valid alert type.
 
           metric_id: The metric to track usage for.
 
