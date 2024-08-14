@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.1.0 (2024-08-14)
+
+Full Changelog: [v2.0.0...v2.1.0](https://github.com/orbcorp/orb-python/compare/v2.0.0...v2.1.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#338](https://github.com/orbcorp/orb-python/issues/338)) ([ff005e5](https://github.com/orbcorp/orb-python/commit/ff005e562aeebdc0b4c4a6f91f1dad7af7030d2e))
+* **client:** add `retries_taken` to raw response class ([#334](https://github.com/orbcorp/orb-python/issues/334)) ([99d1df1](https://github.com/orbcorp/orb-python/commit/99d1df1a5da230325d47e8c1cc8bf1da53e74253))
+
+
+### Chores
+
+* **internal:** bump pyright ([#333](https://github.com/orbcorp/orb-python/issues/333)) ([7678fca](https://github.com/orbcorp/orb-python/commit/7678fca8726890c52693c1ff9747f81379749245))
+* **internal:** bump ruff version ([#336](https://github.com/orbcorp/orb-python/issues/336)) ([dffe52f](https://github.com/orbcorp/orb-python/commit/dffe52ffdd81cd279b0c789d8c4bfc72493b848a))
+* **internal:** test updates ([#335](https://github.com/orbcorp/orb-python/issues/335)) ([ef3b8d2](https://github.com/orbcorp/orb-python/commit/ef3b8d2fc6ae76a79cf08ddd9f3142c594459aa5))
+* **internal:** update pydantic compat helper function ([#337](https://github.com/orbcorp/orb-python/issues/337)) ([d8a0d01](https://github.com/orbcorp/orb-python/commit/d8a0d01d4b2b43a8b6a7d6e69891d5ec4ff20809))
+* **internal:** use `TypeAlias` marker for type assignments ([#331](https://github.com/orbcorp/orb-python/issues/331)) ([5208144](https://github.com/orbcorp/orb-python/commit/5208144f3767ed7e615ca066c9185b861ca73969))
+
 ## 2.0.0 (2024-08-02)
 
 Full Changelog: [v1.56.0...v2.0.0](https://github.com/orbcorp/orb-python/compare/v1.56.0...v2.0.0)
