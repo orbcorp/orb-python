@@ -10,7 +10,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    shared_params,
     invoice_list_params,
     invoice_create_params,
     invoice_update_params,
@@ -28,6 +27,7 @@ from .._response import to_streamed_response_wrapper, async_to_streamed_response
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.invoice import Invoice
+from ..types.shared_params.discount import Discount
 from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
 __all__ = ["Invoices", "AsyncInvoices"]
@@ -50,7 +50,7 @@ class Invoices(SyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        discount: Optional[shared_params.Discount] | NotGiven = NOT_GIVEN,
+        discount: Optional[Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -516,7 +516,7 @@ class AsyncInvoices(AsyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        discount: Optional[shared_params.Discount] | NotGiven = NOT_GIVEN,
+        discount: Optional[Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
