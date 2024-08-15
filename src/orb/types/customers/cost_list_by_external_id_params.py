@@ -12,6 +12,9 @@ __all__ = ["CostListByExternalIDParams"]
 
 
 class CostListByExternalIDParams(TypedDict, total=False):
+    currency: Optional[str]
+    """The currency or custom pricing unit to use."""
+
     timeframe_end: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """Costs returned are exclusive of `timeframe_end`."""
 
