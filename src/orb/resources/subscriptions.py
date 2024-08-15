@@ -1437,9 +1437,9 @@ class Subscriptions(SyncAPIResource):
 
         Args:
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
-              aligned with the plan change’s effective date.
+              aligned with the plan change's effective date.
 
-          billing_cycle_alignment: Reset billing periods to be aligned with the plan change’s effective date or
+          billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
 
@@ -3162,9 +3162,9 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         Args:
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
-              aligned with the plan change’s effective date.
+              aligned with the plan change's effective date.
 
-          billing_cycle_alignment: Reset billing periods to be aligned with the plan change’s effective date or
+          billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
 
