@@ -59,12 +59,12 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     align_billing_with_plan_change_date: Optional[bool]
     """[DEPRECATED] Use billing_cycle_alignment instead.
 
-    Reset billing periods to be aligned with the plan change’s effective date.
+    Reset billing periods to be aligned with the plan change's effective date.
     """
 
     billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
     """
-    Reset billing periods to be aligned with the plan change’s effective date or
+    Reset billing periods to be aligned with the plan change's effective date or
     start of the month. Defaults to `unchanged` which keeps subscription's existing
     billing cycle alignment.
     """
