@@ -320,6 +320,7 @@ class TestSubscriptions:
     def test_method_fetch_costs_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.fetch_costs(
             subscription_id="subscription_id",
+            currency="currency",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
@@ -1436,6 +1437,7 @@ class TestAsyncSubscriptions:
     async def test_method_fetch_costs_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.fetch_costs(
             subscription_id="subscription_id",
+            currency="currency",
             timeframe_end=parse_datetime("2022-03-01T05:00:00Z"),
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",

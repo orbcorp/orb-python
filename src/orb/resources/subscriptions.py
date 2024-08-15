@@ -832,6 +832,7 @@ class Subscriptions(SyncAPIResource):
         self,
         subscription_id: str,
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -855,6 +856,8 @@ class Subscriptions(SyncAPIResource):
         same day).
 
         Args:
+          currency: The currency or custom pricing unit to use.
+
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -883,6 +886,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "currency": currency,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
@@ -2557,6 +2561,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
@@ -2580,6 +2585,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         same day).
 
         Args:
+          currency: The currency or custom pricing unit to use.
+
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
           timeframe_start: Costs returned are inclusive of `timeframe_start`.
@@ -2608,6 +2615,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "currency": currency,
                         "timeframe_end": timeframe_end,
                         "timeframe_start": timeframe_start,
                         "view_mode": view_mode,
