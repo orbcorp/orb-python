@@ -44,6 +44,7 @@ class Backfills(SyncAPIResource):
         timeframe_start: Union[str, datetime],
         close_time: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        deprecation_filter: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         replace_existing_events: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -85,6 +86,12 @@ class Backfills(SyncAPIResource):
         only affect events for that customer. If neither is specified, the backfill will
         affect all customers.
 
+        When `replace_existing_events` is `true`, the field `filter` can be optionally
+        added which enables filtering using
+        [computed properties](../guides/extensibility/advanced-metrics#computed-properties).
+        The expressiveness of computed properties allows you to deprecate existing
+        events based on both a period of time and specific property values.
+
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
 
@@ -95,6 +102,10 @@ class Backfills(SyncAPIResource):
               If not specified, it will default to 1 day after the creation of the backfill.
 
           customer_id: The ID of the customer to which this backfill is scoped.
+
+          deprecation_filter: A boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
+              used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
 
@@ -119,6 +130,7 @@ class Backfills(SyncAPIResource):
                     "timeframe_start": timeframe_start,
                     "close_time": close_time,
                     "customer_id": customer_id,
+                    "deprecation_filter": deprecation_filter,
                     "external_customer_id": external_customer_id,
                     "replace_existing_events": replace_existing_events,
                 },
@@ -329,6 +341,7 @@ class AsyncBackfills(AsyncAPIResource):
         timeframe_start: Union[str, datetime],
         close_time: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        deprecation_filter: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         replace_existing_events: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -370,6 +383,12 @@ class AsyncBackfills(AsyncAPIResource):
         only affect events for that customer. If neither is specified, the backfill will
         affect all customers.
 
+        When `replace_existing_events` is `true`, the field `filter` can be optionally
+        added which enables filtering using
+        [computed properties](../guides/extensibility/advanced-metrics#computed-properties).
+        The expressiveness of computed properties allows you to deprecate existing
+        events based on both a period of time and specific property values.
+
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
 
@@ -380,6 +399,10 @@ class AsyncBackfills(AsyncAPIResource):
               If not specified, it will default to 1 day after the creation of the backfill.
 
           customer_id: The ID of the customer to which this backfill is scoped.
+
+          deprecation_filter: A boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
+              used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
 
@@ -404,6 +427,7 @@ class AsyncBackfills(AsyncAPIResource):
                     "timeframe_start": timeframe_start,
                     "close_time": close_time,
                     "customer_id": customer_id,
+                    "deprecation_filter": deprecation_filter,
                     "external_customer_id": external_customer_id,
                     "replace_existing_events": replace_existing_events,
                 },

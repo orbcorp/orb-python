@@ -38,3 +38,10 @@ class BackfillListResponse(BaseModel):
     timeframe_end: datetime
 
     timeframe_start: datetime
+
+    deprecation_filter: Optional[str] = None
+    """
+    A boolean
+    [computed property](../guides/extensibility/advanced-metrics#computed-properties)
+    used to filter the set of events to deprecate
+    """
