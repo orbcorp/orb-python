@@ -40,6 +40,7 @@ class TestBackfills:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             close_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             customer_id="customer_id",
+            deprecation_filter="my_numeric_property > 100 AND my_other_property = 'bar'",
             external_customer_id="external_customer_id",
             replace_existing_events=True,
         )
@@ -237,6 +238,7 @@ class TestAsyncBackfills:
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             close_time=parse_datetime("2019-12-27T18:11:19.117Z"),
             customer_id="customer_id",
+            deprecation_filter="my_numeric_property > 100 AND my_other_property = 'bar'",
             external_customer_id="external_customer_id",
             replace_existing_events=True,
         )

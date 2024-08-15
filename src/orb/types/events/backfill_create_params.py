@@ -29,6 +29,13 @@ class BackfillCreateParams(TypedDict, total=False):
     customer_id: Optional[str]
     """The ID of the customer to which this backfill is scoped."""
 
+    deprecation_filter: Optional[str]
+    """
+    A boolean
+    [computed property](../guides/extensibility/advanced-metrics#computed-properties)
+    used to filter the set of events to deprecate
+    """
+
     external_customer_id: Optional[str]
     """The external customer ID of the customer to which this backfill is scoped."""
 
