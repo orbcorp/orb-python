@@ -1528,6 +1528,71 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_create_overload_19(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_19(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            conversion_rate=0,
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="invoice_grouping_key",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_19(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_19(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_update(self, client: Orb) -> None:
         price = client.prices.update(
             price_id="price_id",
@@ -3203,6 +3268,71 @@ class TestAsyncPrices:
             model_type="unit_with_proration",
             name="Annual fee",
             unit_with_proration_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_19(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_19(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            conversion_rate=0,
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="invoice_grouping_key",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_19(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_19(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_allocation_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_allocation",
+            name="Annual fee",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
