@@ -160,6 +160,13 @@ __all__ = [
     "GroupedAllocationPriceItem",
     "GroupedAllocationPriceMaximum",
     "GroupedAllocationPriceMinimum",
+    "BulkWithProrationPrice",
+    "BulkWithProrationPriceBillableMetric",
+    "BulkWithProrationPriceBillingCycleConfiguration",
+    "BulkWithProrationPriceCreditAllocation",
+    "BulkWithProrationPriceItem",
+    "BulkWithProrationPriceMaximum",
+    "BulkWithProrationPriceMinimum",
 ]
 
 
@@ -2131,6 +2138,102 @@ class GroupedAllocationPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
+class BulkWithProrationPriceBillableMetric(BaseModel):
+    id: str
+
+
+class BulkWithProrationPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class BulkWithProrationPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class BulkWithProrationPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class BulkWithProrationPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class BulkWithProrationPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class BulkWithProrationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BulkWithProrationPriceBillableMetric] = None
+
+    billing_cycle_configuration: Optional[BulkWithProrationPriceBillingCycleConfiguration] = None
+
+    bulk_with_proration_config: Dict[str, object]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[BulkWithProrationPriceCreditAllocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    item: BulkWithProrationPriceItem
+
+    maximum: Optional[BulkWithProrationPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[BulkWithProrationPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["bulk_with_proration"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
@@ -2152,6 +2255,7 @@ Price: TypeAlias = Annotated[
         TieredWithProrationPrice,
         UnitWithProrationPrice,
         GroupedAllocationPrice,
+        BulkWithProrationPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]
