@@ -41,6 +41,7 @@ __all__ = [
     "NewFloatingTieredWithProrationPrice",
     "NewFloatingUnitWithProrationPrice",
     "NewFloatingGroupedAllocationPrice",
+    "NewFloatingBulkWithProrationPrice",
 ]
 
 
@@ -1176,6 +1177,58 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     """
 
 
+class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
+    bulk_with_proration_config: Required[Dict[str, object]]
+
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the plan will be associated with."""
+
+    model_type: Required[Literal["bulk_with_proration"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
 PriceCreateParams: TypeAlias = Union[
     NewFloatingUnitPrice,
     NewFloatingPackagePrice,
@@ -1196,4 +1249,5 @@ PriceCreateParams: TypeAlias = Union[
     NewFloatingTieredWithProrationPrice,
     NewFloatingUnitWithProrationPrice,
     NewFloatingGroupedAllocationPrice,
+    NewFloatingBulkWithProrationPrice,
 ]
