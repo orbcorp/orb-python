@@ -6,10 +6,10 @@ from typing_extensions import Literal
 from .item import Item
 from .._models import BaseModel
 
-__all__ = ["MetricCreateResponse"]
+__all__ = ["BillableMetric"]
 
 
-class MetricCreateResponse(BaseModel):
+class BillableMetric(BaseModel):
     id: str
 
     description: Optional[str] = None

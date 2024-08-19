@@ -17,6 +17,7 @@ from .customer import Customer as Customer
 from .credit_note import CreditNote as CreditNote
 from .subscription import Subscription as Subscription
 from .subscriptions import Subscriptions as Subscriptions
+from .billable_metric import BillableMetric as BillableMetric
 from .item_list_params import ItemListParams as ItemListParams
 from .plan_list_params import PlanListParams as PlanListParams
 from .alert_list_params import AlertListParams as AlertListParams
@@ -28,6 +29,7 @@ from .metric_list_params import MetricListParams as MetricListParams
 from .plan_create_params import PlanCreateParams as PlanCreateParams
 from .plan_update_params import PlanUpdateParams as PlanUpdateParams
 from .subscription_usage import SubscriptionUsage as SubscriptionUsage
+from .alert_update_params import AlertUpdateParams as AlertUpdateParams
 from .event_ingest_params import EventIngestParams as EventIngestParams
 from .event_search_params import EventSearchParams as EventSearchParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
@@ -38,17 +40,15 @@ from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
 from .metric_create_params import MetricCreateParams as MetricCreateParams
-from .metric_list_response import MetricListResponse as MetricListResponse
+from .metric_update_params import MetricUpdateParams as MetricUpdateParams
 from .event_ingest_response import EventIngestResponse as EventIngestResponse
 from .event_search_response import EventSearchResponse as EventSearchResponse
 from .event_update_response import EventUpdateResponse as EventUpdateResponse
 from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
-from .metric_fetch_response import MetricFetchResponse as MetricFetchResponse
 from .price_evaluate_params import PriceEvaluateParams as PriceEvaluateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
-from .metric_create_response import MetricCreateResponse as MetricCreateResponse
 from .credit_note_list_params import CreditNoteListParams as CreditNoteListParams
 from .price_evaluate_response import PriceEvaluateResponse as PriceEvaluateResponse
 from .top_level_ping_response import TopLevelPingResponse as TopLevelPingResponse

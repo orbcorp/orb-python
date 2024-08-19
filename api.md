@@ -242,14 +242,15 @@ Methods:
 Types:
 
 ```python
-from orb.types import MetricCreateResponse, MetricListResponse, MetricFetchResponse
+from orb.types import BillableMetric
 ```
 
 Methods:
 
-- <code title="post /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">create</a>(\*\*<a href="src/orb/types/metric_create_params.py">params</a>) -> <a href="./src/orb/types/metric_create_response.py">MetricCreateResponse</a></code>
-- <code title="get /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">list</a>(\*\*<a href="src/orb/types/metric_list_params.py">params</a>) -> <a href="./src/orb/types/metric_list_response.py">SyncPage[MetricListResponse]</a></code>
-- <code title="get /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">fetch</a>(metric_id) -> <a href="./src/orb/types/metric_fetch_response.py">MetricFetchResponse</a></code>
+- <code title="post /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">create</a>(\*\*<a href="src/orb/types/metric_create_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
+- <code title="put /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">update</a>(metric_id, \*\*<a href="src/orb/types/metric_update_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
+- <code title="get /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">list</a>(\*\*<a href="src/orb/types/metric_list_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">SyncPage[BillableMetric]</a></code>
+- <code title="get /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">fetch</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 
 # Plans
 
@@ -346,6 +347,7 @@ from orb.types import Alert
 Methods:
 
 - <code title="get /alerts/{alert_id}">client.alerts.<a href="./src/orb/resources/alerts.py">retrieve</a>(alert_id) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="put /alerts/{alert_configuration_id}">client.alerts.<a href="./src/orb/resources/alerts.py">update</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_update_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="get /alerts">client.alerts.<a href="./src/orb/resources/alerts.py">list</a>(\*\*<a href="src/orb/types/alert_list_params.py">params</a>) -> <a href="./src/orb/types/alert.py">SyncPage[Alert]</a></code>
 - <code title="post /alerts/customer_id/{customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_customer</a>(customer_id, \*\*<a href="src/orb/types/alert_create_for_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/external_customer_id/{external_customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_external_customer</a>(external_customer_id, \*\*<a href="src/orb/types/alert_create_for_external_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
