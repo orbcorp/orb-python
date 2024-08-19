@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from .. import _legacy_response
-from ..types import metric_list_params, metric_create_params
+from ..types import metric_list_params, metric_create_params, metric_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,9 +19,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.metric_list_response import MetricListResponse
-from ..types.metric_fetch_response import MetricFetchResponse
-from ..types.metric_create_response import MetricCreateResponse
+from ..types.billable_metric import BillableMetric
 
 __all__ = ["Metrics", "AsyncMetrics"]
 
@@ -50,7 +48,7 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> MetricCreateResponse:
+    ) -> BillableMetric:
         """
         This endpoint is used to create a [metric](../guides/concepts##metric) using a
         SQL string. See
@@ -99,7 +97,56 @@ class Metrics(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=MetricCreateResponse,
+            cast_to=BillableMetric,
+        )
+
+    def update(
+        self,
+        metric_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """This endpoint allows you to update the `metadata` property on a metric.
+
+        If you
+        pass `null` for the metadata value, it will clear any existing metadata for that
+        invoice.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return self._put(
+            f"/metrics/{metric_id}",
+            body=maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
         )
 
     def list(
@@ -117,7 +164,7 @@ class Metrics(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[MetricListResponse]:
+    ) -> SyncPage[BillableMetric]:
         """
         This endpoint is used to fetch [metric](../guides/concepts#metric) details given
         a metric identifier. It returns information about the metrics including its
@@ -139,7 +186,7 @@ class Metrics(SyncAPIResource):
         """
         return self._get_api_list(
             "/metrics",
-            page=SyncPage[MetricListResponse],
+            page=SyncPage[BillableMetric],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -157,7 +204,7 @@ class Metrics(SyncAPIResource):
                     metric_list_params.MetricListParams,
                 ),
             ),
-            model=MetricListResponse,
+            model=BillableMetric,
         )
 
     def fetch(
@@ -170,7 +217,7 @@ class Metrics(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetricFetchResponse:
+    ) -> BillableMetric:
         """This endpoint is used to list [metrics](../guides/concepts##metric).
 
         It returns
@@ -192,7 +239,7 @@ class Metrics(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetricFetchResponse,
+            cast_to=BillableMetric,
         )
 
 
@@ -220,7 +267,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> MetricCreateResponse:
+    ) -> BillableMetric:
         """
         This endpoint is used to create a [metric](../guides/concepts##metric) using a
         SQL string. See
@@ -269,7 +316,56 @@ class AsyncMetrics(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=MetricCreateResponse,
+            cast_to=BillableMetric,
+        )
+
+    async def update(
+        self,
+        metric_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """This endpoint allows you to update the `metadata` property on a metric.
+
+        If you
+        pass `null` for the metadata value, it will clear any existing metadata for that
+        invoice.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return await self._put(
+            f"/metrics/{metric_id}",
+            body=await async_maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
         )
 
     def list(
@@ -287,7 +383,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[MetricListResponse, AsyncPage[MetricListResponse]]:
+    ) -> AsyncPaginator[BillableMetric, AsyncPage[BillableMetric]]:
         """
         This endpoint is used to fetch [metric](../guides/concepts#metric) details given
         a metric identifier. It returns information about the metrics including its
@@ -309,7 +405,7 @@ class AsyncMetrics(AsyncAPIResource):
         """
         return self._get_api_list(
             "/metrics",
-            page=AsyncPage[MetricListResponse],
+            page=AsyncPage[BillableMetric],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -327,7 +423,7 @@ class AsyncMetrics(AsyncAPIResource):
                     metric_list_params.MetricListParams,
                 ),
             ),
-            model=MetricListResponse,
+            model=BillableMetric,
         )
 
     async def fetch(
@@ -340,7 +436,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetricFetchResponse:
+    ) -> BillableMetric:
         """This endpoint is used to list [metrics](../guides/concepts##metric).
 
         It returns
@@ -362,7 +458,7 @@ class AsyncMetrics(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetricFetchResponse,
+            cast_to=BillableMetric,
         )
 
 
@@ -372,6 +468,9 @@ class MetricsWithRawResponse:
 
         self.create = _legacy_response.to_raw_response_wrapper(
             metrics.create,
+        )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            metrics.update,
         )
         self.list = _legacy_response.to_raw_response_wrapper(
             metrics.list,
@@ -388,6 +487,9 @@ class AsyncMetricsWithRawResponse:
         self.create = _legacy_response.async_to_raw_response_wrapper(
             metrics.create,
         )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            metrics.update,
+        )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             metrics.list,
         )
@@ -403,6 +505,9 @@ class MetricsWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             metrics.create,
         )
+        self.update = to_streamed_response_wrapper(
+            metrics.update,
+        )
         self.list = to_streamed_response_wrapper(
             metrics.list,
         )
@@ -417,6 +522,9 @@ class AsyncMetricsWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             metrics.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            metrics.update,
         )
         self.list = async_to_streamed_response_wrapper(
             metrics.list,
