@@ -11,6 +11,7 @@ import httpx
 from .. import _legacy_response
 from ..types import (
     alert_list_params,
+    alert_update_params,
     alert_create_for_customer_params,
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
@@ -68,6 +69,52 @@ class Alerts(SyncAPIResource):
             f"/alerts/{alert_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Alert,
+        )
+
+    def update(
+        self,
+        alert_configuration_id: str,
+        *,
+        thresholds: Iterable[alert_update_params.Threshold],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Alert:
+        """
+        This endpoint updates the thresholds of an alert.
+
+        Args:
+          thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not alert_configuration_id:
+            raise ValueError(
+                f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
+            )
+        return self._put(
+            f"/alerts/{alert_configuration_id}",
+            body=maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=Alert,
         )
@@ -496,6 +543,52 @@ class AsyncAlerts(AsyncAPIResource):
             cast_to=Alert,
         )
 
+    async def update(
+        self,
+        alert_configuration_id: str,
+        *,
+        thresholds: Iterable[alert_update_params.Threshold],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Alert:
+        """
+        This endpoint updates the thresholds of an alert.
+
+        Args:
+          thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not alert_configuration_id:
+            raise ValueError(
+                f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
+            )
+        return await self._put(
+            f"/alerts/{alert_configuration_id}",
+            body=await async_maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Alert,
+        )
+
     def list(
         self,
         *,
@@ -885,6 +978,9 @@ class AlertsWithRawResponse:
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             alerts.retrieve,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            alerts.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             alerts.list,
         )
@@ -911,6 +1007,9 @@ class AsyncAlertsWithRawResponse:
 
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             alerts.retrieve,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            alerts.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             alerts.list,
@@ -939,6 +1038,9 @@ class AlertsWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             alerts.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            alerts.update,
+        )
         self.list = to_streamed_response_wrapper(
             alerts.list,
         )
@@ -965,6 +1067,9 @@ class AsyncAlertsWithStreamingResponse:
 
         self.retrieve = async_to_streamed_response_wrapper(
             alerts.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            alerts.update,
         )
         self.list = async_to_streamed_response_wrapper(
             alerts.list,
