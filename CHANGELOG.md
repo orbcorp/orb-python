@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.7.0 (2024-08-21)
+
+Full Changelog: [v2.6.0...v2.7.0](https://github.com/orbcorp/orb-python/compare/v2.6.0...v2.7.0)
+
+### Features
+
+* **api:** codegen changes ([#355](https://github.com/orbcorp/orb-python/issues/355)) ([59e41c2](https://github.com/orbcorp/orb-python/commit/59e41c27b9975127e099831d2bd2e8595356eff4))
+* **api:** manual updates ([#357](https://github.com/orbcorp/orb-python/issues/357)) ([a9d9d93](https://github.com/orbcorp/orb-python/commit/a9d9d93ca37c2291fc6e4ee2a9c24db7d59c3206))
+
 ## 2.6.0 (2024-08-17)
 
 Full Changelog: [v2.5.0...v2.6.0](https://github.com/orbcorp/orb-python/compare/v2.5.0...v2.6.0)
