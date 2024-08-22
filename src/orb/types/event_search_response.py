@@ -19,6 +19,9 @@ class Data(BaseModel):
     customer_id: Optional[str] = None
     """The Orb Customer identifier"""
 
+    deprecated: bool
+    """A boolean indicating whether the event is currently deprecated."""
+
     event_name: str
     """A name to meaningfully identify the action or event type."""
 
