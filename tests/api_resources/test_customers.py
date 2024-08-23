@@ -25,7 +25,7 @@ class TestCustomers:
     def test_method_create(self, client: Orb) -> None:
         customer = client.customers.create(
             email="email",
-            name="name",
+            name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
@@ -33,7 +33,7 @@ class TestCustomers:
     def test_method_create_with_all_params(self, client: Orb) -> None:
         customer = client.customers.create(
             email="email",
-            name="name",
+            name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
                     {
@@ -89,7 +89,7 @@ class TestCustomers:
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.customers.with_raw_response.create(
             email="email",
-            name="name",
+            name="x",
         )
 
         assert response.is_closed is True
@@ -101,7 +101,7 @@ class TestCustomers:
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.customers.with_streaming_response.create(
             email="email",
-            name="name",
+            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -459,7 +459,7 @@ class TestAsyncCustomers:
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
             email="email",
-            name="name",
+            name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
 
@@ -467,7 +467,7 @@ class TestAsyncCustomers:
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
             email="email",
-            name="name",
+            name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
                     {
@@ -523,7 +523,7 @@ class TestAsyncCustomers:
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.create(
             email="email",
-            name="name",
+            name="x",
         )
 
         assert response.is_closed is True
@@ -535,7 +535,7 @@ class TestAsyncCustomers:
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.create(
             email="email",
-            name="name",
+            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
