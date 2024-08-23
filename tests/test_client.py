@@ -766,7 +766,7 @@ class TestOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        response = client.customers.with_raw_response.create(email="email", name="name")
+        response = client.customers.with_raw_response.create(email="email", name="x")
 
         assert response.retries_taken == failures_before_success
 
@@ -789,7 +789,7 @@ class TestOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        with client.customers.with_streaming_response.create(email="email", name="name") as response:
+        with client.customers.with_streaming_response.create(email="email", name="x") as response:
             assert response.retries_taken == failures_before_success
 
 
@@ -1531,7 +1531,7 @@ class TestAsyncOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        response = await client.customers.with_raw_response.create(email="email", name="name")
+        response = await client.customers.with_raw_response.create(email="email", name="x")
 
         assert response.retries_taken == failures_before_success
 
@@ -1555,5 +1555,5 @@ class TestAsyncOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        async with client.customers.with_streaming_response.create(email="email", name="name") as response:
+        async with client.customers.with_streaming_response.create(email="email", name="x") as response:
             assert response.retries_taken == failures_before_success
