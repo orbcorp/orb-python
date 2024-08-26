@@ -2,14 +2,21 @@
 
 from __future__ import annotations
 
-import os
+from orb import Orb, AsyncOrb
+
+from orb.types import Price
+
 from typing import Any, cast
 
+import os
 import pytest
-
+import httpx
+from typing_extensions import get_args
+from typing import Optional
+from respx import MockRouter
 from orb import Orb, AsyncOrb
-from orb.types import Price
 from tests.utils import assert_matches_type
+from orb.types.prices import external_price_id_update_params
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

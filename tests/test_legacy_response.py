@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from orb import Orb, BaseModel
+from orb import BaseModel, Orb
 from orb._streaming import Stream
 from orb._base_client import FinalRequestOptions
 from orb._legacy_response import LegacyAPIResponse

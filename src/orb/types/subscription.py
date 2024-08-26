@@ -1,14 +1,24 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Union, Optional
+from .._models import BaseModel
+
+from typing_extensions import Literal, TypeAlias, Annotated
+
+from typing import List, Optional, Dict
+
+from .._utils import PropertyInfo
+
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypeAlias
+
+from .price import Price
+
+from .customer import Customer
 
 from .plan import Plan
-from .price import Price
-from .._utils import PropertyInfo
-from .._models import BaseModel
-from .customer import Customer
+
+from typing import Optional, Union, List, Dict, Any
+from typing_extensions import Literal
+from pydantic import Field as FieldInfo
 
 __all__ = [
     "Subscription",
