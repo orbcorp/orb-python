@@ -2,25 +2,42 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Iterable, Optional
-from datetime import datetime
-from typing_extensions import Literal
-
 import httpx
 
-from ... import _legacy_response
-from ...types import plan_list_params, plan_create_params, plan_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .external_plan_id import ExternalPlanID, AsyncExternalPlanID
+
 from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...pagination import SyncPage, AsyncPage
+
 from ...types.plan import Plan
-from ..._base_client import AsyncPaginator, make_request_options
+
+from ..._utils import maybe_transform, async_maybe_transform
+
+from ..._base_client import make_request_options, AsyncPaginator
+
+from typing import Iterable, Optional, Dict, Union
+
+from typing_extensions import Literal
+
+from ...pagination import SyncPage, AsyncPage
+
+from datetime import datetime
+
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
+from ...types import plan_create_params
+
+from ... import _legacy_response
+
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
+from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ...types import shared_params
+from ...types import plan_create_params
+from ...types import plan_update_params
+from ...types import plan_list_params
 from .external_plan_id import (
     ExternalPlanID,
     AsyncExternalPlanID,

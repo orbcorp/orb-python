@@ -2,31 +2,47 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
-from datetime import datetime
-from typing_extensions import Literal
-
 import httpx
 
-from .. import _legacy_response
+from .._compat import cached_property
+
+from ..types.alert import Alert
+
+from .._base_client import make_request_options, AsyncPaginator
+
+from .._utils import maybe_transform, async_maybe_transform
+
+from typing import Iterable, Union, Optional
+
+from ..pagination import SyncPage, AsyncPage
+
+from datetime import datetime
+
+from typing_extensions import Literal
+
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
 from ..types import (
-    alert_list_params,
     alert_update_params,
     alert_create_for_customer_params,
-    alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
+    alert_create_for_subscription_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
-from .._compat import cached_property
+
+from .. import _legacy_response
+
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
+from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ..pagination import SyncPage, AsyncPage
-from ..types.alert import Alert
-from .._base_client import AsyncPaginator, make_request_options
+from ..types import shared_params
+from ..types import alert_update_params
+from ..types import alert_list_params
+from ..types import alert_create_for_customer_params
+from ..types import alert_create_for_external_customer_params
+from ..types import alert_create_for_subscription_params
 
 __all__ = ["Alerts", "AsyncAlerts"]
 

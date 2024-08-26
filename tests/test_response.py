@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from orb import Orb, AsyncOrb, BaseModel
+from orb import BaseModel, Orb, AsyncOrb
 from orb._response import (
     APIResponse,
     BaseAPIResponse,

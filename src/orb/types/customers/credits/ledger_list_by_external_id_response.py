@@ -1,11 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from ...._models import BaseModel
+
+from typing import Optional, Dict
+
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypeAlias
+
+from typing_extensions import Literal, TypeAlias, Annotated
 
 from ...._utils import PropertyInfo
-from ...._models import BaseModel
+
+from typing import Optional, Union, List, Dict, Any
+from typing_extensions import Literal
+from pydantic import Field as FieldInfo
 
 __all__ = [
     "LedgerListByExternalIDResponse",

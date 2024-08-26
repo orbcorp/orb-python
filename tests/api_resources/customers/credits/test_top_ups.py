@@ -2,20 +2,31 @@
 
 from __future__ import annotations
 
-import os
+from orb import Orb, AsyncOrb
+
+from orb.types.customers.credits import (
+    TopUpCreateResponse,
+    TopUpListResponse,
+    TopUpCreateByExternalIDResponse,
+    TopUpListByExternalIDResponse,
+)
+
 from typing import Any, cast
 
-import pytest
+from orb.pagination import SyncPage, AsyncPage
 
+import os
+import pytest
+import httpx
+from typing_extensions import get_args
+from typing import Optional
+from respx import MockRouter
 from orb import Orb, AsyncOrb
 from tests.utils import assert_matches_type
-from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers.credits import (
-    TopUpListResponse,
-    TopUpCreateResponse,
-    TopUpListByExternalIDResponse,
-    TopUpCreateByExternalIDResponse,
-)
+from orb.types.customers.credits import top_up_create_params
+from orb.types.customers.credits import top_up_list_params
+from orb.types.customers.credits import top_up_create_by_external_id_params
+from orb.types.customers.credits import top_up_list_by_external_id_params
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

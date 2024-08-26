@@ -2,8 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import TypedDict, Literal, Required
+
+from typing import Optional, List, Dict, Iterable
+
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
 
 __all__ = [
     "CustomerUpdateByExternalIDParams",
