@@ -2,39 +2,11 @@
 
 from __future__ import annotations
 
-import httpx
-
-from .ledger import Ledger, AsyncLedger
-
-from ...._compat import cached_property
-
-from .top_ups import TopUps, AsyncTopUps
-
-from ....types.customers.credit_list_response import CreditListResponse
-
-from ....pagination import SyncPage, AsyncPage
-
-from ...._utils import maybe_transform
-
-from ...._base_client import make_request_options, AsyncPaginator
-
 from typing import Optional
 
-from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
-
-from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+import httpx
 
 from .... import _legacy_response
-
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from ...._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ...._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ....types import shared_params
-from ....types.customers import credit_list_params
-from ....types.customers import credit_list_by_external_id_params
 from .ledger import (
     Ledger,
     AsyncLedger,
@@ -51,6 +23,16 @@ from .top_ups import (
     TopUpsWithStreamingResponse,
     AsyncTopUpsWithStreamingResponse,
 )
+from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._utils import maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.customers import credit_list_params, credit_list_by_external_id_params
+from ....types.customers.credit_list_response import CreditListResponse
+from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
 
 __all__ = ["Credits", "AsyncCredits"]
 

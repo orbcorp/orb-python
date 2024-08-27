@@ -2,20 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, Required, Annotated, Literal
-
-from typing import Union, Iterable, Optional, Dict
-
-from datetime import datetime, date
+from typing import Dict, Union, Iterable, Optional
+from datetime import date, datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-
 from .shared_params.discount import Discount
-
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
 
 __all__ = ["InvoiceCreateParams", "LineItem", "LineItemUnitConfig"]
 

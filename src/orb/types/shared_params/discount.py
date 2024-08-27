@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
-
-from typing_extensions import Literal, TypedDict, Required, TypeAlias
+from typing import List, Union, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = ["Discount", "PercentageDiscount", "TrialDiscount", "UsageDiscount", "AmountDiscount"]
 
