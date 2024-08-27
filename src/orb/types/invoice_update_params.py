@@ -2,14 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Dict, Optional
 from typing_extensions import TypedDict
-
-from typing import Optional, Dict
-
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
 
 __all__ = ["InvoiceUpdateParams"]
 
