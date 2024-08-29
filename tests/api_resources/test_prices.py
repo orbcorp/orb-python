@@ -45,10 +45,18 @@ class TestPrices:
             unit_config={"unit_amount": "unit_amount"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -116,10 +124,18 @@ class TestPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -221,10 +237,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -356,10 +380,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -490,10 +522,18 @@ class TestPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -621,10 +661,18 @@ class TestPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -719,10 +767,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -802,10 +858,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -888,10 +952,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -965,10 +1037,18 @@ class TestPrices:
             threshold_total_amount_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1030,10 +1110,18 @@ class TestPrices:
             tiered_package_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1095,10 +1183,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1160,10 +1256,18 @@ class TestPrices:
             tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1225,10 +1329,18 @@ class TestPrices:
             package_with_allocation_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1290,10 +1402,18 @@ class TestPrices:
             tiered_package_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1355,10 +1475,18 @@ class TestPrices:
             unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1420,10 +1548,18 @@ class TestPrices:
             tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1485,10 +1621,18 @@ class TestPrices:
             unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1550,10 +1694,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1615,10 +1767,18 @@ class TestPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1860,10 +2020,18 @@ class TestAsyncPrices:
             unit_config={"unit_amount": "unit_amount"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1931,10 +2099,18 @@ class TestAsyncPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2036,10 +2212,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2171,10 +2355,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2305,10 +2497,18 @@ class TestAsyncPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2436,10 +2636,18 @@ class TestAsyncPrices:
             },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2534,10 +2742,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2617,10 +2833,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2703,10 +2927,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2780,10 +3012,18 @@ class TestAsyncPrices:
             threshold_total_amount_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2845,10 +3085,18 @@ class TestAsyncPrices:
             tiered_package_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2910,10 +3158,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2975,10 +3231,18 @@ class TestAsyncPrices:
             tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3040,10 +3304,18 @@ class TestAsyncPrices:
             package_with_allocation_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3105,10 +3377,18 @@ class TestAsyncPrices:
             tiered_package_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3170,10 +3450,18 @@ class TestAsyncPrices:
             unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3235,10 +3523,18 @@ class TestAsyncPrices:
             tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3300,10 +3596,18 @@ class TestAsyncPrices:
             unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3365,10 +3669,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3430,10 +3742,18 @@ class TestAsyncPrices:
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             conversion_rate=0,
             external_price_id="external_price_id",
             fixed_price_quantity=0,
             invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])

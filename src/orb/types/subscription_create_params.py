@@ -10,6 +10,7 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "SubscriptionCreateParams",
+    "BillingCycleAnchorConfiguration",
     "PriceOverride",
     "PriceOverrideOverrideUnitPrice",
     "PriceOverrideOverrideUnitPriceUnitConfig",
@@ -60,6 +61,8 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     aws_region: Optional[str]
 
+    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
+
     coupon_redemption_code: Optional[str]
 
     credits_overage_rate: Optional[float]
@@ -107,6 +110,30 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """Optionally provide a list of overrides for prices on the plan"""
 
     start_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+
+
+class BillingCycleAnchorConfiguration(TypedDict, total=False):
+    day: Required[int]
+    """The day of the month on which the billing cycle is anchored.
+
+    If the maximum number of days in a month is greater than this value, the last
+    day of the month is the billing cycle day (e.g. billing_cycle_day=31 for April
+    means the billing period begins on the 30th.
+    """
+
+    month: Optional[int]
+    """The month on which the billing cycle is anchored (e.g.
+
+    a quarterly price anchored in February would have cycles starting February, May,
+    August, and November).
+    """
+
+    year: Optional[int]
+    """The year on which the billing cycle is anchored (e.g.
+
+    a 2 year billing cycle anchored on 2021 would have cycles starting on 2021,
+    2023, 2025, etc.).
+    """
 
 
 class PriceOverrideOverrideUnitPriceUnitConfig(TypedDict, total=False):
