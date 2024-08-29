@@ -19,6 +19,7 @@ __all__ = [
     "AdjustmentIntervalAdjustmentUsageDiscountAdjustment",
     "AdjustmentIntervalAdjustmentMinimumAdjustment",
     "AdjustmentIntervalAdjustmentMaximumAdjustment",
+    "BillingCycleAnchorConfiguration",
     "DiscountInterval",
     "DiscountIntervalAmountDiscountInterval",
     "DiscountIntervalPercentageDiscountInterval",
@@ -141,6 +142,30 @@ class AdjustmentInterval(BaseModel):
 
     start_date: datetime
     """The start date of the adjustment interval."""
+
+
+class BillingCycleAnchorConfiguration(BaseModel):
+    day: int
+    """The day of the month on which the billing cycle is anchored.
+
+    If the maximum number of days in a month is greater than this value, the last
+    day of the month is the billing cycle day (e.g. billing_cycle_day=31 for April
+    means the billing period begins on the 30th.
+    """
+
+    month: Optional[int] = None
+    """The month on which the billing cycle is anchored (e.g.
+
+    a quarterly price anchored in February would have cycles starting February, May,
+    August, and November).
+    """
+
+    year: Optional[int] = None
+    """The year on which the billing cycle is anchored (e.g.
+
+    a 2 year billing cycle anchored on 2021 would have cycles starting on 2021,
+    2023, 2025, etc.).
+    """
 
 
 class DiscountIntervalAmountDiscountInterval(BaseModel):
@@ -579,6 +604,8 @@ class Subscription(BaseModel):
     charged with the saved payment method on the due date. This property defaults to
     the plan's behavior. If null, defaults to the customer's setting.
     """
+
+    billing_cycle_anchor_configuration: BillingCycleAnchorConfiguration
 
     billing_cycle_day: int
     """The day of the month on which the billing cycle is anchored.

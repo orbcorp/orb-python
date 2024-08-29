@@ -56,6 +56,8 @@ class Subscriptions(SyncAPIResource):
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[subscription_create_params.BillingCycleAnchorConfiguration]
+        | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -504,6 +506,7 @@ class Subscriptions(SyncAPIResource):
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
                     "aws_region": aws_region,
+                    "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
                     "customer_id": customer_id,
@@ -1787,6 +1790,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[subscription_create_params.BillingCycleAnchorConfiguration]
+        | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2235,6 +2240,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
                     "aws_region": aws_region,
+                    "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
                     "customer_id": customer_id,

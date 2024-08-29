@@ -9,39 +9,79 @@ __all__ = [
     "PriceCreateParams",
     "NewFloatingUnitPrice",
     "NewFloatingUnitPriceUnitConfig",
+    "NewFloatingUnitPriceBillingCycleConfiguration",
+    "NewFloatingUnitPriceInvoicingCycleConfiguration",
     "NewFloatingPackagePrice",
     "NewFloatingPackagePricePackageConfig",
+    "NewFloatingPackagePriceBillingCycleConfiguration",
+    "NewFloatingPackagePriceInvoicingCycleConfiguration",
     "NewFloatingMatrixPrice",
     "NewFloatingMatrixPriceMatrixConfig",
     "NewFloatingMatrixPriceMatrixConfigMatrixValue",
+    "NewFloatingMatrixPriceBillingCycleConfiguration",
+    "NewFloatingMatrixPriceInvoicingCycleConfiguration",
     "NewFloatingMatrixWithAllocationPrice",
     "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig",
     "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
+    "NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration",
+    "NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPrice",
     "NewFloatingTieredPriceTieredConfig",
     "NewFloatingTieredPriceTieredConfigTier",
+    "NewFloatingTieredPriceBillingCycleConfiguration",
+    "NewFloatingTieredPriceInvoicingCycleConfiguration",
     "NewFloatingTieredBpsPrice",
     "NewFloatingTieredBpsPriceTieredBpsConfig",
     "NewFloatingTieredBpsPriceTieredBpsConfigTier",
+    "NewFloatingTieredBpsPriceBillingCycleConfiguration",
+    "NewFloatingTieredBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBpsPrice",
     "NewFloatingBpsPriceBpsConfig",
+    "NewFloatingBpsPriceBillingCycleConfiguration",
+    "NewFloatingBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBulkBpsPrice",
     "NewFloatingBulkBpsPriceBulkBpsConfig",
     "NewFloatingBulkBpsPriceBulkBpsConfigTier",
+    "NewFloatingBulkBpsPriceBillingCycleConfiguration",
+    "NewFloatingBulkBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBulkPrice",
     "NewFloatingBulkPriceBulkConfig",
     "NewFloatingBulkPriceBulkConfigTier",
+    "NewFloatingBulkPriceBillingCycleConfiguration",
+    "NewFloatingBulkPriceInvoicingCycleConfiguration",
     "NewFloatingThresholdTotalAmountPrice",
+    "NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration",
+    "NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPackagePrice",
+    "NewFloatingTieredPackagePriceBillingCycleConfiguration",
+    "NewFloatingTieredPackagePriceInvoicingCycleConfiguration",
     "NewFloatingGroupedTieredPrice",
+    "NewFloatingGroupedTieredPriceBillingCycleConfiguration",
+    "NewFloatingGroupedTieredPriceInvoicingCycleConfiguration",
     "NewFloatingTieredWithMinimumPrice",
+    "NewFloatingTieredWithMinimumPriceBillingCycleConfiguration",
+    "NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingPackageWithAllocationPrice",
+    "NewFloatingPackageWithAllocationPriceBillingCycleConfiguration",
+    "NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPackageWithMinimumPrice",
+    "NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration",
+    "NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingUnitWithPercentPrice",
+    "NewFloatingUnitWithPercentPriceBillingCycleConfiguration",
+    "NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration",
     "NewFloatingTieredWithProrationPrice",
+    "NewFloatingTieredWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration",
     "NewFloatingUnitWithProrationPrice",
+    "NewFloatingUnitWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration",
     "NewFloatingGroupedAllocationPrice",
+    "NewFloatingGroupedAllocationPriceBillingCycleConfiguration",
+    "NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingBulkWithProrationPrice",
+    "NewFloatingBulkWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration",
 ]
 
 
@@ -74,6 +114,12 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingUnitPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -89,6 +135,12 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingUnitPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -100,6 +152,22 @@ class NewFloatingUnitPrice(TypedDict, total=False):
 class NewFloatingUnitPriceUnitConfig(TypedDict, total=False):
     unit_amount: Required[str]
     """Rate per unit of usage"""
+
+
+class NewFloatingUnitPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingUnitPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingPackagePrice(TypedDict, total=False):
@@ -131,6 +199,12 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingPackagePriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -145,6 +219,12 @@ class NewFloatingPackagePrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingPackagePriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -164,6 +244,22 @@ class NewFloatingPackagePricePackageConfig(TypedDict, total=False):
     For example, 1000 here would divide usage by 1000 before multiplying by
     package_amount in rating
     """
+
+
+class NewFloatingPackagePriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingMatrixPrice(TypedDict, total=False):
@@ -195,6 +291,12 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingMatrixPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -209,6 +311,12 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingMatrixPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -241,6 +349,22 @@ class NewFloatingMatrixPriceMatrixConfig(TypedDict, total=False):
     """Matrix values for specified matrix grouping keys"""
 
 
+class NewFloatingMatrixPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingMatrixPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
 class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
@@ -270,6 +394,12 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -284,6 +414,12 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -319,6 +455,22 @@ class NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig(TypedDict, 
     """Matrix values for specified matrix grouping keys"""
 
 
+class NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
 class NewFloatingTieredPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
@@ -348,6 +500,12 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -362,6 +520,12 @@ class NewFloatingTieredPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingTieredPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -385,6 +549,22 @@ class NewFloatingTieredPriceTieredConfigTier(TypedDict, total=False):
 class NewFloatingTieredPriceTieredConfig(TypedDict, total=False):
     tiers: Required[Iterable[NewFloatingTieredPriceTieredConfigTier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
+
+
+class NewFloatingTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingTieredBpsPrice(TypedDict, total=False):
@@ -416,6 +596,12 @@ class NewFloatingTieredBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredBpsPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -430,6 +616,12 @@ class NewFloatingTieredBpsPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingTieredBpsPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -461,6 +653,22 @@ class NewFloatingTieredBpsPriceTieredBpsConfig(TypedDict, total=False):
     """
 
 
+class NewFloatingTieredBpsPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
 class NewFloatingBpsPrice(TypedDict, total=False):
     bps_config: Required[NewFloatingBpsPriceBpsConfig]
 
@@ -490,6 +698,12 @@ class NewFloatingBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingBpsPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -505,6 +719,12 @@ class NewFloatingBpsPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingBpsPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -519,6 +739,22 @@ class NewFloatingBpsPriceBpsConfig(TypedDict, total=False):
 
     per_unit_maximum: Optional[str]
     """Optional currency amount maximum to cap spend per event"""
+
+
+class NewFloatingBpsPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingBulkBpsPrice(TypedDict, total=False):
@@ -550,6 +786,12 @@ class NewFloatingBulkBpsPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingBulkBpsPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -564,6 +806,12 @@ class NewFloatingBulkBpsPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -590,6 +838,22 @@ class NewFloatingBulkBpsPriceBulkBpsConfig(TypedDict, total=False):
     Tiers for a bulk BPS pricing model where all usage is aggregated to a single
     tier based on total volume
     """
+
+
+class NewFloatingBulkBpsPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingBulkBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingBulkPrice(TypedDict, total=False):
@@ -621,6 +885,12 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingBulkPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -635,6 +905,12 @@ class NewFloatingBulkPrice(TypedDict, total=False):
 
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewFloatingBulkPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -655,6 +931,22 @@ class NewFloatingBulkPriceBulkConfigTier(TypedDict, total=False):
 class NewFloatingBulkPriceBulkConfig(TypedDict, total=False):
     tiers: Required[Iterable[NewFloatingBulkPriceBulkConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
+
+
+class NewFloatingBulkPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
@@ -686,6 +978,12 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -701,12 +999,34 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingTieredPackagePrice(TypedDict, total=False):
@@ -738,6 +1058,12 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredPackagePriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -753,12 +1079,34 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingTieredPackagePriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingTieredPackagePriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingGroupedTieredPrice(TypedDict, total=False):
@@ -790,6 +1138,12 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingGroupedTieredPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -805,12 +1159,34 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingGroupedTieredPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingGroupedTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingGroupedTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
@@ -842,6 +1218,12 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredWithMinimumPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -857,12 +1239,34 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingTieredWithMinimumPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
@@ -894,6 +1298,12 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingPackageWithAllocationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -909,12 +1319,34 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingPackageWithAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
@@ -946,6 +1378,12 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -961,12 +1399,34 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
@@ -998,6 +1458,12 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingUnitWithPercentPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -1013,12 +1479,34 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingUnitWithPercentPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
@@ -1050,6 +1538,12 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingTieredWithProrationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -1065,12 +1559,34 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingTieredWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
@@ -1102,6 +1618,12 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingUnitWithProrationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -1117,12 +1639,34 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingUnitWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
@@ -1154,6 +1698,12 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingGroupedAllocationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -1169,12 +1719,34 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingGroupedAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
@@ -1206,6 +1778,12 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
+    billing_cycle_configuration: Optional[NewFloatingBulkWithProrationPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
@@ -1221,12 +1799,34 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
+    invoicing_cycle_configuration: Optional[NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+class NewFloatingBulkWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
 
 
 PriceCreateParams: TypeAlias = Union[

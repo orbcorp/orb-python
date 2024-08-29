@@ -60,10 +60,14 @@ class Prices(SyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -101,6 +105,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -109,6 +116,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -138,10 +148,14 @@ class Prices(SyncAPIResource):
         package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -179,6 +193,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -187,6 +204,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -216,10 +236,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -257,6 +281,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -265,6 +292,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -294,10 +324,18 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -335,6 +373,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -343,6 +384,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -372,10 +416,14 @@ class Prices(SyncAPIResource):
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -413,6 +461,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -421,6 +472,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -450,10 +504,16 @@ class Prices(SyncAPIResource):
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -491,6 +551,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -499,6 +562,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -528,10 +594,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -569,6 +639,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -577,6 +650,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -606,10 +682,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -647,6 +727,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -655,6 +738,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -684,10 +770,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -725,6 +815,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -733,6 +826,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -762,10 +858,18 @@ class Prices(SyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -803,6 +907,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -811,6 +918,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -840,10 +950,18 @@ class Prices(SyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -881,6 +999,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -889,6 +1010,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -918,10 +1042,18 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -959,6 +1091,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -967,6 +1102,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -996,10 +1134,18 @@ class Prices(SyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1037,6 +1183,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1045,6 +1194,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1074,10 +1226,18 @@ class Prices(SyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1115,6 +1275,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1123,6 +1286,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1152,10 +1318,18 @@ class Prices(SyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1193,6 +1367,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1201,6 +1378,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1230,10 +1410,18 @@ class Prices(SyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1271,6 +1459,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1279,6 +1470,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1308,10 +1502,18 @@ class Prices(SyncAPIResource):
         tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1349,6 +1551,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1357,6 +1562,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1386,10 +1594,18 @@ class Prices(SyncAPIResource):
         unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1427,6 +1643,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1435,6 +1654,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1464,10 +1686,18 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1505,6 +1735,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1513,6 +1746,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1542,10 +1778,18 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1583,6 +1827,9 @@ class Prices(SyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -1591,6 +1838,9 @@ class Prices(SyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1660,10 +1910,14 @@ class Prices(SyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
@@ -1707,10 +1961,12 @@ class Prices(SyncAPIResource):
                         "unit_config": unit_config,
                         "billable_metric_id": billable_metric_id,
                         "billed_in_advance": billed_in_advance,
+                        "billing_cycle_configuration": billing_cycle_configuration,
                         "conversion_rate": conversion_rate,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
+                        "invoicing_cycle_configuration": invoicing_cycle_configuration,
                         "metadata": metadata,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
@@ -2001,10 +2257,14 @@ class AsyncPrices(AsyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2042,6 +2302,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2050,6 +2313,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2079,10 +2345,14 @@ class AsyncPrices(AsyncAPIResource):
         package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2120,6 +2390,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2128,6 +2401,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2157,10 +2433,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2198,6 +2478,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2206,6 +2489,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2235,10 +2521,18 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2276,6 +2570,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2284,6 +2581,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2313,10 +2613,14 @@ class AsyncPrices(AsyncAPIResource):
         tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2354,6 +2658,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2362,6 +2669,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2391,10 +2701,16 @@ class AsyncPrices(AsyncAPIResource):
         tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2432,6 +2748,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2440,6 +2759,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2469,10 +2791,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2510,6 +2836,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2518,6 +2847,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2547,10 +2879,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2588,6 +2924,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2596,6 +2935,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2625,10 +2967,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2666,6 +3012,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2674,6 +3023,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2703,10 +3055,18 @@ class AsyncPrices(AsyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2744,6 +3104,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2752,6 +3115,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2781,10 +3147,18 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2822,6 +3196,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2830,6 +3207,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2859,10 +3239,18 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2900,6 +3288,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2908,6 +3299,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2937,10 +3331,18 @@ class AsyncPrices(AsyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2978,6 +3380,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -2986,6 +3391,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3015,10 +3423,18 @@ class AsyncPrices(AsyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3056,6 +3472,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3064,6 +3483,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3093,10 +3515,18 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3134,6 +3564,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3142,6 +3575,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3171,10 +3607,18 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3212,6 +3656,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3220,6 +3667,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3249,10 +3699,18 @@ class AsyncPrices(AsyncAPIResource):
         tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3290,6 +3748,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3298,6 +3759,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3327,10 +3791,18 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3368,6 +3840,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3376,6 +3851,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3405,10 +3883,18 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3446,6 +3932,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3454,6 +3943,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3483,10 +3975,18 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3524,6 +4024,9 @@ class AsyncPrices(AsyncAPIResource):
           billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
               this is true, and in-arrears if this is false.
 
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
 
           external_price_id: An alias for the price.
@@ -3532,6 +4035,9 @@ class AsyncPrices(AsyncAPIResource):
               applied.
 
           invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3601,10 +4107,14 @@ class AsyncPrices(AsyncAPIResource):
         unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
         matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
@@ -3648,10 +4158,12 @@ class AsyncPrices(AsyncAPIResource):
                         "unit_config": unit_config,
                         "billable_metric_id": billable_metric_id,
                         "billed_in_advance": billed_in_advance,
+                        "billing_cycle_configuration": billing_cycle_configuration,
                         "conversion_rate": conversion_rate,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
+                        "invoicing_cycle_configuration": invoicing_cycle_configuration,
                         "metadata": metadata,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
