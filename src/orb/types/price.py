@@ -16,6 +16,7 @@ __all__ = [
     "UnitPriceBillableMetric",
     "UnitPriceBillingCycleConfiguration",
     "UnitPriceCreditAllocation",
+    "UnitPriceInvoicingCycleConfiguration",
     "UnitPriceItem",
     "UnitPriceMaximum",
     "UnitPriceMinimum",
@@ -24,6 +25,7 @@ __all__ = [
     "PackagePriceBillableMetric",
     "PackagePriceBillingCycleConfiguration",
     "PackagePriceCreditAllocation",
+    "PackagePriceInvoicingCycleConfiguration",
     "PackagePriceItem",
     "PackagePriceMaximum",
     "PackagePriceMinimum",
@@ -32,6 +34,7 @@ __all__ = [
     "MatrixPriceBillableMetric",
     "MatrixPriceBillingCycleConfiguration",
     "MatrixPriceCreditAllocation",
+    "MatrixPriceInvoicingCycleConfiguration",
     "MatrixPriceItem",
     "MatrixPriceMatrixConfig",
     "MatrixPriceMatrixConfigMatrixValue",
@@ -41,6 +44,7 @@ __all__ = [
     "TieredPriceBillableMetric",
     "TieredPriceBillingCycleConfiguration",
     "TieredPriceCreditAllocation",
+    "TieredPriceInvoicingCycleConfiguration",
     "TieredPriceItem",
     "TieredPriceMaximum",
     "TieredPriceMinimum",
@@ -50,6 +54,7 @@ __all__ = [
     "TieredBpsPriceBillableMetric",
     "TieredBpsPriceBillingCycleConfiguration",
     "TieredBpsPriceCreditAllocation",
+    "TieredBpsPriceInvoicingCycleConfiguration",
     "TieredBpsPriceItem",
     "TieredBpsPriceMaximum",
     "TieredBpsPriceMinimum",
@@ -60,6 +65,7 @@ __all__ = [
     "BpsPriceBillingCycleConfiguration",
     "BpsPriceBpsConfig",
     "BpsPriceCreditAllocation",
+    "BpsPriceInvoicingCycleConfiguration",
     "BpsPriceItem",
     "BpsPriceMaximum",
     "BpsPriceMinimum",
@@ -69,6 +75,7 @@ __all__ = [
     "BulkBpsPriceBulkBpsConfig",
     "BulkBpsPriceBulkBpsConfigTier",
     "BulkBpsPriceCreditAllocation",
+    "BulkBpsPriceInvoicingCycleConfiguration",
     "BulkBpsPriceItem",
     "BulkBpsPriceMaximum",
     "BulkBpsPriceMinimum",
@@ -78,6 +85,7 @@ __all__ = [
     "BulkPriceBulkConfig",
     "BulkPriceBulkConfigTier",
     "BulkPriceCreditAllocation",
+    "BulkPriceInvoicingCycleConfiguration",
     "BulkPriceItem",
     "BulkPriceMaximum",
     "BulkPriceMinimum",
@@ -85,6 +93,7 @@ __all__ = [
     "ThresholdTotalAmountPriceBillableMetric",
     "ThresholdTotalAmountPriceBillingCycleConfiguration",
     "ThresholdTotalAmountPriceCreditAllocation",
+    "ThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
     "ThresholdTotalAmountPriceMinimum",
@@ -92,6 +101,7 @@ __all__ = [
     "TieredPackagePriceBillableMetric",
     "TieredPackagePriceBillingCycleConfiguration",
     "TieredPackagePriceCreditAllocation",
+    "TieredPackagePriceInvoicingCycleConfiguration",
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
     "TieredPackagePriceMinimum",
@@ -99,6 +109,7 @@ __all__ = [
     "GroupedTieredPriceBillableMetric",
     "GroupedTieredPriceBillingCycleConfiguration",
     "GroupedTieredPriceCreditAllocation",
+    "GroupedTieredPriceInvoicingCycleConfiguration",
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
     "GroupedTieredPriceMinimum",
@@ -106,6 +117,7 @@ __all__ = [
     "TieredWithMinimumPriceBillableMetric",
     "TieredWithMinimumPriceBillingCycleConfiguration",
     "TieredWithMinimumPriceCreditAllocation",
+    "TieredWithMinimumPriceInvoicingCycleConfiguration",
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
     "TieredWithMinimumPriceMinimum",
@@ -113,6 +125,7 @@ __all__ = [
     "TieredPackageWithMinimumPriceBillableMetric",
     "TieredPackageWithMinimumPriceBillingCycleConfiguration",
     "TieredPackageWithMinimumPriceCreditAllocation",
+    "TieredPackageWithMinimumPriceInvoicingCycleConfiguration",
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
     "TieredPackageWithMinimumPriceMinimum",
@@ -120,6 +133,7 @@ __all__ = [
     "PackageWithAllocationPriceBillableMetric",
     "PackageWithAllocationPriceBillingCycleConfiguration",
     "PackageWithAllocationPriceCreditAllocation",
+    "PackageWithAllocationPriceInvoicingCycleConfiguration",
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
     "PackageWithAllocationPriceMinimum",
@@ -127,6 +141,7 @@ __all__ = [
     "UnitWithPercentPriceBillableMetric",
     "UnitWithPercentPriceBillingCycleConfiguration",
     "UnitWithPercentPriceCreditAllocation",
+    "UnitWithPercentPriceInvoicingCycleConfiguration",
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
     "UnitWithPercentPriceMinimum",
@@ -134,6 +149,7 @@ __all__ = [
     "MatrixWithAllocationPriceBillableMetric",
     "MatrixWithAllocationPriceBillingCycleConfiguration",
     "MatrixWithAllocationPriceCreditAllocation",
+    "MatrixWithAllocationPriceInvoicingCycleConfiguration",
     "MatrixWithAllocationPriceItem",
     "MatrixWithAllocationPriceMatrixWithAllocationConfig",
     "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
@@ -143,6 +159,7 @@ __all__ = [
     "TieredWithProrationPriceBillableMetric",
     "TieredWithProrationPriceBillingCycleConfiguration",
     "TieredWithProrationPriceCreditAllocation",
+    "TieredWithProrationPriceInvoicingCycleConfiguration",
     "TieredWithProrationPriceItem",
     "TieredWithProrationPriceMaximum",
     "TieredWithProrationPriceMinimum",
@@ -150,6 +167,7 @@ __all__ = [
     "UnitWithProrationPriceBillableMetric",
     "UnitWithProrationPriceBillingCycleConfiguration",
     "UnitWithProrationPriceCreditAllocation",
+    "UnitWithProrationPriceInvoicingCycleConfiguration",
     "UnitWithProrationPriceItem",
     "UnitWithProrationPriceMaximum",
     "UnitWithProrationPriceMinimum",
@@ -157,6 +175,7 @@ __all__ = [
     "GroupedAllocationPriceBillableMetric",
     "GroupedAllocationPriceBillingCycleConfiguration",
     "GroupedAllocationPriceCreditAllocation",
+    "GroupedAllocationPriceInvoicingCycleConfiguration",
     "GroupedAllocationPriceItem",
     "GroupedAllocationPriceMaximum",
     "GroupedAllocationPriceMinimum",
@@ -164,6 +183,7 @@ __all__ = [
     "BulkWithProrationPriceBillableMetric",
     "BulkWithProrationPriceBillingCycleConfiguration",
     "BulkWithProrationPriceCreditAllocation",
+    "BulkWithProrationPriceInvoicingCycleConfiguration",
     "BulkWithProrationPriceItem",
     "BulkWithProrationPriceMaximum",
     "BulkWithProrationPriceMinimum",
@@ -184,6 +204,12 @@ class UnitPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class UnitPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class UnitPriceItem(BaseModel):
@@ -224,7 +250,7 @@ class UnitPrice(BaseModel):
 
     billable_metric: Optional[UnitPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[UnitPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: UnitPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -241,6 +267,8 @@ class UnitPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[UnitPriceInvoicingCycleConfiguration] = None
 
     item: UnitPriceItem
 
@@ -285,6 +313,12 @@ class PackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class PackagePriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class PackagePriceItem(BaseModel):
@@ -332,7 +366,7 @@ class PackagePrice(BaseModel):
 
     billable_metric: Optional[PackagePriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[PackagePriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: PackagePriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -349,6 +383,8 @@ class PackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[PackagePriceInvoicingCycleConfiguration] = None
 
     item: PackagePriceItem
 
@@ -393,6 +429,12 @@ class MatrixPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class MatrixPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class MatrixPriceItem(BaseModel):
@@ -451,7 +493,7 @@ class MatrixPrice(BaseModel):
 
     billable_metric: Optional[MatrixPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[MatrixPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: MatrixPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -468,6 +510,8 @@ class MatrixPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[MatrixPriceInvoicingCycleConfiguration] = None
 
     item: MatrixPriceItem
 
@@ -512,6 +556,12 @@ class TieredPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class TieredPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredPriceItem(BaseModel):
@@ -563,7 +613,7 @@ class TieredPrice(BaseModel):
 
     billable_metric: Optional[TieredPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -580,6 +630,8 @@ class TieredPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredPriceInvoicingCycleConfiguration] = None
 
     item: TieredPriceItem
 
@@ -624,6 +676,12 @@ class TieredBpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class TieredBpsPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class TieredBpsPriceItem(BaseModel):
@@ -681,7 +739,7 @@ class TieredBpsPrice(BaseModel):
 
     billable_metric: Optional[TieredBpsPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredBpsPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredBpsPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -698,6 +756,8 @@ class TieredBpsPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredBpsPriceInvoicingCycleConfiguration] = None
 
     item: TieredBpsPriceItem
 
@@ -752,6 +812,12 @@ class BpsPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class BpsPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BpsPriceItem(BaseModel):
     id: str
 
@@ -785,7 +851,7 @@ class BpsPrice(BaseModel):
 
     billable_metric: Optional[BpsPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[BpsPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: BpsPriceBillingCycleConfiguration
 
     bps_config: BpsPriceBpsConfig
 
@@ -804,6 +870,8 @@ class BpsPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BpsPriceInvoicingCycleConfiguration] = None
 
     item: BpsPriceItem
 
@@ -867,6 +935,12 @@ class BulkBpsPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class BulkBpsPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkBpsPriceItem(BaseModel):
     id: str
 
@@ -900,7 +974,7 @@ class BulkBpsPrice(BaseModel):
 
     billable_metric: Optional[BulkBpsPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[BulkBpsPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: BulkBpsPriceBillingCycleConfiguration
 
     bulk_bps_config: BulkBpsPriceBulkBpsConfig
 
@@ -919,6 +993,8 @@ class BulkBpsPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BulkBpsPriceInvoicingCycleConfiguration] = None
 
     item: BulkBpsPriceItem
 
@@ -976,6 +1052,12 @@ class BulkPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class BulkPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkPriceItem(BaseModel):
     id: str
 
@@ -1009,7 +1091,7 @@ class BulkPrice(BaseModel):
 
     billable_metric: Optional[BulkPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[BulkPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: BulkPriceBillingCycleConfiguration
 
     bulk_config: BulkPriceBulkConfig
 
@@ -1028,6 +1110,8 @@ class BulkPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BulkPriceInvoicingCycleConfiguration] = None
 
     item: BulkPriceItem
 
@@ -1072,6 +1156,12 @@ class ThresholdTotalAmountPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class ThresholdTotalAmountPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ThresholdTotalAmountPriceItem(BaseModel):
     id: str
 
@@ -1105,7 +1195,7 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     billable_metric: Optional[ThresholdTotalAmountPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[ThresholdTotalAmountPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: ThresholdTotalAmountPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1122,6 +1212,8 @@ class ThresholdTotalAmountPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[ThresholdTotalAmountPriceInvoicingCycleConfiguration] = None
 
     item: ThresholdTotalAmountPriceItem
 
@@ -1168,6 +1260,12 @@ class TieredPackagePriceCreditAllocation(BaseModel):
     currency: str
 
 
+class TieredPackagePriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackagePriceItem(BaseModel):
     id: str
 
@@ -1201,7 +1299,7 @@ class TieredPackagePrice(BaseModel):
 
     billable_metric: Optional[TieredPackagePriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredPackagePriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredPackagePriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1218,6 +1316,8 @@ class TieredPackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredPackagePriceInvoicingCycleConfiguration] = None
 
     item: TieredPackagePriceItem
 
@@ -1264,6 +1364,12 @@ class GroupedTieredPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class GroupedTieredPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedTieredPriceItem(BaseModel):
     id: str
 
@@ -1297,7 +1403,7 @@ class GroupedTieredPrice(BaseModel):
 
     billable_metric: Optional[GroupedTieredPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[GroupedTieredPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: GroupedTieredPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1316,6 +1422,8 @@ class GroupedTieredPrice(BaseModel):
     fixed_price_quantity: Optional[float] = None
 
     grouped_tiered_config: Dict[str, object]
+
+    invoicing_cycle_configuration: Optional[GroupedTieredPriceInvoicingCycleConfiguration] = None
 
     item: GroupedTieredPriceItem
 
@@ -1360,6 +1468,12 @@ class TieredWithMinimumPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class TieredWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithMinimumPriceItem(BaseModel):
     id: str
 
@@ -1393,7 +1507,7 @@ class TieredWithMinimumPrice(BaseModel):
 
     billable_metric: Optional[TieredWithMinimumPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredWithMinimumPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredWithMinimumPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1410,6 +1524,8 @@ class TieredWithMinimumPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredWithMinimumPriceInvoicingCycleConfiguration] = None
 
     item: TieredWithMinimumPriceItem
 
@@ -1456,6 +1572,12 @@ class TieredPackageWithMinimumPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class TieredPackageWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackageWithMinimumPriceItem(BaseModel):
     id: str
 
@@ -1489,7 +1611,7 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     billable_metric: Optional[TieredPackageWithMinimumPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredPackageWithMinimumPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredPackageWithMinimumPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1506,6 +1628,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredPackageWithMinimumPriceInvoicingCycleConfiguration] = None
 
     item: TieredPackageWithMinimumPriceItem
 
@@ -1552,6 +1676,12 @@ class PackageWithAllocationPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class PackageWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class PackageWithAllocationPriceItem(BaseModel):
     id: str
 
@@ -1585,7 +1715,7 @@ class PackageWithAllocationPrice(BaseModel):
 
     billable_metric: Optional[PackageWithAllocationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[PackageWithAllocationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: PackageWithAllocationPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1602,6 +1732,8 @@ class PackageWithAllocationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[PackageWithAllocationPriceInvoicingCycleConfiguration] = None
 
     item: PackageWithAllocationPriceItem
 
@@ -1648,6 +1780,12 @@ class UnitWithPercentPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class UnitWithPercentPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithPercentPriceItem(BaseModel):
     id: str
 
@@ -1681,7 +1819,7 @@ class UnitWithPercentPrice(BaseModel):
 
     billable_metric: Optional[UnitWithPercentPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[UnitWithPercentPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: UnitWithPercentPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1698,6 +1836,8 @@ class UnitWithPercentPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[UnitWithPercentPriceInvoicingCycleConfiguration] = None
 
     item: UnitWithPercentPriceItem
 
@@ -1742,6 +1882,12 @@ class MatrixWithAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+
+class MatrixWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
 
 
 class MatrixWithAllocationPriceItem(BaseModel):
@@ -1803,7 +1949,7 @@ class MatrixWithAllocationPrice(BaseModel):
 
     billable_metric: Optional[MatrixWithAllocationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[MatrixWithAllocationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: MatrixWithAllocationPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1820,6 +1966,8 @@ class MatrixWithAllocationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[MatrixWithAllocationPriceInvoicingCycleConfiguration] = None
 
     item: MatrixWithAllocationPriceItem
 
@@ -1866,6 +2014,12 @@ class TieredWithProrationPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class TieredWithProrationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithProrationPriceItem(BaseModel):
     id: str
 
@@ -1899,7 +2053,7 @@ class TieredWithProrationPrice(BaseModel):
 
     billable_metric: Optional[TieredWithProrationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[TieredWithProrationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: TieredWithProrationPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1916,6 +2070,8 @@ class TieredWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[TieredWithProrationPriceInvoicingCycleConfiguration] = None
 
     item: TieredWithProrationPriceItem
 
@@ -1962,6 +2118,12 @@ class UnitWithProrationPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class UnitWithProrationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithProrationPriceItem(BaseModel):
     id: str
 
@@ -1995,7 +2157,7 @@ class UnitWithProrationPrice(BaseModel):
 
     billable_metric: Optional[UnitWithProrationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[UnitWithProrationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: UnitWithProrationPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -2012,6 +2174,8 @@ class UnitWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[UnitWithProrationPriceInvoicingCycleConfiguration] = None
 
     item: UnitWithProrationPriceItem
 
@@ -2058,6 +2222,12 @@ class GroupedAllocationPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class GroupedAllocationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedAllocationPriceItem(BaseModel):
     id: str
 
@@ -2091,7 +2261,7 @@ class GroupedAllocationPrice(BaseModel):
 
     billable_metric: Optional[GroupedAllocationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[GroupedAllocationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: GroupedAllocationPriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -2110,6 +2280,8 @@ class GroupedAllocationPrice(BaseModel):
     fixed_price_quantity: Optional[float] = None
 
     grouped_allocation_config: Dict[str, object]
+
+    invoicing_cycle_configuration: Optional[GroupedAllocationPriceInvoicingCycleConfiguration] = None
 
     item: GroupedAllocationPriceItem
 
@@ -2154,6 +2326,12 @@ class BulkWithProrationPriceCreditAllocation(BaseModel):
     currency: str
 
 
+class BulkWithProrationPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkWithProrationPriceItem(BaseModel):
     id: str
 
@@ -2187,7 +2365,7 @@ class BulkWithProrationPrice(BaseModel):
 
     billable_metric: Optional[BulkWithProrationPriceBillableMetric] = None
 
-    billing_cycle_configuration: Optional[BulkWithProrationPriceBillingCycleConfiguration] = None
+    billing_cycle_configuration: BulkWithProrationPriceBillingCycleConfiguration
 
     bulk_with_proration_config: Dict[str, object]
 
@@ -2206,6 +2384,8 @@ class BulkWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BulkWithProrationPriceInvoicingCycleConfiguration] = None
 
     item: BulkWithProrationPriceItem
 
