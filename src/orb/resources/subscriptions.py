@@ -1624,7 +1624,8 @@ class Subscriptions(SyncAPIResource):
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
 
-        If there are no updates scheduled, this endpoint is a no-op.
+        If there are no updates scheduled, a request validation error will be returned
+        with a 400 status code.
 
         Args:
           price_id: Price for which the updates should be cleared. Must be a fixed fee.
@@ -3358,7 +3359,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
 
-        If there are no updates scheduled, this endpoint is a no-op.
+        If there are no updates scheduled, a request validation error will be returned
+        with a 400 status code.
 
         Args:
           price_id: Price for which the updates should be cleared. Must be a fixed fee.
