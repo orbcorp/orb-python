@@ -477,12 +477,33 @@ class Subscriptions(SyncAPIResource):
         $10.00 for a subscription that invoices in USD.
 
         Args:
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. If not specified, this
+              defaults to the behavior configured for this customer.
+
+          coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
+              by its redemption code, or cannot be redeemed, an error response will be
+              returned and the subscription creation or plan change will not be scheduled.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
+
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
+
+          initial_phase_order: The phase of the plan to start with
+
+          invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
+              be issued for the subscription. If not specified, invoices will only be issued
+              at the end of the billing period.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: The net terms determines the difference between the invoice date and the issue
+              date for the invoice. If you intend the invoice to be due on issue, set this
+              to 0. If not provided, this defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -1377,14 +1398,17 @@ class Subscriptions(SyncAPIResource):
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
@@ -1448,6 +1472,10 @@ class Subscriptions(SyncAPIResource):
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. If not specified, this
+              defaults to the behavior configured for this customer.
+
           billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
@@ -1457,7 +1485,10 @@ class Subscriptions(SyncAPIResource):
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
-              returned and the plan change will not be scheduled.
+              returned and the subscription creation or plan change will not be scheduled.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
 
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
@@ -1467,6 +1498,10 @@ class Subscriptions(SyncAPIResource):
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
               be issued for the subscription. If not specified, invoices will only be issued
               at the end of the billing period.
+
+          net_terms: The net terms determines the difference between the invoice date and the issue
+              date for the invoice. If you intend the invoice to be due on issue, set this
+              to 0. If not provided, this defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -1491,13 +1526,16 @@ class Subscriptions(SyncAPIResource):
                 {
                     "change_option": change_option,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
+                    "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
                     "change_date": change_date,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
+                    "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
+                    "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
@@ -2212,12 +2250,33 @@ class AsyncSubscriptions(AsyncAPIResource):
         $10.00 for a subscription that invoices in USD.
 
         Args:
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. If not specified, this
+              defaults to the behavior configured for this customer.
+
+          coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
+              by its redemption code, or cannot be redeemed, an error response will be
+              returned and the subscription creation or plan change will not be scheduled.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
+
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
+
+          initial_phase_order: The phase of the plan to start with
+
+          invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
+              be issued for the subscription. If not specified, invoices will only be issued
+              at the end of the billing period.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: The net terms determines the difference between the invoice date and the issue
+              date for the invoice. If you intend the invoice to be due on issue, set this
+              to 0. If not provided, this defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -3112,14 +3171,17 @@ class AsyncSubscriptions(AsyncAPIResource):
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
@@ -3183,6 +3245,10 @@ class AsyncSubscriptions(AsyncAPIResource):
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
+          auto_collection: Determines whether issued invoices for this subscription will automatically be
+              charged with the saved payment method on the due date. If not specified, this
+              defaults to the behavior configured for this customer.
+
           billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
@@ -3192,7 +3258,10 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
-              returned and the plan change will not be scheduled.
+              returned and the subscription creation or plan change will not be scheduled.
+
+          default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
+              is not provided, it is determined by the plan configuration.
 
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
@@ -3202,6 +3271,10 @@ class AsyncSubscriptions(AsyncAPIResource):
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
               be issued for the subscription. If not specified, invoices will only be issued
               at the end of the billing period.
+
+          net_terms: The net terms determines the difference between the invoice date and the issue
+              date for the invoice. If you intend the invoice to be due on issue, set this
+              to 0. If not provided, this defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -3226,13 +3299,16 @@ class AsyncSubscriptions(AsyncAPIResource):
                 {
                     "change_option": change_option,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
+                    "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
                     "change_date": change_date,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
+                    "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
+                    "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,

@@ -68,6 +68,13 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     Reset billing periods to be aligned with the plan change's effective date.
     """
 
+    auto_collection: Optional[bool]
+    """
+    Determines whether issued invoices for this subscription will automatically be
+    charged with the saved payment method on the due date. If not specified, this
+    defaults to the behavior configured for this customer.
+    """
+
     billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
     """
     Reset billing periods to be aligned with the plan change's effective date or
@@ -85,10 +92,17 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     """Redemption code to be used for this subscription.
 
     If the coupon cannot be found by its redemption code, or cannot be redeemed, an
-    error response will be returned and the plan change will not be scheduled.
+    error response will be returned and the subscription creation or plan change
+    will not be scheduled.
     """
 
     credits_overage_rate: Optional[float]
+
+    default_invoice_memo: Optional[str]
+    """Determines the default memo on this subscription's invoices.
+
+    Note that if this is not provided, it is determined by the plan configuration.
+    """
 
     external_plan_id: Optional[str]
     """
@@ -104,6 +118,13 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     When this subscription's accrued usage reaches this threshold, an invoice will
     be issued for the subscription. If not specified, invoices will only be issued
     at the end of the billing period.
+    """
+
+    net_terms: Optional[int]
+    """
+    The net terms determines the difference between the invoice date and the issue
+    date for the invoice. If you intend the invoice to be due on issue, set this
+    to 0. If not provided, this defaults to the value specified in the plan.
     """
 
     per_credit_overage_amount: Optional[float]

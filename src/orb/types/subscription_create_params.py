@@ -64,18 +64,33 @@ class SubscriptionCreateParams(TypedDict, total=False):
     align_billing_with_subscription_start_date: bool
 
     auto_collection: Optional[bool]
+    """
+    Determines whether issued invoices for this subscription will automatically be
+    charged with the saved payment method on the due date. If not specified, this
+    defaults to the behavior configured for this customer.
+    """
 
     aws_region: Optional[str]
 
     billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
 
     coupon_redemption_code: Optional[str]
+    """Redemption code to be used for this subscription.
+
+    If the coupon cannot be found by its redemption code, or cannot be redeemed, an
+    error response will be returned and the subscription creation or plan change
+    will not be scheduled.
+    """
 
     credits_overage_rate: Optional[float]
 
     customer_id: Optional[str]
 
     default_invoice_memo: Optional[str]
+    """Determines the default memo on this subscription's invoices.
+
+    Note that if this is not provided, it is determined by the plan configuration.
+    """
 
     end_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
 
@@ -92,8 +107,14 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """
 
     initial_phase_order: Optional[int]
+    """The phase of the plan to start with"""
 
     invoicing_threshold: Optional[str]
+    """
+    When this subscription's accrued usage reaches this threshold, an invoice will
+    be issued for the subscription. If not specified, invoices will only be issued
+    at the end of the billing period.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -103,6 +124,11 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """
 
     net_terms: Optional[int]
+    """
+    The net terms determines the difference between the invoice date and the issue
+    date for the invoice. If you intend the invoice to be due on issue, set this
+    to 0. If not provided, this defaults to the value specified in the plan.
+    """
 
     per_credit_overage_amount: Optional[float]
 
