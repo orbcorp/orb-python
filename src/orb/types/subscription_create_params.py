@@ -57,6 +57,10 @@ __all__ = [
     "PriceOverrideOverrideGroupedWithProratedMinimumPriceDiscount",
     "PriceOverrideOverrideBulkWithProrationPrice",
     "PriceOverrideOverrideBulkWithProrationPriceDiscount",
+    "PriceOverrideOverrideUnitWithProrationPrice",
+    "PriceOverrideOverrideUnitWithProrationPriceDiscount",
+    "PriceOverrideOverrideTieredWithProrationPrice",
+    "PriceOverrideOverrideTieredWithProrationPriceDiscount",
 ]
 
 
@@ -1198,6 +1202,120 @@ class PriceOverrideOverrideBulkWithProrationPrice(TypedDict, total=False):
     """The subscription's override minimum amount for the plan."""
 
 
+class PriceOverrideOverrideUnitWithProrationPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
+class PriceOverrideOverrideUnitWithProrationPrice(TypedDict, total=False):
+    id: Required[str]
+
+    model_type: Required[Literal["unit_with_proration"]]
+
+    unit_with_proration_config: Required[Dict[str, object]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
+    discount: Optional[PriceOverrideOverrideUnitWithProrationPriceDiscount]
+    """The subscription's override discount for the plan."""
+
+    fixed_price_quantity: Optional[float]
+    """The starting quantity of the price, if the price is a fixed price."""
+
+    maximum_amount: Optional[str]
+    """The subscription's override maximum amount for the plan."""
+
+    minimum_amount: Optional[str]
+    """The subscription's override minimum amount for the plan."""
+
+
+class PriceOverrideOverrideTieredWithProrationPriceDiscount(TypedDict, total=False):
+    discount_type: Required[Literal["percentage", "trial", "usage", "amount"]]
+
+    amount_discount: Optional[str]
+    """Only available if discount_type is `amount`."""
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
+    """
+
+    percentage_discount: Optional[float]
+    """Only available if discount_type is `percentage`.
+
+    This is a number between 0 and 1.
+    """
+
+    trial_amount_discount: Optional[str]
+    """Only available if discount_type is `trial`"""
+
+    usage_discount: Optional[float]
+    """Only available if discount_type is `usage`.
+
+    Number of usage units that this discount is for
+    """
+
+
+class PriceOverrideOverrideTieredWithProrationPrice(TypedDict, total=False):
+    id: Required[str]
+
+    model_type: Required[Literal["tiered_with_proration"]]
+
+    tiered_with_proration_config: Required[Dict[str, object]]
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """The currency of the price.
+
+    If not provided, the currency of the plan will be used.
+    """
+
+    discount: Optional[PriceOverrideOverrideTieredWithProrationPriceDiscount]
+    """The subscription's override discount for the plan."""
+
+    fixed_price_quantity: Optional[float]
+    """The starting quantity of the price, if the price is a fixed price."""
+
+    maximum_amount: Optional[str]
+    """The subscription's override maximum amount for the plan."""
+
+    minimum_amount: Optional[str]
+    """The subscription's override minimum amount for the plan."""
+
+
 PriceOverride: TypeAlias = Union[
     PriceOverrideOverrideUnitPrice,
     PriceOverrideOverridePackagePrice,
@@ -1215,4 +1333,6 @@ PriceOverride: TypeAlias = Union[
     PriceOverrideOverrideGroupedAllocationPrice,
     PriceOverrideOverrideGroupedWithProratedMinimumPrice,
     PriceOverrideOverrideBulkWithProrationPrice,
+    PriceOverrideOverrideUnitWithProrationPrice,
+    PriceOverrideOverrideTieredWithProrationPrice,
 ]
