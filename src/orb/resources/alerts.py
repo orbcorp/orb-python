@@ -34,10 +34,21 @@ __all__ = ["Alerts", "AsyncAlerts"]
 class Alerts(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AlertsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AlertsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AlertsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AlertsWithStreamingResponse(self)
 
     def retrieve(
@@ -504,10 +515,21 @@ class Alerts(SyncAPIResource):
 class AsyncAlerts(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAlertsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAlertsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAlertsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncAlertsWithStreamingResponse(self)
 
     async def retrieve(

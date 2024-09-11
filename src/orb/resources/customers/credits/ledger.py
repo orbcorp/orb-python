@@ -39,10 +39,21 @@ __all__ = ["Ledger", "AsyncLedger"]
 class Ledger(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> LedgerWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return LedgerWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> LedgerWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return LedgerWithStreamingResponse(self)
 
     def list(
@@ -2157,10 +2168,21 @@ class Ledger(SyncAPIResource):
 class AsyncLedger(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncLedgerWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncLedgerWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncLedgerWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncLedgerWithStreamingResponse(self)
 
     def list(

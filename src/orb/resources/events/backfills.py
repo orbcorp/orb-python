@@ -31,10 +31,21 @@ __all__ = ["Backfills", "AsyncBackfills"]
 class Backfills(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BackfillsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return BackfillsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> BackfillsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return BackfillsWithStreamingResponse(self)
 
     def create(
@@ -328,10 +339,21 @@ class Backfills(SyncAPIResource):
 class AsyncBackfills(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncBackfillsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncBackfillsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncBackfillsWithStreamingResponse(self)
 
     async def create(
