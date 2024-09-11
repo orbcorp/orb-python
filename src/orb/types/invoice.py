@@ -897,6 +897,11 @@ class Invoice(BaseModel):
     """
 
     discount: Optional[Discount] = None
+    """This field is deprecated in favor of `discounts`.
+
+    If a `discounts` list is provided, the first discount in the list will be
+    returned. If the list is empty, `None` will be returned.
+    """
 
     discounts: List[Discount]
 
