@@ -18,10 +18,21 @@ __all__ = ["TopLevel", "AsyncTopLevel"]
 class TopLevel(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TopLevelWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return TopLevelWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TopLevelWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return TopLevelWithStreamingResponse(self)
 
     def ping(
@@ -54,10 +65,21 @@ class TopLevel(SyncAPIResource):
 class AsyncTopLevel(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTopLevelWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTopLevelWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTopLevelWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncTopLevelWithStreamingResponse(self)
 
     async def ping(

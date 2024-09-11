@@ -48,10 +48,21 @@ class Credits(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> CreditsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return CreditsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CreditsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return CreditsWithStreamingResponse(self)
 
     def list(
@@ -192,10 +203,21 @@ class AsyncCredits(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncCreditsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCreditsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCreditsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncCreditsWithStreamingResponse(self)
 
     def list(

@@ -38,10 +38,21 @@ class Coupons(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> CouponsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return CouponsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CouponsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return CouponsWithStreamingResponse(self)
 
     def create(
@@ -252,10 +263,21 @@ class AsyncCoupons(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncCouponsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCouponsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCouponsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncCouponsWithStreamingResponse(self)
 
     async def create(

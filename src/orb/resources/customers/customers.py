@@ -70,10 +70,21 @@ class Customers(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> CustomersWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return CustomersWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CustomersWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return CustomersWithStreamingResponse(self)
 
     def create(
@@ -952,10 +963,21 @@ class AsyncCustomers(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncCustomersWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCustomersWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCustomersWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncCustomersWithStreamingResponse(self)
 
     async def create(

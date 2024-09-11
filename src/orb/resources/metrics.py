@@ -27,10 +27,21 @@ __all__ = ["Metrics", "AsyncMetrics"]
 class Metrics(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MetricsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return MetricsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> MetricsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return MetricsWithStreamingResponse(self)
 
     def create(
@@ -246,10 +257,21 @@ class Metrics(SyncAPIResource):
 class AsyncMetrics(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncMetricsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncMetricsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncMetricsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncMetricsWithStreamingResponse(self)
 
     async def create(
