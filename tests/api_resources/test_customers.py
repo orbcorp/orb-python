@@ -166,6 +166,12 @@ class TestCustomers:
                 "postal_code": "postal_code",
                 "state": "state",
             },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+                "tax_exemption_name": "tax_exemption_name",
+            },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
@@ -411,6 +417,12 @@ class TestCustomers:
                 "postal_code": "postal_code",
                 "state": "state",
             },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+                "tax_exemption_name": "tax_exemption_name",
+            },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
@@ -599,6 +611,12 @@ class TestAsyncCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+                "tax_exemption_name": "tax_exemption_name",
             },
             tax_id={
                 "country": "AD",
@@ -844,6 +862,12 @@ class TestAsyncCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+                "tax_exemption_name": "tax_exemption_name",
             },
             tax_id={
                 "country": "AD",
