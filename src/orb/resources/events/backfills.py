@@ -112,13 +112,15 @@ class Backfills(SyncAPIResource):
               backfill will automatically begin reflecting throughout Orb at the close time.
               If not specified, it will default to 1 day after the creation of the backfill.
 
-          customer_id: The ID of the customer to which this backfill is scoped.
+          customer_id: The Orb-generated ID of the customer to which this backfill is scoped. Omitting
+              this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
               [computed property](../guides/extensibility/advanced-metrics#computed-properties)
               used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
+              Omitting this field will scope the backfill to all customers.
 
           replace_existing_events: If true, replaces all existing events in the timeframe with the newly ingested
               events. If false, adds the newly ingested events to the existing events.
@@ -420,13 +422,15 @@ class AsyncBackfills(AsyncAPIResource):
               backfill will automatically begin reflecting throughout Orb at the close time.
               If not specified, it will default to 1 day after the creation of the backfill.
 
-          customer_id: The ID of the customer to which this backfill is scoped.
+          customer_id: The Orb-generated ID of the customer to which this backfill is scoped. Omitting
+              this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
               [computed property](../guides/extensibility/advanced-metrics#computed-properties)
               used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
+              Omitting this field will scope the backfill to all customers.
 
           replace_existing_events: If true, replaces all existing events in the timeframe with the newly ingested
               events. If false, adds the newly ingested events to the existing events.

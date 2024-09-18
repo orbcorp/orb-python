@@ -234,6 +234,10 @@ class Invoices(SyncAPIResource):
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
 
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
@@ -710,6 +714,10 @@ class AsyncInvoices(AsyncAPIResource):
         the next page of results if they exist.
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
+
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned

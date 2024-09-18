@@ -27,7 +27,10 @@ class BackfillCreateParams(TypedDict, total=False):
     """
 
     customer_id: Optional[str]
-    """The ID of the customer to which this backfill is scoped."""
+    """The Orb-generated ID of the customer to which this backfill is scoped.
+
+    Omitting this field will scope the backfill to all customers.
+    """
 
     deprecation_filter: Optional[str]
     """
@@ -37,7 +40,10 @@ class BackfillCreateParams(TypedDict, total=False):
     """
 
     external_customer_id: Optional[str]
-    """The external customer ID of the customer to which this backfill is scoped."""
+    """The external customer ID of the customer to which this backfill is scoped.
+
+    Omitting this field will scope the backfill to all customers.
+    """
 
     replace_existing_events: bool
     """
