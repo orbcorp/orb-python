@@ -245,8 +245,6 @@ class Customer(BaseModel):
 
     email_delivery: bool
 
-    exempt_from_automated_tax: Optional[bool] = None
-
     external_customer_id: Optional[str] = None
     """
     An optional user-defined ID for this customer resource, used throughout the
