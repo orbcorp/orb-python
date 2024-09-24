@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Union, Optional, cast, overload
+from typing import Any, Dict, Union, Optional, cast
 from datetime import date, datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, overload
 
 import httpx
 
