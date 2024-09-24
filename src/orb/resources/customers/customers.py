@@ -106,6 +106,7 @@ class Customers(SyncAPIResource):
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
         reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -300,6 +301,7 @@ class Customers(SyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                     "timezone": timezone,
                 },
@@ -335,6 +337,7 @@ class Customers(SyncAPIResource):
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
         reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -520,6 +523,7 @@ class Customers(SyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                 },
                 customer_update_params.CustomerUpdateParams,
@@ -749,6 +753,7 @@ class Customers(SyncAPIResource):
         reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
         | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -933,6 +938,7 @@ class Customers(SyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                 },
                 customer_update_by_external_id_params.CustomerUpdateByExternalIDParams,
@@ -999,6 +1005,7 @@ class AsyncCustomers(AsyncAPIResource):
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
         reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1193,6 +1200,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                     "timezone": timezone,
                 },
@@ -1228,6 +1236,7 @@ class AsyncCustomers(AsyncAPIResource):
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
         reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1413,6 +1422,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                 },
                 customer_update_params.CustomerUpdateParams,
@@ -1642,6 +1652,7 @@ class AsyncCustomers(AsyncAPIResource):
         reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
         | NotGiven = NOT_GIVEN,
         shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
         tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1826,6 +1837,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
                     "shipping_address": shipping_address,
+                    "tax_configuration": tax_configuration,
                     "tax_id": tax_id,
                 },
                 customer_update_by_external_id_params.CustomerUpdateByExternalIDParams,
