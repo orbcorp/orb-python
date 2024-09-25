@@ -5,9 +5,10 @@ from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from .price import Price
-from .shared import discount as _discount
 from .._utils import PropertyInfo
 from .._models import BaseModel
+from .shared.discount import Discount
+from .shared.invoice_level_discount import InvoiceLevelDiscount
 
 __all__ = [
     "InvoiceFetchUpcomingResponse",
@@ -19,10 +20,6 @@ __all__ = [
     "CustomerBalanceTransactionCreditNote",
     "CustomerBalanceTransactionInvoice",
     "CustomerTaxID",
-    "Discount",
-    "DiscountPercentageDiscount",
-    "DiscountAmountDiscount",
-    "DiscountTrialDiscount",
     "LineItem",
     "LineItemMaximum",
     "LineItemMinimum",
@@ -321,63 +318,6 @@ class CustomerTaxID(BaseModel):
     value: str
 
 
-class DiscountPercentageDiscount(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    discount_type: Literal["percentage"]
-
-    percentage_discount: float
-    """Only available if discount_type is `percentage`.
-
-    This is a number between 0 and 1.
-    """
-
-    reason: Optional[str] = None
-
-
-class DiscountAmountDiscount(BaseModel):
-    amount_discount: str
-    """Only available if discount_type is `amount`."""
-
-    applies_to_price_ids: List[str]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    discount_type: Literal["amount"]
-
-    reason: Optional[str] = None
-
-
-class DiscountTrialDiscount(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    discount_type: Literal["trial"]
-
-    reason: Optional[str] = None
-
-    trial_amount_discount: Optional[str] = None
-    """Only available if discount_type is `trial`"""
-
-    trial_percentage_discount: Optional[float] = None
-    """Only available if discount_type is `trial`"""
-
-
-Discount: TypeAlias = Annotated[
-    Union[DiscountPercentageDiscount, DiscountAmountDiscount, DiscountTrialDiscount, None],
-    PropertyInfo(discriminator="discount_type"),
-]
-
-
 class LineItemMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -503,7 +443,7 @@ class LineItem(BaseModel):
     amount: str
     """The final amount after any discounts or minimums."""
 
-    discount: Optional[_discount.Discount] = None
+    discount: Optional[Discount] = None
 
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
@@ -957,14 +897,14 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
     """
 
-    discount: Optional[Discount] = None
+    discount: Optional[InvoiceLevelDiscount] = None
     """This field is deprecated in favor of `discounts`.
 
     If a `discounts` list is provided, the first discount in the list will be
     returned. If the list is empty, `None` will be returned.
     """
 
-    discounts: List[Discount]
+    discounts: List[InvoiceLevelDiscount]
 
     due_date: datetime
     """When the invoice payment is due."""

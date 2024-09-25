@@ -1,51 +1,17 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from typing import Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
 from .._utils import PropertyInfo
 from .._models import BaseModel
+from .shared.amount_discount import AmountDiscount
+from .shared.percentage_discount import PercentageDiscount
 
-__all__ = ["Coupon", "Discount", "DiscountPercentageDiscount", "DiscountAmountDiscount"]
+__all__ = ["Coupon", "Discount"]
 
-
-class DiscountPercentageDiscount(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    discount_type: Literal["percentage"]
-
-    percentage_discount: float
-    """Only available if discount_type is `percentage`.
-
-    This is a number between 0 and 1.
-    """
-
-    reason: Optional[str] = None
-
-
-class DiscountAmountDiscount(BaseModel):
-    amount_discount: str
-    """Only available if discount_type is `amount`."""
-
-    applies_to_price_ids: List[str]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
-    discount_type: Literal["amount"]
-
-    reason: Optional[str] = None
-
-
-Discount: TypeAlias = Annotated[
-    Union[DiscountPercentageDiscount, DiscountAmountDiscount], PropertyInfo(discriminator="discount_type")
-]
+Discount: TypeAlias = Annotated[Union[PercentageDiscount, AmountDiscount], PropertyInfo(discriminator="discount_type")]
 
 
 class Coupon(BaseModel):

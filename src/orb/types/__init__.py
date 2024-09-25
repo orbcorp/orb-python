@@ -9,7 +9,11 @@ from .price import Price as Price
 from .coupon import Coupon as Coupon
 from .shared import (
     Discount as Discount,
+    TrialDiscount as TrialDiscount,
+    AmountDiscount as AmountDiscount,
     PaginationMetadata as PaginationMetadata,
+    PercentageDiscount as PercentageDiscount,
+    InvoiceLevelDiscount as InvoiceLevelDiscount,
     BillingCycleRelativeDate as BillingCycleRelativeDate,
 )
 from .invoice import Invoice as Invoice
