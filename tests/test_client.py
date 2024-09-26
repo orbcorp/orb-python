@@ -766,7 +766,7 @@ class TestOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        response = client.customers.with_raw_response.create(email="email", name="x")
+        response = client.customers.with_raw_response.create(email="dev@stainlessapi.com", name="x")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -789,7 +789,7 @@ class TestOrb:
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
         response = client.customers.with_raw_response.create(
-            email="email", name="x", extra_headers={"x-stainless-retry-count": Omit()}
+            email="dev@stainlessapi.com", name="x", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -814,7 +814,7 @@ class TestOrb:
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
         response = client.customers.with_raw_response.create(
-            email="email", name="x", extra_headers={"x-stainless-retry-count": "42"}
+            email="dev@stainlessapi.com", name="x", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -838,7 +838,7 @@ class TestOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        with client.customers.with_streaming_response.create(email="email", name="x") as response:
+        with client.customers.with_streaming_response.create(email="dev@stainlessapi.com", name="x") as response:
             assert response.retries_taken == failures_before_success
             assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
@@ -1581,7 +1581,7 @@ class TestAsyncOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        response = await client.customers.with_raw_response.create(email="email", name="x")
+        response = await client.customers.with_raw_response.create(email="dev@stainlessapi.com", name="x")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1607,7 +1607,7 @@ class TestAsyncOrb:
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
         response = await client.customers.with_raw_response.create(
-            email="email", name="x", extra_headers={"x-stainless-retry-count": Omit()}
+            email="dev@stainlessapi.com", name="x", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1633,7 +1633,7 @@ class TestAsyncOrb:
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
         response = await client.customers.with_raw_response.create(
-            email="email", name="x", extra_headers={"x-stainless-retry-count": "42"}
+            email="dev@stainlessapi.com", name="x", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1658,6 +1658,6 @@ class TestAsyncOrb:
 
         respx_mock.post("/customers").mock(side_effect=retry_handler)
 
-        async with client.customers.with_streaming_response.create(email="email", name="x") as response:
+        async with client.customers.with_streaming_response.create(email="dev@stainlessapi.com", name="x") as response:
             assert response.retries_taken == failures_before_success
             assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
