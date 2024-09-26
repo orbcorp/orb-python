@@ -1432,6 +1432,9 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -1447,6 +1450,13 @@ class Subscriptions(SyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1504,6 +1514,10 @@ class Subscriptions(SyncAPIResource):
         [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
 
         Args:
+          add_adjustments: Additional adjustments to be added to the subscription
+
+          add_prices: Additional prices to be added to the subscription
+
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
@@ -1543,6 +1557,14 @@ class Subscriptions(SyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
+          remove_adjustments: Plan adjustments to be removed from the subscription
+
+          remove_prices: Plan prices to be removed from the subscription
+
+          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
+
+          replace_prices: Plan prices to be replaced with additional prices on the subscription
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1560,6 +1582,8 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "change_option": change_option,
+                    "add_adjustments": add_adjustments,
+                    "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
@@ -1574,6 +1598,10 @@ class Subscriptions(SyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
+                    "remove_adjustments": remove_adjustments,
+                    "remove_prices": remove_prices,
+                    "replace_adjustments": replace_adjustments,
+                    "replace_prices": replace_prices,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
@@ -3240,6 +3268,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -3255,6 +3286,13 @@ class AsyncSubscriptions(AsyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3312,6 +3350,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
 
         Args:
+          add_adjustments: Additional adjustments to be added to the subscription
+
+          add_prices: Additional prices to be added to the subscription
+
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
@@ -3351,6 +3393,14 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
+          remove_adjustments: Plan adjustments to be removed from the subscription
+
+          remove_prices: Plan prices to be removed from the subscription
+
+          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
+
+          replace_prices: Plan prices to be replaced with additional prices on the subscription
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3368,6 +3418,8 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "change_option": change_option,
+                    "add_adjustments": add_adjustments,
+                    "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
@@ -3382,6 +3434,10 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
+                    "remove_adjustments": remove_adjustments,
+                    "remove_prices": remove_prices,
+                    "replace_adjustments": replace_adjustments,
+                    "replace_prices": replace_prices,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
