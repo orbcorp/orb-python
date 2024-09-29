@@ -478,6 +478,12 @@ class AddPricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
@@ -571,6 +577,12 @@ class AddPricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -679,6 +691,12 @@ class AddPricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
@@ -776,6 +794,12 @@ class AddPricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -883,6 +907,12 @@ class AddPricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionBpsPriceBpsConfig(TypedDict, total=False):
     bps: Required[float]
@@ -972,6 +1002,12 @@ class AddPricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -1076,6 +1112,12 @@ class AddPricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionBulkPriceBulkConfigTier(TypedDict, total=False):
     unit_amount: Required[str]
@@ -1172,6 +1214,12 @@ class AddPricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -1259,6 +1307,12 @@ class AddPricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total=Fal
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -1340,6 +1394,12 @@ class AddPricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -1427,6 +1487,12 @@ class AddPricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=False)
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -1508,6 +1574,12 @@ class AddPricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -1597,6 +1669,12 @@ class AddPricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, total=Fa
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -1680,6 +1758,12 @@ class AddPricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=False)
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -1767,6 +1851,12 @@ class AddPricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=False)
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -1850,6 +1940,12 @@ class AddPricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=False)
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -1939,6 +2035,12 @@ class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict, tot
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class AddPricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -2022,6 +2124,12 @@ class AddPricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=False)
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -3478,6 +3586,12 @@ class ReplacePricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionPackagePricePackageConfig(TypedDict, total=False):
     package_amount: Required[str]
@@ -3571,6 +3685,12 @@ class ReplacePricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -3679,6 +3799,12 @@ class ReplacePricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
@@ -3776,6 +3902,12 @@ class ReplacePricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -3883,6 +4015,12 @@ class ReplacePricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionBpsPriceBpsConfig(TypedDict, total=False):
     bps: Required[float]
@@ -3972,6 +4110,12 @@ class ReplacePricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -4076,6 +4220,12 @@ class ReplacePricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionBulkPriceBulkConfigTier(TypedDict, total=False):
     unit_amount: Required[str]
@@ -4172,6 +4322,12 @@ class ReplacePricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -4259,6 +4415,12 @@ class ReplacePricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -4342,6 +4504,12 @@ class ReplacePricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False)
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -4431,6 +4599,12 @@ class ReplacePricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=Fa
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -4514,6 +4688,12 @@ class ReplacePricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=Fals
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -4603,6 +4783,12 @@ class ReplacePricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, tota
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -4688,6 +4874,12 @@ class ReplacePricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=Fa
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -4777,6 +4969,12 @@ class ReplacePricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=Fa
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -4862,6 +5060,12 @@ class ReplacePricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=Fa
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -4953,6 +5157,12 @@ class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict,
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 class ReplacePricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
@@ -5040,6 +5250,12 @@ class ReplacePricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=Fa
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
 
 ReplacePricePrice: TypeAlias = Union[
     ReplacePricePriceNewSubscriptionUnitPrice,
@@ -5064,8 +5280,17 @@ ReplacePricePrice: TypeAlias = Union[
 
 
 class ReplacePrice(TypedDict, total=False):
-    price: Required[ReplacePricePrice]
-    """The definition of a new price to create and add to the subscription."""
-
     replaces_price_id: Required[str]
     """The id of the price on the plan to replace in the subscription."""
+
+    external_price_id: Optional[str]
+    """The external price id of the price to add to the subscription."""
+
+    fixed_price_quantity: Optional[float]
+    """The new quantity of the price, if the price is a fixed price."""
+
+    price: Optional[ReplacePricePrice]
+    """The definition of a new price to create and add to the subscription."""
+
+    price_id: Optional[str]
+    """The id of the price to add to the subscription."""
