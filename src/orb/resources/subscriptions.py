@@ -64,8 +64,6 @@ class Subscriptions(SyncAPIResource):
     def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
@@ -87,10 +85,6 @@ class Subscriptions(SyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -494,10 +488,6 @@ class Subscriptions(SyncAPIResource):
         $10.00 for a subscription that invoices in USD.
 
         Args:
-          add_adjustments: Additional adjustments to be added to the subscription
-
-          add_prices: Additional prices to be added to the subscription
-
           auto_collection: Determines whether issued invoices for this subscription will automatically be
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
@@ -531,14 +521,6 @@ class Subscriptions(SyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
-          remove_adjustments: Plan adjustments to be removed from the subscription
-
-          remove_prices: Plan prices to be removed from the subscription
-
-          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
-
-          replace_prices: Plan prices to be replaced with additional prices on the subscription
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -553,8 +535,6 @@ class Subscriptions(SyncAPIResource):
             "/subscriptions",
             body=maybe_transform(
                 {
-                    "add_adjustments": add_adjustments,
-                    "add_prices": add_prices,
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
                     "aws_region": aws_region,
@@ -575,10 +555,6 @@ class Subscriptions(SyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
-                    "remove_adjustments": remove_adjustments,
-                    "remove_prices": remove_prices,
-                    "replace_adjustments": replace_adjustments,
-                    "replace_prices": replace_prices,
                     "start_date": start_date,
                 },
                 subscription_create_params.SubscriptionCreateParams,
@@ -1432,9 +1408,6 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -1450,13 +1423,6 @@ class Subscriptions(SyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
-        | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1514,10 +1480,6 @@ class Subscriptions(SyncAPIResource):
         [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
 
         Args:
-          add_adjustments: Additional adjustments to be added to the subscription
-
-          add_prices: Additional prices to be added to the subscription
-
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
@@ -1557,14 +1519,6 @@ class Subscriptions(SyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
-          remove_adjustments: Plan adjustments to be removed from the subscription
-
-          remove_prices: Plan prices to be removed from the subscription
-
-          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
-
-          replace_prices: Plan prices to be replaced with additional prices on the subscription
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1582,8 +1536,6 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "change_option": change_option,
-                    "add_adjustments": add_adjustments,
-                    "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
@@ -1598,10 +1550,6 @@ class Subscriptions(SyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
-                    "remove_adjustments": remove_adjustments,
-                    "remove_prices": remove_prices,
-                    "replace_adjustments": replace_adjustments,
-                    "replace_prices": replace_prices,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
@@ -1900,8 +1848,6 @@ class AsyncSubscriptions(AsyncAPIResource):
     async def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1923,10 +1869,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2330,10 +2272,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         $10.00 for a subscription that invoices in USD.
 
         Args:
-          add_adjustments: Additional adjustments to be added to the subscription
-
-          add_prices: Additional prices to be added to the subscription
-
           auto_collection: Determines whether issued invoices for this subscription will automatically be
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
@@ -2367,14 +2305,6 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
-          remove_adjustments: Plan adjustments to be removed from the subscription
-
-          remove_prices: Plan prices to be removed from the subscription
-
-          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
-
-          replace_prices: Plan prices to be replaced with additional prices on the subscription
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2389,8 +2319,6 @@ class AsyncSubscriptions(AsyncAPIResource):
             "/subscriptions",
             body=await async_maybe_transform(
                 {
-                    "add_adjustments": add_adjustments,
-                    "add_prices": add_prices,
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
                     "aws_region": aws_region,
@@ -2411,10 +2339,6 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
-                    "remove_adjustments": remove_adjustments,
-                    "remove_prices": remove_prices,
-                    "replace_adjustments": replace_adjustments,
-                    "replace_prices": replace_prices,
                     "start_date": start_date,
                 },
                 subscription_create_params.SubscriptionCreateParams,
@@ -3268,9 +3192,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -3286,13 +3207,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
-        | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3350,10 +3264,6 @@ class AsyncSubscriptions(AsyncAPIResource):
         [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
 
         Args:
-          add_adjustments: Additional adjustments to be added to the subscription
-
-          add_prices: Additional prices to be added to the subscription
-
           align_billing_with_plan_change_date: [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be
               aligned with the plan change's effective date.
 
@@ -3393,14 +3303,6 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           price_overrides: Optionally provide a list of overrides for prices on the plan
 
-          remove_adjustments: Plan adjustments to be removed from the subscription
-
-          remove_prices: Plan prices to be removed from the subscription
-
-          replace_adjustments: Plan adjustments to be replaced with additional adjustments on the subscription
-
-          replace_prices: Plan prices to be replaced with additional prices on the subscription
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3418,8 +3320,6 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "change_option": change_option,
-                    "add_adjustments": add_adjustments,
-                    "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
@@ -3434,10 +3334,6 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
                     "price_overrides": price_overrides,
-                    "remove_adjustments": remove_adjustments,
-                    "remove_prices": remove_prices,
-                    "replace_adjustments": replace_adjustments,
-                    "replace_prices": replace_prices,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
