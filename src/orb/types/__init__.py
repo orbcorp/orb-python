@@ -43,6 +43,7 @@ from .price_update_params import PriceUpdateParams as PriceUpdateParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
+from .invoice_issue_params import InvoiceIssueParams as InvoiceIssueParams
 from .metric_create_params import MetricCreateParams as MetricCreateParams
 from .metric_update_params import MetricUpdateParams as MetricUpdateParams
 from .event_ingest_response import EventIngestResponse as EventIngestResponse
