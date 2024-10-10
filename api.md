@@ -226,7 +226,7 @@ Methods:
 - <code title="get /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">list</a>(\*\*<a href="src/orb/types/invoice_list_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">SyncPage[Invoice]</a></code>
 - <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 - <code title="get /invoices/upcoming">client.invoices.<a href="./src/orb/resources/invoices.py">fetch_upcoming</a>(\*\*<a href="src/orb/types/invoice_fetch_upcoming_params.py">params</a>) -> <a href="./src/orb/types/invoice_fetch_upcoming_response.py">InvoiceFetchUpcomingResponse</a></code>
-- <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
 

@@ -11,6 +11,7 @@ import httpx
 from .. import _legacy_response
 from ..types import (
     invoice_list_params,
+    invoice_issue_params,
     invoice_create_params,
     invoice_update_params,
     invoice_mark_paid_params,
@@ -365,6 +366,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        synchronous: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -383,6 +385,9 @@ class Invoices(SyncAPIResource):
         providers, etc).
 
         Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -397,6 +402,7 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/issue",
+            body=maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -846,6 +852,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        synchronous: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -864,6 +871,9 @@ class AsyncInvoices(AsyncAPIResource):
         providers, etc).
 
         Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -878,6 +888,7 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/issue",
+            body=await async_maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
