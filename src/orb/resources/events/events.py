@@ -8,6 +8,14 @@ from datetime import datetime
 import httpx
 
 from ... import _legacy_response
+from .volume import (
+    Volume,
+    AsyncVolume,
+    VolumeWithRawResponse,
+    AsyncVolumeWithRawResponse,
+    VolumeWithStreamingResponse,
+    AsyncVolumeWithStreamingResponse,
+)
 from ...types import event_ingest_params, event_search_params, event_update_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
@@ -38,6 +46,10 @@ class Events(SyncAPIResource):
     @cached_property
     def backfills(self) -> Backfills:
         return Backfills(self._client)
+
+    @cached_property
+    def volume(self) -> Volume:
+        return Volume(self._client)
 
     @cached_property
     def with_raw_response(self) -> EventsWithRawResponse:
@@ -583,6 +595,10 @@ class AsyncEvents(AsyncAPIResource):
     @cached_property
     def backfills(self) -> AsyncBackfills:
         return AsyncBackfills(self._client)
+
+    @cached_property
+    def volume(self) -> AsyncVolume:
+        return AsyncVolume(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncEventsWithRawResponse:
@@ -1145,6 +1161,10 @@ class EventsWithRawResponse:
     def backfills(self) -> BackfillsWithRawResponse:
         return BackfillsWithRawResponse(self._events.backfills)
 
+    @cached_property
+    def volume(self) -> VolumeWithRawResponse:
+        return VolumeWithRawResponse(self._events.volume)
+
 
 class AsyncEventsWithRawResponse:
     def __init__(self, events: AsyncEvents) -> None:
@@ -1166,6 +1186,10 @@ class AsyncEventsWithRawResponse:
     @cached_property
     def backfills(self) -> AsyncBackfillsWithRawResponse:
         return AsyncBackfillsWithRawResponse(self._events.backfills)
+
+    @cached_property
+    def volume(self) -> AsyncVolumeWithRawResponse:
+        return AsyncVolumeWithRawResponse(self._events.volume)
 
 
 class EventsWithStreamingResponse:
@@ -1189,6 +1213,10 @@ class EventsWithStreamingResponse:
     def backfills(self) -> BackfillsWithStreamingResponse:
         return BackfillsWithStreamingResponse(self._events.backfills)
 
+    @cached_property
+    def volume(self) -> VolumeWithStreamingResponse:
+        return VolumeWithStreamingResponse(self._events.volume)
+
 
 class AsyncEventsWithStreamingResponse:
     def __init__(self, events: AsyncEvents) -> None:
@@ -1210,3 +1238,7 @@ class AsyncEventsWithStreamingResponse:
     @cached_property
     def backfills(self) -> AsyncBackfillsWithStreamingResponse:
         return AsyncBackfillsWithStreamingResponse(self._events.backfills)
+
+    @cached_property
+    def volume(self) -> AsyncVolumeWithStreamingResponse:
+        return AsyncVolumeWithStreamingResponse(self._events.volume)

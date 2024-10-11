@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from .event_volumes import EventVolumes as EventVolumes
+from .volume_list_params import VolumeListParams as VolumeListParams
 from .backfill_list_params import BackfillListParams as BackfillListParams
 from .backfill_create_params import BackfillCreateParams as BackfillCreateParams
 from .backfill_list_response import BackfillListResponse as BackfillListResponse

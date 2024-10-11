@@ -199,6 +199,18 @@ Methods:
 - <code title="get /events/backfills/{backfill_id}">client.events.backfills.<a href="./src/orb/resources/events/backfills.py">fetch</a>(backfill_id) -> <a href="./src/orb/types/events/backfill_fetch_response.py">BackfillFetchResponse</a></code>
 - <code title="post /events/backfills/{backfill_id}/revert">client.events.backfills.<a href="./src/orb/resources/events/backfills.py">revert</a>(backfill_id) -> <a href="./src/orb/types/events/backfill_revert_response.py">BackfillRevertResponse</a></code>
 
+## Volume
+
+Types:
+
+```python
+from orb.types.events import EventVolumes
+```
+
+Methods:
+
+- <code title="get /events/volume">client.events.volume.<a href="./src/orb/resources/events/volume.py">list</a>(\*\*<a href="src/orb/types/events/volume_list_params.py">params</a>) -> <a href="./src/orb/types/events/event_volumes.py">EventVolumes</a></code>
+
 # InvoiceLineItems
 
 Types:
