@@ -28,7 +28,7 @@ class TestVolume:
         volume = client.events.volume.list(
             cursor="cursor",
             limit=1,
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventVolumes, volume, path=["response"])
@@ -67,7 +67,7 @@ class TestAsyncVolume:
         volume = await async_client.events.volume.list(
             cursor="cursor",
             limit=1,
-            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventVolumes, volume, path=["response"])
