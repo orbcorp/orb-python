@@ -65,9 +65,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -83,9 +81,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -101,9 +97,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -865,9 +859,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -883,9 +875,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -901,9 +891,7 @@ class TestSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -1214,9 +1202,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -1232,9 +1218,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -1250,9 +1234,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -2014,9 +1996,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -2032,9 +2012,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,
@@ -2050,9 +2028,7 @@ class TestAsyncSubscriptions:
                     "discount": {
                         "discount_type": "percentage",
                         "amount_discount": "amount_discount",
-                        "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
                         "percentage_discount": 0.15,
-                        "trial_amount_discount": "trial_amount_discount",
                         "usage_discount": 0,
                     },
                     "fixed_price_quantity": 2,

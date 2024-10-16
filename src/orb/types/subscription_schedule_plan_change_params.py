@@ -156,20 +156,11 @@ class PriceOverrideOverrideUnitPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -225,20 +216,11 @@ class PriceOverrideOverridePackagePriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -305,20 +287,11 @@ class PriceOverrideOverrideMatrixPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -378,20 +351,11 @@ class PriceOverrideOverrideTieredPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -457,20 +421,11 @@ class PriceOverrideOverrideTieredBpsPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -522,20 +477,11 @@ class PriceOverrideOverrideBpsPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -598,20 +544,11 @@ class PriceOverrideOverrideBulkBpsPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -668,20 +605,11 @@ class PriceOverrideOverrideBulkPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -725,20 +653,11 @@ class PriceOverrideOverrideThresholdTotalAmountPriceDiscount(TypedDict, total=Fa
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -782,20 +701,11 @@ class PriceOverrideOverrideTieredPackagePriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -839,20 +749,11 @@ class PriceOverrideOverrideTieredWithMinimumPriceDiscount(TypedDict, total=False
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -896,20 +797,11 @@ class PriceOverrideOverridePackageWithAllocationPriceDiscount(TypedDict, total=F
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -953,20 +845,11 @@ class PriceOverrideOverrideUnitWithPercentPriceDiscount(TypedDict, total=False):
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1010,20 +893,11 @@ class PriceOverrideOverrideGroupedAllocationPriceDiscount(TypedDict, total=False
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1067,20 +941,11 @@ class PriceOverrideOverrideGroupedWithProratedMinimumPriceDiscount(TypedDict, to
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1124,20 +989,11 @@ class PriceOverrideOverrideGroupedWithMeteredMinimumPriceDiscount(TypedDict, tot
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1181,20 +1037,11 @@ class PriceOverrideOverrideBulkWithProrationPriceDiscount(TypedDict, total=False
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1238,20 +1085,11 @@ class PriceOverrideOverrideUnitWithProrationPriceDiscount(TypedDict, total=False
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
@@ -1295,20 +1133,11 @@ class PriceOverrideOverrideTieredWithProrationPriceDiscount(TypedDict, total=Fal
     amount_discount: Optional[str]
     """Only available if discount_type is `amount`."""
 
-    applies_to_price_ids: Optional[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     percentage_discount: Optional[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
     """
-
-    trial_amount_discount: Optional[str]
-    """Only available if discount_type is `trial`"""
 
     usage_discount: Optional[float]
     """Only available if discount_type is `usage`.
