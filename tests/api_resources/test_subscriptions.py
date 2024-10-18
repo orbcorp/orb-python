@@ -55,6 +55,7 @@ class TestSubscriptions:
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
+            plan_version_number=0,
             price_overrides=[
                 {
                     "id": "id",
@@ -106,6 +107,7 @@ class TestSubscriptions:
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            trial_duration_days=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -849,6 +851,7 @@ class TestSubscriptions:
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
+            plan_version_number=0,
             price_overrides=[
                 {
                     "id": "id",
@@ -899,6 +902,7 @@ class TestSubscriptions:
                     "minimum_amount": "1.23",
                 },
             ],
+            trial_duration_days=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -1157,6 +1161,57 @@ class TestSubscriptions:
                 quantity=0,
             )
 
+    @parametrize
+    def test_method_update_trial(self, client: Orb) -> None:
+        subscription = client.subscriptions.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_method_update_trial_with_all_params(self, client: Orb) -> None:
+        subscription = client.subscriptions.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+            shift=True,
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_trial(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_trial(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_trial(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.update_trial(
+                subscription_id="",
+                trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+            )
+
 
 class TestAsyncSubscriptions:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -1192,6 +1247,7 @@ class TestAsyncSubscriptions:
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
+            plan_version_number=0,
             price_overrides=[
                 {
                     "id": "id",
@@ -1243,6 +1299,7 @@ class TestAsyncSubscriptions:
                 },
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            trial_duration_days=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -1986,6 +2043,7 @@ class TestAsyncSubscriptions:
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
+            plan_version_number=0,
             price_overrides=[
                 {
                     "id": "id",
@@ -2036,6 +2094,7 @@ class TestAsyncSubscriptions:
                     "minimum_amount": "1.23",
                 },
             ],
+            trial_duration_days=0,
         )
         assert_matches_type(Subscription, subscription, path=["response"])
 
@@ -2292,4 +2351,55 @@ class TestAsyncSubscriptions:
                 subscription_id="",
                 price_id="price_id",
                 quantity=0,
+            )
+
+    @parametrize
+    async def test_method_update_trial(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_method_update_trial_with_all_params(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+            shift=True,
+        )
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_trial(self, async_client: AsyncOrb) -> None:
+        response = await async_client.subscriptions.with_raw_response.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(Subscription, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_trial(self, async_client: AsyncOrb) -> None:
+        async with async_client.subscriptions.with_streaming_response.update_trial(
+            subscription_id="subscription_id",
+            trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(Subscription, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_trial(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await async_client.subscriptions.with_raw_response.update_trial(
+                subscription_id="",
+                trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
             )

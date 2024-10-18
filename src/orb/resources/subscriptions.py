@@ -16,6 +16,7 @@ from ..types import (
     subscription_update_params,
     subscription_fetch_costs_params,
     subscription_fetch_usage_params,
+    subscription_update_trial_params,
     subscription_trigger_phase_params,
     subscription_fetch_schedule_params,
     subscription_price_intervals_params,
@@ -84,8 +85,10 @@ class Subscriptions(SyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,7 +522,14 @@ class Subscriptions(SyncAPIResource):
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
 
+          plan_version_number: Specifies which version of the plan to subscribe to. If null, the default
+              version will be used.
+
           price_overrides: Optionally provide a list of overrides for prices on the plan
+
+          trial_duration_days: The duration of the trial period in days. If not provided, this defaults to the
+              value specified in the plan. If `0` is provided, the trial on the plan will be
+              skipped.
 
           extra_headers: Send extra headers
 
@@ -554,8 +564,10 @@ class Subscriptions(SyncAPIResource):
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
+                    "plan_version_number": plan_version_number,
                     "price_overrides": price_overrides,
                     "start_date": start_date,
+                    "trial_duration_days": trial_duration_days,
                 },
                 subscription_create_params.SubscriptionCreateParams,
             ),
@@ -1422,8 +1434,10 @@ class Subscriptions(SyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
         | NotGiven = NOT_GIVEN,
+        trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1517,7 +1531,14 @@ class Subscriptions(SyncAPIResource):
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
 
+          plan_version_number: Specifies which version of the plan to change to. If null, the default version
+              will be used.
+
           price_overrides: Optionally provide a list of overrides for prices on the plan
+
+          trial_duration_days: The duration of the trial period in days. If not provided, this defaults to the
+              value specified in the plan. If `0` is provided, the trial on the plan will be
+              skipped.
 
           extra_headers: Send extra headers
 
@@ -1549,7 +1570,9 @@ class Subscriptions(SyncAPIResource):
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
+                    "plan_version_number": plan_version_number,
                     "price_overrides": price_overrides,
+                    "trial_duration_days": trial_duration_days,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
@@ -1824,6 +1847,79 @@ class Subscriptions(SyncAPIResource):
             cast_to=Subscription,
         )
 
+    def update_trial(
+        self,
+        subscription_id: str,
+        *,
+        trial_end_date: Union[Union[str, datetime], Literal["immediate"]],
+        shift: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
+        """This endpoint is used to update the trial end date for a subscription.
+
+        The new
+        trial end date must be within the time range of the current plan (i.e. the new
+        trial end date must be on or after the subscription's start date on the current
+        plan, and on or before the subscription end date).
+
+        In order to retroactively remove a trial completely, the end date can be set to
+        the transition date of the subscription to this plan (or, if this is the first
+        plan for this subscription, the subscription's start date). In order to end a
+        trial immediately, the keyword `immediate` can be provided as the trial end
+        date.
+
+        By default, Orb will shift only the trial end date (and price intervals that
+        start or end on the previous trial end date), and leave all other future price
+        intervals untouched. If the `shift` parameter is set to `true`, Orb will shift
+        all subsequent price and adjustment intervals by the same amount as the trial
+        end date shift (so, e.g., if a plan change is scheduled or an add-on price was
+        added, that change will be pushed back by the same amount of time the trial is
+        extended).
+
+        Args:
+          trial_end_date: The new date that the trial should end, or the literal string `immediate` to end
+              the trial immediately.
+
+          shift: If true, shifts subsequent price and adjustment intervals (preserving their
+              durations, but adjusting their absolute dates).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return self._post(
+            f"/subscriptions/{subscription_id}/update_trial",
+            body=maybe_transform(
+                {
+                    "trial_end_date": trial_end_date,
+                    "shift": shift,
+                },
+                subscription_update_trial_params.SubscriptionUpdateTrialParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Subscription,
+        )
+
 
 class AsyncSubscriptions(AsyncAPIResource):
     @cached_property
@@ -1868,8 +1964,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2303,7 +2401,14 @@ class AsyncSubscriptions(AsyncAPIResource):
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
 
+          plan_version_number: Specifies which version of the plan to subscribe to. If null, the default
+              version will be used.
+
           price_overrides: Optionally provide a list of overrides for prices on the plan
+
+          trial_duration_days: The duration of the trial period in days. If not provided, this defaults to the
+              value specified in the plan. If `0` is provided, the trial on the plan will be
+              skipped.
 
           extra_headers: Send extra headers
 
@@ -2338,8 +2443,10 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
+                    "plan_version_number": plan_version_number,
                     "price_overrides": price_overrides,
                     "start_date": start_date,
+                    "trial_duration_days": trial_duration_days,
                 },
                 subscription_create_params.SubscriptionCreateParams,
             ),
@@ -3206,8 +3313,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
         | NotGiven = NOT_GIVEN,
+        trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3301,7 +3410,14 @@ class AsyncSubscriptions(AsyncAPIResource):
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
 
+          plan_version_number: Specifies which version of the plan to change to. If null, the default version
+              will be used.
+
           price_overrides: Optionally provide a list of overrides for prices on the plan
+
+          trial_duration_days: The duration of the trial period in days. If not provided, this defaults to the
+              value specified in the plan. If `0` is provided, the trial on the plan will be
+              skipped.
 
           extra_headers: Send extra headers
 
@@ -3333,7 +3449,9 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
+                    "plan_version_number": plan_version_number,
                     "price_overrides": price_overrides,
+                    "trial_duration_days": trial_duration_days,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
@@ -3608,6 +3726,79 @@ class AsyncSubscriptions(AsyncAPIResource):
             cast_to=Subscription,
         )
 
+    async def update_trial(
+        self,
+        subscription_id: str,
+        *,
+        trial_end_date: Union[Union[str, datetime], Literal["immediate"]],
+        shift: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
+        """This endpoint is used to update the trial end date for a subscription.
+
+        The new
+        trial end date must be within the time range of the current plan (i.e. the new
+        trial end date must be on or after the subscription's start date on the current
+        plan, and on or before the subscription end date).
+
+        In order to retroactively remove a trial completely, the end date can be set to
+        the transition date of the subscription to this plan (or, if this is the first
+        plan for this subscription, the subscription's start date). In order to end a
+        trial immediately, the keyword `immediate` can be provided as the trial end
+        date.
+
+        By default, Orb will shift only the trial end date (and price intervals that
+        start or end on the previous trial end date), and leave all other future price
+        intervals untouched. If the `shift` parameter is set to `true`, Orb will shift
+        all subsequent price and adjustment intervals by the same amount as the trial
+        end date shift (so, e.g., if a plan change is scheduled or an add-on price was
+        added, that change will be pushed back by the same amount of time the trial is
+        extended).
+
+        Args:
+          trial_end_date: The new date that the trial should end, or the literal string `immediate` to end
+              the trial immediately.
+
+          shift: If true, shifts subsequent price and adjustment intervals (preserving their
+              durations, but adjusting their absolute dates).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return await self._post(
+            f"/subscriptions/{subscription_id}/update_trial",
+            body=await async_maybe_transform(
+                {
+                    "trial_end_date": trial_end_date,
+                    "shift": shift,
+                },
+                subscription_update_trial_params.SubscriptionUpdateTrialParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Subscription,
+        )
+
 
 class SubscriptionsWithRawResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
@@ -3657,6 +3848,9 @@ class SubscriptionsWithRawResponse:
         )
         self.update_fixed_fee_quantity = _legacy_response.to_raw_response_wrapper(
             subscriptions.update_fixed_fee_quantity,
+        )
+        self.update_trial = _legacy_response.to_raw_response_wrapper(
+            subscriptions.update_trial,
         )
 
 
@@ -3709,6 +3903,9 @@ class AsyncSubscriptionsWithRawResponse:
         self.update_fixed_fee_quantity = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.update_fixed_fee_quantity,
         )
+        self.update_trial = _legacy_response.async_to_raw_response_wrapper(
+            subscriptions.update_trial,
+        )
 
 
 class SubscriptionsWithStreamingResponse:
@@ -3760,6 +3957,9 @@ class SubscriptionsWithStreamingResponse:
         self.update_fixed_fee_quantity = to_streamed_response_wrapper(
             subscriptions.update_fixed_fee_quantity,
         )
+        self.update_trial = to_streamed_response_wrapper(
+            subscriptions.update_trial,
+        )
 
 
 class AsyncSubscriptionsWithStreamingResponse:
@@ -3810,4 +4010,7 @@ class AsyncSubscriptionsWithStreamingResponse:
         )
         self.update_fixed_fee_quantity = async_to_streamed_response_wrapper(
             subscriptions.update_fixed_fee_quantity,
+        )
+        self.update_trial = async_to_streamed_response_wrapper(
+            subscriptions.update_trial,
         )
