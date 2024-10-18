@@ -141,8 +141,21 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     Note that either this property or `external_plan_id` must be specified.
     """
 
+    plan_version_number: Optional[int]
+    """Specifies which version of the plan to change to.
+
+    If null, the default version will be used.
+    """
+
     price_overrides: Optional[Iterable[PriceOverride]]
     """Optionally provide a list of overrides for prices on the plan"""
+
+    trial_duration_days: Optional[int]
+    """The duration of the trial period in days.
+
+    If not provided, this defaults to the value specified in the plan. If `0` is
+    provided, the trial on the plan will be skipped.
+    """
 
 
 class PriceOverrideOverrideUnitPriceUnitConfig(TypedDict, total=False):
