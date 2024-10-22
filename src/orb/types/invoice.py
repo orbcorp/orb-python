@@ -897,7 +897,7 @@ class Invoice(BaseModel):
     | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
     """
 
-    discount: Optional[InvoiceLevelDiscount] = None
+    discount: Optional[object] = None
     """This field is deprecated in favor of `discounts`.
 
     If a `discounts` list is provided, the first discount in the list will be
