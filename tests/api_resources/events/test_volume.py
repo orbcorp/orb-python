@@ -20,22 +20,26 @@ class TestVolume:
 
     @parametrize
     def test_method_list(self, client: Orb) -> None:
-        volume = client.events.volume.list()
-        assert_matches_type(EventVolumes, volume, path=["response"])
-
-    @parametrize
-    def test_method_list_with_all_params(self, client: Orb) -> None:
         volume = client.events.volume.list(
-            cursor="cursor",
-            limit=1,
-            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventVolumes, volume, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Orb) -> None:
+        volume = client.events.volume.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            cursor="cursor",
+            limit=1,
+            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
+        )
+        assert_matches_type(EventVolumes, volume, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
-        response = client.events.volume.with_raw_response.list()
+        response = client.events.volume.with_raw_response.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -44,7 +48,9 @@ class TestVolume:
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
-        with client.events.volume.with_streaming_response.list() as response:
+        with client.events.volume.with_streaming_response.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -59,22 +65,26 @@ class TestAsyncVolume:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
-        volume = await async_client.events.volume.list()
-        assert_matches_type(EventVolumes, volume, path=["response"])
-
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         volume = await async_client.events.volume.list(
-            cursor="cursor",
-            limit=1,
-            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(EventVolumes, volume, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
+        volume = await async_client.events.volume.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            cursor="cursor",
+            limit=1,
+            timeframe_end=parse_datetime("2024-10-11T06:00:00Z"),
+        )
+        assert_matches_type(EventVolumes, volume, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
-        response = await async_client.events.volume.with_raw_response.list()
+        response = await async_client.events.volume.with_raw_response.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -83,7 +93,9 @@ class TestAsyncVolume:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
-        async with async_client.events.volume.with_streaming_response.list() as response:
+        async with async_client.events.volume.with_streaming_response.list(
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
