@@ -46,10 +46,10 @@ class Volume(SyncAPIResource):
     def list(
         self,
         *,
+        timeframe_start: Union[str, datetime],
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,6 +73,11 @@ class Volume(SyncAPIResource):
         hours the timestamp falls in.
 
         Args:
+          timeframe_start: The start of the timeframe, inclusive, in which to return event volume. All
+              datetime values are converted to UTC time. If the specified time isn't
+              hour-aligned, the response includes the event volume count for the hour the time
+              falls in.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -82,11 +87,6 @@ class Volume(SyncAPIResource):
               specified, the current time is used. All datetime values are converted to UTC
               time.If the specified time isn't hour-aligned, the response includes the event
               volumecount for the hour the time falls in.
-
-          timeframe_start: The start of the timeframe, inclusive, in which to return event volume. All
-              datetime values are converted to UTC time. If the specified time isn't
-              hour-aligned, the response includes the event volume count for the hour the time
-              falls in.
 
           extra_headers: Send extra headers
 
@@ -105,10 +105,10 @@ class Volume(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "timeframe_start": timeframe_start,
                         "cursor": cursor,
                         "limit": limit,
                         "timeframe_end": timeframe_end,
-                        "timeframe_start": timeframe_start,
                     },
                     volume_list_params.VolumeListParams,
                 ),
@@ -140,10 +140,10 @@ class AsyncVolume(AsyncAPIResource):
     async def list(
         self,
         *,
+        timeframe_start: Union[str, datetime],
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         timeframe_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -167,6 +167,11 @@ class AsyncVolume(AsyncAPIResource):
         hours the timestamp falls in.
 
         Args:
+          timeframe_start: The start of the timeframe, inclusive, in which to return event volume. All
+              datetime values are converted to UTC time. If the specified time isn't
+              hour-aligned, the response includes the event volume count for the hour the time
+              falls in.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -176,11 +181,6 @@ class AsyncVolume(AsyncAPIResource):
               specified, the current time is used. All datetime values are converted to UTC
               time.If the specified time isn't hour-aligned, the response includes the event
               volumecount for the hour the time falls in.
-
-          timeframe_start: The start of the timeframe, inclusive, in which to return event volume. All
-              datetime values are converted to UTC time. If the specified time isn't
-              hour-aligned, the response includes the event volume count for the hour the time
-              falls in.
 
           extra_headers: Send extra headers
 
@@ -199,10 +199,10 @@ class AsyncVolume(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "timeframe_start": timeframe_start,
                         "cursor": cursor,
                         "limit": limit,
                         "timeframe_end": timeframe_end,
-                        "timeframe_start": timeframe_start,
                     },
                     volume_list_params.VolumeListParams,
                 ),

@@ -259,11 +259,6 @@ class TestInvoices:
 
     @parametrize
     def test_method_fetch_upcoming(self, client: Orb) -> None:
-        invoice = client.invoices.fetch_upcoming()
-        assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
-
-    @parametrize
-    def test_method_fetch_upcoming_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.fetch_upcoming(
             subscription_id="subscription_id",
         )
@@ -271,7 +266,9 @@ class TestInvoices:
 
     @parametrize
     def test_raw_response_fetch_upcoming(self, client: Orb) -> None:
-        response = client.invoices.with_raw_response.fetch_upcoming()
+        response = client.invoices.with_raw_response.fetch_upcoming(
+            subscription_id="subscription_id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -280,7 +277,9 @@ class TestInvoices:
 
     @parametrize
     def test_streaming_response_fetch_upcoming(self, client: Orb) -> None:
-        with client.invoices.with_streaming_response.fetch_upcoming() as response:
+        with client.invoices.with_streaming_response.fetch_upcoming(
+            subscription_id="subscription_id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -666,11 +665,6 @@ class TestAsyncInvoices:
 
     @parametrize
     async def test_method_fetch_upcoming(self, async_client: AsyncOrb) -> None:
-        invoice = await async_client.invoices.fetch_upcoming()
-        assert_matches_type(InvoiceFetchUpcomingResponse, invoice, path=["response"])
-
-    @parametrize
-    async def test_method_fetch_upcoming_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.fetch_upcoming(
             subscription_id="subscription_id",
         )
@@ -678,7 +672,9 @@ class TestAsyncInvoices:
 
     @parametrize
     async def test_raw_response_fetch_upcoming(self, async_client: AsyncOrb) -> None:
-        response = await async_client.invoices.with_raw_response.fetch_upcoming()
+        response = await async_client.invoices.with_raw_response.fetch_upcoming(
+            subscription_id="subscription_id",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -687,7 +683,9 @@ class TestAsyncInvoices:
 
     @parametrize
     async def test_streaming_response_fetch_upcoming(self, async_client: AsyncOrb) -> None:
-        async with async_client.invoices.with_streaming_response.fetch_upcoming() as response:
+        async with async_client.invoices.with_streaming_response.fetch_upcoming(
+            subscription_id="subscription_id",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
