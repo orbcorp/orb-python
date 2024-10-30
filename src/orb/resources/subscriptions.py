@@ -140,8 +140,9 @@ class Subscriptions(SyncAPIResource):
         subscription being created. This is useful when a customer has prices that
         differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated off of
-        legacy subscription overrides. :::
+        :::info This feature is only available for accounts that have migrated to
+        Subscription Overrides Version 2. You can find your Subscription Overrides
+        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
 
         ### Adding Prices
 
@@ -1395,8 +1396,9 @@ class Subscriptions(SyncAPIResource):
         subscription when you schedule the plan change. This is useful when a customer
         has prices that differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated off of
-        legacy subscription overrides. :::
+        :::info This feature is only available for accounts that have migrated to
+        Subscription Overrides Version 2. You can find your Subscription Overrides
+        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
 
         ### Adding Prices
 
@@ -2082,8 +2084,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription being created. This is useful when a customer has prices that
         differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated off of
-        legacy subscription overrides. :::
+        :::info This feature is only available for accounts that have migrated to
+        Subscription Overrides Version 2. You can find your Subscription Overrides
+        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
 
         ### Adding Prices
 
@@ -3337,8 +3340,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription when you schedule the plan change. This is useful when a customer
         has prices that differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated off of
-        legacy subscription overrides. :::
+        :::info This feature is only available for accounts that have migrated to
+        Subscription Overrides Version 2. You can find your Subscription Overrides
+        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
 
         ### Adding Prices
 
