@@ -1893,6 +1893,79 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_22(self, client: Orb) -> None:
         price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_22(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_22(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_22(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_23(self, client: Orb) -> None:
+        price = client.prices.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
@@ -1903,7 +1976,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_22(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_23(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
@@ -1930,7 +2003,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_22(self, client: Orb) -> None:
+    def test_raw_response_create_overload_23(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
@@ -1946,7 +2019,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_22(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_23(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
@@ -4014,6 +4087,79 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_22(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_22(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="invoice_grouping_key",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_22(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_22(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
+            name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_23(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
@@ -4024,7 +4170,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_22(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_23(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
@@ -4051,7 +4197,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_22(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_23(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
@@ -4067,7 +4213,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_22(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_23(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
