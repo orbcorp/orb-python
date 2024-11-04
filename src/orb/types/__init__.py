@@ -60,6 +60,7 @@ from .top_level_ping_response import TopLevelPingResponse as TopLevelPingRespons
 from .event_deprecate_response import EventDeprecateResponse as EventDeprecateResponse
 from .invoice_mark_paid_params import InvoiceMarkPaidParams as InvoiceMarkPaidParams
 from .subscription_list_params import SubscriptionListParams as SubscriptionListParams
+from .credit_note_create_params import CreditNoteCreateParams as CreditNoteCreateParams
 from .subscription_cancel_params import SubscriptionCancelParams as SubscriptionCancelParams
 from .subscription_create_params import SubscriptionCreateParams as SubscriptionCreateParams
 from .subscription_update_params import SubscriptionUpdateParams as SubscriptionUpdateParams
