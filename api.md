@@ -55,6 +55,7 @@ from orb.types import CreditNote
 
 Methods:
 
+- <code title="post /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">create</a>(\*\*<a href="src/orb/types/credit_note_create_params.py">params</a>) -> <a href="./src/orb/types/credit_note.py">CreditNote</a></code>
 - <code title="get /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">list</a>(\*\*<a href="src/orb/types/credit_note_list_params.py">params</a>) -> <a href="./src/orb/types/credit_note.py">SyncPage[CreditNote]</a></code>
 - <code title="get /credit_notes/{credit_note_id}">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">fetch</a>(credit_note_id) -> <a href="./src/orb/types/credit_note.py">CreditNote</a></code>
 
