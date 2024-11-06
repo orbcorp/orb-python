@@ -99,12 +99,7 @@ Methods:
 Types:
 
 ```python
-from orb.types.customers.credits import (
-    LedgerListResponse,
-    LedgerCreateEntryResponse,
-    LedgerCreateEntryByExternalIDResponse,
-    LedgerListByExternalIDResponse,
-)
+from orb.types.customers.credits import LedgerListResponse, LedgerCreateEntryResponse, LedgerCreateEntryByExternalIDResponse, LedgerListByExternalIDResponse
 ```
 
 Methods:
@@ -119,12 +114,7 @@ Methods:
 Types:
 
 ```python
-from orb.types.customers.credits import (
-    TopUpCreateResponse,
-    TopUpListResponse,
-    TopUpCreateByExternalIDResponse,
-    TopUpListByExternalIDResponse,
-)
+from orb.types.customers.credits import TopUpCreateResponse, TopUpListResponse, TopUpCreateByExternalIDResponse, TopUpListByExternalIDResponse
 ```
 
 Methods:
@@ -154,12 +144,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import (
-    EventUpdateResponse,
-    EventDeprecateResponse,
-    EventIngestResponse,
-    EventSearchResponse,
-)
+from orb.types import EventUpdateResponse, EventDeprecateResponse, EventIngestResponse, EventSearchResponse
 ```
 
 Methods:
@@ -174,13 +159,7 @@ Methods:
 Types:
 
 ```python
-from orb.types.events import (
-    BackfillCreateResponse,
-    BackfillListResponse,
-    BackfillCloseResponse,
-    BackfillFetchResponse,
-    BackfillRevertResponse,
-)
+from orb.types.events import BackfillCreateResponse, BackfillListResponse, BackfillCloseResponse, BackfillFetchResponse, BackfillRevertResponse
 ```
 
 Methods:
@@ -302,13 +281,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import (
-    Subscription,
-    SubscriptionUsage,
-    Subscriptions,
-    SubscriptionFetchCostsResponse,
-    SubscriptionFetchScheduleResponse,
-)
+from orb.types import Subscription, SubscriptionUsage, Subscriptions, SubscriptionFetchCostsResponse, SubscriptionFetchScheduleResponse
 ```
 
 Methods:

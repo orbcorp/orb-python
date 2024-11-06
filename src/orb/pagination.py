@@ -1,10 +1,21 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Generic, TypeVar, Optional
+from ._models import BaseModel
+
+from typing import Optional, List
+
 from typing_extensions import override
 
+import re
+from typing import Optional, TypeVar, List, Generic, Dict, Any, Type, Mapping, cast
+from typing_extensions import TypedDict, Literal, Annotated, Protocol, runtime_checkable
+
+from httpx import URL, Response
+from pydantic import Field as FieldInfo
+
 from ._models import BaseModel
-from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
+from ._utils import PropertyInfo, is_mapping
+from ._base_client import BasePage, BaseSyncPage, BaseAsyncPage, PageInfo
 
 __all__ = ["PagePaginationMetadata", "SyncPage", "AsyncPage"]
 
