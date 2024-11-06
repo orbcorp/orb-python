@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.10.0 (2024-11-06)
+
+Full Changelog: [v2.9.0...v2.10.0](https://github.com/orbcorp/orb-python/compare/v2.9.0...v2.10.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#365](https://github.com/orbcorp/orb-python/issues/365)) ([c83347c](https://github.com/orbcorp/orb-python/commit/c83347cf6b6b6301a3b62c2bd53da44788d08cd9))
+
 ## 2.9.0 (2024-08-23)
 
 Full Changelog: [v2.8.0...v2.9.0](https://github.com/orbcorp/orb-python/compare/v2.8.0...v2.9.0)
