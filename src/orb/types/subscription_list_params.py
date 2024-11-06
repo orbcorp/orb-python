@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
-from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import TypedDict, Annotated, Literal
 
+from typing import Union, Optional, List
+
+from datetime import datetime
+
+from .._utils import PropertyInfo
+
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
 from .._utils import PropertyInfo
 
 __all__ = ["SubscriptionListParams"]
@@ -27,9 +34,13 @@ class SubscriptionListParams(TypedDict, total=False):
     request.
     """
 
-    customer_id: Optional[str]
+    query_customer_id: Annotated[Optional[str], PropertyInfo(alias="customer_id")]
 
-    external_customer_id: Optional[str]
+    query_customer_id: Annotated[Optional[List[str]], PropertyInfo(alias="customer_id")]
+
+    query_external_customer_id: Annotated[Optional[str], PropertyInfo(alias="external_customer_id")]
+
+    query_external_customer_id: Annotated[Optional[List[str]], PropertyInfo(alias="external_customer_id")]
 
     limit: int
     """The number of items to fetch. Defaults to 20."""

@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
-from datetime import date, datetime
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import TypedDict, Required, Literal, Annotated, TypeAlias
 
+from typing import Optional, Union, Dict
+
+from datetime import datetime, date
+
+from ...._utils import PropertyInfo
+
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from ...._types import FileTypes
 from ...._utils import PropertyInfo
 
 __all__ = [

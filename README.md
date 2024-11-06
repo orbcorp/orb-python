@@ -56,14 +56,12 @@ client = AsyncOrb(
     api_key=os.environ.get("ORB_API_KEY"),
 )
 
-
 async def main() -> None:
-    customer = await client.customers.create(
-        email="example-customer@withorb.com",
-        name="My Customer",
-    )
-    print(customer.id)
-
+  customer = await client.customers.create(
+      email="example-customer@withorb.com",
+      name="My Customer",
+  )
+  print(customer.id)
 
 asyncio.run(main())
 ```
@@ -106,14 +104,12 @@ from orb import AsyncOrb
 
 client = AsyncOrb()
 
-
 async def main() -> None:
     all_coupons = []
     # Iterate through items across all pages, issuing requests as needed.
     async for coupon in client.coupons.list():
         all_coupons.append(coupon)
     print(all_coupons)
-
 
 asyncio.run(main())
 ```
@@ -135,9 +131,7 @@ Or just work directly with the returned data:
 ```python
 first_page = await client.coupons.list()
 
-print(
-    f"next page cursor: {first_page.pagination_metadata.next_cursor}"
-)  # => "next page cursor: ..."
+print(f"next page cursor: {first_page.pagination_metadata.next_cursor}") # => "next page cursor: ..."
 for coupon in first_page.data:
     print(coupon.id)
 
@@ -210,7 +204,7 @@ try:
     )
 except orb.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+    print(e.__cause__) # an underlying Exception, likely raised within httpx.
 except orb.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except orb.APIStatusError as e:
@@ -250,7 +244,7 @@ client = Orb(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).customers.create(
+client.with_options(max_retries = 5).customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
 )
@@ -276,7 +270,7 @@ client = Orb(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).customers.create(
+client.with_options(timeout = 5.0).customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
 )
@@ -349,11 +343,11 @@ As such, `.with_streaming_response` methods return a different [`APIResponse`](h
 with client.customers.with_streaming_response.create(
     email="example-customer@withorb.com",
     name="My Customer",
-) as response:
-    print(response.headers.get("X-My-Header"))
+) as response :
+    print(response.headers.get('X-My-Header'))
 
     for line in response.iter_lines():
-        print(line)
+      print(line)
 ```
 
 The context manager is required so that the response will reliably be closed.
@@ -407,10 +401,7 @@ from orb import Orb, DefaultHttpxClient
 client = Orb(
     # Or use the `ORB_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
-    http_client=DefaultHttpxClient(
-        proxies="http://my.test.proxy.example.com",
-        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
-    ),
+    http_client=DefaultHttpxClient(proxies="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
 )
 ```
 

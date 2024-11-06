@@ -2,33 +2,47 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
-from datetime import date, datetime
-from typing_extensions import Literal
-
 import httpx
 
-from .. import _legacy_response
-from ..types import (
-    invoice_list_params,
-    invoice_create_params,
-    invoice_update_params,
-    invoice_mark_paid_params,
-    invoice_fetch_upcoming_params,
-)
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
 from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+
 from ..types.invoice import Invoice
+
+from .._utils import maybe_transform, async_maybe_transform
+
+from .._base_client import make_request_options, AsyncPaginator
+
+from typing import Union, Iterable, Optional, Dict, List
+
+from datetime import datetime, date
+
 from ..types.shared_params.discount import Discount
+
+from ..pagination import SyncPage, AsyncPage
+
+from typing_extensions import Literal
+
 from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
+
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
+from ..types import invoice_create_params
+
+from .. import _legacy_response
+
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
+from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from .._resource import SyncAPIResource, AsyncAPIResource
+from ..types import shared_params
+from ..types import invoice_create_params
+from ..types import invoice_update_params
+from ..types import invoice_list_params
+from ..types import invoice_fetch_upcoming_params
+from ..types import invoice_mark_paid_params
+from ..types import shared
 
 __all__ = ["Invoices", "AsyncInvoices"]
 

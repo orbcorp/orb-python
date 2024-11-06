@@ -2,28 +2,43 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
-from datetime import datetime
-
 import httpx
 
-from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
 from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...pagination import SyncPage, AsyncPage
-from ..._base_client import AsyncPaginator, make_request_options
-from ...types.events import backfill_list_params, backfill_create_params
-from ...types.events.backfill_list_response import BackfillListResponse
-from ...types.events.backfill_close_response import BackfillCloseResponse
-from ...types.events.backfill_fetch_response import BackfillFetchResponse
+
 from ...types.events.backfill_create_response import BackfillCreateResponse
+
+from ..._utils import maybe_transform, async_maybe_transform
+
+from ..._base_client import make_request_options, AsyncPaginator
+
+from typing import Union, Optional
+
+from datetime import datetime
+
+from ...types.events.backfill_list_response import BackfillListResponse
+
+from ...pagination import SyncPage, AsyncPage
+
+from ...types.events.backfill_close_response import BackfillCloseResponse
+
+from ...types.events.backfill_fetch_response import BackfillFetchResponse
+
 from ...types.events.backfill_revert_response import BackfillRevertResponse
+
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
+from ... import _legacy_response
+
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
+from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ...types import shared_params
+from ...types.events import backfill_create_params
+from ...types.events import backfill_list_params
 
 __all__ = ["Backfills", "AsyncBackfills"]
 

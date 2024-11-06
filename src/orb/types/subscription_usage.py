@@ -1,11 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from .._models import BaseModel
+
 from datetime import datetime
+
+from typing import List, Optional
+
 from typing_extensions import Literal, TypeAlias
 
-from .._models import BaseModel
 from .shared.pagination_metadata import PaginationMetadata
+
+from typing import Optional, Union, List, Dict, Any
+from typing_extensions import Literal
+from pydantic import Field as FieldInfo
 
 __all__ = [
     "SubscriptionUsage",
