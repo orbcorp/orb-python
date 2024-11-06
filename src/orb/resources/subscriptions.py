@@ -2,61 +2,44 @@
 
 from __future__ import annotations
 
+from typing import Any, Dict, List, Union, Iterable, Optional, cast
+from datetime import date, datetime
+from typing_extensions import Literal
+
 import httpx
 
+from .. import _legacy_response
+from ..types import (
+    subscription_list_params,
+    subscription_cancel_params,
+    subscription_create_params,
+    subscription_update_params,
+    subscription_fetch_costs_params,
+    subscription_fetch_usage_params,
+    subscription_trigger_phase_params,
+    subscription_fetch_schedule_params,
+    subscription_price_intervals_params,
+    subscription_schedule_plan_change_params,
+    subscription_update_fixed_fee_quantity_params,
+    subscription_unschedule_fixed_fee_quantity_updates_params,
+)
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
-
-from ..types.subscription import Subscription
-
-from .._utils import maybe_transform, async_maybe_transform
-
-from .._base_client import make_request_options, AsyncPaginator
-
-from typing import Optional, Union, Dict, Iterable, List
-
-from datetime import datetime, date
-
-from typing_extensions import Literal
-
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
-
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.subscription import Subscription
+from ..types.subscription_usage import SubscriptionUsage
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
-
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
 
-from ..types.subscription_usage import SubscriptionUsage
-
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-from ..types import subscription_create_params, subscription_price_intervals_params, subscription_schedule_plan_change_params
-
-from .. import _legacy_response
-
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types import shared_params
-from ..types import subscription_create_params
-from ..types import subscription_update_params
-from ..types import subscription_list_params
-from ..types import subscription_cancel_params
-from ..types import subscription_fetch_costs_params
-from ..types import subscription_fetch_schedule_params
-from ..types import subscription_fetch_usage_params
-from ..types import subscription_price_intervals_params
-from ..types import subscription_schedule_plan_change_params
-from ..types import subscription_trigger_phase_params
-from ..types import subscription_unschedule_fixed_fee_quantity_updates_params
-from ..types import subscription_update_fixed_fee_quantity_params
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
+
 
 class Subscriptions(SyncAPIResource):
     @cached_property
@@ -67,35 +50,37 @@ class Subscriptions(SyncAPIResource):
     def with_streaming_response(self) -> SubscriptionsWithStreamingResponse:
         return SubscriptionsWithStreamingResponse(self)
 
-    def create(self,
-    *,
-    align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
-    auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-    aws_region: Optional[str] | NotGiven = NOT_GIVEN,
-    coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-    credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
-    customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-    end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
-    external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
-    external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-    net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-    per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
-    plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-    start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def create(
+        self,
+        *,
+        align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        aws_region: Optional[str] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
+        credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
+        external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
+        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """A subscription represents the purchase of a plan by a customer.
 
         The customer is
@@ -514,47 +499,58 @@ class Subscriptions(SyncAPIResource):
         """
         return self._post(
             "/subscriptions",
-            body=maybe_transform({
-                "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
-                "auto_collection": auto_collection,
-                "aws_region": aws_region,
-                "coupon_redemption_code": coupon_redemption_code,
-                "credits_overage_rate": credits_overage_rate,
-                "customer_id": customer_id,
-                "default_invoice_memo": default_invoice_memo,
-                "end_date": end_date,
-                "external_customer_id": external_customer_id,
-                "external_marketplace": external_marketplace,
-                "external_marketplace_reporting_id": external_marketplace_reporting_id,
-                "external_plan_id": external_plan_id,
-                "initial_phase_order": initial_phase_order,
-                "invoicing_threshold": invoicing_threshold,
-                "metadata": metadata,
-                "net_terms": net_terms,
-                "per_credit_overage_amount": per_credit_overage_amount,
-                "plan_id": plan_id,
-                "price_overrides": price_overrides,
-                "start_date": start_date,
-            }, subscription_create_params.SubscriptionCreateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
+                    "auto_collection": auto_collection,
+                    "aws_region": aws_region,
+                    "coupon_redemption_code": coupon_redemption_code,
+                    "credits_overage_rate": credits_overage_rate,
+                    "customer_id": customer_id,
+                    "default_invoice_memo": default_invoice_memo,
+                    "end_date": end_date,
+                    "external_customer_id": external_customer_id,
+                    "external_marketplace": external_marketplace,
+                    "external_marketplace_reporting_id": external_marketplace_reporting_id,
+                    "external_plan_id": external_plan_id,
+                    "initial_phase_order": initial_phase_order,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                    "per_credit_overage_amount": per_credit_overage_amount,
+                    "plan_id": plan_id,
+                    "price_overrides": price_overrides,
+                    "start_date": start_date,
+                },
+                subscription_create_params.SubscriptionCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def update(self,
-    subscription_id: str,
-    *,
-    auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-    default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-    net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def update(
+        self,
+        subscription_id: str,
+        *,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to update the `metadata`, `net terms`,
         `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
@@ -592,41 +588,48 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._put(
             f"/subscriptions/{subscription_id}",
-            body=maybe_transform({
-                "auto_collection": auto_collection,
-                "default_invoice_memo": default_invoice_memo,
-                "invoicing_threshold": invoicing_threshold,
-                "metadata": metadata,
-                "net_terms": net_terms,
-            }, subscription_update_params.SubscriptionUpdateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "auto_collection": auto_collection,
+                    "default_invoice_memo": default_invoice_memo,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                subscription_update_params.SubscriptionUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def list(self,
-    *,
-    created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    cursor: Optional[str] | NotGiven = NOT_GIVEN,
-    query_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    query_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-    query_external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    query_external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SyncPage[Subscription]:
+    def list(
+        self,
+        *,
+        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncPage[Subscription]:
         """
         This endpoint returns a list of all subscriptions for an account as a
         [paginated](../reference/pagination) list, ordered starting from the most
@@ -654,33 +657,44 @@ class Subscriptions(SyncAPIResource):
         """
         return self._get_api_list(
             "/subscriptions",
-            page = SyncPage[Subscription],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "created_at_gt": created_at_gt,
-                "created_at_gte": created_at_gte,
-                "created_at_lt": created_at_lt,
-                "created_at_lte": created_at_lte,
-                "cursor": cursor,
-                "customer_id": query_customer_id,
-                "external_customer_id": query_external_customer_id,
-                "limit": limit,
-                "status": status,
-            }, subscription_list_params.SubscriptionListParams)),
+            page=SyncPage[Subscription],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "external_customer_id": external_customer_id,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    subscription_list_params.SubscriptionListParams,
+                ),
+            ),
             model=Subscription,
         )
 
-    def cancel(self,
-    subscription_id: str,
-    *,
-    cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
-    cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def cancel(
+        self,
+        subscription_id: str,
+        *,
+        cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
+        cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """This endpoint can be used to cancel an existing subscription.
 
         It returns the
@@ -762,28 +776,37 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/cancel",
-            body=maybe_transform({
-                "cancel_option": cancel_option,
-                "cancellation_date": cancellation_date,
-            }, subscription_cancel_params.SubscriptionCancelParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "cancel_option": cancel_option,
+                    "cancellation_date": cancellation_date,
+                },
+                subscription_cancel_params.SubscriptionCancelParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def fetch(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Subscription:
+    def fetch(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Subscription:
         """
         This endpoint is used to fetch a [Subscription](../guides/concepts#subscription)
         given an identifier.
@@ -798,28 +821,30 @@ class Subscriptions(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
             f"/subscriptions/{subscription_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Subscription,
         )
 
-    def fetch_costs(self,
-    subscription_id: str,
-    *,
-    currency: Optional[str] | NotGiven = NOT_GIVEN,
-    timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SubscriptionFetchCostsResponse:
+    def fetch_costs(
+        self,
+        subscription_id: str,
+        *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SubscriptionFetchCostsResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a subscription's costs
         in Orb, calculated by applying pricing information to the underlying usage (see
@@ -853,35 +878,44 @@ class Subscriptions(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
             f"/subscriptions/{subscription_id}/costs",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "currency": currency,
-                "timeframe_end": timeframe_end,
-                "timeframe_start": timeframe_start,
-                "view_mode": view_mode,
-            }, subscription_fetch_costs_params.SubscriptionFetchCostsParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "currency": currency,
+                        "timeframe_end": timeframe_end,
+                        "timeframe_start": timeframe_start,
+                        "view_mode": view_mode,
+                    },
+                    subscription_fetch_costs_params.SubscriptionFetchCostsParams,
+                ),
+            ),
             cast_to=SubscriptionFetchCostsResponse,
         )
 
-    def fetch_schedule(self,
-    subscription_id: str,
-    *,
-    cursor: Optional[str] | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    start_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SyncPage[SubscriptionFetchScheduleResponse]:
+    def fetch_schedule(
+        self,
+        subscription_id: str,
+        *,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        start_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncPage[SubscriptionFetchScheduleResponse]:
         """
         This endpoint returns a [paginated](../reference/pagination) list of all plans
         associated with a subscription along with their start and end dates. This list
@@ -903,42 +937,51 @@ class Subscriptions(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
             f"/subscriptions/{subscription_id}/schedule",
-            page = SyncPage[SubscriptionFetchScheduleResponse],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "limit": limit,
-                "start_date_gt": start_date_gt,
-                "start_date_gte": start_date_gte,
-                "start_date_lt": start_date_lt,
-                "start_date_lte": start_date_lte,
-            }, subscription_fetch_schedule_params.SubscriptionFetchScheduleParams)),
+            page=SyncPage[SubscriptionFetchScheduleResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "start_date_gt": start_date_gt,
+                        "start_date_gte": start_date_gte,
+                        "start_date_lt": start_date_lt,
+                        "start_date_lte": start_date_lte,
+                    },
+                    subscription_fetch_schedule_params.SubscriptionFetchScheduleParams,
+                ),
+            ),
             model=SubscriptionFetchScheduleResponse,
         )
 
-    def fetch_usage(self,
-    subscription_id: str,
-    *,
-    billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-    first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
-    first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
-    granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
-    group_by: Optional[str] | NotGiven = NOT_GIVEN,
-    second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
-    second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
-    timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SubscriptionUsage:
+    def fetch_usage(
+        self,
+        subscription_id: str,
+        *,
+        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
+        first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
+        granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
+        group_by: Optional[str] | NotGiven = NOT_GIVEN,
+        second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
+        second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SubscriptionUsage:
         """This endpoint is used to fetch a subscription's usage in Orb.
 
         Especially when
@@ -1163,40 +1206,52 @@ class Subscriptions(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
-        return cast(SubscriptionUsage, self._get(
-            f"/subscriptions/{subscription_id}/usage",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "billable_metric_id": billable_metric_id,
-                "first_dimension_key": first_dimension_key,
-                "first_dimension_value": first_dimension_value,
-                "granularity": granularity,
-                "group_by": group_by,
-                "second_dimension_key": second_dimension_key,
-                "second_dimension_value": second_dimension_value,
-                "timeframe_end": timeframe_end,
-                "timeframe_start": timeframe_start,
-                "view_mode": view_mode,
-            }, subscription_fetch_usage_params.SubscriptionFetchUsageParams)),
-            cast_to=cast(Any, SubscriptionUsage),  # Union types cannot be passed in as arguments in the type system
-        ))
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return cast(
+            SubscriptionUsage,
+            self._get(
+                f"/subscriptions/{subscription_id}/usage",
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform(
+                        {
+                            "billable_metric_id": billable_metric_id,
+                            "first_dimension_key": first_dimension_key,
+                            "first_dimension_value": first_dimension_value,
+                            "granularity": granularity,
+                            "group_by": group_by,
+                            "second_dimension_key": second_dimension_key,
+                            "second_dimension_value": second_dimension_value,
+                            "timeframe_end": timeframe_end,
+                            "timeframe_start": timeframe_start,
+                            "view_mode": view_mode,
+                        },
+                        subscription_fetch_usage_params.SubscriptionFetchUsageParams,
+                    ),
+                ),
+                cast_to=cast(Any, SubscriptionUsage),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
 
-    def price_intervals(self,
-    subscription_id: str,
-    *,
-    add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
-    add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
-    edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
-    edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def price_intervals(
+        self,
+        subscription_id: str,
+        *,
+        add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
+        edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint is used to add and edit subscription
         [price intervals](../reference/price-interval). By making modifications to a
@@ -1291,43 +1346,54 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/price_intervals",
-            body=maybe_transform({
-                "add": add,
-                "add_adjustments": add_adjustments,
-                "edit": edit,
-                "edit_adjustments": edit_adjustments,
-            }, subscription_price_intervals_params.SubscriptionPriceIntervalsParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "add": add,
+                    "add_adjustments": add_adjustments,
+                    "edit": edit,
+                    "edit_adjustments": edit_adjustments,
+                },
+                subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def schedule_plan_change(self,
-    subscription_id: str,
-    *,
-    change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-    align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
-    billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]] | NotGiven = NOT_GIVEN,
-    change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-    credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
-    external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
-    plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def schedule_plan_change(
+        self,
+        subscription_id: str,
+        *,
+        change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
+        | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
+        credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
+        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """This endpoint can be used to change the plan on an existing subscription.
 
         It
@@ -1415,40 +1481,49 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/schedule_plan_change",
-            body=maybe_transform({
-                "change_option": change_option,
-                "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
-                "billing_cycle_alignment": billing_cycle_alignment,
-                "change_date": change_date,
-                "coupon_redemption_code": coupon_redemption_code,
-                "credits_overage_rate": credits_overage_rate,
-                "external_plan_id": external_plan_id,
-                "initial_phase_order": initial_phase_order,
-                "invoicing_threshold": invoicing_threshold,
-                "per_credit_overage_amount": per_credit_overage_amount,
-                "plan_id": plan_id,
-                "price_overrides": price_overrides,
-            }, subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "change_option": change_option,
+                    "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
+                    "billing_cycle_alignment": billing_cycle_alignment,
+                    "change_date": change_date,
+                    "coupon_redemption_code": coupon_redemption_code,
+                    "credits_overage_rate": credits_overage_rate,
+                    "external_plan_id": external_plan_id,
+                    "initial_phase_order": initial_phase_order,
+                    "invoicing_threshold": invoicing_threshold,
+                    "per_credit_overage_amount": per_credit_overage_amount,
+                    "plan_id": plan_id,
+                    "price_overrides": price_overrides,
+                },
+                subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def trigger_phase(self,
-    subscription_id: str,
-    *,
-    effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def trigger_phase(
+        self,
+        subscription_id: str,
+        *,
+        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         Manually trigger a phase, effective the given date (or the current time, if not
         specified).
@@ -1468,28 +1543,34 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
-            body=maybe_transform({
-                "effective_date": effective_date
-            }, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {"effective_date": effective_date}, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def unschedule_cancellation(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def unschedule_cancellation(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to unschedule any pending cancellations for a
         subscription.
@@ -1510,26 +1591,32 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_cancellation",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def unschedule_fixed_fee_quantity_updates(self,
-    subscription_id: str,
-    *,
-    price_id: str,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def unschedule_fixed_fee_quantity_updates(
+        self,
+        subscription_id: str,
+        *,
+        price_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
@@ -1550,28 +1637,35 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
-            body=maybe_transform({
-                "price_id": price_id
-            }, subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {"price_id": price_id},
+                subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def unschedule_pending_plan_changes(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def unschedule_pending_plan_changes(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
         subscription.
@@ -1588,29 +1682,35 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def update_fixed_fee_quantity(self,
-    subscription_id: str,
-    *,
-    price_id: str,
-    quantity: float,
-    change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
-    effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    def update_fixed_fee_quantity(
+        self,
+        subscription_id: str,
+        *,
+        price_id: str,
+        quantity: float,
+        change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to update the quantity for a fixed fee.
 
@@ -1649,20 +1749,28 @@ class Subscriptions(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
             f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
-            body=maybe_transform({
-                "price_id": price_id,
-                "quantity": quantity,
-                "change_option": change_option,
-                "effective_date": effective_date,
-            }, subscription_update_fixed_fee_quantity_params.SubscriptionUpdateFixedFeeQuantityParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=maybe_transform(
+                {
+                    "price_id": price_id,
+                    "quantity": quantity,
+                    "change_option": change_option,
+                    "effective_date": effective_date,
+                },
+                subscription_update_fixed_fee_quantity_params.SubscriptionUpdateFixedFeeQuantityParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
+
 
 class AsyncSubscriptions(AsyncAPIResource):
     @cached_property
@@ -1673,35 +1781,37 @@ class AsyncSubscriptions(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncSubscriptionsWithStreamingResponse:
         return AsyncSubscriptionsWithStreamingResponse(self)
 
-    async def create(self,
-    *,
-    align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
-    auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-    aws_region: Optional[str] | NotGiven = NOT_GIVEN,
-    coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-    credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
-    customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-    end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
-    external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
-    external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-    net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-    per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
-    plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-    start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def create(
+        self,
+        *,
+        align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        aws_region: Optional[str] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
+        credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
+        external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
+        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_create_params.PriceOverride]] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """A subscription represents the purchase of a plan by a customer.
 
         The customer is
@@ -2120,47 +2230,58 @@ class AsyncSubscriptions(AsyncAPIResource):
         """
         return await self._post(
             "/subscriptions",
-            body=await async_maybe_transform({
-                "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
-                "auto_collection": auto_collection,
-                "aws_region": aws_region,
-                "coupon_redemption_code": coupon_redemption_code,
-                "credits_overage_rate": credits_overage_rate,
-                "customer_id": customer_id,
-                "default_invoice_memo": default_invoice_memo,
-                "end_date": end_date,
-                "external_customer_id": external_customer_id,
-                "external_marketplace": external_marketplace,
-                "external_marketplace_reporting_id": external_marketplace_reporting_id,
-                "external_plan_id": external_plan_id,
-                "initial_phase_order": initial_phase_order,
-                "invoicing_threshold": invoicing_threshold,
-                "metadata": metadata,
-                "net_terms": net_terms,
-                "per_credit_overage_amount": per_credit_overage_amount,
-                "plan_id": plan_id,
-                "price_overrides": price_overrides,
-                "start_date": start_date,
-            }, subscription_create_params.SubscriptionCreateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
+                    "auto_collection": auto_collection,
+                    "aws_region": aws_region,
+                    "coupon_redemption_code": coupon_redemption_code,
+                    "credits_overage_rate": credits_overage_rate,
+                    "customer_id": customer_id,
+                    "default_invoice_memo": default_invoice_memo,
+                    "end_date": end_date,
+                    "external_customer_id": external_customer_id,
+                    "external_marketplace": external_marketplace,
+                    "external_marketplace_reporting_id": external_marketplace_reporting_id,
+                    "external_plan_id": external_plan_id,
+                    "initial_phase_order": initial_phase_order,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                    "per_credit_overage_amount": per_credit_overage_amount,
+                    "plan_id": plan_id,
+                    "price_overrides": price_overrides,
+                    "start_date": start_date,
+                },
+                subscription_create_params.SubscriptionCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def update(self,
-    subscription_id: str,
-    *,
-    auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-    default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-    net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def update(
+        self,
+        subscription_id: str,
+        *,
+        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to update the `metadata`, `net terms`,
         `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
@@ -2198,41 +2319,48 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._put(
             f"/subscriptions/{subscription_id}",
-            body=await async_maybe_transform({
-                "auto_collection": auto_collection,
-                "default_invoice_memo": default_invoice_memo,
-                "invoicing_threshold": invoicing_threshold,
-                "metadata": metadata,
-                "net_terms": net_terms,
-            }, subscription_update_params.SubscriptionUpdateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "auto_collection": auto_collection,
+                    "default_invoice_memo": default_invoice_memo,
+                    "invoicing_threshold": invoicing_threshold,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                subscription_update_params.SubscriptionUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    def list(self,
-    *,
-    created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    cursor: Optional[str] | NotGiven = NOT_GIVEN,
-    query_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    query_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-    query_external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-    query_external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> AsyncPaginator[Subscription, AsyncPage[Subscription]]:
+    def list(
+        self,
+        *,
+        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[Subscription, AsyncPage[Subscription]]:
         """
         This endpoint returns a list of all subscriptions for an account as a
         [paginated](../reference/pagination) list, ordered starting from the most
@@ -2260,33 +2388,44 @@ class AsyncSubscriptions(AsyncAPIResource):
         """
         return self._get_api_list(
             "/subscriptions",
-            page = AsyncPage[Subscription],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "created_at_gt": created_at_gt,
-                "created_at_gte": created_at_gte,
-                "created_at_lt": created_at_lt,
-                "created_at_lte": created_at_lte,
-                "cursor": cursor,
-                "customer_id": query_customer_id,
-                "external_customer_id": query_external_customer_id,
-                "limit": limit,
-                "status": status,
-            }, subscription_list_params.SubscriptionListParams)),
+            page=AsyncPage[Subscription],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "external_customer_id": external_customer_id,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    subscription_list_params.SubscriptionListParams,
+                ),
+            ),
             model=Subscription,
         )
 
-    async def cancel(self,
-    subscription_id: str,
-    *,
-    cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
-    cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def cancel(
+        self,
+        subscription_id: str,
+        *,
+        cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
+        cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """This endpoint can be used to cancel an existing subscription.
 
         It returns the
@@ -2368,28 +2507,37 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/cancel",
-            body=await async_maybe_transform({
-                "cancel_option": cancel_option,
-                "cancellation_date": cancellation_date,
-            }, subscription_cancel_params.SubscriptionCancelParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "cancel_option": cancel_option,
+                    "cancellation_date": cancellation_date,
+                },
+                subscription_cancel_params.SubscriptionCancelParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def fetch(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Subscription:
+    async def fetch(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Subscription:
         """
         This endpoint is used to fetch a [Subscription](../guides/concepts#subscription)
         given an identifier.
@@ -2404,28 +2552,30 @@ class AsyncSubscriptions(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
             f"/subscriptions/{subscription_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Subscription,
         )
 
-    async def fetch_costs(self,
-    subscription_id: str,
-    *,
-    currency: Optional[str] | NotGiven = NOT_GIVEN,
-    timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SubscriptionFetchCostsResponse:
+    async def fetch_costs(
+        self,
+        subscription_id: str,
+        *,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SubscriptionFetchCostsResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a subscription's costs
         in Orb, calculated by applying pricing information to the underlying usage (see
@@ -2459,35 +2609,44 @@ class AsyncSubscriptions(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
             f"/subscriptions/{subscription_id}/costs",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "currency": currency,
-                "timeframe_end": timeframe_end,
-                "timeframe_start": timeframe_start,
-                "view_mode": view_mode,
-            }, subscription_fetch_costs_params.SubscriptionFetchCostsParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "currency": currency,
+                        "timeframe_end": timeframe_end,
+                        "timeframe_start": timeframe_start,
+                        "view_mode": view_mode,
+                    },
+                    subscription_fetch_costs_params.SubscriptionFetchCostsParams,
+                ),
+            ),
             cast_to=SubscriptionFetchCostsResponse,
         )
 
-    def fetch_schedule(self,
-    subscription_id: str,
-    *,
-    cursor: Optional[str] | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    start_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    start_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> AsyncPaginator[SubscriptionFetchScheduleResponse, AsyncPage[SubscriptionFetchScheduleResponse]]:
+    def fetch_schedule(
+        self,
+        subscription_id: str,
+        *,
+        cursor: Optional[str] | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        start_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        start_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[SubscriptionFetchScheduleResponse, AsyncPage[SubscriptionFetchScheduleResponse]]:
         """
         This endpoint returns a [paginated](../reference/pagination) list of all plans
         associated with a subscription along with their start and end dates. This list
@@ -2509,42 +2668,51 @@ class AsyncSubscriptions(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
             f"/subscriptions/{subscription_id}/schedule",
-            page = AsyncPage[SubscriptionFetchScheduleResponse],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "limit": limit,
-                "start_date_gt": start_date_gt,
-                "start_date_gte": start_date_gte,
-                "start_date_lt": start_date_lt,
-                "start_date_lte": start_date_lte,
-            }, subscription_fetch_schedule_params.SubscriptionFetchScheduleParams)),
+            page=AsyncPage[SubscriptionFetchScheduleResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "start_date_gt": start_date_gt,
+                        "start_date_gte": start_date_gte,
+                        "start_date_lt": start_date_lt,
+                        "start_date_lte": start_date_lte,
+                    },
+                    subscription_fetch_schedule_params.SubscriptionFetchScheduleParams,
+                ),
+            ),
             model=SubscriptionFetchScheduleResponse,
         )
 
-    async def fetch_usage(self,
-    subscription_id: str,
-    *,
-    billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-    first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
-    first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
-    granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
-    group_by: Optional[str] | NotGiven = NOT_GIVEN,
-    second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
-    second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
-    timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SubscriptionUsage:
+    async def fetch_usage(
+        self,
+        subscription_id: str,
+        *,
+        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        first_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
+        first_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
+        granularity: Optional[Literal["day"]] | NotGiven = NOT_GIVEN,
+        group_by: Optional[str] | NotGiven = NOT_GIVEN,
+        second_dimension_key: Optional[str] | NotGiven = NOT_GIVEN,
+        second_dimension_value: Optional[str] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        view_mode: Optional[Literal["periodic", "cumulative"]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SubscriptionUsage:
         """This endpoint is used to fetch a subscription's usage in Orb.
 
         Especially when
@@ -2769,40 +2937,52 @@ class AsyncSubscriptions(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
-        return cast(SubscriptionUsage, await self._get(
-            f"/subscriptions/{subscription_id}/usage",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "billable_metric_id": billable_metric_id,
-                "first_dimension_key": first_dimension_key,
-                "first_dimension_value": first_dimension_value,
-                "granularity": granularity,
-                "group_by": group_by,
-                "second_dimension_key": second_dimension_key,
-                "second_dimension_value": second_dimension_value,
-                "timeframe_end": timeframe_end,
-                "timeframe_start": timeframe_start,
-                "view_mode": view_mode,
-            }, subscription_fetch_usage_params.SubscriptionFetchUsageParams)),
-            cast_to=cast(Any, SubscriptionUsage),  # Union types cannot be passed in as arguments in the type system
-        ))
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return cast(
+            SubscriptionUsage,
+            await self._get(
+                f"/subscriptions/{subscription_id}/usage",
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform(
+                        {
+                            "billable_metric_id": billable_metric_id,
+                            "first_dimension_key": first_dimension_key,
+                            "first_dimension_value": first_dimension_value,
+                            "granularity": granularity,
+                            "group_by": group_by,
+                            "second_dimension_key": second_dimension_key,
+                            "second_dimension_value": second_dimension_value,
+                            "timeframe_end": timeframe_end,
+                            "timeframe_start": timeframe_start,
+                            "view_mode": view_mode,
+                        },
+                        subscription_fetch_usage_params.SubscriptionFetchUsageParams,
+                    ),
+                ),
+                cast_to=cast(Any, SubscriptionUsage),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
 
-    async def price_intervals(self,
-    subscription_id: str,
-    *,
-    add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
-    add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
-    edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
-    edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def price_intervals(
+        self,
+        subscription_id: str,
+        *,
+        add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
+        add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
+        edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
+        edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint is used to add and edit subscription
         [price intervals](../reference/price-interval). By making modifications to a
@@ -2897,43 +3077,54 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/price_intervals",
-            body=await async_maybe_transform({
-                "add": add,
-                "add_adjustments": add_adjustments,
-                "edit": edit,
-                "edit_adjustments": edit_adjustments,
-            }, subscription_price_intervals_params.SubscriptionPriceIntervalsParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "add": add,
+                    "add_adjustments": add_adjustments,
+                    "edit": edit,
+                    "edit_adjustments": edit_adjustments,
+                },
+                subscription_price_intervals_params.SubscriptionPriceIntervalsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def schedule_plan_change(self,
-    subscription_id: str,
-    *,
-    change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-    align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
-    billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]] | NotGiven = NOT_GIVEN,
-    change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-    coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-    credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
-    external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
-    invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
-    per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
-    plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-    price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def schedule_plan_change(
+        self,
+        subscription_id: str,
+        *,
+        change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
+        billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
+        | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
+        credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
+        invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
+        per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
+        plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        price_overrides: Optional[Iterable[subscription_schedule_plan_change_params.PriceOverride]]
+        | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """This endpoint can be used to change the plan on an existing subscription.
 
         It
@@ -3021,40 +3212,49 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/schedule_plan_change",
-            body=await async_maybe_transform({
-                "change_option": change_option,
-                "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
-                "billing_cycle_alignment": billing_cycle_alignment,
-                "change_date": change_date,
-                "coupon_redemption_code": coupon_redemption_code,
-                "credits_overage_rate": credits_overage_rate,
-                "external_plan_id": external_plan_id,
-                "initial_phase_order": initial_phase_order,
-                "invoicing_threshold": invoicing_threshold,
-                "per_credit_overage_amount": per_credit_overage_amount,
-                "plan_id": plan_id,
-                "price_overrides": price_overrides,
-            }, subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "change_option": change_option,
+                    "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
+                    "billing_cycle_alignment": billing_cycle_alignment,
+                    "change_date": change_date,
+                    "coupon_redemption_code": coupon_redemption_code,
+                    "credits_overage_rate": credits_overage_rate,
+                    "external_plan_id": external_plan_id,
+                    "initial_phase_order": initial_phase_order,
+                    "invoicing_threshold": invoicing_threshold,
+                    "per_credit_overage_amount": per_credit_overage_amount,
+                    "plan_id": plan_id,
+                    "price_overrides": price_overrides,
+                },
+                subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def trigger_phase(self,
-    subscription_id: str,
-    *,
-    effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def trigger_phase(
+        self,
+        subscription_id: str,
+        *,
+        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         Manually trigger a phase, effective the given date (or the current time, if not
         specified).
@@ -3074,28 +3274,34 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
-            body=await async_maybe_transform({
-                "effective_date": effective_date
-            }, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {"effective_date": effective_date}, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def unschedule_cancellation(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def unschedule_cancellation(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to unschedule any pending cancellations for a
         subscription.
@@ -3116,26 +3322,32 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_cancellation",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def unschedule_fixed_fee_quantity_updates(self,
-    subscription_id: str,
-    *,
-    price_id: str,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def unschedule_fixed_fee_quantity_updates(
+        self,
+        subscription_id: str,
+        *,
+        price_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
@@ -3156,28 +3368,35 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
-            body=await async_maybe_transform({
-                "price_id": price_id
-            }, subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {"price_id": price_id},
+                subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def unschedule_pending_plan_changes(self,
-    subscription_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def unschedule_pending_plan_changes(
+        self,
+        subscription_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
         subscription.
@@ -3194,29 +3413,35 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
 
-    async def update_fixed_fee_quantity(self,
-    subscription_id: str,
-    *,
-    price_id: str,
-    quantity: float,
-    change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
-    effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    idempotency_key: str | None = None,) -> Subscription:
+    async def update_fixed_fee_quantity(
+        self,
+        subscription_id: str,
+        *,
+        price_id: str,
+        quantity: float,
+        change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Subscription:
         """
         This endpoint can be used to update the quantity for a fixed fee.
 
@@ -3255,20 +3480,28 @@ class AsyncSubscriptions(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         if not subscription_id:
-          raise ValueError(
-            f'Expected a non-empty value for `subscription_id` but received {subscription_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
             f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
-            body=await async_maybe_transform({
-                "price_id": price_id,
-                "quantity": quantity,
-                "change_option": change_option,
-                "effective_date": effective_date,
-            }, subscription_update_fixed_fee_quantity_params.SubscriptionUpdateFixedFeeQuantityParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, idempotency_key=idempotency_key),
+            body=await async_maybe_transform(
+                {
+                    "price_id": price_id,
+                    "quantity": quantity,
+                    "change_option": change_option,
+                    "effective_date": effective_date,
+                },
+                subscription_update_fixed_fee_quantity_params.SubscriptionUpdateFixedFeeQuantityParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=Subscription,
         )
+
 
 class SubscriptionsWithRawResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
@@ -3320,6 +3553,7 @@ class SubscriptionsWithRawResponse:
             subscriptions.update_fixed_fee_quantity,
         )
 
+
 class AsyncSubscriptionsWithRawResponse:
     def __init__(self, subscriptions: AsyncSubscriptions) -> None:
         self._subscriptions = subscriptions
@@ -3370,6 +3604,7 @@ class AsyncSubscriptionsWithRawResponse:
             subscriptions.update_fixed_fee_quantity,
         )
 
+
 class SubscriptionsWithStreamingResponse:
     def __init__(self, subscriptions: Subscriptions) -> None:
         self._subscriptions = subscriptions
@@ -3419,6 +3654,7 @@ class SubscriptionsWithStreamingResponse:
         self.update_fixed_fee_quantity = to_streamed_response_wrapper(
             subscriptions.update_fixed_fee_quantity,
         )
+
 
 class AsyncSubscriptionsWithStreamingResponse:
     def __init__(self, subscriptions: AsyncSubscriptions) -> None:

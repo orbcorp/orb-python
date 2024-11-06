@@ -2,20 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, Literal, Required, TypeAlias, Annotated
-
-from typing import Iterable, Union, Optional, Dict, List
-
+from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._utils import PropertyInfo
 from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
-
-from .._utils import PropertyInfo
-
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
 
 __all__ = [
     "SubscriptionPriceIntervalsParams",

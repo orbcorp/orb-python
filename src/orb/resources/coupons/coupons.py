@@ -2,37 +2,21 @@
 
 from __future__ import annotations
 
-import httpx
-
-from .subscriptions import Subscriptions, AsyncSubscriptions
-
-from ..._compat import cached_property
-
-from ...types.coupon import Coupon
-
-from ..._utils import maybe_transform, async_maybe_transform
-
-from ..._base_client import make_request_options, AsyncPaginator
-
 from typing import Optional
 
-from ...pagination import SyncPage, AsyncPage
-
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-from ...types import coupon_create_params
+import httpx
 
 from ... import _legacy_response
-
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from ...types import coupon_list_params, coupon_create_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ...types import shared_params
-from ...types import coupon_create_params
-from ...types import coupon_list_params
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ...pagination import SyncPage, AsyncPage
 from .subscriptions import (
     Subscriptions,
     AsyncSubscriptions,
@@ -41,6 +25,8 @@ from .subscriptions import (
     SubscriptionsWithStreamingResponse,
     AsyncSubscriptionsWithStreamingResponse,
 )
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.coupon import Coupon
 
 __all__ = ["Coupons", "AsyncCoupons"]
 
