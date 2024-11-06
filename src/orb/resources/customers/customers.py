@@ -2,47 +2,13 @@
 
 from __future__ import annotations
 
+from typing import Dict, List, Union, Optional
+from datetime import datetime
+from typing_extensions import Literal
+
 import httpx
 
-from .costs import Costs, AsyncCosts
-
-from ..._compat import cached_property
-
-from .credits.credits import Credits, AsyncCredits
-
-from .balance_transactions import BalanceTransactions, AsyncBalanceTransactions
-
-from ...types.customer import Customer
-
-from ..._utils import maybe_transform, async_maybe_transform
-
-from ..._base_client import make_request_options, AsyncPaginator
-
-from typing import Optional, List, Dict, Union
-
-from typing_extensions import Literal
-
-from ...pagination import SyncPage, AsyncPage
-
-from datetime import datetime
-
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-from ...types import customer_create_params, customer_update_params, customer_update_by_external_id_params
-
 from ... import _legacy_response
-
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ...types import shared_params
-from ...types import customer_create_params
-from ...types import customer_update_params
-from ...types import customer_list_params
-from ...types import customer_update_by_external_id_params
 from .costs import (
     Costs,
     AsyncCosts,
@@ -50,6 +16,12 @@ from .costs import (
     AsyncCostsWithRawResponse,
     CostsWithStreamingResponse,
     AsyncCostsWithStreamingResponse,
+)
+from ...types import (
+    customer_list_params,
+    customer_create_params,
+    customer_update_params,
+    customer_update_by_external_id_params,
 )
 from .credits import (
     Credits,
@@ -59,6 +31,18 @@ from .credits import (
     CreditsWithStreamingResponse,
     AsyncCreditsWithStreamingResponse,
 )
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from .credits.credits import Credits, AsyncCredits
+from ...types.customer import Customer
 from .balance_transactions import (
     BalanceTransactions,
     AsyncBalanceTransactions,

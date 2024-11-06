@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from os import PathLike
-from abc import ABC, abstractmethod
 from typing import (
     IO,
     TYPE_CHECKING,
@@ -14,10 +13,8 @@ from typing import (
     Mapping,
     TypeVar,
     Callable,
-    Iterator,
     Optional,
     Sequence,
-    AsyncIterator,
 )
 from typing_extensions import Literal, Protocol, TypeAlias, TypedDict, override, runtime_checkable
 

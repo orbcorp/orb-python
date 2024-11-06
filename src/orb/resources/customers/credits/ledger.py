@@ -2,61 +2,36 @@
 
 from __future__ import annotations
 
-import httpx
-
-from ...._compat import cached_property
-
-from ....types.customers.credits.ledger_list_response import LedgerListResponse
-
-from ....pagination import SyncPage, AsyncPage
-
-from ...._utils import maybe_transform, async_maybe_transform
-
-from ...._base_client import make_request_options, AsyncPaginator
-
-from typing import Union, Optional, Dict
-
-from datetime import datetime, date
-
+from typing import Any, Dict, Union, Optional, cast, overload
+from datetime import date, datetime
 from typing_extensions import Literal
 
-from ....types.customers.credits.ledger_create_entry_response import LedgerCreateEntryResponse
+import httpx
 
+from .... import _legacy_response
+from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._utils import (
+    required_args,
+    maybe_transform,
+    async_maybe_transform,
+)
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ....pagination import SyncPage, AsyncPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.customers.credits import (
+    ledger_list_params,
+    ledger_create_entry_params,
+    ledger_list_by_external_id_params,
+    ledger_create_entry_by_external_id_params,
+)
+from ....types.customers.credits.ledger_list_response import LedgerListResponse
+from ....types.customers.credits.ledger_create_entry_response import LedgerCreateEntryResponse
+from ....types.customers.credits.ledger_list_by_external_id_response import LedgerListByExternalIDResponse
 from ....types.customers.credits.ledger_create_entry_by_external_id_response import (
     LedgerCreateEntryByExternalIDResponse,
 )
-
-from ....types.customers.credits.ledger_list_by_external_id_response import LedgerListByExternalIDResponse
-
-from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-from ....types.customers.credits import ledger_create_entry_params, ledger_create_entry_by_external_id_params
-
-from .... import _legacy_response
-
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from ...._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ...._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ....types import shared_params
-from ....types.customers.credits import ledger_list_params
-from ....types.customers.credits import ledger_create_entry_params
-from ....types.customers.credits import ledger_create_entry_by_external_id_params
-from ....types.customers.credits import ledger_list_by_external_id_params
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
-from typing import cast
 
 __all__ = ["Ledger", "AsyncLedger"]
 

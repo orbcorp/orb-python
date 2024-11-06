@@ -2,14 +2,8 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, Literal, Required, TypeAlias
-
-from typing import Optional, Dict, List, Iterable
-
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
+from typing import Dict, List, Union, Iterable, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "PriceCreateParams",
