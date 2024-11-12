@@ -26,8 +26,7 @@ import os
 from orb import Orb
 
 client = Orb(
-    # This is the default and can be omitted
-    api_key=os.environ.get("ORB_API_KEY"),
+    api_key=os.environ.get("ORB_API_KEY"),  # This is the default and can be omitted
 )
 
 customer = client.customers.create(
@@ -52,8 +51,7 @@ import asyncio
 from orb import AsyncOrb
 
 client = AsyncOrb(
-    # This is the default and can be omitted
-    api_key=os.environ.get("ORB_API_KEY"),
+    api_key=os.environ.get("ORB_API_KEY"),  # This is the default and can be omitted
 )
 
 
