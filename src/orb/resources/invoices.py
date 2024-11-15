@@ -451,6 +451,47 @@ class Invoices(SyncAPIResource):
             cast_to=Invoice,
         )
 
+    def pay(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint collects payment for an invoice using the customer's default
+        payment method. This action can only be taken on invoices with status "issued".
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return self._post(
+            f"/invoices/{invoice_id}/pay",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
     def void(
         self,
         invoice_id: str,
@@ -917,6 +958,47 @@ class AsyncInvoices(AsyncAPIResource):
             cast_to=Invoice,
         )
 
+    async def pay(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint collects payment for an invoice using the customer's default
+        payment method. This action can only be taken on invoices with status "issued".
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return await self._post(
+            f"/invoices/{invoice_id}/pay",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
     async def void(
         self,
         invoice_id: str,
@@ -990,6 +1072,9 @@ class InvoicesWithRawResponse:
         self.mark_paid = _legacy_response.to_raw_response_wrapper(
             invoices.mark_paid,
         )
+        self.pay = _legacy_response.to_raw_response_wrapper(
+            invoices.pay,
+        )
         self.void = _legacy_response.to_raw_response_wrapper(
             invoices.void,
         )
@@ -1019,6 +1104,9 @@ class AsyncInvoicesWithRawResponse:
         )
         self.mark_paid = _legacy_response.async_to_raw_response_wrapper(
             invoices.mark_paid,
+        )
+        self.pay = _legacy_response.async_to_raw_response_wrapper(
+            invoices.pay,
         )
         self.void = _legacy_response.async_to_raw_response_wrapper(
             invoices.void,
@@ -1050,6 +1138,9 @@ class InvoicesWithStreamingResponse:
         self.mark_paid = to_streamed_response_wrapper(
             invoices.mark_paid,
         )
+        self.pay = to_streamed_response_wrapper(
+            invoices.pay,
+        )
         self.void = to_streamed_response_wrapper(
             invoices.void,
         )
@@ -1079,6 +1170,9 @@ class AsyncInvoicesWithStreamingResponse:
         )
         self.mark_paid = async_to_streamed_response_wrapper(
             invoices.mark_paid,
+        )
+        self.pay = async_to_streamed_response_wrapper(
+            invoices.pay,
         )
         self.void = async_to_streamed_response_wrapper(
             invoices.void,
