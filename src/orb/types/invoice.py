@@ -35,6 +35,7 @@ __all__ = [
     "LineItemTaxAmount",
     "Maximum",
     "Minimum",
+    "PaymentAttempt",
     "ShippingAddress",
     "Subscription",
 ]
@@ -744,6 +745,26 @@ class Minimum(BaseModel):
     """Minimum amount applied"""
 
 
+class PaymentAttempt(BaseModel):
+    id: str
+    """The ID of the payment attempt."""
+
+    amount: str
+    """The amount of the payment attempt."""
+
+    created_at: datetime
+    """The time at which the payment attempt was created."""
+
+    payment_provider: Optional[Literal["stripe"]] = None
+    """The payment provider that attempted to collect the payment."""
+
+    payment_provider_id: Optional[str] = None
+    """The ID of the payment attempt in the payment provider."""
+
+    succeeded: bool
+    """Whether the payment attempt succeeded."""
+
+
 class ShippingAddress(BaseModel):
     city: Optional[str] = None
 
@@ -979,6 +1000,9 @@ class Invoice(BaseModel):
     If the invoice has a status of `paid`, this gives a timestamp when the invoice
     was paid.
     """
+
+    payment_attempts: List[PaymentAttempt]
+    """A list of payment attempts associated with the invoice"""
 
     payment_failed_at: Optional[datetime] = None
     """
