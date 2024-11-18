@@ -63,7 +63,7 @@ class TestAlerts:
     def test_method_update(self, client: Orb) -> None:
         alert = client.alerts.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -71,7 +71,7 @@ class TestAlerts:
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
 
         assert response.is_closed is True
@@ -83,7 +83,7 @@ class TestAlerts:
     def test_streaming_response_update(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -100,7 +100,7 @@ class TestAlerts:
         ):
             client.alerts.with_raw_response.update(
                 alert_configuration_id="",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+                thresholds=[{"value": 0}],
             )
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
@@ -162,7 +162,7 @@ class TestAlerts:
             customer_id="customer_id",
             currency="currency",
             type="usage_exceeded",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -218,7 +218,7 @@ class TestAlerts:
             external_customer_id="external_customer_id",
             currency="currency",
             type="usage_exceeded",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -263,7 +263,7 @@ class TestAlerts:
     def test_method_create_for_subscription(self, client: Orb) -> None:
         alert = client.alerts.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -272,7 +272,7 @@ class TestAlerts:
     def test_method_create_for_subscription_with_all_params(self, client: Orb) -> None:
         alert = client.alerts.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
             metric_id="metric_id",
         )
@@ -282,7 +282,7 @@ class TestAlerts:
     def test_raw_response_create_for_subscription(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
 
@@ -295,7 +295,7 @@ class TestAlerts:
     def test_streaming_response_create_for_subscription(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         ) as response:
             assert not response.is_closed
@@ -311,7 +311,7 @@ class TestAlerts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.alerts.with_raw_response.create_for_subscription(
                 subscription_id="",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+                thresholds=[{"value": 0}],
                 type="usage_exceeded",
             )
 
@@ -441,7 +441,7 @@ class TestAsyncAlerts:
     async def test_method_update(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -449,7 +449,7 @@ class TestAsyncAlerts:
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
 
         assert response.is_closed is True
@@ -461,7 +461,7 @@ class TestAsyncAlerts:
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.update(
             alert_configuration_id="alert_configuration_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -478,7 +478,7 @@ class TestAsyncAlerts:
         ):
             await async_client.alerts.with_raw_response.update(
                 alert_configuration_id="",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+                thresholds=[{"value": 0}],
             )
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
@@ -540,7 +540,7 @@ class TestAsyncAlerts:
             customer_id="customer_id",
             currency="currency",
             type="usage_exceeded",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -596,7 +596,7 @@ class TestAsyncAlerts:
             external_customer_id="external_customer_id",
             currency="currency",
             type="usage_exceeded",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -641,7 +641,7 @@ class TestAsyncAlerts:
     async def test_method_create_for_subscription(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -650,7 +650,7 @@ class TestAsyncAlerts:
     async def test_method_create_for_subscription_with_all_params(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
             metric_id="metric_id",
         )
@@ -660,7 +660,7 @@ class TestAsyncAlerts:
     async def test_raw_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
 
@@ -673,7 +673,7 @@ class TestAsyncAlerts:
     async def test_streaming_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.create_for_subscription(
             subscription_id="subscription_id",
-            thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+            thresholds=[{"value": 0}],
             type="usage_exceeded",
         ) as response:
             assert not response.is_closed
@@ -689,7 +689,7 @@ class TestAsyncAlerts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.alerts.with_raw_response.create_for_subscription(
                 subscription_id="",
-                thresholds=[{"value": 0}, {"value": 0}, {"value": 0}],
+                thresholds=[{"value": 0}],
                 type="usage_exceeded",
             )
 
