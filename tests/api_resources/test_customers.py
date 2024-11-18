@@ -39,19 +39,11 @@ class TestCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
-            additional_emails=["string", "string", "string"],
+            additional_emails=["string"],
             auto_collection=True,
             billing_address={
                 "city": "city",
@@ -132,15 +124,7 @@ class TestCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -382,15 +366,7 @@ class TestCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -488,19 +464,11 @@ class TestAsyncCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
-            additional_emails=["string", "string", "string"],
+            additional_emails=["string"],
             auto_collection=True,
             billing_address={
                 "city": "city",
@@ -581,15 +549,7 @@ class TestAsyncCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -831,15 +791,7 @@ class TestAsyncCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
