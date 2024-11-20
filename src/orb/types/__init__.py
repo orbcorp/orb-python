@@ -9,7 +9,11 @@ from .price import Price as Price
 from .coupon import Coupon as Coupon
 from .shared import (
     Discount as Discount,
+    TrialDiscount as TrialDiscount,
+    AmountDiscount as AmountDiscount,
     PaginationMetadata as PaginationMetadata,
+    PercentageDiscount as PercentageDiscount,
+    InvoiceLevelDiscount as InvoiceLevelDiscount,
     BillingCycleRelativeDate as BillingCycleRelativeDate,
 )
 from .invoice import Invoice as Invoice
@@ -39,6 +43,7 @@ from .price_update_params import PriceUpdateParams as PriceUpdateParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
+from .invoice_issue_params import InvoiceIssueParams as InvoiceIssueParams
 from .metric_create_params import MetricCreateParams as MetricCreateParams
 from .metric_update_params import MetricUpdateParams as MetricUpdateParams
 from .event_ingest_response import EventIngestResponse as EventIngestResponse
@@ -55,32 +60,56 @@ from .top_level_ping_response import TopLevelPingResponse as TopLevelPingRespons
 from .event_deprecate_response import EventDeprecateResponse as EventDeprecateResponse
 from .invoice_mark_paid_params import InvoiceMarkPaidParams as InvoiceMarkPaidParams
 from .subscription_list_params import SubscriptionListParams as SubscriptionListParams
+from .credit_note_create_params import CreditNoteCreateParams as CreditNoteCreateParams
 from .subscription_cancel_params import SubscriptionCancelParams as SubscriptionCancelParams
 from .subscription_create_params import SubscriptionCreateParams as SubscriptionCreateParams
 from .subscription_update_params import SubscriptionUpdateParams as SubscriptionUpdateParams
+from .subscription_cancel_response import SubscriptionCancelResponse as SubscriptionCancelResponse
+from .subscription_create_response import SubscriptionCreateResponse as SubscriptionCreateResponse
 from .invoice_fetch_upcoming_params import InvoiceFetchUpcomingParams as InvoiceFetchUpcomingParams
 from .invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse as InvoiceFetchUpcomingResponse
 from .invoice_line_item_create_params import InvoiceLineItemCreateParams as InvoiceLineItemCreateParams
 from .subscription_fetch_costs_params import SubscriptionFetchCostsParams as SubscriptionFetchCostsParams
 from .subscription_fetch_usage_params import SubscriptionFetchUsageParams as SubscriptionFetchUsageParams
 from .alert_create_for_customer_params import AlertCreateForCustomerParams as AlertCreateForCustomerParams
+from .subscription_update_trial_params import SubscriptionUpdateTrialParams as SubscriptionUpdateTrialParams
 from .invoice_line_item_create_response import InvoiceLineItemCreateResponse as InvoiceLineItemCreateResponse
 from .subscription_fetch_costs_response import SubscriptionFetchCostsResponse as SubscriptionFetchCostsResponse
 from .subscription_trigger_phase_params import SubscriptionTriggerPhaseParams as SubscriptionTriggerPhaseParams
 from .subscription_fetch_schedule_params import SubscriptionFetchScheduleParams as SubscriptionFetchScheduleParams
+from .subscription_update_trial_response import SubscriptionUpdateTrialResponse as SubscriptionUpdateTrialResponse
 from .subscription_price_intervals_params import SubscriptionPriceIntervalsParams as SubscriptionPriceIntervalsParams
+from .subscription_trigger_phase_response import SubscriptionTriggerPhaseResponse as SubscriptionTriggerPhaseResponse
 from .alert_create_for_subscription_params import AlertCreateForSubscriptionParams as AlertCreateForSubscriptionParams
 from .subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse as SubscriptionFetchScheduleResponse
 from .customer_update_by_external_id_params import CustomerUpdateByExternalIDParams as CustomerUpdateByExternalIDParams
+from .subscription_price_intervals_response import (
+    SubscriptionPriceIntervalsResponse as SubscriptionPriceIntervalsResponse,
+)
 from .subscription_schedule_plan_change_params import (
     SubscriptionSchedulePlanChangeParams as SubscriptionSchedulePlanChangeParams,
 )
 from .alert_create_for_external_customer_params import (
     AlertCreateForExternalCustomerParams as AlertCreateForExternalCustomerParams,
 )
+from .subscription_schedule_plan_change_response import (
+    SubscriptionSchedulePlanChangeResponse as SubscriptionSchedulePlanChangeResponse,
+)
+from .subscription_unschedule_cancellation_response import (
+    SubscriptionUnscheduleCancellationResponse as SubscriptionUnscheduleCancellationResponse,
+)
 from .subscription_update_fixed_fee_quantity_params import (
     SubscriptionUpdateFixedFeeQuantityParams as SubscriptionUpdateFixedFeeQuantityParams,
 )
+from .subscription_update_fixed_fee_quantity_response import (
+    SubscriptionUpdateFixedFeeQuantityResponse as SubscriptionUpdateFixedFeeQuantityResponse,
+)
+from .subscription_unschedule_pending_plan_changes_response import (
+    SubscriptionUnschedulePendingPlanChangesResponse as SubscriptionUnschedulePendingPlanChangesResponse,
+)
 from .subscription_unschedule_fixed_fee_quantity_updates_params import (
     SubscriptionUnscheduleFixedFeeQuantityUpdatesParams as SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
+)
+from .subscription_unschedule_fixed_fee_quantity_updates_response import (
+    SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse as SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
 )

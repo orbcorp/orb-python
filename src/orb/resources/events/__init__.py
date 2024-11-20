@@ -8,6 +8,14 @@ from .events import (
     EventsWithStreamingResponse,
     AsyncEventsWithStreamingResponse,
 )
+from .volume import (
+    Volume,
+    AsyncVolume,
+    VolumeWithRawResponse,
+    AsyncVolumeWithRawResponse,
+    VolumeWithStreamingResponse,
+    AsyncVolumeWithStreamingResponse,
+)
 from .backfills import (
     Backfills,
     AsyncBackfills,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncBackfillsWithRawResponse",
     "BackfillsWithStreamingResponse",
     "AsyncBackfillsWithStreamingResponse",
+    "Volume",
+    "AsyncVolume",
+    "VolumeWithRawResponse",
+    "AsyncVolumeWithRawResponse",
+    "VolumeWithStreamingResponse",
+    "AsyncVolumeWithStreamingResponse",
     "Events",
     "AsyncEvents",
     "EventsWithRawResponse",

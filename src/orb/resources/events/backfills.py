@@ -31,10 +31,21 @@ __all__ = ["Backfills", "AsyncBackfills"]
 class Backfills(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BackfillsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return BackfillsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> BackfillsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return BackfillsWithStreamingResponse(self)
 
     def create(
@@ -101,13 +112,15 @@ class Backfills(SyncAPIResource):
               backfill will automatically begin reflecting throughout Orb at the close time.
               If not specified, it will default to 1 day after the creation of the backfill.
 
-          customer_id: The ID of the customer to which this backfill is scoped.
+          customer_id: The Orb-generated ID of the customer to which this backfill is scoped. Omitting
+              this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
               [computed property](../guides/extensibility/advanced-metrics#computed-properties)
               used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
+              Omitting this field will scope the backfill to all customers.
 
           replace_existing_events: If true, replaces all existing events in the timeframe with the newly ingested
               events. If false, adds the newly ingested events to the existing events.
@@ -328,10 +341,21 @@ class Backfills(SyncAPIResource):
 class AsyncBackfills(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncBackfillsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncBackfillsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncBackfillsWithStreamingResponse(self)
 
     async def create(
@@ -398,13 +422,15 @@ class AsyncBackfills(AsyncAPIResource):
               backfill will automatically begin reflecting throughout Orb at the close time.
               If not specified, it will default to 1 day after the creation of the backfill.
 
-          customer_id: The ID of the customer to which this backfill is scoped.
+          customer_id: The Orb-generated ID of the customer to which this backfill is scoped. Omitting
+              this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
               [computed property](../guides/extensibility/advanced-metrics#computed-properties)
               used to filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
+              Omitting this field will scope the backfill to all customers.
 
           replace_existing_events: If true, replaces all existing events in the timeframe with the newly ingested
               events. If false, adds the newly ingested events to the existing events.

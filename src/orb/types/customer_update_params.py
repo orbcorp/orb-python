@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Dict, List, Union, Iterable, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "CustomerUpdateParams",
@@ -12,6 +12,9 @@ __all__ = [
     "BillingAddress",
     "ReportingConfiguration",
     "ShippingAddress",
+    "TaxConfiguration",
+    "TaxConfigurationNewAvalaraTaxConfiguration",
+    "TaxConfigurationNewTaxJarConfiguration",
     "TaxID",
 ]
 
@@ -82,6 +85,8 @@ class CustomerUpdateParams(TypedDict, total=False):
     reporting_configuration: Optional[ReportingConfiguration]
 
     shipping_address: Optional[ShippingAddress]
+
+    tax_configuration: Optional[TaxConfiguration]
 
     tax_id: Optional[TaxID]
     """
@@ -235,6 +240,23 @@ class ShippingAddress(TypedDict, total=False):
     postal_code: Optional[str]
 
     state: Optional[str]
+
+
+class TaxConfigurationNewAvalaraTaxConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["avalara"]]
+
+    tax_exemption_code: Optional[str]
+
+
+class TaxConfigurationNewTaxJarConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["taxjar"]]
+
+
+TaxConfiguration: TypeAlias = Union[TaxConfigurationNewAvalaraTaxConfiguration, TaxConfigurationNewTaxJarConfiguration]
 
 
 class TaxID(TypedDict, total=False):

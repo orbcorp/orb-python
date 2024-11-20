@@ -132,19 +132,7 @@ class TestEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
@@ -160,23 +148,7 @@ class TestEvents:
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                    "customer_id": "customer_id",
-                    "external_customer_id": "external_customer_id",
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                    "customer_id": "customer_id",
-                    "external_customer_id": "external_customer_id",
-                },
+                }
             ],
             backfill_id="backfill_id",
             debug=True,
@@ -192,19 +164,7 @@ class TestEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         )
 
@@ -222,19 +182,7 @@ class TestEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         ) as response:
             assert not response.is_closed
@@ -398,19 +346,7 @@ class TestAsyncEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
@@ -426,23 +362,7 @@ class TestAsyncEvents:
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                    "customer_id": "customer_id",
-                    "external_customer_id": "external_customer_id",
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                    "customer_id": "customer_id",
-                    "external_customer_id": "external_customer_id",
-                },
+                }
             ],
             backfill_id="backfill_id",
             debug=True,
@@ -458,19 +378,7 @@ class TestAsyncEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         )
 
@@ -488,19 +396,7 @@ class TestAsyncEvents:
                     "idempotency_key": "idempotency_key",
                     "properties": {},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
-                {
-                    "event_name": "event_name",
-                    "idempotency_key": "idempotency_key",
-                    "properties": {},
-                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
-                },
+                }
             ],
         ) as response:
             assert not response.is_closed

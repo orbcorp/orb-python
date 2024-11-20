@@ -21,9 +21,9 @@ class BackfillCloseResponse(BaseModel):
     created_at: datetime
 
     customer_id: Optional[str] = None
-    """The customer ID this backfill is scoped to.
+    """The Orb-generated ID of the customer to which this backfill is scoped.
 
-    If null, this backfill is not scoped to a single customer.
+    If `null`, this backfill is scoped to all customers.
     """
 
     events_ingested: int

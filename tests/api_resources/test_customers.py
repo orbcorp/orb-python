@@ -24,7 +24,7 @@ class TestCustomers:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -32,26 +32,18 @@ class TestCustomers:
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
-            additional_emails=["string", "string", "string"],
+            additional_emails=["string"],
             auto_collection=True,
             billing_address={
                 "city": "city",
@@ -76,6 +68,11 @@ class TestCustomers:
                 "postal_code": "postal_code",
                 "state": "state",
             },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+            },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
@@ -88,7 +85,7 @@ class TestCustomers:
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.customers.with_raw_response.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         )
 
@@ -100,7 +97,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.customers.with_streaming_response.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -127,15 +124,7 @@ class TestCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -150,7 +139,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="email",
+            email="dev@stainlessapi.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             metadata={"foo": "string"},
@@ -165,6 +154,11 @@ class TestCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
                 "country": "AD",
@@ -372,15 +366,7 @@ class TestCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -395,7 +381,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="email",
+            email="dev@stainlessapi.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             metadata={"foo": "string"},
@@ -410,6 +396,11 @@ class TestCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
                 "country": "AD",
@@ -458,7 +449,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -466,26 +457,18 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
-            additional_emails=["string", "string", "string"],
+            additional_emails=["string"],
             auto_collection=True,
             billing_address={
                 "city": "city",
@@ -510,6 +493,11 @@ class TestAsyncCustomers:
                 "postal_code": "postal_code",
                 "state": "state",
             },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
+            },
             tax_id={
                 "country": "AD",
                 "type": "ad_nrt",
@@ -522,7 +510,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         )
 
@@ -534,7 +522,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.create(
-            email="email",
+            email="dev@stainlessapi.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -561,15 +549,7 @@ class TestAsyncCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -584,7 +564,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="email",
+            email="dev@stainlessapi.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             metadata={"foo": "string"},
@@ -599,6 +579,11 @@ class TestAsyncCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
                 "country": "AD",
@@ -806,15 +791,7 @@ class TestAsyncCustomers:
                     {
                         "external_provider_id": "external_provider_id",
                         "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
-                    {
-                        "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
-                    },
+                    }
                 ],
                 "excluded": True,
             },
@@ -829,7 +806,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="email",
+            email="dev@stainlessapi.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             metadata={"foo": "string"},
@@ -844,6 +821,11 @@ class TestAsyncCustomers:
                 "line2": "line2",
                 "postal_code": "postal_code",
                 "state": "state",
+            },
+            tax_configuration={
+                "tax_exempt": True,
+                "tax_provider": "avalara",
+                "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
                 "country": "AD",

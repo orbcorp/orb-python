@@ -8,6 +8,7 @@ from .price import Price
 from .._utils import PropertyInfo
 from .._models import BaseModel
 from .shared.discount import Discount
+from .shared.invoice_level_discount import InvoiceLevelDiscount
 
 __all__ = [
     "Invoice",
@@ -917,9 +918,14 @@ class Invoice(BaseModel):
     | Vietnam              | `vn_tin`     | Vietnamese Tax ID Number                                                                                |
     """
 
-    discount: Optional[Discount] = None
+    discount: Optional[object] = None
+    """This field is deprecated in favor of `discounts`.
 
-    discounts: List[Discount]
+    If a `discounts` list is provided, the first discount in the list will be
+    returned. If the list is empty, `None` will be returned.
+    """
+
+    discounts: List[InvoiceLevelDiscount]
 
     due_date: datetime
     """When the invoice payment is due."""
@@ -932,7 +938,11 @@ class Invoice(BaseModel):
     """
 
     hosted_invoice_url: Optional[str] = None
-    """A URL for the invoice portal."""
+    """A URL for the customer-facing invoice portal.
+
+    This URL expires 30 days after the invoice's due date, or 60 days after being
+    re-generated through the UI.
+    """
 
     invoice_date: datetime
     """The scheduled date of the invoice"""

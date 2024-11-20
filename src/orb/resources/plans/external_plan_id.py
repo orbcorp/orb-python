@@ -25,10 +25,21 @@ __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 class ExternalPlanID(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return ExternalPlanIDWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ExternalPlanIDWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return ExternalPlanIDWithStreamingResponse(self)
 
     def update(
@@ -145,10 +156,21 @@ class ExternalPlanID(SyncAPIResource):
 class AsyncExternalPlanID(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncExternalPlanIDWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncExternalPlanIDWithStreamingResponse(self)
 
     async def update(
