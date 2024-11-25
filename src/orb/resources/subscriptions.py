@@ -95,6 +95,7 @@ class Subscriptions(SyncAPIResource):
         external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
         external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        filter: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -395,6 +396,11 @@ class Subscriptions(SyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
+          filter: An additional filter to apply to usage queries. This filter must be expressed as
+              a boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
+              If null, usage queries will not include any additional filter.
+
           initial_phase_order: The phase of the plan to start with
 
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
@@ -463,6 +469,7 @@ class Subscriptions(SyncAPIResource):
                     "external_marketplace": external_marketplace,
                     "external_marketplace_reporting_id": external_marketplace_reporting_id,
                     "external_plan_id": external_plan_id,
+                    "filter": filter,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
@@ -1345,6 +1352,7 @@ class Subscriptions(SyncAPIResource):
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        filter: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
@@ -1582,6 +1590,11 @@ class Subscriptions(SyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
+          filter: An additional filter to apply to usage queries. This filter must be expressed as
+              a boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
+              If null, usage queries will not include any additional filter.
+
           initial_phase_order: The phase of the plan to start with
 
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
@@ -1645,6 +1658,7 @@ class Subscriptions(SyncAPIResource):
                     "credits_overage_rate": credits_overage_rate,
                     "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
+                    "filter": filter,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "net_terms": net_terms,
@@ -2044,6 +2058,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         external_marketplace: Optional[Literal["google", "aws", "azure"]] | NotGiven = NOT_GIVEN,
         external_marketplace_reporting_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        filter: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -2344,6 +2359,11 @@ class AsyncSubscriptions(AsyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
+          filter: An additional filter to apply to usage queries. This filter must be expressed as
+              a boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
+              If null, usage queries will not include any additional filter.
+
           initial_phase_order: The phase of the plan to start with
 
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
@@ -2412,6 +2432,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "external_marketplace": external_marketplace,
                     "external_marketplace_reporting_id": external_marketplace_reporting_id,
                     "external_plan_id": external_plan_id,
+                    "filter": filter,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
@@ -3294,6 +3315,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
+        filter: Optional[str] | NotGiven = NOT_GIVEN,
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
@@ -3531,6 +3553,11 @@ class AsyncSubscriptions(AsyncAPIResource):
           external_plan_id: The external_plan_id of the plan that the given subscription should be switched
               to. Note that either this property or `plan_id` must be specified.
 
+          filter: An additional filter to apply to usage queries. This filter must be expressed as
+              a boolean
+              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
+              If null, usage queries will not include any additional filter.
+
           initial_phase_order: The phase of the plan to start with
 
           invoicing_threshold: When this subscription's accrued usage reaches this threshold, an invoice will
@@ -3594,6 +3621,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "credits_overage_rate": credits_overage_rate,
                     "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
+                    "filter": filter,
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "net_terms": net_terms,
