@@ -1336,6 +1336,10 @@ class Subscriptions(SyncAPIResource):
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[
+            subscription_schedule_plan_change_params.BillingCycleAnchorConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -1635,6 +1639,7 @@ class Subscriptions(SyncAPIResource):
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
+                    "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "change_date": change_date,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
@@ -3280,6 +3285,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[
+            subscription_schedule_plan_change_params.BillingCycleAnchorConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -3579,6 +3588,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
                     "billing_cycle_alignment": billing_cycle_alignment,
+                    "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "change_date": change_date,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,

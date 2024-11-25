@@ -749,6 +749,11 @@ class TestSubscriptions:
             align_billing_with_plan_change_date=True,
             auto_collection=True,
             billing_cycle_alignment="unchanged",
+            billing_cycle_anchor_configuration={
+                "day": 1,
+                "month": 1,
+                "year": 0,
+            },
             change_date=parse_datetime("2017-07-21T17:32:28Z"),
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
@@ -1849,6 +1854,11 @@ class TestAsyncSubscriptions:
             align_billing_with_plan_change_date=True,
             auto_collection=True,
             billing_cycle_alignment="unchanged",
+            billing_cycle_anchor_configuration={
+                "day": 1,
+                "month": 1,
+                "year": 0,
+            },
             change_date=parse_datetime("2017-07-21T17:32:28Z"),
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
