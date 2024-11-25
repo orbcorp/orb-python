@@ -86,6 +86,7 @@ __all__ = [
     "AddPricePriceNewSubscriptionBulkWithProrationPrice",
     "AddPricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguration",
     "AddPricePriceNewSubscriptionBulkWithProrationPriceInvoicingCycleConfiguration",
+    "BillingCycleAnchorConfiguration",
     "RemoveAdjustment",
     "RemovePrice",
     "ReplaceAdjustment",
@@ -203,6 +204,8 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     start of the month. Defaults to `unchanged` which keeps subscription's existing
     billing cycle alignment.
     """
+
+    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
 
     change_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date that the plan change should take effect.
@@ -2190,6 +2193,30 @@ class AddPrice(TypedDict, total=False):
 
     This is the date that the price will start billing on the subscription. If null,
     billing will start when the phase or subscription starts.
+    """
+
+
+class BillingCycleAnchorConfiguration(TypedDict, total=False):
+    day: Required[int]
+    """The day of the month on which the billing cycle is anchored.
+
+    If the maximum number of days in a month is greater than this value, the last
+    day of the month is the billing cycle day (e.g. billing_cycle_day=31 for April
+    means the billing period begins on the 30th.
+    """
+
+    month: Optional[int]
+    """The month on which the billing cycle is anchored (e.g.
+
+    a quarterly price anchored in February would have cycles starting February, May,
+    August, and November).
+    """
+
+    year: Optional[int]
+    """The year on which the billing cycle is anchored (e.g.
+
+    a 2 year billing cycle anchored on 2021 would have cycles starting on 2021,
+    2023, 2025, etc.).
     """
 
 
