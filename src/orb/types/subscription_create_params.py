@@ -228,6 +228,14 @@ class SubscriptionCreateParams(TypedDict, total=False):
     to. Note that either this property or `plan_id` must be specified.
     """
 
+    filter: Optional[str]
+    """An additional filter to apply to usage queries.
+
+    This filter must be expressed as a boolean
+    [computed property](../guides/extensibility/advanced-metrics#computed-properties).
+    If null, usage queries will not include any additional filter.
+    """
+
     initial_phase_order: Optional[int]
     """The phase of the plan to start with"""
 
