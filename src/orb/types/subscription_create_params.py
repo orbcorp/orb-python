@@ -13,6 +13,7 @@ __all__ = [
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "AddAdjustmentAdjustmentNewPercentageDiscount",
+    "AddAdjustmentAdjustmentNewUsageDiscount",
     "AddAdjustmentAdjustmentNewAmountDiscount",
     "AddAdjustmentAdjustmentNewMinimum",
     "AddAdjustmentAdjustmentNewMaximum",
@@ -92,6 +93,7 @@ __all__ = [
     "ReplaceAdjustment",
     "ReplaceAdjustmentAdjustment",
     "ReplaceAdjustmentAdjustmentNewPercentageDiscount",
+    "ReplaceAdjustmentAdjustmentNewUsageDiscount",
     "ReplaceAdjustmentAdjustmentNewAmountDiscount",
     "ReplaceAdjustmentAdjustmentNewMinimum",
     "ReplaceAdjustmentAdjustmentNewMaximum",
@@ -323,6 +325,27 @@ class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
 
     percentage_discount: Required[float]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
+
+class AddAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["usage_discount"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    usage_discount: Required[float]
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["amount_discount"]]
@@ -331,6 +354,12 @@ class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     applies_to_price_ids: Required[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
 
 
 class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
@@ -344,6 +373,12 @@ class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 
     minimum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     adjustment_type: Required[Literal["maximum"]]
@@ -353,9 +388,16 @@ class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
 
     maximum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 AddAdjustmentAdjustment: TypeAlias = Union[
     AddAdjustmentAdjustmentNewPercentageDiscount,
+    AddAdjustmentAdjustmentNewUsageDiscount,
     AddAdjustmentAdjustmentNewAmountDiscount,
     AddAdjustmentAdjustmentNewMinimum,
     AddAdjustmentAdjustmentNewMaximum,
@@ -2171,7 +2213,10 @@ AddPricePrice: TypeAlias = Union[
 
 class AddPrice(TypedDict, total=False):
     discounts: Optional[Iterable[AddPriceDiscount]]
-    """The subscription's discounts for this price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's discounts for this price.
+    """
 
     end_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The end date of the price interval.
@@ -2184,10 +2229,16 @@ class AddPrice(TypedDict, total=False):
     """The external price id of the price to add to the subscription."""
 
     maximum_amount: Optional[str]
-    """The subscription's maximum amount for this price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's maximum amount for this price.
+    """
 
     minimum_amount: Optional[str]
-    """The subscription's minimum amount for this price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's minimum amount for this price.
+    """
 
     plan_phase_order: Optional[int]
     """The phase to add this price to."""
@@ -2251,6 +2302,27 @@ class ReplaceAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
 
     percentage_discount: Required[float]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
+
+class ReplaceAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["usage_discount"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    usage_discount: Required[float]
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class ReplaceAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["amount_discount"]]
@@ -2259,6 +2331,12 @@ class ReplaceAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     applies_to_price_ids: Required[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
 
 
 class ReplaceAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
@@ -2272,6 +2350,12 @@ class ReplaceAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 
     minimum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class ReplaceAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     adjustment_type: Required[Literal["maximum"]]
@@ -2281,9 +2365,16 @@ class ReplaceAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
 
     maximum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 ReplaceAdjustmentAdjustment: TypeAlias = Union[
     ReplaceAdjustmentAdjustmentNewPercentageDiscount,
+    ReplaceAdjustmentAdjustmentNewUsageDiscount,
     ReplaceAdjustmentAdjustmentNewAmountDiscount,
     ReplaceAdjustmentAdjustmentNewMinimum,
     ReplaceAdjustmentAdjustmentNewMaximum,
@@ -4102,7 +4193,10 @@ class ReplacePrice(TypedDict, total=False):
     """The id of the price on the plan to replace in the subscription."""
 
     discounts: Optional[Iterable[ReplacePriceDiscount]]
-    """The subscription's discounts for the replacement price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's discounts for the replacement price.
+    """
 
     external_price_id: Optional[str]
     """The external price id of the price to add to the subscription."""
@@ -4111,10 +4205,16 @@ class ReplacePrice(TypedDict, total=False):
     """The new quantity of the price, if the price is a fixed price."""
 
     maximum_amount: Optional[str]
-    """The subscription's maximum amount for the replacement price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's maximum amount for the replacement price.
+    """
 
     minimum_amount: Optional[str]
-    """The subscription's minimum amount for the replacement price."""
+    """[DEPRECATED] Use add_adjustments instead.
+
+    The subscription's minimum amount for the replacement price.
+    """
 
     price: Optional[ReplacePricePrice]
     """The definition of a new price to create and add to the subscription."""

@@ -109,6 +109,7 @@ __all__ = [
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "AddAdjustmentAdjustmentNewPercentageDiscount",
+    "AddAdjustmentAdjustmentNewUsageDiscount",
     "AddAdjustmentAdjustmentNewAmountDiscount",
     "AddAdjustmentAdjustmentNewMinimum",
     "AddAdjustmentAdjustmentNewMaximum",
@@ -2344,6 +2345,27 @@ class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
 
     percentage_discount: Required[float]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
+
+class AddAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["usage_discount"]]
+
+    applies_to_price_ids: Required[List[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    usage_discount: Required[float]
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["amount_discount"]]
@@ -2352,6 +2374,12 @@ class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     applies_to_price_ids: Required[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
 
 
 class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
@@ -2365,6 +2393,12 @@ class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 
     minimum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     adjustment_type: Required[Literal["maximum"]]
@@ -2374,9 +2408,16 @@ class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
 
     maximum_amount: Required[str]
 
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
 
 AddAdjustmentAdjustment: TypeAlias = Union[
     AddAdjustmentAdjustmentNewPercentageDiscount,
+    AddAdjustmentAdjustmentNewUsageDiscount,
     AddAdjustmentAdjustmentNewAmountDiscount,
     AddAdjustmentAdjustmentNewMinimum,
     AddAdjustmentAdjustmentNewMaximum,
