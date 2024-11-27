@@ -180,7 +180,7 @@ class ExpirationChangeLedgerEntry(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    new_block_expiry_date: datetime
+    new_block_expiry_date: Optional[datetime] = None
 
     starting_balance: float
 
