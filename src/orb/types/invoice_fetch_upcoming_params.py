@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["InvoiceFetchUpcomingParams"]
 
 
 class InvoiceFetchUpcomingParams(TypedDict, total=False):
-    subscription_id: str
+    subscription_id: Required[str]

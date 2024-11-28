@@ -64,15 +64,7 @@ class TestItems:
                 {
                     "external_connection_name": "stripe",
                     "external_entity_id": "external_entity_id",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "external_entity_id",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "external_entity_id",
-                },
+                }
             ],
             name="name",
         )
@@ -230,15 +222,7 @@ class TestAsyncItems:
                 {
                     "external_connection_name": "stripe",
                     "external_entity_id": "external_entity_id",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "external_entity_id",
-                },
-                {
-                    "external_connection_name": "stripe",
-                    "external_entity_id": "external_entity_id",
-                },
+                }
             ],
             name="name",
         )

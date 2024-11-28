@@ -19,6 +19,66 @@ class TestCreditNotes:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
+    def test_method_create(self, client: Orb) -> None:
+        credit_note = client.credit_notes.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Orb) -> None:
+        credit_note = client.credit_notes.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+            memo="An optional memo for my credit note.",
+            reason="duplicate",
+        )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    def test_raw_response_create(self, client: Orb) -> None:
+        response = client.credit_notes.with_raw_response.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Orb) -> None:
+        with client.credit_notes.with_streaming_response.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            credit_note = response.parse()
+            assert_matches_type(CreditNote, credit_note, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_list(self, client: Orb) -> None:
         credit_note = client.credit_notes.list()
         assert_matches_type(SyncPage[CreditNote], credit_note, path=["response"])
@@ -92,6 +152,66 @@ class TestCreditNotes:
 
 class TestAsyncCreditNotes:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncOrb) -> None:
+        credit_note = await async_client.credit_notes.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
+        credit_note = await async_client.credit_notes.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+            memo="An optional memo for my credit note.",
+            reason="duplicate",
+        )
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
+        response = await async_client.credit_notes.with_raw_response.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        credit_note = response.parse()
+        assert_matches_type(CreditNote, credit_note, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
+        async with async_client.credit_notes.with_streaming_response.create(
+            line_items=[
+                {
+                    "amount": "amount",
+                    "invoice_line_item_id": "4khy3nwzktxv7",
+                }
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            credit_note = await response.parse()
+            assert_matches_type(CreditNote, credit_note, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:

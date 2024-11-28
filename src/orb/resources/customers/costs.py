@@ -28,10 +28,21 @@ __all__ = ["Costs", "AsyncCosts"]
 class Costs(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CostsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return CostsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CostsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return CostsWithStreamingResponse(self)
 
     def list(
@@ -160,23 +171,6 @@ class Costs(SyncAPIResource):
 
         You can see this sliced timeframe visualized
         [here](https://i.imgur.com/TXhYgme.png).
-
-        ## Grouping by custom attributes
-
-        In order to view costs grouped by a specific _attribute_ that each event is
-        tagged with (i.e. `cluster`), you can additionally specify a `group_by` key. The
-        `group_by` key denotes the event property on which to group.
-
-        When returning grouped costs, a separate `price_group` object in the
-        `per_price_costs` array is returned for each value of the `group_by` key present
-        in your events. The `subtotal` value of the `per_price_costs` object is the sum
-        of each `price_group`'s total.
-
-        Orb expects events will contain values in the `properties` dictionary that
-        correspond to the `group_by` key specified. By default, Orb will return a `null`
-        group (i.e. events that match the metric but do not have the key set).
-        Currently, it is only possible to view costs grouped by a single attribute at a
-        time.
 
         ### Matrix prices
 
@@ -354,23 +348,6 @@ class Costs(SyncAPIResource):
         You can see this sliced timeframe visualized
         [here](https://i.imgur.com/TXhYgme.png).
 
-        ## Grouping by custom attributes
-
-        In order to view costs grouped by a specific _attribute_ that each event is
-        tagged with (i.e. `cluster`), you can additionally specify a `group_by` key. The
-        `group_by` key denotes the event property on which to group.
-
-        When returning grouped costs, a separate `price_group` object in the
-        `per_price_costs` array is returned for each value of the `group_by` key present
-        in your events. The `subtotal` value of the `per_price_costs` object is the sum
-        of each `price_group`'s total.
-
-        Orb expects events will contain values in the `properties` dictionary that
-        correspond to the `group_by` key specified. By default, Orb will return a `null`
-        group (i.e. events that match the metric but do not have the key set).
-        Currently, it is only possible to view costs grouped by a single attribute at a
-        time.
-
         ### Matrix prices
 
         When a price uses matrix pricing, it's important to view costs grouped by those
@@ -426,10 +403,21 @@ class Costs(SyncAPIResource):
 class AsyncCosts(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCostsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCostsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCostsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncCostsWithStreamingResponse(self)
 
     async def list(
@@ -558,23 +546,6 @@ class AsyncCosts(AsyncAPIResource):
 
         You can see this sliced timeframe visualized
         [here](https://i.imgur.com/TXhYgme.png).
-
-        ## Grouping by custom attributes
-
-        In order to view costs grouped by a specific _attribute_ that each event is
-        tagged with (i.e. `cluster`), you can additionally specify a `group_by` key. The
-        `group_by` key denotes the event property on which to group.
-
-        When returning grouped costs, a separate `price_group` object in the
-        `per_price_costs` array is returned for each value of the `group_by` key present
-        in your events. The `subtotal` value of the `per_price_costs` object is the sum
-        of each `price_group`'s total.
-
-        Orb expects events will contain values in the `properties` dictionary that
-        correspond to the `group_by` key specified. By default, Orb will return a `null`
-        group (i.e. events that match the metric but do not have the key set).
-        Currently, it is only possible to view costs grouped by a single attribute at a
-        time.
 
         ### Matrix prices
 
@@ -751,23 +722,6 @@ class AsyncCosts(AsyncAPIResource):
 
         You can see this sliced timeframe visualized
         [here](https://i.imgur.com/TXhYgme.png).
-
-        ## Grouping by custom attributes
-
-        In order to view costs grouped by a specific _attribute_ that each event is
-        tagged with (i.e. `cluster`), you can additionally specify a `group_by` key. The
-        `group_by` key denotes the event property on which to group.
-
-        When returning grouped costs, a separate `price_group` object in the
-        `per_price_costs` array is returned for each value of the `group_by` key present
-        in your events. The `subtotal` value of the `per_price_costs` object is the sum
-        of each `price_group`'s total.
-
-        Orb expects events will contain values in the `properties` dictionary that
-        correspond to the `group_by` key specified. By default, Orb will return a `null`
-        group (i.e. events that match the metric but do not have the key set).
-        Currently, it is only possible to view costs grouped by a single attribute at a
-        time.
 
         ### Matrix prices
 

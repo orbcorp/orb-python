@@ -11,6 +11,7 @@ import httpx
 from .. import _legacy_response
 from ..types import (
     invoice_list_params,
+    invoice_issue_params,
     invoice_create_params,
     invoice_update_params,
     invoice_mark_paid_params,
@@ -36,10 +37,21 @@ __all__ = ["Invoices", "AsyncInvoices"]
 class Invoices(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InvoicesWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return InvoicesWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InvoicesWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return InvoicesWithStreamingResponse(self)
 
     def create(
@@ -223,6 +235,10 @@ class Invoices(SyncAPIResource):
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
 
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
@@ -310,7 +326,7 @@ class Invoices(SyncAPIResource):
     def fetch_upcoming(
         self,
         *,
-        subscription_id: str | NotGiven = NOT_GIVEN,
+        subscription_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -350,6 +366,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        synchronous: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -368,6 +385,12 @@ class Invoices(SyncAPIResource):
         providers, etc).
 
         Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously. The synchronous option is only available for invoices
+              containin no usage fees. If the invoice is configured to sync to an external
+              provider, a successful response from this endpoint guarantees the invoice is
+              present in the provider.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -382,6 +405,7 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/issue",
+            body=maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -543,10 +567,21 @@ class Invoices(SyncAPIResource):
 class AsyncInvoices(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInvoicesWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInvoicesWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInvoicesWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncInvoicesWithStreamingResponse(self)
 
     async def create(
@@ -730,6 +765,10 @@ class AsyncInvoices(AsyncAPIResource):
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
 
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
@@ -817,7 +856,7 @@ class AsyncInvoices(AsyncAPIResource):
     async def fetch_upcoming(
         self,
         *,
-        subscription_id: str | NotGiven = NOT_GIVEN,
+        subscription_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -857,6 +896,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        synchronous: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -875,6 +915,12 @@ class AsyncInvoices(AsyncAPIResource):
         providers, etc).
 
         Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously. The synchronous option is only available for invoices
+              containin no usage fees. If the invoice is configured to sync to an external
+              provider, a successful response from this endpoint guarantees the invoice is
+              present in the provider.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -889,6 +935,7 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/issue",
+            body=await async_maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

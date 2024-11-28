@@ -25,10 +25,21 @@ __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 class ExternalPriceID(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ExternalPriceIDWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return ExternalPriceIDWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ExternalPriceIDWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return ExternalPriceIDWithStreamingResponse(self)
 
     def update(
@@ -128,10 +139,21 @@ class ExternalPriceID(SyncAPIResource):
 class AsyncExternalPriceID(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncExternalPriceIDWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncExternalPriceIDWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncExternalPriceIDWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
+        """
         return AsyncExternalPriceIDWithStreamingResponse(self)
 
     async def update(

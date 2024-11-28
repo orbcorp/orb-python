@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/orb-billing.svg)](https://pypi.org/project/orb-billing/)
 
-The Orb Python library provides convenient access to the Orb REST API from any Python 3.7+
+The Orb Python library provides convenient access to the Orb REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -290,11 +290,13 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `ORB_LOG` to `debug`.
+You can enable logging by setting the environment variable `ORB_LOG` to `info`.
 
 ```shell
-$ export ORB_LOG=debug
+$ export ORB_LOG=info
 ```
+
+Or to `debug` for more verbose logging.
 
 ### How to tell whether `None` means `null` or missing
 
@@ -434,6 +436,21 @@ We take backwards-compatibility seriously and work hard to ensure you can rely o
 
 We are keen for your feedback; please open an [issue](https://www.github.com/orbcorp/orb-python/issues) with questions, bugs, or suggestions.
 
+### Determining the installed version
+
+If you've upgraded to the latest version but aren't seeing any new features you were expecting then your python environment is likely still using an older version.
+
+You can determine the version that is being used at runtime with:
+
+```py
+import orb
+print(orb.__version__)
+```
+
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
