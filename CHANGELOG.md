@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.17.0 (2024-11-28)
+
+Full Changelog: [v2.16.0...v2.17.0](https://github.com/orbcorp/orb-python/compare/v2.16.0...v2.17.0)
+
+### Features
+
+* api updates ([3dc9d02](https://github.com/orbcorp/orb-python/commit/3dc9d0223a4ed8eb8e76a2688e4e7d78cf1700a9))
+* **api:** api update ([#436](https://github.com/orbcorp/orb-python/issues/436)) ([6f8c441](https://github.com/orbcorp/orb-python/commit/6f8c441a369dacf871344a5ab8b5d654011447fb))
+* **api:** api update ([#440](https://github.com/orbcorp/orb-python/issues/440)) ([790b52a](https://github.com/orbcorp/orb-python/commit/790b52ac9898f55de3faf17ac3a27213f22bc711))
+* **api:** api update ([#441](https://github.com/orbcorp/orb-python/issues/441)) ([e0268df](https://github.com/orbcorp/orb-python/commit/e0268dfe3a2f73acff5d1f7a6fcfea43a90ce3f0))
+* **api:** api update ([#443](https://github.com/orbcorp/orb-python/issues/443)) ([285ba54](https://github.com/orbcorp/orb-python/commit/285ba54b140de61f24fab688c9c69ab80166ebed))
+
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#444](https://github.com/orbcorp/orb-python/issues/444)) ([e0f2966](https://github.com/orbcorp/orb-python/commit/e0f2966dfe55a98fc77285ea348a8872b5c09921))
+
+
+### Chores
+
+* fix formatting ([f3da812](https://github.com/orbcorp/orb-python/commit/f3da812e90ad9ea9d5ba881bfd322d8ede076708))
+* **internal:** codegen related update ([#442](https://github.com/orbcorp/orb-python/issues/442)) ([f3efb3f](https://github.com/orbcorp/orb-python/commit/f3efb3fe137f751871ad97606d9c624ba5b5774e))
+* **internal:** fix compat model_dump method when warnings are passed ([#437](https://github.com/orbcorp/orb-python/issues/437)) ([e03dc3b](https://github.com/orbcorp/orb-python/commit/e03dc3b864150b1a3de24952aa7a503e5dba7254))
+* remove now unused `cached-property` dep ([#439](https://github.com/orbcorp/orb-python/issues/439)) ([e5e8485](https://github.com/orbcorp/orb-python/commit/e5e848510b6df79a3b1e61f5479a7241fcd18af6))
+
+
+### Documentation
+
+* add info log level to readme ([#438](https://github.com/orbcorp/orb-python/issues/438)) ([4576720](https://github.com/orbcorp/orb-python/commit/457672037ec56a9432800fec56c6deb68964b1df))
+
 ## 2.16.0 (2024-11-15)
 
 Full Changelog: [v2.15.0...v2.16.0](https://github.com/orbcorp/orb-python/compare/v2.15.0...v2.16.0)
