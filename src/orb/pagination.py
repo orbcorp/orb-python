@@ -32,7 +32,8 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         next_cursor = None
         if self.pagination_metadata is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            next_cursor = self.pagination_metadata.next_cursor
+            if self.pagination_metadata.next_cursor is not None:
+                next_cursor = self.pagination_metadata.next_cursor
         if not next_cursor:
             return None
 
@@ -54,7 +55,8 @@ class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         next_cursor = None
         if self.pagination_metadata is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            next_cursor = self.pagination_metadata.next_cursor
+            if self.pagination_metadata.next_cursor is not None:
+                next_cursor = self.pagination_metadata.next_cursor
         if not next_cursor:
             return None
 
