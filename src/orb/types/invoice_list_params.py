@@ -32,6 +32,12 @@ class InvoiceListParams(TypedDict, total=False):
     due_date: Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]
 
     due_date_window: Optional[str]
+    """Filters invoices by their due dates within a specific time range in the past.
+
+    Specify the range as a number followed by 'd' (days) or 'm' (months). For
+    example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+    due in the last 2 months.
+    """
 
     due_date_gt: Annotated[Union[str, date, None], PropertyInfo(alias="due_date[gt]", format="iso8601")]
 
