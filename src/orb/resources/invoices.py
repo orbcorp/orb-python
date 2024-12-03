@@ -243,6 +243,11 @@ class Invoices(SyncAPIResource):
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
+          due_date_window: Filters invoices by their due dates within a specific time range in the past.
+              Specify the range as a number followed by 'd' (days) or 'm' (months). For
+              example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+              due in the last 2 months.
+
           limit: The number of items to fetch. Defaults to 20.
 
           extra_headers: Send extra headers
@@ -772,6 +777,11 @@ class AsyncInvoices(AsyncAPIResource):
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
+
+          due_date_window: Filters invoices by their due dates within a specific time range in the past.
+              Specify the range as a number followed by 'd' (days) or 'm' (months). For
+              example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+              due in the last 2 months.
 
           limit: The number of items to fetch. Defaults to 20.
 
