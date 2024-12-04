@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.18.1 (2024-12-04)
+
+Full Changelog: [v2.18.0...v2.18.1](https://github.com/orbcorp/orb-python/compare/v2.18.0...v2.18.1)
+
+### Chores
+
+* **internal:** version bump ([#451](https://github.com/orbcorp/orb-python/issues/451)) ([11a7427](https://github.com/orbcorp/orb-python/commit/11a7427530a285d2e2df2b3aa59964777015db01))
+* make the `Omit` type public ([#454](https://github.com/orbcorp/orb-python/issues/454)) ([f92f377](https://github.com/orbcorp/orb-python/commit/f92f37709f85b33a1f4aa3667bdd58601405be6c))
+
 ## 2.18.0 (2024-12-03)
 
 Full Changelog: [v2.17.0...v2.18.0](https://github.com/orbcorp/orb-python/compare/v2.17.0...v2.18.0)
