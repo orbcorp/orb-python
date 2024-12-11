@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.18.1 (2024-12-11)
+
+Full Changelog: [v2.18.0...v2.18.1](https://github.com/orbcorp/orb-python/compare/v2.18.0...v2.18.1)
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#455](https://github.com/orbcorp/orb-python/issues/455)) ([da23d38](https://github.com/orbcorp/orb-python/commit/da23d38f97aa2f474f56c25a2c2f5fc08a2dea3d))
+* **internal:** version bump ([#451](https://github.com/orbcorp/orb-python/issues/451)) ([11a7427](https://github.com/orbcorp/orb-python/commit/11a7427530a285d2e2df2b3aa59964777015db01))
+* make the `Omit` type public ([#454](https://github.com/orbcorp/orb-python/issues/454)) ([f92f377](https://github.com/orbcorp/orb-python/commit/f92f37709f85b33a1f4aa3667bdd58601405be6c))
+
+
+### Documentation
+
+* **readme:** fix http client proxies example ([#456](https://github.com/orbcorp/orb-python/issues/456)) ([db48031](https://github.com/orbcorp/orb-python/commit/db48031ec6b0de13d04ab872eee657dbffcff556))
+
 ## 2.18.0 (2024-12-03)
 
 Full Changelog: [v2.17.0...v2.18.0](https://github.com/orbcorp/orb-python/compare/v2.17.0...v2.18.0)
