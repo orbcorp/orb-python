@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.19.0 (2024-12-12)
+
+Full Changelog: [v2.18.0...v2.19.0](https://github.com/orbcorp/orb-python/compare/v2.18.0...v2.19.0)
+
+### Features
+
+* **api:** api update ([#459](https://github.com/orbcorp/orb-python/issues/459)) ([6bc521d](https://github.com/orbcorp/orb-python/commit/6bc521d596131d092db8ec463ef3f19fd6460006))
+
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#458](https://github.com/orbcorp/orb-python/issues/458)) ([b03a8ef](https://github.com/orbcorp/orb-python/commit/b03a8ef06e4207f2051fe9a073078a125ce3f1d6))
+* **internal:** bump pydantic dependency ([#455](https://github.com/orbcorp/orb-python/issues/455)) ([da23d38](https://github.com/orbcorp/orb-python/commit/da23d38f97aa2f474f56c25a2c2f5fc08a2dea3d))
+* **internal:** bump pyright ([#457](https://github.com/orbcorp/orb-python/issues/457)) ([2a4d14a](https://github.com/orbcorp/orb-python/commit/2a4d14a279018d5e5a8cffcbadddf347e567641d))
+* **internal:** version bump ([#451](https://github.com/orbcorp/orb-python/issues/451)) ([11a7427](https://github.com/orbcorp/orb-python/commit/11a7427530a285d2e2df2b3aa59964777015db01))
+* make the `Omit` type public ([#454](https://github.com/orbcorp/orb-python/issues/454)) ([f92f377](https://github.com/orbcorp/orb-python/commit/f92f37709f85b33a1f4aa3667bdd58601405be6c))
+
+
+### Documentation
+
+* **readme:** fix http client proxies example ([#456](https://github.com/orbcorp/orb-python/issues/456)) ([db48031](https://github.com/orbcorp/orb-python/commit/db48031ec6b0de13d04ab872eee657dbffcff556))
+
 ## 2.18.0 (2024-12-03)
 
 Full Changelog: [v2.17.0...v2.18.0](https://github.com/orbcorp/orb-python/compare/v2.17.0...v2.18.0)
