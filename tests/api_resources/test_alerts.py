@@ -318,14 +318,22 @@ class TestAlerts:
     @parametrize
     def test_method_disable(self, client: Orb) -> None:
         alert = client.alerts.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
+    def test_method_disable_with_all_params(self, client: Orb) -> None:
+        alert = client.alerts.disable(
+            alert_configuration_id="alert_configuration_id",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_disable(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -336,7 +344,7 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_disable(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -352,20 +360,28 @@ class TestAlerts:
             ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
         ):
             client.alerts.with_raw_response.disable(
-                "",
+                alert_configuration_id="",
             )
 
     @parametrize
     def test_method_enable(self, client: Orb) -> None:
         alert = client.alerts.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
+    def test_method_enable_with_all_params(self, client: Orb) -> None:
+        alert = client.alerts.enable(
+            alert_configuration_id="alert_configuration_id",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     def test_raw_response_enable(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -376,7 +392,7 @@ class TestAlerts:
     @parametrize
     def test_streaming_response_enable(self, client: Orb) -> None:
         with client.alerts.with_streaming_response.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -392,7 +408,7 @@ class TestAlerts:
             ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
         ):
             client.alerts.with_raw_response.enable(
-                "",
+                alert_configuration_id="",
             )
 
 
@@ -696,14 +712,22 @@ class TestAsyncAlerts:
     @parametrize
     async def test_method_disable(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
+    async def test_method_disable_with_all_params(self, async_client: AsyncOrb) -> None:
+        alert = await async_client.alerts.disable(
+            alert_configuration_id="alert_configuration_id",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_disable(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -714,7 +738,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_disable(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.disable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -730,20 +754,28 @@ class TestAsyncAlerts:
             ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
         ):
             await async_client.alerts.with_raw_response.disable(
-                "",
+                alert_configuration_id="",
             )
 
     @parametrize
     async def test_method_enable(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
+    async def test_method_enable_with_all_params(self, async_client: AsyncOrb) -> None:
+        alert = await async_client.alerts.enable(
+            alert_configuration_id="alert_configuration_id",
+            subscription_id="subscription_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_enable(self, async_client: AsyncOrb) -> None:
         response = await async_client.alerts.with_raw_response.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         )
 
         assert response.is_closed is True
@@ -754,7 +786,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_streaming_response_enable(self, async_client: AsyncOrb) -> None:
         async with async_client.alerts.with_streaming_response.enable(
-            "alert_configuration_id",
+            alert_configuration_id="alert_configuration_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -770,5 +802,5 @@ class TestAsyncAlerts:
             ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
         ):
             await async_client.alerts.with_raw_response.enable(
-                "",
+                alert_configuration_id="",
             )
