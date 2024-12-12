@@ -11,7 +11,9 @@ import httpx
 from .. import _legacy_response
 from ..types import (
     alert_list_params,
+    alert_enable_params,
     alert_update_params,
+    alert_disable_params,
     alert_create_for_customer_params,
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
@@ -431,6 +433,7 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
+        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -439,10 +442,15 @@ class Alerts(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Alert:
-        """
-        This endpoint can be used to disable an alert.
+        """This endpoint allows you to disable an alert.
+
+        To disable a plan-level alert for
+        a specific subscription, you must include the `subscription_id`. The
+        `subscription_id` is not required for customer or subscription level alerts.
 
         Args:
+          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -465,6 +473,7 @@ class Alerts(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
+                query=maybe_transform({"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams),
             ),
             cast_to=Alert,
         )
@@ -473,6 +482,7 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
+        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -481,10 +491,15 @@ class Alerts(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Alert:
-        """
-        This endpoint can be used to enable an alert.
+        """This endpoint allows you to enable an alert.
+
+        To enable a plan-level alert for a
+        specific subscription, you must include the `subscription_id`. The
+        `subscription_id` is not required for customer or subscription level alerts.
 
         Args:
+          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -507,6 +522,7 @@ class Alerts(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
+                query=maybe_transform({"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams),
             ),
             cast_to=Alert,
         )
@@ -912,6 +928,7 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
+        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -920,10 +937,15 @@ class AsyncAlerts(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Alert:
-        """
-        This endpoint can be used to disable an alert.
+        """This endpoint allows you to disable an alert.
+
+        To disable a plan-level alert for
+        a specific subscription, you must include the `subscription_id`. The
+        `subscription_id` is not required for customer or subscription level alerts.
 
         Args:
+          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -946,6 +968,9 @@ class AsyncAlerts(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
+                query=await async_maybe_transform(
+                    {"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams
+                ),
             ),
             cast_to=Alert,
         )
@@ -954,6 +979,7 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
+        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -962,10 +988,15 @@ class AsyncAlerts(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Alert:
-        """
-        This endpoint can be used to enable an alert.
+        """This endpoint allows you to enable an alert.
+
+        To enable a plan-level alert for a
+        specific subscription, you must include the `subscription_id`. The
+        `subscription_id` is not required for customer or subscription level alerts.
 
         Args:
+          subscription_id: Used to update the status of a plan alert scoped to this subscription_id
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -988,6 +1019,9 @@ class AsyncAlerts(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
+                query=await async_maybe_transform(
+                    {"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams
+                ),
             ),
             cast_to=Alert,
         )
