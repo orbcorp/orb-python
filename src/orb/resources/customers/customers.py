@@ -23,14 +23,6 @@ from ...types import (
     customer_update_params,
     customer_update_by_external_id_params,
 )
-from .credits import (
-    Credits,
-    AsyncCredits,
-    CreditsWithRawResponse,
-    AsyncCreditsWithRawResponse,
-    CreditsWithStreamingResponse,
-    AsyncCreditsWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -41,7 +33,14 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .credits.credits import Credits, AsyncCredits
+from .credits.credits import (
+    Credits,
+    AsyncCredits,
+    CreditsWithRawResponse,
+    AsyncCreditsWithRawResponse,
+    CreditsWithStreamingResponse,
+    AsyncCreditsWithStreamingResponse,
+)
 from ...types.customer import Customer
 from .balance_transactions import (
     BalanceTransactions,
