@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.19.1 (2024-12-18)
+
+Full Changelog: [v2.19.0...v2.19.1](https://github.com/orbcorp/orb-python/compare/v2.19.0...v2.19.1)
+
+### Chores
+
+* **internal:** remove some duplicated imports ([#462](https://github.com/orbcorp/orb-python/issues/462)) ([7ede2cb](https://github.com/orbcorp/orb-python/commit/7ede2cb2c3f741a69b3e5e47553dccc48d409ef6))
+* **internal:** version bump ([#460](https://github.com/orbcorp/orb-python/issues/460)) ([28a5746](https://github.com/orbcorp/orb-python/commit/28a57463640f9be6ee2faa238731525a65adcb2a))
+
 ## 2.19.0 (2024-12-12)
 
 Full Changelog: [v2.18.0...v2.19.0](https://github.com/orbcorp/orb-python/compare/v2.18.0...v2.19.0)
