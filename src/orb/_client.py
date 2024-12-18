@@ -59,6 +59,7 @@ class Orb(SyncAPIClient):
     plans: resources.Plans
     prices: resources.Prices
     subscriptions: resources.Subscriptions
+    webhooks: resources.Webhooks
     alerts: resources.Alerts
     with_raw_response: OrbWithRawResponse
     with_streaming_response: OrbWithStreamedResponse
@@ -139,6 +140,7 @@ class Orb(SyncAPIClient):
         self.plans = resources.Plans(self)
         self.prices = resources.Prices(self)
         self.subscriptions = resources.Subscriptions(self)
+        self.webhooks = resources.Webhooks(self)
         self.alerts = resources.Alerts(self)
         self.with_raw_response = OrbWithRawResponse(self)
         self.with_streaming_response = OrbWithStreamedResponse(self)
@@ -311,6 +313,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: resources.AsyncPlans
     prices: resources.AsyncPrices
     subscriptions: resources.AsyncSubscriptions
+    webhooks: resources.AsyncWebhooks
     alerts: resources.AsyncAlerts
     with_raw_response: AsyncOrbWithRawResponse
     with_streaming_response: AsyncOrbWithStreamedResponse
@@ -391,6 +394,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = resources.AsyncPlans(self)
         self.prices = resources.AsyncPrices(self)
         self.subscriptions = resources.AsyncSubscriptions(self)
+        self.webhooks = resources.AsyncWebhooks(self)
         self.alerts = resources.AsyncAlerts(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
         self.with_streaming_response = AsyncOrbWithStreamedResponse(self)

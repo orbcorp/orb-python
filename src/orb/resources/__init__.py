@@ -64,6 +64,10 @@ from .invoices import (
     InvoicesWithStreamingResponse,
     AsyncInvoicesWithStreamingResponse,
 )
+from .webhooks import (
+    Webhooks,
+    AsyncWebhooks,
+)
 from .customers import (
     Customers,
     AsyncCustomers,
@@ -178,6 +182,8 @@ __all__ = [
     "AsyncSubscriptionsWithRawResponse",
     "SubscriptionsWithStreamingResponse",
     "AsyncSubscriptionsWithStreamingResponse",
+    "Webhooks",
+    "AsyncWebhooks",
     "Alerts",
     "AsyncAlerts",
     "AlertsWithRawResponse",
