@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.20.0 (2024-12-19)
+
+Full Changelog: [v2.19.0...v2.20.0](https://github.com/orbcorp/orb-python/compare/v2.19.0...v2.20.0)
+
+### Features
+
+* **api:** api update ([#466](https://github.com/orbcorp/orb-python/issues/466)) ([abcce3c](https://github.com/orbcorp/orb-python/commit/abcce3cf709af675b0ac2beb2aa1b401b1aada1c))
+
+
+### Chores
+
+* **internal:** fix some typos ([#465](https://github.com/orbcorp/orb-python/issues/465)) ([8ccbc2a](https://github.com/orbcorp/orb-python/commit/8ccbc2a9d62dc8853b8460562a8fb5760ed6608f))
+* **internal:** remove some duplicated imports ([#462](https://github.com/orbcorp/orb-python/issues/462)) ([7ede2cb](https://github.com/orbcorp/orb-python/commit/7ede2cb2c3f741a69b3e5e47553dccc48d409ef6))
+* **internal:** updated imports ([#463](https://github.com/orbcorp/orb-python/issues/463)) ([2487ca6](https://github.com/orbcorp/orb-python/commit/2487ca601d123fa24acc8135123f1029933c69c2))
+* **internal:** version bump ([#460](https://github.com/orbcorp/orb-python/issues/460)) ([28a5746](https://github.com/orbcorp/orb-python/commit/28a57463640f9be6ee2faa238731525a65adcb2a))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#464](https://github.com/orbcorp/orb-python/issues/464)) ([c832f0a](https://github.com/orbcorp/orb-python/commit/c832f0ad06c2048b2961d2b4c9a9febf5b43b9cd))
+
 ## 2.19.0 (2024-12-12)
 
 Full Changelog: [v2.18.0...v2.19.0](https://github.com/orbcorp/orb-python/compare/v2.18.0...v2.19.0)
