@@ -83,6 +83,9 @@ class Credits(SyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        If `include_all_blocks` is set to `true`, all credit blocks (including expired
+        and depleted blocks) will be included in the response.
+
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
 
@@ -92,7 +95,8 @@ class Credits(SyncAPIResource):
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
-          include_all_blocks: Include all blocks, not just active ones.
+          include_all_blocks: If set to True, all expired and depleted blocks, as well as active block will be
+              returned.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -145,6 +149,9 @@ class Credits(SyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        If `include_all_blocks` is set to `true`, all credit blocks (including expired
+        and depleted blocks) will be included in the response.
+
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
 
@@ -154,7 +161,8 @@ class Credits(SyncAPIResource):
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
-          include_all_blocks: Include all blocks, not just active ones.
+          include_all_blocks: If set to True, all expired and depleted blocks, as well as active block will be
+              returned.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -238,6 +246,9 @@ class AsyncCredits(AsyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        If `include_all_blocks` is set to `true`, all credit blocks (including expired
+        and depleted blocks) will be included in the response.
+
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
 
@@ -247,7 +258,8 @@ class AsyncCredits(AsyncAPIResource):
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
-          include_all_blocks: Include all blocks, not just active ones.
+          include_all_blocks: If set to True, all expired and depleted blocks, as well as active block will be
+              returned.
 
           limit: The number of items to fetch. Defaults to 20.
 
@@ -300,6 +312,9 @@ class AsyncCredits(AsyncAPIResource):
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
+        If `include_all_blocks` is set to `true`, all credit blocks (including expired
+        and depleted blocks) will be included in the response.
+
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
 
@@ -309,7 +324,8 @@ class AsyncCredits(AsyncAPIResource):
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
-          include_all_blocks: Include all blocks, not just active ones.
+          include_all_blocks: If set to True, all expired and depleted blocks, as well as active block will be
+              returned.
 
           limit: The number of items to fetch. Defaults to 20.
 

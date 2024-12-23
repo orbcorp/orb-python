@@ -20,7 +20,10 @@ class CreditListParams(TypedDict, total=False):
     """
 
     include_all_blocks: bool
-    """Include all blocks, not just active ones."""
+    """
+    If set to True, all expired and depleted blocks, as well as active block will be
+    returned.
+    """
 
     limit: int
     """The number of items to fetch. Defaults to 20."""
