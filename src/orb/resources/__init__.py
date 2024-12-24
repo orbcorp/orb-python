@@ -104,6 +104,14 @@ from .invoice_line_items import (
     InvoiceLineItemsWithStreamingResponse,
     AsyncInvoiceLineItemsWithStreamingResponse,
 )
+from .dimensional_price_groups import (
+    DimensionalPriceGroups,
+    AsyncDimensionalPriceGroups,
+    DimensionalPriceGroupsWithRawResponse,
+    AsyncDimensionalPriceGroupsWithRawResponse,
+    DimensionalPriceGroupsWithStreamingResponse,
+    AsyncDimensionalPriceGroupsWithStreamingResponse,
+)
 
 __all__ = [
     "TopLevel",
@@ -184,4 +192,10 @@ __all__ = [
     "AsyncAlertsWithRawResponse",
     "AlertsWithStreamingResponse",
     "AsyncAlertsWithStreamingResponse",
+    "DimensionalPriceGroups",
+    "AsyncDimensionalPriceGroups",
+    "DimensionalPriceGroupsWithRawResponse",
+    "AsyncDimensionalPriceGroupsWithRawResponse",
+    "DimensionalPriceGroupsWithStreamingResponse",
+    "AsyncDimensionalPriceGroupsWithStreamingResponse",
 ]
