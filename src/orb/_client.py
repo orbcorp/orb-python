@@ -38,6 +38,7 @@ from .resources.events import events
 from .resources.prices import prices
 from .resources.coupons import coupons
 from .resources.customers import customers
+from .resources.dimensional_price_groups import dimensional_price_groups
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Orb", "AsyncOrb", "Client", "AsyncClient"]
 
@@ -56,6 +57,7 @@ class Orb(SyncAPIClient):
     prices: prices.Prices
     subscriptions: subscriptions.Subscriptions
     alerts: alerts.Alerts
+    dimensional_price_groups: dimensional_price_groups.DimensionalPriceGroups
     with_raw_response: OrbWithRawResponse
     with_streaming_response: OrbWithStreamedResponse
 
@@ -136,6 +138,7 @@ class Orb(SyncAPIClient):
         self.prices = prices.Prices(self)
         self.subscriptions = subscriptions.Subscriptions(self)
         self.alerts = alerts.Alerts(self)
+        self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroups(self)
         self.with_raw_response = OrbWithRawResponse(self)
         self.with_streaming_response = OrbWithStreamedResponse(self)
 
@@ -308,6 +311,7 @@ class AsyncOrb(AsyncAPIClient):
     prices: prices.AsyncPrices
     subscriptions: subscriptions.AsyncSubscriptions
     alerts: alerts.AsyncAlerts
+    dimensional_price_groups: dimensional_price_groups.AsyncDimensionalPriceGroups
     with_raw_response: AsyncOrbWithRawResponse
     with_streaming_response: AsyncOrbWithStreamedResponse
 
@@ -388,6 +392,7 @@ class AsyncOrb(AsyncAPIClient):
         self.prices = prices.AsyncPrices(self)
         self.subscriptions = subscriptions.AsyncSubscriptions(self)
         self.alerts = alerts.AsyncAlerts(self)
+        self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroups(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
         self.with_streaming_response = AsyncOrbWithStreamedResponse(self)
 
@@ -561,6 +566,9 @@ class OrbWithRawResponse:
         self.prices = prices.PricesWithRawResponse(client.prices)
         self.subscriptions = subscriptions.SubscriptionsWithRawResponse(client.subscriptions)
         self.alerts = alerts.AlertsWithRawResponse(client.alerts)
+        self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroupsWithRawResponse(
+            client.dimensional_price_groups
+        )
 
 
 class AsyncOrbWithRawResponse:
@@ -578,6 +586,9 @@ class AsyncOrbWithRawResponse:
         self.prices = prices.AsyncPricesWithRawResponse(client.prices)
         self.subscriptions = subscriptions.AsyncSubscriptionsWithRawResponse(client.subscriptions)
         self.alerts = alerts.AsyncAlertsWithRawResponse(client.alerts)
+        self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroupsWithRawResponse(
+            client.dimensional_price_groups
+        )
 
 
 class OrbWithStreamedResponse:
@@ -595,6 +606,9 @@ class OrbWithStreamedResponse:
         self.prices = prices.PricesWithStreamingResponse(client.prices)
         self.subscriptions = subscriptions.SubscriptionsWithStreamingResponse(client.subscriptions)
         self.alerts = alerts.AlertsWithStreamingResponse(client.alerts)
+        self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroupsWithStreamingResponse(
+            client.dimensional_price_groups
+        )
 
 
 class AsyncOrbWithStreamedResponse:
@@ -614,6 +628,9 @@ class AsyncOrbWithStreamedResponse:
         self.prices = prices.AsyncPricesWithStreamingResponse(client.prices)
         self.subscriptions = subscriptions.AsyncSubscriptionsWithStreamingResponse(client.subscriptions)
         self.alerts = alerts.AsyncAlertsWithStreamingResponse(client.alerts)
+        self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroupsWithStreamingResponse(
+            client.dimensional_price_groups
+        )
 
 
 Client = Orb
