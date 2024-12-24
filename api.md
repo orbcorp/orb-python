@@ -387,3 +387,23 @@ Methods:
 - <code title="post /alerts/subscription_id/{subscription_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_subscription</a>(subscription_id, \*\*<a href="src/orb/types/alert_create_for_subscription_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/{alert_configuration_id}/disable">client.alerts.<a href="./src/orb/resources/alerts.py">disable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_disable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/{alert_configuration_id}/enable">client.alerts.<a href="./src/orb/resources/alerts.py">enable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_enable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+
+# DimensionalPriceGroups
+
+Types:
+
+```python
+from orb.types import DimensionalPriceGroup, DimensionalPriceGroups
+```
+
+Methods:
+
+- <code title="post /dimensional_price_groups">client.dimensional_price_groups.<a href="./src/orb/resources/dimensional_price_groups/dimensional_price_groups.py">create</a>(\*\*<a href="src/orb/types/dimensional_price_group_create_params.py">params</a>) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
+- <code title="get /dimensional_price_groups/{dimensional_price_group_id}">client.dimensional_price_groups.<a href="./src/orb/resources/dimensional_price_groups/dimensional_price_groups.py">retrieve</a>(dimensional_price_group_id) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
+- <code title="get /dimensional_price_groups">client.dimensional_price_groups.<a href="./src/orb/resources/dimensional_price_groups/dimensional_price_groups.py">list</a>(\*\*<a href="src/orb/types/dimensional_price_group_list_params.py">params</a>) -> <a href="./src/orb/types/dimensional_price_group.py">SyncPage[DimensionalPriceGroup]</a></code>
+
+## ExternalDimensionalPriceGroupID
+
+Methods:
+
+- <code title="get /dimensional_price_groups/external_dimensional_price_group_id/{external_dimensional_price_group_id}">client.dimensional_price_groups.external_dimensional_price_group_id.<a href="./src/orb/resources/dimensional_price_groups/external_dimensional_price_group_id.py">retrieve</a>(external_dimensional_price_group_id) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
