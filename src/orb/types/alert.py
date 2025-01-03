@@ -1,12 +1,41 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Alert", "Threshold"]
+__all__ = ["Alert", "Customer", "Metric", "Plan", "Subscription", "Threshold"]
+
+
+class Customer(BaseModel):
+    id: str
+
+    external_customer_id: Optional[str] = None
+
+
+class Metric(BaseModel):
+    id: str
+
+
+class Plan(BaseModel):
+    id: Optional[str] = None
+
+    external_plan_id: Optional[str] = None
+    """
+    An optional user-defined ID for this plan resource, used throughout the system
+    as an alias for this Plan. Use this field to identify a plan by an existing
+    identifier in your system.
+    """
+
+    name: Optional[str] = None
+
+    plan_version: str
+
+
+class Subscription(BaseModel):
+    id: str
 
 
 class Threshold(BaseModel):
@@ -28,19 +57,19 @@ class Alert(BaseModel):
     currency: Optional[str] = None
     """The name of the currency the credit balance or invoice cost is denominated in."""
 
-    customer: Optional[Dict[str, Optional[str]]] = None
+    customer: Optional[Customer] = None
     """The customer the alert applies to."""
 
     enabled: bool
     """Whether the alert is enabled or disabled."""
 
-    metric: Optional[Dict[str, Optional[str]]] = None
+    metric: Optional[Metric] = None
     """The metric the alert applies to."""
 
-    plan: Optional[Dict[str, Optional[str]]] = None
+    plan: Optional[Plan] = None
     """The plan the alert applies to."""
 
-    subscription: Optional[Dict[str, Optional[str]]] = None
+    subscription: Optional[Subscription] = None
     """The subscription the alert applies to."""
 
     thresholds: Optional[List[Threshold]] = None
