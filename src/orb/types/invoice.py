@@ -927,8 +927,11 @@ class Invoice(BaseModel):
 
     discounts: List[InvoiceLevelDiscount]
 
-    due_date: datetime
-    """When the invoice payment is due."""
+    due_date: Optional[datetime] = None
+    """When the invoice payment is due.
+
+    The due date is null if the invoice is not yet finalized.
+    """
 
     eligible_to_issue_at: Optional[datetime] = None
     """
