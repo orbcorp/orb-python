@@ -217,7 +217,7 @@ except orb.APIStatusError as e:
     print(e.response)
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Status Code | Error Type                 |
 | ----------- | -------------------------- |
@@ -328,7 +328,7 @@ customer = response.parse()  # get the object that `customers.create()` would ha
 print(customer.id)
 ```
 
-These methods return an [`LegacyAPIResponse`](https://github.com/orbcorp/orb-python/tree/main/src/orb/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
+These methods return a [`LegagcyAPIResponse`](https://github.com/orbcorp/orb-python/tree/main/src/orb/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
 
 For the sync client this will mostly be the same with the exception
 of `content` & `text` will be methods instead of properties. In the
@@ -367,8 +367,7 @@ If you need to access undocumented endpoints, params, or response properties, th
 #### Undocumented endpoints
 
 To make requests to undocumented endpoints, you can make requests using `client.get`, `client.post`, and other
-http verbs. Options on the client will be respected (such as retries) will be respected when making this
-request.
+http verbs. Options on the client will be respected (such as retries) when making this request.
 
 ```py
 import httpx
