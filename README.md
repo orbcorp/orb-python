@@ -305,7 +305,7 @@ customer = response.parse()  # get the object that `customers.create()` would ha
 print(customer.id)
 ```
 
-These methods return a [`LegagcyAPIResponse`](https://github.com/orbcorp/orb-python/tree/main/src/orb/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
+These methods return a [`LegacyAPIResponse`](https://github.com/orbcorp/orb-python/tree/main/src/orb/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
 
 For the sync client this will mostly be the same with the exception
 of `content` & `text` will be methods instead of properties. In the
