@@ -1,5 +1,41 @@
 # Changelog
 
+## 2.21.0 (2025-01-15)
+
+Full Changelog: [v2.20.0...v2.21.0](https://github.com/orbcorp/orb-python/compare/v2.20.0...v2.21.0)
+
+### Features
+
+* **api:** api update ([#471](https://github.com/orbcorp/orb-python/issues/471)) ([d23ec0e](https://github.com/orbcorp/orb-python/commit/d23ec0e08cc5e8bd681a8c7947778a8445b81f78))
+* **api:** api update ([#472](https://github.com/orbcorp/orb-python/issues/472)) ([0a22350](https://github.com/orbcorp/orb-python/commit/0a2235016cfba90da5f68e950579d0720bd40045))
+* **api:** api update ([#474](https://github.com/orbcorp/orb-python/issues/474)) ([d2fb2aa](https://github.com/orbcorp/orb-python/commit/d2fb2aa50c27160a8fd386aec812e8f3ace527fe))
+* **api:** api update ([#477](https://github.com/orbcorp/orb-python/issues/477)) ([59c3a8b](https://github.com/orbcorp/orb-python/commit/59c3a8bdfa3b18311e956511afd31d211c6f320d))
+* **api:** api update ([#478](https://github.com/orbcorp/orb-python/issues/478)) ([4036eca](https://github.com/orbcorp/orb-python/commit/4036ecaf1d14f3c235c11ce1551490a86fab8066))
+
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#481](https://github.com/orbcorp/orb-python/issues/481)) ([c14225c](https://github.com/orbcorp/orb-python/commit/c14225cd09e514dea91586874e851cf1933b9af5))
+* correctly handle deserialising `cls` fields ([#485](https://github.com/orbcorp/orb-python/issues/485)) ([7a80005](https://github.com/orbcorp/orb-python/commit/7a80005983ff3799ea685034dd750c08c74704e7))
+
+
+### Chores
+
+* add missing isclass check ([#476](https://github.com/orbcorp/orb-python/issues/476)) ([cafafe4](https://github.com/orbcorp/orb-python/commit/cafafe4cfdfd12d1bbad5d1fce0ad0b992741993))
+* **client:** simplify `Optional[object]` to just `object` ([#475](https://github.com/orbcorp/orb-python/issues/475)) ([f684ed4](https://github.com/orbcorp/orb-python/commit/f684ed42a5452933f4fe5a495b309a74267e4728))
+* **internal:** bump httpx dependency ([#480](https://github.com/orbcorp/orb-python/issues/480)) ([6b04dea](https://github.com/orbcorp/orb-python/commit/6b04deaf0406eb2130ca9f159d42f84bd5ecac4a))
+* **internal:** bump pyright dependency ([#487](https://github.com/orbcorp/orb-python/issues/487)) ([667a330](https://github.com/orbcorp/orb-python/commit/667a330e4074c66434a19d25fdfaf2a710f2d2c8))
+* **internal:** codegen related update ([#473](https://github.com/orbcorp/orb-python/issues/473)) ([c24985f](https://github.com/orbcorp/orb-python/commit/c24985f1ff9e87de455a4b862045701f6c646bab))
+* **internal:** codegen related update ([#484](https://github.com/orbcorp/orb-python/issues/484)) ([a429148](https://github.com/orbcorp/orb-python/commit/a429148a83f0e51afcb0b99d5661c706023da48f))
+* **internal:** update deps ([#486](https://github.com/orbcorp/orb-python/issues/486)) ([4677063](https://github.com/orbcorp/orb-python/commit/4677063f95f37b7b982816871d8fa98871efd15f))
+* **internal:** version bump ([#469](https://github.com/orbcorp/orb-python/issues/469)) ([e95eb1d](https://github.com/orbcorp/orb-python/commit/e95eb1d93a4990d3fe2d722abf05b4bfa558c745))
+
+
+### Documentation
+
+* fix typos ([#482](https://github.com/orbcorp/orb-python/issues/482)) ([b8a2ce6](https://github.com/orbcorp/orb-python/commit/b8a2ce60542927b91329a10dd2d39efac96d6d9b))
+* more typo fixes ([#483](https://github.com/orbcorp/orb-python/issues/483)) ([569ad30](https://github.com/orbcorp/orb-python/commit/569ad308f81bc99620d2d08b3afc4ea95f0fe8d5))
+
 ## 2.20.0 (2024-12-19)
 
 Full Changelog: [v2.19.0...v2.20.0](https://github.com/orbcorp/orb-python/compare/v2.19.0...v2.20.0)
