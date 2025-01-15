@@ -1578,7 +1578,8 @@ class Subscriptions(SyncAPIResource):
               billing cycle alignment.
 
           change_date: The date that the plan change should take effect. This parameter can only be
-              passed if the `change_option` is `requested_date`.
+              passed if the `change_option` is `requested_date`. If a date with no time is
+              passed, the plan change will happen at midnight in the customer's timezone.
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
@@ -3541,7 +3542,8 @@ class AsyncSubscriptions(AsyncAPIResource):
               billing cycle alignment.
 
           change_date: The date that the plan change should take effect. This parameter can only be
-              passed if the `change_option` is `requested_date`.
+              passed if the `change_option` is `requested_date`. If a date with no time is
+              passed, the plan change will happen at midnight in the customer's timezone.
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
