@@ -61,7 +61,7 @@ class CreditNotes(SyncAPIResource):
     ) -> CreditNote:
         """
         This endpoint is used to create a single
-        [`Credit Note`](../guides/invoicing/credit-notes).
+        [`Credit Note`](/invoicing/credit-notes).
 
         Args:
           memo: An optional memo to attach to the credit note.
@@ -161,8 +161,8 @@ class CreditNotes(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditNote:
         """
-        This endpoint is used to fetch a single
-        [`Credit Note`](../guides/invoicing/credit-notes) given an identifier.
+        This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
+        given an identifier.
 
         Args:
           extra_headers: Send extra headers
@@ -221,7 +221,7 @@ class AsyncCreditNotes(AsyncAPIResource):
     ) -> CreditNote:
         """
         This endpoint is used to create a single
-        [`Credit Note`](../guides/invoicing/credit-notes).
+        [`Credit Note`](/invoicing/credit-notes).
 
         Args:
           memo: An optional memo to attach to the credit note.
@@ -321,8 +321,8 @@ class AsyncCreditNotes(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreditNote:
         """
-        This endpoint is used to fetch a single
-        [`Credit Note`](../guides/invoicing/credit-notes) given an identifier.
+        This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
+        given an identifier.
 
         Args:
           extra_headers: Send extra headers

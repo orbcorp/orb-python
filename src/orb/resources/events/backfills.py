@@ -98,12 +98,12 @@ class Backfills(SyncAPIResource):
         affect all customers.
 
         When `replace_existing_events` is `true`, this indicates that existing events in
-        the timeframe should no longer be counted towards invoiced usage. In this
+        the timeframe should no longer be counter towards invoiced usage. In this
         scenario, the parameter `filter` can be optionally added which enables filtering
         using
-        [computed properties](../guides/extensibility/advanced-metrics#computed-properties).
-        The expressiveness of computed properties allows you to deprecate existing
-        events based on both a period of time and specific property values.
+        [computed properties](/extensibility/advanced-metrics#computed-properties). The
+        expressiveness of computed properties allows you to deprecate existing events
+        based on both a period of time and specific property values.
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
@@ -118,8 +118,8 @@ class Backfills(SyncAPIResource):
               this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-              used to filter the set of events to deprecate
+              [computed property](/extensibility/advanced-metrics#computed-properties) used to
+              filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
               Omitting this field will scope the backfill to all customers.
@@ -178,9 +178,9 @@ class Backfills(SyncAPIResource):
 
         The list of backfills is ordered starting from the most recently created
         backfill. The response also includes
-        [`pagination_metadata`](../reference/pagination), which lets the caller retrieve
-        the next page of results if they exist. More information about pagination can be
-        found in the [Pagination-metadata schema](pagination).
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist. More information about
+        pagination can be found in the [Pagination-metadata schema](pagination).
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -410,12 +410,12 @@ class AsyncBackfills(AsyncAPIResource):
         affect all customers.
 
         When `replace_existing_events` is `true`, this indicates that existing events in
-        the timeframe should no longer be counted towards invoiced usage. In this
+        the timeframe should no longer be counter towards invoiced usage. In this
         scenario, the parameter `filter` can be optionally added which enables filtering
         using
-        [computed properties](../guides/extensibility/advanced-metrics#computed-properties).
-        The expressiveness of computed properties allows you to deprecate existing
-        events based on both a period of time and specific property values.
+        [computed properties](/extensibility/advanced-metrics#computed-properties). The
+        expressiveness of computed properties allows you to deprecate existing events
+        based on both a period of time and specific property values.
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
@@ -430,8 +430,8 @@ class AsyncBackfills(AsyncAPIResource):
               this field will scope the backfill to all customers.
 
           deprecation_filter: A boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-              used to filter the set of events to deprecate
+              [computed property](/extensibility/advanced-metrics#computed-properties) used to
+              filter the set of events to deprecate
 
           external_customer_id: The external customer ID of the customer to which this backfill is scoped.
               Omitting this field will scope the backfill to all customers.
@@ -490,9 +490,9 @@ class AsyncBackfills(AsyncAPIResource):
 
         The list of backfills is ordered starting from the most recently created
         backfill. The response also includes
-        [`pagination_metadata`](../reference/pagination), which lets the caller retrieve
-        the next page of results if they exist. More information about pagination can be
-        found in the [Pagination-metadata schema](pagination).
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist. More information about
+        pagination can be found in the [Pagination-metadata schema](pagination).
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned

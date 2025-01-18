@@ -42,6 +42,6 @@ class BackfillCreateResponse(BaseModel):
     deprecation_filter: Optional[str] = None
     """
     A boolean
-    [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-    used to filter the set of events to deprecate
+    [computed property](/extensibility/advanced-metrics#computed-properties) used to
+    filter the set of events to deprecate
     """
