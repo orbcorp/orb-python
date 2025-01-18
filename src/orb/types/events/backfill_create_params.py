@@ -35,8 +35,8 @@ class BackfillCreateParams(TypedDict, total=False):
     deprecation_filter: Optional[str]
     """
     A boolean
-    [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-    used to filter the set of events to deprecate
+    [computed property](/extensibility/advanced-metrics#computed-properties) used to
+    filter the set of events to deprecate
     """
 
     external_customer_id: Optional[str]

@@ -130,7 +130,7 @@ class Subscriptions(SyncAPIResource):
 
         The default configuration for subscriptions in Orb is **In-advance billing** and
         **Beginning of month alignment** (see
-        [Subscription](../guides/concepts#subscription) for more details).
+        [Subscription](/core-concepts##subscription) for more details).
 
         In order to change the alignment behavior, Orb also supports billing
         subscriptions on the day of the month they are created. If
@@ -155,9 +155,10 @@ class Subscriptions(SyncAPIResource):
         subscription being created. This is useful when a customer has prices that
         differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated to
-        Subscription Overrides Version 2. You can find your Subscription Overrides
-        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
+        <Note>
+        This feature is only available for accounts that have migrated to Subscription Overrides Version 2. You can find your
+        Subscription Overrides Version at the bottom of your [Plans page](https://app.withorb.com/plans)
+        </Note>
 
         ### Adding Prices
 
@@ -165,17 +166,17 @@ class Subscriptions(SyncAPIResource):
         the list must specify an existing add-on price with a `price_id` or
         `external_price_id` field, or create a new add-on price by including an object
         with the key `price`, identical to what would be used in the request body for
-        the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the price should be added to.
 
         An object in the list can specify an optional `start_date` and optional
         `end_date`. This is equivalent to creating a price interval with the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals). If
-        unspecified, the start or end date of the phase or subscription will be used.
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
+        If unspecified, the start or end date of the phase or subscription will be used.
 
         An object in the list can specify an optional `minimum_amount`,
         `maximum_amount`, or `discounts`. This will create adjustments which apply only
@@ -200,14 +201,15 @@ class Subscriptions(SyncAPIResource):
         either referencing an existing add-on price with a `price_id` or
         `external_price_id` field, or by creating a new add-on price by including an
         object with the key `price`, identical to what would be used in the request body
-        for the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        for the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         For fixed fees, an object in the list can supply a `fixed_price_quantity`
         instead of a `price`, `price_id`, or `external_price_id` field. This will update
         only the quantity for the price, similar to the
-        [Update price quantity](../reference/update-fixed-fee-quantity) endpoint.
+        [Update price quantity](/api-reference/subscription/update-price-quantity)
+        endpoint.
 
         The replacement price will have the same phase, if applicable, and the same
         start and end dates as the price it replaces.
@@ -226,7 +228,7 @@ class Subscriptions(SyncAPIResource):
         To add adjustments, provide a list of objects with the key `add_adjustments`. An
         object in the list must include an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the adjustment should be added
@@ -249,17 +251,17 @@ class Subscriptions(SyncAPIResource):
         replace with the `replaces_adjustment_id` key, and it must specify an adjustment
         to replace it with by including an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         The replacement adjustment will have the same phase, if applicable, and the same
         start and end dates as the adjustment it replaces.
 
         ## Price overrides (DEPRECATED)
 
-        :::info Price overrides are being phased out in favor adding/removing/replacing
-        prices. (See
-        [Customize your customer's subscriptions](../reference/create-subscription#customize-your-customers-subscriptions))
-        :::
+        <Note>
+        Price overrides are being phased out in favor adding/removing/replacing prices. (See
+        [Customize your customer's subscriptions](/api-reference/subscription/create-subscription))
+        </Note>
 
         Price overrides are used to update some or all prices in a plan for the specific
         subscription being created. This is useful when a new customer has negotiated a
@@ -268,9 +270,9 @@ class Subscriptions(SyncAPIResource):
         To override prices, provide a list of objects with the key `price_overrides`.
         The price object in the list of overrides is expected to contain the existing
         price id, the `model_type` and configuration. (See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations.) The numerical values can be updated, but the billable
-        metric, cadence, type, and name of a price can not be overridden.
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations.) The numerical values can be updated, but
+        the billable metric, cadence, type, and name of a price can not be overridden.
 
         ### Maximums and Minimums
 
@@ -398,8 +400,8 @@ class Subscriptions(SyncAPIResource):
 
           filter: An additional filter to apply to usage queries. This filter must be expressed as
               a boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-              If null, usage queries will not include any additional filter.
+              [computed property](/extensibility/advanced-metrics#computed-properties). If
+              null, usage queries will not include any additional filter.
 
           initial_phase_order: The phase of the plan to start with
 
@@ -595,9 +597,9 @@ class Subscriptions(SyncAPIResource):
     ) -> SyncPage[Subscription]:
         """
         This endpoint returns a list of all subscriptions for an account as a
-        [paginated](../reference/pagination) list, ordered starting from the most
+        [paginated](/api-reference/pagination) list, ordered starting from the most
         recently created subscription. For a full discussion of the subscription
-        resource, see [Subscription](../guides/concepts#subscription).
+        resource, see [Subscription](/core-concepts##subscription).
 
         Subscriptions can be filtered for a specific customer by using either the
         customer_id or external_customer_id query parameters. To filter subscriptions
@@ -720,7 +722,7 @@ class Subscriptions(SyncAPIResource):
         current period. If the cancellation is before the most recently issued invoice,
         Orb will void the intervening invoice and generate a new one based on the new
         dates for the subscription. See the section on
-        [cancellation behaviors](../guides/product-catalog/creating-subscriptions.md#cancellation-behaviors).
+        [cancellation behaviors](/product-catalog/creating-subscriptions#cancellation-behaviors).
 
         Args:
           cancel_option: Determines the timing of subscription cancellation
@@ -771,7 +773,7 @@ class Subscriptions(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Subscription:
         """
-        This endpoint is used to fetch a [Subscription](../guides/concepts#subscription)
+        This endpoint is used to fetch a [Subscription](/core-concepts##subscription)
         given an identifier.
 
         Args:
@@ -880,7 +882,7 @@ class Subscriptions(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[SubscriptionFetchScheduleResponse]:
         """
-        This endpoint returns a [paginated](../reference/pagination) list of all plans
+        This endpoint returns a [paginated](/api-reference/pagination) list of all plans
         associated with a subscription along with their start and end dates. This list
         contains the subscription's initial plan along with past and future plan
         changes.
@@ -1217,9 +1219,9 @@ class Subscriptions(SyncAPIResource):
     ) -> SubscriptionPriceIntervalsResponse:
         """
         This endpoint is used to add and edit subscription
-        [price intervals](../reference/price-interval). By making modifications to a
-        subscription’s price intervals, you can
-        [flexibly and atomically control the billing behavior of a subscription](../guides/product-catalog/modifying-subscriptions).
+        [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
+        making modifications to a subscription’s price intervals, you can
+        [flexibly and atomically control the billing behavior of a subscription](/product-catalog/modifying-subscriptions).
 
         ## Adding price intervals
 
@@ -1422,9 +1424,10 @@ class Subscriptions(SyncAPIResource):
         subscription when you schedule the plan change. This is useful when a customer
         has prices that differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated to
-        Subscription Overrides Version 2. You can find your Subscription Overrides
-        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
+        <Note>
+        This feature is only available for accounts that have migrated to Subscription Overrides Version 2. You can find your
+        Subscription Overrides Version at the bottom of your [Plans page](https://app.withorb.com/plans)
+        </Note>
 
         ### Adding Prices
 
@@ -1432,17 +1435,17 @@ class Subscriptions(SyncAPIResource):
         the list must specify an existing add-on price with a `price_id` or
         `external_price_id` field, or create a new add-on price by including an object
         with the key `price`, identical to what would be used in the request body for
-        the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the price should be added to.
 
         An object in the list can specify an optional `start_date` and optional
         `end_date`. This is equivalent to creating a price interval with the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals). If
-        unspecified, the start or end date of the phase or subscription will be used.
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
+        If unspecified, the start or end date of the phase or subscription will be used.
 
         An object in the list can specify an optional `minimum_amount`,
         `maximum_amount`, or `discounts`. This will create adjustments which apply only
@@ -1467,14 +1470,15 @@ class Subscriptions(SyncAPIResource):
         either referencing an existing add-on price with a `price_id` or
         `external_price_id` field, or by creating a new add-on price by including an
         object with the key `price`, identical to what would be used in the request body
-        for the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        for the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         For fixed fees, an object in the list can supply a `fixed_price_quantity`
         instead of a `price`, `price_id`, or `external_price_id` field. This will update
         only the quantity for the price, similar to the
-        [Update price quantity](../reference/update-fixed-fee-quantity) endpoint.
+        [Update price quantity](/api-reference/subscription/update-price-quantity)
+        endpoint.
 
         The replacement price will have the same phase, if applicable, and the same
         start and end dates as the price it replaces.
@@ -1493,7 +1497,7 @@ class Subscriptions(SyncAPIResource):
         To add adjustments, provide a list of objects with the key `add_adjustments`. An
         object in the list must include an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the adjustment should be added
@@ -1516,17 +1520,17 @@ class Subscriptions(SyncAPIResource):
         replace with the `replaces_adjustment_id` key, and it must specify an adjustment
         to replace it with by including an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         The replacement adjustment will have the same phase, if applicable, and the same
         start and end dates as the adjustment it replaces.
 
         ## Price overrides (DEPRECATED)
 
-        :::info Price overrides are being phased out in favor adding/removing/replacing
-        prices. (See
-        [Customize your customer's subscriptions](../reference/schedule-plan-change#customize-your-customers-subscriptions))
-        :::
+        <Note>
+        Price overrides are being phased out in favor adding/removing/replacing prices. (See
+        [Customize your customer's subscriptions](/api-reference/subscription/schedule-plan-change))
+        </Note>
 
         Price overrides are used to update some or all prices in a plan for the specific
         subscription being created. This is useful when a new customer has negotiated a
@@ -1535,9 +1539,9 @@ class Subscriptions(SyncAPIResource):
         To override prices, provide a list of objects with the key `price_overrides`.
         The price object in the list of overrides is expected to contain the existing
         price id, the `model_type` and configuration. (See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations.) The numerical values can be updated, but the billable
-        metric, cadence, type, and name of a price can not be overridden.
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations.) The numerical values can be updated, but
+        the billable metric, cadence, type, and name of a price can not be overridden.
 
         ### Maximums, and minimums
 
@@ -1557,7 +1561,7 @@ class Subscriptions(SyncAPIResource):
         By default, Orb calculates the prorated difference in any fixed fees when making
         a plan change, adjusting the customer balance as needed. For details on this
         behavior, see
-        [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
+        [Modifying subscriptions](/product-catalog/modifying-subscriptions#prorations-for-in-advance-fees).
 
         Args:
           add_adjustments: Additional adjustments to be added to the subscription. (Only available for
@@ -1578,8 +1582,7 @@ class Subscriptions(SyncAPIResource):
               billing cycle alignment.
 
           change_date: The date that the plan change should take effect. This parameter can only be
-              passed if the `change_option` is `requested_date`. If a date with no time is
-              passed, the plan change will happen at midnight in the customer's timezone.
+              passed if the `change_option` is `requested_date`.
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
@@ -1593,8 +1596,8 @@ class Subscriptions(SyncAPIResource):
 
           filter: An additional filter to apply to usage queries. This filter must be expressed as
               a boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-              If null, usage queries will not include any additional filter.
+              [computed property](/extensibility/advanced-metrics#computed-properties). If
+              null, usage queries will not include any additional filter.
 
           initial_phase_order: The phase of the plan to start with
 
@@ -2094,7 +2097,7 @@ class AsyncSubscriptions(AsyncAPIResource):
 
         The default configuration for subscriptions in Orb is **In-advance billing** and
         **Beginning of month alignment** (see
-        [Subscription](../guides/concepts#subscription) for more details).
+        [Subscription](/core-concepts##subscription) for more details).
 
         In order to change the alignment behavior, Orb also supports billing
         subscriptions on the day of the month they are created. If
@@ -2119,9 +2122,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription being created. This is useful when a customer has prices that
         differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated to
-        Subscription Overrides Version 2. You can find your Subscription Overrides
-        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
+        <Note>
+        This feature is only available for accounts that have migrated to Subscription Overrides Version 2. You can find your
+        Subscription Overrides Version at the bottom of your [Plans page](https://app.withorb.com/plans)
+        </Note>
 
         ### Adding Prices
 
@@ -2129,17 +2133,17 @@ class AsyncSubscriptions(AsyncAPIResource):
         the list must specify an existing add-on price with a `price_id` or
         `external_price_id` field, or create a new add-on price by including an object
         with the key `price`, identical to what would be used in the request body for
-        the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the price should be added to.
 
         An object in the list can specify an optional `start_date` and optional
         `end_date`. This is equivalent to creating a price interval with the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals). If
-        unspecified, the start or end date of the phase or subscription will be used.
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
+        If unspecified, the start or end date of the phase or subscription will be used.
 
         An object in the list can specify an optional `minimum_amount`,
         `maximum_amount`, or `discounts`. This will create adjustments which apply only
@@ -2164,14 +2168,15 @@ class AsyncSubscriptions(AsyncAPIResource):
         either referencing an existing add-on price with a `price_id` or
         `external_price_id` field, or by creating a new add-on price by including an
         object with the key `price`, identical to what would be used in the request body
-        for the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        for the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         For fixed fees, an object in the list can supply a `fixed_price_quantity`
         instead of a `price`, `price_id`, or `external_price_id` field. This will update
         only the quantity for the price, similar to the
-        [Update price quantity](../reference/update-fixed-fee-quantity) endpoint.
+        [Update price quantity](/api-reference/subscription/update-price-quantity)
+        endpoint.
 
         The replacement price will have the same phase, if applicable, and the same
         start and end dates as the price it replaces.
@@ -2190,7 +2195,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         To add adjustments, provide a list of objects with the key `add_adjustments`. An
         object in the list must include an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the adjustment should be added
@@ -2213,17 +2218,17 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace with the `replaces_adjustment_id` key, and it must specify an adjustment
         to replace it with by including an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         The replacement adjustment will have the same phase, if applicable, and the same
         start and end dates as the adjustment it replaces.
 
         ## Price overrides (DEPRECATED)
 
-        :::info Price overrides are being phased out in favor adding/removing/replacing
-        prices. (See
-        [Customize your customer's subscriptions](../reference/create-subscription#customize-your-customers-subscriptions))
-        :::
+        <Note>
+        Price overrides are being phased out in favor adding/removing/replacing prices. (See
+        [Customize your customer's subscriptions](/api-reference/subscription/create-subscription))
+        </Note>
 
         Price overrides are used to update some or all prices in a plan for the specific
         subscription being created. This is useful when a new customer has negotiated a
@@ -2232,9 +2237,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         To override prices, provide a list of objects with the key `price_overrides`.
         The price object in the list of overrides is expected to contain the existing
         price id, the `model_type` and configuration. (See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations.) The numerical values can be updated, but the billable
-        metric, cadence, type, and name of a price can not be overridden.
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations.) The numerical values can be updated, but
+        the billable metric, cadence, type, and name of a price can not be overridden.
 
         ### Maximums and Minimums
 
@@ -2362,8 +2367,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           filter: An additional filter to apply to usage queries. This filter must be expressed as
               a boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-              If null, usage queries will not include any additional filter.
+              [computed property](/extensibility/advanced-metrics#computed-properties). If
+              null, usage queries will not include any additional filter.
 
           initial_phase_order: The phase of the plan to start with
 
@@ -2559,9 +2564,9 @@ class AsyncSubscriptions(AsyncAPIResource):
     ) -> AsyncPaginator[Subscription, AsyncPage[Subscription]]:
         """
         This endpoint returns a list of all subscriptions for an account as a
-        [paginated](../reference/pagination) list, ordered starting from the most
+        [paginated](/api-reference/pagination) list, ordered starting from the most
         recently created subscription. For a full discussion of the subscription
-        resource, see [Subscription](../guides/concepts#subscription).
+        resource, see [Subscription](/core-concepts##subscription).
 
         Subscriptions can be filtered for a specific customer by using either the
         customer_id or external_customer_id query parameters. To filter subscriptions
@@ -2684,7 +2689,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         current period. If the cancellation is before the most recently issued invoice,
         Orb will void the intervening invoice and generate a new one based on the new
         dates for the subscription. See the section on
-        [cancellation behaviors](../guides/product-catalog/creating-subscriptions.md#cancellation-behaviors).
+        [cancellation behaviors](/product-catalog/creating-subscriptions#cancellation-behaviors).
 
         Args:
           cancel_option: Determines the timing of subscription cancellation
@@ -2735,7 +2740,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Subscription:
         """
-        This endpoint is used to fetch a [Subscription](../guides/concepts#subscription)
+        This endpoint is used to fetch a [Subscription](/core-concepts##subscription)
         given an identifier.
 
         Args:
@@ -2844,7 +2849,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[SubscriptionFetchScheduleResponse, AsyncPage[SubscriptionFetchScheduleResponse]]:
         """
-        This endpoint returns a [paginated](../reference/pagination) list of all plans
+        This endpoint returns a [paginated](/api-reference/pagination) list of all plans
         associated with a subscription along with their start and end dates. This list
         contains the subscription's initial plan along with past and future plan
         changes.
@@ -3181,9 +3186,9 @@ class AsyncSubscriptions(AsyncAPIResource):
     ) -> SubscriptionPriceIntervalsResponse:
         """
         This endpoint is used to add and edit subscription
-        [price intervals](../reference/price-interval). By making modifications to a
-        subscription’s price intervals, you can
-        [flexibly and atomically control the billing behavior of a subscription](../guides/product-catalog/modifying-subscriptions).
+        [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
+        making modifications to a subscription’s price intervals, you can
+        [flexibly and atomically control the billing behavior of a subscription](/product-catalog/modifying-subscriptions).
 
         ## Adding price intervals
 
@@ -3386,9 +3391,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription when you schedule the plan change. This is useful when a customer
         has prices that differ from the default prices for a specific plan.
 
-        :::info This feature is only available for accounts that have migrated to
-        Subscription Overrides Version 2. You can find your Subscription Overrides
-        Version at the bottom of your [Plans page](https://app.withorb.com/plans) :::
+        <Note>
+        This feature is only available for accounts that have migrated to Subscription Overrides Version 2. You can find your
+        Subscription Overrides Version at the bottom of your [Plans page](https://app.withorb.com/plans)
+        </Note>
 
         ### Adding Prices
 
@@ -3396,17 +3402,17 @@ class AsyncSubscriptions(AsyncAPIResource):
         the list must specify an existing add-on price with a `price_id` or
         `external_price_id` field, or create a new add-on price by including an object
         with the key `price`, identical to what would be used in the request body for
-        the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the price should be added to.
 
         An object in the list can specify an optional `start_date` and optional
         `end_date`. This is equivalent to creating a price interval with the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals). If
-        unspecified, the start or end date of the phase or subscription will be used.
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
+        If unspecified, the start or end date of the phase or subscription will be used.
 
         An object in the list can specify an optional `minimum_amount`,
         `maximum_amount`, or `discounts`. This will create adjustments which apply only
@@ -3431,14 +3437,15 @@ class AsyncSubscriptions(AsyncAPIResource):
         either referencing an existing add-on price with a `price_id` or
         `external_price_id` field, or by creating a new add-on price by including an
         object with the key `price`, identical to what would be used in the request body
-        for the [create price endpoint](../reference/create-price). See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations possible in this object.
+        for the [create price endpoint](/api-reference/price/create-price). See the
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations possible in this object.
 
         For fixed fees, an object in the list can supply a `fixed_price_quantity`
         instead of a `price`, `price_id`, or `external_price_id` field. This will update
         only the quantity for the price, similar to the
-        [Update price quantity](../reference/update-fixed-fee-quantity) endpoint.
+        [Update price quantity](/api-reference/subscription/update-price-quantity)
+        endpoint.
 
         The replacement price will have the same phase, if applicable, and the same
         start and end dates as the price it replaces.
@@ -3457,7 +3464,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         To add adjustments, provide a list of objects with the key `add_adjustments`. An
         object in the list must include an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         If the plan has phases, each object in the list must include a number with
         `plan_phase_order` key to indicate which phase the adjustment should be added
@@ -3480,17 +3487,17 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace with the `replaces_adjustment_id` key, and it must specify an adjustment
         to replace it with by including an object with the key `adjustment`, identical
         to the adjustment object in the
-        [add/edit price intervals endpoint](../reference/add-edit-price-intervals).
+        [add/edit price intervals endpoint](/api-reference/price-interval/add-or-edit-price-intervals).
 
         The replacement adjustment will have the same phase, if applicable, and the same
         start and end dates as the adjustment it replaces.
 
         ## Price overrides (DEPRECATED)
 
-        :::info Price overrides are being phased out in favor adding/removing/replacing
-        prices. (See
-        [Customize your customer's subscriptions](../reference/schedule-plan-change#customize-your-customers-subscriptions))
-        :::
+        <Note>
+        Price overrides are being phased out in favor adding/removing/replacing prices. (See
+        [Customize your customer's subscriptions](/api-reference/subscription/schedule-plan-change))
+        </Note>
 
         Price overrides are used to update some or all prices in a plan for the specific
         subscription being created. This is useful when a new customer has negotiated a
@@ -3499,9 +3506,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         To override prices, provide a list of objects with the key `price_overrides`.
         The price object in the list of overrides is expected to contain the existing
         price id, the `model_type` and configuration. (See the
-        [Price resource](../reference/price) for the specification of different price
-        model configurations.) The numerical values can be updated, but the billable
-        metric, cadence, type, and name of a price can not be overridden.
+        [Price resource](/product-catalog/price-configuration) for the specification of
+        different price model configurations.) The numerical values can be updated, but
+        the billable metric, cadence, type, and name of a price can not be overridden.
 
         ### Maximums, and minimums
 
@@ -3521,7 +3528,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         By default, Orb calculates the prorated difference in any fixed fees when making
         a plan change, adjusting the customer balance as needed. For details on this
         behavior, see
-        [Modifying subscriptions](../guides/product-catalog/modifying-subscriptions.md#prorations-for-in-advance-fees).
+        [Modifying subscriptions](/product-catalog/modifying-subscriptions#prorations-for-in-advance-fees).
 
         Args:
           add_adjustments: Additional adjustments to be added to the subscription. (Only available for
@@ -3542,8 +3549,7 @@ class AsyncSubscriptions(AsyncAPIResource):
               billing cycle alignment.
 
           change_date: The date that the plan change should take effect. This parameter can only be
-              passed if the `change_option` is `requested_date`. If a date with no time is
-              passed, the plan change will happen at midnight in the customer's timezone.
+              passed if the `change_option` is `requested_date`.
 
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
@@ -3557,8 +3563,8 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           filter: An additional filter to apply to usage queries. This filter must be expressed as
               a boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-              If null, usage queries will not include any additional filter.
+              [computed property](/extensibility/advanced-metrics#computed-properties). If
+              null, usage queries will not include any additional filter.
 
           initial_phase_order: The phase of the plan to start with
 
