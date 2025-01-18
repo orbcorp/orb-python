@@ -219,14 +219,6 @@ __all__ = [
     "GroupedTieredPackagePriceItem",
     "GroupedTieredPackagePriceMaximum",
     "GroupedTieredPackagePriceMinimum",
-    "MaxGroupTieredPrice",
-    "MaxGroupTieredPriceBillableMetric",
-    "MaxGroupTieredPriceBillingCycleConfiguration",
-    "MaxGroupTieredPriceCreditAllocation",
-    "MaxGroupTieredPriceInvoicingCycleConfiguration",
-    "MaxGroupTieredPriceItem",
-    "MaxGroupTieredPriceMaximum",
-    "MaxGroupTieredPriceMinimum",
 ]
 
 
@@ -2870,110 +2862,6 @@ class GroupedTieredPackagePrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
-class MaxGroupTieredPriceBillableMetric(BaseModel):
-    id: str
-
-
-class MaxGroupTieredPriceBillingCycleConfiguration(BaseModel):
-    duration: int
-
-    duration_unit: Literal["day", "month"]
-
-
-class MaxGroupTieredPriceCreditAllocation(BaseModel):
-    allows_rollover: bool
-
-    currency: str
-
-
-class MaxGroupTieredPriceInvoicingCycleConfiguration(BaseModel):
-    duration: int
-
-    duration_unit: Literal["day", "month"]
-
-
-class MaxGroupTieredPriceItem(BaseModel):
-    id: str
-
-    name: str
-
-
-class MaxGroupTieredPriceMaximum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this maximum amount applies to.
-
-    For plan/plan phase maximums, this can be a subset of prices.
-    """
-
-    maximum_amount: str
-    """Maximum amount applied"""
-
-
-class MaxGroupTieredPriceMinimum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this minimum amount applies to.
-
-    For plan/plan phase minimums, this can be a subset of prices.
-    """
-
-    minimum_amount: str
-    """Minimum amount applied"""
-
-
-class MaxGroupTieredPrice(BaseModel):
-    id: str
-
-    billable_metric: Optional[MaxGroupTieredPriceBillableMetric] = None
-
-    billing_cycle_configuration: MaxGroupTieredPriceBillingCycleConfiguration
-
-    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
-
-    conversion_rate: Optional[float] = None
-
-    created_at: datetime
-
-    credit_allocation: Optional[MaxGroupTieredPriceCreditAllocation] = None
-
-    currency: str
-
-    discount: Optional[Discount] = None
-
-    external_price_id: Optional[str] = None
-
-    fixed_price_quantity: Optional[float] = None
-
-    invoicing_cycle_configuration: Optional[MaxGroupTieredPriceInvoicingCycleConfiguration] = None
-
-    item: MaxGroupTieredPriceItem
-
-    max_group_tiered_config: Dict[str, object]
-
-    maximum: Optional[MaxGroupTieredPriceMaximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    metadata: Dict[str, str]
-    """User specified key-value pairs for the resource.
-
-    If not present, this defaults to an empty dictionary. Individual keys can be
-    removed by setting the value to `null`, and the entire metadata mapping can be
-    cleared by setting `metadata` to `null`.
-    """
-
-    minimum: Optional[MaxGroupTieredPriceMinimum] = None
-
-    minimum_amount: Optional[str] = None
-
-    price_model_type: Literal["max_group_tiered"] = FieldInfo(alias="model_type")
-
-    name: str
-
-    plan_phase_order: Optional[int] = None
-
-    price_type: Literal["usage_price", "fixed_price"]
-
-
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
@@ -3000,7 +2888,6 @@ Price: TypeAlias = Annotated[
         MatrixWithDisplayNamePrice,
         BulkWithProrationPrice,
         GroupedTieredPackagePrice,
-        MaxGroupTieredPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]

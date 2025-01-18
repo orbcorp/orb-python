@@ -56,7 +56,7 @@ class Items(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        This endpoint is used to create an [Item](../guides/concepts#item).
+        This endpoint is used to create an [Item](/core-concepts#item).
 
         Args:
           name: The name of the item.
@@ -249,7 +249,7 @@ class AsyncItems(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        This endpoint is used to create an [Item](../guides/concepts#item).
+        This endpoint is used to create an [Item](/core-concepts#item).
 
         Args:
           name: The name of the item.

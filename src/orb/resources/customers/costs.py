@@ -63,8 +63,8 @@ class Costs(SyncAPIResource):
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
-        [subscription usage endpoint](fetch-subscription-usage.api.mdx) to fetch usage
-        per metric, in usage units rather than a currency).
+        [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
+        to fetch usage per metric, in usage units rather than a currency).
 
         This endpoint can be leveraged for internal tooling and to provide a more
         transparent billing experience for your end users:
@@ -73,8 +73,8 @@ class Costs(SyncAPIResource):
            the current billing period.
         2. Provide customer visibility into how different services are contributing to
            the overall invoice with a per-day timeseries (as compared to the
-           [upcoming invoice](fetch-upcoming-invoice) resource, which represents a
-           snapshot for the current period).
+           [upcoming invoice](/api-reference/invoice/fetch-upcoming-invoice) resource,
+           which represents a snapshot for the current period).
         3. Assess how minimums and discounts affect your customers by teasing apart
            costs directly as a result of usage, as opposed to minimums and discounts at
            the plan and price level.
@@ -239,8 +239,8 @@ class Costs(SyncAPIResource):
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
-        [subscription usage endpoint](fetch-subscription-usage.api.mdx) to fetch usage
-        per metric, in usage units rather than a currency).
+        [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
+        to fetch usage per metric, in usage units rather than a currency).
 
         This endpoint can be leveraged for internal tooling and to provide a more
         transparent billing experience for your end users:
@@ -249,8 +249,8 @@ class Costs(SyncAPIResource):
            the current billing period.
         2. Provide customer visibility into how different services are contributing to
            the overall invoice with a per-day timeseries (as compared to the
-           [upcoming invoice](fetch-upcoming-invoice) resource, which represents a
-           snapshot for the current period).
+           [upcoming invoice](/api-reference/invoice/fetch-upcoming-invoice) resource,
+           which represents a snapshot for the current period).
         3. Assess how minimums and discounts affect your customers by teasing apart
            costs directly as a result of usage, as opposed to minimums and discounts at
            the plan and price level.
@@ -438,8 +438,8 @@ class AsyncCosts(AsyncAPIResource):
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
-        [subscription usage endpoint](fetch-subscription-usage.api.mdx) to fetch usage
-        per metric, in usage units rather than a currency).
+        [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
+        to fetch usage per metric, in usage units rather than a currency).
 
         This endpoint can be leveraged for internal tooling and to provide a more
         transparent billing experience for your end users:
@@ -448,8 +448,8 @@ class AsyncCosts(AsyncAPIResource):
            the current billing period.
         2. Provide customer visibility into how different services are contributing to
            the overall invoice with a per-day timeseries (as compared to the
-           [upcoming invoice](fetch-upcoming-invoice) resource, which represents a
-           snapshot for the current period).
+           [upcoming invoice](/api-reference/invoice/fetch-upcoming-invoice) resource,
+           which represents a snapshot for the current period).
         3. Assess how minimums and discounts affect your customers by teasing apart
            costs directly as a result of usage, as opposed to minimums and discounts at
            the plan and price level.
@@ -614,8 +614,8 @@ class AsyncCosts(AsyncAPIResource):
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
-        [subscription usage endpoint](fetch-subscription-usage.api.mdx) to fetch usage
-        per metric, in usage units rather than a currency).
+        [subscription usage endpoint](/api-reference/subscription/fetch-subscription-usage)
+        to fetch usage per metric, in usage units rather than a currency).
 
         This endpoint can be leveraged for internal tooling and to provide a more
         transparent billing experience for your end users:
@@ -624,8 +624,8 @@ class AsyncCosts(AsyncAPIResource):
            the current billing period.
         2. Provide customer visibility into how different services are contributing to
            the overall invoice with a per-day timeseries (as compared to the
-           [upcoming invoice](fetch-upcoming-invoice) resource, which represents a
-           snapshot for the current period).
+           [upcoming invoice](/api-reference/invoice/fetch-upcoming-invoice) resource,
+           which represents a snapshot for the current period).
         3. Assess how minimums and discounts affect your customers by teasing apart
            costs directly as a result of usage, as opposed to minimums and discounts at
            the plan and price level.
