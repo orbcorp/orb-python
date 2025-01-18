@@ -88,18 +88,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -176,18 +175,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -264,18 +262,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -356,18 +353,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -444,18 +440,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -534,18 +529,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -622,18 +616,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -710,18 +703,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -798,18 +790,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -890,18 +881,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -982,18 +972,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1074,110 +1063,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
-
-        An `external_price_id` can be optionally specified as an alias to allow
-        ergonomic interaction with prices in the Orb API.
-
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
-
-        Args:
-          cadence: The cadence to bill for this price on.
-
-          currency: An ISO 4217 currency string for which this price is billed in.
-
-          item_id: The id of the item the plan will be associated with.
-
-          name: The name of the price.
-
-          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
-              usage-based.
-
-          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
-              this is true, and in-arrears if this is false.
-
-          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
-              months.
-
-          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
-
-          external_price_id: An alias for the price.
-
-          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
-              applied.
-
-          invoice_grouping_key: The property used to group this price on an invoice
-
-          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
-              If unspecified, a single invoice is produced per billing cycle.
-
-          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
         """
-        ...
-
-    @overload
-    def create(
-        self,
-        *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
-        currency: str,
-        item_id: str,
-        max_group_tiered_config: Dict[str, object],
-        model_type: Literal["max_group_tiered"],
-        name: str,
-        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
-        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
-        fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
-        invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1258,18 +1154,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1350,18 +1245,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1442,18 +1336,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1534,18 +1427,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1626,18 +1518,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1718,18 +1609,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1810,18 +1700,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1902,18 +1791,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -1994,18 +1882,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2086,18 +1973,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2178,18 +2064,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2270,18 +2155,17 @@ class Prices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2342,7 +2226,6 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_config"],
         ["cadence", "currency", "grouped_tiered_config", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "max_group_tiered_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_minimum_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_with_minimum_config"],
@@ -2374,7 +2257,6 @@ class Prices(SyncAPIResource):
         | Literal["threshold_total_amount"]
         | Literal["tiered_package"]
         | Literal["grouped_tiered"]
-        | Literal["max_group_tiered"]
         | Literal["tiered_with_minimum"]
         | Literal["package_with_allocation"]
         | Literal["tiered_package_with_minimum"]
@@ -2412,7 +2294,6 @@ class Prices(SyncAPIResource):
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
-        max_group_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -2465,7 +2346,6 @@ class Prices(SyncAPIResource):
                         "threshold_total_amount_config": threshold_total_amount_config,
                         "tiered_package_config": tiered_package_config,
                         "grouped_tiered_config": grouped_tiered_config,
-                        "max_group_tiered_config": max_group_tiered_config,
                         "tiered_with_minimum_config": tiered_with_minimum_config,
                         "package_with_allocation_config": package_with_allocation_config,
                         "tiered_package_with_minimum_config": tiered_package_with_minimum_config,
@@ -2558,7 +2438,7 @@ class Prices(SyncAPIResource):
     ) -> SyncPage[Price]:
         """
         This endpoint is used to list all add-on prices created using the
-        [price creation endpoint](../reference/create-price).
+        [price creation endpoint](/api-reference/price/create-price).
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -2614,7 +2494,7 @@ class Prices(SyncAPIResource):
         """
         This endpoint is used to evaluate the output of a price for a given customer and
         time range. It enables filtering and grouping the output using
-        [computed properties](../guides/extensibility/advanced-metrics#computed-properties),
+        [computed properties](/extensibility/advanced-metrics#computed-properties),
         supporting the following workflows:
 
         1. Showing detailed usage and costs to the end customer.
@@ -2644,12 +2524,12 @@ class Prices(SyncAPIResource):
           external_customer_id: The external customer ID of the customer to which this evaluation is scoped.
 
           filter: A boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-              used to filter the underlying billable metric
+              [computed property](/extensibility/advanced-metrics#computed-properties) used to
+              filter the underlying billable metric
 
           grouping_keys: Properties (or
-              [computed properties](../guides/extensibility/advanced-metrics#computed-properties))
-              used to group the underlying billable metric
+              [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+              to group the underlying billable metric
 
           extra_headers: Send extra headers
 
@@ -2776,18 +2656,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2864,18 +2743,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -2952,18 +2830,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3044,18 +2921,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3132,18 +3008,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3222,18 +3097,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3310,18 +3184,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3398,18 +3271,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3486,18 +3358,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3578,18 +3449,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3670,18 +3540,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3762,110 +3631,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
-
-        An `external_price_id` can be optionally specified as an alias to allow
-        ergonomic interaction with prices in the Orb API.
-
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
-
-        Args:
-          cadence: The cadence to bill for this price on.
-
-          currency: An ISO 4217 currency string for which this price is billed in.
-
-          item_id: The id of the item the plan will be associated with.
-
-          name: The name of the price.
-
-          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
-              usage-based.
-
-          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
-              this is true, and in-arrears if this is false.
-
-          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
-              months.
-
-          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
-
-          external_price_id: An alias for the price.
-
-          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
-              applied.
-
-          invoice_grouping_key: The property used to group this price on an invoice
-
-          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
-              If unspecified, a single invoice is produced per billing cycle.
-
-          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
-              by setting the value to `null`, and the entire metadata mapping can be cleared
-              by setting `metadata` to `null`.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
         """
-        ...
-
-    @overload
-    async def create(
-        self,
-        *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
-        currency: str,
-        item_id: str,
-        max_group_tiered_config: Dict[str, object],
-        model_type: Literal["max_group_tiered"],
-        name: str,
-        billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
-        billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
-        conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
-        fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
-        invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -3946,18 +3722,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4038,18 +3813,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4130,18 +3904,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4222,18 +3995,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4314,18 +4086,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4406,18 +4177,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4498,18 +4268,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4590,18 +4359,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4682,18 +4450,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4774,18 +4541,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4866,18 +4632,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -4958,18 +4723,17 @@ class AsyncPrices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Price:
-        """This endpoint is used to create a [price](../reference/price).
-
-        A price created
-        using this endpoint is always an add-on, meaning that it’s not associated with a
-        specific plan and can instead be individually added to subscriptions, including
-        subscriptions on different plans.
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it’s not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
 
         An `external_price_id` can be optionally specified as an alias to allow
         ergonomic interaction with prices in the Orb API.
 
-        See the [Price resource](../reference/price) for the specification of different
-        price model configurations possible in this endpoint.
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
 
         Args:
           cadence: The cadence to bill for this price on.
@@ -5030,7 +4794,6 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_config"],
         ["cadence", "currency", "grouped_tiered_config", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "max_group_tiered_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_minimum_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_with_minimum_config"],
@@ -5062,7 +4825,6 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["threshold_total_amount"]
         | Literal["tiered_package"]
         | Literal["grouped_tiered"]
-        | Literal["max_group_tiered"]
         | Literal["tiered_with_minimum"]
         | Literal["package_with_allocation"]
         | Literal["tiered_package_with_minimum"]
@@ -5100,7 +4862,6 @@ class AsyncPrices(AsyncAPIResource):
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
-        max_group_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -5153,7 +4914,6 @@ class AsyncPrices(AsyncAPIResource):
                         "threshold_total_amount_config": threshold_total_amount_config,
                         "tiered_package_config": tiered_package_config,
                         "grouped_tiered_config": grouped_tiered_config,
-                        "max_group_tiered_config": max_group_tiered_config,
                         "tiered_with_minimum_config": tiered_with_minimum_config,
                         "package_with_allocation_config": package_with_allocation_config,
                         "tiered_package_with_minimum_config": tiered_package_with_minimum_config,
@@ -5246,7 +5006,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> AsyncPaginator[Price, AsyncPage[Price]]:
         """
         This endpoint is used to list all add-on prices created using the
-        [price creation endpoint](../reference/create-price).
+        [price creation endpoint](/api-reference/price/create-price).
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -5302,7 +5062,7 @@ class AsyncPrices(AsyncAPIResource):
         """
         This endpoint is used to evaluate the output of a price for a given customer and
         time range. It enables filtering and grouping the output using
-        [computed properties](../guides/extensibility/advanced-metrics#computed-properties),
+        [computed properties](/extensibility/advanced-metrics#computed-properties),
         supporting the following workflows:
 
         1. Showing detailed usage and costs to the end customer.
@@ -5332,12 +5092,12 @@ class AsyncPrices(AsyncAPIResource):
           external_customer_id: The external customer ID of the customer to which this evaluation is scoped.
 
           filter: A boolean
-              [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-              used to filter the underlying billable metric
+              [computed property](/extensibility/advanced-metrics#computed-properties) used to
+              filter the underlying billable metric
 
           grouping_keys: Properties (or
-              [computed properties](../guides/extensibility/advanced-metrics#computed-properties))
-              used to group the underlying billable metric
+              [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+              to group the underlying billable metric
 
           extra_headers: Send extra headers
 

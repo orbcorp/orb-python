@@ -61,9 +61,8 @@ class Metrics(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> BillableMetric:
         """
-        This endpoint is used to create a [metric](../guides/concepts##metric) using a
-        SQL string. See
-        [SQL support](../guides/extensibility/advanced-metrics#sql-support) for a
+        This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
+        string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
         description of constructing SQL queries with examples.
 
         Args:
@@ -177,9 +176,9 @@ class Metrics(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[BillableMetric]:
         """
-        This endpoint is used to fetch [metric](../guides/concepts#metric) details given
-        a metric identifier. It returns information about the metrics including its
-        name, description, and item.
+        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -229,7 +228,7 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](../guides/concepts##metric).
+        """This endpoint is used to list [metrics](/core-concepts#metric).
 
         It returns
         information about the metrics including its name, description, and item.
@@ -291,9 +290,8 @@ class AsyncMetrics(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> BillableMetric:
         """
-        This endpoint is used to create a [metric](../guides/concepts##metric) using a
-        SQL string. See
-        [SQL support](../guides/extensibility/advanced-metrics#sql-support) for a
+        This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
+        string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
         description of constructing SQL queries with examples.
 
         Args:
@@ -407,9 +405,9 @@ class AsyncMetrics(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[BillableMetric, AsyncPage[BillableMetric]]:
         """
-        This endpoint is used to fetch [metric](../guides/concepts#metric) details given
-        a metric identifier. It returns information about the metrics including its
-        name, description, and item.
+        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -459,7 +457,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](../guides/concepts##metric).
+        """This endpoint is used to list [metrics](/core-concepts#metric).
 
         It returns
         information about the metrics including its name, description, and item.

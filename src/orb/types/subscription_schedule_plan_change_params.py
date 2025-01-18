@@ -212,9 +212,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     change_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date that the plan change should take effect.
 
-    This parameter can only be passed if the `change_option` is `requested_date`. If
-    a date with no time is passed, the plan change will happen at midnight in the
-    customer's timezone.
+    This parameter can only be passed if the `change_option` is `requested_date`.
     """
 
     coupon_redemption_code: Optional[str]
@@ -243,8 +241,8 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     """An additional filter to apply to usage queries.
 
     This filter must be expressed as a boolean
-    [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-    If null, usage queries will not include any additional filter.
+    [computed property](/extensibility/advanced-metrics#computed-properties). If
+    null, usage queries will not include any additional filter.
     """
 
     initial_phase_order: Optional[int]

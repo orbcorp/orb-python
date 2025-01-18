@@ -27,13 +27,13 @@ class PriceEvaluateParams(TypedDict, total=False):
     filter: Optional[str]
     """
     A boolean
-    [computed property](../guides/extensibility/advanced-metrics#computed-properties)
-    used to filter the underlying billable metric
+    [computed property](/extensibility/advanced-metrics#computed-properties) used to
+    filter the underlying billable metric
     """
 
     grouping_keys: List[str]
     """
     Properties (or
-    [computed properties](../guides/extensibility/advanced-metrics#computed-properties))
-    used to group the underlying billable metric
+    [computed properties](/extensibility/advanced-metrics#computed-properties)) used
+    to group the underlying billable metric
     """

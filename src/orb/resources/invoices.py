@@ -225,13 +225,13 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[Invoice]:
         """
-        This endpoint returns a list of all [`Invoice`](../guides/concepts#invoice)s for
-        an account in a list format.
+        This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
+        account in a list format.
 
         The list of invoices is ordered starting from the most recently issued invoice
         date. The response also includes
-        [`pagination_metadata`](../reference/pagination), which lets the caller retrieve
-        the next page of results if they exist.
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist.
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
 
@@ -306,8 +306,8 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invoice:
         """
-        This endpoint is used to fetch an [`Invoice`](../guides/concepts#invoice) given
-        an identifier.
+        This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
+        identifier.
 
         Args:
           extra_headers: Send extra headers
@@ -341,7 +341,7 @@ class Invoices(SyncAPIResource):
     ) -> InvoiceFetchUpcomingResponse:
         """
         This endpoint can be used to fetch the upcoming
-        [invoice](../guides/concepts#invoice) for the current billing period given a
+        [invoice](/core-concepts#invoice) for the current billing period given a
         subscription.
 
         Args:
@@ -760,13 +760,13 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Invoice, AsyncPage[Invoice]]:
         """
-        This endpoint returns a list of all [`Invoice`](../guides/concepts#invoice)s for
-        an account in a list format.
+        This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
+        account in a list format.
 
         The list of invoices is ordered starting from the most recently issued invoice
         date. The response also includes
-        [`pagination_metadata`](../reference/pagination), which lets the caller retrieve
-        the next page of results if they exist.
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist.
 
         By default, this only returns invoices that are `issued`, `paid`, or `synced`.
 
@@ -841,8 +841,8 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invoice:
         """
-        This endpoint is used to fetch an [`Invoice`](../guides/concepts#invoice) given
-        an identifier.
+        This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
+        identifier.
 
         Args:
           extra_headers: Send extra headers
@@ -876,7 +876,7 @@ class AsyncInvoices(AsyncAPIResource):
     ) -> InvoiceFetchUpcomingResponse:
         """
         This endpoint can be used to fetch the upcoming
-        [invoice](../guides/concepts#invoice) for the current billing period given a
+        [invoice](/core-concepts#invoice) for the current billing period given a
         subscription.
 
         Args:

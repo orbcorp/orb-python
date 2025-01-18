@@ -234,8 +234,8 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """An additional filter to apply to usage queries.
 
     This filter must be expressed as a boolean
-    [computed property](../guides/extensibility/advanced-metrics#computed-properties).
-    If null, usage queries will not include any additional filter.
+    [computed property](/extensibility/advanced-metrics#computed-properties). If
+    null, usage queries will not include any additional filter.
     """
 
     initial_phase_order: Optional[int]
