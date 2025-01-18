@@ -25,7 +25,17 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import items, alerts, metrics, invoices, top_level, credit_notes, subscriptions, invoice_line_items
+from .resources import (
+    items,
+    alerts,
+    metrics,
+    invoices,
+    webhooks,
+    top_level,
+    credit_notes,
+    subscriptions,
+    invoice_line_items,
+)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import OrbError, APIStatusError
 from ._base_client import (
@@ -56,6 +66,7 @@ class Orb(SyncAPIClient):
     plans: plans.Plans
     prices: prices.Prices
     subscriptions: subscriptions.Subscriptions
+    webhooks: webhooks.Webhooks
     alerts: alerts.Alerts
     dimensional_price_groups: dimensional_price_groups.DimensionalPriceGroups
     with_raw_response: OrbWithRawResponse
@@ -137,6 +148,7 @@ class Orb(SyncAPIClient):
         self.plans = plans.Plans(self)
         self.prices = prices.Prices(self)
         self.subscriptions = subscriptions.Subscriptions(self)
+        self.webhooks = webhooks.Webhooks(self)
         self.alerts = alerts.Alerts(self)
         self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroups(self)
         self.with_raw_response = OrbWithRawResponse(self)
@@ -310,6 +322,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: plans.AsyncPlans
     prices: prices.AsyncPrices
     subscriptions: subscriptions.AsyncSubscriptions
+    webhooks: webhooks.AsyncWebhooks
     alerts: alerts.AsyncAlerts
     dimensional_price_groups: dimensional_price_groups.AsyncDimensionalPriceGroups
     with_raw_response: AsyncOrbWithRawResponse
@@ -391,6 +404,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = plans.AsyncPlans(self)
         self.prices = prices.AsyncPrices(self)
         self.subscriptions = subscriptions.AsyncSubscriptions(self)
+        self.webhooks = webhooks.AsyncWebhooks(self)
         self.alerts = alerts.AsyncAlerts(self)
         self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroups(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
