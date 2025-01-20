@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.23.1 (2025-01-20)
+
+Full Changelog: [v2.23.0...v2.23.1](https://github.com/orbcorp/orb-python/compare/v2.23.0...v2.23.1)
+
+### Bug Fixes
+
+* **tests:** make test_get_platform less flaky ([#500](https://github.com/orbcorp/orb-python/issues/500)) ([1eebaeb](https://github.com/orbcorp/orb-python/commit/1eebaeb04d0b84b36c517b8f64f8fe2e9409dd42))
+
+
+### Chores
+
+* **internal:** avoid pytest-asyncio deprecation warning ([#501](https://github.com/orbcorp/orb-python/issues/501)) ([13c0146](https://github.com/orbcorp/orb-python/commit/13c01468044209c5a17321cc7e766dcd3521906c))
+* **internal:** version bump ([#497](https://github.com/orbcorp/orb-python/issues/497)) ([4fdc09b](https://github.com/orbcorp/orb-python/commit/4fdc09bb2d71f1a7a4445c589242f11cbb564414))
+
+
+### Documentation
+
+* **raw responses:** fix duplicate `the` ([#499](https://github.com/orbcorp/orb-python/issues/499)) ([27ae2b2](https://github.com/orbcorp/orb-python/commit/27ae2b2b0cd4609a12e553fb588e72bc7e6f84a5))
+
 ## 2.23.0 (2025-01-18)
 
 Full Changelog: [v2.22.0...v2.23.0](https://github.com/orbcorp/orb-python/compare/v2.22.0...v2.23.0)
