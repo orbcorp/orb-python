@@ -212,7 +212,9 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     change_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date that the plan change should take effect.
 
-    This parameter can only be passed if the `change_option` is `requested_date`.
+    This parameter can only be passed if the `change_option` is `requested_date`. If
+    a date with no time is passed, the plan change will happen at midnight in the
+    customer's timezone.
     """
 
     coupon_redemption_code: Optional[str]
