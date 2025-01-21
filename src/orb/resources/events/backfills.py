@@ -98,7 +98,7 @@ class Backfills(SyncAPIResource):
         affect all customers.
 
         When `replace_existing_events` is `true`, this indicates that existing events in
-        the timeframe should no longer be counter towards invoiced usage. In this
+        the timeframe should no longer be counted towards invoiced usage. In this
         scenario, the parameter `filter` can be optionally added which enables filtering
         using
         [computed properties](/extensibility/advanced-metrics#computed-properties). The
@@ -410,7 +410,7 @@ class AsyncBackfills(AsyncAPIResource):
         affect all customers.
 
         When `replace_existing_events` is `true`, this indicates that existing events in
-        the timeframe should no longer be counter towards invoiced usage. In this
+        the timeframe should no longer be counted towards invoiced usage. In this
         scenario, the parameter `filter` can be optionally added which enables filtering
         using
         [computed properties](/extensibility/advanced-metrics#computed-properties). The
