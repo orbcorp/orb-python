@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.25.0 (2025-01-23)
+
+Full Changelog: [v2.24.0...v2.25.0](https://github.com/orbcorp/orb-python/compare/v2.24.0...v2.25.0)
+
+### Features
+
+* **api:** api update ([#511](https://github.com/orbcorp/orb-python/issues/511)) ([052d15d](https://github.com/orbcorp/orb-python/commit/052d15d9822356db28a4a42ea085133a29b183aa))
+
+
+### Chores
+
+* **internal:** minor formatting changes ([#509](https://github.com/orbcorp/orb-python/issues/509)) ([15852c1](https://github.com/orbcorp/orb-python/commit/15852c155fa49397b3184cd648603070fbf59a87))
+
 ## 2.24.0 (2025-01-21)
 
 Full Changelog: [v2.23.1...v2.24.0](https://github.com/orbcorp/orb-python/compare/v2.23.1...v2.24.0)
