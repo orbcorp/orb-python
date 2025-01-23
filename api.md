@@ -75,6 +75,8 @@ Methods:
 - <code title="delete /customers/{customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">delete</a>(customer_id) -> None</code>
 - <code title="get /customers/{customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">fetch</a>(customer_id) -> <a href="./src/orb/types/customer.py">Customer</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">fetch_by_external_id</a>(external_customer_id) -> <a href="./src/orb/types/customer.py">Customer</a></code>
+- <code title="post /customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway">client.customers.<a href="./src/orb/resources/customers/customers.py">sync_payment_methods_from_gateway</a>(external_customer_id) -> None</code>
+- <code title="post /customers/{customer_id}/sync_payment_methods_from_gateway">client.customers.<a href="./src/orb/resources/customers/customers.py">sync_payment_methods_from_gateway_by_external_customer_id</a>(customer_id) -> None</code>
 - <code title="put /customers/external_customer_id/{external_customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">update_by_external_id</a>(id, \*\*<a href="src/orb/types/customer_update_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customer.py">Customer</a></code>
 
 ## Costs

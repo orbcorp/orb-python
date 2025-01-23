@@ -732,6 +732,100 @@ class Customers(SyncAPIResource):
             cast_to=Customer,
         )
 
+    def sync_payment_methods_from_gateway(
+        self,
+        external_customer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        Sync Orb's payment methods for the customer with their gateway.
+
+        This method can be called before taking an action that may cause the customer to
+        be charged, ensuring that the most up-to-date payment method is charged.
+
+        **Note**: This functionality is currently only available for Stripe.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
+    def sync_payment_methods_from_gateway_by_external_customer_id(
+        self,
+        customer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        Sync Orb's payment methods for the customer with their gateway.
+
+        This method can be called before taking an action that may cause the customer to
+        be charged, ensuring that the most up-to-date payment method is charged.
+
+        **Note**: This functionality is currently only available for Stripe.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
     def update_by_external_id(
         self,
         id: str,
@@ -1632,6 +1726,100 @@ class AsyncCustomers(AsyncAPIResource):
             cast_to=Customer,
         )
 
+    async def sync_payment_methods_from_gateway(
+        self,
+        external_customer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        Sync Orb's payment methods for the customer with their gateway.
+
+        This method can be called before taking an action that may cause the customer to
+        be charged, ensuring that the most up-to-date payment method is charged.
+
+        **Note**: This functionality is currently only available for Stripe.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
+    async def sync_payment_methods_from_gateway_by_external_customer_id(
+        self,
+        customer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        Sync Orb's payment methods for the customer with their gateway.
+
+        This method can be called before taking an action that may cause the customer to
+        be charged, ensuring that the most up-to-date payment method is charged.
+
+        **Note**: This functionality is currently only available for Stripe.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
     async def update_by_external_id(
         self,
         id: str,
@@ -1876,6 +2064,12 @@ class CustomersWithRawResponse:
         self.fetch_by_external_id = _legacy_response.to_raw_response_wrapper(
             customers.fetch_by_external_id,
         )
+        self.sync_payment_methods_from_gateway = _legacy_response.to_raw_response_wrapper(
+            customers.sync_payment_methods_from_gateway,
+        )
+        self.sync_payment_methods_from_gateway_by_external_customer_id = _legacy_response.to_raw_response_wrapper(
+            customers.sync_payment_methods_from_gateway_by_external_customer_id,
+        )
         self.update_by_external_id = _legacy_response.to_raw_response_wrapper(
             customers.update_by_external_id,
         )
@@ -1914,6 +2108,12 @@ class AsyncCustomersWithRawResponse:
         )
         self.fetch_by_external_id = _legacy_response.async_to_raw_response_wrapper(
             customers.fetch_by_external_id,
+        )
+        self.sync_payment_methods_from_gateway = _legacy_response.async_to_raw_response_wrapper(
+            customers.sync_payment_methods_from_gateway,
+        )
+        self.sync_payment_methods_from_gateway_by_external_customer_id = _legacy_response.async_to_raw_response_wrapper(
+            customers.sync_payment_methods_from_gateway_by_external_customer_id,
         )
         self.update_by_external_id = _legacy_response.async_to_raw_response_wrapper(
             customers.update_by_external_id,
@@ -1954,6 +2154,12 @@ class CustomersWithStreamingResponse:
         self.fetch_by_external_id = to_streamed_response_wrapper(
             customers.fetch_by_external_id,
         )
+        self.sync_payment_methods_from_gateway = to_streamed_response_wrapper(
+            customers.sync_payment_methods_from_gateway,
+        )
+        self.sync_payment_methods_from_gateway_by_external_customer_id = to_streamed_response_wrapper(
+            customers.sync_payment_methods_from_gateway_by_external_customer_id,
+        )
         self.update_by_external_id = to_streamed_response_wrapper(
             customers.update_by_external_id,
         )
@@ -1992,6 +2198,12 @@ class AsyncCustomersWithStreamingResponse:
         )
         self.fetch_by_external_id = async_to_streamed_response_wrapper(
             customers.fetch_by_external_id,
+        )
+        self.sync_payment_methods_from_gateway = async_to_streamed_response_wrapper(
+            customers.sync_payment_methods_from_gateway,
+        )
+        self.sync_payment_methods_from_gateway_by_external_customer_id = async_to_streamed_response_wrapper(
+            customers.sync_payment_methods_from_gateway_by_external_customer_id,
         )
         self.update_by_external_id = async_to_streamed_response_wrapper(
             customers.update_by_external_id,
