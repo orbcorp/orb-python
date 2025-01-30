@@ -1128,13 +1128,13 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        max_group_tiered_config: Dict[str, object],
-        model_type: Literal["max_group_tiered"],
+        max_group_tiered_package_config: Dict[str, object],
+        model_type: Literal["max_group_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceBillingCycleConfiguration
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -1142,7 +1142,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
         invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
         ]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -2317,7 +2317,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_config"],
         ["cadence", "currency", "grouped_tiered_config", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "max_group_tiered_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "max_group_tiered_package_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_minimum_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_with_minimum_config"],
@@ -2349,7 +2349,7 @@ class Prices(SyncAPIResource):
         | Literal["threshold_total_amount"]
         | Literal["tiered_package"]
         | Literal["grouped_tiered"]
-        | Literal["max_group_tiered"]
+        | Literal["max_group_tiered_package"]
         | Literal["tiered_with_minimum"]
         | Literal["package_with_allocation"]
         | Literal["tiered_package_with_minimum"]
@@ -2387,7 +2387,7 @@ class Prices(SyncAPIResource):
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
-        max_group_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        max_group_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -2440,7 +2440,7 @@ class Prices(SyncAPIResource):
                         "threshold_total_amount_config": threshold_total_amount_config,
                         "tiered_package_config": tiered_package_config,
                         "grouped_tiered_config": grouped_tiered_config,
-                        "max_group_tiered_config": max_group_tiered_config,
+                        "max_group_tiered_package_config": max_group_tiered_package_config,
                         "tiered_with_minimum_config": tiered_with_minimum_config,
                         "package_with_allocation_config": package_with_allocation_config,
                         "tiered_package_with_minimum_config": tiered_package_with_minimum_config,
@@ -3791,13 +3791,13 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        max_group_tiered_config: Dict[str, object],
-        model_type: Literal["max_group_tiered"],
+        max_group_tiered_package_config: Dict[str, object],
+        model_type: Literal["max_group_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceBillingCycleConfiguration
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -3805,7 +3805,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
         invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
         ]
         | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -4980,7 +4980,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_config"],
         ["cadence", "currency", "grouped_tiered_config", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "max_group_tiered_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "max_group_tiered_package_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_minimum_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_package_with_minimum_config"],
@@ -5012,7 +5012,7 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["threshold_total_amount"]
         | Literal["tiered_package"]
         | Literal["grouped_tiered"]
-        | Literal["max_group_tiered"]
+        | Literal["max_group_tiered_package"]
         | Literal["tiered_with_minimum"]
         | Literal["package_with_allocation"]
         | Literal["tiered_package_with_minimum"]
@@ -5050,7 +5050,7 @@ class AsyncPrices(AsyncAPIResource):
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
-        max_group_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        max_group_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -5103,7 +5103,7 @@ class AsyncPrices(AsyncAPIResource):
                         "threshold_total_amount_config": threshold_total_amount_config,
                         "tiered_package_config": tiered_package_config,
                         "grouped_tiered_config": grouped_tiered_config,
-                        "max_group_tiered_config": max_group_tiered_config,
+                        "max_group_tiered_package_config": max_group_tiered_package_config,
                         "tiered_with_minimum_config": tiered_with_minimum_config,
                         "package_with_allocation_config": package_with_allocation_config,
                         "tiered_package_with_minimum_config": tiered_package_with_minimum_config,

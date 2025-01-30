@@ -1069,8 +1069,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1081,8 +1081,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -1108,8 +1108,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         )
 
@@ -1124,8 +1124,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -3239,8 +3239,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3251,8 +3251,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -3278,8 +3278,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         )
 
@@ -3294,8 +3294,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_config={"foo": "bar"},
-            model_type="max_group_tiered",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
