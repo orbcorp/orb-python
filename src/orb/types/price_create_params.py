@@ -58,9 +58,9 @@ __all__ = [
     "NewFloatingGroupedTieredPrice",
     "NewFloatingGroupedTieredPriceBillingCycleConfiguration",
     "NewFloatingGroupedTieredPriceInvoicingCycleConfiguration",
-    "NewFloatingMaxGroupTieredPrice",
-    "NewFloatingMaxGroupTieredPriceBillingCycleConfiguration",
-    "NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration",
+    "NewFloatingMaxGroupTieredPackagePrice",
+    "NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "NewFloatingTieredWithMinimumPrice",
     "NewFloatingTieredWithMinimumPriceBillingCycleConfiguration",
     "NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration",
@@ -1204,7 +1204,7 @@ class NewFloatingGroupedTieredPriceInvoicingCycleConfiguration(TypedDict, total=
     """The unit of billing period duration."""
 
 
-class NewFloatingMaxGroupTieredPrice(TypedDict, total=False):
+class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1214,9 +1214,9 @@ class NewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the plan will be associated with."""
 
-    max_group_tiered_config: Required[Dict[str, object]]
+    max_group_tiered_package_config: Required[Dict[str, object]]
 
-    model_type: Required[Literal["max_group_tiered"]]
+    model_type: Required[Literal["max_group_tiered_package"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1233,7 +1233,7 @@ class NewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
-    billing_cycle_configuration: Optional[NewFloatingMaxGroupTieredPriceBillingCycleConfiguration]
+    billing_cycle_configuration: Optional[NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration]
     """
     For custom cadence: specifies the duration of the billing period in days or
     months.
@@ -1254,7 +1254,7 @@ class NewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
-    invoicing_cycle_configuration: Optional[NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration]
+    invoicing_cycle_configuration: Optional[NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration]
     """Within each billing cycle, specifies the cadence at which invoices are produced.
 
     If unspecified, a single invoice is produced per billing cycle.
@@ -1268,7 +1268,7 @@ class NewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     """
 
 
-class NewFloatingMaxGroupTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+class NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
 
@@ -1276,7 +1276,7 @@ class NewFloatingMaxGroupTieredPriceBillingCycleConfiguration(TypedDict, total=F
     """The unit of billing period duration."""
 
 
-class NewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+class NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
 
@@ -2257,7 +2257,7 @@ PriceCreateParams: TypeAlias = Union[
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
     NewFloatingGroupedTieredPrice,
-    NewFloatingMaxGroupTieredPrice,
+    NewFloatingMaxGroupTieredPackagePrice,
     NewFloatingTieredWithMinimumPrice,
     NewFloatingPackageWithAllocationPrice,
     NewFloatingTieredPackageWithMinimumPrice,

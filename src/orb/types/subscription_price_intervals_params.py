@@ -70,9 +70,9 @@ __all__ = [
     "AddPriceNewFloatingGroupedTieredPrice",
     "AddPriceNewFloatingGroupedTieredPriceBillingCycleConfiguration",
     "AddPriceNewFloatingGroupedTieredPriceInvoicingCycleConfiguration",
-    "AddPriceNewFloatingMaxGroupTieredPrice",
-    "AddPriceNewFloatingMaxGroupTieredPriceBillingCycleConfiguration",
-    "AddPriceNewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration",
+    "AddPriceNewFloatingMaxGroupTieredPackagePrice",
+    "AddPriceNewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "AddPriceNewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "AddPriceNewFloatingTieredWithMinimumPrice",
     "AddPriceNewFloatingTieredWithMinimumPriceBillingCycleConfiguration",
     "AddPriceNewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration",
@@ -1302,7 +1302,7 @@ class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
     """
 
 
-class AddPriceNewFloatingMaxGroupTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+class AddPriceNewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
 
@@ -1310,7 +1310,7 @@ class AddPriceNewFloatingMaxGroupTieredPriceBillingCycleConfiguration(TypedDict,
     """The unit of billing period duration."""
 
 
-class AddPriceNewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+class AddPriceNewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
 
@@ -1318,7 +1318,7 @@ class AddPriceNewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration(TypedDic
     """The unit of billing period duration."""
 
 
-class AddPriceNewFloatingMaxGroupTieredPrice(TypedDict, total=False):
+class AddPriceNewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1328,9 +1328,9 @@ class AddPriceNewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the plan will be associated with."""
 
-    max_group_tiered_config: Required[Dict[str, object]]
+    max_group_tiered_package_config: Required[Dict[str, object]]
 
-    model_type: Required[Literal["max_group_tiered"]]
+    model_type: Required[Literal["max_group_tiered_package"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1347,7 +1347,7 @@ class AddPriceNewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     this is true, and in-arrears if this is false.
     """
 
-    billing_cycle_configuration: Optional[AddPriceNewFloatingMaxGroupTieredPriceBillingCycleConfiguration]
+    billing_cycle_configuration: Optional[AddPriceNewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration]
     """
     For custom cadence: specifies the duration of the billing period in days or
     months.
@@ -1368,7 +1368,7 @@ class AddPriceNewFloatingMaxGroupTieredPrice(TypedDict, total=False):
     invoice_grouping_key: Optional[str]
     """The property used to group this price on an invoice"""
 
-    invoicing_cycle_configuration: Optional[AddPriceNewFloatingMaxGroupTieredPriceInvoicingCycleConfiguration]
+    invoicing_cycle_configuration: Optional[AddPriceNewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration]
     """Within each billing cycle, specifies the cadence at which invoices are produced.
 
     If unspecified, a single invoice is produced per billing cycle.
@@ -2359,7 +2359,7 @@ AddPrice: TypeAlias = Union[
     AddPriceNewFloatingThresholdTotalAmountPrice,
     AddPriceNewFloatingTieredPackagePrice,
     AddPriceNewFloatingGroupedTieredPrice,
-    AddPriceNewFloatingMaxGroupTieredPrice,
+    AddPriceNewFloatingMaxGroupTieredPackagePrice,
     AddPriceNewFloatingTieredWithMinimumPrice,
     AddPriceNewFloatingPackageWithAllocationPrice,
     AddPriceNewFloatingTieredPackageWithMinimumPrice,
