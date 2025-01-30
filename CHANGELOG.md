@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.26.1 (2025-01-30)
+
+Full Changelog: [v2.26.0...v2.26.1](https://github.com/orbcorp/orb-python/compare/v2.26.0...v2.26.1)
+
+### Chores
+
+* **internal:** codegen related update ([#516](https://github.com/orbcorp/orb-python/issues/516)) ([24fc2d8](https://github.com/orbcorp/orb-python/commit/24fc2d8daa8d548e8a4477a20e638dddd7aedd06))
+
 ## 2.26.0 (2025-01-30)
 
 Full Changelog: [v2.25.0...v2.26.0](https://github.com/orbcorp/orb-python/compare/v2.25.0...v2.26.0)
