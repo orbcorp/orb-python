@@ -219,14 +219,14 @@ __all__ = [
     "GroupedTieredPackagePriceItem",
     "GroupedTieredPackagePriceMaximum",
     "GroupedTieredPackagePriceMinimum",
-    "MaxGroupTieredPrice",
-    "MaxGroupTieredPriceBillableMetric",
-    "MaxGroupTieredPriceBillingCycleConfiguration",
-    "MaxGroupTieredPriceCreditAllocation",
-    "MaxGroupTieredPriceInvoicingCycleConfiguration",
-    "MaxGroupTieredPriceItem",
-    "MaxGroupTieredPriceMaximum",
-    "MaxGroupTieredPriceMinimum",
+    "MaxGroupTieredPackagePrice",
+    "MaxGroupTieredPackagePriceBillableMetric",
+    "MaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "MaxGroupTieredPackagePriceCreditAllocation",
+    "MaxGroupTieredPackagePriceInvoicingCycleConfiguration",
+    "MaxGroupTieredPackagePriceItem",
+    "MaxGroupTieredPackagePriceMaximum",
+    "MaxGroupTieredPackagePriceMinimum",
 ]
 
 
@@ -2870,35 +2870,35 @@ class GroupedTieredPackagePrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
 
-class MaxGroupTieredPriceBillableMetric(BaseModel):
+class MaxGroupTieredPackagePriceBillableMetric(BaseModel):
     id: str
 
 
-class MaxGroupTieredPriceBillingCycleConfiguration(BaseModel):
+class MaxGroupTieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration: int
 
     duration_unit: Literal["day", "month"]
 
 
-class MaxGroupTieredPriceCreditAllocation(BaseModel):
+class MaxGroupTieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
 
 
-class MaxGroupTieredPriceInvoicingCycleConfiguration(BaseModel):
+class MaxGroupTieredPackagePriceInvoicingCycleConfiguration(BaseModel):
     duration: int
 
     duration_unit: Literal["day", "month"]
 
 
-class MaxGroupTieredPriceItem(BaseModel):
+class MaxGroupTieredPackagePriceItem(BaseModel):
     id: str
 
     name: str
 
 
-class MaxGroupTieredPriceMaximum(BaseModel):
+class MaxGroupTieredPackagePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
 
@@ -2909,7 +2909,7 @@ class MaxGroupTieredPriceMaximum(BaseModel):
     """Maximum amount applied"""
 
 
-class MaxGroupTieredPriceMinimum(BaseModel):
+class MaxGroupTieredPackagePriceMinimum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this minimum amount applies to.
 
@@ -2920,12 +2920,12 @@ class MaxGroupTieredPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
-class MaxGroupTieredPrice(BaseModel):
+class MaxGroupTieredPackagePrice(BaseModel):
     id: str
 
-    billable_metric: Optional[MaxGroupTieredPriceBillableMetric] = None
+    billable_metric: Optional[MaxGroupTieredPackagePriceBillableMetric] = None
 
-    billing_cycle_configuration: MaxGroupTieredPriceBillingCycleConfiguration
+    billing_cycle_configuration: MaxGroupTieredPackagePriceBillingCycleConfiguration
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -2933,7 +2933,7 @@ class MaxGroupTieredPrice(BaseModel):
 
     created_at: datetime
 
-    credit_allocation: Optional[MaxGroupTieredPriceCreditAllocation] = None
+    credit_allocation: Optional[MaxGroupTieredPackagePriceCreditAllocation] = None
 
     currency: str
 
@@ -2943,13 +2943,13 @@ class MaxGroupTieredPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
-    invoicing_cycle_configuration: Optional[MaxGroupTieredPriceInvoicingCycleConfiguration] = None
+    invoicing_cycle_configuration: Optional[MaxGroupTieredPackagePriceInvoicingCycleConfiguration] = None
 
-    item: MaxGroupTieredPriceItem
+    item: MaxGroupTieredPackagePriceItem
 
-    max_group_tiered_config: Dict[str, object]
+    max_group_tiered_package_config: Dict[str, object]
 
-    maximum: Optional[MaxGroupTieredPriceMaximum] = None
+    maximum: Optional[MaxGroupTieredPackagePriceMaximum] = None
 
     maximum_amount: Optional[str] = None
 
@@ -2961,11 +2961,11 @@ class MaxGroupTieredPrice(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    minimum: Optional[MaxGroupTieredPriceMinimum] = None
+    minimum: Optional[MaxGroupTieredPackagePriceMinimum] = None
 
     minimum_amount: Optional[str] = None
 
-    price_model_type: Literal["max_group_tiered"] = FieldInfo(alias="model_type")
+    price_model_type: Literal["max_group_tiered_package"] = FieldInfo(alias="model_type")
 
     name: str
 
@@ -3000,7 +3000,7 @@ Price: TypeAlias = Annotated[
         MatrixWithDisplayNamePrice,
         BulkWithProrationPrice,
         GroupedTieredPackagePrice,
-        MaxGroupTieredPrice,
+        MaxGroupTieredPackagePrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]
