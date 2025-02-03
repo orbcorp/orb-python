@@ -917,8 +917,10 @@ class TestAsyncCustomers:
     async def test_streaming_response_sync_payment_methods_from_gateway_by_external_customer_id(
         self, async_client: AsyncOrb
     ) -> None:
-        async with async_client.customers.with_streaming_response.sync_payment_methods_from_gateway_by_external_customer_id(
-            "customer_id",
+        async with (
+            async_client.customers.with_streaming_response.sync_payment_methods_from_gateway_by_external_customer_id(
+                "customer_id",
+            )
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
