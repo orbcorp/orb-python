@@ -87,8 +87,10 @@ class TestAsyncExternalDimensionalPriceGroupID:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOrb) -> None:
-        async with async_client.dimensional_price_groups.external_dimensional_price_group_id.with_streaming_response.retrieve(
-            "external_dimensional_price_group_id",
+        async with (
+            async_client.dimensional_price_groups.external_dimensional_price_group_id.with_streaming_response.retrieve(
+                "external_dimensional_price_group_id",
+            )
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
