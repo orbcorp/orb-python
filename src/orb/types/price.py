@@ -21,6 +21,7 @@ __all__ = [
     "UnitPriceMaximum",
     "UnitPriceMinimum",
     "UnitPriceUnitConfig",
+    "UnitPriceDimensionalPriceConfiguration",
     "PackagePrice",
     "PackagePriceBillableMetric",
     "PackagePriceBillingCycleConfiguration",
@@ -30,6 +31,7 @@ __all__ = [
     "PackagePriceMaximum",
     "PackagePriceMinimum",
     "PackagePricePackageConfig",
+    "PackagePriceDimensionalPriceConfiguration",
     "MatrixPrice",
     "MatrixPriceBillableMetric",
     "MatrixPriceBillingCycleConfiguration",
@@ -40,6 +42,7 @@ __all__ = [
     "MatrixPriceMatrixConfigMatrixValue",
     "MatrixPriceMaximum",
     "MatrixPriceMinimum",
+    "MatrixPriceDimensionalPriceConfiguration",
     "TieredPrice",
     "TieredPriceBillableMetric",
     "TieredPriceBillingCycleConfiguration",
@@ -50,6 +53,7 @@ __all__ = [
     "TieredPriceMinimum",
     "TieredPriceTieredConfig",
     "TieredPriceTieredConfigTier",
+    "TieredPriceDimensionalPriceConfiguration",
     "TieredBpsPrice",
     "TieredBpsPriceBillableMetric",
     "TieredBpsPriceBillingCycleConfiguration",
@@ -60,6 +64,7 @@ __all__ = [
     "TieredBpsPriceMinimum",
     "TieredBpsPriceTieredBpsConfig",
     "TieredBpsPriceTieredBpsConfigTier",
+    "TieredBpsPriceDimensionalPriceConfiguration",
     "BpsPrice",
     "BpsPriceBillableMetric",
     "BpsPriceBillingCycleConfiguration",
@@ -69,6 +74,7 @@ __all__ = [
     "BpsPriceItem",
     "BpsPriceMaximum",
     "BpsPriceMinimum",
+    "BpsPriceDimensionalPriceConfiguration",
     "BulkBpsPrice",
     "BulkBpsPriceBillableMetric",
     "BulkBpsPriceBillingCycleConfiguration",
@@ -79,6 +85,7 @@ __all__ = [
     "BulkBpsPriceItem",
     "BulkBpsPriceMaximum",
     "BulkBpsPriceMinimum",
+    "BulkBpsPriceDimensionalPriceConfiguration",
     "BulkPrice",
     "BulkPriceBillableMetric",
     "BulkPriceBillingCycleConfiguration",
@@ -89,6 +96,7 @@ __all__ = [
     "BulkPriceItem",
     "BulkPriceMaximum",
     "BulkPriceMinimum",
+    "BulkPriceDimensionalPriceConfiguration",
     "ThresholdTotalAmountPrice",
     "ThresholdTotalAmountPriceBillableMetric",
     "ThresholdTotalAmountPriceBillingCycleConfiguration",
@@ -97,6 +105,7 @@ __all__ = [
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
     "ThresholdTotalAmountPriceMinimum",
+    "ThresholdTotalAmountPriceDimensionalPriceConfiguration",
     "TieredPackagePrice",
     "TieredPackagePriceBillableMetric",
     "TieredPackagePriceBillingCycleConfiguration",
@@ -105,6 +114,7 @@ __all__ = [
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
     "TieredPackagePriceMinimum",
+    "TieredPackagePriceDimensionalPriceConfiguration",
     "GroupedTieredPrice",
     "GroupedTieredPriceBillableMetric",
     "GroupedTieredPriceBillingCycleConfiguration",
@@ -113,6 +123,7 @@ __all__ = [
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
     "GroupedTieredPriceMinimum",
+    "GroupedTieredPriceDimensionalPriceConfiguration",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceBillableMetric",
     "TieredWithMinimumPriceBillingCycleConfiguration",
@@ -121,6 +132,7 @@ __all__ = [
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
     "TieredWithMinimumPriceMinimum",
+    "TieredWithMinimumPriceDimensionalPriceConfiguration",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceBillableMetric",
     "TieredPackageWithMinimumPriceBillingCycleConfiguration",
@@ -129,6 +141,7 @@ __all__ = [
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
     "TieredPackageWithMinimumPriceMinimum",
+    "TieredPackageWithMinimumPriceDimensionalPriceConfiguration",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceBillableMetric",
     "PackageWithAllocationPriceBillingCycleConfiguration",
@@ -137,6 +150,7 @@ __all__ = [
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
     "PackageWithAllocationPriceMinimum",
+    "PackageWithAllocationPriceDimensionalPriceConfiguration",
     "UnitWithPercentPrice",
     "UnitWithPercentPriceBillableMetric",
     "UnitWithPercentPriceBillingCycleConfiguration",
@@ -145,6 +159,7 @@ __all__ = [
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
     "UnitWithPercentPriceMinimum",
+    "UnitWithPercentPriceDimensionalPriceConfiguration",
     "MatrixWithAllocationPrice",
     "MatrixWithAllocationPriceBillableMetric",
     "MatrixWithAllocationPriceBillingCycleConfiguration",
@@ -155,6 +170,7 @@ __all__ = [
     "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
     "MatrixWithAllocationPriceMaximum",
     "MatrixWithAllocationPriceMinimum",
+    "MatrixWithAllocationPriceDimensionalPriceConfiguration",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceBillableMetric",
     "TieredWithProrationPriceBillingCycleConfiguration",
@@ -163,6 +179,7 @@ __all__ = [
     "TieredWithProrationPriceItem",
     "TieredWithProrationPriceMaximum",
     "TieredWithProrationPriceMinimum",
+    "TieredWithProrationPriceDimensionalPriceConfiguration",
     "UnitWithProrationPrice",
     "UnitWithProrationPriceBillableMetric",
     "UnitWithProrationPriceBillingCycleConfiguration",
@@ -171,6 +188,7 @@ __all__ = [
     "UnitWithProrationPriceItem",
     "UnitWithProrationPriceMaximum",
     "UnitWithProrationPriceMinimum",
+    "UnitWithProrationPriceDimensionalPriceConfiguration",
     "GroupedAllocationPrice",
     "GroupedAllocationPriceBillableMetric",
     "GroupedAllocationPriceBillingCycleConfiguration",
@@ -179,6 +197,7 @@ __all__ = [
     "GroupedAllocationPriceItem",
     "GroupedAllocationPriceMaximum",
     "GroupedAllocationPriceMinimum",
+    "GroupedAllocationPriceDimensionalPriceConfiguration",
     "GroupedWithProratedMinimumPrice",
     "GroupedWithProratedMinimumPriceBillableMetric",
     "GroupedWithProratedMinimumPriceBillingCycleConfiguration",
@@ -187,6 +206,7 @@ __all__ = [
     "GroupedWithProratedMinimumPriceItem",
     "GroupedWithProratedMinimumPriceMaximum",
     "GroupedWithProratedMinimumPriceMinimum",
+    "GroupedWithProratedMinimumPriceDimensionalPriceConfiguration",
     "GroupedWithMeteredMinimumPrice",
     "GroupedWithMeteredMinimumPriceBillableMetric",
     "GroupedWithMeteredMinimumPriceBillingCycleConfiguration",
@@ -195,6 +215,7 @@ __all__ = [
     "GroupedWithMeteredMinimumPriceItem",
     "GroupedWithMeteredMinimumPriceMaximum",
     "GroupedWithMeteredMinimumPriceMinimum",
+    "GroupedWithMeteredMinimumPriceDimensionalPriceConfiguration",
     "MatrixWithDisplayNamePrice",
     "MatrixWithDisplayNamePriceBillableMetric",
     "MatrixWithDisplayNamePriceBillingCycleConfiguration",
@@ -203,6 +224,7 @@ __all__ = [
     "MatrixWithDisplayNamePriceItem",
     "MatrixWithDisplayNamePriceMaximum",
     "MatrixWithDisplayNamePriceMinimum",
+    "MatrixWithDisplayNamePriceDimensionalPriceConfiguration",
     "BulkWithProrationPrice",
     "BulkWithProrationPriceBillableMetric",
     "BulkWithProrationPriceBillingCycleConfiguration",
@@ -211,6 +233,7 @@ __all__ = [
     "BulkWithProrationPriceItem",
     "BulkWithProrationPriceMaximum",
     "BulkWithProrationPriceMinimum",
+    "BulkWithProrationPriceDimensionalPriceConfiguration",
     "GroupedTieredPackagePrice",
     "GroupedTieredPackagePriceBillableMetric",
     "GroupedTieredPackagePriceBillingCycleConfiguration",
@@ -219,6 +242,7 @@ __all__ = [
     "GroupedTieredPackagePriceItem",
     "GroupedTieredPackagePriceMaximum",
     "GroupedTieredPackagePriceMinimum",
+    "GroupedTieredPackagePriceDimensionalPriceConfiguration",
     "MaxGroupTieredPackagePrice",
     "MaxGroupTieredPackagePriceBillableMetric",
     "MaxGroupTieredPackagePriceBillingCycleConfiguration",
@@ -227,6 +251,25 @@ __all__ = [
     "MaxGroupTieredPackagePriceItem",
     "MaxGroupTieredPackagePriceMaximum",
     "MaxGroupTieredPackagePriceMinimum",
+    "MaxGroupTieredPackagePriceDimensionalPriceConfiguration",
+    "ScalableMatrixWithUnitPricingPrice",
+    "ScalableMatrixWithUnitPricingPriceBillableMetric",
+    "ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
+    "ScalableMatrixWithUnitPricingPriceCreditAllocation",
+    "ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
+    "ScalableMatrixWithUnitPricingPriceItem",
+    "ScalableMatrixWithUnitPricingPriceMaximum",
+    "ScalableMatrixWithUnitPricingPriceMinimum",
+    "ScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration",
+    "ScalableMatrixWithTieredPricingPrice",
+    "ScalableMatrixWithTieredPricingPriceBillableMetric",
+    "ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
+    "ScalableMatrixWithTieredPricingPriceCreditAllocation",
+    "ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
+    "ScalableMatrixWithTieredPricingPriceItem",
+    "ScalableMatrixWithTieredPricingPriceMaximum",
+    "ScalableMatrixWithTieredPricingPriceMinimum",
+    "ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
 ]
 
 
@@ -285,6 +328,12 @@ class UnitPriceUnitConfig(BaseModel):
     """Rate per unit of usage"""
 
 
+class UnitPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class UnitPrice(BaseModel):
     id: str
 
@@ -337,6 +386,8 @@ class UnitPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     unit_config: UnitPriceUnitConfig
+
+    dimensional_price_configuration: Optional[UnitPriceDimensionalPriceConfiguration] = None
 
 
 class PackagePriceBillableMetric(BaseModel):
@@ -401,6 +452,12 @@ class PackagePricePackageConfig(BaseModel):
     """
 
 
+class PackagePriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class PackagePrice(BaseModel):
     id: str
 
@@ -453,6 +510,8 @@ class PackagePrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    dimensional_price_configuration: Optional[PackagePriceDimensionalPriceConfiguration] = None
 
 
 class MatrixPriceBillableMetric(BaseModel):
@@ -528,6 +587,12 @@ class MatrixPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class MatrixPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class MatrixPrice(BaseModel):
     id: str
 
@@ -580,6 +645,8 @@ class MatrixPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    dimensional_price_configuration: Optional[MatrixPriceDimensionalPriceConfiguration] = None
 
 
 class TieredPriceBillableMetric(BaseModel):
@@ -648,6 +715,12 @@ class TieredPriceTieredConfig(BaseModel):
     """Tiers for rating based on total usage quantities into the specified tier"""
 
 
+class TieredPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class TieredPrice(BaseModel):
     id: str
 
@@ -700,6 +773,8 @@ class TieredPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     tiered_config: TieredPriceTieredConfig
+
+    dimensional_price_configuration: Optional[TieredPriceDimensionalPriceConfiguration] = None
 
 
 class TieredBpsPriceBillableMetric(BaseModel):
@@ -774,6 +849,12 @@ class TieredBpsPriceTieredBpsConfig(BaseModel):
     """
 
 
+class TieredBpsPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class TieredBpsPrice(BaseModel):
     id: str
 
@@ -826,6 +907,8 @@ class TieredBpsPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     tiered_bps_config: TieredBpsPriceTieredBpsConfig
+
+    dimensional_price_configuration: Optional[TieredBpsPriceDimensionalPriceConfiguration] = None
 
 
 class BpsPriceBillableMetric(BaseModel):
@@ -886,6 +969,12 @@ class BpsPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class BpsPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class BpsPrice(BaseModel):
     id: str
 
@@ -938,6 +1027,8 @@ class BpsPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    dimensional_price_configuration: Optional[BpsPriceDimensionalPriceConfiguration] = None
 
 
 class BulkBpsPriceBillableMetric(BaseModel):
@@ -1009,6 +1100,12 @@ class BulkBpsPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class BulkBpsPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class BulkBpsPrice(BaseModel):
     id: str
 
@@ -1061,6 +1158,8 @@ class BulkBpsPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    dimensional_price_configuration: Optional[BulkBpsPriceDimensionalPriceConfiguration] = None
 
 
 class BulkPriceBillableMetric(BaseModel):
@@ -1126,6 +1225,12 @@ class BulkPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class BulkPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class BulkPrice(BaseModel):
     id: str
 
@@ -1179,6 +1284,8 @@ class BulkPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[BulkPriceDimensionalPriceConfiguration] = None
+
 
 class ThresholdTotalAmountPriceBillableMetric(BaseModel):
     id: str
@@ -1228,6 +1335,12 @@ class ThresholdTotalAmountPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class ThresholdTotalAmountPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class ThresholdTotalAmountPrice(BaseModel):
@@ -1283,6 +1396,8 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     threshold_total_amount_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[ThresholdTotalAmountPriceDimensionalPriceConfiguration] = None
+
 
 class TieredPackagePriceBillableMetric(BaseModel):
     id: str
@@ -1332,6 +1447,12 @@ class TieredPackagePriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class TieredPackagePriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class TieredPackagePrice(BaseModel):
@@ -1387,6 +1508,8 @@ class TieredPackagePrice(BaseModel):
 
     tiered_package_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[TieredPackagePriceDimensionalPriceConfiguration] = None
+
 
 class GroupedTieredPriceBillableMetric(BaseModel):
     id: str
@@ -1436,6 +1559,12 @@ class GroupedTieredPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class GroupedTieredPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class GroupedTieredPrice(BaseModel):
@@ -1491,6 +1620,8 @@ class GroupedTieredPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[GroupedTieredPriceDimensionalPriceConfiguration] = None
+
 
 class TieredWithMinimumPriceBillableMetric(BaseModel):
     id: str
@@ -1540,6 +1671,12 @@ class TieredWithMinimumPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class TieredWithMinimumPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class TieredWithMinimumPrice(BaseModel):
@@ -1595,6 +1732,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     tiered_with_minimum_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[TieredWithMinimumPriceDimensionalPriceConfiguration] = None
+
 
 class TieredPackageWithMinimumPriceBillableMetric(BaseModel):
     id: str
@@ -1644,6 +1783,12 @@ class TieredPackageWithMinimumPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class TieredPackageWithMinimumPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class TieredPackageWithMinimumPrice(BaseModel):
@@ -1699,6 +1844,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     tiered_package_with_minimum_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[TieredPackageWithMinimumPriceDimensionalPriceConfiguration] = None
+
 
 class PackageWithAllocationPriceBillableMetric(BaseModel):
     id: str
@@ -1748,6 +1895,12 @@ class PackageWithAllocationPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class PackageWithAllocationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class PackageWithAllocationPrice(BaseModel):
@@ -1803,6 +1956,8 @@ class PackageWithAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[PackageWithAllocationPriceDimensionalPriceConfiguration] = None
+
 
 class UnitWithPercentPriceBillableMetric(BaseModel):
     id: str
@@ -1852,6 +2007,12 @@ class UnitWithPercentPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class UnitWithPercentPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class UnitWithPercentPrice(BaseModel):
@@ -1906,6 +2067,8 @@ class UnitWithPercentPrice(BaseModel):
     price_type: Literal["usage_price", "fixed_price"]
 
     unit_with_percent_config: Dict[str, object]
+
+    dimensional_price_configuration: Optional[UnitWithPercentPriceDimensionalPriceConfiguration] = None
 
 
 class MatrixWithAllocationPriceBillableMetric(BaseModel):
@@ -1984,6 +2147,12 @@ class MatrixWithAllocationPriceMinimum(BaseModel):
     """Minimum amount applied"""
 
 
+class MatrixWithAllocationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
 class MatrixWithAllocationPrice(BaseModel):
     id: str
 
@@ -2037,6 +2206,8 @@ class MatrixWithAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[MatrixWithAllocationPriceDimensionalPriceConfiguration] = None
+
 
 class TieredWithProrationPriceBillableMetric(BaseModel):
     id: str
@@ -2086,6 +2257,12 @@ class TieredWithProrationPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class TieredWithProrationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class TieredWithProrationPrice(BaseModel):
@@ -2141,6 +2318,8 @@ class TieredWithProrationPrice(BaseModel):
 
     tiered_with_proration_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[TieredWithProrationPriceDimensionalPriceConfiguration] = None
+
 
 class UnitWithProrationPriceBillableMetric(BaseModel):
     id: str
@@ -2190,6 +2369,12 @@ class UnitWithProrationPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class UnitWithProrationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class UnitWithProrationPrice(BaseModel):
@@ -2245,6 +2430,8 @@ class UnitWithProrationPrice(BaseModel):
 
     unit_with_proration_config: Dict[str, object]
 
+    dimensional_price_configuration: Optional[UnitWithProrationPriceDimensionalPriceConfiguration] = None
+
 
 class GroupedAllocationPriceBillableMetric(BaseModel):
     id: str
@@ -2294,6 +2481,12 @@ class GroupedAllocationPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class GroupedAllocationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class GroupedAllocationPrice(BaseModel):
@@ -2349,6 +2542,8 @@ class GroupedAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[GroupedAllocationPriceDimensionalPriceConfiguration] = None
+
 
 class GroupedWithProratedMinimumPriceBillableMetric(BaseModel):
     id: str
@@ -2398,6 +2593,12 @@ class GroupedWithProratedMinimumPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class GroupedWithProratedMinimumPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class GroupedWithProratedMinimumPrice(BaseModel):
@@ -2453,6 +2654,8 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[GroupedWithProratedMinimumPriceDimensionalPriceConfiguration] = None
+
 
 class GroupedWithMeteredMinimumPriceBillableMetric(BaseModel):
     id: str
@@ -2502,6 +2705,12 @@ class GroupedWithMeteredMinimumPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class GroupedWithMeteredMinimumPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class GroupedWithMeteredMinimumPrice(BaseModel):
@@ -2557,6 +2766,8 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[GroupedWithMeteredMinimumPriceDimensionalPriceConfiguration] = None
+
 
 class MatrixWithDisplayNamePriceBillableMetric(BaseModel):
     id: str
@@ -2606,6 +2817,12 @@ class MatrixWithDisplayNamePriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class MatrixWithDisplayNamePriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class MatrixWithDisplayNamePrice(BaseModel):
@@ -2661,6 +2878,8 @@ class MatrixWithDisplayNamePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[MatrixWithDisplayNamePriceDimensionalPriceConfiguration] = None
+
 
 class BulkWithProrationPriceBillableMetric(BaseModel):
     id: str
@@ -2710,6 +2929,12 @@ class BulkWithProrationPriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class BulkWithProrationPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class BulkWithProrationPrice(BaseModel):
@@ -2765,6 +2990,8 @@ class BulkWithProrationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[BulkWithProrationPriceDimensionalPriceConfiguration] = None
+
 
 class GroupedTieredPackagePriceBillableMetric(BaseModel):
     id: str
@@ -2814,6 +3041,12 @@ class GroupedTieredPackagePriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class GroupedTieredPackagePriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class GroupedTieredPackagePrice(BaseModel):
@@ -2869,6 +3102,8 @@ class GroupedTieredPackagePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[GroupedTieredPackagePriceDimensionalPriceConfiguration] = None
+
 
 class MaxGroupTieredPackagePriceBillableMetric(BaseModel):
     id: str
@@ -2918,6 +3153,12 @@ class MaxGroupTieredPackagePriceMinimum(BaseModel):
 
     minimum_amount: str
     """Minimum amount applied"""
+
+
+class MaxGroupTieredPackagePriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
 
 
 class MaxGroupTieredPackagePrice(BaseModel):
@@ -2973,6 +3214,232 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    dimensional_price_configuration: Optional[MaxGroupTieredPackagePriceDimensionalPriceConfiguration] = None
+
+
+class ScalableMatrixWithUnitPricingPriceBillableMetric(BaseModel):
+    id: str
+
+
+class ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class ScalableMatrixWithUnitPricingPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class ScalableMatrixWithUnitPricingPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class ScalableMatrixWithUnitPricingPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class ScalableMatrixWithUnitPricingPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class ScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
+class ScalableMatrixWithUnitPricingPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[ScalableMatrixWithUnitPricingPriceBillableMetric] = None
+
+    billing_cycle_configuration: ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[ScalableMatrixWithUnitPricingPriceCreditAllocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration] = None
+
+    item: ScalableMatrixWithUnitPricingPriceItem
+
+    maximum: Optional[ScalableMatrixWithUnitPricingPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[ScalableMatrixWithUnitPricingPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["scalable_matrix_with_unit_pricing"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    scalable_matrix_with_unit_pricing_config: Dict[str, object]
+
+    dimensional_price_configuration: Optional[ScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration] = None
+
+
+class ScalableMatrixWithTieredPricingPriceBillableMetric(BaseModel):
+    id: str
+
+
+class ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class ScalableMatrixWithTieredPricingPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class ScalableMatrixWithTieredPricingPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class ScalableMatrixWithTieredPricingPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class ScalableMatrixWithTieredPricingPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
+class ScalableMatrixWithTieredPricingPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[ScalableMatrixWithTieredPricingPriceBillableMetric] = None
+
+    billing_cycle_configuration: ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[ScalableMatrixWithTieredPricingPriceCreditAllocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration] = None
+
+    item: ScalableMatrixWithTieredPricingPriceItem
+
+    maximum: Optional[ScalableMatrixWithTieredPricingPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[ScalableMatrixWithTieredPricingPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["scalable_matrix_with_tiered_pricing"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    scalable_matrix_with_tiered_pricing_config: Dict[str, object]
+
+    dimensional_price_configuration: Optional[ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration] = None
+
 
 Price: TypeAlias = Annotated[
     Union[
@@ -3001,6 +3468,8 @@ Price: TypeAlias = Annotated[
         BulkWithProrationPrice,
         GroupedTieredPackagePrice,
         MaxGroupTieredPackagePrice,
+        ScalableMatrixWithUnitPricingPrice,
+        ScalableMatrixWithTieredPricingPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]
