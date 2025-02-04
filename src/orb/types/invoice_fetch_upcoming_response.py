@@ -21,6 +21,12 @@ __all__ = [
     "CustomerBalanceTransactionInvoice",
     "CustomerTaxID",
     "LineItem",
+    "LineItemAdjustment",
+    "LineItemAdjustmentAmountDiscountAdjustment",
+    "LineItemAdjustmentPercentageDiscountAdjustment",
+    "LineItemAdjustmentUsageDiscountAdjustment",
+    "LineItemAdjustmentMinimumAdjustment",
+    "LineItemAdjustmentMaximumAdjustment",
     "LineItemMaximum",
     "LineItemMinimum",
     "LineItemSubLineItem",
@@ -319,6 +325,156 @@ class CustomerTaxID(BaseModel):
     value: str
 
 
+class LineItemAdjustmentAmountDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["amount_discount"]
+
+    amount_discount: str
+    """
+    The amount by which to discount the prices this adjustment applies to in a given
+    billing period.
+    """
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentPercentageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["percentage_discount"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    percentage_discount: float
+    """
+    The percentage (as a value between 0 and 1) by which to discount the price
+    intervals this adjustment applies to in a given billing period.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentUsageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["usage_discount"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+    usage_discount: float
+    """
+    The number of usage units by which to discount the price this adjustment applies
+    to in a given billing period.
+    """
+
+
+class LineItemAdjustmentMinimumAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["minimum"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    item_id: str
+    """The item ID that revenue from this minimum will be attributed to."""
+
+    minimum_amount: str
+    """
+    The minimum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentMaximumAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["maximum"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    maximum_amount: str
+    """
+    The maximum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+LineItemAdjustment: TypeAlias = Annotated[
+    Union[
+        LineItemAdjustmentAmountDiscountAdjustment,
+        LineItemAdjustmentPercentageDiscountAdjustment,
+        LineItemAdjustmentUsageDiscountAdjustment,
+        LineItemAdjustmentMinimumAdjustment,
+        LineItemAdjustmentMaximumAdjustment,
+    ],
+    PropertyInfo(discriminator="adjustment_type"),
+]
+
+
 class LineItemMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -441,8 +597,20 @@ class LineItem(BaseModel):
     id: str
     """A unique ID for this line item."""
 
+    adjusted_subtotal: str
+    """
+    The line amount after any adjustments, before overage conversion, credits and
+    partial invoicing.
+    """
+
+    adjustments: List[LineItemAdjustment]
+    """All adjustments applied to the line item."""
+
     amount: str
     """The final amount after any discounts or minimums."""
+
+    credits_applied: str
+    """The number of credits used"""
 
     discount: Optional[Discount] = None
 
@@ -457,15 +625,22 @@ class LineItem(BaseModel):
     """
 
     maximum: Optional[LineItemMaximum] = None
+    """This field is deprecated in favor of `adjustments`."""
 
     maximum_amount: Optional[str] = None
+    """This field is deprecated in favor of `adjustments`."""
 
     minimum: Optional[LineItemMinimum] = None
+    """This field is deprecated in favor of `adjustments`."""
 
     minimum_amount: Optional[str] = None
+    """This field is deprecated in favor of `adjustments`."""
 
     name: str
     """The name of the price associated with this line item."""
+
+    partially_invoiced_amount: str
+    """Any amount applied from a partial invoice"""
 
     price: Optional[Price] = None
     """
