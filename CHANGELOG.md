@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.0.0 (2025-02-04)
+
+Full Changelog: [v2.26.0...v3.0.0](https://github.com/orbcorp/orb-python/compare/v2.26.0...v3.0.0)
+
+### Features
+
+* **api:** api update ([#520](https://github.com/orbcorp/orb-python/issues/520)) ([d65f3c3](https://github.com/orbcorp/orb-python/commit/d65f3c35553f6add695fbb4c42ea1f649f3593cf))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#519](https://github.com/orbcorp/orb-python/issues/519)) ([fe614e7](https://github.com/orbcorp/orb-python/commit/fe614e7f4b37decad63e04ac2cc87f6d3b26636c))
+* **internal:** change default timeout to an int ([#518](https://github.com/orbcorp/orb-python/issues/518)) ([87ee784](https://github.com/orbcorp/orb-python/commit/87ee784c143f83c606fd8c4f34614bbce884d499))
+* **internal:** codegen related update ([#516](https://github.com/orbcorp/orb-python/issues/516)) ([24fc2d8](https://github.com/orbcorp/orb-python/commit/24fc2d8daa8d548e8a4477a20e638dddd7aedd06))
+
 ## 2.26.0 (2025-01-30)
 
 Full Changelog: [v2.25.0...v2.26.0](https://github.com/orbcorp/orb-python/compare/v2.25.0...v2.26.0)
