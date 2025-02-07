@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.1.0 (2025-02-07)
+
+Full Changelog: [v3.0.0...v3.1.0](https://github.com/orbcorp/orb-python/compare/v3.0.0...v3.1.0)
+
+### Features
+
+* **api:** api update ([#526](https://github.com/orbcorp/orb-python/issues/526)) ([8cd8251](https://github.com/orbcorp/orb-python/commit/8cd82517459b39259d4551ce972c0b1ba2096586))
+* **client:** send `X-Stainless-Read-Timeout` header ([#522](https://github.com/orbcorp/orb-python/issues/522)) ([0ddac77](https://github.com/orbcorp/orb-python/commit/0ddac777a1d37ef24b57c95a9f5db00db2c67674))
+
+
+### Chores
+
+* **internal:** fix type traversing dictionary params ([#524](https://github.com/orbcorp/orb-python/issues/524)) ([23de87d](https://github.com/orbcorp/orb-python/commit/23de87d4360b0159a279697b2e8cf9015b7d434b))
+* **internal:** minor type handling changes ([#525](https://github.com/orbcorp/orb-python/issues/525)) ([67a742b](https://github.com/orbcorp/orb-python/commit/67a742b9f14b924a84709174512ca2b0a58a1d0b))
+
 ## 3.0.0 (2025-02-04)
 
 Full Changelog: [v2.26.0...v3.0.0](https://github.com/orbcorp/orb-python/compare/v2.26.0...v3.0.0)
