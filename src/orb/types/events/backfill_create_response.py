@@ -29,6 +29,13 @@ class BackfillCreateResponse(BaseModel):
     events_ingested: int
     """The number of events ingested in this backfill."""
 
+    replace_existing_events: bool
+    """
+    If `true`, existing events in the backfill's timeframe will be replaced with the
+    newly ingested events associated with the backfill. If `false`, newly ingested
+    events will be added to the existing events.
+    """
+
     reverted_at: Optional[datetime] = None
     """The time at which this backfill was reverted."""
 

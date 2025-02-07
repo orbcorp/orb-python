@@ -12,11 +12,11 @@ from .shared.discount import Discount
 __all__ = [
     "Plan",
     "Adjustment",
-    "AdjustmentAmountDiscountAdjustment",
-    "AdjustmentPercentageDiscountAdjustment",
-    "AdjustmentUsageDiscountAdjustment",
-    "AdjustmentMinimumAdjustment",
-    "AdjustmentMaximumAdjustment",
+    "AdjustmentPlanPhaseUsageDiscountAdjustment",
+    "AdjustmentPlanPhaseAmountDiscountAdjustment",
+    "AdjustmentPlanPhasePercentageDiscountAdjustment",
+    "AdjustmentPlanPhaseMinimumAdjustment",
+    "AdjustmentPlanPhaseMaximumAdjustment",
     "BasePlan",
     "Maximum",
     "Minimum",
@@ -28,61 +28,7 @@ __all__ = [
 ]
 
 
-class AdjustmentAmountDiscountAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["amount_discount"]
-
-    amount_discount: str
-    """
-    The amount by which to discount the prices this adjustment applies to in a given
-    billing period.
-    """
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    plan_phase_order: Optional[int] = None
-    """The plan phase in which this adjustment is active."""
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
-class AdjustmentPercentageDiscountAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["percentage_discount"]
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    percentage_discount: float
-    """
-    The percentage (as a value between 0 and 1) by which to discount the price
-    intervals this adjustment applies to in a given billing period.
-    """
-
-    plan_phase_order: Optional[int] = None
-    """The plan phase in which this adjustment is active."""
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
-class AdjustmentUsageDiscountAdjustment(BaseModel):
+class AdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["usage_discount"]
@@ -109,7 +55,61 @@ class AdjustmentUsageDiscountAdjustment(BaseModel):
     """
 
 
-class AdjustmentMinimumAdjustment(BaseModel):
+class AdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["amount_discount"]
+
+    amount_discount: str
+    """
+    The amount by which to discount the prices this adjustment applies to in a given
+    billing period.
+    """
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class AdjustmentPlanPhasePercentageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["percentage_discount"]
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    percentage_discount: float
+    """
+    The percentage (as a value between 0 and 1) by which to discount the price
+    intervals this adjustment applies to in a given billing period.
+    """
+
+    plan_phase_order: Optional[int] = None
+    """The plan phase in which this adjustment is active."""
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class AdjustmentPlanPhaseMinimumAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["minimum"]
@@ -139,7 +139,7 @@ class AdjustmentMinimumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
-class AdjustmentMaximumAdjustment(BaseModel):
+class AdjustmentPlanPhaseMaximumAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["maximum"]
@@ -168,11 +168,11 @@ class AdjustmentMaximumAdjustment(BaseModel):
 
 Adjustment: TypeAlias = Annotated[
     Union[
-        AdjustmentAmountDiscountAdjustment,
-        AdjustmentPercentageDiscountAdjustment,
-        AdjustmentUsageDiscountAdjustment,
-        AdjustmentMinimumAdjustment,
-        AdjustmentMaximumAdjustment,
+        AdjustmentPlanPhaseUsageDiscountAdjustment,
+        AdjustmentPlanPhaseAmountDiscountAdjustment,
+        AdjustmentPlanPhasePercentageDiscountAdjustment,
+        AdjustmentPlanPhaseMinimumAdjustment,
+        AdjustmentPlanPhaseMaximumAdjustment,
     ],
     PropertyInfo(discriminator="adjustment_type"),
 ]
