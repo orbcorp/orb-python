@@ -18,6 +18,7 @@ __all__ = [
     "AddAdjustmentAdjustmentNewMinimum",
     "AddAdjustmentAdjustmentNewMaximum",
     "AddPrice",
+    "AddPriceAllocationPrice",
     "AddPriceDiscount",
     "AddPricePrice",
     "AddPricePriceNewSubscriptionUnitPrice",
@@ -98,6 +99,7 @@ __all__ = [
     "ReplaceAdjustmentAdjustmentNewMinimum",
     "ReplaceAdjustmentAdjustmentNewMaximum",
     "ReplacePrice",
+    "ReplacePriceAllocationPrice",
     "ReplacePriceDiscount",
     "ReplacePricePrice",
     "ReplacePricePriceNewSubscriptionUnitPrice",
@@ -424,6 +426,26 @@ class AddAdjustment(TypedDict, total=False):
     This is the date that the adjustment will start affecting prices on the
     subscription. If null, the adjustment will start when the phase or subscription
     starts.
+    """
+
+
+class AddPriceAllocationPrice(TypedDict, total=False):
+    amount: Required[str]
+    """An amount of the currency to allocate to the customer at the specified cadence."""
+
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
+    """The cadence at which to allocate the amount to the customer."""
+
+    currency: Required[str]
+    """
+    An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+    this price.
+    """
+
+    expires_at_end_of_cadence: Required[bool]
+    """
+    Whether the allocated amount should expire at the end of the cadence or roll
+    over to the next period.
     """
 
 
@@ -2211,6 +2233,9 @@ AddPricePrice: TypeAlias = Union[
 
 
 class AddPrice(TypedDict, total=False):
+    allocation_price: Optional[AddPriceAllocationPrice]
+    """The definition of a new allocation price to create and add to the subscription."""
+
     discounts: Optional[Iterable[AddPriceDiscount]]
     """[DEPRECATED] Use add_adjustments instead.
 
@@ -2386,6 +2411,26 @@ class ReplaceAdjustment(TypedDict, total=False):
 
     replaces_adjustment_id: Required[str]
     """The id of the adjustment on the plan to replace in the subscription."""
+
+
+class ReplacePriceAllocationPrice(TypedDict, total=False):
+    amount: Required[str]
+    """An amount of the currency to allocate to the customer at the specified cadence."""
+
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
+    """The cadence at which to allocate the amount to the customer."""
+
+    currency: Required[str]
+    """
+    An ISO 4217 currency string or a custom pricing unit identifier in which to bill
+    this price.
+    """
+
+    expires_at_end_of_cadence: Required[bool]
+    """
+    Whether the allocated amount should expire at the end of the cadence or roll
+    over to the next period.
+    """
 
 
 class ReplacePriceDiscount(TypedDict, total=False):
@@ -4190,6 +4235,9 @@ ReplacePricePrice: TypeAlias = Union[
 class ReplacePrice(TypedDict, total=False):
     replaces_price_id: Required[str]
     """The id of the price on the plan to replace in the subscription."""
+
+    allocation_price: Optional[ReplacePriceAllocationPrice]
+    """The definition of a new allocation price to create and add to the subscription."""
 
     discounts: Optional[Iterable[ReplacePriceDiscount]]
     """[DEPRECATED] Use add_adjustments instead.

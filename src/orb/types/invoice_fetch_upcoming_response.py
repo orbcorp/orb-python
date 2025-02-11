@@ -136,6 +136,7 @@ class CustomerBalanceTransaction(BaseModel):
         "credit_note_applied",
         "credit_note_voided",
         "overpayment_refund",
+        "external_payment",
     ]
 
     amount: str
