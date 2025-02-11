@@ -57,6 +57,12 @@ class TestSubscriptions:
             ],
             add_prices=[
                 {
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -145,6 +151,12 @@ class TestSubscriptions:
             replace_prices=[
                 {
                     "replaces_price_id": "replaces_price_id",
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -710,6 +722,12 @@ class TestSubscriptions:
             ],
             add_prices=[
                 {
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -793,6 +811,12 @@ class TestSubscriptions:
             replace_prices=[
                 {
                     "replaces_price_id": "replaces_price_id",
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -1169,6 +1193,12 @@ class TestAsyncSubscriptions:
             ],
             add_prices=[
                 {
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -1257,6 +1287,12 @@ class TestAsyncSubscriptions:
             replace_prices=[
                 {
                     "replaces_price_id": "replaces_price_id",
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -1822,6 +1858,12 @@ class TestAsyncSubscriptions:
             ],
             add_prices=[
                 {
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
@@ -1905,6 +1947,12 @@ class TestAsyncSubscriptions:
             replace_prices=[
                 {
                     "replaces_price_id": "replaces_price_id",
+                    "allocation_price": {
+                        "amount": "10.00",
+                        "cadence": "one_time",
+                        "currency": "USD",
+                        "expires_at_end_of_cadence": True,
+                    },
                     "discounts": [
                         {
                             "discount_type": "percentage",
