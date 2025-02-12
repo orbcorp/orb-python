@@ -23,10 +23,12 @@ from pydantic import ValidationError
 
 from orb import Orb, AsyncOrb, APIResponseValidationError
 from orb._types import Omit
+from orb._utils import maybe_transform
 from orb._models import BaseModel, FinalRequestOptions
 from orb._constants import RAW_RESPONSE_HEADER
 from orb._exceptions import OrbError, APIStatusError, APITimeoutError, APIResponseValidationError
 from orb._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from orb.types.customer_create_params import CustomerCreateParams
 
 from .utils import update_env
 
@@ -733,7 +735,12 @@ class TestOrb:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/customers",
-                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(email="example-customer@withorb.com", name="My Customer"), CustomerCreateParams
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -748,7 +755,12 @@ class TestOrb:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/customers",
-                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(email="example-customer@withorb.com", name="My Customer"), CustomerCreateParams
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1555,7 +1567,12 @@ class TestAsyncOrb:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/customers",
-                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(email="example-customer@withorb.com", name="My Customer"), CustomerCreateParams
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1570,7 +1587,12 @@ class TestAsyncOrb:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/customers",
-                body=cast(object, dict(email="example-customer@withorb.com", name="My Customer")),
+                body=cast(
+                    object,
+                    maybe_transform(
+                        dict(email="example-customer@withorb.com", name="My Customer"), CustomerCreateParams
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
