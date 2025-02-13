@@ -270,6 +270,15 @@ __all__ = [
     "ScalableMatrixWithTieredPricingPriceMaximum",
     "ScalableMatrixWithTieredPricingPriceMinimum",
     "ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
+    "CumulativeGroupedBulkPrice",
+    "CumulativeGroupedBulkPriceBillableMetric",
+    "CumulativeGroupedBulkPriceBillingCycleConfiguration",
+    "CumulativeGroupedBulkPriceCreditAllocation",
+    "CumulativeGroupedBulkPriceInvoicingCycleConfiguration",
+    "CumulativeGroupedBulkPriceItem",
+    "CumulativeGroupedBulkPriceMaximum",
+    "CumulativeGroupedBulkPriceMinimum",
+    "CumulativeGroupedBulkPriceDimensionalPriceConfiguration",
 ]
 
 
@@ -3441,6 +3450,118 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
     dimensional_price_configuration: Optional[ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration] = None
 
 
+class CumulativeGroupedBulkPriceBillableMetric(BaseModel):
+    id: str
+
+
+class CumulativeGroupedBulkPriceBillingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class CumulativeGroupedBulkPriceCreditAllocation(BaseModel):
+    allows_rollover: bool
+
+    currency: str
+
+
+class CumulativeGroupedBulkPriceInvoicingCycleConfiguration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
+class CumulativeGroupedBulkPriceItem(BaseModel):
+    id: str
+
+    name: str
+
+
+class CumulativeGroupedBulkPriceMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class CumulativeGroupedBulkPriceMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class CumulativeGroupedBulkPriceDimensionalPriceConfiguration(BaseModel):
+    dimension_values: List[str]
+
+    dimensional_price_group_id: str
+
+
+class CumulativeGroupedBulkPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[CumulativeGroupedBulkPriceBillableMetric] = None
+
+    billing_cycle_configuration: CumulativeGroupedBulkPriceBillingCycleConfiguration
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    conversion_rate: Optional[float] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[CumulativeGroupedBulkPriceCreditAllocation] = None
+
+    cumulative_grouped_bulk_config: Dict[str, object]
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[CumulativeGroupedBulkPriceInvoicingCycleConfiguration] = None
+
+    item: CumulativeGroupedBulkPriceItem
+
+    maximum: Optional[CumulativeGroupedBulkPriceMaximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[CumulativeGroupedBulkPriceMinimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["cumulative_grouped_bulk"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    dimensional_price_configuration: Optional[CumulativeGroupedBulkPriceDimensionalPriceConfiguration] = None
+
+
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
@@ -3470,6 +3591,7 @@ Price: TypeAlias = Annotated[
         MaxGroupTieredPackagePrice,
         ScalableMatrixWithUnitPricingPrice,
         ScalableMatrixWithTieredPricingPrice,
+        CumulativeGroupedBulkPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]
