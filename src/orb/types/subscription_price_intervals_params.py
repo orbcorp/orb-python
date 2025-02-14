@@ -138,6 +138,13 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
     add_adjustments: Iterable[AddAdjustment]
     """A list of adjustments to add to the subscription."""
 
+    allow_invoice_credit_or_void: Optional[bool]
+    """
+    If false, this request will fail if it would void an issued invoice or create a
+    credit note. Consider using this as a safety mechanism if you do not expect
+    existing invoices to be changed.
+    """
+
     edit: Iterable[Edit]
     """A list of price intervals to edit on the subscription."""
 
