@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Optional
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -16,6 +16,13 @@ class SubscriptionUpdateFixedFeeQuantityParams(TypedDict, total=False):
     """Price for which the quantity should be updated. Must be a fixed fee."""
 
     quantity: Required[float]
+
+    allow_invoice_credit_or_void: Optional[bool]
+    """
+    If false, this request will fail if it would void an issued invoice or create a
+    credit note. Consider using this as a safety mechanism if you do not expect
+    existing invoices to be changed.
+    """
 
     change_option: Literal["immediate", "upcoming_invoice", "effective_date"]
     """Determines when the change takes effect.

@@ -651,6 +651,7 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -727,6 +728,10 @@ class Subscriptions(SyncAPIResource):
         Args:
           cancel_option: Determines the timing of subscription cancellation
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           cancellation_date: The date that the cancellation should take effect. This parameter can only be
               passed if the `cancel_option` is `requested_date`.
 
@@ -747,6 +752,7 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "cancel_option": cancel_option,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "cancellation_date": cancellation_date,
                 },
                 subscription_cancel_params.SubscriptionCancelParams,
@@ -1207,6 +1213,7 @@ class Subscriptions(SyncAPIResource):
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
         add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
         edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1296,6 +1303,10 @@ class Subscriptions(SyncAPIResource):
 
           add_adjustments: A list of adjustments to add to the subscription.
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           edit: A list of price intervals to edit on the subscription.
 
           edit_adjustments: A list of adjustments to edit on the subscription.
@@ -1318,6 +1329,7 @@ class Subscriptions(SyncAPIResource):
                 {
                     "add": add,
                     "add_adjustments": add_adjustments,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "edit": edit,
                     "edit_adjustments": edit_adjustments,
                 },
@@ -1693,6 +1705,7 @@ class Subscriptions(SyncAPIResource):
         self,
         subscription_id: str,
         *,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1707,6 +1720,10 @@ class Subscriptions(SyncAPIResource):
         specified).
 
         Args:
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           effective_date: The date on which the phase change should take effect. If not provided, defaults
               to today in the customer's timezone.
 
@@ -1725,7 +1742,11 @@ class Subscriptions(SyncAPIResource):
         return self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
             body=maybe_transform(
-                {"effective_date": effective_date}, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams
+                {
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
+                    "effective_date": effective_date,
+                },
+                subscription_trigger_phase_params.SubscriptionTriggerPhaseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1880,6 +1901,7 @@ class Subscriptions(SyncAPIResource):
         *,
         price_id: str,
         quantity: float,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1909,6 +1931,10 @@ class Subscriptions(SyncAPIResource):
         Args:
           price_id: Price for which the quantity should be updated. Must be a fixed fee.
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           change_option: Determines when the change takes effect. Note that if `effective_date` is
               specified, this defaults to `effective_date`. Otherwise, this defaults to
               `immediate` unless it's explicitly set to `upcoming_invoice.
@@ -1935,6 +1961,7 @@ class Subscriptions(SyncAPIResource):
                 {
                     "price_id": price_id,
                     "quantity": quantity,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "change_option": change_option,
                     "effective_date": effective_date,
                 },
@@ -2619,6 +2646,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         cancel_option: Literal["end_of_subscription_term", "immediate", "requested_date"],
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         cancellation_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2695,6 +2723,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           cancel_option: Determines the timing of subscription cancellation
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           cancellation_date: The date that the cancellation should take effect. This parameter can only be
               passed if the `cancel_option` is `requested_date`.
 
@@ -2715,6 +2747,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "cancel_option": cancel_option,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "cancellation_date": cancellation_date,
                 },
                 subscription_cancel_params.SubscriptionCancelParams,
@@ -3175,6 +3208,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         *,
         add: Iterable[subscription_price_intervals_params.Add] | NotGiven = NOT_GIVEN,
         add_adjustments: Iterable[subscription_price_intervals_params.AddAdjustment] | NotGiven = NOT_GIVEN,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         edit: Iterable[subscription_price_intervals_params.Edit] | NotGiven = NOT_GIVEN,
         edit_adjustments: Iterable[subscription_price_intervals_params.EditAdjustment] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3264,6 +3298,10 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           add_adjustments: A list of adjustments to add to the subscription.
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           edit: A list of price intervals to edit on the subscription.
 
           edit_adjustments: A list of adjustments to edit on the subscription.
@@ -3286,6 +3324,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 {
                     "add": add,
                     "add_adjustments": add_adjustments,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "edit": edit,
                     "edit_adjustments": edit_adjustments,
                 },
@@ -3661,6 +3700,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3675,6 +3715,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         specified).
 
         Args:
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           effective_date: The date on which the phase change should take effect. If not provided, defaults
               to today in the customer's timezone.
 
@@ -3693,7 +3737,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         return await self._post(
             f"/subscriptions/{subscription_id}/trigger_phase",
             body=await async_maybe_transform(
-                {"effective_date": effective_date}, subscription_trigger_phase_params.SubscriptionTriggerPhaseParams
+                {
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
+                    "effective_date": effective_date,
+                },
+                subscription_trigger_phase_params.SubscriptionTriggerPhaseParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -3848,6 +3896,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         *,
         price_id: str,
         quantity: float,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         change_option: Literal["immediate", "upcoming_invoice", "effective_date"] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3877,6 +3926,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         Args:
           price_id: Price for which the quantity should be updated. Must be a fixed fee.
 
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
           change_option: Determines when the change takes effect. Note that if `effective_date` is
               specified, this defaults to `effective_date`. Otherwise, this defaults to
               `immediate` unless it's explicitly set to `upcoming_invoice.
@@ -3903,6 +3956,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 {
                     "price_id": price_id,
                     "quantity": quantity,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "change_option": change_option,
                     "effective_date": effective_date,
                 },
