@@ -324,6 +324,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.cancel(
             subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
+            allow_invoice_credit_or_void=True,
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
@@ -636,6 +637,7 @@ class TestSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 }
             ],
+            allow_invoice_credit_or_void=True,
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
@@ -905,6 +907,7 @@ class TestSubscriptions:
     def test_method_trigger_phase_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.trigger_phase(
             subscription_id="subscription_id",
+            allow_invoice_credit_or_void=True,
             effective_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
@@ -1073,6 +1076,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             price_id="price_id",
             quantity=0,
+            allow_invoice_credit_or_void=True,
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
@@ -1460,6 +1464,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.cancel(
             subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
+            allow_invoice_credit_or_void=True,
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
@@ -1772,6 +1777,7 @@ class TestAsyncSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 }
             ],
+            allow_invoice_credit_or_void=True,
             edit=[
                 {
                     "price_interval_id": "sdfs6wdjvn7ujokd",
@@ -2041,6 +2047,7 @@ class TestAsyncSubscriptions:
     async def test_method_trigger_phase_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.trigger_phase(
             subscription_id="subscription_id",
+            allow_invoice_credit_or_void=True,
             effective_date=parse_date("2019-12-27"),
         )
         assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
@@ -2209,6 +2216,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             price_id="price_id",
             quantity=0,
+            allow_invoice_credit_or_void=True,
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
