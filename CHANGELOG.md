@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.4.2 (2025-02-15)
+
+Full Changelog: [v3.4.1...v3.4.2](https://github.com/orbcorp/orb-python/compare/v3.4.1...v3.4.2)
+
+### Chores
+
+* **internal:** codegen related update ([#541](https://github.com/orbcorp/orb-python/issues/541)) ([c30d716](https://github.com/orbcorp/orb-python/commit/c30d716e16300e0b421e7d510455cf5714c07346))
+
 ## 3.4.1 (2025-02-15)
 
 Full Changelog: [v3.4.0...v3.4.1](https://github.com/orbcorp/orb-python/compare/v3.4.0...v3.4.1)
