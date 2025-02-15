@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.4.1 (2025-02-15)
+
+Full Changelog: [v3.4.0...v3.4.1](https://github.com/orbcorp/orb-python/compare/v3.4.0...v3.4.1)
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#538](https://github.com/orbcorp/orb-python/issues/538)) ([a07f92d](https://github.com/orbcorp/orb-python/commit/a07f92dacc0153fb06e800af73d1f728f41a3dbf))
+
 ## 3.4.0 (2025-02-14)
 
 Full Changelog: [v3.3.0...v3.4.0](https://github.com/orbcorp/orb-python/compare/v3.3.0...v3.4.0)
