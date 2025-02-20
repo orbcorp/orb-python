@@ -1,5 +1,25 @@
 # Changelog
 
+## 3.5.0 (2025-02-20)
+
+Full Changelog: [v3.4.1...v3.5.0](https://github.com/orbcorp/orb-python/compare/v3.4.1...v3.5.0)
+
+### Features
+
+* **api:** api update ([#543](https://github.com/orbcorp/orb-python/issues/543)) ([7bd608e](https://github.com/orbcorp/orb-python/commit/7bd608e2f10290c7ca754737127dc821bda7e08c))
+* **api:** api update ([#545](https://github.com/orbcorp/orb-python/issues/545)) ([b309efd](https://github.com/orbcorp/orb-python/commit/b309efd0ff24740c47ad0423f409b6d2c29992cd))
+* **client:** allow passing `NotGiven` for body ([#544](https://github.com/orbcorp/orb-python/issues/544)) ([d8b593c](https://github.com/orbcorp/orb-python/commit/d8b593cb7f57f9c4a7d2ad7a0a9461908c1adecf))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([d8b593c](https://github.com/orbcorp/orb-python/commit/d8b593cb7f57f9c4a7d2ad7a0a9461908c1adecf))
+
+
+### Chores
+
+* **internal:** codegen related update ([#541](https://github.com/orbcorp/orb-python/issues/541)) ([c30d716](https://github.com/orbcorp/orb-python/commit/c30d716e16300e0b421e7d510455cf5714c07346))
+
 ## 3.4.1 (2025-02-15)
 
 Full Changelog: [v3.4.0...v3.4.1](https://github.com/orbcorp/orb-python/compare/v3.4.0...v3.4.1)
