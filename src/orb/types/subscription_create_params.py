@@ -494,7 +494,7 @@ class AddPricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit"]]
 
@@ -595,7 +595,7 @@ class AddPricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package"]]
 
@@ -707,7 +707,7 @@ class AddPricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     matrix_config: Required[AddPricePriceNewSubscriptionMatrixPriceMatrixConfig]
 
@@ -812,7 +812,7 @@ class AddPricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered"]]
 
@@ -923,7 +923,7 @@ class AddPricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_bps"]]
 
@@ -1022,7 +1022,7 @@ class AddPricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bps"]]
 
@@ -1130,7 +1130,7 @@ class AddPricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_bps"]]
 
@@ -1232,7 +1232,7 @@ class AddPricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk"]]
 
@@ -1319,7 +1319,7 @@ class AddPricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total=Fal
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["threshold_total_amount"]]
 
@@ -1412,7 +1412,7 @@ class AddPricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package"]]
 
@@ -1501,7 +1501,7 @@ class AddPricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=False)
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_minimum"]]
 
@@ -1592,7 +1592,7 @@ class AddPricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_percent"]]
 
@@ -1681,7 +1681,7 @@ class AddPricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, total=Fa
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package_with_allocation"]]
 
@@ -1774,7 +1774,7 @@ class AddPricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=False)
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_proration"]]
 
@@ -1865,7 +1865,7 @@ class AddPricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=False)
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_proration"]]
 
@@ -1958,7 +1958,7 @@ class AddPricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=False)
     grouped_allocation_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_allocation"]]
 
@@ -2049,7 +2049,7 @@ class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict, tot
     grouped_with_prorated_minimum_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_prorated_minimum"]]
 
@@ -2142,7 +2142,7 @@ class AddPricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=False)
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_with_proration"]]
 
@@ -2478,7 +2478,7 @@ class ReplacePricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit"]]
 
@@ -2579,7 +2579,7 @@ class ReplacePricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package"]]
 
@@ -2691,7 +2691,7 @@ class ReplacePricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     matrix_config: Required[ReplacePricePriceNewSubscriptionMatrixPriceMatrixConfig]
 
@@ -2796,7 +2796,7 @@ class ReplacePricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered"]]
 
@@ -2907,7 +2907,7 @@ class ReplacePricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_bps"]]
 
@@ -3006,7 +3006,7 @@ class ReplacePricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bps"]]
 
@@ -3114,7 +3114,7 @@ class ReplacePricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_bps"]]
 
@@ -3216,7 +3216,7 @@ class ReplacePricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk"]]
 
@@ -3303,7 +3303,7 @@ class ReplacePricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["threshold_total_amount"]]
 
@@ -3396,7 +3396,7 @@ class ReplacePricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False)
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package"]]
 
@@ -3487,7 +3487,7 @@ class ReplacePricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=Fa
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_minimum"]]
 
@@ -3580,7 +3580,7 @@ class ReplacePricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=Fals
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_percent"]]
 
@@ -3671,7 +3671,7 @@ class ReplacePricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, tota
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package_with_allocation"]]
 
@@ -3764,7 +3764,7 @@ class ReplacePricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=Fa
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_proration"]]
 
@@ -3857,7 +3857,7 @@ class ReplacePricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=Fa
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_proration"]]
 
@@ -3952,7 +3952,7 @@ class ReplacePricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=Fa
     grouped_allocation_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_allocation"]]
 
@@ -4047,7 +4047,7 @@ class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict,
     grouped_with_prorated_minimum_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_prorated_minimum"]]
 
@@ -4140,7 +4140,7 @@ class ReplacePricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=Fa
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_with_proration"]]
 

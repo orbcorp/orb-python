@@ -243,7 +243,7 @@ class AddPriceNewFloatingUnitPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit"]]
 
@@ -335,7 +335,7 @@ class AddPriceNewFloatingPackagePrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package"]]
 
@@ -438,7 +438,7 @@ class AddPriceNewFloatingMatrixPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     matrix_config: Required[AddPriceNewFloatingMatrixPriceMatrixConfig]
 
@@ -544,7 +544,7 @@ class AddPriceNewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     matrix_with_allocation_config: Required[AddPriceNewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig]
 
@@ -640,7 +640,7 @@ class AddPriceNewFloatingTieredPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered"]]
 
@@ -742,7 +742,7 @@ class AddPriceNewFloatingTieredBpsPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_bps"]]
 
@@ -832,7 +832,7 @@ class AddPriceNewFloatingBpsPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bps"]]
 
@@ -931,7 +931,7 @@ class AddPriceNewFloatingBulkBpsPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_bps"]]
 
@@ -1024,7 +1024,7 @@ class AddPriceNewFloatingBulkPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk"]]
 
@@ -1102,7 +1102,7 @@ class AddPriceNewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["threshold_total_amount"]]
 
@@ -1182,7 +1182,7 @@ class AddPriceNewFloatingTieredPackagePrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package"]]
 
@@ -1264,7 +1264,7 @@ class AddPriceNewFloatingGroupedTieredPrice(TypedDict, total=False):
     grouped_tiered_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_tiered"]]
 
@@ -1342,7 +1342,7 @@ class AddPriceNewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     max_group_tiered_package_config: Required[Dict[str, object]]
 
@@ -1422,7 +1422,7 @@ class AddPriceNewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_minimum"]]
 
@@ -1502,7 +1502,7 @@ class AddPriceNewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package_with_allocation"]]
 
@@ -1582,7 +1582,7 @@ class AddPriceNewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package_with_minimum"]]
 
@@ -1662,7 +1662,7 @@ class AddPriceNewFloatingUnitWithPercentPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_percent"]]
 
@@ -1742,7 +1742,7 @@ class AddPriceNewFloatingTieredWithProrationPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_proration"]]
 
@@ -1822,7 +1822,7 @@ class AddPriceNewFloatingUnitWithProrationPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_proration"]]
 
@@ -1904,7 +1904,7 @@ class AddPriceNewFloatingGroupedAllocationPrice(TypedDict, total=False):
     grouped_allocation_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_allocation"]]
 
@@ -1984,7 +1984,7 @@ class AddPriceNewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False)
     grouped_with_prorated_minimum_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_prorated_minimum"]]
 
@@ -2066,7 +2066,7 @@ class AddPriceNewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     grouped_with_metered_minimum_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_metered_minimum"]]
 
@@ -2146,7 +2146,7 @@ class AddPriceNewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     matrix_with_display_name_config: Required[Dict[str, object]]
 
@@ -2228,7 +2228,7 @@ class AddPriceNewFloatingBulkWithProrationPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_with_proration"]]
 
@@ -2308,7 +2308,7 @@ class AddPriceNewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     grouped_tiered_package_config: Required[Dict[str, object]]
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_tiered_package"]]
 
@@ -2386,7 +2386,7 @@ class AddPriceNewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=Fal
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["scalable_matrix_with_unit_pricing"]]
 
@@ -2470,7 +2470,7 @@ class AddPriceNewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=F
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["scalable_matrix_with_tiered_pricing"]]
 
@@ -2556,7 +2556,7 @@ class AddPriceNewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
-    """The id of the item the plan will be associated with."""
+    """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["cumulative_grouped_bulk"]]
 
