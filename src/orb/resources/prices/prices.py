@@ -105,7 +105,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -192,7 +192,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -279,7 +279,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -370,7 +370,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -457,7 +457,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -546,7 +546,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -633,7 +633,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -720,7 +720,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -807,7 +807,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -898,7 +898,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -989,7 +989,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1080,7 +1080,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1171,7 +1171,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1262,7 +1262,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1353,7 +1353,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1444,7 +1444,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1535,7 +1535,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1626,7 +1626,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1717,7 +1717,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1808,7 +1808,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1899,7 +1899,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -1990,7 +1990,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2081,7 +2081,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2172,7 +2172,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2263,7 +2263,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2354,7 +2354,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2445,7 +2445,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -2536,7 +2536,7 @@ class Prices(SyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3053,7 +3053,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3140,7 +3140,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3227,7 +3227,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3318,7 +3318,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3405,7 +3405,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3494,7 +3494,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3581,7 +3581,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3668,7 +3668,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3755,7 +3755,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3846,7 +3846,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -3937,7 +3937,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4028,7 +4028,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4119,7 +4119,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4210,7 +4210,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4301,7 +4301,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4392,7 +4392,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4483,7 +4483,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4574,7 +4574,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4665,7 +4665,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4756,7 +4756,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4847,7 +4847,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -4938,7 +4938,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5029,7 +5029,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5120,7 +5120,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5211,7 +5211,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5302,7 +5302,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5393,7 +5393,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 
@@ -5484,7 +5484,7 @@ class AsyncPrices(AsyncAPIResource):
 
           currency: An ISO 4217 currency string for which this price is billed in.
 
-          item_id: The id of the item the plan will be associated with.
+          item_id: The id of the item the price will be associated with.
 
           name: The name of the price.
 

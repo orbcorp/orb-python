@@ -59,6 +59,9 @@ class LineItem(BaseModel):
     amount: str
     """The amount of the line item, including any line item minimums and discounts."""
 
+    item_id: str
+    """The id of the item associated with this line item."""
+
     name: str
     """The name of the corresponding invoice line item."""
 
