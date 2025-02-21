@@ -318,6 +318,16 @@ class SubscriptionCreateParams(TypedDict, total=False):
     provided, the trial on the plan will be skipped.
     """
 
+    usage_customer_ids: Optional[List[str]]
+    """
+    A list of customer IDs whose usage events will be aggregated and billed under
+    this subscription. By default, a subscription only considers usage events
+    associated with its attached customer's customer_id. When usage_customer_ids is
+    provided, the subscription includes usage events from the specified customers
+    only. Provided usage_customer_ids must be either the customer for this
+    subscription itself, or any of that customer's children.
+    """
+
 
 class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["percentage_discount"]]
