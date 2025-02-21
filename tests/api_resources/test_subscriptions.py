@@ -198,6 +198,7 @@ class TestSubscriptions:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             trial_duration_days=999999,
+            usage_customer_ids=["string"],
         )
         assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
 
@@ -859,6 +860,7 @@ class TestSubscriptions:
                 }
             ],
             trial_duration_days=999999,
+            usage_customer_ids=["string"],
         )
         assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
 
@@ -1338,6 +1340,7 @@ class TestAsyncSubscriptions:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             trial_duration_days=999999,
+            usage_customer_ids=["string"],
         )
         assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
 
@@ -1999,6 +2002,7 @@ class TestAsyncSubscriptions:
                 }
             ],
             trial_duration_days=999999,
+            usage_customer_ids=["string"],
         )
         assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
 

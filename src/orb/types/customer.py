@@ -9,6 +9,9 @@ from .._models import BaseModel
 __all__ = [
     "Customer",
     "BillingAddress",
+    "Hierarchy",
+    "HierarchyChild",
+    "HierarchyParent",
     "ShippingAddress",
     "TaxID",
     "AccountingSyncConfiguration",
@@ -29,6 +32,24 @@ class BillingAddress(BaseModel):
     postal_code: Optional[str] = None
 
     state: Optional[str] = None
+
+
+class HierarchyChild(BaseModel):
+    id: str
+
+    external_customer_id: Optional[str] = None
+
+
+class HierarchyParent(BaseModel):
+    id: str
+
+    external_customer_id: Optional[str] = None
+
+
+class Hierarchy(BaseModel):
+    children: List[HierarchyChild]
+
+    parent: Optional[HierarchyParent] = None
 
 
 class ShippingAddress(BaseModel):
@@ -253,6 +274,9 @@ class Customer(BaseModel):
     system as an alias for this Customer. Use this field to identify a customer by
     an existing identifier in your system.
     """
+
+    hierarchy: Hierarchy
+    """The hierarchical relationships for this customer."""
 
     metadata: Dict[str, str]
     """User specified key-value pairs for the resource.

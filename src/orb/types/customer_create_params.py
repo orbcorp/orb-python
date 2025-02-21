@@ -10,6 +10,7 @@ __all__ = [
     "AccountingSyncConfiguration",
     "AccountingSyncConfigurationAccountingProvider",
     "BillingAddress",
+    "Hierarchy",
     "ReportingConfiguration",
     "ShippingAddress",
     "TaxConfiguration",
@@ -61,6 +62,9 @@ class CustomerCreateParams(TypedDict, total=False):
     system as an alias for this Customer. Use this field to identify a customer by
     an existing identifier in your system.
     """
+
+    hierarchy: Optional[Hierarchy]
+    """The hierarchical relationships for this customer."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -229,6 +233,20 @@ class BillingAddress(TypedDict, total=False):
     postal_code: Optional[str]
 
     state: Optional[str]
+
+
+class Hierarchy(TypedDict, total=False):
+    child_customer_ids: List[str]
+    """A list of child customer IDs to add to the hierarchy.
+
+    The desired child customers must not already be part of another hierarchy.
+    """
+
+    parent_customer_id: Optional[str]
+    """The ID of the parent customer in the hierarchy.
+
+    The desired parent customer must not be a child of another customer.
+    """
 
 
 class ReportingConfiguration(TypedDict, total=False):

@@ -99,6 +99,7 @@ class Customers(SyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -150,6 +151,8 @@ class Customers(SyncAPIResource):
           external_customer_id: An optional user-defined ID for this customer resource, used throughout the
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -295,6 +298,7 @@ class Customers(SyncAPIResource):
                     "currency": currency,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
@@ -329,6 +333,7 @@ class Customers(SyncAPIResource):
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -368,6 +373,8 @@ class Customers(SyncAPIResource):
 
           external_customer_id: The external customer ID. This can only be set if empty and the customer has no
               past or current subscriptions.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -516,6 +523,7 @@ class Customers(SyncAPIResource):
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -839,6 +847,7 @@ class Customers(SyncAPIResource):
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -878,6 +887,8 @@ class Customers(SyncAPIResource):
 
           external_customer_id: The external customer ID. This can only be set if empty and the customer has no
               past or current subscriptions.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1026,6 +1037,7 @@ class Customers(SyncAPIResource):
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1093,6 +1105,7 @@ class AsyncCustomers(AsyncAPIResource):
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
@@ -1144,6 +1157,8 @@ class AsyncCustomers(AsyncAPIResource):
           external_customer_id: An optional user-defined ID for this customer resource, used throughout the
               system as an alias for this Customer. Use this field to identify a customer by
               an existing identifier in your system.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1289,6 +1304,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "currency": currency,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
@@ -1323,6 +1339,7 @@ class AsyncCustomers(AsyncAPIResource):
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1362,6 +1379,8 @@ class AsyncCustomers(AsyncAPIResource):
 
           external_customer_id: The external customer ID. This can only be set if empty and the customer has no
               past or current subscriptions.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1510,6 +1529,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
@@ -1833,6 +1853,7 @@ class AsyncCustomers(AsyncAPIResource):
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
@@ -1872,6 +1893,8 @@ class AsyncCustomers(AsyncAPIResource):
 
           external_customer_id: The external customer ID. This can only be set if empty and the customer has no
               past or current subscriptions.
+
+          hierarchy: The hierarchical relationships for this customer.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2020,6 +2043,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
+                    "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
                     "payment_provider": payment_provider,
