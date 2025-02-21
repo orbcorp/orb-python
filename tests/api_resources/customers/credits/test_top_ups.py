@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers.credits import (
@@ -52,6 +53,7 @@ class TestTopUps:
             },
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
+            active_from=parse_datetime("2019-12-27T18:11:19.117Z"),
             expires_after=0,
             expires_after_unit="day",
         )
@@ -236,6 +238,7 @@ class TestTopUps:
             },
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
+            active_from=parse_datetime("2019-12-27T18:11:19.117Z"),
             expires_after=0,
             expires_after_unit="day",
         )
@@ -424,6 +427,7 @@ class TestAsyncTopUps:
             },
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
+            active_from=parse_datetime("2019-12-27T18:11:19.117Z"),
             expires_after=0,
             expires_after_unit="day",
         )
@@ -608,6 +612,7 @@ class TestAsyncTopUps:
             },
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
+            active_from=parse_datetime("2019-12-27T18:11:19.117Z"),
             expires_after=0,
             expires_after_unit="day",
         )

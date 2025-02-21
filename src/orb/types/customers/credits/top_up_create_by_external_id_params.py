@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Union, Optional
+from datetime import datetime
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from ...._utils import PropertyInfo
 
 __all__ = ["TopUpCreateByExternalIDParams", "InvoiceSettings"]
 
@@ -29,6 +32,12 @@ class TopUpCreateByExternalIDParams(TypedDict, total=False):
     """The threshold at which to trigger the top-up.
 
     If the balance is at or below this threshold, the top-up will be triggered.
+    """
+
+    active_from: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+    """The date from which the top-up is active.
+
+    If unspecified, the top-up is active immediately.
     """
 
     expires_after: Optional[int]

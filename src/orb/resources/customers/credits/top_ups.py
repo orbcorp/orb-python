@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Union, Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
@@ -61,6 +62,7 @@ class TopUps(SyncAPIResource):
         invoice_settings: top_up_create_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
+        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         expires_after: Optional[int] | NotGiven = NOT_GIVEN,
         expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -93,6 +95,9 @@ class TopUps(SyncAPIResource):
           threshold: The threshold at which to trigger the top-up. If the balance is at or below this
               threshold, the top-up will be triggered.
 
+          active_from: The date from which the top-up is active. If unspecified, the top-up is active
+              immediately.
+
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
 
@@ -119,6 +124,7 @@ class TopUps(SyncAPIResource):
                     "invoice_settings": invoice_settings,
                     "per_unit_cost_basis": per_unit_cost_basis,
                     "threshold": threshold,
+                    "active_from": active_from,
                     "expires_after": expires_after,
                     "expires_after_unit": expires_after_unit,
                 },
@@ -239,6 +245,7 @@ class TopUps(SyncAPIResource):
         invoice_settings: top_up_create_by_external_id_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
+        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         expires_after: Optional[int] | NotGiven = NOT_GIVEN,
         expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -271,6 +278,9 @@ class TopUps(SyncAPIResource):
           threshold: The threshold at which to trigger the top-up. If the balance is at or below this
               threshold, the top-up will be triggered.
 
+          active_from: The date from which the top-up is active. If unspecified, the top-up is active
+              immediately.
+
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
 
@@ -299,6 +309,7 @@ class TopUps(SyncAPIResource):
                     "invoice_settings": invoice_settings,
                     "per_unit_cost_basis": per_unit_cost_basis,
                     "threshold": threshold,
+                    "active_from": active_from,
                     "expires_after": expires_after,
                     "expires_after_unit": expires_after_unit,
                 },
@@ -444,6 +455,7 @@ class AsyncTopUps(AsyncAPIResource):
         invoice_settings: top_up_create_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
+        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         expires_after: Optional[int] | NotGiven = NOT_GIVEN,
         expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -476,6 +488,9 @@ class AsyncTopUps(AsyncAPIResource):
           threshold: The threshold at which to trigger the top-up. If the balance is at or below this
               threshold, the top-up will be triggered.
 
+          active_from: The date from which the top-up is active. If unspecified, the top-up is active
+              immediately.
+
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
 
@@ -502,6 +517,7 @@ class AsyncTopUps(AsyncAPIResource):
                     "invoice_settings": invoice_settings,
                     "per_unit_cost_basis": per_unit_cost_basis,
                     "threshold": threshold,
+                    "active_from": active_from,
                     "expires_after": expires_after,
                     "expires_after_unit": expires_after_unit,
                 },
@@ -622,6 +638,7 @@ class AsyncTopUps(AsyncAPIResource):
         invoice_settings: top_up_create_by_external_id_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
+        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         expires_after: Optional[int] | NotGiven = NOT_GIVEN,
         expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -654,6 +671,9 @@ class AsyncTopUps(AsyncAPIResource):
           threshold: The threshold at which to trigger the top-up. If the balance is at or below this
               threshold, the top-up will be triggered.
 
+          active_from: The date from which the top-up is active. If unspecified, the top-up is active
+              immediately.
+
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
 
@@ -682,6 +702,7 @@ class AsyncTopUps(AsyncAPIResource):
                     "invoice_settings": invoice_settings,
                     "per_unit_cost_basis": per_unit_cost_basis,
                     "threshold": threshold,
+                    "active_from": active_from,
                     "expires_after": expires_after,
                     "expires_after_unit": expires_after_unit,
                 },
