@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.6.0 (2025-02-21)
+
+Full Changelog: [v3.5.0...v3.6.0](https://github.com/orbcorp/orb-python/compare/v3.5.0...v3.6.0)
+
+### Features
+
+* **api:** api update ([#549](https://github.com/orbcorp/orb-python/issues/549)) ([e3c12c7](https://github.com/orbcorp/orb-python/commit/e3c12c77930b84c59c81e155d2cba86ee88b8301))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#547](https://github.com/orbcorp/orb-python/issues/547)) ([8a41ae9](https://github.com/orbcorp/orb-python/commit/8a41ae94bb215e52c4a523ad592c3fb62155ad3d))
+
 ## 3.5.0 (2025-02-20)
 
 Full Changelog: [v3.4.1...v3.5.0](https://github.com/orbcorp/orb-python/compare/v3.4.1...v3.5.0)
