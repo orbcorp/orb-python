@@ -110,6 +110,7 @@ class Subscriptions(SyncAPIResource):
         replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -442,6 +443,13 @@ class Subscriptions(SyncAPIResource):
               value specified in the plan. If `0` is provided, the trial on the plan will be
               skipped.
 
+          usage_customer_ids: A list of customer IDs whose usage events will be aggregated and billed under
+              this subscription. By default, a subscription only considers usage events
+              associated with its attached customer's customer_id. When usage_customer_ids is
+              provided, the subscription includes usage events from the specified customers
+              only. Provided usage_customer_ids must be either the customer for this
+              subscription itself, or any of that customer's children.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -486,6 +494,7 @@ class Subscriptions(SyncAPIResource):
                     "replace_prices": replace_prices,
                     "start_date": start_date,
                     "trial_duration_days": trial_duration_days,
+                    "usage_customer_ids": usage_customer_ids,
                 },
                 subscription_create_params.SubscriptionCreateParams,
             ),
@@ -1382,6 +1391,7 @@ class Subscriptions(SyncAPIResource):
         replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1648,6 +1658,13 @@ class Subscriptions(SyncAPIResource):
               value specified in the plan. If `0` is provided, the trial on the plan will be
               skipped.
 
+          usage_customer_ids: A list of customer IDs whose usage events will be aggregated and billed under
+              this subscription. By default, a subscription only considers usage events
+              associated with its attached customer's customer_id. When usage_customer_ids is
+              provided, the subscription includes usage events from the specified customers
+              only. Provided usage_customer_ids must be either the customer for this
+              subscription itself, or any of that customer's children.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1689,6 +1706,7 @@ class Subscriptions(SyncAPIResource):
                     "replace_adjustments": replace_adjustments,
                     "replace_prices": replace_prices,
                     "trial_duration_days": trial_duration_days,
+                    "usage_customer_ids": usage_customer_ids,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
@@ -2106,6 +2124,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2438,6 +2457,13 @@ class AsyncSubscriptions(AsyncAPIResource):
               value specified in the plan. If `0` is provided, the trial on the plan will be
               skipped.
 
+          usage_customer_ids: A list of customer IDs whose usage events will be aggregated and billed under
+              this subscription. By default, a subscription only considers usage events
+              associated with its attached customer's customer_id. When usage_customer_ids is
+              provided, the subscription includes usage events from the specified customers
+              only. Provided usage_customer_ids must be either the customer for this
+              subscription itself, or any of that customer's children.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2482,6 +2508,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "replace_prices": replace_prices,
                     "start_date": start_date,
                     "trial_duration_days": trial_duration_days,
+                    "usage_customer_ids": usage_customer_ids,
                 },
                 subscription_create_params.SubscriptionCreateParams,
             ),
@@ -3378,6 +3405,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3644,6 +3672,13 @@ class AsyncSubscriptions(AsyncAPIResource):
               value specified in the plan. If `0` is provided, the trial on the plan will be
               skipped.
 
+          usage_customer_ids: A list of customer IDs whose usage events will be aggregated and billed under
+              this subscription. By default, a subscription only considers usage events
+              associated with its attached customer's customer_id. When usage_customer_ids is
+              provided, the subscription includes usage events from the specified customers
+              only. Provided usage_customer_ids must be either the customer for this
+              subscription itself, or any of that customer's children.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3685,6 +3720,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "replace_adjustments": replace_adjustments,
                     "replace_prices": replace_prices,
                     "trial_duration_days": trial_duration_days,
+                    "usage_customer_ids": usage_customer_ids,
                 },
                 subscription_schedule_plan_change_params.SubscriptionSchedulePlanChangeParams,
             ),
