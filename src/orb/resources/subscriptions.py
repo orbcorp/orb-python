@@ -1956,7 +1956,7 @@ class Subscriptions(SyncAPIResource):
 
           change_option: Determines when the change takes effect. Note that if `effective_date` is
               specified, this defaults to `effective_date`. Otherwise, this defaults to
-              `immediate` unless it's explicitly set to `upcoming_invoice.
+              `immediate` unless it's explicitly set to `upcoming_invoice`.
 
           effective_date: The date that the quantity change should take effect, localized to the
               customer's timezone. Ifthis parameter is not passed in, the quantity change is
@@ -3970,7 +3970,7 @@ class AsyncSubscriptions(AsyncAPIResource):
 
           change_option: Determines when the change takes effect. Note that if `effective_date` is
               specified, this defaults to `effective_date`. Otherwise, this defaults to
-              `immediate` unless it's explicitly set to `upcoming_invoice.
+              `immediate` unless it's explicitly set to `upcoming_invoice`.
 
           effective_date: The date that the quantity change should take effect, localized to the
               customer's timezone. Ifthis parameter is not passed in, the quantity change is
