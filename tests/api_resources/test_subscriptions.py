@@ -592,6 +592,7 @@ class TestSubscriptions:
                     ],
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
+                    "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
                             "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -624,6 +625,7 @@ class TestSubscriptions:
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "h74gfhdjvn7ujokd",
+                    "usage_customer_ids": ["string"],
                 }
             ],
             add_adjustments=[
@@ -644,6 +646,7 @@ class TestSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
                             "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -651,6 +654,7 @@ class TestSubscriptions:
                         }
                     ],
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[
@@ -1734,6 +1738,7 @@ class TestAsyncSubscriptions:
                     ],
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
+                    "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
                             "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1766,6 +1771,7 @@ class TestAsyncSubscriptions:
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "h74gfhdjvn7ujokd",
+                    "usage_customer_ids": ["string"],
                 }
             ],
             add_adjustments=[
@@ -1786,6 +1792,7 @@ class TestAsyncSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
                             "effective_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1793,6 +1800,7 @@ class TestAsyncSubscriptions:
                         }
                     ],
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[

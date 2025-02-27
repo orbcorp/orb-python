@@ -381,6 +381,9 @@ class PriceInterval(BaseModel):
     This is the date that Orb stops billing for this price.
     """
 
+    filter: Optional[str] = None
+    """An additional filter to apply to usage queries."""
+
     fixed_fee_quantity_transitions: Optional[List[PriceIntervalFixedFeeQuantityTransition]] = None
     """The fixed fee quantity transitions for this price interval.
 
@@ -405,6 +408,12 @@ class PriceInterval(BaseModel):
     """The start date of the price interval.
 
     This is the date that Orb starts billing for this price.
+    """
+
+    usage_customer_ids: Optional[List[str]] = None
+    """
+    A list of customer IDs whose usage events will be aggregated and billed under
+    this price interval.
     """
 
 
