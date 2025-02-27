@@ -2666,6 +2666,14 @@ class Add(TypedDict, total=False):
     external_price_id: Optional[str]
     """The external price id of the price to add to the subscription."""
 
+    filter: Optional[str]
+    """An additional filter to apply to usage queries.
+
+    This filter must be expressed as a boolean
+    [computed property](/extensibility/advanced-metrics#computed-properties). If
+    null, usage queries will not include any additional filter.
+    """
+
     fixed_fee_quantity_transitions: Optional[Iterable[AddFixedFeeQuantityTransition]]
     """A list of fixed fee quantity transitions to initialize on the price interval."""
 
@@ -2686,6 +2694,16 @@ class Add(TypedDict, total=False):
 
     price_id: Optional[str]
     """The id of the price to add to the subscription."""
+
+    usage_customer_ids: Optional[List[str]]
+    """
+    A list of customer IDs whose usage events will be aggregated and billed under
+    this subscription. By default, a subscription only considers usage events
+    associated with its attached customer's customer_id. When usage_customer_ids is
+    provided, the subscription includes usage events from the specified customers
+    only. Provided usage_customer_ids must be either the customer for this
+    subscription itself, or any of that customer's children.
+    """
 
 
 class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
@@ -2821,6 +2839,14 @@ class Edit(TypedDict, total=False):
     If not specified, the start date will not be updated.
     """
 
+    filter: Optional[str]
+    """An additional filter to apply to usage queries.
+
+    This filter must be expressed as a boolean
+    [computed property](/extensibility/advanced-metrics#computed-properties). If
+    null, usage queries will not include any additional filter.
+    """
+
     fixed_fee_quantity_transitions: Optional[Iterable[EditFixedFeeQuantityTransition]]
     """A list of fixed fee quantity transitions to use for this price interval.
 
@@ -2832,6 +2858,16 @@ class Edit(TypedDict, total=False):
     """The updated start date of this price interval.
 
     If not specified, the start date will not be updated.
+    """
+
+    usage_customer_ids: Optional[List[str]]
+    """
+    A list of customer IDs whose usage events will be aggregated and billed under
+    this subscription. By default, a subscription only considers usage events
+    associated with its attached customer's customer_id. When usage_customer_ids is
+    provided, the subscription includes usage events from the specified customers
+    only. Provided usage_customer_ids must be either the customer for this
+    subscription itself, or any of that customer's children.
     """
 
 
