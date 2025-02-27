@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.9.0 (2025-02-27)
+
+Full Changelog: [v3.8.0...v3.9.0](https://github.com/orbcorp/orb-python/compare/v3.8.0...v3.9.0)
+
+### Features
+
+* **api:** api update ([#559](https://github.com/orbcorp/orb-python/issues/559)) ([0ea58b5](https://github.com/orbcorp/orb-python/commit/0ea58b5e7bcd0ded6a04f5875198f73c961acc1e))
+
+
+### Chores
+
+* **internal:** properly set __pydantic_private__ ([#557](https://github.com/orbcorp/orb-python/issues/557)) ([5df04a9](https://github.com/orbcorp/orb-python/commit/5df04a9fdffc8eba2dbbe81503f4a8280f8e7dbd))
+
 ## 3.8.0 (2025-02-25)
 
 Full Changelog: [v3.7.0...v3.8.0](https://github.com/orbcorp/orb-python/compare/v3.7.0...v3.8.0)
