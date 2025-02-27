@@ -206,7 +206,8 @@ class TopUps(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> None:
         """
-        Delete top-up
+        This deactivates the top-up and voids any invoices associated with pending
+        credit blocks purchased through the top-up.
 
         Args:
           extra_headers: Send extra headers
@@ -339,7 +340,8 @@ class TopUps(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> None:
         """
-        Delete top-up by external ID
+        This deactivates the top-up and voids any invoices associated with pending
+        credit blocks purchased through the top-up.
 
         Args:
           extra_headers: Send extra headers
@@ -599,7 +601,8 @@ class AsyncTopUps(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> None:
         """
-        Delete top-up
+        This deactivates the top-up and voids any invoices associated with pending
+        credit blocks purchased through the top-up.
 
         Args:
           extra_headers: Send extra headers
@@ -732,7 +735,8 @@ class AsyncTopUps(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> None:
         """
-        Delete top-up by external ID
+        This deactivates the top-up and voids any invoices associated with pending
+        credit blocks purchased through the top-up.
 
         Args:
           extra_headers: Send extra headers
