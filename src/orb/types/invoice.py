@@ -621,6 +621,9 @@ class LineItem(BaseModel):
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
 
+    filter: Optional[str] = None
+    """An additional filter that was used to calculate the usage for this line item."""
+
     grouping: Optional[str] = None
     """
     [DEPRECATED] For configured prices that are split by a grouping key, this will
@@ -679,6 +682,11 @@ class LineItem(BaseModel):
     """An array of tax rates and their incurred tax amounts.
 
     Empty if no tax integration is configured.
+    """
+
+    usage_customer_ids: Optional[List[str]] = None
+    """
+    A list of customer ids that were used to calculate the usage for this line item.
     """
 
 
