@@ -100,7 +100,7 @@ class Orb(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous orb client instance.
+        """Construct a new synchronous Orb client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `ORB_API_KEY`
@@ -356,7 +356,7 @@ class AsyncOrb(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async orb client instance.
+        """Construct a new async AsyncOrb client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `ORB_API_KEY`
