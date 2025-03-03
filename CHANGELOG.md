@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.10.1 (2025-03-03)
+
+Full Changelog: [v3.10.0...v3.10.1](https://github.com/orbcorp/orb-python/compare/v3.10.0...v3.10.1)
+
+### Chores
+
+* **internal:** codegen related update ([#564](https://github.com/orbcorp/orb-python/issues/564)) ([03b058d](https://github.com/orbcorp/orb-python/commit/03b058d6125ca84365fe4622432a9ada74aa288f))
+* **internal:** remove unused http client options forwarding ([#566](https://github.com/orbcorp/orb-python/issues/566)) ([aa7b3cf](https://github.com/orbcorp/orb-python/commit/aa7b3cf321a322150f12014674d914f2aa4a3c1e))
+
 ## 3.10.0 (2025-03-01)
 
 Full Changelog: [v3.9.0...v3.10.0](https://github.com/orbcorp/orb-python/compare/v3.9.0...v3.10.0)
