@@ -24,7 +24,7 @@ class TestCustomers:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -32,7 +32,7 @@ class TestCustomers:
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
         customer = client.customers.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
@@ -89,7 +89,7 @@ class TestCustomers:
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.customers.with_raw_response.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         )
 
@@ -101,7 +101,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.customers.with_streaming_response.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -143,7 +143,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             hierarchy={
@@ -465,7 +465,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             hierarchy={
@@ -537,7 +537,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Customer, customer, path=["response"])
@@ -545,7 +545,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
             accounting_sync_configuration={
                 "accounting_providers": [
@@ -602,7 +602,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         )
 
@@ -614,7 +614,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.create(
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -656,7 +656,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             hierarchy={
@@ -990,7 +990,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
             hierarchy={
