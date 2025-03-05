@@ -10,6 +10,7 @@ from .coupon import Coupon as Coupon
 from .shared import (
     Discount as Discount,
     TrialDiscount as TrialDiscount,
+    UsageDiscount as UsageDiscount,
     AmountDiscount as AmountDiscount,
     PaginationMetadata as PaginationMetadata,
     PercentageDiscount as PercentageDiscount,

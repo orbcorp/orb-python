@@ -2,6 +2,7 @@
 
 from .discount import Discount as Discount
 from .trial_discount import TrialDiscount as TrialDiscount
+from .usage_discount import UsageDiscount as UsageDiscount
 from .amount_discount import AmountDiscount as AmountDiscount
 from .pagination_metadata import PaginationMetadata as PaginationMetadata
 from .percentage_discount import PercentageDiscount as PercentageDiscount
