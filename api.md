@@ -2,23 +2,13 @@
 
 ```python
 from orb.types import (
-    AddCreditLedgerEntryRequest,
-    AddCreditTopUpRequest,
-    AddSubscriptionAdjustmentParams,
-    AddSubscriptionPriceParams,
     AmountDiscount,
     BillingCycleRelativeDate,
-    CreateCustomerAlertRequest,
     Discount,
     InvoiceLevelDiscount,
     PaginationMetadata,
     PercentageDiscount,
-    RemoveSubscriptionAdjustmentParams,
-    RemoveSubscriptionPriceParams,
-    ReplaceSubscriptionAdjustmentParams,
-    ReplaceSubscriptionPriceParams,
     TrialDiscount,
-    UpdatePriceRequestParams,
     UsageDiscount,
 )
 ```
