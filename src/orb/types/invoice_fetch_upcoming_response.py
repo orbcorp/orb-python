@@ -1,24 +1,753 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
+from typing_extensions import Literal, Annotated, TypeAlias
 
+from .price import Price
+from .._utils import PropertyInfo
 from .._models import BaseModel
-from .shared.address_model import AddressModel
-from .shared.maximum_model import MaximumModel
-from .shared.minimum_model import MinimumModel
-from .shared.auto_collection_model import AutoCollectionModel
-from .shared.customer_tax_id_model import CustomerTaxIDModel
-from .shared.payment_attempt_model import PaymentAttemptModel
+from .shared.discount import Discount
 from .shared.invoice_level_discount import InvoiceLevelDiscount
-from .shared.customer_minified_model import CustomerMinifiedModel
-from .shared.invoice_line_item_model import InvoiceLineItemModel
-from .shared.credit_note_summary_model import CreditNoteSummaryModel
-from .shared.subscription_minified_model import SubscriptionMinifiedModel
-from .shared.customer_balance_transaction_model import CustomerBalanceTransactionModel
 
-__all__ = ["InvoiceFetchUpcomingResponse"]
+__all__ = [
+    "InvoiceFetchUpcomingResponse",
+    "AutoCollection",
+    "BillingAddress",
+    "CreditNote",
+    "Customer",
+    "CustomerBalanceTransaction",
+    "CustomerBalanceTransactionCreditNote",
+    "CustomerBalanceTransactionInvoice",
+    "CustomerTaxID",
+    "LineItem",
+    "LineItemAdjustment",
+    "LineItemAdjustmentMonetaryUsageDiscountAdjustment",
+    "LineItemAdjustmentMonetaryAmountDiscountAdjustment",
+    "LineItemAdjustmentMonetaryPercentageDiscountAdjustment",
+    "LineItemAdjustmentMonetaryMinimumAdjustment",
+    "LineItemAdjustmentMonetaryMaximumAdjustment",
+    "LineItemMaximum",
+    "LineItemMinimum",
+    "LineItemSubLineItem",
+    "LineItemSubLineItemMatrixSubLineItem",
+    "LineItemSubLineItemMatrixSubLineItemGrouping",
+    "LineItemSubLineItemMatrixSubLineItemMatrixConfig",
+    "LineItemSubLineItemTierSubLineItem",
+    "LineItemSubLineItemTierSubLineItemGrouping",
+    "LineItemSubLineItemTierSubLineItemTierConfig",
+    "LineItemSubLineItemOtherSubLineItem",
+    "LineItemSubLineItemOtherSubLineItemGrouping",
+    "LineItemTaxAmount",
+    "Maximum",
+    "Minimum",
+    "PaymentAttempt",
+    "ShippingAddress",
+    "Subscription",
+]
+
+
+class AutoCollection(BaseModel):
+    enabled: Optional[bool] = None
+    """True only if auto-collection is enabled for this invoice."""
+
+    next_attempt_at: Optional[datetime] = None
+    """
+    If the invoice is scheduled for auto-collection, this field will reflect when
+    the next attempt will occur. If dunning has been exhausted, or auto-collection
+    is not enabled for this invoice, this field will be `null`.
+    """
+
+    num_attempts: Optional[int] = None
+    """Number of auto-collection payment attempts."""
+
+    previously_attempted_at: Optional[datetime] = None
+    """
+    If Orb has ever attempted payment auto-collection for this invoice, this field
+    will reflect when that attempt occurred. In conjunction with `next_attempt_at`,
+    this can be used to tell whether the invoice is currently in dunning (that is,
+    `previously_attempted_at` is non-null, and `next_attempt_time` is non-null), or
+    if dunning has been exhausted (`previously_attempted_at` is non-null, but
+    `next_attempt_time` is null).
+    """
+
+
+class BillingAddress(BaseModel):
+    city: Optional[str] = None
+
+    country: Optional[str] = None
+
+    line1: Optional[str] = None
+
+    line2: Optional[str] = None
+
+    postal_code: Optional[str] = None
+
+    state: Optional[str] = None
+
+
+class CreditNote(BaseModel):
+    id: str
+
+    credit_note_number: str
+
+    memo: Optional[str] = None
+    """An optional memo supplied on the credit note."""
+
+    reason: str
+
+    total: str
+
+    type: str
+
+    voided_at: Optional[datetime] = None
+    """
+    If the credit note has a status of `void`, this gives a timestamp when the
+    credit note was voided.
+    """
+
+
+class Customer(BaseModel):
+    id: str
+
+    external_customer_id: Optional[str] = None
+
+
+class CustomerBalanceTransactionCreditNote(BaseModel):
+    id: str
+    """The id of the Credit note"""
+
+
+class CustomerBalanceTransactionInvoice(BaseModel):
+    id: str
+    """The Invoice id"""
+
+
+class CustomerBalanceTransaction(BaseModel):
+    id: str
+    """A unique id for this transaction."""
+
+    action: Literal[
+        "applied_to_invoice",
+        "manual_adjustment",
+        "prorated_refund",
+        "revert_prorated_refund",
+        "return_from_voiding",
+        "credit_note_applied",
+        "credit_note_voided",
+        "overpayment_refund",
+        "external_payment",
+    ]
+
+    amount: str
+    """The value of the amount changed in the transaction."""
+
+    created_at: datetime
+    """The creation time of this transaction."""
+
+    credit_note: Optional[CustomerBalanceTransactionCreditNote] = None
+
+    description: Optional[str] = None
+    """An optional description provided for manual customer balance adjustments."""
+
+    ending_balance: str
+    """
+    The new value of the customer's balance prior to the transaction, in the
+    customer's currency.
+    """
+
+    invoice: Optional[CustomerBalanceTransactionInvoice] = None
+
+    starting_balance: str
+    """
+    The original value of the customer's balance prior to the transaction, in the
+    customer's currency.
+    """
+
+    type: Literal["increment", "decrement"]
+
+
+class CustomerTaxID(BaseModel):
+    country: Literal[
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CN",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "EE",
+        "DO",
+        "EC",
+        "EG",
+        "ES",
+        "EU",
+        "FI",
+        "FR",
+        "GB",
+        "GE",
+        "GR",
+        "HK",
+        "HR",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IN",
+        "IS",
+        "IT",
+        "JP",
+        "KE",
+        "KR",
+        "KZ",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "MX",
+        "MY",
+        "NG",
+        "NL",
+        "NO",
+        "NZ",
+        "OM",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "RO",
+        "RS",
+        "RU",
+        "SA",
+        "SE",
+        "SG",
+        "SI",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "UA",
+        "US",
+        "UY",
+        "VE",
+        "VN",
+        "ZA",
+    ]
+
+    type: Literal[
+        "ad_nrt",
+        "ae_trn",
+        "ar_cuit",
+        "eu_vat",
+        "au_abn",
+        "au_arn",
+        "bg_uic",
+        "bh_vat",
+        "bo_tin",
+        "br_cnpj",
+        "br_cpf",
+        "ca_bn",
+        "ca_gst_hst",
+        "ca_pst_bc",
+        "ca_pst_mb",
+        "ca_pst_sk",
+        "ca_qst",
+        "ch_vat",
+        "cl_tin",
+        "cn_tin",
+        "co_nit",
+        "cr_tin",
+        "do_rcn",
+        "ec_ruc",
+        "eg_tin",
+        "es_cif",
+        "eu_oss_vat",
+        "gb_vat",
+        "ge_vat",
+        "hk_br",
+        "hu_tin",
+        "id_npwp",
+        "il_vat",
+        "in_gst",
+        "is_vat",
+        "jp_cn",
+        "jp_rn",
+        "jp_trn",
+        "ke_pin",
+        "kr_brn",
+        "kz_bin",
+        "li_uid",
+        "mx_rfc",
+        "my_frp",
+        "my_itn",
+        "my_sst",
+        "ng_tin",
+        "no_vat",
+        "no_voec",
+        "nz_gst",
+        "om_vat",
+        "pe_ruc",
+        "ph_tin",
+        "ro_tin",
+        "rs_pib",
+        "ru_inn",
+        "ru_kpp",
+        "sa_vat",
+        "sg_gst",
+        "sg_uen",
+        "si_tin",
+        "sv_nit",
+        "th_vat",
+        "tr_tin",
+        "tw_vat",
+        "ua_vat",
+        "us_ein",
+        "uy_ruc",
+        "ve_rif",
+        "vn_tin",
+        "za_vat",
+    ]
+
+    value: str
+
+
+class LineItemAdjustmentMonetaryUsageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["usage_discount"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+    usage_discount: float
+    """
+    The number of usage units by which to discount the price this adjustment applies
+    to in a given billing period.
+    """
+
+
+class LineItemAdjustmentMonetaryAmountDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["amount_discount"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    amount_discount: str
+    """
+    The amount by which to discount the prices this adjustment applies to in a given
+    billing period.
+    """
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentMonetaryPercentageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["percentage_discount"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    percentage_discount: float
+    """
+    The percentage (as a value between 0 and 1) by which to discount the price
+    intervals this adjustment applies to in a given billing period.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentMonetaryMinimumAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["minimum"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    item_id: str
+    """The item ID that revenue from this minimum will be attributed to."""
+
+    minimum_amount: str
+    """
+    The minimum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+class LineItemAdjustmentMonetaryMaximumAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["maximum"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invocice, false for adjustments
+    that apply to only one price.
+    """
+
+    maximum_amount: str
+    """
+    The maximum amount to charge in a given billing period for the prices this
+    adjustment applies to.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+
+LineItemAdjustment: TypeAlias = Annotated[
+    Union[
+        LineItemAdjustmentMonetaryUsageDiscountAdjustment,
+        LineItemAdjustmentMonetaryAmountDiscountAdjustment,
+        LineItemAdjustmentMonetaryPercentageDiscountAdjustment,
+        LineItemAdjustmentMonetaryMinimumAdjustment,
+        LineItemAdjustmentMonetaryMaximumAdjustment,
+    ],
+    PropertyInfo(discriminator="adjustment_type"),
+]
+
+
+class LineItemMaximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class LineItemMinimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class LineItemSubLineItemMatrixSubLineItemGrouping(BaseModel):
+    key: str
+
+    value: Optional[str] = None
+    """No value indicates the default group"""
+
+
+class LineItemSubLineItemMatrixSubLineItemMatrixConfig(BaseModel):
+    dimension_values: List[Optional[str]]
+    """The ordered dimension values for this line item."""
+
+
+class LineItemSubLineItemMatrixSubLineItem(BaseModel):
+    amount: str
+    """The total amount for this sub line item."""
+
+    grouping: Optional[LineItemSubLineItemMatrixSubLineItemGrouping] = None
+
+    matrix_config: LineItemSubLineItemMatrixSubLineItemMatrixConfig
+
+    name: str
+
+    quantity: float
+
+    type: Literal["matrix"]
+
+
+class LineItemSubLineItemTierSubLineItemGrouping(BaseModel):
+    key: str
+
+    value: Optional[str] = None
+    """No value indicates the default group"""
+
+
+class LineItemSubLineItemTierSubLineItemTierConfig(BaseModel):
+    first_unit: float
+
+    last_unit: Optional[float] = None
+
+    unit_amount: str
+
+
+class LineItemSubLineItemTierSubLineItem(BaseModel):
+    amount: str
+    """The total amount for this sub line item."""
+
+    grouping: Optional[LineItemSubLineItemTierSubLineItemGrouping] = None
+
+    name: str
+
+    quantity: float
+
+    tier_config: LineItemSubLineItemTierSubLineItemTierConfig
+
+    type: Literal["tier"]
+
+
+class LineItemSubLineItemOtherSubLineItemGrouping(BaseModel):
+    key: str
+
+    value: Optional[str] = None
+    """No value indicates the default group"""
+
+
+class LineItemSubLineItemOtherSubLineItem(BaseModel):
+    amount: str
+    """The total amount for this sub line item."""
+
+    grouping: Optional[LineItemSubLineItemOtherSubLineItemGrouping] = None
+
+    name: str
+
+    quantity: float
+
+    type: Literal["'null'"]
+
+
+LineItemSubLineItem: TypeAlias = Annotated[
+    Union[
+        LineItemSubLineItemMatrixSubLineItem, LineItemSubLineItemTierSubLineItem, LineItemSubLineItemOtherSubLineItem
+    ],
+    PropertyInfo(discriminator="type"),
+]
+
+
+class LineItemTaxAmount(BaseModel):
+    amount: str
+    """The amount of additional tax incurred by this tax rate."""
+
+    tax_rate_description: str
+    """The human-readable description of the applied tax rate."""
+
+    tax_rate_percentage: Optional[str] = None
+    """The tax rate percentage, out of 100."""
+
+
+class LineItem(BaseModel):
+    id: str
+    """A unique ID for this line item."""
+
+    adjusted_subtotal: str
+    """
+    The line amount after any adjustments and before overage conversion, credits and
+    partial invoicing.
+    """
+
+    adjustments: List[LineItemAdjustment]
+    """All adjustments (ie. maximums, minimums, discounts) applied to the line item."""
+
+    amount: str
+    """
+    The final amount for a line item after all adjustments and pre paid credits have
+    been applied.
+    """
+
+    credits_applied: str
+    """The number of prepaid credits applied."""
+
+    discount: Optional[Discount] = None
+
+    end_date: datetime
+    """The end date of the range of time applied for this line item's price."""
+
+    filter: Optional[str] = None
+    """An additional filter that was used to calculate the usage for this line item."""
+
+    grouping: Optional[str] = None
+    """
+    [DEPRECATED] For configured prices that are split by a grouping key, this will
+    be populated with the key and a value. The `amount` and `subtotal` will be the
+    values for this particular grouping.
+    """
+
+    maximum: Optional[LineItemMaximum] = None
+    """This field is deprecated in favor of `adjustments`."""
+
+    maximum_amount: Optional[str] = None
+    """This field is deprecated in favor of `adjustments`."""
+
+    minimum: Optional[LineItemMinimum] = None
+    """This field is deprecated in favor of `adjustments`."""
+
+    minimum_amount: Optional[str] = None
+    """This field is deprecated in favor of `adjustments`."""
+
+    name: str
+    """The name of the price associated with this line item."""
+
+    partially_invoiced_amount: str
+    """Any amount applied from a partial invoice"""
+
+    price: Optional[Price] = None
+    """
+    The Price resource represents a price that can be billed on a subscription,
+    resulting in a charge on an invoice in the form of an invoice line item. Prices
+    take a quantity and determine an amount to bill.
+
+    Orb supports a few different pricing models out of the box. Each of these models
+    is serialized differently in a given Price object. The model_type field
+    determines the key for the configuration object that is present.
+
+    For more on the types of prices, see
+    [the core concepts documentation](/core-concepts#plan-and-price)
+    """
+
+    quantity: float
+    """Either the fixed fee quantity or the usage during the service period."""
+
+    start_date: datetime
+    """The start date of the range of time applied for this line item's price."""
+
+    sub_line_items: List[LineItemSubLineItem]
+    """
+    For complex pricing structures, the line item can be broken down further in
+    `sub_line_items`.
+    """
+
+    subtotal: str
+    """The line amount before before any adjustments."""
+
+    tax_amounts: List[LineItemTaxAmount]
+    """An array of tax rates and their incurred tax amounts.
+
+    Empty if no tax integration is configured.
+    """
+
+    usage_customer_ids: Optional[List[str]] = None
+    """
+    A list of customer ids that were used to calculate the usage for this line item.
+    """
+
+
+class Maximum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this maximum amount applies to.
+
+    For plan/plan phase maximums, this can be a subset of prices.
+    """
+
+    maximum_amount: str
+    """Maximum amount applied"""
+
+
+class Minimum(BaseModel):
+    applies_to_price_ids: List[str]
+    """List of price_ids that this minimum amount applies to.
+
+    For plan/plan phase minimums, this can be a subset of prices.
+    """
+
+    minimum_amount: str
+    """Minimum amount applied"""
+
+
+class PaymentAttempt(BaseModel):
+    id: str
+    """The ID of the payment attempt."""
+
+    amount: str
+    """The amount of the payment attempt."""
+
+    created_at: datetime
+    """The time at which the payment attempt was created."""
+
+    payment_provider: Optional[Literal["stripe"]] = None
+    """The payment provider that attempted to collect the payment."""
+
+    payment_provider_id: Optional[str] = None
+    """The ID of the payment attempt in the payment provider."""
+
+    succeeded: bool
+    """Whether the payment attempt succeeded."""
+
+
+class ShippingAddress(BaseModel):
+    city: Optional[str] = None
+
+    country: Optional[str] = None
+
+    line1: Optional[str] = None
+
+    line2: Optional[str] = None
+
+    postal_code: Optional[str] = None
+
+    state: Optional[str] = None
+
+
+class Subscription(BaseModel):
+    id: str
 
 
 class InvoiceFetchUpcomingResponse(BaseModel):
@@ -30,24 +759,24 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     application of the customer balance to the `total` of the invoice.
     """
 
-    auto_collection: AutoCollectionModel
+    auto_collection: AutoCollection
 
-    billing_address: Optional[AddressModel] = None
+    billing_address: Optional[BillingAddress] = None
 
     created_at: datetime
     """The creation time of the resource in Orb."""
 
-    credit_notes: List[CreditNoteSummaryModel]
+    credit_notes: List[CreditNote]
     """A list of credit notes associated with the invoice"""
 
     currency: str
     """An ISO 4217 currency string or `credits`"""
 
-    customer: CustomerMinifiedModel
+    customer: Customer
 
-    customer_balance_transactions: List[CustomerBalanceTransactionModel]
+    customer_balance_transactions: List[CustomerBalanceTransaction]
 
-    customer_tax_id: Optional[CustomerTaxIDModel] = None
+    customer_tax_id: Optional[CustomerTaxID] = None
     """
     Tax IDs are commonly required to be displayed on customer invoices, which are
     added to the headers of invoices.
@@ -209,10 +938,10 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     `issued` (even if it is now in a different state.)
     """
 
-    line_items: List[InvoiceLineItemModel]
+    line_items: List[LineItem]
     """The breakdown of prices in this invoice."""
 
-    maximum: Optional[MaximumModel] = None
+    maximum: Optional[Maximum] = None
 
     maximum_amount: Optional[str] = None
 
@@ -229,7 +958,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    minimum: Optional[MinimumModel] = None
+    minimum: Optional[Minimum] = None
 
     minimum_amount: Optional[str] = None
 
@@ -239,7 +968,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     was paid.
     """
 
-    payment_attempts: List[PaymentAttemptModel]
+    payment_attempts: List[PaymentAttempt]
     """A list of payment attempts associated with the invoice"""
 
     payment_failed_at: Optional[datetime] = None
@@ -261,11 +990,11 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     scheduled to be issued.
     """
 
-    shipping_address: Optional[AddressModel] = None
+    shipping_address: Optional[ShippingAddress] = None
 
     status: Literal["issued", "paid", "synced", "void", "draft"]
 
-    subscription: Optional[SubscriptionMinifiedModel] = None
+    subscription: Optional[Subscription] = None
 
     subtotal: str
     """The total before any discounts and minimums are applied."""

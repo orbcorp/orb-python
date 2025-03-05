@@ -27,7 +27,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.shared.invoice_model import InvoiceModel
+from ..types.invoice import Invoice
 from ..types.shared_params.discount import Discount
 from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
@@ -74,7 +74,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint is used to create a one-off invoice for a customer.
 
@@ -141,7 +141,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def update(
@@ -156,7 +156,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows you to update the `metadata` property on an invoice.
 
         If you
@@ -192,7 +192,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def list(
@@ -223,7 +223,7 @@ class Invoices(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[InvoiceModel]:
+    ) -> SyncPage[Invoice]:
         """
         This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
         account in a list format.
@@ -260,7 +260,7 @@ class Invoices(SyncAPIResource):
         """
         return self._get_api_list(
             "/invoices",
-            page=SyncPage[InvoiceModel],
+            page=SyncPage[Invoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -291,7 +291,7 @@ class Invoices(SyncAPIResource):
                     invoice_list_params.InvoiceListParams,
                 ),
             ),
-            model=InvoiceModel,
+            model=Invoice,
         )
 
     def fetch(
@@ -304,7 +304,7 @@ class Invoices(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
         identifier.
@@ -325,7 +325,7 @@ class Invoices(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def fetch_upcoming(
@@ -379,7 +379,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an eligible invoice to be issued manually.
 
         This is only
@@ -418,7 +418,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def mark_paid(
@@ -435,7 +435,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an invoice's status to be set the `paid` status.
 
         This can
@@ -477,7 +477,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def pay(
@@ -491,7 +491,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint collects payment for an invoice using the customer's default
         payment method. This action can only be taken on invoices with status "issued".
@@ -518,7 +518,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def void(
@@ -532,7 +532,7 @@ class Invoices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an invoice's status to be set the `void` status.
 
         This can
@@ -569,7 +569,7 @@ class Invoices(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
 
@@ -613,7 +613,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint is used to create a one-off invoice for a customer.
 
@@ -680,7 +680,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     async def update(
@@ -695,7 +695,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows you to update the `metadata` property on an invoice.
 
         If you
@@ -731,7 +731,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     def list(
@@ -762,7 +762,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[InvoiceModel, AsyncPage[InvoiceModel]]:
+    ) -> AsyncPaginator[Invoice, AsyncPage[Invoice]]:
         """
         This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
         account in a list format.
@@ -799,7 +799,7 @@ class AsyncInvoices(AsyncAPIResource):
         """
         return self._get_api_list(
             "/invoices",
-            page=AsyncPage[InvoiceModel],
+            page=AsyncPage[Invoice],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -830,7 +830,7 @@ class AsyncInvoices(AsyncAPIResource):
                     invoice_list_params.InvoiceListParams,
                 ),
             ),
-            model=InvoiceModel,
+            model=Invoice,
         )
 
     async def fetch(
@@ -843,7 +843,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
         identifier.
@@ -864,7 +864,7 @@ class AsyncInvoices(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     async def fetch_upcoming(
@@ -918,7 +918,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an eligible invoice to be issued manually.
 
         This is only
@@ -957,7 +957,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     async def mark_paid(
@@ -974,7 +974,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an invoice's status to be set the `paid` status.
 
         This can
@@ -1016,7 +1016,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     async def pay(
@@ -1030,7 +1030,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """
         This endpoint collects payment for an invoice using the customer's default
         payment method. This action can only be taken on invoices with status "issued".
@@ -1057,7 +1057,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
     async def void(
@@ -1071,7 +1071,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceModel:
+    ) -> Invoice:
         """This endpoint allows an invoice's status to be set the `void` status.
 
         This can
@@ -1108,7 +1108,7 @@ class AsyncInvoices(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceModel,
+            cast_to=Invoice,
         )
 
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 from .shared_params.add_subscription_price_params import AddSubscriptionPriceParams
@@ -13,9 +13,8 @@ from .shared_params.replace_subscription_price_params import ReplaceSubscription
 from .shared_params.add_subscription_adjustment_params import AddSubscriptionAdjustmentParams
 from .shared_params.remove_subscription_adjustment_params import RemoveSubscriptionAdjustmentParams
 from .shared_params.replace_subscription_adjustment_params import ReplaceSubscriptionAdjustmentParams
-from .shared_params.billing_cycle_anchor_configuration_model import BillingCycleAnchorConfigurationModel
 
-__all__ = ["SubscriptionCreateParams"]
+__all__ = ["SubscriptionCreateParams", "BillingCycleAnchorConfiguration"]
 
 
 class SubscriptionCreateParams(TypedDict, total=False):
@@ -44,7 +43,7 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     aws_region: Optional[str]
 
-    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel]
+    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
 
     coupon_redemption_code: Optional[str]
     """Redemption code to be used for this subscription.
@@ -172,4 +171,28 @@ class SubscriptionCreateParams(TypedDict, total=False):
     provided, the subscription includes usage events from the specified customers
     only. Provided usage_customer_ids must be either the customer for this
     subscription itself, or any of that customer's children.
+    """
+
+
+class BillingCycleAnchorConfiguration(TypedDict, total=False):
+    day: Required[int]
+    """The day of the month on which the billing cycle is anchored.
+
+    If the maximum number of days in a month is greater than this value, the last
+    day of the month is the billing cycle day (e.g. billing_cycle_day=31 for April
+    means the billing period begins on the 30th.
+    """
+
+    month: Optional[int]
+    """The month on which the billing cycle is anchored (e.g.
+
+    a quarterly price anchored in February would have cycles starting February, May,
+    August, and November).
+    """
+
+    year: Optional[int]
+    """The year on which the billing cycle is anchored (e.g.
+
+    a 2 year billing cycle anchored on 2021 would have cycles starting on 2021,
+    2023, 2025, etc.).
     """

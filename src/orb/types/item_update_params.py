@@ -3,14 +3,20 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
-from .shared_params.item_external_connection_model import ItemExternalConnectionModel
-
-__all__ = ["ItemUpdateParams"]
+__all__ = ["ItemUpdateParams", "ExternalConnection"]
 
 
 class ItemUpdateParams(TypedDict, total=False):
-    external_connections: Optional[Iterable[ItemExternalConnectionModel]]
+    external_connections: Optional[Iterable[ExternalConnection]]
 
     name: Optional[str]
+
+
+class ExternalConnection(TypedDict, total=False):
+    external_connection_name: Required[
+        Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok"]
+    ]
+
+    external_entity_id: Required[str]

@@ -17,9 +17,8 @@ from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
+from ..types.item import Item
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.shared.item_model import ItemModel
-from ..types.shared_params.item_external_connection_model import ItemExternalConnectionModel
 
 __all__ = ["Items", "AsyncItems"]
 
@@ -55,7 +54,7 @@ class Items(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint is used to create an [Item](/core-concepts#item).
 
@@ -82,14 +81,14 @@ class Items(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
     def update(
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[ItemExternalConnectionModel]] | NotGiven = NOT_GIVEN,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -98,7 +97,7 @@ class Items(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint can be used to update properties on the Item.
 
@@ -131,7 +130,7 @@ class Items(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
     def list(
@@ -145,7 +144,7 @@ class Items(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[ItemModel]:
+    ) -> SyncPage[Item]:
         """
         This endpoint returns a list of all Items, ordered in descending order by
         creation time.
@@ -166,7 +165,7 @@ class Items(SyncAPIResource):
         """
         return self._get_api_list(
             "/items",
-            page=SyncPage[ItemModel],
+            page=SyncPage[Item],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -180,7 +179,7 @@ class Items(SyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            model=ItemModel,
+            model=Item,
         )
 
     def fetch(
@@ -193,7 +192,7 @@ class Items(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint returns an item identified by its item_id.
 
@@ -213,7 +212,7 @@ class Items(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
 
@@ -248,7 +247,7 @@ class AsyncItems(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint is used to create an [Item](/core-concepts#item).
 
@@ -275,14 +274,14 @@ class AsyncItems(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
     async def update(
         self,
         item_id: str,
         *,
-        external_connections: Optional[Iterable[ItemExternalConnectionModel]] | NotGiven = NOT_GIVEN,
+        external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -291,7 +290,7 @@ class AsyncItems(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint can be used to update properties on the Item.
 
@@ -324,7 +323,7 @@ class AsyncItems(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
     def list(
@@ -338,7 +337,7 @@ class AsyncItems(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ItemModel, AsyncPage[ItemModel]]:
+    ) -> AsyncPaginator[Item, AsyncPage[Item]]:
         """
         This endpoint returns a list of all Items, ordered in descending order by
         creation time.
@@ -359,7 +358,7 @@ class AsyncItems(AsyncAPIResource):
         """
         return self._get_api_list(
             "/items",
-            page=AsyncPage[ItemModel],
+            page=AsyncPage[Item],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -373,7 +372,7 @@ class AsyncItems(AsyncAPIResource):
                     item_list_params.ItemListParams,
                 ),
             ),
-            model=ItemModel,
+            model=Item,
         )
 
     async def fetch(
@@ -386,7 +385,7 @@ class AsyncItems(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ItemModel:
+    ) -> Item:
         """
         This endpoint returns an item identified by its item_id.
 
@@ -406,7 +405,7 @@ class AsyncItems(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ItemModel,
+            cast_to=Item,
         )
 
 

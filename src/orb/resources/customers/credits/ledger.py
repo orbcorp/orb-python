@@ -26,7 +26,12 @@ from ....types.customers.credits import (
     ledger_list_by_external_id_params,
     ledger_create_entry_by_external_id_params,
 )
-from ....types.shared.credit_ledger_entry_model import CreditLedgerEntryModel
+from ....types.customers.credits.ledger_list_response import LedgerListResponse
+from ....types.customers.credits.ledger_create_entry_response import LedgerCreateEntryResponse
+from ....types.customers.credits.ledger_list_by_external_id_response import LedgerListByExternalIDResponse
+from ....types.customers.credits.ledger_create_entry_by_external_id_response import (
+    LedgerCreateEntryByExternalIDResponse,
+)
 
 __all__ = ["Ledger", "AsyncLedger"]
 
@@ -82,7 +87,7 @@ class Ledger(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CreditLedgerEntryModel]:
+    ) -> SyncPage[LedgerListResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
         with a list of actions that have taken place to modify a customer's credit
@@ -186,7 +191,7 @@ class Ledger(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/ledger",
-            page=SyncPage[CreditLedgerEntryModel],
+            page=SyncPage[LedgerListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -208,7 +213,7 @@ class Ledger(SyncAPIResource):
                     ledger_list_params.LedgerListParams,
                 ),
             ),
-            model=cast(Any, CreditLedgerEntryModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, LedgerListResponse),  # Union types cannot be passed in as arguments in the type system
         )
 
     @overload
@@ -233,7 +238,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -403,7 +408,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -563,7 +568,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -731,7 +736,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -893,7 +898,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1068,11 +1073,11 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return cast(
-            CreditLedgerEntryModel,
+            LedgerCreateEntryResponse,
             self._post(
                 f"/customers/{customer_id}/credits/ledger_entry",
                 body=maybe_transform(
@@ -1100,7 +1105,7 @@ class Ledger(SyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, CreditLedgerEntryModel
+                    Any, LedgerCreateEntryResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
@@ -1129,7 +1134,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1299,7 +1304,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1459,7 +1464,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1627,7 +1632,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1789,7 +1794,7 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -1966,13 +1971,13 @@ class Ledger(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         if not external_customer_id:
             raise ValueError(
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return cast(
-            CreditLedgerEntryModel,
+            LedgerCreateEntryByExternalIDResponse,
             self._post(
                 f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
                 body=maybe_transform(
@@ -2000,7 +2005,7 @@ class Ledger(SyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, CreditLedgerEntryModel
+                    Any, LedgerCreateEntryByExternalIDResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
@@ -2036,7 +2041,7 @@ class Ledger(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CreditLedgerEntryModel]:
+    ) -> SyncPage[LedgerListByExternalIDResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
         with a list of actions that have taken place to modify a customer's credit
@@ -2142,7 +2147,7 @@ class Ledger(SyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
-            page=SyncPage[CreditLedgerEntryModel],
+            page=SyncPage[LedgerListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2164,7 +2169,9 @@ class Ledger(SyncAPIResource):
                     ledger_list_by_external_id_params.LedgerListByExternalIDParams,
                 ),
             ),
-            model=cast(Any, CreditLedgerEntryModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(
+                Any, LedgerListByExternalIDResponse
+            ),  # Union types cannot be passed in as arguments in the type system
         )
 
 
@@ -2219,7 +2226,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditLedgerEntryModel, AsyncPage[CreditLedgerEntryModel]]:
+    ) -> AsyncPaginator[LedgerListResponse, AsyncPage[LedgerListResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
         with a list of actions that have taken place to modify a customer's credit
@@ -2323,7 +2330,7 @@ class AsyncLedger(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/ledger",
-            page=AsyncPage[CreditLedgerEntryModel],
+            page=AsyncPage[LedgerListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2345,7 +2352,7 @@ class AsyncLedger(AsyncAPIResource):
                     ledger_list_params.LedgerListParams,
                 ),
             ),
-            model=cast(Any, CreditLedgerEntryModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, LedgerListResponse),  # Union types cannot be passed in as arguments in the type system
         )
 
     @overload
@@ -2370,7 +2377,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -2540,7 +2547,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -2700,7 +2707,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -2868,7 +2875,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3030,7 +3037,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3205,11 +3212,11 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryResponse:
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return cast(
-            CreditLedgerEntryModel,
+            LedgerCreateEntryResponse,
             await self._post(
                 f"/customers/{customer_id}/credits/ledger_entry",
                 body=await async_maybe_transform(
@@ -3237,7 +3244,7 @@ class AsyncLedger(AsyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, CreditLedgerEntryModel
+                    Any, LedgerCreateEntryResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
@@ -3266,7 +3273,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3436,7 +3443,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3596,7 +3603,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3764,7 +3771,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -3926,7 +3933,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         """
         This endpoint allows you to create a new ledger entry for a specified customer's
         balance. This can be used to increment balance, deduct credits, and change the
@@ -4103,13 +4110,13 @@ class AsyncLedger(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditLedgerEntryModel:
+    ) -> LedgerCreateEntryByExternalIDResponse:
         if not external_customer_id:
             raise ValueError(
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return cast(
-            CreditLedgerEntryModel,
+            LedgerCreateEntryByExternalIDResponse,
             await self._post(
                 f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
                 body=await async_maybe_transform(
@@ -4137,7 +4144,7 @@ class AsyncLedger(AsyncAPIResource):
                     idempotency_key=idempotency_key,
                 ),
                 cast_to=cast(
-                    Any, CreditLedgerEntryModel
+                    Any, LedgerCreateEntryByExternalIDResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
         )
@@ -4173,7 +4180,7 @@ class AsyncLedger(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditLedgerEntryModel, AsyncPage[CreditLedgerEntryModel]]:
+    ) -> AsyncPaginator[LedgerListByExternalIDResponse, AsyncPage[LedgerListByExternalIDResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
         with a list of actions that have taken place to modify a customer's credit
@@ -4279,7 +4286,7 @@ class AsyncLedger(AsyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
-            page=AsyncPage[CreditLedgerEntryModel],
+            page=AsyncPage[LedgerListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -4301,7 +4308,9 @@ class AsyncLedger(AsyncAPIResource):
                     ledger_list_by_external_id_params.LedgerListByExternalIDParams,
                 ),
             ),
-            model=cast(Any, CreditLedgerEntryModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(
+                Any, LedgerListByExternalIDResponse
+            ),  # Union types cannot be passed in as arguments in the type system
         )
 
 

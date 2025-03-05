@@ -19,7 +19,8 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.customers import cost_list_params, cost_list_by_external_id_params
-from ...types.shared.customer_costs_model import CustomerCostsModel
+from ...types.customers.cost_list_response import CostListResponse
+from ...types.customers.cost_list_by_external_id_response import CostListByExternalIDResponse
 
 __all__ = ["Costs", "AsyncCosts"]
 
@@ -58,7 +59,7 @@ class Costs(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerCostsModel:
+    ) -> CostListResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
@@ -217,7 +218,7 @@ class Costs(SyncAPIResource):
                     cost_list_params.CostListParams,
                 ),
             ),
-            cast_to=CustomerCostsModel,
+            cast_to=CostListResponse,
         )
 
     def list_by_external_id(
@@ -234,7 +235,7 @@ class Costs(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerCostsModel:
+    ) -> CostListByExternalIDResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
@@ -395,7 +396,7 @@ class Costs(SyncAPIResource):
                     cost_list_by_external_id_params.CostListByExternalIDParams,
                 ),
             ),
-            cast_to=CustomerCostsModel,
+            cast_to=CostListByExternalIDResponse,
         )
 
 
@@ -433,7 +434,7 @@ class AsyncCosts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerCostsModel:
+    ) -> CostListResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
@@ -592,7 +593,7 @@ class AsyncCosts(AsyncAPIResource):
                     cost_list_params.CostListParams,
                 ),
             ),
-            cast_to=CustomerCostsModel,
+            cast_to=CostListResponse,
         )
 
     async def list_by_external_id(
@@ -609,7 +610,7 @@ class AsyncCosts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerCostsModel:
+    ) -> CostListByExternalIDResponse:
         """
         This endpoint is used to fetch a day-by-day snapshot of a customer's costs in
         Orb, calculated by applying pricing information to the underlying usage (see the
@@ -770,7 +771,7 @@ class AsyncCosts(AsyncAPIResource):
                     cost_list_by_external_id_params.CostListByExternalIDParams,
                 ),
             ),
-            cast_to=CustomerCostsModel,
+            cast_to=CostListByExternalIDResponse,
         )
 
 

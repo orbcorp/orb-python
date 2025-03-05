@@ -8,9 +8,9 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb.types import Item
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.shared import ItemModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestItems:
         item = client.items.create(
             name="API requests",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -34,7 +34,7 @@ class TestItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -45,7 +45,7 @@ class TestItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -54,7 +54,7 @@ class TestItems:
         item = client.items.update(
             item_id="item_id",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -68,7 +68,7 @@ class TestItems:
             ],
             name="name",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -79,7 +79,7 @@ class TestItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -90,7 +90,7 @@ class TestItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -104,7 +104,7 @@ class TestItems:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         item = client.items.list()
-        assert_matches_type(SyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(SyncPage[Item], item, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -112,7 +112,7 @@ class TestItems:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(SyncPage[Item], item, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -121,7 +121,7 @@ class TestItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(SyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(SyncPage[Item], item, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -130,7 +130,7 @@ class TestItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = response.parse()
-            assert_matches_type(SyncPage[ItemModel], item, path=["response"])
+            assert_matches_type(SyncPage[Item], item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -139,7 +139,7 @@ class TestItems:
         item = client.items.fetch(
             "item_id",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -150,7 +150,7 @@ class TestItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -161,7 +161,7 @@ class TestItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -181,7 +181,7 @@ class TestAsyncItems:
         item = await async_client.items.create(
             name="API requests",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -192,7 +192,7 @@ class TestAsyncItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -203,7 +203,7 @@ class TestAsyncItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = await response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -212,7 +212,7 @@ class TestAsyncItems:
         item = await async_client.items.update(
             item_id="item_id",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -226,7 +226,7 @@ class TestAsyncItems:
             ],
             name="name",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -237,7 +237,7 @@ class TestAsyncItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -248,7 +248,7 @@ class TestAsyncItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = await response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -262,7 +262,7 @@ class TestAsyncItems:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         item = await async_client.items.list()
-        assert_matches_type(AsyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(AsyncPage[Item], item, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -270,7 +270,7 @@ class TestAsyncItems:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(AsyncPage[Item], item, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -279,7 +279,7 @@ class TestAsyncItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(AsyncPage[ItemModel], item, path=["response"])
+        assert_matches_type(AsyncPage[Item], item, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -288,7 +288,7 @@ class TestAsyncItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = await response.parse()
-            assert_matches_type(AsyncPage[ItemModel], item, path=["response"])
+            assert_matches_type(AsyncPage[Item], item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -297,7 +297,7 @@ class TestAsyncItems:
         item = await async_client.items.fetch(
             "item_id",
         )
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -308,7 +308,7 @@ class TestAsyncItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         item = response.parse()
-        assert_matches_type(ItemModel, item, path=["response"])
+        assert_matches_type(Item, item, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -319,7 +319,7 @@ class TestAsyncItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             item = await response.parse()
-            assert_matches_type(ItemModel, item, path=["response"])
+            assert_matches_type(Item, item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
