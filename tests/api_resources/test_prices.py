@@ -9,12 +9,12 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import (
-    Price,
     PriceEvaluateResponse,
 )
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
+from orb.types.shared import PriceModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -32,7 +32,7 @@ class TestPrices:
             name="Annual fee",
             unit_config={"unit_amount": "unit_amount"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_1(self, client: Orb) -> None:
@@ -59,7 +59,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_1(self, client: Orb) -> None:
@@ -75,7 +75,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_1(self, client: Orb) -> None:
@@ -91,7 +91,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -108,7 +108,7 @@ class TestPrices:
                 "package_size": 0,
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_2(self, client: Orb) -> None:
@@ -138,7 +138,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_2(self, client: Orb) -> None:
@@ -157,7 +157,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_2(self, client: Orb) -> None:
@@ -176,7 +176,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -199,7 +199,7 @@ class TestPrices:
             model_type="matrix",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_3(self, client: Orb) -> None:
@@ -235,7 +235,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_3(self, client: Orb) -> None:
@@ -260,7 +260,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_3(self, client: Orb) -> None:
@@ -285,7 +285,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -309,7 +309,7 @@ class TestPrices:
             model_type="matrix_with_allocation",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_4(self, client: Orb) -> None:
@@ -346,7 +346,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_4(self, client: Orb) -> None:
@@ -372,7 +372,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_4(self, client: Orb) -> None:
@@ -398,7 +398,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -419,7 +419,7 @@ class TestPrices:
                 ]
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_5(self, client: Orb) -> None:
@@ -454,7 +454,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_5(self, client: Orb) -> None:
@@ -477,7 +477,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_5(self, client: Orb) -> None:
@@ -500,7 +500,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -521,7 +521,7 @@ class TestPrices:
                 ]
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
@@ -557,7 +557,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_6(self, client: Orb) -> None:
@@ -580,7 +580,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_6(self, client: Orb) -> None:
@@ -603,7 +603,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -617,7 +617,7 @@ class TestPrices:
             model_type="bps",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
@@ -647,7 +647,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_7(self, client: Orb) -> None:
@@ -663,7 +663,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_7(self, client: Orb) -> None:
@@ -679,7 +679,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -693,7 +693,7 @@ class TestPrices:
             model_type="bulk_bps",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
@@ -728,7 +728,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_8(self, client: Orb) -> None:
@@ -744,7 +744,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_8(self, client: Orb) -> None:
@@ -760,7 +760,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -774,7 +774,7 @@ class TestPrices:
             model_type="bulk",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
@@ -808,7 +808,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_9(self, client: Orb) -> None:
@@ -824,7 +824,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_9(self, client: Orb) -> None:
@@ -840,7 +840,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -854,7 +854,7 @@ class TestPrices:
             name="Annual fee",
             threshold_total_amount_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_10(self, client: Orb) -> None:
@@ -881,7 +881,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_10(self, client: Orb) -> None:
@@ -897,7 +897,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_10(self, client: Orb) -> None:
@@ -913,7 +913,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -927,7 +927,7 @@ class TestPrices:
             name="Annual fee",
             tiered_package_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_11(self, client: Orb) -> None:
@@ -954,7 +954,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_11(self, client: Orb) -> None:
@@ -970,7 +970,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_11(self, client: Orb) -> None:
@@ -986,7 +986,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1000,7 +1000,7 @@ class TestPrices:
             model_type="grouped_tiered",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_12(self, client: Orb) -> None:
@@ -1027,7 +1027,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_12(self, client: Orb) -> None:
@@ -1043,7 +1043,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_12(self, client: Orb) -> None:
@@ -1059,7 +1059,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1073,7 +1073,7 @@ class TestPrices:
             model_type="max_group_tiered_package",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_13(self, client: Orb) -> None:
@@ -1100,7 +1100,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_13(self, client: Orb) -> None:
@@ -1116,7 +1116,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_13(self, client: Orb) -> None:
@@ -1132,7 +1132,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1146,7 +1146,7 @@ class TestPrices:
             name="Annual fee",
             tiered_with_minimum_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_14(self, client: Orb) -> None:
@@ -1173,7 +1173,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_14(self, client: Orb) -> None:
@@ -1189,7 +1189,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_14(self, client: Orb) -> None:
@@ -1205,7 +1205,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1219,7 +1219,7 @@ class TestPrices:
             name="Annual fee",
             package_with_allocation_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_15(self, client: Orb) -> None:
@@ -1246,7 +1246,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_15(self, client: Orb) -> None:
@@ -1262,7 +1262,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_15(self, client: Orb) -> None:
@@ -1278,7 +1278,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1292,7 +1292,7 @@ class TestPrices:
             name="Annual fee",
             tiered_package_with_minimum_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_16(self, client: Orb) -> None:
@@ -1319,7 +1319,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_16(self, client: Orb) -> None:
@@ -1335,7 +1335,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_16(self, client: Orb) -> None:
@@ -1351,7 +1351,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1365,7 +1365,7 @@ class TestPrices:
             name="Annual fee",
             unit_with_percent_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_17(self, client: Orb) -> None:
@@ -1392,7 +1392,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_17(self, client: Orb) -> None:
@@ -1408,7 +1408,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_17(self, client: Orb) -> None:
@@ -1424,7 +1424,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1438,7 +1438,7 @@ class TestPrices:
             name="Annual fee",
             tiered_with_proration_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_18(self, client: Orb) -> None:
@@ -1465,7 +1465,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_18(self, client: Orb) -> None:
@@ -1481,7 +1481,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_18(self, client: Orb) -> None:
@@ -1497,7 +1497,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1511,7 +1511,7 @@ class TestPrices:
             name="Annual fee",
             unit_with_proration_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_19(self, client: Orb) -> None:
@@ -1538,7 +1538,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_19(self, client: Orb) -> None:
@@ -1554,7 +1554,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_19(self, client: Orb) -> None:
@@ -1570,7 +1570,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1584,7 +1584,7 @@ class TestPrices:
             model_type="grouped_allocation",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_20(self, client: Orb) -> None:
@@ -1611,7 +1611,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_20(self, client: Orb) -> None:
@@ -1627,7 +1627,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_20(self, client: Orb) -> None:
@@ -1643,7 +1643,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1657,7 +1657,7 @@ class TestPrices:
             model_type="grouped_with_prorated_minimum",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_21(self, client: Orb) -> None:
@@ -1684,7 +1684,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_21(self, client: Orb) -> None:
@@ -1700,7 +1700,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_21(self, client: Orb) -> None:
@@ -1716,7 +1716,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1730,7 +1730,7 @@ class TestPrices:
             model_type="grouped_with_metered_minimum",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_22(self, client: Orb) -> None:
@@ -1757,7 +1757,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_22(self, client: Orb) -> None:
@@ -1773,7 +1773,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_22(self, client: Orb) -> None:
@@ -1789,7 +1789,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1803,7 +1803,7 @@ class TestPrices:
             model_type="matrix_with_display_name",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_23(self, client: Orb) -> None:
@@ -1830,7 +1830,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_23(self, client: Orb) -> None:
@@ -1846,7 +1846,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_23(self, client: Orb) -> None:
@@ -1862,7 +1862,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1876,7 +1876,7 @@ class TestPrices:
             model_type="bulk_with_proration",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_24(self, client: Orb) -> None:
@@ -1903,7 +1903,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_24(self, client: Orb) -> None:
@@ -1919,7 +1919,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_24(self, client: Orb) -> None:
@@ -1935,7 +1935,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1949,7 +1949,7 @@ class TestPrices:
             model_type="grouped_tiered_package",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_25(self, client: Orb) -> None:
@@ -1976,7 +1976,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_25(self, client: Orb) -> None:
@@ -1992,7 +1992,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_25(self, client: Orb) -> None:
@@ -2008,7 +2008,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2022,7 +2022,7 @@ class TestPrices:
             name="Annual fee",
             scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_26(self, client: Orb) -> None:
@@ -2049,7 +2049,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_26(self, client: Orb) -> None:
@@ -2065,7 +2065,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_26(self, client: Orb) -> None:
@@ -2081,7 +2081,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2095,7 +2095,7 @@ class TestPrices:
             name="Annual fee",
             scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_27(self, client: Orb) -> None:
@@ -2122,7 +2122,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_27(self, client: Orb) -> None:
@@ -2138,7 +2138,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_27(self, client: Orb) -> None:
@@ -2154,7 +2154,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2168,7 +2168,7 @@ class TestPrices:
             model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_28(self, client: Orb) -> None:
@@ -2195,7 +2195,7 @@ class TestPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_create_overload_28(self, client: Orb) -> None:
@@ -2211,7 +2211,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_create_overload_28(self, client: Orb) -> None:
@@ -2227,7 +2227,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2236,7 +2236,7 @@ class TestPrices:
         price = client.prices.update(
             price_id="price_id",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -2244,7 +2244,7 @@ class TestPrices:
             price_id="price_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -2255,7 +2255,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -2266,7 +2266,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2280,7 +2280,7 @@ class TestPrices:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         price = client.prices.list()
-        assert_matches_type(SyncPage[Price], price, path=["response"])
+        assert_matches_type(SyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -2288,7 +2288,7 @@ class TestPrices:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[Price], price, path=["response"])
+        assert_matches_type(SyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -2297,7 +2297,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(SyncPage[Price], price, path=["response"])
+        assert_matches_type(SyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -2306,7 +2306,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(SyncPage[Price], price, path=["response"])
+            assert_matches_type(SyncPage[PriceModel], price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2374,7 +2374,7 @@ class TestPrices:
         price = client.prices.fetch(
             "price_id",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -2385,7 +2385,7 @@ class TestPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -2396,7 +2396,7 @@ class TestPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2421,7 +2421,7 @@ class TestAsyncPrices:
             name="Annual fee",
             unit_config={"unit_amount": "unit_amount"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_1(self, async_client: AsyncOrb) -> None:
@@ -2448,7 +2448,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_1(self, async_client: AsyncOrb) -> None:
@@ -2464,7 +2464,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_1(self, async_client: AsyncOrb) -> None:
@@ -2480,7 +2480,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2497,7 +2497,7 @@ class TestAsyncPrices:
                 "package_size": 0,
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_2(self, async_client: AsyncOrb) -> None:
@@ -2527,7 +2527,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_2(self, async_client: AsyncOrb) -> None:
@@ -2546,7 +2546,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_2(self, async_client: AsyncOrb) -> None:
@@ -2565,7 +2565,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2588,7 +2588,7 @@ class TestAsyncPrices:
             model_type="matrix",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_3(self, async_client: AsyncOrb) -> None:
@@ -2624,7 +2624,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_3(self, async_client: AsyncOrb) -> None:
@@ -2649,7 +2649,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_3(self, async_client: AsyncOrb) -> None:
@@ -2674,7 +2674,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2698,7 +2698,7 @@ class TestAsyncPrices:
             model_type="matrix_with_allocation",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_4(self, async_client: AsyncOrb) -> None:
@@ -2735,7 +2735,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_4(self, async_client: AsyncOrb) -> None:
@@ -2761,7 +2761,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_4(self, async_client: AsyncOrb) -> None:
@@ -2787,7 +2787,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2808,7 +2808,7 @@ class TestAsyncPrices:
                 ]
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_5(self, async_client: AsyncOrb) -> None:
@@ -2843,7 +2843,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_5(self, async_client: AsyncOrb) -> None:
@@ -2866,7 +2866,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_5(self, async_client: AsyncOrb) -> None:
@@ -2889,7 +2889,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2910,7 +2910,7 @@ class TestAsyncPrices:
                 ]
             },
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
@@ -2946,7 +2946,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
@@ -2969,7 +2969,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
@@ -2992,7 +2992,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3006,7 +3006,7 @@ class TestAsyncPrices:
             model_type="bps",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
@@ -3036,7 +3036,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
@@ -3052,7 +3052,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
@@ -3068,7 +3068,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3082,7 +3082,7 @@ class TestAsyncPrices:
             model_type="bulk_bps",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
@@ -3117,7 +3117,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
@@ -3133,7 +3133,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
@@ -3149,7 +3149,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3163,7 +3163,7 @@ class TestAsyncPrices:
             model_type="bulk",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
@@ -3197,7 +3197,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
@@ -3213,7 +3213,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
@@ -3229,7 +3229,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3243,7 +3243,7 @@ class TestAsyncPrices:
             name="Annual fee",
             threshold_total_amount_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_10(self, async_client: AsyncOrb) -> None:
@@ -3270,7 +3270,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_10(self, async_client: AsyncOrb) -> None:
@@ -3286,7 +3286,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_10(self, async_client: AsyncOrb) -> None:
@@ -3302,7 +3302,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3316,7 +3316,7 @@ class TestAsyncPrices:
             name="Annual fee",
             tiered_package_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_11(self, async_client: AsyncOrb) -> None:
@@ -3343,7 +3343,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_11(self, async_client: AsyncOrb) -> None:
@@ -3359,7 +3359,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_11(self, async_client: AsyncOrb) -> None:
@@ -3375,7 +3375,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3389,7 +3389,7 @@ class TestAsyncPrices:
             model_type="grouped_tiered",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_12(self, async_client: AsyncOrb) -> None:
@@ -3416,7 +3416,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_12(self, async_client: AsyncOrb) -> None:
@@ -3432,7 +3432,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_12(self, async_client: AsyncOrb) -> None:
@@ -3448,7 +3448,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3462,7 +3462,7 @@ class TestAsyncPrices:
             model_type="max_group_tiered_package",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_13(self, async_client: AsyncOrb) -> None:
@@ -3489,7 +3489,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_13(self, async_client: AsyncOrb) -> None:
@@ -3505,7 +3505,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_13(self, async_client: AsyncOrb) -> None:
@@ -3521,7 +3521,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3535,7 +3535,7 @@ class TestAsyncPrices:
             name="Annual fee",
             tiered_with_minimum_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_14(self, async_client: AsyncOrb) -> None:
@@ -3562,7 +3562,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_14(self, async_client: AsyncOrb) -> None:
@@ -3578,7 +3578,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_14(self, async_client: AsyncOrb) -> None:
@@ -3594,7 +3594,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3608,7 +3608,7 @@ class TestAsyncPrices:
             name="Annual fee",
             package_with_allocation_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_15(self, async_client: AsyncOrb) -> None:
@@ -3635,7 +3635,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_15(self, async_client: AsyncOrb) -> None:
@@ -3651,7 +3651,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_15(self, async_client: AsyncOrb) -> None:
@@ -3667,7 +3667,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3681,7 +3681,7 @@ class TestAsyncPrices:
             name="Annual fee",
             tiered_package_with_minimum_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_16(self, async_client: AsyncOrb) -> None:
@@ -3708,7 +3708,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_16(self, async_client: AsyncOrb) -> None:
@@ -3724,7 +3724,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_16(self, async_client: AsyncOrb) -> None:
@@ -3740,7 +3740,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3754,7 +3754,7 @@ class TestAsyncPrices:
             name="Annual fee",
             unit_with_percent_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_17(self, async_client: AsyncOrb) -> None:
@@ -3781,7 +3781,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_17(self, async_client: AsyncOrb) -> None:
@@ -3797,7 +3797,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_17(self, async_client: AsyncOrb) -> None:
@@ -3813,7 +3813,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3827,7 +3827,7 @@ class TestAsyncPrices:
             name="Annual fee",
             tiered_with_proration_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_18(self, async_client: AsyncOrb) -> None:
@@ -3854,7 +3854,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_18(self, async_client: AsyncOrb) -> None:
@@ -3870,7 +3870,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_18(self, async_client: AsyncOrb) -> None:
@@ -3886,7 +3886,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3900,7 +3900,7 @@ class TestAsyncPrices:
             name="Annual fee",
             unit_with_proration_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_19(self, async_client: AsyncOrb) -> None:
@@ -3927,7 +3927,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_19(self, async_client: AsyncOrb) -> None:
@@ -3943,7 +3943,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_19(self, async_client: AsyncOrb) -> None:
@@ -3959,7 +3959,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -3973,7 +3973,7 @@ class TestAsyncPrices:
             model_type="grouped_allocation",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_20(self, async_client: AsyncOrb) -> None:
@@ -4000,7 +4000,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_20(self, async_client: AsyncOrb) -> None:
@@ -4016,7 +4016,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_20(self, async_client: AsyncOrb) -> None:
@@ -4032,7 +4032,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4046,7 +4046,7 @@ class TestAsyncPrices:
             model_type="grouped_with_prorated_minimum",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_21(self, async_client: AsyncOrb) -> None:
@@ -4073,7 +4073,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_21(self, async_client: AsyncOrb) -> None:
@@ -4089,7 +4089,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_21(self, async_client: AsyncOrb) -> None:
@@ -4105,7 +4105,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4119,7 +4119,7 @@ class TestAsyncPrices:
             model_type="grouped_with_metered_minimum",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_22(self, async_client: AsyncOrb) -> None:
@@ -4146,7 +4146,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_22(self, async_client: AsyncOrb) -> None:
@@ -4162,7 +4162,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_22(self, async_client: AsyncOrb) -> None:
@@ -4178,7 +4178,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4192,7 +4192,7 @@ class TestAsyncPrices:
             model_type="matrix_with_display_name",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_23(self, async_client: AsyncOrb) -> None:
@@ -4219,7 +4219,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_23(self, async_client: AsyncOrb) -> None:
@@ -4235,7 +4235,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_23(self, async_client: AsyncOrb) -> None:
@@ -4251,7 +4251,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4265,7 +4265,7 @@ class TestAsyncPrices:
             model_type="bulk_with_proration",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_24(self, async_client: AsyncOrb) -> None:
@@ -4292,7 +4292,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_24(self, async_client: AsyncOrb) -> None:
@@ -4308,7 +4308,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_24(self, async_client: AsyncOrb) -> None:
@@ -4324,7 +4324,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4338,7 +4338,7 @@ class TestAsyncPrices:
             model_type="grouped_tiered_package",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_25(self, async_client: AsyncOrb) -> None:
@@ -4365,7 +4365,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_25(self, async_client: AsyncOrb) -> None:
@@ -4381,7 +4381,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_25(self, async_client: AsyncOrb) -> None:
@@ -4397,7 +4397,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4411,7 +4411,7 @@ class TestAsyncPrices:
             name="Annual fee",
             scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_26(self, async_client: AsyncOrb) -> None:
@@ -4438,7 +4438,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_26(self, async_client: AsyncOrb) -> None:
@@ -4454,7 +4454,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_26(self, async_client: AsyncOrb) -> None:
@@ -4470,7 +4470,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4484,7 +4484,7 @@ class TestAsyncPrices:
             name="Annual fee",
             scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_27(self, async_client: AsyncOrb) -> None:
@@ -4511,7 +4511,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_27(self, async_client: AsyncOrb) -> None:
@@ -4527,7 +4527,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_27(self, async_client: AsyncOrb) -> None:
@@ -4543,7 +4543,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4557,7 +4557,7 @@ class TestAsyncPrices:
             model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_28(self, async_client: AsyncOrb) -> None:
@@ -4584,7 +4584,7 @@ class TestAsyncPrices:
             },
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_create_overload_28(self, async_client: AsyncOrb) -> None:
@@ -4600,7 +4600,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_overload_28(self, async_client: AsyncOrb) -> None:
@@ -4616,7 +4616,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4625,7 +4625,7 @@ class TestAsyncPrices:
         price = await async_client.prices.update(
             price_id="price_id",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -4633,7 +4633,7 @@ class TestAsyncPrices:
             price_id="price_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -4644,7 +4644,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -4655,7 +4655,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4669,7 +4669,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.list()
-        assert_matches_type(AsyncPage[Price], price, path=["response"])
+        assert_matches_type(AsyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -4677,7 +4677,7 @@ class TestAsyncPrices:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[Price], price, path=["response"])
+        assert_matches_type(AsyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -4686,7 +4686,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(AsyncPage[Price], price, path=["response"])
+        assert_matches_type(AsyncPage[PriceModel], price, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -4695,7 +4695,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(AsyncPage[Price], price, path=["response"])
+            assert_matches_type(AsyncPage[PriceModel], price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -4763,7 +4763,7 @@ class TestAsyncPrices:
         price = await async_client.prices.fetch(
             "price_id",
         )
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -4774,7 +4774,7 @@ class TestAsyncPrices:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
+        assert_matches_type(PriceModel, price, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -4785,7 +4785,7 @@ class TestAsyncPrices:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
+            assert_matches_type(PriceModel, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

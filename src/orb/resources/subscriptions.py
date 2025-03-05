@@ -34,24 +34,18 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.subscription import Subscription
 from ..types.subscription_usage import SubscriptionUsage
-from ..types.subscription_cancel_response import SubscriptionCancelResponse
-from ..types.subscription_create_response import SubscriptionCreateResponse
+from ..types.shared.subscription_model import SubscriptionModel
+from ..types.shared.mutated_subscription_model import MutatedSubscriptionModel
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
-from ..types.subscription_update_trial_response import SubscriptionUpdateTrialResponse
-from ..types.subscription_trigger_phase_response import SubscriptionTriggerPhaseResponse
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
-from ..types.subscription_price_intervals_response import SubscriptionPriceIntervalsResponse
-from ..types.subscription_schedule_plan_change_response import SubscriptionSchedulePlanChangeResponse
-from ..types.subscription_unschedule_cancellation_response import SubscriptionUnscheduleCancellationResponse
-from ..types.subscription_update_fixed_fee_quantity_response import SubscriptionUpdateFixedFeeQuantityResponse
-from ..types.subscription_unschedule_pending_plan_changes_response import (
-    SubscriptionUnschedulePendingPlanChangesResponse,
-)
-from ..types.subscription_unschedule_fixed_fee_quantity_updates_response import (
-    SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
-)
+from ..types.shared_params.add_subscription_price_params import AddSubscriptionPriceParams
+from ..types.shared_params.remove_subscription_price_params import RemoveSubscriptionPriceParams
+from ..types.shared_params.replace_subscription_price_params import ReplaceSubscriptionPriceParams
+from ..types.shared_params.add_subscription_adjustment_params import AddSubscriptionAdjustmentParams
+from ..types.shared_params.remove_subscription_adjustment_params import RemoveSubscriptionAdjustmentParams
+from ..types.shared_params.replace_subscription_adjustment_params import ReplaceSubscriptionAdjustmentParams
+from ..types.shared_params.billing_cycle_anchor_configuration_model import BillingCycleAnchorConfigurationModel
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
@@ -79,13 +73,12 @@ class Subscriptions(SyncAPIResource):
     def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
-        billing_cycle_anchor_configuration: Optional[subscription_create_params.BillingCycleAnchorConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -104,10 +97,10 @@ class Subscriptions(SyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -118,7 +111,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionCreateResponse:
+    ) -> MutatedSubscriptionModel:
         """A subscription represents the purchase of a plan by a customer.
 
         The customer is
@@ -505,7 +498,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionCreateResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def update(
@@ -524,7 +517,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Subscription:
+    ) -> SubscriptionModel:
         """
         This endpoint can be used to update the `metadata`, `net terms`,
         `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
@@ -582,7 +575,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Subscription,
+            cast_to=SubscriptionModel,
         )
 
     def list(
@@ -603,7 +596,7 @@ class Subscriptions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[Subscription]:
+    ) -> SyncPage[SubscriptionModel]:
         """
         This endpoint returns a list of all subscriptions for an account as a
         [paginated](/api-reference/pagination) list, ordered starting from the most
@@ -631,7 +624,7 @@ class Subscriptions(SyncAPIResource):
         """
         return self._get_api_list(
             "/subscriptions",
-            page=SyncPage[Subscription],
+            page=SyncPage[SubscriptionModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -652,7 +645,7 @@ class Subscriptions(SyncAPIResource):
                     subscription_list_params.SubscriptionListParams,
                 ),
             ),
-            model=Subscription,
+            model=SubscriptionModel,
         )
 
     def cancel(
@@ -669,7 +662,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionCancelResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint can be used to cancel an existing subscription.
 
         It returns the
@@ -773,7 +766,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionCancelResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def fetch(
@@ -786,7 +779,7 @@ class Subscriptions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Subscription:
+    ) -> SubscriptionModel:
         """
         This endpoint is used to fetch a [Subscription](/core-concepts##subscription)
         given an identifier.
@@ -807,7 +800,7 @@ class Subscriptions(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Subscription,
+            cast_to=SubscriptionModel,
         )
 
     def fetch_costs(
@@ -1232,7 +1225,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionPriceIntervalsResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint is used to add and edit subscription
         [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
@@ -1351,7 +1344,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionPriceIntervalsResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def schedule_plan_change(
@@ -1359,17 +1352,13 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        billing_cycle_anchor_configuration: Optional[
-            subscription_schedule_plan_change_params.BillingCycleAnchorConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel] | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -1383,13 +1372,10 @@ class Subscriptions(SyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
-        | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1399,7 +1385,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionSchedulePlanChangeResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint can be used to change an existing subscription's plan.
 
         It returns
@@ -1717,7 +1703,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionSchedulePlanChangeResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def trigger_phase(
@@ -1733,7 +1719,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionTriggerPhaseResponse:
+    ) -> MutatedSubscriptionModel:
         """
         Manually trigger a phase, effective the given date (or the current time, if not
         specified).
@@ -1774,7 +1760,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionTriggerPhaseResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def unschedule_cancellation(
@@ -1788,7 +1774,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnscheduleCancellationResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to unschedule any pending cancellations for a
         subscription.
@@ -1819,7 +1805,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnscheduleCancellationResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def unschedule_fixed_fee_quantity_updates(
@@ -1834,7 +1820,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
@@ -1870,7 +1856,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def unschedule_pending_plan_changes(
@@ -1884,7 +1870,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnschedulePendingPlanChangesResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
         subscription.
@@ -1911,7 +1897,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnschedulePendingPlanChangesResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def update_fixed_fee_quantity(
@@ -1930,7 +1916,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUpdateFixedFeeQuantityResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to update the quantity for a fixed fee.
 
@@ -1993,7 +1979,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUpdateFixedFeeQuantityResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     def update_trial(
@@ -2009,7 +1995,7 @@ class Subscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUpdateTrialResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint is used to update the trial end date for a subscription.
 
         The new
@@ -2066,7 +2052,7 @@ class Subscriptions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUpdateTrialResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
 
@@ -2093,13 +2079,12 @@ class AsyncSubscriptions(AsyncAPIResource):
     async def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
-        billing_cycle_anchor_configuration: Optional[subscription_create_params.BillingCycleAnchorConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2118,10 +2103,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -2132,7 +2117,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionCreateResponse:
+    ) -> MutatedSubscriptionModel:
         """A subscription represents the purchase of a plan by a customer.
 
         The customer is
@@ -2519,7 +2504,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionCreateResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def update(
@@ -2538,7 +2523,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Subscription:
+    ) -> SubscriptionModel:
         """
         This endpoint can be used to update the `metadata`, `net terms`,
         `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
@@ -2596,7 +2581,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Subscription,
+            cast_to=SubscriptionModel,
         )
 
     def list(
@@ -2617,7 +2602,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Subscription, AsyncPage[Subscription]]:
+    ) -> AsyncPaginator[SubscriptionModel, AsyncPage[SubscriptionModel]]:
         """
         This endpoint returns a list of all subscriptions for an account as a
         [paginated](/api-reference/pagination) list, ordered starting from the most
@@ -2645,7 +2630,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         """
         return self._get_api_list(
             "/subscriptions",
-            page=AsyncPage[Subscription],
+            page=AsyncPage[SubscriptionModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2666,7 +2651,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     subscription_list_params.SubscriptionListParams,
                 ),
             ),
-            model=Subscription,
+            model=SubscriptionModel,
         )
 
     async def cancel(
@@ -2683,7 +2668,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionCancelResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint can be used to cancel an existing subscription.
 
         It returns the
@@ -2787,7 +2772,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionCancelResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def fetch(
@@ -2800,7 +2785,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Subscription:
+    ) -> SubscriptionModel:
         """
         This endpoint is used to fetch a [Subscription](/core-concepts##subscription)
         given an identifier.
@@ -2821,7 +2806,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Subscription,
+            cast_to=SubscriptionModel,
         )
 
     async def fetch_costs(
@@ -3246,7 +3231,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionPriceIntervalsResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint is used to add and edit subscription
         [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
@@ -3365,7 +3350,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionPriceIntervalsResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def schedule_plan_change(
@@ -3373,17 +3358,13 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
         | NotGiven = NOT_GIVEN,
-        billing_cycle_anchor_configuration: Optional[
-            subscription_schedule_plan_change_params.BillingCycleAnchorConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel] | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
@@ -3397,13 +3378,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
-        | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3413,7 +3391,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionSchedulePlanChangeResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint can be used to change an existing subscription's plan.
 
         It returns
@@ -3731,7 +3709,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionSchedulePlanChangeResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def trigger_phase(
@@ -3747,7 +3725,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionTriggerPhaseResponse:
+    ) -> MutatedSubscriptionModel:
         """
         Manually trigger a phase, effective the given date (or the current time, if not
         specified).
@@ -3788,7 +3766,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionTriggerPhaseResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def unschedule_cancellation(
@@ -3802,7 +3780,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnscheduleCancellationResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to unschedule any pending cancellations for a
         subscription.
@@ -3833,7 +3811,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnscheduleCancellationResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def unschedule_fixed_fee_quantity_updates(
@@ -3848,7 +3826,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to clear scheduled updates to the quantity for a fixed
         fee.
@@ -3884,7 +3862,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def unschedule_pending_plan_changes(
@@ -3898,7 +3876,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUnschedulePendingPlanChangesResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
         subscription.
@@ -3925,7 +3903,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUnschedulePendingPlanChangesResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def update_fixed_fee_quantity(
@@ -3944,7 +3922,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUpdateFixedFeeQuantityResponse:
+    ) -> MutatedSubscriptionModel:
         """
         This endpoint can be used to update the quantity for a fixed fee.
 
@@ -4007,7 +3985,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUpdateFixedFeeQuantityResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
     async def update_trial(
@@ -4023,7 +4001,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> SubscriptionUpdateTrialResponse:
+    ) -> MutatedSubscriptionModel:
         """This endpoint is used to update the trial end date for a subscription.
 
         The new
@@ -4080,7 +4058,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=SubscriptionUpdateTrialResponse,
+            cast_to=MutatedSubscriptionModel,
         )
 
 

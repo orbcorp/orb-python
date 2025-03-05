@@ -10,7 +10,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
-from ...types.dimensional_price_group import DimensionalPriceGroup
+from ...types.shared.dimensional_price_group_model import DimensionalPriceGroupModel
 
 __all__ = ["ExternalDimensionalPriceGroupID", "AsyncExternalDimensionalPriceGroupID"]
 
@@ -45,7 +45,7 @@ class ExternalDimensionalPriceGroupID(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DimensionalPriceGroup:
+    ) -> DimensionalPriceGroupModel:
         """
         Fetch dimensional price group by external ID
 
@@ -67,7 +67,7 @@ class ExternalDimensionalPriceGroupID(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DimensionalPriceGroup,
+            cast_to=DimensionalPriceGroupModel,
         )
 
 
@@ -101,7 +101,7 @@ class AsyncExternalDimensionalPriceGroupID(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DimensionalPriceGroup:
+    ) -> DimensionalPriceGroupModel:
         """
         Fetch dimensional price group by external ID
 
@@ -123,7 +123,7 @@ class AsyncExternalDimensionalPriceGroupID(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DimensionalPriceGroup,
+            cast_to=DimensionalPriceGroupModel,
         )
 
 

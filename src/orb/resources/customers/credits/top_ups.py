@@ -25,10 +25,7 @@ from ....types.customers.credits import (
     top_up_list_by_external_id_params,
     top_up_create_by_external_id_params,
 )
-from ....types.customers.credits.top_up_list_response import TopUpListResponse
-from ....types.customers.credits.top_up_create_response import TopUpCreateResponse
-from ....types.customers.credits.top_up_list_by_external_id_response import TopUpListByExternalIDResponse
-from ....types.customers.credits.top_up_create_by_external_id_response import TopUpCreateByExternalIDResponse
+from ....types.shared.top_up_model import TopUpModel
 
 __all__ = ["TopUps", "AsyncTopUps"]
 
@@ -72,7 +69,7 @@ class TopUps(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> TopUpCreateResponse:
+    ) -> TopUpModel:
         """
         This endpoint allows you to create a new top-up for a specified customer's
         balance. While this top-up is active, the customer's balance will added in
@@ -137,7 +134,7 @@ class TopUps(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=TopUpCreateResponse,
+            cast_to=TopUpModel,
         )
 
     def list(
@@ -152,7 +149,7 @@ class TopUps(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[TopUpListResponse]:
+    ) -> SyncPage[TopUpModel]:
         """List top-ups
 
         Args:
@@ -175,7 +172,7 @@ class TopUps(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/top_ups",
-            page=SyncPage[TopUpListResponse],
+            page=SyncPage[TopUpModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -189,7 +186,7 @@ class TopUps(SyncAPIResource):
                     top_up_list_params.TopUpListParams,
                 ),
             ),
-            model=TopUpListResponse,
+            model=TopUpModel,
         )
 
     def delete(
@@ -256,7 +253,7 @@ class TopUps(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> TopUpCreateByExternalIDResponse:
+    ) -> TopUpModel:
         """
         This endpoint allows you to create a new top-up for a specified customer's
         balance. While this top-up is active, the customer's balance will added in
@@ -323,7 +320,7 @@ class TopUps(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=TopUpCreateByExternalIDResponse,
+            cast_to=TopUpModel,
         )
 
     def delete_by_external_id(
@@ -385,7 +382,7 @@ class TopUps(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[TopUpListByExternalIDResponse]:
+    ) -> SyncPage[TopUpModel]:
         """List top-ups by external ID
 
         Args:
@@ -410,7 +407,7 @@ class TopUps(SyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
-            page=SyncPage[TopUpListByExternalIDResponse],
+            page=SyncPage[TopUpModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -424,7 +421,7 @@ class TopUps(SyncAPIResource):
                     top_up_list_by_external_id_params.TopUpListByExternalIDParams,
                 ),
             ),
-            model=TopUpListByExternalIDResponse,
+            model=TopUpModel,
         )
 
 
@@ -467,7 +464,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> TopUpCreateResponse:
+    ) -> TopUpModel:
         """
         This endpoint allows you to create a new top-up for a specified customer's
         balance. While this top-up is active, the customer's balance will added in
@@ -532,7 +529,7 @@ class AsyncTopUps(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=TopUpCreateResponse,
+            cast_to=TopUpModel,
         )
 
     def list(
@@ -547,7 +544,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[TopUpListResponse, AsyncPage[TopUpListResponse]]:
+    ) -> AsyncPaginator[TopUpModel, AsyncPage[TopUpModel]]:
         """List top-ups
 
         Args:
@@ -570,7 +567,7 @@ class AsyncTopUps(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits/top_ups",
-            page=AsyncPage[TopUpListResponse],
+            page=AsyncPage[TopUpModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -584,7 +581,7 @@ class AsyncTopUps(AsyncAPIResource):
                     top_up_list_params.TopUpListParams,
                 ),
             ),
-            model=TopUpListResponse,
+            model=TopUpModel,
         )
 
     async def delete(
@@ -651,7 +648,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> TopUpCreateByExternalIDResponse:
+    ) -> TopUpModel:
         """
         This endpoint allows you to create a new top-up for a specified customer's
         balance. While this top-up is active, the customer's balance will added in
@@ -718,7 +715,7 @@ class AsyncTopUps(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=TopUpCreateByExternalIDResponse,
+            cast_to=TopUpModel,
         )
 
     async def delete_by_external_id(
@@ -780,7 +777,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[TopUpListByExternalIDResponse, AsyncPage[TopUpListByExternalIDResponse]]:
+    ) -> AsyncPaginator[TopUpModel, AsyncPage[TopUpModel]]:
         """List top-ups by external ID
 
         Args:
@@ -805,7 +802,7 @@ class AsyncTopUps(AsyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
-            page=AsyncPage[TopUpListByExternalIDResponse],
+            page=AsyncPage[TopUpModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -819,7 +816,7 @@ class AsyncTopUps(AsyncAPIResource):
                     top_up_list_by_external_id_params.TopUpListByExternalIDParams,
                 ),
             ),
-            model=TopUpListByExternalIDResponse,
+            model=TopUpModel,
         )
 
 

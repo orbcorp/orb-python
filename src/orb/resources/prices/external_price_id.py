@@ -15,9 +15,9 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.price import Price
 from ..._base_client import make_request_options
 from ...types.prices import external_price_id_update_params
+from ...types.shared.price_model import PriceModel
 
 __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 
@@ -54,7 +54,7 @@ class ExternalPriceID(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Price:
+    ) -> PriceModel:
         """This endpoint allows you to update the `metadata` property on a price.
 
         If you
@@ -79,7 +79,7 @@ class ExternalPriceID(SyncAPIResource):
         if not external_price_id:
             raise ValueError(f"Expected a non-empty value for `external_price_id` but received {external_price_id!r}")
         return cast(
-            Price,
+            PriceModel,
             self._put(
                 f"/prices/external_price_id/{external_price_id}",
                 body=maybe_transform(
@@ -92,7 +92,7 @@ class ExternalPriceID(SyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -106,7 +106,7 @@ class ExternalPriceID(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Price:
+    ) -> PriceModel:
         """This endpoint returns a price given an external price id.
 
         See the
@@ -125,13 +125,13 @@ class ExternalPriceID(SyncAPIResource):
         if not external_price_id:
             raise ValueError(f"Expected a non-empty value for `external_price_id` but received {external_price_id!r}")
         return cast(
-            Price,
+            PriceModel,
             self._get(
                 f"/prices/external_price_id/{external_price_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -168,7 +168,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Price:
+    ) -> PriceModel:
         """This endpoint allows you to update the `metadata` property on a price.
 
         If you
@@ -193,7 +193,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         if not external_price_id:
             raise ValueError(f"Expected a non-empty value for `external_price_id` but received {external_price_id!r}")
         return cast(
-            Price,
+            PriceModel,
             await self._put(
                 f"/prices/external_price_id/{external_price_id}",
                 body=await async_maybe_transform(
@@ -206,7 +206,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -220,7 +220,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Price:
+    ) -> PriceModel:
         """This endpoint returns a price given an external price id.
 
         See the
@@ -239,13 +239,13 @@ class AsyncExternalPriceID(AsyncAPIResource):
         if not external_price_id:
             raise ValueError(f"Expected a non-empty value for `external_price_id` but received {external_price_id!r}")
         return cast(
-            Price,
+            PriceModel,
             await self._get(
                 f"/prices/external_price_id/{external_price_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 

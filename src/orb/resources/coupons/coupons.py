@@ -26,7 +26,7 @@ from .subscriptions import (
     AsyncSubscriptionsWithStreamingResponse,
 )
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.coupon import Coupon
+from ...types.shared.coupon_model import CouponModel
 
 __all__ = ["Coupons", "AsyncCoupons"]
 
@@ -69,7 +69,7 @@ class Coupons(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Coupon:
+    ) -> CouponModel:
         """
         This endpoint allows the creation of coupons, which can then be redeemed at
         subscription creation or plan change.
@@ -111,7 +111,7 @@ class Coupons(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
     def list(
@@ -127,7 +127,7 @@ class Coupons(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[Coupon]:
+    ) -> SyncPage[CouponModel]:
         """
         This endpoint returns a list of all coupons for an account in a list format.
 
@@ -157,7 +157,7 @@ class Coupons(SyncAPIResource):
         """
         return self._get_api_list(
             "/coupons",
-            page=SyncPage[Coupon],
+            page=SyncPage[CouponModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -173,7 +173,7 @@ class Coupons(SyncAPIResource):
                     coupon_list_params.CouponListParams,
                 ),
             ),
-            model=Coupon,
+            model=CouponModel,
         )
 
     def archive(
@@ -187,7 +187,7 @@ class Coupons(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Coupon:
+    ) -> CouponModel:
         """This endpoint allows a coupon to be archived.
 
         Archived coupons can no longer be
@@ -216,7 +216,7 @@ class Coupons(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
     def fetch(
@@ -229,7 +229,7 @@ class Coupons(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Coupon:
+    ) -> CouponModel:
         """This endpoint retrieves a coupon by its ID.
 
         To fetch coupons by their redemption
@@ -252,7 +252,7 @@ class Coupons(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
 
@@ -294,7 +294,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Coupon:
+    ) -> CouponModel:
         """
         This endpoint allows the creation of coupons, which can then be redeemed at
         subscription creation or plan change.
@@ -336,7 +336,7 @@ class AsyncCoupons(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
     def list(
@@ -352,7 +352,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Coupon, AsyncPage[Coupon]]:
+    ) -> AsyncPaginator[CouponModel, AsyncPage[CouponModel]]:
         """
         This endpoint returns a list of all coupons for an account in a list format.
 
@@ -382,7 +382,7 @@ class AsyncCoupons(AsyncAPIResource):
         """
         return self._get_api_list(
             "/coupons",
-            page=AsyncPage[Coupon],
+            page=AsyncPage[CouponModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -398,7 +398,7 @@ class AsyncCoupons(AsyncAPIResource):
                     coupon_list_params.CouponListParams,
                 ),
             ),
-            model=Coupon,
+            model=CouponModel,
         )
 
     async def archive(
@@ -412,7 +412,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> Coupon:
+    ) -> CouponModel:
         """This endpoint allows a coupon to be archived.
 
         Archived coupons can no longer be
@@ -441,7 +441,7 @@ class AsyncCoupons(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
     async def fetch(
@@ -454,7 +454,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Coupon:
+    ) -> CouponModel:
         """This endpoint retrieves a coupon by its ID.
 
         To fetch coupons by their redemption
@@ -477,7 +477,7 @@ class AsyncCoupons(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Coupon,
+            cast_to=CouponModel,
         )
 
 

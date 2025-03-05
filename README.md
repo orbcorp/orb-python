@@ -29,11 +29,11 @@ client = Orb(
     api_key=os.environ.get("ORB_API_KEY"),  # This is the default and can be omitted
 )
 
-customer = client.customers.create(
+customer_model = client.customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
 )
-print(customer.id)
+print(customer_model.id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -56,11 +56,11 @@ client = AsyncOrb(
 
 
 async def main() -> None:
-    customer = await client.customers.create(
+    customer_model = await client.customers.create(
         email="example-customer@withorb.com",
         name="My Customer",
     )
-    print(customer.id)
+    print(customer_model.id)
 
 
 asyncio.run(main())
@@ -151,7 +151,7 @@ from orb import Orb
 
 client = Orb()
 
-customer = client.customers.create(
+customer_model = client.customers.create(
     email="example-customer@withorb.com",
     name="My Customer",
     billing_address={
@@ -160,7 +160,7 @@ customer = client.customers.create(
         "line1": "123 Example Street",
     },
 )
-print(customer.id)
+print(customer_model.id)
 ```
 
 ## Webhook Verification
