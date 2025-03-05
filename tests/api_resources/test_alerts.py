@@ -8,12 +8,10 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import (
-    Alert,
-)
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
+from orb.types.shared import AlertModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +24,7 @@ class TestAlerts:
         alert = client.alerts.retrieve(
             "alert_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Orb) -> None:
@@ -37,7 +35,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Orb) -> None:
@@ -48,7 +46,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -65,7 +63,7 @@ class TestAlerts:
             alert_configuration_id="alert_configuration_id",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -77,7 +75,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -89,7 +87,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -107,7 +105,7 @@ class TestAlerts:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         alert = client.alerts.list()
-        assert_matches_type(SyncPage[Alert], alert, path=["response"])
+        assert_matches_type(SyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -123,7 +121,7 @@ class TestAlerts:
             limit=1,
             subscription_id="subscription_id",
         )
-        assert_matches_type(SyncPage[Alert], alert, path=["response"])
+        assert_matches_type(SyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -133,7 +131,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(SyncPage[Alert], alert, path=["response"])
+        assert_matches_type(SyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -143,7 +141,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(SyncPage[Alert], alert, path=["response"])
+            assert_matches_type(SyncPage[AlertModel], alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -154,7 +152,7 @@ class TestAlerts:
             currency="currency",
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_customer_with_all_params(self, client: Orb) -> None:
@@ -164,7 +162,7 @@ class TestAlerts:
             type="usage_exceeded",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_create_for_customer(self, client: Orb) -> None:
@@ -177,7 +175,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_create_for_customer(self, client: Orb) -> None:
@@ -190,7 +188,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -210,7 +208,7 @@ class TestAlerts:
             currency="currency",
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_external_customer_with_all_params(self, client: Orb) -> None:
@@ -220,7 +218,7 @@ class TestAlerts:
             type="usage_exceeded",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_create_for_external_customer(self, client: Orb) -> None:
@@ -233,7 +231,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_create_for_external_customer(self, client: Orb) -> None:
@@ -246,7 +244,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -266,7 +264,7 @@ class TestAlerts:
             thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_method_create_for_subscription_with_all_params(self, client: Orb) -> None:
@@ -276,7 +274,7 @@ class TestAlerts:
             type="usage_exceeded",
             metric_id="metric_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_create_for_subscription(self, client: Orb) -> None:
@@ -289,7 +287,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_create_for_subscription(self, client: Orb) -> None:
@@ -302,7 +300,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -320,7 +318,7 @@ class TestAlerts:
         alert = client.alerts.disable(
             alert_configuration_id="alert_configuration_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_method_disable_with_all_params(self, client: Orb) -> None:
@@ -328,7 +326,7 @@ class TestAlerts:
             alert_configuration_id="alert_configuration_id",
             subscription_id="subscription_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_disable(self, client: Orb) -> None:
@@ -339,7 +337,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_disable(self, client: Orb) -> None:
@@ -350,7 +348,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -368,7 +366,7 @@ class TestAlerts:
         alert = client.alerts.enable(
             alert_configuration_id="alert_configuration_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_method_enable_with_all_params(self, client: Orb) -> None:
@@ -376,7 +374,7 @@ class TestAlerts:
             alert_configuration_id="alert_configuration_id",
             subscription_id="subscription_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_raw_response_enable(self, client: Orb) -> None:
@@ -387,7 +385,7 @@ class TestAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     def test_streaming_response_enable(self, client: Orb) -> None:
@@ -398,7 +396,7 @@ class TestAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -420,7 +418,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.retrieve(
             "alert_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOrb) -> None:
@@ -431,7 +429,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOrb) -> None:
@@ -442,7 +440,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -459,7 +457,7 @@ class TestAsyncAlerts:
             alert_configuration_id="alert_configuration_id",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -471,7 +469,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -483,7 +481,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -501,7 +499,7 @@ class TestAsyncAlerts:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         alert = await async_client.alerts.list()
-        assert_matches_type(AsyncPage[Alert], alert, path=["response"])
+        assert_matches_type(AsyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -517,7 +515,7 @@ class TestAsyncAlerts:
             limit=1,
             subscription_id="subscription_id",
         )
-        assert_matches_type(AsyncPage[Alert], alert, path=["response"])
+        assert_matches_type(AsyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -527,7 +525,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(AsyncPage[Alert], alert, path=["response"])
+        assert_matches_type(AsyncPage[AlertModel], alert, path=["response"])
 
     @pytest.mark.skip(reason="plan_version=0 breaks Prism")
     @parametrize
@@ -537,7 +535,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(AsyncPage[Alert], alert, path=["response"])
+            assert_matches_type(AsyncPage[AlertModel], alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -548,7 +546,7 @@ class TestAsyncAlerts:
             currency="currency",
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_customer_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -558,7 +556,7 @@ class TestAsyncAlerts:
             type="usage_exceeded",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_create_for_customer(self, async_client: AsyncOrb) -> None:
@@ -571,7 +569,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_for_customer(self, async_client: AsyncOrb) -> None:
@@ -584,7 +582,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -604,7 +602,7 @@ class TestAsyncAlerts:
             currency="currency",
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_external_customer_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -614,7 +612,7 @@ class TestAsyncAlerts:
             type="usage_exceeded",
             thresholds=[{"value": 0}],
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_create_for_external_customer(self, async_client: AsyncOrb) -> None:
@@ -627,7 +625,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_for_external_customer(self, async_client: AsyncOrb) -> None:
@@ -640,7 +638,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -660,7 +658,7 @@ class TestAsyncAlerts:
             thresholds=[{"value": 0}],
             type="usage_exceeded",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_method_create_for_subscription_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -670,7 +668,7 @@ class TestAsyncAlerts:
             type="usage_exceeded",
             metric_id="metric_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
@@ -683,7 +681,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_for_subscription(self, async_client: AsyncOrb) -> None:
@@ -696,7 +694,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -714,7 +712,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.disable(
             alert_configuration_id="alert_configuration_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_method_disable_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -722,7 +720,7 @@ class TestAsyncAlerts:
             alert_configuration_id="alert_configuration_id",
             subscription_id="subscription_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_disable(self, async_client: AsyncOrb) -> None:
@@ -733,7 +731,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_disable(self, async_client: AsyncOrb) -> None:
@@ -744,7 +742,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -762,7 +760,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.enable(
             alert_configuration_id="alert_configuration_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_method_enable_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -770,7 +768,7 @@ class TestAsyncAlerts:
             alert_configuration_id="alert_configuration_id",
             subscription_id="subscription_id",
         )
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_raw_response_enable(self, async_client: AsyncOrb) -> None:
@@ -781,7 +779,7 @@ class TestAsyncAlerts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         alert = response.parse()
-        assert_matches_type(Alert, alert, path=["response"])
+        assert_matches_type(AlertModel, alert, path=["response"])
 
     @parametrize
     async def test_streaming_response_enable(self, async_client: AsyncOrb) -> None:
@@ -792,7 +790,7 @@ class TestAsyncAlerts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             alert = await response.parse()
-            assert_matches_type(Alert, alert, path=["response"])
+            assert_matches_type(AlertModel, alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

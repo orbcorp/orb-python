@@ -1,44 +1,27 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
-from datetime import datetime
 from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
+from .shared.usage_model import UsageModel
 from .shared.pagination_metadata import PaginationMetadata
+from .shared.billable_metric_simple_model import BillableMetricSimpleModel
 
 __all__ = [
     "SubscriptionUsage",
     "UngroupedSubscriptionUsage",
     "UngroupedSubscriptionUsageData",
-    "UngroupedSubscriptionUsageDataBillableMetric",
-    "UngroupedSubscriptionUsageDataUsage",
     "GroupedSubscriptionUsage",
     "GroupedSubscriptionUsageData",
-    "GroupedSubscriptionUsageDataBillableMetric",
     "GroupedSubscriptionUsageDataMetricGroup",
-    "GroupedSubscriptionUsageDataUsage",
 ]
 
 
-class UngroupedSubscriptionUsageDataBillableMetric(BaseModel):
-    id: str
-
-    name: str
-
-
-class UngroupedSubscriptionUsageDataUsage(BaseModel):
-    quantity: float
-
-    timeframe_end: datetime
-
-    timeframe_start: datetime
-
-
 class UngroupedSubscriptionUsageData(BaseModel):
-    billable_metric: UngroupedSubscriptionUsageDataBillableMetric
+    billable_metric: BillableMetricSimpleModel
 
-    usage: List[UngroupedSubscriptionUsageDataUsage]
+    usage: List[UsageModel]
 
     view_mode: Literal["periodic", "cumulative"]
 
@@ -47,32 +30,18 @@ class UngroupedSubscriptionUsage(BaseModel):
     data: List[UngroupedSubscriptionUsageData]
 
 
-class GroupedSubscriptionUsageDataBillableMetric(BaseModel):
-    id: str
-
-    name: str
-
-
 class GroupedSubscriptionUsageDataMetricGroup(BaseModel):
     property_key: str
 
     property_value: str
 
 
-class GroupedSubscriptionUsageDataUsage(BaseModel):
-    quantity: float
-
-    timeframe_end: datetime
-
-    timeframe_start: datetime
-
-
 class GroupedSubscriptionUsageData(BaseModel):
-    billable_metric: GroupedSubscriptionUsageDataBillableMetric
+    billable_metric: BillableMetricSimpleModel
 
     metric_group: GroupedSubscriptionUsageDataMetricGroup
 
-    usage: List[GroupedSubscriptionUsageDataUsage]
+    usage: List[UsageModel]
 
     view_mode: Literal["periodic", "cumulative"]
 

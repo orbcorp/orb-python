@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import Price
 from tests.utils import assert_matches_type
+from orb.types.shared import PriceModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestExternalPriceID:
         external_price_id = client.prices.external_price_id.update(
             external_price_id="external_price_id",
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -30,7 +30,7 @@ class TestExternalPriceID:
             external_price_id="external_price_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -41,7 +41,7 @@ class TestExternalPriceID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -52,7 +52,7 @@ class TestExternalPriceID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_price_id = response.parse()
-            assert_matches_type(Price, external_price_id, path=["response"])
+            assert_matches_type(PriceModel, external_price_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -68,7 +68,7 @@ class TestExternalPriceID:
         external_price_id = client.prices.external_price_id.fetch(
             "external_price_id",
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -79,7 +79,7 @@ class TestExternalPriceID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -90,7 +90,7 @@ class TestExternalPriceID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_price_id = response.parse()
-            assert_matches_type(Price, external_price_id, path=["response"])
+            assert_matches_type(PriceModel, external_price_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -110,7 +110,7 @@ class TestAsyncExternalPriceID:
         external_price_id = await async_client.prices.external_price_id.update(
             external_price_id="external_price_id",
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -118,7 +118,7 @@ class TestAsyncExternalPriceID:
             external_price_id="external_price_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -129,7 +129,7 @@ class TestAsyncExternalPriceID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -140,7 +140,7 @@ class TestAsyncExternalPriceID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_price_id = await response.parse()
-            assert_matches_type(Price, external_price_id, path=["response"])
+            assert_matches_type(PriceModel, external_price_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -156,7 +156,7 @@ class TestAsyncExternalPriceID:
         external_price_id = await async_client.prices.external_price_id.fetch(
             "external_price_id",
         )
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -167,7 +167,7 @@ class TestAsyncExternalPriceID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_price_id = response.parse()
-        assert_matches_type(Price, external_price_id, path=["response"])
+        assert_matches_type(PriceModel, external_price_id, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -178,7 +178,7 @@ class TestAsyncExternalPriceID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_price_id = await response.parse()
-            assert_matches_type(Price, external_price_id, path=["response"])
+            assert_matches_type(PriceModel, external_price_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

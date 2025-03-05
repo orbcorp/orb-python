@@ -15,7 +15,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.coupons import subscription_list_params
-from ...types.subscription import Subscription
+from ...types.shared.subscription_model import SubscriptionModel
 
 __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
@@ -52,7 +52,7 @@ class Subscriptions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[Subscription]:
+    ) -> SyncPage[SubscriptionModel]:
         """
         This endpoint returns a list of all subscriptions that have redeemed a given
         coupon as a [paginated](/api-reference/pagination) list, ordered starting from
@@ -77,7 +77,7 @@ class Subscriptions(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
             f"/coupons/{coupon_id}/subscriptions",
-            page=SyncPage[Subscription],
+            page=SyncPage[SubscriptionModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -91,7 +91,7 @@ class Subscriptions(SyncAPIResource):
                     subscription_list_params.SubscriptionListParams,
                 ),
             ),
-            model=Subscription,
+            model=SubscriptionModel,
         )
 
 
@@ -127,7 +127,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Subscription, AsyncPage[Subscription]]:
+    ) -> AsyncPaginator[SubscriptionModel, AsyncPage[SubscriptionModel]]:
         """
         This endpoint returns a list of all subscriptions that have redeemed a given
         coupon as a [paginated](/api-reference/pagination) list, ordered starting from
@@ -152,7 +152,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
             f"/coupons/{coupon_id}/subscriptions",
-            page=AsyncPage[Subscription],
+            page=AsyncPage[SubscriptionModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -166,7 +166,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     subscription_list_params.SubscriptionListParams,
                 ),
             ),
-            model=Subscription,
+            model=SubscriptionModel,
         )
 
 

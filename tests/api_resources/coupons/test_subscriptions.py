@@ -8,9 +8,9 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import Subscription
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
+from orb.types.shared import SubscriptionModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestSubscriptions:
         subscription = client.coupons.subscriptions.list(
             coupon_id="coupon_id",
         )
-        assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(SyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -32,7 +32,7 @@ class TestSubscriptions:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(SyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -43,7 +43,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(SyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -54,7 +54,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
+            assert_matches_type(SyncPage[SubscriptionModel], subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -74,7 +74,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.coupons.subscriptions.list(
             coupon_id="coupon_id",
         )
-        assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(AsyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -83,7 +83,7 @@ class TestAsyncSubscriptions:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(AsyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -94,7 +94,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+        assert_matches_type(AsyncPage[SubscriptionModel], subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -105,7 +105,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
+            assert_matches_type(AsyncPage[SubscriptionModel], subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

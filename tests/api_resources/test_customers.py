@@ -8,12 +8,10 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import (
-    Customer,
-)
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
+from orb.types.shared import CustomerModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -27,7 +25,7 @@ class TestCustomers:
             email="dev@stainless.com",
             name="x",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
@@ -84,7 +82,7 @@ class TestCustomers:
             },
             timezone="timezone",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -96,7 +94,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -108,7 +106,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -117,7 +115,7 @@ class TestCustomers:
         customer = client.customers.update(
             customer_id="customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -174,7 +172,7 @@ class TestCustomers:
                 "value": "value",
             },
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -185,7 +183,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -196,7 +194,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -210,7 +208,7 @@ class TestCustomers:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         customer = client.customers.list()
-        assert_matches_type(SyncPage[Customer], customer, path=["response"])
+        assert_matches_type(SyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -222,7 +220,7 @@ class TestCustomers:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[Customer], customer, path=["response"])
+        assert_matches_type(SyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -231,7 +229,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(SyncPage[Customer], customer, path=["response"])
+        assert_matches_type(SyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -240,7 +238,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(SyncPage[Customer], customer, path=["response"])
+            assert_matches_type(SyncPage[CustomerModel], customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,7 +285,7 @@ class TestCustomers:
         customer = client.customers.fetch(
             "customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -298,7 +296,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -309,7 +307,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -325,7 +323,7 @@ class TestCustomers:
         customer = client.customers.fetch_by_external_id(
             "external_customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_raw_response_fetch_by_external_id(self, client: Orb) -> None:
@@ -336,7 +334,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch_by_external_id(self, client: Orb) -> None:
@@ -347,7 +345,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -439,7 +437,7 @@ class TestCustomers:
         customer = client.customers.update_by_external_id(
             id="external_customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_method_update_by_external_id_with_all_params(self, client: Orb) -> None:
@@ -496,7 +494,7 @@ class TestCustomers:
                 "value": "value",
             },
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_raw_response_update_by_external_id(self, client: Orb) -> None:
@@ -507,7 +505,7 @@ class TestCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     def test_streaming_response_update_by_external_id(self, client: Orb) -> None:
@@ -518,7 +516,7 @@ class TestCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -540,7 +538,7 @@ class TestAsyncCustomers:
             email="dev@stainless.com",
             name="x",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -597,7 +595,7 @@ class TestAsyncCustomers:
             },
             timezone="timezone",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -609,7 +607,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -621,7 +619,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -630,7 +628,7 @@ class TestAsyncCustomers:
         customer = await async_client.customers.update(
             customer_id="customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -687,7 +685,7 @@ class TestAsyncCustomers:
                 "value": "value",
             },
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -698,7 +696,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -709,7 +707,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -723,7 +721,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.list()
-        assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+        assert_matches_type(AsyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -735,7 +733,7 @@ class TestAsyncCustomers:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+        assert_matches_type(AsyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -744,7 +742,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+        assert_matches_type(AsyncPage[CustomerModel], customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -753,7 +751,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(AsyncPage[Customer], customer, path=["response"])
+            assert_matches_type(AsyncPage[CustomerModel], customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -800,7 +798,7 @@ class TestAsyncCustomers:
         customer = await async_client.customers.fetch(
             "customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -811,7 +809,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -822,7 +820,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -838,7 +836,7 @@ class TestAsyncCustomers:
         customer = await async_client.customers.fetch_by_external_id(
             "external_customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -849,7 +847,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -860,7 +858,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -964,7 +962,7 @@ class TestAsyncCustomers:
         customer = await async_client.customers.update_by_external_id(
             id="external_customer_id",
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_method_update_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -1021,7 +1019,7 @@ class TestAsyncCustomers:
                 "value": "value",
             },
         )
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_raw_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -1032,7 +1030,7 @@ class TestAsyncCustomers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         customer = response.parse()
-        assert_matches_type(Customer, customer, path=["response"])
+        assert_matches_type(CustomerModel, customer, path=["response"])
 
     @parametrize
     async def test_streaming_response_update_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -1043,7 +1041,7 @@ class TestAsyncCustomers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             customer = await response.parse()
-            assert_matches_type(Customer, customer, path=["response"])
+            assert_matches_type(CustomerModel, customer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

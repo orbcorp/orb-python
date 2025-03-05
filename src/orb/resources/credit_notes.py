@@ -19,7 +19,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.credit_note import CreditNote
+from ..types.shared.credit_note_model import CreditNoteModel
 
 __all__ = ["CreditNotes", "AsyncCreditNotes"]
 
@@ -58,7 +58,7 @@ class CreditNotes(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditNote:
+    ) -> CreditNoteModel:
         """
         This endpoint is used to create a single
         [`Credit Note`](/invoicing/credit-notes).
@@ -95,7 +95,7 @@ class CreditNotes(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CreditNote,
+            cast_to=CreditNoteModel,
         )
 
     def list(
@@ -109,7 +109,7 @@ class CreditNotes(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CreditNote]:
+    ) -> SyncPage[CreditNoteModel]:
         """Get a paginated list of CreditNotes.
 
         Users can also filter by customer_id,
@@ -132,7 +132,7 @@ class CreditNotes(SyncAPIResource):
         """
         return self._get_api_list(
             "/credit_notes",
-            page=SyncPage[CreditNote],
+            page=SyncPage[CreditNoteModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -146,7 +146,7 @@ class CreditNotes(SyncAPIResource):
                     credit_note_list_params.CreditNoteListParams,
                 ),
             ),
-            model=CreditNote,
+            model=CreditNoteModel,
         )
 
     def fetch(
@@ -159,7 +159,7 @@ class CreditNotes(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditNote:
+    ) -> CreditNoteModel:
         """
         This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
         given an identifier.
@@ -180,7 +180,7 @@ class CreditNotes(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditNote,
+            cast_to=CreditNoteModel,
         )
 
 
@@ -218,7 +218,7 @@ class AsyncCreditNotes(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CreditNote:
+    ) -> CreditNoteModel:
         """
         This endpoint is used to create a single
         [`Credit Note`](/invoicing/credit-notes).
@@ -255,7 +255,7 @@ class AsyncCreditNotes(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CreditNote,
+            cast_to=CreditNoteModel,
         )
 
     def list(
@@ -269,7 +269,7 @@ class AsyncCreditNotes(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditNote, AsyncPage[CreditNote]]:
+    ) -> AsyncPaginator[CreditNoteModel, AsyncPage[CreditNoteModel]]:
         """Get a paginated list of CreditNotes.
 
         Users can also filter by customer_id,
@@ -292,7 +292,7 @@ class AsyncCreditNotes(AsyncAPIResource):
         """
         return self._get_api_list(
             "/credit_notes",
-            page=AsyncPage[CreditNote],
+            page=AsyncPage[CreditNoteModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -306,7 +306,7 @@ class AsyncCreditNotes(AsyncAPIResource):
                     credit_note_list_params.CreditNoteListParams,
                 ),
             ),
-            model=CreditNote,
+            model=CreditNoteModel,
         )
 
     async def fetch(
@@ -319,7 +319,7 @@ class AsyncCreditNotes(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditNote:
+    ) -> CreditNoteModel:
         """
         This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
         given an identifier.
@@ -340,7 +340,7 @@ class AsyncCreditNotes(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditNote,
+            cast_to=CreditNoteModel,
         )
 
 

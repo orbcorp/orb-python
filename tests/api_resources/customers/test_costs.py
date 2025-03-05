@@ -10,10 +10,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
-from orb.types.customers import (
-    CostListResponse,
-    CostListByExternalIDResponse,
-)
+from orb.types.shared import CustomerCostsModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -26,7 +23,7 @@ class TestCosts:
         cost = client.customers.costs.list(
             customer_id="customer_id",
         )
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -37,7 +34,7 @@ class TestCosts:
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -48,7 +45,7 @@ class TestCosts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         cost = response.parse()
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -59,7 +56,7 @@ class TestCosts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             cost = response.parse()
-            assert_matches_type(CostListResponse, cost, path=["response"])
+            assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,7 +72,7 @@ class TestCosts:
         cost = client.customers.costs.list_by_external_id(
             external_customer_id="external_customer_id",
         )
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
@@ -86,7 +83,7 @@ class TestCosts:
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_raw_response_list_by_external_id(self, client: Orb) -> None:
@@ -97,7 +94,7 @@ class TestCosts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         cost = response.parse()
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     def test_streaming_response_list_by_external_id(self, client: Orb) -> None:
@@ -108,7 +105,7 @@ class TestCosts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             cost = response.parse()
-            assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+            assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -128,7 +125,7 @@ class TestAsyncCosts:
         cost = await async_client.customers.costs.list(
             customer_id="customer_id",
         )
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -139,7 +136,7 @@ class TestAsyncCosts:
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -150,7 +147,7 @@ class TestAsyncCosts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         cost = response.parse()
-        assert_matches_type(CostListResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -161,7 +158,7 @@ class TestAsyncCosts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             cost = await response.parse()
-            assert_matches_type(CostListResponse, cost, path=["response"])
+            assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -177,7 +174,7 @@ class TestAsyncCosts:
         cost = await async_client.customers.costs.list_by_external_id(
             external_customer_id="external_customer_id",
         )
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -188,7 +185,7 @@ class TestAsyncCosts:
             timeframe_start=parse_datetime("2022-02-01T05:00:00Z"),
             view_mode="periodic",
         )
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_raw_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -199,7 +196,7 @@ class TestAsyncCosts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         cost = response.parse()
-        assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+        assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -210,7 +207,7 @@ class TestAsyncCosts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             cost = await response.parse()
-            assert_matches_type(CostListByExternalIDResponse, cost, path=["response"])
+            assert_matches_type(CustomerCostsModel, cost, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

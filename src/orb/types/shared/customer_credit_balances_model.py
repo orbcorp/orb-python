@@ -1,0 +1,32 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from typing import List, Optional
+from datetime import datetime
+from typing_extensions import Literal
+
+from ..._models import BaseModel
+from .pagination_metadata import PaginationMetadata
+
+__all__ = ["CustomerCreditBalancesModel", "Data"]
+
+
+class Data(BaseModel):
+    id: str
+
+    balance: float
+
+    effective_date: Optional[datetime] = None
+
+    expiry_date: Optional[datetime] = None
+
+    maximum_initial_balance: Optional[float] = None
+
+    per_unit_cost_basis: Optional[str] = None
+
+    status: Literal["active", "pending_payment"]
+
+
+class CustomerCreditBalancesModel(BaseModel):
+    data: List[Data]
+
+    pagination_metadata: PaginationMetadata

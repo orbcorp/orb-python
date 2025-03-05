@@ -19,7 +19,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.billable_metric import BillableMetric
+from ..types.shared.billable_metric_model import BillableMetricModel
 
 __all__ = ["Metrics", "AsyncMetrics"]
 
@@ -59,7 +59,7 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """
         This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
         string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
@@ -107,7 +107,7 @@ class Metrics(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
     def update(
@@ -122,7 +122,7 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """This endpoint allows you to update the `metadata` property on a metric.
 
         If you
@@ -156,7 +156,7 @@ class Metrics(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
     def list(
@@ -174,7 +174,7 @@ class Metrics(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[BillableMetric]:
+    ) -> SyncPage[BillableMetricModel]:
         """
         This endpoint is used to fetch [metric](/core-concepts##metric) details given a
         metric identifier. It returns information about the metrics including its name,
@@ -196,7 +196,7 @@ class Metrics(SyncAPIResource):
         """
         return self._get_api_list(
             "/metrics",
-            page=SyncPage[BillableMetric],
+            page=SyncPage[BillableMetricModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -214,7 +214,7 @@ class Metrics(SyncAPIResource):
                     metric_list_params.MetricListParams,
                 ),
             ),
-            model=BillableMetric,
+            model=BillableMetricModel,
         )
 
     def fetch(
@@ -227,7 +227,7 @@ class Metrics(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """This endpoint is used to list [metrics](/core-concepts#metric).
 
         It returns
@@ -249,7 +249,7 @@ class Metrics(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
 
@@ -288,7 +288,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """
         This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
         string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
@@ -336,7 +336,7 @@ class AsyncMetrics(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
     async def update(
@@ -351,7 +351,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """This endpoint allows you to update the `metadata` property on a metric.
 
         If you
@@ -385,7 +385,7 @@ class AsyncMetrics(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
     def list(
@@ -403,7 +403,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[BillableMetric, AsyncPage[BillableMetric]]:
+    ) -> AsyncPaginator[BillableMetricModel, AsyncPage[BillableMetricModel]]:
         """
         This endpoint is used to fetch [metric](/core-concepts##metric) details given a
         metric identifier. It returns information about the metrics including its name,
@@ -425,7 +425,7 @@ class AsyncMetrics(AsyncAPIResource):
         """
         return self._get_api_list(
             "/metrics",
-            page=AsyncPage[BillableMetric],
+            page=AsyncPage[BillableMetricModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -443,7 +443,7 @@ class AsyncMetrics(AsyncAPIResource):
                     metric_list_params.MetricListParams,
                 ),
             ),
-            model=BillableMetric,
+            model=BillableMetricModel,
         )
 
     async def fetch(
@@ -456,7 +456,7 @@ class AsyncMetrics(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillableMetric:
+    ) -> BillableMetricModel:
         """This endpoint is used to list [metrics](/core-concepts#metric).
 
         It returns
@@ -478,7 +478,7 @@ class AsyncMetrics(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillableMetric,
+            cast_to=BillableMetricModel,
         )
 
 

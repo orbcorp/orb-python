@@ -31,8 +31,7 @@ from ...._response import to_streamed_response_wrapper, async_to_streamed_respon
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.customers import credit_list_params, credit_list_by_external_id_params
-from ....types.customers.credit_list_response import CreditListResponse
-from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
+from ....types.shared.customer_credit_balances_model import Data
 
 __all__ = ["Credits", "AsyncCredits"]
 
@@ -79,7 +78,7 @@ class Credits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CreditListResponse]:
+    ) -> SyncPage[Data]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
@@ -112,7 +111,7 @@ class Credits(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits",
-            page=SyncPage[CreditListResponse],
+            page=SyncPage[Data],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -128,7 +127,7 @@ class Credits(SyncAPIResource):
                     credit_list_params.CreditListParams,
                 ),
             ),
-            model=CreditListResponse,
+            model=Data,
         )
 
     def list_by_external_id(
@@ -145,7 +144,7 @@ class Credits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CreditListByExternalIDResponse]:
+    ) -> SyncPage[Data]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
@@ -180,7 +179,7 @@ class Credits(SyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits",
-            page=SyncPage[CreditListByExternalIDResponse],
+            page=SyncPage[Data],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -196,7 +195,7 @@ class Credits(SyncAPIResource):
                     credit_list_by_external_id_params.CreditListByExternalIDParams,
                 ),
             ),
-            model=CreditListByExternalIDResponse,
+            model=Data,
         )
 
 
@@ -242,7 +241,7 @@ class AsyncCredits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditListResponse, AsyncPage[CreditListResponse]]:
+    ) -> AsyncPaginator[Data, AsyncPage[Data]]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
@@ -275,7 +274,7 @@ class AsyncCredits(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/credits",
-            page=AsyncPage[CreditListResponse],
+            page=AsyncPage[Data],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -291,7 +290,7 @@ class AsyncCredits(AsyncAPIResource):
                     credit_list_params.CreditListParams,
                 ),
             ),
-            model=CreditListResponse,
+            model=Data,
         )
 
     def list_by_external_id(
@@ -308,7 +307,7 @@ class AsyncCredits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditListByExternalIDResponse, AsyncPage[CreditListByExternalIDResponse]]:
+    ) -> AsyncPaginator[Data, AsyncPage[Data]]:
         """
         Returns a paginated list of unexpired, non-zero credit blocks for a customer.
 
@@ -343,7 +342,7 @@ class AsyncCredits(AsyncAPIResource):
             )
         return self._get_api_list(
             f"/customers/external_customer_id/{external_customer_id}/credits",
-            page=AsyncPage[CreditListByExternalIDResponse],
+            page=AsyncPage[Data],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -359,7 +358,7 @@ class AsyncCredits(AsyncAPIResource):
                     credit_list_by_external_id_params.CreditListByExternalIDParams,
                 ),
             ),
-            model=CreditListByExternalIDResponse,
+            model=Data,
         )
 
 
