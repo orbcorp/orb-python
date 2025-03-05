@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import Plan
 from tests.utils import assert_matches_type
+from orb.types.shared import PlanModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestExternalPlanID:
         external_plan_id = client.plans.external_plan_id.update(
             other_external_plan_id="external_plan_id",
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -31,7 +31,7 @@ class TestExternalPlanID:
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -42,7 +42,7 @@ class TestExternalPlanID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -53,7 +53,7 @@ class TestExternalPlanID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_plan_id = response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
+            assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -72,7 +72,7 @@ class TestExternalPlanID:
         external_plan_id = client.plans.external_plan_id.fetch(
             "external_plan_id",
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -83,7 +83,7 @@ class TestExternalPlanID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -94,7 +94,7 @@ class TestExternalPlanID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_plan_id = response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
+            assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -114,7 +114,7 @@ class TestAsyncExternalPlanID:
         external_plan_id = await async_client.plans.external_plan_id.update(
             other_external_plan_id="external_plan_id",
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -123,7 +123,7 @@ class TestAsyncExternalPlanID:
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -134,7 +134,7 @@ class TestAsyncExternalPlanID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -145,7 +145,7 @@ class TestAsyncExternalPlanID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_plan_id = await response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
+            assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -164,7 +164,7 @@ class TestAsyncExternalPlanID:
         external_plan_id = await async_client.plans.external_plan_id.fetch(
             "external_plan_id",
         )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -175,7 +175,7 @@ class TestAsyncExternalPlanID:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
+        assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -186,7 +186,7 @@ class TestAsyncExternalPlanID:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_plan_id = await response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
+            assert_matches_type(PlanModel, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

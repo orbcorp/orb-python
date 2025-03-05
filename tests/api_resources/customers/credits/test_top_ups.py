@@ -11,12 +11,7 @@ from orb import Orb, AsyncOrb
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.customers.credits import (
-    TopUpListResponse,
-    TopUpCreateResponse,
-    TopUpListByExternalIDResponse,
-    TopUpCreateByExternalIDResponse,
-)
+from orb.types.shared import TopUpModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -37,7 +32,7 @@ class TestTopUps:
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
         )
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
@@ -57,7 +52,7 @@ class TestTopUps:
             expires_after=0,
             expires_after_unit="day",
         )
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -76,7 +71,7 @@ class TestTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -95,7 +90,7 @@ class TestTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = response.parse()
-            assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+            assert_matches_type(TopUpModel, top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -119,7 +114,7 @@ class TestTopUps:
         top_up = client.customers.credits.top_ups.list(
             customer_id="customer_id",
         )
-        assert_matches_type(SyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -128,7 +123,7 @@ class TestTopUps:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -139,7 +134,7 @@ class TestTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(SyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -150,7 +145,7 @@ class TestTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = response.parse()
-            assert_matches_type(SyncPage[TopUpListResponse], top_up, path=["response"])
+            assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -222,7 +217,7 @@ class TestTopUps:
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
         )
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_method_create_by_external_id_with_all_params(self, client: Orb) -> None:
@@ -242,7 +237,7 @@ class TestTopUps:
             expires_after=0,
             expires_after_unit="day",
         )
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_raw_response_create_by_external_id(self, client: Orb) -> None:
@@ -261,7 +256,7 @@ class TestTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     def test_streaming_response_create_by_external_id(self, client: Orb) -> None:
@@ -280,7 +275,7 @@ class TestTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = response.parse()
-            assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+            assert_matches_type(TopUpModel, top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -352,7 +347,7 @@ class TestTopUps:
         top_up = client.customers.credits.top_ups.list_by_external_id(
             external_customer_id="external_customer_id",
         )
-        assert_matches_type(SyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_method_list_by_external_id_with_all_params(self, client: Orb) -> None:
@@ -361,7 +356,7 @@ class TestTopUps:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_raw_response_list_by_external_id(self, client: Orb) -> None:
@@ -372,7 +367,7 @@ class TestTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(SyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     def test_streaming_response_list_by_external_id(self, client: Orb) -> None:
@@ -383,7 +378,7 @@ class TestTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = response.parse()
-            assert_matches_type(SyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+            assert_matches_type(SyncPage[TopUpModel], top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -411,7 +406,7 @@ class TestAsyncTopUps:
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
         )
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -431,7 +426,7 @@ class TestAsyncTopUps:
             expires_after=0,
             expires_after_unit="day",
         )
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -450,7 +445,7 @@ class TestAsyncTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -469,7 +464,7 @@ class TestAsyncTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = await response.parse()
-            assert_matches_type(TopUpCreateResponse, top_up, path=["response"])
+            assert_matches_type(TopUpModel, top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -493,7 +488,7 @@ class TestAsyncTopUps:
         top_up = await async_client.customers.credits.top_ups.list(
             customer_id="customer_id",
         )
-        assert_matches_type(AsyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -502,7 +497,7 @@ class TestAsyncTopUps:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -513,7 +508,7 @@ class TestAsyncTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(AsyncPage[TopUpListResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -524,7 +519,7 @@ class TestAsyncTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = await response.parse()
-            assert_matches_type(AsyncPage[TopUpListResponse], top_up, path=["response"])
+            assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -596,7 +591,7 @@ class TestAsyncTopUps:
             per_unit_cost_basis="per_unit_cost_basis",
             threshold="threshold",
         )
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_method_create_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -616,7 +611,7 @@ class TestAsyncTopUps:
             expires_after=0,
             expires_after_unit="day",
         )
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_raw_response_create_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -635,7 +630,7 @@ class TestAsyncTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+        assert_matches_type(TopUpModel, top_up, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -654,7 +649,7 @@ class TestAsyncTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = await response.parse()
-            assert_matches_type(TopUpCreateByExternalIDResponse, top_up, path=["response"])
+            assert_matches_type(TopUpModel, top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -726,7 +721,7 @@ class TestAsyncTopUps:
         top_up = await async_client.customers.credits.top_ups.list_by_external_id(
             external_customer_id="external_customer_id",
         )
-        assert_matches_type(AsyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_method_list_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -735,7 +730,7 @@ class TestAsyncTopUps:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_raw_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -746,7 +741,7 @@ class TestAsyncTopUps:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         top_up = response.parse()
-        assert_matches_type(AsyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+        assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_by_external_id(self, async_client: AsyncOrb) -> None:
@@ -757,7 +752,7 @@ class TestAsyncTopUps:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             top_up = await response.parse()
-            assert_matches_type(AsyncPage[TopUpListByExternalIDResponse], top_up, path=["response"])
+            assert_matches_type(AsyncPage[TopUpModel], top_up, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

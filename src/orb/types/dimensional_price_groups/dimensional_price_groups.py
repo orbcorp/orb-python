@@ -3,13 +3,13 @@
 from typing import List
 
 from ..._models import BaseModel
-from ..dimensional_price_group import DimensionalPriceGroup
 from ..shared.pagination_metadata import PaginationMetadata
+from ..shared.dimensional_price_group_model import DimensionalPriceGroupModel
 
 __all__ = ["DimensionalPriceGroups"]
 
 
 class DimensionalPriceGroups(BaseModel):
-    data: List[DimensionalPriceGroup]
+    data: List[DimensionalPriceGroupModel]
 
     pagination_metadata: PaginationMetadata

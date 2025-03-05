@@ -8,10 +8,10 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import BillableMetric
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
+from orb.types.shared import BillableMetricModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -27,7 +27,7 @@ class TestMetrics:
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
@@ -38,7 +38,7 @@ class TestMetrics:
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -52,7 +52,7 @@ class TestMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -66,7 +66,7 @@ class TestMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,7 +75,7 @@ class TestMetrics:
         metric = client.metrics.update(
             metric_id="metric_id",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Orb) -> None:
@@ -83,7 +83,7 @@ class TestMetrics:
             metric_id="metric_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
@@ -94,7 +94,7 @@ class TestMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: Orb) -> None:
@@ -105,7 +105,7 @@ class TestMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -119,7 +119,7 @@ class TestMetrics:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         metric = client.metrics.list()
-        assert_matches_type(SyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(SyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -131,7 +131,7 @@ class TestMetrics:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(SyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -140,7 +140,7 @@ class TestMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(SyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(SyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -149,7 +149,7 @@ class TestMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = response.parse()
-            assert_matches_type(SyncPage[BillableMetric], metric, path=["response"])
+            assert_matches_type(SyncPage[BillableMetricModel], metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -158,7 +158,7 @@ class TestMetrics:
         metric = client.metrics.fetch(
             "metric_id",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_raw_response_fetch(self, client: Orb) -> None:
@@ -169,7 +169,7 @@ class TestMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     def test_streaming_response_fetch(self, client: Orb) -> None:
@@ -180,7 +180,7 @@ class TestMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -203,7 +203,7 @@ class TestAsyncMetrics:
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -214,7 +214,7 @@ class TestAsyncMetrics:
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -228,7 +228,7 @@ class TestAsyncMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -242,7 +242,7 @@ class TestAsyncMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = await response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -251,7 +251,7 @@ class TestAsyncMetrics:
         metric = await async_client.metrics.update(
             metric_id="metric_id",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -259,7 +259,7 @@ class TestAsyncMetrics:
             metric_id="metric_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
@@ -270,7 +270,7 @@ class TestAsyncMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
@@ -281,7 +281,7 @@ class TestAsyncMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = await response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -295,7 +295,7 @@ class TestAsyncMetrics:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         metric = await async_client.metrics.list()
-        assert_matches_type(AsyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(AsyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -307,7 +307,7 @@ class TestAsyncMetrics:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(AsyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -316,7 +316,7 @@ class TestAsyncMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(AsyncPage[BillableMetric], metric, path=["response"])
+        assert_matches_type(AsyncPage[BillableMetricModel], metric, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -325,7 +325,7 @@ class TestAsyncMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = await response.parse()
-            assert_matches_type(AsyncPage[BillableMetric], metric, path=["response"])
+            assert_matches_type(AsyncPage[BillableMetricModel], metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -334,7 +334,7 @@ class TestAsyncMetrics:
         metric = await async_client.metrics.fetch(
             "metric_id",
         )
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_raw_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -345,7 +345,7 @@ class TestAsyncMetrics:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metric = response.parse()
-        assert_matches_type(BillableMetric, metric, path=["response"])
+        assert_matches_type(BillableMetricModel, metric, path=["response"])
 
     @parametrize
     async def test_streaming_response_fetch(self, async_client: AsyncOrb) -> None:
@@ -356,7 +356,7 @@ class TestAsyncMetrics:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metric = await response.parse()
-            assert_matches_type(BillableMetric, metric, path=["response"])
+            assert_matches_type(BillableMetricModel, metric, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

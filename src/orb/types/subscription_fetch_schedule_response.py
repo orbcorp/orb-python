@@ -4,21 +4,9 @@ from typing import Optional
 from datetime import datetime
 
 from .._models import BaseModel
+from .shared.plan_minified_model import PlanMinifiedModel
 
-__all__ = ["SubscriptionFetchScheduleResponse", "Plan"]
-
-
-class Plan(BaseModel):
-    id: Optional[str] = None
-
-    external_plan_id: Optional[str] = None
-    """
-    An optional user-defined ID for this plan resource, used throughout the system
-    as an alias for this Plan. Use this field to identify a plan by an existing
-    identifier in your system.
-    """
-
-    name: Optional[str] = None
+__all__ = ["SubscriptionFetchScheduleResponse"]
 
 
 class SubscriptionFetchScheduleResponse(BaseModel):
@@ -26,6 +14,6 @@ class SubscriptionFetchScheduleResponse(BaseModel):
 
     end_date: Optional[datetime] = None
 
-    plan: Plan
+    plan: PlanMinifiedModel
 
     start_date: datetime
