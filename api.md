@@ -19,6 +19,7 @@ from orb.types import (
     ReplaceSubscriptionPriceParams,
     TrialDiscount,
     UpdatePriceRequestParams,
+    UsageDiscount,
 )
 ```
 
