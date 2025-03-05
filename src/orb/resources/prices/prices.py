@@ -9,12 +9,7 @@ from typing_extensions import Literal, overload
 import httpx
 
 from ... import _legacy_response
-from ...types import (
-    price_list_params,
-    price_create_params,
-    price_update_params,
-    price_evaluate_params,
-)
+from ...types import price_list_params, price_create_params, price_update_params, price_evaluate_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     required_args,
@@ -25,6 +20,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
+from ...types.price import Price
 from ..._base_client import AsyncPaginator, make_request_options
 from .external_price_id import (
     ExternalPriceID,
@@ -34,19 +30,7 @@ from .external_price_id import (
     ExternalPriceIDWithStreamingResponse,
     AsyncExternalPriceIDWithStreamingResponse,
 )
-from ...types.shared.price_model import PriceModel
 from ...types.price_evaluate_response import PriceEvaluateResponse
-from ...types.shared_params.bps_config_model import BpsConfigModel
-from ...types.shared_params.bulk_config_model import BulkConfigModel
-from ...types.shared_params.unit_config_model import UnitConfigModel
-from ...types.shared_params.matrix_config_model import MatrixConfigModel
-from ...types.shared_params.tiered_config_model import TieredConfigModel
-from ...types.shared_params.package_config_model import PackageConfigModel
-from ...types.shared_params.bulk_bps_config_model import BulkBpsConfigModel
-from ...types.shared_params.tiered_bps_config_model import TieredBpsConfigModel
-from ...types.shared_params.custom_rating_function_config_model import CustomRatingFunctionConfigModel
-from ...types.shared_params.matrix_with_allocation_config_model import MatrixWithAllocationConfigModel
-from ...types.shared_params.new_billing_cycle_configuration_model import NewBillingCycleConfigurationModel
 
 __all__ = ["Prices", "AsyncPrices"]
 
@@ -84,15 +68,17 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["unit"],
         name: str,
-        unit_config: UnitConfigModel,
+        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -101,7 +87,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -169,15 +155,17 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["package"],
         name: str,
-        package_config: PackageConfigModel,
+        package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -186,7 +174,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -252,17 +240,19 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_config: MatrixConfigModel,
+        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig,
         model_type: Literal["matrix"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -271,7 +261,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -337,17 +327,23 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_allocation_config: MatrixWithAllocationConfigModel,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
         model_type: Literal["matrix_with_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -356,7 +352,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -424,15 +420,17 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered"],
         name: str,
-        tiered_config: TieredConfigModel,
+        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -441,7 +439,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -509,15 +507,19 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_bps"],
         name: str,
-        tiered_bps_config: TieredBpsConfigModel,
+        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -526,7 +528,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -589,7 +591,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bps_config: BpsConfigModel,
+        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -597,12 +599,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -611,7 +615,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -674,7 +678,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bulk_bps_config: BulkBpsConfigModel,
+        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -682,12 +686,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -696,7 +702,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -759,7 +765,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bulk_config: BulkConfigModel,
+        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -767,12 +773,14 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -781,7 +789,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -849,15 +857,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["threshold_total_amount"],
         name: str,
-        threshold_total_amount_config: CustomRatingFunctionConfigModel,
+        threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -866,7 +880,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -934,15 +948,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_package"],
         name: str,
-        tiered_package_config: CustomRatingFunctionConfigModel,
+        tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -951,7 +971,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1016,18 +1036,24 @@ class Prices(SyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_tiered_config: CustomRatingFunctionConfigModel,
+        grouped_tiered_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_tiered"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1036,7 +1062,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1102,17 +1128,23 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        max_group_tiered_package_config: CustomRatingFunctionConfigModel,
+        max_group_tiered_package_config: Dict[str, object],
         model_type: Literal["max_group_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1121,7 +1153,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1189,15 +1221,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_with_minimum"],
         name: str,
-        tiered_with_minimum_config: CustomRatingFunctionConfigModel,
+        tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1206,7 +1244,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1274,15 +1312,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["package_with_allocation"],
         name: str,
-        package_with_allocation_config: CustomRatingFunctionConfigModel,
+        package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1291,7 +1335,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1359,15 +1403,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_package_with_minimum"],
         name: str,
-        tiered_package_with_minimum_config: CustomRatingFunctionConfigModel,
+        tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1376,7 +1426,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1444,15 +1494,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["unit_with_percent"],
         name: str,
-        unit_with_percent_config: CustomRatingFunctionConfigModel,
+        unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1461,7 +1517,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1529,15 +1585,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_with_proration"],
         name: str,
-        tiered_with_proration_config: CustomRatingFunctionConfigModel,
+        tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1546,7 +1608,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1614,15 +1676,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["unit_with_proration"],
         name: str,
-        unit_with_proration_config: CustomRatingFunctionConfigModel,
+        unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1631,7 +1699,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1696,18 +1764,24 @@ class Prices(SyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_allocation_config: CustomRatingFunctionConfigModel,
+        grouped_allocation_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1716,7 +1790,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1781,18 +1855,24 @@ class Prices(SyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_with_prorated_minimum_config: CustomRatingFunctionConfigModel,
+        grouped_with_prorated_minimum_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_with_prorated_minimum"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1801,7 +1881,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1866,18 +1946,24 @@ class Prices(SyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_with_metered_minimum_config: CustomRatingFunctionConfigModel,
+        grouped_with_metered_minimum_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_with_metered_minimum"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1886,7 +1972,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -1952,17 +2038,23 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_display_name_config: CustomRatingFunctionConfigModel,
+        matrix_with_display_name_config: Dict[str, object],
         model_type: Literal["matrix_with_display_name"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1971,7 +2063,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2034,7 +2126,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bulk_with_proration_config: CustomRatingFunctionConfigModel,
+        bulk_with_proration_config: Dict[str, object],
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -2042,12 +2134,18 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2056,7 +2154,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2121,18 +2219,24 @@ class Prices(SyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_tiered_package_config: CustomRatingFunctionConfigModel,
+        grouped_tiered_package_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2141,7 +2245,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2209,15 +2313,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["scalable_matrix_with_unit_pricing"],
         name: str,
-        scalable_matrix_with_unit_pricing_config: CustomRatingFunctionConfigModel,
+        scalable_matrix_with_unit_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2226,7 +2336,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2294,15 +2404,21 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["scalable_matrix_with_tiered_pricing"],
         name: str,
-        scalable_matrix_with_tiered_pricing_config: CustomRatingFunctionConfigModel,
+        scalable_matrix_with_tiered_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2311,7 +2427,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2375,19 +2491,25 @@ class Prices(SyncAPIResource):
         self,
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
-        cumulative_grouped_bulk_config: CustomRatingFunctionConfigModel,
+        cumulative_grouped_bulk_config: Dict[str, object],
         currency: str,
         item_id: str,
         model_type: Literal["cumulative_grouped_bulk"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2396,7 +2518,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2520,43 +2642,46 @@ class Prices(SyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"],
         name: str,
-        unit_config: UnitConfigModel | NotGiven = NOT_GIVEN,
+        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        package_config: PackageConfigModel | NotGiven = NOT_GIVEN,
-        matrix_config: MatrixConfigModel | NotGiven = NOT_GIVEN,
-        matrix_with_allocation_config: MatrixWithAllocationConfigModel | NotGiven = NOT_GIVEN,
-        tiered_config: TieredConfigModel | NotGiven = NOT_GIVEN,
-        tiered_bps_config: TieredBpsConfigModel | NotGiven = NOT_GIVEN,
-        bps_config: BpsConfigModel | NotGiven = NOT_GIVEN,
-        bulk_bps_config: BulkBpsConfigModel | NotGiven = NOT_GIVEN,
-        bulk_config: BulkConfigModel | NotGiven = NOT_GIVEN,
-        threshold_total_amount_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_tiered_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        max_group_tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_with_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        package_with_allocation_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_package_with_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        unit_with_percent_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        unit_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_allocation_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_with_prorated_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_with_metered_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        matrix_with_display_name_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        bulk_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        scalable_matrix_with_unit_pricing_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        scalable_matrix_with_tiered_pricing_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        cumulative_grouped_bulk_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
+        package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
+        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
+        | NotGiven = NOT_GIVEN,
+        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
+        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
+        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
+        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig | NotGiven = NOT_GIVEN,
+        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig | NotGiven = NOT_GIVEN,
+        threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        max_group_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        unit_with_percent_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        unit_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_with_prorated_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_with_metered_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        matrix_with_display_name_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        bulk_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        scalable_matrix_with_unit_pricing_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        scalable_matrix_with_tiered_pricing_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        cumulative_grouped_bulk_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2564,9 +2689,9 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         return cast(
-            PriceModel,
+            Price,
             self._post(
                 "/prices",
                 body=maybe_transform(
@@ -2623,7 +2748,7 @@ class Prices(SyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -2639,7 +2764,7 @@ class Prices(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """This endpoint allows you to update the `metadata` property on a price.
 
         If you
@@ -2664,7 +2789,7 @@ class Prices(SyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
-            PriceModel,
+            Price,
             self._put(
                 f"/prices/{price_id}",
                 body=maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
@@ -2675,7 +2800,7 @@ class Prices(SyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -2690,7 +2815,7 @@ class Prices(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[PriceModel]:
+    ) -> SyncPage[Price]:
         """
         This endpoint is used to list all add-on prices created using the
         [price creation endpoint](/api-reference/price/create-price).
@@ -2711,7 +2836,7 @@ class Prices(SyncAPIResource):
         """
         return self._get_api_list(
             "/prices",
-            page=SyncPage[PriceModel],
+            page=SyncPage[Price],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2725,7 +2850,7 @@ class Prices(SyncAPIResource):
                     price_list_params.PriceListParams,
                 ),
             ),
-            model=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
         )
 
     def evaluate(
@@ -2831,7 +2956,7 @@ class Prices(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint returns a price given an identifier.
 
@@ -2847,13 +2972,13 @@ class Prices(SyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
-            PriceModel,
+            Price,
             self._get(
                 f"/prices/{price_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -2891,15 +3016,17 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["unit"],
         name: str,
-        unit_config: UnitConfigModel,
+        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2908,7 +3035,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -2976,15 +3103,17 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["package"],
         name: str,
-        package_config: PackageConfigModel,
+        package_config: price_create_params.NewFloatingPackagePricePackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2993,7 +3122,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3059,17 +3188,19 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_config: MatrixConfigModel,
+        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig,
         model_type: Literal["matrix"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3078,7 +3209,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3144,17 +3275,23 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_allocation_config: MatrixWithAllocationConfigModel,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
         model_type: Literal["matrix_with_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3163,7 +3300,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3231,15 +3368,17 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered"],
         name: str,
-        tiered_config: TieredConfigModel,
+        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3248,7 +3387,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3316,15 +3455,19 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_bps"],
         name: str,
-        tiered_bps_config: TieredBpsConfigModel,
+        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3333,7 +3476,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3396,7 +3539,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bps_config: BpsConfigModel,
+        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -3404,12 +3547,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3418,7 +3563,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3481,7 +3626,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bulk_bps_config: BulkBpsConfigModel,
+        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -3489,12 +3634,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3503,7 +3650,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3566,7 +3713,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bulk_config: BulkConfigModel,
+        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -3574,12 +3721,14 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3588,7 +3737,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3656,15 +3805,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["threshold_total_amount"],
         name: str,
-        threshold_total_amount_config: CustomRatingFunctionConfigModel,
+        threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3673,7 +3828,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3741,15 +3896,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_package"],
         name: str,
-        tiered_package_config: CustomRatingFunctionConfigModel,
+        tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3758,7 +3919,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3823,18 +3984,24 @@ class AsyncPrices(AsyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_tiered_config: CustomRatingFunctionConfigModel,
+        grouped_tiered_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_tiered"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3843,7 +4010,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3909,17 +4076,23 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        max_group_tiered_package_config: CustomRatingFunctionConfigModel,
+        max_group_tiered_package_config: Dict[str, object],
         model_type: Literal["max_group_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3928,7 +4101,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -3996,15 +4169,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_with_minimum"],
         name: str,
-        tiered_with_minimum_config: CustomRatingFunctionConfigModel,
+        tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4013,7 +4192,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4081,15 +4260,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["package_with_allocation"],
         name: str,
-        package_with_allocation_config: CustomRatingFunctionConfigModel,
+        package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4098,7 +4283,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4166,15 +4351,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_package_with_minimum"],
         name: str,
-        tiered_package_with_minimum_config: CustomRatingFunctionConfigModel,
+        tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4183,7 +4374,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4251,15 +4442,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["unit_with_percent"],
         name: str,
-        unit_with_percent_config: CustomRatingFunctionConfigModel,
+        unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4268,7 +4465,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4336,15 +4533,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_with_proration"],
         name: str,
-        tiered_with_proration_config: CustomRatingFunctionConfigModel,
+        tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4353,7 +4556,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4421,15 +4624,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["unit_with_proration"],
         name: str,
-        unit_with_proration_config: CustomRatingFunctionConfigModel,
+        unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4438,7 +4647,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4503,18 +4712,24 @@ class AsyncPrices(AsyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_allocation_config: CustomRatingFunctionConfigModel,
+        grouped_allocation_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4523,7 +4738,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4588,18 +4803,24 @@ class AsyncPrices(AsyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_with_prorated_minimum_config: CustomRatingFunctionConfigModel,
+        grouped_with_prorated_minimum_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_with_prorated_minimum"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4608,7 +4829,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4673,18 +4894,24 @@ class AsyncPrices(AsyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_with_metered_minimum_config: CustomRatingFunctionConfigModel,
+        grouped_with_metered_minimum_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_with_metered_minimum"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4693,7 +4920,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4759,17 +4986,23 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_display_name_config: CustomRatingFunctionConfigModel,
+        matrix_with_display_name_config: Dict[str, object],
         model_type: Literal["matrix_with_display_name"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4778,7 +5011,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4841,7 +5074,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bulk_with_proration_config: CustomRatingFunctionConfigModel,
+        bulk_with_proration_config: Dict[str, object],
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -4849,12 +5082,18 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4863,7 +5102,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -4928,18 +5167,24 @@ class AsyncPrices(AsyncAPIResource):
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
-        grouped_tiered_package_config: CustomRatingFunctionConfigModel,
+        grouped_tiered_package_config: Dict[str, object],
         item_id: str,
         model_type: Literal["grouped_tiered_package"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4948,7 +5193,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -5016,15 +5261,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["scalable_matrix_with_unit_pricing"],
         name: str,
-        scalable_matrix_with_unit_pricing_config: CustomRatingFunctionConfigModel,
+        scalable_matrix_with_unit_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5033,7 +5284,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -5101,15 +5352,21 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["scalable_matrix_with_tiered_pricing"],
         name: str,
-        scalable_matrix_with_tiered_pricing_config: CustomRatingFunctionConfigModel,
+        scalable_matrix_with_tiered_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5118,7 +5375,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -5182,19 +5439,25 @@ class AsyncPrices(AsyncAPIResource):
         self,
         *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
-        cumulative_grouped_bulk_config: CustomRatingFunctionConfigModel,
+        cumulative_grouped_bulk_config: Dict[str, object],
         currency: str,
         item_id: str,
         model_type: Literal["cumulative_grouped_bulk"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5203,7 +5466,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
         A price created using this endpoint is always an add-on, meaning that it’s not
@@ -5327,43 +5590,46 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"],
         name: str,
-        unit_config: UnitConfigModel | NotGiven = NOT_GIVEN,
+        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[NewBillingCycleConfigurationModel] | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
+        | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        package_config: PackageConfigModel | NotGiven = NOT_GIVEN,
-        matrix_config: MatrixConfigModel | NotGiven = NOT_GIVEN,
-        matrix_with_allocation_config: MatrixWithAllocationConfigModel | NotGiven = NOT_GIVEN,
-        tiered_config: TieredConfigModel | NotGiven = NOT_GIVEN,
-        tiered_bps_config: TieredBpsConfigModel | NotGiven = NOT_GIVEN,
-        bps_config: BpsConfigModel | NotGiven = NOT_GIVEN,
-        bulk_bps_config: BulkBpsConfigModel | NotGiven = NOT_GIVEN,
-        bulk_config: BulkConfigModel | NotGiven = NOT_GIVEN,
-        threshold_total_amount_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_tiered_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        max_group_tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_with_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        package_with_allocation_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_package_with_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        unit_with_percent_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        tiered_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        unit_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_allocation_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_with_prorated_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_with_metered_minimum_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        matrix_with_display_name_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        bulk_with_proration_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        grouped_tiered_package_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        scalable_matrix_with_unit_pricing_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        scalable_matrix_with_tiered_pricing_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
-        cumulative_grouped_bulk_config: CustomRatingFunctionConfigModel | NotGiven = NOT_GIVEN,
+        package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
+        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
+        | NotGiven = NOT_GIVEN,
+        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
+        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
+        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
+        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig | NotGiven = NOT_GIVEN,
+        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig | NotGiven = NOT_GIVEN,
+        threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        max_group_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        package_with_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_package_with_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        unit_with_percent_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        tiered_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        unit_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_allocation_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_with_prorated_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_with_metered_minimum_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        matrix_with_display_name_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        bulk_with_proration_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        grouped_tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        scalable_matrix_with_unit_pricing_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        scalable_matrix_with_tiered_pricing_config: Dict[str, object] | NotGiven = NOT_GIVEN,
+        cumulative_grouped_bulk_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -5371,9 +5637,9 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         return cast(
-            PriceModel,
+            Price,
             await self._post(
                 "/prices",
                 body=await async_maybe_transform(
@@ -5430,7 +5696,7 @@ class AsyncPrices(AsyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -5446,7 +5712,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PriceModel:
+    ) -> Price:
         """This endpoint allows you to update the `metadata` property on a price.
 
         If you
@@ -5471,7 +5737,7 @@ class AsyncPrices(AsyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
-            PriceModel,
+            Price,
             await self._put(
                 f"/prices/{price_id}",
                 body=await async_maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
@@ -5482,7 +5748,7 @@ class AsyncPrices(AsyncAPIResource):
                     timeout=timeout,
                     idempotency_key=idempotency_key,
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -5497,7 +5763,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PriceModel, AsyncPage[PriceModel]]:
+    ) -> AsyncPaginator[Price, AsyncPage[Price]]:
         """
         This endpoint is used to list all add-on prices created using the
         [price creation endpoint](/api-reference/price/create-price).
@@ -5518,7 +5784,7 @@ class AsyncPrices(AsyncAPIResource):
         """
         return self._get_api_list(
             "/prices",
-            page=AsyncPage[PriceModel],
+            page=AsyncPage[Price],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -5532,7 +5798,7 @@ class AsyncPrices(AsyncAPIResource):
                     price_list_params.PriceListParams,
                 ),
             ),
-            model=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+            model=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
         )
 
     async def evaluate(
@@ -5638,7 +5904,7 @@ class AsyncPrices(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PriceModel:
+    ) -> Price:
         """
         This endpoint returns a price given an identifier.
 
@@ -5654,13 +5920,13 @@ class AsyncPrices(AsyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return cast(
-            PriceModel,
+            Price,
             await self._get(
                 f"/prices/{price_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, PriceModel),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, Price),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 

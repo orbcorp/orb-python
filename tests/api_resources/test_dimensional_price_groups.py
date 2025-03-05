@@ -8,9 +8,9 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb.types import DimensionalPriceGroup
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
-from orb.types.shared import DimensionalPriceGroupModel
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,7 +25,7 @@ class TestDimensionalPriceGroups:
             dimensions=["region", "instance_type"],
             name="name",
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
@@ -36,7 +36,7 @@ class TestDimensionalPriceGroups:
             external_dimensional_price_group_id="external_dimensional_price_group_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -49,7 +49,7 @@ class TestDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -62,7 +62,7 @@ class TestDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = response.parse()
-            assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -71,7 +71,7 @@ class TestDimensionalPriceGroups:
         dimensional_price_group = client.dimensional_price_groups.retrieve(
             "dimensional_price_group_id",
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Orb) -> None:
@@ -82,7 +82,7 @@ class TestDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Orb) -> None:
@@ -93,7 +93,7 @@ class TestDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = response.parse()
-            assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -109,7 +109,7 @@ class TestDimensionalPriceGroups:
     @parametrize
     def test_method_list(self, client: Orb) -> None:
         dimensional_price_group = client.dimensional_price_groups.list()
-        assert_matches_type(SyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(SyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
@@ -117,7 +117,7 @@ class TestDimensionalPriceGroups:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(SyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Orb) -> None:
@@ -126,7 +126,7 @@ class TestDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(SyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(SyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Orb) -> None:
@@ -135,7 +135,7 @@ class TestDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = response.parse()
-            assert_matches_type(SyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+            assert_matches_type(SyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -150,7 +150,7 @@ class TestAsyncDimensionalPriceGroups:
             dimensions=["region", "instance_type"],
             name="name",
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -161,7 +161,7 @@ class TestAsyncDimensionalPriceGroups:
             external_dimensional_price_group_id="external_dimensional_price_group_id",
             metadata={"foo": "string"},
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -174,7 +174,7 @@ class TestAsyncDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -187,7 +187,7 @@ class TestAsyncDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = await response.parse()
-            assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -196,7 +196,7 @@ class TestAsyncDimensionalPriceGroups:
         dimensional_price_group = await async_client.dimensional_price_groups.retrieve(
             "dimensional_price_group_id",
         )
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOrb) -> None:
@@ -207,7 +207,7 @@ class TestAsyncDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOrb) -> None:
@@ -218,7 +218,7 @@ class TestAsyncDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = await response.parse()
-            assert_matches_type(DimensionalPriceGroupModel, dimensional_price_group, path=["response"])
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -234,7 +234,7 @@ class TestAsyncDimensionalPriceGroups:
     @parametrize
     async def test_method_list(self, async_client: AsyncOrb) -> None:
         dimensional_price_group = await async_client.dimensional_price_groups.list()
-        assert_matches_type(AsyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(AsyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -242,7 +242,7 @@ class TestAsyncDimensionalPriceGroups:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(AsyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOrb) -> None:
@@ -251,7 +251,7 @@ class TestAsyncDimensionalPriceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dimensional_price_group = response.parse()
-        assert_matches_type(AsyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+        assert_matches_type(AsyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOrb) -> None:
@@ -260,6 +260,6 @@ class TestAsyncDimensionalPriceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dimensional_price_group = await response.parse()
-            assert_matches_type(AsyncPage[DimensionalPriceGroupModel], dimensional_price_group, path=["response"])
+            assert_matches_type(AsyncPage[DimensionalPriceGroup], dimensional_price_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
