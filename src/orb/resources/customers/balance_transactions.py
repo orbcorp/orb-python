@@ -20,7 +20,8 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.customers import balance_transaction_list_params, balance_transaction_create_params
-from ...types.shared.customer_balance_transaction_model import CustomerBalanceTransactionModel
+from ...types.customers.balance_transaction_list_response import BalanceTransactionListResponse
+from ...types.customers.balance_transaction_create_response import BalanceTransactionCreateResponse
 
 __all__ = ["BalanceTransactions", "AsyncBalanceTransactions"]
 
@@ -59,7 +60,7 @@ class BalanceTransactions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerBalanceTransactionModel:
+    ) -> BalanceTransactionCreateResponse:
         """
         Creates an immutable balance transaction that updates the customer's balance and
         returns back the newly created transaction.
@@ -96,7 +97,7 @@ class BalanceTransactions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerBalanceTransactionModel,
+            cast_to=BalanceTransactionCreateResponse,
         )
 
     def list(
@@ -115,7 +116,7 @@ class BalanceTransactions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CustomerBalanceTransactionModel]:
+    ) -> SyncPage[BalanceTransactionListResponse]:
         """
         ## The customer balance
 
@@ -164,7 +165,7 @@ class BalanceTransactions(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/balance_transactions",
-            page=SyncPage[CustomerBalanceTransactionModel],
+            page=SyncPage[BalanceTransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -182,7 +183,7 @@ class BalanceTransactions(SyncAPIResource):
                     balance_transaction_list_params.BalanceTransactionListParams,
                 ),
             ),
-            model=CustomerBalanceTransactionModel,
+            model=BalanceTransactionListResponse,
         )
 
 
@@ -220,7 +221,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerBalanceTransactionModel:
+    ) -> BalanceTransactionCreateResponse:
         """
         Creates an immutable balance transaction that updates the customer's balance and
         returns back the newly created transaction.
@@ -257,7 +258,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerBalanceTransactionModel,
+            cast_to=BalanceTransactionCreateResponse,
         )
 
     def list(
@@ -276,7 +277,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CustomerBalanceTransactionModel, AsyncPage[CustomerBalanceTransactionModel]]:
+    ) -> AsyncPaginator[BalanceTransactionListResponse, AsyncPage[BalanceTransactionListResponse]]:
         """
         ## The customer balance
 
@@ -325,7 +326,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
             f"/customers/{customer_id}/balance_transactions",
-            page=AsyncPage[CustomerBalanceTransactionModel],
+            page=AsyncPage[BalanceTransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -343,7 +344,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
                     balance_transaction_list_params.BalanceTransactionListParams,
                 ),
             ),
-            model=CustomerBalanceTransactionModel,
+            model=BalanceTransactionListResponse,
         )
 
 

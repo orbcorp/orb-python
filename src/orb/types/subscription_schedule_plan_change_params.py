@@ -13,9 +13,8 @@ from .shared_params.replace_subscription_price_params import ReplaceSubscription
 from .shared_params.add_subscription_adjustment_params import AddSubscriptionAdjustmentParams
 from .shared_params.remove_subscription_adjustment_params import RemoveSubscriptionAdjustmentParams
 from .shared_params.replace_subscription_adjustment_params import ReplaceSubscriptionAdjustmentParams
-from .shared_params.billing_cycle_anchor_configuration_model import BillingCycleAnchorConfigurationModel
 
-__all__ = ["SubscriptionSchedulePlanChangeParams"]
+__all__ = ["SubscriptionSchedulePlanChangeParams", "BillingCycleAnchorConfiguration"]
 
 
 class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
@@ -55,7 +54,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     billing cycle alignment.
     """
 
-    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfigurationModel]
+    billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
 
     change_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date that the plan change should take effect.
@@ -172,4 +171,28 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     provided, the subscription includes usage events from the specified customers
     only. Provided usage_customer_ids must be either the customer for this
     subscription itself, or any of that customer's children.
+    """
+
+
+class BillingCycleAnchorConfiguration(TypedDict, total=False):
+    day: Required[int]
+    """The day of the month on which the billing cycle is anchored.
+
+    If the maximum number of days in a month is greater than this value, the last
+    day of the month is the billing cycle day (e.g. billing_cycle_day=31 for April
+    means the billing period begins on the 30th.
+    """
+
+    month: Optional[int]
+    """The month on which the billing cycle is anchored (e.g.
+
+    a quarterly price anchored in February would have cycles starting February, May,
+    August, and November).
+    """
+
+    year: Optional[int]
+    """The year on which the billing cycle is anchored (e.g.
+
+    a 2 year billing cycle anchored on 2021 would have cycles starting on 2021,
+    2023, 2025, etc.).
     """

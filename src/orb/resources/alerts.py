@@ -27,9 +27,8 @@ from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
+from ..types.alert import Alert
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.shared.alert_model import AlertModel
-from ..types.shared_params.threshold_model import ThresholdModel
 
 __all__ = ["Alerts", "AsyncAlerts"]
 
@@ -64,7 +63,7 @@ class Alerts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint retrieves an alert by its ID.
 
@@ -84,14 +83,14 @@ class Alerts(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def update(
         self,
         alert_configuration_id: str,
         *,
-        thresholds: Iterable[ThresholdModel],
+        thresholds: Iterable[alert_update_params.Threshold],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -99,7 +98,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint updates the thresholds of an alert.
 
@@ -130,7 +129,7 @@ class Alerts(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def list(
@@ -151,7 +150,7 @@ class Alerts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[AlertModel]:
+    ) -> SyncPage[Alert]:
         """
         This endpoint returns a list of alerts within Orb.
 
@@ -187,7 +186,7 @@ class Alerts(SyncAPIResource):
         """
         return self._get_api_list(
             "/alerts",
-            page=SyncPage[AlertModel],
+            page=SyncPage[Alert],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -208,7 +207,7 @@ class Alerts(SyncAPIResource):
                     alert_list_params.AlertListParams,
                 ),
             ),
-            model=AlertModel,
+            model=Alert,
         )
 
     def create_for_customer(
@@ -223,7 +222,7 @@ class Alerts(SyncAPIResource):
             "credit_balance_dropped",
             "credit_balance_recovered",
         ],
-        thresholds: Optional[Iterable[ThresholdModel]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -231,7 +230,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
 
         There
@@ -279,7 +278,7 @@ class Alerts(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def create_for_external_customer(
@@ -294,7 +293,7 @@ class Alerts(SyncAPIResource):
             "credit_balance_dropped",
             "credit_balance_recovered",
         ],
-        thresholds: Optional[Iterable[ThresholdModel]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -302,7 +301,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
 
         There
@@ -352,14 +351,14 @@ class Alerts(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def create_for_subscription(
         self,
         subscription_id: str,
         *,
-        thresholds: Iterable[ThresholdModel],
+        thresholds: Iterable[alert_create_for_subscription_params.Threshold],
         type: Literal[
             "usage_exceeded",
             "cost_exceeded",
@@ -375,7 +374,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint is used to create alerts at the subscription level.
 
@@ -425,7 +424,7 @@ class Alerts(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def disable(
@@ -440,7 +439,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint allows you to disable an alert.
 
         To disable a plan-level alert for
@@ -474,7 +473,7 @@ class Alerts(SyncAPIResource):
                 idempotency_key=idempotency_key,
                 query=maybe_transform({"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams),
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def enable(
@@ -489,7 +488,7 @@ class Alerts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint allows you to enable an alert.
 
         To enable a plan-level alert for a
@@ -523,7 +522,7 @@ class Alerts(SyncAPIResource):
                 idempotency_key=idempotency_key,
                 query=maybe_transform({"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams),
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
 
@@ -557,7 +556,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint retrieves an alert by its ID.
 
@@ -577,14 +576,14 @@ class AsyncAlerts(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     async def update(
         self,
         alert_configuration_id: str,
         *,
-        thresholds: Iterable[ThresholdModel],
+        thresholds: Iterable[alert_update_params.Threshold],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -592,7 +591,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint updates the thresholds of an alert.
 
@@ -623,7 +622,7 @@ class AsyncAlerts(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     def list(
@@ -644,7 +643,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[AlertModel, AsyncPage[AlertModel]]:
+    ) -> AsyncPaginator[Alert, AsyncPage[Alert]]:
         """
         This endpoint returns a list of alerts within Orb.
 
@@ -680,7 +679,7 @@ class AsyncAlerts(AsyncAPIResource):
         """
         return self._get_api_list(
             "/alerts",
-            page=AsyncPage[AlertModel],
+            page=AsyncPage[Alert],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -701,7 +700,7 @@ class AsyncAlerts(AsyncAPIResource):
                     alert_list_params.AlertListParams,
                 ),
             ),
-            model=AlertModel,
+            model=Alert,
         )
 
     async def create_for_customer(
@@ -716,7 +715,7 @@ class AsyncAlerts(AsyncAPIResource):
             "credit_balance_dropped",
             "credit_balance_recovered",
         ],
-        thresholds: Optional[Iterable[ThresholdModel]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -724,7 +723,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
 
         There
@@ -772,7 +771,7 @@ class AsyncAlerts(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     async def create_for_external_customer(
@@ -787,7 +786,7 @@ class AsyncAlerts(AsyncAPIResource):
             "credit_balance_dropped",
             "credit_balance_recovered",
         ],
-        thresholds: Optional[Iterable[ThresholdModel]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -795,7 +794,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
 
         There
@@ -845,14 +844,14 @@ class AsyncAlerts(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     async def create_for_subscription(
         self,
         subscription_id: str,
         *,
-        thresholds: Iterable[ThresholdModel],
+        thresholds: Iterable[alert_create_for_subscription_params.Threshold],
         type: Literal[
             "usage_exceeded",
             "cost_exceeded",
@@ -868,7 +867,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """
         This endpoint is used to create alerts at the subscription level.
 
@@ -918,7 +917,7 @@ class AsyncAlerts(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     async def disable(
@@ -933,7 +932,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint allows you to disable an alert.
 
         To disable a plan-level alert for
@@ -969,7 +968,7 @@ class AsyncAlerts(AsyncAPIResource):
                     {"subscription_id": subscription_id}, alert_disable_params.AlertDisableParams
                 ),
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
     async def enable(
@@ -984,7 +983,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> AlertModel:
+    ) -> Alert:
         """This endpoint allows you to enable an alert.
 
         To enable a plan-level alert for a
@@ -1020,7 +1019,7 @@ class AsyncAlerts(AsyncAPIResource):
                     {"subscription_id": subscription_id}, alert_enable_params.AlertEnableParams
                 ),
             ),
-            cast_to=AlertModel,
+            cast_to=Alert,
         )
 
 

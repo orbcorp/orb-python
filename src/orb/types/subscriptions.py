@@ -3,13 +3,13 @@
 from typing import List
 
 from .._models import BaseModel
-from .shared.subscription_model import SubscriptionModel
+from .subscription import Subscription
 from .shared.pagination_metadata import PaginationMetadata
 
 __all__ = ["Subscriptions"]
 
 
 class Subscriptions(BaseModel):
-    data: List[SubscriptionModel]
+    data: List[Subscription]
 
     pagination_metadata: PaginationMetadata

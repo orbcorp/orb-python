@@ -18,7 +18,7 @@ from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import make_request_options
-from ..types.shared.invoice_line_item_model import InvoiceLineItemModel
+from ..types.invoice_line_item_create_response import InvoiceLineItemCreateResponse
 
 __all__ = ["InvoiceLineItems", "AsyncInvoiceLineItems"]
 
@@ -59,7 +59,7 @@ class InvoiceLineItems(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceLineItemModel:
+    ) -> InvoiceLineItemCreateResponse:
         """This creates a one-off fixed fee invoice line item on an Invoice.
 
         This can only
@@ -109,7 +109,7 @@ class InvoiceLineItems(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceLineItemModel,
+            cast_to=InvoiceLineItemCreateResponse,
         )
 
 
@@ -149,7 +149,7 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InvoiceLineItemModel:
+    ) -> InvoiceLineItemCreateResponse:
         """This creates a one-off fixed fee invoice line item on an Invoice.
 
         This can only
@@ -199,7 +199,7 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InvoiceLineItemModel,
+            cast_to=InvoiceLineItemCreateResponse,
         )
 
 
