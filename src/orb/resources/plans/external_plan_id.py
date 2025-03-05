@@ -15,9 +15,9 @@ from ..._utils import (
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ...types.plan import Plan
 from ...types.plans import external_plan_id_update_params
 from ..._base_client import make_request_options
-from ...types.shared.plan_model import PlanModel
 
 __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
@@ -55,7 +55,7 @@ class ExternalPlanID(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
@@ -101,7 +101,7 @@ class ExternalPlanID(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     def fetch(
@@ -114,7 +114,7 @@ class ExternalPlanID(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts##plan-and-price) details
         given an external_plan_id identifier. It returns information about the prices
@@ -149,7 +149,7 @@ class ExternalPlanID(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
 
@@ -186,7 +186,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
@@ -232,7 +232,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     async def fetch(
@@ -245,7 +245,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts##plan-and-price) details
         given an external_plan_id identifier. It returns information about the prices
@@ -280,7 +280,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
 

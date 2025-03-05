@@ -4,9 +4,17 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .threshold_model import ThresholdModel
 
-__all__ = ["CreateCustomerAlertRequest"]
+__all__ = ["CreateCustomerAlertRequest", "Threshold"]
+
+
+class Threshold(BaseModel):
+    value: float
+    """The value at which an alert will fire.
+
+    For credit balance alerts, the alert will fire at or below this value. For usage
+    and cost alerts, the alert will fire at or above this value.
+    """
 
 
 class CreateCustomerAlertRequest(BaseModel):
@@ -22,5 +30,5 @@ class CreateCustomerAlertRequest(BaseModel):
     ]
     """The type of alert to create. This must be a valid alert type."""
 
-    thresholds: Optional[List[ThresholdModel]] = None
+    thresholds: Optional[List[Threshold]] = None
     """The thresholds that define the values at which the alert will be triggered."""

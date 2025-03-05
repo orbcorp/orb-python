@@ -18,6 +18,7 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.dimensional_price_group import DimensionalPriceGroup
 from .external_dimensional_price_group_id import (
     ExternalDimensionalPriceGroupID,
     AsyncExternalDimensionalPriceGroupID,
@@ -26,7 +27,6 @@ from .external_dimensional_price_group_id import (
     ExternalDimensionalPriceGroupIDWithStreamingResponse,
     AsyncExternalDimensionalPriceGroupIDWithStreamingResponse,
 )
-from ...types.shared.dimensional_price_group_model import DimensionalPriceGroupModel
 
 __all__ = ["DimensionalPriceGroups", "AsyncDimensionalPriceGroups"]
 
@@ -70,7 +70,7 @@ class DimensionalPriceGroups(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> DimensionalPriceGroupModel:
+    ) -> DimensionalPriceGroup:
         """
         A dimensional price group is used to partition the result of a billable metric
         by a set of dimensions. Prices in a price group must specify the parition used
@@ -117,7 +117,7 @@ class DimensionalPriceGroups(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=DimensionalPriceGroupModel,
+            cast_to=DimensionalPriceGroup,
         )
 
     def retrieve(
@@ -130,7 +130,7 @@ class DimensionalPriceGroups(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DimensionalPriceGroupModel:
+    ) -> DimensionalPriceGroup:
         """
         Fetch dimensional price group
 
@@ -152,7 +152,7 @@ class DimensionalPriceGroups(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DimensionalPriceGroupModel,
+            cast_to=DimensionalPriceGroup,
         )
 
     def list(
@@ -166,7 +166,7 @@ class DimensionalPriceGroups(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[DimensionalPriceGroupModel]:
+    ) -> SyncPage[DimensionalPriceGroup]:
         """List dimensional price groups
 
         Args:
@@ -187,7 +187,7 @@ class DimensionalPriceGroups(SyncAPIResource):
         """
         return self._get_api_list(
             "/dimensional_price_groups",
-            page=SyncPage[DimensionalPriceGroupModel],
+            page=SyncPage[DimensionalPriceGroup],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -201,7 +201,7 @@ class DimensionalPriceGroups(SyncAPIResource):
                     dimensional_price_group_list_params.DimensionalPriceGroupListParams,
                 ),
             ),
-            model=DimensionalPriceGroupModel,
+            model=DimensionalPriceGroup,
         )
 
 
@@ -244,7 +244,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> DimensionalPriceGroupModel:
+    ) -> DimensionalPriceGroup:
         """
         A dimensional price group is used to partition the result of a billable metric
         by a set of dimensions. Prices in a price group must specify the parition used
@@ -291,7 +291,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=DimensionalPriceGroupModel,
+            cast_to=DimensionalPriceGroup,
         )
 
     async def retrieve(
@@ -304,7 +304,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DimensionalPriceGroupModel:
+    ) -> DimensionalPriceGroup:
         """
         Fetch dimensional price group
 
@@ -326,7 +326,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DimensionalPriceGroupModel,
+            cast_to=DimensionalPriceGroup,
         )
 
     def list(
@@ -340,7 +340,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DimensionalPriceGroupModel, AsyncPage[DimensionalPriceGroupModel]]:
+    ) -> AsyncPaginator[DimensionalPriceGroup, AsyncPage[DimensionalPriceGroup]]:
         """List dimensional price groups
 
         Args:
@@ -361,7 +361,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         """
         return self._get_api_list(
             "/dimensional_price_groups",
-            page=AsyncPage[DimensionalPriceGroupModel],
+            page=AsyncPage[DimensionalPriceGroup],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -375,7 +375,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
                     dimensional_price_group_list_params.DimensionalPriceGroupListParams,
                 ),
             ),
-            model=DimensionalPriceGroupModel,
+            model=DimensionalPriceGroup,
         )
 
 

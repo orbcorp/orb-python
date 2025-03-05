@@ -41,6 +41,7 @@ from .credits.credits import (
     CreditsWithStreamingResponse,
     AsyncCreditsWithStreamingResponse,
 )
+from ...types.customer import Customer
 from .balance_transactions import (
     BalanceTransactions,
     AsyncBalanceTransactions,
@@ -49,13 +50,6 @@ from .balance_transactions import (
     BalanceTransactionsWithStreamingResponse,
     AsyncBalanceTransactionsWithStreamingResponse,
 )
-from ...types.shared.customer_model import CustomerModel
-from ...types.shared_params.address_input_model import AddressInputModel
-from ...types.shared_params.customer_tax_id_model import CustomerTaxIDModel
-from ...types.shared_params.new_tax_configuration_model import NewTaxConfigurationModel
-from ...types.shared_params.customer_hierarchy_config_model import CustomerHierarchyConfigModel
-from ...types.shared_params.new_reporting_configuration_model import NewReportingConfigurationModel
-from ...types.shared_params.new_accounting_sync_configuration_model import NewAccountingSyncConfigurationModel
 
 __all__ = ["Customers", "AsyncCustomers"]
 
@@ -97,22 +91,23 @@ class Customers(SyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_create_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_create_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -121,7 +116,7 @@ class Customers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This operation is used to create an Orb customer, who is party to the core
         billing relationship. See [Customer](/core-concepts##customer) for an overview
@@ -322,31 +317,32 @@ class Customers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     def update(
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_update_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_update_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -354,7 +350,7 @@ class Customers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
@@ -546,7 +542,7 @@ class Customers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     def list(
@@ -564,7 +560,7 @@ class Customers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CustomerModel]:
+    ) -> SyncPage[Customer]:
         """This endpoint returns a list of all customers for an account.
 
         The list of
@@ -590,7 +586,7 @@ class Customers(SyncAPIResource):
         """
         return self._get_api_list(
             "/customers",
-            page=SyncPage[CustomerModel],
+            page=SyncPage[Customer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -608,7 +604,7 @@ class Customers(SyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            model=CustomerModel,
+            model=Customer,
         )
 
     def delete(
@@ -676,7 +672,7 @@ class Customers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerModel:
+    ) -> Customer:
         """This endpoint is used to fetch customer details given an identifier.
 
         If the
@@ -702,7 +698,7 @@ class Customers(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     def fetch_by_external_id(
@@ -715,7 +711,7 @@ class Customers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint is used to fetch customer details given an `external_customer_id`
         (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
@@ -741,7 +737,7 @@ class Customers(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     def sync_payment_methods_from_gateway(
@@ -842,24 +838,26 @@ class Customers(SyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_update_by_external_id_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_update_by_external_id_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
+        | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -867,7 +865,7 @@ class Customers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint is used to update customer details given an `external_customer_id`
         (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
@@ -1058,7 +1056,7 @@ class Customers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
 
@@ -1099,22 +1097,23 @@ class AsyncCustomers(AsyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_create_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_create_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1123,7 +1122,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This operation is used to create an Orb customer, who is party to the core
         billing relationship. See [Customer](/core-concepts##customer) for an overview
@@ -1324,31 +1323,32 @@ class AsyncCustomers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     async def update(
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_update_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_update_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1356,7 +1356,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
@@ -1548,7 +1548,7 @@ class AsyncCustomers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     def list(
@@ -1566,7 +1566,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CustomerModel, AsyncPage[CustomerModel]]:
+    ) -> AsyncPaginator[Customer, AsyncPage[Customer]]:
         """This endpoint returns a list of all customers for an account.
 
         The list of
@@ -1592,7 +1592,7 @@ class AsyncCustomers(AsyncAPIResource):
         """
         return self._get_api_list(
             "/customers",
-            page=AsyncPage[CustomerModel],
+            page=AsyncPage[Customer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1610,7 +1610,7 @@ class AsyncCustomers(AsyncAPIResource):
                     customer_list_params.CustomerListParams,
                 ),
             ),
-            model=CustomerModel,
+            model=Customer,
         )
 
     async def delete(
@@ -1678,7 +1678,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerModel:
+    ) -> Customer:
         """This endpoint is used to fetch customer details given an identifier.
 
         If the
@@ -1704,7 +1704,7 @@ class AsyncCustomers(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     async def fetch_by_external_id(
@@ -1717,7 +1717,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint is used to fetch customer details given an `external_customer_id`
         (see [Customer ID Aliases](/events-and-metrics/customer-aliases)).
@@ -1743,7 +1743,7 @@ class AsyncCustomers(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
     async def sync_payment_methods_from_gateway(
@@ -1844,24 +1844,26 @@ class AsyncCustomers(AsyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationModel] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[customer_update_by_external_id_params.AccountingSyncConfiguration]
+        | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[customer_update_by_external_id_params.BillingAddress] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigModel] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationModel] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputModel] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[NewTaxConfigurationModel] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxIDModel] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
+        | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1869,7 +1871,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CustomerModel:
+    ) -> Customer:
         """
         This endpoint is used to update customer details given an `external_customer_id`
         (see [Customer ID Aliases](/events-and-metrics/customer-aliases)). Note that the
@@ -2060,7 +2062,7 @@ class AsyncCustomers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CustomerModel,
+            cast_to=Customer,
         )
 
 

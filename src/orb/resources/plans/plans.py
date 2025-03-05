@@ -19,6 +19,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
+from ...types.plan import Plan
 from ..._base_client import AsyncPaginator, make_request_options
 from .external_plan_id import (
     ExternalPlanID,
@@ -28,7 +29,6 @@ from .external_plan_id import (
     ExternalPlanIDWithStreamingResponse,
     AsyncExternalPlanIDWithStreamingResponse,
 )
-from ...types.shared.plan_model import PlanModel
 
 __all__ = ["Plans", "AsyncPlans"]
 
@@ -75,7 +75,7 @@ class Plans(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint allows creation of plans including their prices.
 
@@ -131,7 +131,7 @@ class Plans(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     def update(
@@ -147,7 +147,7 @@ class Plans(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
@@ -191,7 +191,7 @@ class Plans(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     def list(
@@ -210,7 +210,7 @@ class Plans(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[PlanModel]:
+    ) -> SyncPage[Plan]:
         """
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
         an account in a list format. The list of plans is ordered starting from the most
@@ -236,7 +236,7 @@ class Plans(SyncAPIResource):
         """
         return self._get_api_list(
             "/plans",
-            page=SyncPage[PlanModel],
+            page=SyncPage[Plan],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -255,7 +255,7 @@ class Plans(SyncAPIResource):
                     plan_list_params.PlanListParams,
                 ),
             ),
-            model=PlanModel,
+            model=Plan,
         )
 
     def fetch(
@@ -268,7 +268,7 @@ class Plans(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
         given a plan identifier. It returns information about the prices included in the
@@ -304,7 +304,7 @@ class Plans(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
 
@@ -350,7 +350,7 @@ class AsyncPlans(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint allows creation of plans including their prices.
 
@@ -406,7 +406,7 @@ class AsyncPlans(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     async def update(
@@ -422,7 +422,7 @@ class AsyncPlans(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
@@ -466,7 +466,7 @@ class AsyncPlans(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
     def list(
@@ -485,7 +485,7 @@ class AsyncPlans(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PlanModel, AsyncPage[PlanModel]]:
+    ) -> AsyncPaginator[Plan, AsyncPage[Plan]]:
         """
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
         an account in a list format. The list of plans is ordered starting from the most
@@ -511,7 +511,7 @@ class AsyncPlans(AsyncAPIResource):
         """
         return self._get_api_list(
             "/plans",
-            page=AsyncPage[PlanModel],
+            page=AsyncPage[Plan],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -530,7 +530,7 @@ class AsyncPlans(AsyncAPIResource):
                     plan_list_params.PlanListParams,
                 ),
             ),
-            model=PlanModel,
+            model=Plan,
         )
 
     async def fetch(
@@ -543,7 +543,7 @@ class AsyncPlans(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanModel:
+    ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
         given a plan identifier. It returns information about the prices included in the
@@ -579,7 +579,7 @@ class AsyncPlans(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanModel,
+            cast_to=Plan,
         )
 
 
