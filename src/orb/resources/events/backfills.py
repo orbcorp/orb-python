@@ -19,11 +19,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.events import backfill_list_params, backfill_create_params
-from ...types.events.backfill_list_response import BackfillListResponse
-from ...types.events.backfill_close_response import BackfillCloseResponse
-from ...types.events.backfill_fetch_response import BackfillFetchResponse
-from ...types.events.backfill_create_response import BackfillCreateResponse
-from ...types.events.backfill_revert_response import BackfillRevertResponse
+from ...types.shared.backfill_model import BackfillModel
 
 __all__ = ["Backfills", "AsyncBackfills"]
 
@@ -65,7 +61,7 @@ class Backfills(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillCreateResponse:
+    ) -> BackfillModel:
         """
         Creating the backfill enables adding or replacing past events, even those that
         are older than the ingestion grace period. Performing a backfill in Orb involves
@@ -158,7 +154,7 @@ class Backfills(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillCreateResponse,
+            cast_to=BackfillModel,
         )
 
     def list(
@@ -172,7 +168,7 @@ class Backfills(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[BackfillListResponse]:
+    ) -> SyncPage[BackfillModel]:
         """
         This endpoint returns a list of all backfills in a list format.
 
@@ -198,7 +194,7 @@ class Backfills(SyncAPIResource):
         """
         return self._get_api_list(
             "/events/backfills",
-            page=SyncPage[BackfillListResponse],
+            page=SyncPage[BackfillModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -212,7 +208,7 @@ class Backfills(SyncAPIResource):
                     backfill_list_params.BackfillListParams,
                 ),
             ),
-            model=BackfillListResponse,
+            model=BackfillModel,
         )
 
     def close(
@@ -226,7 +222,7 @@ class Backfills(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillCloseResponse:
+    ) -> BackfillModel:
         """Closing a backfill makes the updated usage visible in Orb.
 
         Upon closing a
@@ -256,7 +252,7 @@ class Backfills(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillCloseResponse,
+            cast_to=BackfillModel,
         )
 
     def fetch(
@@ -269,7 +265,7 @@ class Backfills(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BackfillFetchResponse:
+    ) -> BackfillModel:
         """
         This endpoint is used to fetch a backfill given an identifier.
 
@@ -289,7 +285,7 @@ class Backfills(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BackfillFetchResponse,
+            cast_to=BackfillModel,
         )
 
     def revert(
@@ -303,7 +299,7 @@ class Backfills(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillRevertResponse:
+    ) -> BackfillModel:
         """Reverting a backfill undoes all the effects of closing the backfill.
 
         If the
@@ -336,7 +332,7 @@ class Backfills(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillRevertResponse,
+            cast_to=BackfillModel,
         )
 
 
@@ -377,7 +373,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillCreateResponse:
+    ) -> BackfillModel:
         """
         Creating the backfill enables adding or replacing past events, even those that
         are older than the ingestion grace period. Performing a backfill in Orb involves
@@ -470,7 +466,7 @@ class AsyncBackfills(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillCreateResponse,
+            cast_to=BackfillModel,
         )
 
     def list(
@@ -484,7 +480,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[BackfillListResponse, AsyncPage[BackfillListResponse]]:
+    ) -> AsyncPaginator[BackfillModel, AsyncPage[BackfillModel]]:
         """
         This endpoint returns a list of all backfills in a list format.
 
@@ -510,7 +506,7 @@ class AsyncBackfills(AsyncAPIResource):
         """
         return self._get_api_list(
             "/events/backfills",
-            page=AsyncPage[BackfillListResponse],
+            page=AsyncPage[BackfillModel],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -524,7 +520,7 @@ class AsyncBackfills(AsyncAPIResource):
                     backfill_list_params.BackfillListParams,
                 ),
             ),
-            model=BackfillListResponse,
+            model=BackfillModel,
         )
 
     async def close(
@@ -538,7 +534,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillCloseResponse:
+    ) -> BackfillModel:
         """Closing a backfill makes the updated usage visible in Orb.
 
         Upon closing a
@@ -568,7 +564,7 @@ class AsyncBackfills(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillCloseResponse,
+            cast_to=BackfillModel,
         )
 
     async def fetch(
@@ -581,7 +577,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BackfillFetchResponse:
+    ) -> BackfillModel:
         """
         This endpoint is used to fetch a backfill given an identifier.
 
@@ -601,7 +597,7 @@ class AsyncBackfills(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BackfillFetchResponse,
+            cast_to=BackfillModel,
         )
 
     async def revert(
@@ -615,7 +611,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BackfillRevertResponse:
+    ) -> BackfillModel:
         """Reverting a backfill undoes all the effects of closing the backfill.
 
         If the
@@ -648,7 +644,7 @@ class AsyncBackfills(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BackfillRevertResponse,
+            cast_to=BackfillModel,
         )
 
 
