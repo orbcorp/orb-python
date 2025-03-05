@@ -44,14 +44,8 @@ from ..types.subscription_trigger_phase_response import SubscriptionTriggerPhase
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
 from ..types.subscription_price_intervals_response import SubscriptionPriceIntervalsResponse
 from ..types.subscription_schedule_plan_change_response import SubscriptionSchedulePlanChangeResponse
-from ..types.shared_params.add_subscription_price_params import AddSubscriptionPriceParams
 from ..types.subscription_unschedule_cancellation_response import SubscriptionUnscheduleCancellationResponse
-from ..types.shared_params.remove_subscription_price_params import RemoveSubscriptionPriceParams
-from ..types.shared_params.replace_subscription_price_params import ReplaceSubscriptionPriceParams
 from ..types.subscription_update_fixed_fee_quantity_response import SubscriptionUpdateFixedFeeQuantityResponse
-from ..types.shared_params.add_subscription_adjustment_params import AddSubscriptionAdjustmentParams
-from ..types.shared_params.remove_subscription_adjustment_params import RemoveSubscriptionAdjustmentParams
-from ..types.shared_params.replace_subscription_adjustment_params import ReplaceSubscriptionAdjustmentParams
 from ..types.subscription_unschedule_pending_plan_changes_response import (
     SubscriptionUnschedulePendingPlanChangesResponse,
 )
@@ -85,8 +79,8 @@ class Subscriptions(SyncAPIResource):
     def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
@@ -110,10 +104,10 @@ class Subscriptions(SyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -1365,8 +1359,9 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -1388,10 +1383,13 @@ class Subscriptions(SyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
+        | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2095,8 +2093,8 @@ class AsyncSubscriptions(AsyncAPIResource):
     async def create(
         self,
         *,
-        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[subscription_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_subscription_start_date: bool | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         aws_region: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2120,10 +2118,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -3375,8 +3373,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        add_adjustments: Optional[Iterable[AddSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[AddSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.AddAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | NotGiven = NOT_GIVEN,
         align_billing_with_plan_change_date: Optional[bool] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
@@ -3398,10 +3397,13 @@ class AsyncSubscriptions(AsyncAPIResource):
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         plan_version_number: Optional[int] | NotGiven = NOT_GIVEN,
         price_overrides: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[RemoveSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[RemoveSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[ReplaceSubscriptionAdjustmentParams]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[ReplaceSubscriptionPriceParams]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.RemoveAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[subscription_schedule_plan_change_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[subscription_schedule_plan_change_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
+        | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
         usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
