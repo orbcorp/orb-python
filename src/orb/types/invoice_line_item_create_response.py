@@ -309,7 +309,11 @@ class InvoiceLineItemCreateResponse(BaseModel):
     """
 
     adjustments: List[Adjustment]
-    """All adjustments (ie. maximums, minimums, discounts) applied to the line item."""
+    """
+    All adjustments applied to the line item in the order they were applied based on
+    invoice calculations (ie. usage discounts -> amount discounts -> percentage
+    discounts -> minimums -> maximums).
+    """
 
     amount: str
     """
