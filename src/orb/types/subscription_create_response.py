@@ -439,7 +439,10 @@ class SubscriptionCreateResponse(BaseModel):
     """
 
     adjustment_intervals: List[AdjustmentInterval]
-    """The adjustment intervals for this subscription."""
+    """
+    The adjustment intervals for this subscription sorted by the start_date of the
+    adjustment interval.
+    """
 
     auto_collection: Optional[bool] = None
     """
@@ -503,7 +506,7 @@ class SubscriptionCreateResponse(BaseModel):
     """
 
     discount_intervals: List[DiscountInterval]
-    """The discount intervals for this subscription."""
+    """The discount intervals for this subscription sorted by the start_date."""
 
     end_date: Optional[datetime] = None
     """The date Orb stops billing for this subscription."""
@@ -513,7 +516,7 @@ class SubscriptionCreateResponse(BaseModel):
     invoicing_threshold: Optional[str] = None
 
     maximum_intervals: List[MaximumInterval]
-    """The maximum intervals for this subscription."""
+    """The maximum intervals for this subscription sorted by the start_date."""
 
     metadata: Dict[str, str]
     """User specified key-value pairs for the resource.
@@ -524,7 +527,7 @@ class SubscriptionCreateResponse(BaseModel):
     """
 
     minimum_intervals: List[MinimumInterval]
-    """The minimum intervals for this subscription."""
+    """The minimum intervals for this subscription sorted by the start_date."""
 
     net_terms: int
     """
