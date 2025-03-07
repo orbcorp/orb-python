@@ -79,10 +79,10 @@ class Alert(BaseModel):
     """
 
     type: Literal[
-        "usage_exceeded",
-        "cost_exceeded",
         "credit_balance_depleted",
         "credit_balance_dropped",
         "credit_balance_recovered",
+        "usage_exceeded",
+        "cost_exceeded",
     ]
     """The type of alert. This must be a valid alert type."""

@@ -215,13 +215,7 @@ class Alerts(SyncAPIResource):
         customer_id: str,
         *,
         currency: str,
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
         thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -286,13 +280,7 @@ class Alerts(SyncAPIResource):
         external_customer_id: str,
         *,
         currency: str,
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
         thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -359,13 +347,7 @@ class Alerts(SyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[alert_create_for_subscription_params.Threshold],
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["usage_exceeded", "cost_exceeded"],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -708,13 +690,7 @@ class AsyncAlerts(AsyncAPIResource):
         customer_id: str,
         *,
         currency: str,
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
         thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -779,13 +755,7 @@ class AsyncAlerts(AsyncAPIResource):
         external_customer_id: str,
         *,
         currency: str,
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
         thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -852,13 +822,7 @@ class AsyncAlerts(AsyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[alert_create_for_subscription_params.Threshold],
-        type: Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ],
+        type: Literal["usage_exceeded", "cost_exceeded"],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
