@@ -12,15 +12,7 @@ class AlertCreateForSubscriptionParams(TypedDict, total=False):
     thresholds: Required[Iterable[Threshold]]
     """The thresholds that define the values at which the alert will be triggered."""
 
-    type: Required[
-        Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ]
-    ]
+    type: Required[Literal["usage_exceeded", "cost_exceeded"]]
     """The type of alert to create. This must be a valid alert type."""
 
     metric_id: Optional[str]

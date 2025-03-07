@@ -12,15 +12,7 @@ class AlertCreateForCustomerParams(TypedDict, total=False):
     currency: Required[str]
     """The case sensitive currency or custom pricing unit to use for this alert."""
 
-    type: Required[
-        Literal[
-            "usage_exceeded",
-            "cost_exceeded",
-            "credit_balance_depleted",
-            "credit_balance_dropped",
-            "credit_balance_recovered",
-        ]
-    ]
+    type: Required[Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"]]
     """The type of alert to create. This must be a valid alert type."""
 
     thresholds: Optional[Iterable[Threshold]]
