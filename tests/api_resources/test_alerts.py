@@ -152,7 +152,7 @@ class TestAlerts:
         alert = client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -161,7 +161,7 @@ class TestAlerts:
         alert = client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
             thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -171,7 +171,7 @@ class TestAlerts:
         response = client.alerts.with_raw_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
 
         assert response.is_closed is True
@@ -184,7 +184,7 @@ class TestAlerts:
         with client.alerts.with_streaming_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -200,7 +200,7 @@ class TestAlerts:
             client.alerts.with_raw_response.create_for_customer(
                 customer_id="",
                 currency="currency",
-                type="usage_exceeded",
+                type="credit_balance_depleted",
             )
 
     @parametrize
@@ -208,7 +208,7 @@ class TestAlerts:
         alert = client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -217,7 +217,7 @@ class TestAlerts:
         alert = client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
             thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -227,7 +227,7 @@ class TestAlerts:
         response = client.alerts.with_raw_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
 
         assert response.is_closed is True
@@ -240,7 +240,7 @@ class TestAlerts:
         with client.alerts.with_streaming_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -256,7 +256,7 @@ class TestAlerts:
             client.alerts.with_raw_response.create_for_external_customer(
                 external_customer_id="",
                 currency="currency",
-                type="usage_exceeded",
+                type="credit_balance_depleted",
             )
 
     @parametrize
@@ -546,7 +546,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -555,7 +555,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
             thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -565,7 +565,7 @@ class TestAsyncAlerts:
         response = await async_client.alerts.with_raw_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
 
         assert response.is_closed is True
@@ -578,7 +578,7 @@ class TestAsyncAlerts:
         async with async_client.alerts.with_streaming_response.create_for_customer(
             customer_id="customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -594,7 +594,7 @@ class TestAsyncAlerts:
             await async_client.alerts.with_raw_response.create_for_customer(
                 customer_id="",
                 currency="currency",
-                type="usage_exceeded",
+                type="credit_balance_depleted",
             )
 
     @parametrize
@@ -602,7 +602,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -611,7 +611,7 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
             thresholds=[{"value": 0}],
         )
         assert_matches_type(Alert, alert, path=["response"])
@@ -621,7 +621,7 @@ class TestAsyncAlerts:
         response = await async_client.alerts.with_raw_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         )
 
         assert response.is_closed is True
@@ -634,7 +634,7 @@ class TestAsyncAlerts:
         async with async_client.alerts.with_streaming_response.create_for_external_customer(
             external_customer_id="external_customer_id",
             currency="currency",
-            type="usage_exceeded",
+            type="credit_balance_depleted",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -650,7 +650,7 @@ class TestAsyncAlerts:
             await async_client.alerts.with_raw_response.create_for_external_customer(
                 external_customer_id="",
                 currency="currency",
-                type="usage_exceeded",
+                type="credit_balance_depleted",
             )
 
     @parametrize
