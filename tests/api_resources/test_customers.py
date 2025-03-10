@@ -43,7 +43,7 @@ class TestCustomers:
                 ],
                 "excluded": True,
             },
-            additional_emails=["string"],
+            additional_emails=["dev@stainless.com"],
             auto_collection=True,
             billing_address={
                 "city": "city",
@@ -556,7 +556,7 @@ class TestAsyncCustomers:
                 ],
                 "excluded": True,
             },
-            additional_emails=["string"],
+            additional_emails=["dev@stainless.com"],
             auto_collection=True,
             billing_address={
                 "city": "city",
