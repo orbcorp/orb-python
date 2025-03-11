@@ -106,9 +106,13 @@ class Backfills(SyncAPIResource):
         based on both a period of time and specific property values.
 
         Args:
-          timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
+          timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
+              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              discuss extending this limit and your use case.
 
-          timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill.
+          timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill. By
+              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              discuss extending this limit and your use case.
 
           close_time: The time at which no more events will be accepted for this backfill. The
               backfill will automatically begin reflecting throughout Orb at the close time.
@@ -418,9 +422,13 @@ class AsyncBackfills(AsyncAPIResource):
         based on both a period of time and specific property values.
 
         Args:
-          timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill.
+          timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
+              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              discuss extending this limit and your use case.
 
-          timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill.
+          timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill. By
+              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              discuss extending this limit and your use case.
 
           close_time: The time at which no more events will be accepted for this backfill. The
               backfill will automatically begin reflecting throughout Orb at the close time.
