@@ -29,7 +29,7 @@ class SubscriptionListParams(TypedDict, total=False):
 
     customer_id: Optional[List[str]]
 
-    external_customer_id: Optional[str]
+    external_customer_id: Optional[List[str]]
 
     limit: int
     """The number of items to fetch. Defaults to 20."""
