@@ -286,7 +286,7 @@ class TestSubscriptions:
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             customer_id=["string"],
-            external_customer_id="external_customer_id",
+            external_customer_id=["string"],
             limit=1,
             status="active",
         )
@@ -1432,7 +1432,7 @@ class TestAsyncSubscriptions:
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             customer_id=["string"],
-            external_customer_id="external_customer_id",
+            external_customer_id=["string"],
             limit=1,
             status="active",
         )
