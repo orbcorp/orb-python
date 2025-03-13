@@ -594,7 +594,7 @@ class Subscriptions(SyncAPIResource):
         created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2608,7 +2608,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
