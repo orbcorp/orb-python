@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
@@ -101,6 +102,10 @@ class CreditNotes(SyncAPIResource):
     def list(
         self,
         *,
+        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -140,6 +145,10 @@ class CreditNotes(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -261,6 +270,10 @@ class AsyncCreditNotes(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -300,6 +313,10 @@ class AsyncCreditNotes(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
                         "cursor": cursor,
                         "limit": limit,
                     },
