@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.17.1 (2025-03-14)
+
+Full Changelog: [v3.17.0...v3.17.1](https://github.com/orbcorp/orb-python/compare/v3.17.0...v3.17.1)
+
+### Bug Fixes
+
+* **types:** handle more discriminated union shapes ([#595](https://github.com/orbcorp/orb-python/issues/595)) ([2bc33f5](https://github.com/orbcorp/orb-python/commit/2bc33f5903503bf2787acd44098c9d2944a3da0f))
+
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#592](https://github.com/orbcorp/orb-python/issues/592)) ([101b233](https://github.com/orbcorp/orb-python/commit/101b2337c48dfd31b4692089904c97abdb7da3b1))
+* **internal:** codegen related update ([#594](https://github.com/orbcorp/orb-python/issues/594)) ([04863c0](https://github.com/orbcorp/orb-python/commit/04863c0e2d319c3aa902dc48f9c3db8320e6dd54))
+
 ## 3.17.0 (2025-03-14)
 
 Full Changelog: [v3.16.0...v3.17.0](https://github.com/orbcorp/orb-python/compare/v3.16.0...v3.17.0)
