@@ -9,6 +9,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import CreditNote
+from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -86,6 +87,10 @@ class TestCreditNotes:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit_note = client.credit_notes.list(
+            created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             limit=1,
         )
@@ -221,6 +226,10 @@ class TestAsyncCreditNotes:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         credit_note = await async_client.credit_notes.list(
+            created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             limit=1,
         )
