@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.17.0 (2025-03-14)
+
+Full Changelog: [v3.16.0...v3.17.0](https://github.com/orbcorp/orb-python/compare/v3.16.0...v3.17.0)
+
+### Features
+
+* **api:** api update ([#590](https://github.com/orbcorp/orb-python/issues/590)) ([1848cf8](https://github.com/orbcorp/orb-python/commit/1848cf80341718b42dd0917d6a4fb06dca89f287))
+
+
+### Chores
+
+* **api:** correctly support ExternalCustomerID array filter on Subscriptions.List ([#589](https://github.com/orbcorp/orb-python/issues/589)) ([90163b2](https://github.com/orbcorp/orb-python/commit/90163b24a6491e3681238288a19fe29a319cb7e0))
+* **internal:** remove extra empty newlines ([#587](https://github.com/orbcorp/orb-python/issues/587)) ([55cc8c8](https://github.com/orbcorp/orb-python/commit/55cc8c80728bb3ed890ba6755a3668bbc473e10b))
+
 ## 3.16.0 (2025-03-11)
 
 Full Changelog: [v3.15.0...v3.16.0](https://github.com/orbcorp/orb-python/compare/v3.15.0...v3.16.0)
