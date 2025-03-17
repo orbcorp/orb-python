@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.17.2 (2025-03-17)
+
+Full Changelog: [v3.17.1...v3.17.2](https://github.com/orbcorp/orb-python/compare/v3.17.1...v3.17.2)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#597](https://github.com/orbcorp/orb-python/issues/597)) ([cd94bf9](https://github.com/orbcorp/orb-python/commit/cd94bf96bad35abbd0c7aee391e46537e3c38601))
+
 ## 3.17.1 (2025-03-14)
 
 Full Changelog: [v3.17.0...v3.17.1](https://github.com/orbcorp/orb-python/compare/v3.17.0...v3.17.1)
