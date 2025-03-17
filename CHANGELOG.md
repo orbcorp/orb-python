@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.17.3 (2025-03-17)
+
+Full Changelog: [v3.17.2...v3.17.3](https://github.com/orbcorp/orb-python/compare/v3.17.2...v3.17.3)
+
+### Bug Fixes
+
+* **ci:** remove publishing patch ([#600](https://github.com/orbcorp/orb-python/issues/600)) ([c101cf7](https://github.com/orbcorp/orb-python/commit/c101cf7a02d71c102ea050f415a11e14e91a57e0))
+
 ## 3.17.2 (2025-03-17)
 
 Full Changelog: [v3.17.1...v3.17.2](https://github.com/orbcorp/orb-python/compare/v3.17.1...v3.17.2)

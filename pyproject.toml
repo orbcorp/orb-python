@@ -1,6 +1,6 @@
 [project]
 name = "orb-billing"
-version = "3.17.2"
+version = "3.17.3"
 description = "The official Python library for the orb API"
 dynamic = ["readme"]
 license = "Apache-2.0"
