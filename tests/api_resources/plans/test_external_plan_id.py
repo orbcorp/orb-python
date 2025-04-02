@@ -64,7 +64,6 @@ class TestExternalPlanID:
         ):
             client.plans.external_plan_id.with_raw_response.update(
                 other_external_plan_id="",
-                external_plan_id="",
             )
 
     @parametrize
@@ -156,7 +155,6 @@ class TestAsyncExternalPlanID:
         ):
             await async_client.plans.external_plan_id.with_raw_response.update(
                 other_external_plan_id="",
-                external_plan_id="",
             )
 
     @parametrize
