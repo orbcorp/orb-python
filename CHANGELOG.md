@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.18.1 (2025-04-02)
+
+Full Changelog: [v3.18.0...v3.18.1](https://github.com/orbcorp/orb-python/compare/v3.18.0...v3.18.1)
+
+### Chores
+
+* fix typos ([#606](https://github.com/orbcorp/orb-python/issues/606)) ([b6c691e](https://github.com/orbcorp/orb-python/commit/b6c691e84186bb62b295b5d1b01598691174eabe))
+* **internal:** minor test fixes ([#608](https://github.com/orbcorp/orb-python/issues/608)) ([7e79541](https://github.com/orbcorp/orb-python/commit/7e79541c498fdde340c4b52abac285bc5a89fd44))
+
 ## 3.18.0 (2025-03-20)
 
 Full Changelog: [v3.17.3...v3.18.0](https://github.com/orbcorp/orb-python/compare/v3.17.3...v3.18.0)
