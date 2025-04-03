@@ -1719,7 +1719,7 @@ class TestAsyncOrb:
         import threading
 
         from orb._utils import asyncify
-        from orb._base_client import get_platform 
+        from orb._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()

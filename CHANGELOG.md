@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.18.2 (2025-04-03)
+
+Full Changelog: [v3.18.1...v3.18.2](https://github.com/orbcorp/orb-python/compare/v3.18.1...v3.18.2)
+
+### Chores
+
+* **internal:** remove trailing character ([#610](https://github.com/orbcorp/orb-python/issues/610)) ([28aac34](https://github.com/orbcorp/orb-python/commit/28aac34bfbb0778e153a70fbac727a508e839a8c))
+
 ## 3.18.1 (2025-04-02)
 
 Full Changelog: [v3.18.0...v3.18.1](https://github.com/orbcorp/orb-python/compare/v3.18.0...v3.18.1)
