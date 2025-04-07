@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.18.2 (2025-04-07)
+
+Full Changelog: [v3.18.1...v3.18.2](https://github.com/orbcorp/orb-python/compare/v3.18.1...v3.18.2)
+
+### Bug Fixes
+
+* **api:** naming for sync_payment_methods methods ([#612](https://github.com/orbcorp/orb-python/issues/612)) ([48d1f64](https://github.com/orbcorp/orb-python/commit/48d1f64569419343f34cc10e14da8b8f98ea368a))
+
+
+### Chores
+
+* **internal:** remove trailing character ([#610](https://github.com/orbcorp/orb-python/issues/610)) ([28aac34](https://github.com/orbcorp/orb-python/commit/28aac34bfbb0778e153a70fbac727a508e839a8c))
+
 ## 3.18.1 (2025-04-02)
 
 Full Changelog: [v3.18.0...v3.18.1](https://github.com/orbcorp/orb-python/compare/v3.18.0...v3.18.1)
