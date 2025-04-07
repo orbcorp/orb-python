@@ -710,13 +710,13 @@ class TieredPriceMinimum(BaseModel):
 
 class TieredPriceTieredConfigTier(BaseModel):
     first_unit: float
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     unit_amount: str
     """Amount per unit"""
 
     last_unit: Optional[float] = None
-    """Exclusive tier ending value. If null, this is treated as the last tier"""
+    """Inclusive tier ending value. If null, this is treated as the last tier"""
 
 
 class TieredPriceTieredConfig(BaseModel):
@@ -841,10 +841,10 @@ class TieredBpsPriceTieredBpsConfigTier(BaseModel):
     """Per-event basis point rate"""
 
     minimum_amount: str
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     maximum_amount: Optional[str] = None
-    """Exclusive tier ending value"""
+    """Inclusive tier ending value"""
 
     per_unit_maximum: Optional[str] = None
     """Per unit maximum to charge"""

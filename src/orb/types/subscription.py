@@ -27,6 +27,7 @@ __all__ = [
     "FixedFeeQuantitySchedule",
     "MaximumInterval",
     "MinimumInterval",
+    "PendingSubscriptionChange",
     "PriceInterval",
     "PriceIntervalFixedFeeQuantityTransition",
     "RedeemedCoupon",
@@ -346,6 +347,10 @@ class MinimumInterval(BaseModel):
     """The start date of the minimum interval."""
 
 
+class PendingSubscriptionChange(BaseModel):
+    id: str
+
+
 class PriceIntervalFixedFeeQuantityTransition(BaseModel):
     effective_date: datetime
 
@@ -536,6 +541,9 @@ class Subscription(BaseModel):
     invoice is due on issue, whereas a value of `30` represents that the customer
     has a month to pay the invoice.
     """
+
+    pending_subscription_change: Optional[PendingSubscriptionChange] = None
+    """A pending subscription change if one exists on this subscription."""
 
     plan: Plan
     """
