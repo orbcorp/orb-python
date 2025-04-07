@@ -365,6 +365,13 @@ Methods:
 - <code title="post /subscriptions/{subscription_id}/update_fixed_fee_quantity">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_fixed_fee_quantity</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_fixed_fee_quantity_params.py">params</a>) -> <a href="./src/orb/types/subscription_update_fixed_fee_quantity_response.py">SubscriptionUpdateFixedFeeQuantityResponse</a></code>
 - <code title="post /subscriptions/{subscription_id}/update_trial">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_trial</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_trial_params.py">params</a>) -> <a href="./src/orb/types/subscription_update_trial_response.py">SubscriptionUpdateTrialResponse</a></code>
 
+# Webhooks
+
+Methods:
+
+- <code>client.webhooks.<a href="./src/orb/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
+- <code>client.webhooks.<a href="./src/orb/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
+
 # Alerts
 
 Types:
