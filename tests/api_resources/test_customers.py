@@ -361,14 +361,14 @@ class TestCustomers:
     @parametrize
     def test_method_sync_payment_methods_from_gateway(self, client: Orb) -> None:
         customer = client.customers.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         )
         assert customer is None
 
     @parametrize
     def test_raw_response_sync_payment_methods_from_gateway(self, client: Orb) -> None:
         response = client.customers.with_raw_response.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -379,7 +379,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_sync_payment_methods_from_gateway(self, client: Orb) -> None:
         with client.customers.with_streaming_response.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -391,7 +391,7 @@ class TestCustomers:
 
     @parametrize
     def test_path_params_sync_payment_methods_from_gateway(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.with_raw_response.sync_payment_methods_from_gateway(
                 "",
             )
@@ -399,14 +399,14 @@ class TestCustomers:
     @parametrize
     def test_method_sync_payment_methods_from_gateway_by_external_customer_id(self, client: Orb) -> None:
         customer = client.customers.sync_payment_methods_from_gateway_by_external_customer_id(
-            "customer_id",
+            "external_customer_id",
         )
         assert customer is None
 
     @parametrize
     def test_raw_response_sync_payment_methods_from_gateway_by_external_customer_id(self, client: Orb) -> None:
         response = client.customers.with_raw_response.sync_payment_methods_from_gateway_by_external_customer_id(
-            "customer_id",
+            "external_customer_id",
         )
 
         assert response.is_closed is True
@@ -417,7 +417,7 @@ class TestCustomers:
     @parametrize
     def test_streaming_response_sync_payment_methods_from_gateway_by_external_customer_id(self, client: Orb) -> None:
         with client.customers.with_streaming_response.sync_payment_methods_from_gateway_by_external_customer_id(
-            "customer_id",
+            "external_customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -429,7 +429,7 @@ class TestCustomers:
 
     @parametrize
     def test_path_params_sync_payment_methods_from_gateway_by_external_customer_id(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             client.customers.with_raw_response.sync_payment_methods_from_gateway_by_external_customer_id(
                 "",
             )
@@ -873,14 +873,14 @@ class TestAsyncCustomers:
     @parametrize
     async def test_method_sync_payment_methods_from_gateway(self, async_client: AsyncOrb) -> None:
         customer = await async_client.customers.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         )
         assert customer is None
 
     @parametrize
     async def test_raw_response_sync_payment_methods_from_gateway(self, async_client: AsyncOrb) -> None:
         response = await async_client.customers.with_raw_response.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         )
 
         assert response.is_closed is True
@@ -891,7 +891,7 @@ class TestAsyncCustomers:
     @parametrize
     async def test_streaming_response_sync_payment_methods_from_gateway(self, async_client: AsyncOrb) -> None:
         async with async_client.customers.with_streaming_response.sync_payment_methods_from_gateway(
-            "external_customer_id",
+            "customer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -903,7 +903,7 @@ class TestAsyncCustomers:
 
     @parametrize
     async def test_path_params_sync_payment_methods_from_gateway(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.with_raw_response.sync_payment_methods_from_gateway(
                 "",
             )
@@ -913,7 +913,7 @@ class TestAsyncCustomers:
         self, async_client: AsyncOrb
     ) -> None:
         customer = await async_client.customers.sync_payment_methods_from_gateway_by_external_customer_id(
-            "customer_id",
+            "external_customer_id",
         )
         assert customer is None
 
@@ -923,7 +923,7 @@ class TestAsyncCustomers:
     ) -> None:
         response = (
             await async_client.customers.with_raw_response.sync_payment_methods_from_gateway_by_external_customer_id(
-                "customer_id",
+                "external_customer_id",
             )
         )
 
@@ -938,7 +938,7 @@ class TestAsyncCustomers:
     ) -> None:
         async with (
             async_client.customers.with_streaming_response.sync_payment_methods_from_gateway_by_external_customer_id(
-                "customer_id",
+                "external_customer_id",
             )
         ) as response:
             assert not response.is_closed
@@ -953,7 +953,7 @@ class TestAsyncCustomers:
     async def test_path_params_sync_payment_methods_from_gateway_by_external_customer_id(
         self, async_client: AsyncOrb
     ) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
             await async_client.customers.with_raw_response.sync_payment_methods_from_gateway_by_external_customer_id(
                 "",
             )
