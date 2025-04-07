@@ -829,13 +829,13 @@ class AddPricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
 
 class AddPricePriceNewSubscriptionTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     unit_amount: Required[str]
     """Amount per unit"""
 
     last_unit: Optional[float]
-    """Exclusive tier ending value. If null, this is treated as the last tier"""
+    """Inclusive tier ending value. If null, this is treated as the last tier"""
 
 
 class AddPricePriceNewSubscriptionTieredPriceTieredConfig(TypedDict, total=False):
@@ -937,10 +937,10 @@ class AddPricePriceNewSubscriptionTieredBpsPriceTieredBpsConfigTier(TypedDict, t
     """Per-event basis point rate"""
 
     minimum_amount: Required[str]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     maximum_amount: Optional[str]
-    """Exclusive tier ending value"""
+    """Inclusive tier ending value"""
 
     per_unit_maximum: Optional[str]
     """Per unit maximum to charge"""
@@ -3473,13 +3473,13 @@ class ReplacePricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
 
 class ReplacePricePriceNewSubscriptionTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     unit_amount: Required[str]
     """Amount per unit"""
 
     last_unit: Optional[float]
-    """Exclusive tier ending value. If null, this is treated as the last tier"""
+    """Inclusive tier ending value. If null, this is treated as the last tier"""
 
 
 class ReplacePricePriceNewSubscriptionTieredPriceTieredConfig(TypedDict, total=False):
@@ -3581,10 +3581,10 @@ class ReplacePricePriceNewSubscriptionTieredBpsPriceTieredBpsConfigTier(TypedDic
     """Per-event basis point rate"""
 
     minimum_amount: Required[str]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     maximum_amount: Optional[str]
-    """Exclusive tier ending value"""
+    """Inclusive tier ending value"""
 
     per_unit_maximum: Optional[str]
     """Per unit maximum to charge"""

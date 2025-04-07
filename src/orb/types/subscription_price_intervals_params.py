@@ -602,13 +602,13 @@ class AddPriceNewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
 
 class AddPriceNewFloatingTieredPriceTieredConfigTier(TypedDict, total=False):
     first_unit: Required[float]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     unit_amount: Required[str]
     """Amount per unit"""
 
     last_unit: Optional[float]
-    """Exclusive tier ending value. If null, this is treated as the last tier"""
+    """Inclusive tier ending value. If null, this is treated as the last tier"""
 
 
 class AddPriceNewFloatingTieredPriceTieredConfig(TypedDict, total=False):
@@ -701,10 +701,10 @@ class AddPriceNewFloatingTieredBpsPriceTieredBpsConfigTier(TypedDict, total=Fals
     """Per-event basis point rate"""
 
     minimum_amount: Required[str]
-    """Inclusive tier starting value"""
+    """Exclusive tier starting value"""
 
     maximum_amount: Optional[str]
-    """Exclusive tier ending value"""
+    """Inclusive tier ending value"""
 
     per_unit_maximum: Optional[str]
     """Per unit maximum to charge"""

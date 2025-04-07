@@ -7,8 +7,10 @@ from typing_extensions import Literal, Annotated, TypeAlias
 from .plan import Plan
 from .price import Price
 from .._utils import PropertyInfo
+from .invoice import Invoice
 from .._models import BaseModel
 from .customer import Customer
+from .credit_note import CreditNote
 
 __all__ = [
     "SubscriptionCreateResponse",
@@ -27,10 +29,12 @@ __all__ = [
     "FixedFeeQuantitySchedule",
     "MaximumInterval",
     "MinimumInterval",
+    "PendingSubscriptionChange",
     "PriceInterval",
     "PriceIntervalFixedFeeQuantityTransition",
     "RedeemedCoupon",
     "TrialInfo",
+    "ChangedResources",
 ]
 
 
@@ -346,6 +350,10 @@ class MinimumInterval(BaseModel):
     """The start date of the minimum interval."""
 
 
+class PendingSubscriptionChange(BaseModel):
+    id: str
+
+
 class PriceIntervalFixedFeeQuantityTransition(BaseModel):
     effective_date: datetime
 
@@ -427,6 +435,20 @@ class RedeemedCoupon(BaseModel):
 
 class TrialInfo(BaseModel):
     end_date: Optional[datetime] = None
+
+
+class ChangedResources(BaseModel):
+    created_credit_notes: List[CreditNote]
+    """The credit notes that were created as part of this operation."""
+
+    created_invoices: List[Invoice]
+    """The invoices that were created as part of this operation."""
+
+    voided_credit_notes: List[CreditNote]
+    """The credit notes that were voided as part of this operation."""
+
+    voided_invoices: List[Invoice]
+    """The invoices that were voided as part of this operation."""
 
 
 class SubscriptionCreateResponse(BaseModel):
@@ -537,6 +559,9 @@ class SubscriptionCreateResponse(BaseModel):
     has a month to pay the invoice.
     """
 
+    pending_subscription_change: Optional[PendingSubscriptionChange] = None
+    """A pending subscription change if one exists on this subscription."""
+
     plan: Plan
     """
     The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
@@ -556,3 +581,10 @@ class SubscriptionCreateResponse(BaseModel):
     status: Literal["active", "ended", "upcoming"]
 
     trial_info: TrialInfo
+
+    changed_resources: Optional[ChangedResources] = None
+    """The resources that were changed as part of this operation.
+
+    Only present when fetched through the subscription changes API or if the
+    `include_changed_resources` parameter was passed in the request.
+    """

@@ -25,7 +25,17 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import items, alerts, metrics, invoices, top_level, credit_notes, subscriptions, invoice_line_items
+from .resources import (
+    items,
+    alerts,
+    metrics,
+    invoices,
+    top_level,
+    credit_notes,
+    subscriptions,
+    invoice_line_items,
+    subscription_changes,
+)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import OrbError, APIStatusError
 from ._base_client import (
@@ -58,6 +68,7 @@ class Orb(SyncAPIClient):
     subscriptions: subscriptions.Subscriptions
     alerts: alerts.Alerts
     dimensional_price_groups: dimensional_price_groups.DimensionalPriceGroups
+    subscription_changes: subscription_changes.SubscriptionChanges
     with_raw_response: OrbWithRawResponse
     with_streaming_response: OrbWithStreamedResponse
 
@@ -139,6 +150,7 @@ class Orb(SyncAPIClient):
         self.subscriptions = subscriptions.Subscriptions(self)
         self.alerts = alerts.Alerts(self)
         self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroups(self)
+        self.subscription_changes = subscription_changes.SubscriptionChanges(self)
         self.with_raw_response = OrbWithRawResponse(self)
         self.with_streaming_response = OrbWithStreamedResponse(self)
 
@@ -312,6 +324,7 @@ class AsyncOrb(AsyncAPIClient):
     subscriptions: subscriptions.AsyncSubscriptions
     alerts: alerts.AsyncAlerts
     dimensional_price_groups: dimensional_price_groups.AsyncDimensionalPriceGroups
+    subscription_changes: subscription_changes.AsyncSubscriptionChanges
     with_raw_response: AsyncOrbWithRawResponse
     with_streaming_response: AsyncOrbWithStreamedResponse
 
@@ -393,6 +406,7 @@ class AsyncOrb(AsyncAPIClient):
         self.subscriptions = subscriptions.AsyncSubscriptions(self)
         self.alerts = alerts.AsyncAlerts(self)
         self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroups(self)
+        self.subscription_changes = subscription_changes.AsyncSubscriptionChanges(self)
         self.with_raw_response = AsyncOrbWithRawResponse(self)
         self.with_streaming_response = AsyncOrbWithStreamedResponse(self)
 
@@ -569,6 +583,7 @@ class OrbWithRawResponse:
         self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroupsWithRawResponse(
             client.dimensional_price_groups
         )
+        self.subscription_changes = subscription_changes.SubscriptionChangesWithRawResponse(client.subscription_changes)
 
 
 class AsyncOrbWithRawResponse:
@@ -589,6 +604,9 @@ class AsyncOrbWithRawResponse:
         self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroupsWithRawResponse(
             client.dimensional_price_groups
         )
+        self.subscription_changes = subscription_changes.AsyncSubscriptionChangesWithRawResponse(
+            client.subscription_changes
+        )
 
 
 class OrbWithStreamedResponse:
@@ -608,6 +626,9 @@ class OrbWithStreamedResponse:
         self.alerts = alerts.AlertsWithStreamingResponse(client.alerts)
         self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroupsWithStreamingResponse(
             client.dimensional_price_groups
+        )
+        self.subscription_changes = subscription_changes.SubscriptionChangesWithStreamingResponse(
+            client.subscription_changes
         )
 
 
@@ -630,6 +651,9 @@ class AsyncOrbWithStreamedResponse:
         self.alerts = alerts.AsyncAlertsWithStreamingResponse(client.alerts)
         self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroupsWithStreamingResponse(
             client.dimensional_price_groups
+        )
+        self.subscription_changes = subscription_changes.AsyncSubscriptionChangesWithStreamingResponse(
+            client.subscription_changes
         )
 
 
