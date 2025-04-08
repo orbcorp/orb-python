@@ -62,7 +62,7 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     will_auto_issue: bool
-    """When true, this invoice will automatically be issued upon creation.
+    """When true, this invoice will be submitted for issuance upon creation.
 
     When false, the resulting invoice will require manual review to issue. Defaulted
     to false.

@@ -13,32 +13,33 @@ from .customer import Customer
 from .credit_note import CreditNote
 
 __all__ = [
-    "SubscriptionPriceIntervalsResponse",
-    "AdjustmentInterval",
-    "AdjustmentIntervalAdjustment",
-    "AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment",
-    "AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment",
-    "AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment",
-    "AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment",
-    "AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment",
-    "BillingCycleAnchorConfiguration",
-    "DiscountInterval",
-    "DiscountIntervalAmountDiscountInterval",
-    "DiscountIntervalPercentageDiscountInterval",
-    "DiscountIntervalUsageDiscountInterval",
-    "FixedFeeQuantitySchedule",
-    "MaximumInterval",
-    "MinimumInterval",
-    "PendingSubscriptionChange",
-    "PriceInterval",
-    "PriceIntervalFixedFeeQuantityTransition",
-    "RedeemedCoupon",
-    "TrialInfo",
-    "ChangedResources",
+    "SubscriptionChangeRetrieveResponse",
+    "Subscription",
+    "SubscriptionAdjustmentInterval",
+    "SubscriptionAdjustmentIntervalAdjustment",
+    "SubscriptionAdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment",
+    "SubscriptionAdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment",
+    "SubscriptionAdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment",
+    "SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment",
+    "SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment",
+    "SubscriptionBillingCycleAnchorConfiguration",
+    "SubscriptionDiscountInterval",
+    "SubscriptionDiscountIntervalAmountDiscountInterval",
+    "SubscriptionDiscountIntervalPercentageDiscountInterval",
+    "SubscriptionDiscountIntervalUsageDiscountInterval",
+    "SubscriptionFixedFeeQuantitySchedule",
+    "SubscriptionMaximumInterval",
+    "SubscriptionMinimumInterval",
+    "SubscriptionPendingSubscriptionChange",
+    "SubscriptionPriceInterval",
+    "SubscriptionPriceIntervalFixedFeeQuantityTransition",
+    "SubscriptionRedeemedCoupon",
+    "SubscriptionTrialInfo",
+    "SubscriptionChangedResources",
 ]
 
 
-class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
+class SubscriptionAdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["usage_discount"]
@@ -65,7 +66,7 @@ class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
     """
 
 
-class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
+class SubscriptionAdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["amount_discount"]
@@ -92,7 +93,7 @@ class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
-class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseModel):
+class SubscriptionAdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["percentage_discount"]
@@ -119,7 +120,7 @@ class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseMode
     """The reason for the adjustment."""
 
 
-class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
+class SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["minimum"]
@@ -149,7 +150,7 @@ class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
-class AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment(BaseModel):
+class SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment(BaseModel):
     id: str
 
     adjustment_type: Literal["maximum"]
@@ -176,22 +177,22 @@ class AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
-AdjustmentIntervalAdjustment: TypeAlias = Annotated[
+SubscriptionAdjustmentIntervalAdjustment: TypeAlias = Annotated[
     Union[
-        AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment,
-        AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment,
-        AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment,
-        AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment,
-        AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment,
+        SubscriptionAdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment,
+        SubscriptionAdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment,
+        SubscriptionAdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment,
+        SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment,
+        SubscriptionAdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment,
     ],
     PropertyInfo(discriminator="adjustment_type"),
 ]
 
 
-class AdjustmentInterval(BaseModel):
+class SubscriptionAdjustmentInterval(BaseModel):
     id: str
 
-    adjustment: AdjustmentIntervalAdjustment
+    adjustment: SubscriptionAdjustmentIntervalAdjustment
 
     applies_to_price_interval_ids: List[str]
     """The price interval IDs that this adjustment applies to."""
@@ -203,7 +204,7 @@ class AdjustmentInterval(BaseModel):
     """The start date of the adjustment interval."""
 
 
-class BillingCycleAnchorConfiguration(BaseModel):
+class SubscriptionBillingCycleAnchorConfiguration(BaseModel):
     day: int
     """The day of the month on which the billing cycle is anchored.
 
@@ -227,7 +228,7 @@ class BillingCycleAnchorConfiguration(BaseModel):
     """
 
 
-class DiscountIntervalAmountDiscountInterval(BaseModel):
+class SubscriptionDiscountIntervalAmountDiscountInterval(BaseModel):
     amount_discount: str
     """Only available if discount_type is `amount`."""
 
@@ -246,7 +247,7 @@ class DiscountIntervalAmountDiscountInterval(BaseModel):
     """The start date of the discount interval."""
 
 
-class DiscountIntervalPercentageDiscountInterval(BaseModel):
+class SubscriptionDiscountIntervalPercentageDiscountInterval(BaseModel):
     applies_to_price_ids: List[str]
     """The price ids that this discount interval applies to."""
 
@@ -268,7 +269,7 @@ class DiscountIntervalPercentageDiscountInterval(BaseModel):
     """The start date of the discount interval."""
 
 
-class DiscountIntervalUsageDiscountInterval(BaseModel):
+class SubscriptionDiscountIntervalUsageDiscountInterval(BaseModel):
     applies_to_price_ids: List[str]
     """The price ids that this discount interval applies to."""
 
@@ -290,17 +291,17 @@ class DiscountIntervalUsageDiscountInterval(BaseModel):
     """
 
 
-DiscountInterval: TypeAlias = Annotated[
+SubscriptionDiscountInterval: TypeAlias = Annotated[
     Union[
-        DiscountIntervalAmountDiscountInterval,
-        DiscountIntervalPercentageDiscountInterval,
-        DiscountIntervalUsageDiscountInterval,
+        SubscriptionDiscountIntervalAmountDiscountInterval,
+        SubscriptionDiscountIntervalPercentageDiscountInterval,
+        SubscriptionDiscountIntervalUsageDiscountInterval,
     ],
     PropertyInfo(discriminator="discount_type"),
 ]
 
 
-class FixedFeeQuantitySchedule(BaseModel):
+class SubscriptionFixedFeeQuantitySchedule(BaseModel):
     end_date: Optional[datetime] = None
 
     price_id: str
@@ -310,7 +311,7 @@ class FixedFeeQuantitySchedule(BaseModel):
     start_date: datetime
 
 
-class MaximumInterval(BaseModel):
+class SubscriptionMaximumInterval(BaseModel):
     applies_to_price_ids: List[str]
     """The price ids that this maximum interval applies to."""
 
@@ -330,7 +331,7 @@ class MaximumInterval(BaseModel):
     """The start date of the maximum interval."""
 
 
-class MinimumInterval(BaseModel):
+class SubscriptionMinimumInterval(BaseModel):
     applies_to_price_ids: List[str]
     """The price ids that this minimum interval applies to."""
 
@@ -350,11 +351,11 @@ class MinimumInterval(BaseModel):
     """The start date of the minimum interval."""
 
 
-class PendingSubscriptionChange(BaseModel):
+class SubscriptionPendingSubscriptionChange(BaseModel):
     id: str
 
 
-class PriceIntervalFixedFeeQuantityTransition(BaseModel):
+class SubscriptionPriceIntervalFixedFeeQuantityTransition(BaseModel):
     effective_date: datetime
 
     price_id: str
@@ -362,7 +363,7 @@ class PriceIntervalFixedFeeQuantityTransition(BaseModel):
     quantity: int
 
 
-class PriceInterval(BaseModel):
+class SubscriptionPriceInterval(BaseModel):
     id: str
 
     billing_cycle_day: int
@@ -392,7 +393,7 @@ class PriceInterval(BaseModel):
     filter: Optional[str] = None
     """An additional filter to apply to usage queries."""
 
-    fixed_fee_quantity_transitions: Optional[List[PriceIntervalFixedFeeQuantityTransition]] = None
+    fixed_fee_quantity_transitions: Optional[List[SubscriptionPriceIntervalFixedFeeQuantityTransition]] = None
     """The fixed fee quantity transitions for this price interval.
 
     This is only relevant for fixed fees.
@@ -425,7 +426,7 @@ class PriceInterval(BaseModel):
     """
 
 
-class RedeemedCoupon(BaseModel):
+class SubscriptionRedeemedCoupon(BaseModel):
     coupon_id: str
 
     end_date: Optional[datetime] = None
@@ -433,11 +434,11 @@ class RedeemedCoupon(BaseModel):
     start_date: datetime
 
 
-class TrialInfo(BaseModel):
+class SubscriptionTrialInfo(BaseModel):
     end_date: Optional[datetime] = None
 
 
-class ChangedResources(BaseModel):
+class SubscriptionChangedResources(BaseModel):
     created_credit_notes: List[CreditNote]
     """The credit notes that were created as part of this operation."""
 
@@ -451,7 +452,7 @@ class ChangedResources(BaseModel):
     """The invoices that were voided as part of this operation."""
 
 
-class SubscriptionPriceIntervalsResponse(BaseModel):
+class Subscription(BaseModel):
     id: str
 
     active_plan_phase_order: Optional[int] = None
@@ -460,7 +461,7 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     phases.
     """
 
-    adjustment_intervals: List[AdjustmentInterval]
+    adjustment_intervals: List[SubscriptionAdjustmentInterval]
     """
     The adjustment intervals for this subscription sorted by the start_date of the
     adjustment interval.
@@ -473,7 +474,7 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     the plan's behavior. If null, defaults to the customer's setting.
     """
 
-    billing_cycle_anchor_configuration: BillingCycleAnchorConfiguration
+    billing_cycle_anchor_configuration: SubscriptionBillingCycleAnchorConfiguration
 
     billing_cycle_day: int
     """The day of the month on which the billing cycle is anchored.
@@ -527,17 +528,17 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     Note that if this is not provided, it is determined by the plan configuration.
     """
 
-    discount_intervals: List[DiscountInterval]
+    discount_intervals: List[SubscriptionDiscountInterval]
     """The discount intervals for this subscription sorted by the start_date."""
 
     end_date: Optional[datetime] = None
     """The date Orb stops billing for this subscription."""
 
-    fixed_fee_quantity_schedule: List[FixedFeeQuantitySchedule]
+    fixed_fee_quantity_schedule: List[SubscriptionFixedFeeQuantitySchedule]
 
     invoicing_threshold: Optional[str] = None
 
-    maximum_intervals: List[MaximumInterval]
+    maximum_intervals: List[SubscriptionMaximumInterval]
     """The maximum intervals for this subscription sorted by the start_date."""
 
     metadata: Dict[str, str]
@@ -548,7 +549,7 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     cleared by setting `metadata` to `null`.
     """
 
-    minimum_intervals: List[MinimumInterval]
+    minimum_intervals: List[SubscriptionMinimumInterval]
     """The minimum intervals for this subscription sorted by the start_date."""
 
     net_terms: int
@@ -559,7 +560,7 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     has a month to pay the invoice.
     """
 
-    pending_subscription_change: Optional[PendingSubscriptionChange] = None
+    pending_subscription_change: Optional[SubscriptionPendingSubscriptionChange] = None
     """A pending subscription change if one exists on this subscription."""
 
     plan: Plan
@@ -570,21 +571,40 @@ class SubscriptionPriceIntervalsResponse(BaseModel):
     [Price resource](/reference/price).
     """
 
-    price_intervals: List[PriceInterval]
+    price_intervals: List[SubscriptionPriceInterval]
     """The price intervals for this subscription."""
 
-    redeemed_coupon: Optional[RedeemedCoupon] = None
+    redeemed_coupon: Optional[SubscriptionRedeemedCoupon] = None
 
     start_date: datetime
     """The date Orb starts billing for this subscription."""
 
     status: Literal["active", "ended", "upcoming"]
 
-    trial_info: TrialInfo
+    trial_info: SubscriptionTrialInfo
 
-    changed_resources: Optional[ChangedResources] = None
+    changed_resources: Optional[SubscriptionChangedResources] = None
     """The resources that were changed as part of this operation.
 
     Only present when fetched through the subscription changes API or if the
     `include_changed_resources` parameter was passed in the request.
     """
+
+
+class SubscriptionChangeRetrieveResponse(BaseModel):
+    id: str
+
+    expiration_time: datetime
+    """
+    Subscription change will be cancelled at this time and can no longer be applied.
+    """
+
+    status: Literal["pending", "applied", "cancelled"]
+
+    subscription: Optional[Subscription] = None
+
+    applied_at: Optional[datetime] = None
+    """When this change was applied."""
+
+    cancelled_at: Optional[datetime] = None
+    """When this change was cancelled."""

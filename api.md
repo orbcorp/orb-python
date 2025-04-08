@@ -410,3 +410,21 @@ Methods:
 Methods:
 
 - <code title="get /dimensional_price_groups/external_dimensional_price_group_id/{external_dimensional_price_group_id}">client.dimensional_price_groups.external_dimensional_price_group_id.<a href="./src/orb/resources/dimensional_price_groups/external_dimensional_price_group_id.py">retrieve</a>(external_dimensional_price_group_id) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
+
+# SubscriptionChanges
+
+Types:
+
+```python
+from orb.types import (
+    SubscriptionChangeRetrieveResponse,
+    SubscriptionChangeApplyResponse,
+    SubscriptionChangeCancelResponse,
+)
+```
+
+Methods:
+
+- <code title="get /subscription_changes/{subscription_change_id}">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">retrieve</a>(subscription_change_id) -> <a href="./src/orb/types/subscription_change_retrieve_response.py">SubscriptionChangeRetrieveResponse</a></code>
+- <code title="post /subscription_changes/{subscription_change_id}/apply">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">apply</a>(subscription_change_id, \*\*<a href="src/orb/types/subscription_change_apply_params.py">params</a>) -> <a href="./src/orb/types/subscription_change_apply_response.py">SubscriptionChangeApplyResponse</a></code>
+- <code title="post /subscription_changes/{subscription_change_id}/cancel">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">cancel</a>(subscription_change_id) -> <a href="./src/orb/types/subscription_change_cancel_response.py">SubscriptionChangeCancelResponse</a></code>
