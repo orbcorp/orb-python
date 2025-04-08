@@ -163,6 +163,29 @@ customer = client.customers.create(
 print(customer.id)
 ```
 
+## Webhook Verification
+
+We provide helper methods for verifying that a webhook request came from Orb, and not a malicious third party.
+
+You can use `orb.webhooks.verify_signature(body: string, headers, secret?) -> None` or `orb.webhooks.unwrap(body: string, headers, secret?) -> Payload`,
+both of which will raise an error if the signature is invalid.
+
+Note that the "body" parameter must be the raw JSON string sent from the server (do not parse it first).
+The `.unwrap()` method can parse this JSON for you into a `Payload` object.
+
+For example, in [FastAPI](https://fastapi.tiangolo.com/):
+
+```py
+@app.post('/my-webhook-handler')
+async def handler(request: Request):
+    body = await request.body()
+    secret = os.environ['ORB_WEBHOOK_SECRET']  # env var or client arg used by default; explicit here.
+    payload = client.webhooks.unwrap(body, request.headers, secret)
+    print(payload)
+
+    return {'ok': True}
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `orb.APIConnectionError` is raised.
@@ -358,12 +381,12 @@ response = client.post(
 print(response.headers.get("x-foo"))
 ```
 
-#### Undocumented request params
+#### Undocumented params
 
 If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` request
 options.
 
-#### Undocumented response properties
+#### Undocumented properties
 
 To access undocumented response properties, you can access the extra fields like `response.unknown_prop`. You
 can also get all the extra fields on the Pydantic model as a dict with

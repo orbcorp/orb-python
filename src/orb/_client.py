@@ -30,6 +30,7 @@ from .resources import (
     alerts,
     metrics,
     invoices,
+    webhooks,
     top_level,
     credit_notes,
     subscriptions,
@@ -66,6 +67,7 @@ class Orb(SyncAPIClient):
     plans: plans.Plans
     prices: prices.Prices
     subscriptions: subscriptions.Subscriptions
+    webhooks: webhooks.Webhooks
     alerts: alerts.Alerts
     dimensional_price_groups: dimensional_price_groups.DimensionalPriceGroups
     subscription_changes: subscription_changes.SubscriptionChanges
@@ -148,6 +150,7 @@ class Orb(SyncAPIClient):
         self.plans = plans.Plans(self)
         self.prices = prices.Prices(self)
         self.subscriptions = subscriptions.Subscriptions(self)
+        self.webhooks = webhooks.Webhooks(self)
         self.alerts = alerts.Alerts(self)
         self.dimensional_price_groups = dimensional_price_groups.DimensionalPriceGroups(self)
         self.subscription_changes = subscription_changes.SubscriptionChanges(self)
@@ -322,6 +325,7 @@ class AsyncOrb(AsyncAPIClient):
     plans: plans.AsyncPlans
     prices: prices.AsyncPrices
     subscriptions: subscriptions.AsyncSubscriptions
+    webhooks: webhooks.AsyncWebhooks
     alerts: alerts.AsyncAlerts
     dimensional_price_groups: dimensional_price_groups.AsyncDimensionalPriceGroups
     subscription_changes: subscription_changes.AsyncSubscriptionChanges
@@ -404,6 +408,7 @@ class AsyncOrb(AsyncAPIClient):
         self.plans = plans.AsyncPlans(self)
         self.prices = prices.AsyncPrices(self)
         self.subscriptions = subscriptions.AsyncSubscriptions(self)
+        self.webhooks = webhooks.AsyncWebhooks(self)
         self.alerts = alerts.AsyncAlerts(self)
         self.dimensional_price_groups = dimensional_price_groups.AsyncDimensionalPriceGroups(self)
         self.subscription_changes = subscription_changes.AsyncSubscriptionChanges(self)
