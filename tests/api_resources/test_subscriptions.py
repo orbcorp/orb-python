@@ -59,7 +59,7 @@ class TestSubscriptions:
                 {
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -153,7 +153,7 @@ class TestSubscriptions:
                     "replaces_price_id": "replaces_price_id",
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -580,7 +580,7 @@ class TestSubscriptions:
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -731,7 +731,7 @@ class TestSubscriptions:
                 {
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -820,7 +820,7 @@ class TestSubscriptions:
                     "replaces_price_id": "replaces_price_id",
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1205,7 +1205,7 @@ class TestAsyncSubscriptions:
                 {
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1299,7 +1299,7 @@ class TestAsyncSubscriptions:
                     "replaces_price_id": "replaces_price_id",
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1726,7 +1726,7 @@ class TestAsyncSubscriptions:
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1877,7 +1877,7 @@ class TestAsyncSubscriptions:
                 {
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
@@ -1966,7 +1966,7 @@ class TestAsyncSubscriptions:
                     "replaces_price_id": "replaces_price_id",
                     "allocation_price": {
                         "amount": "10.00",
-                        "cadence": "one_time",
+                        "cadence": "monthly",
                         "currency": "USD",
                         "expires_at_end_of_cadence": True,
                     },
