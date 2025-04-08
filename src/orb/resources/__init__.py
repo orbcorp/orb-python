@@ -108,6 +108,14 @@ from .invoice_line_items import (
     InvoiceLineItemsWithStreamingResponse,
     AsyncInvoiceLineItemsWithStreamingResponse,
 )
+from .subscription_changes import (
+    SubscriptionChanges,
+    AsyncSubscriptionChanges,
+    SubscriptionChangesWithRawResponse,
+    AsyncSubscriptionChangesWithRawResponse,
+    SubscriptionChangesWithStreamingResponse,
+    AsyncSubscriptionChangesWithStreamingResponse,
+)
 from .dimensional_price_groups import (
     DimensionalPriceGroups,
     AsyncDimensionalPriceGroups,
@@ -204,4 +212,10 @@ __all__ = [
     "AsyncDimensionalPriceGroupsWithRawResponse",
     "DimensionalPriceGroupsWithStreamingResponse",
     "AsyncDimensionalPriceGroupsWithStreamingResponse",
+    "SubscriptionChanges",
+    "AsyncSubscriptionChanges",
+    "SubscriptionChangesWithRawResponse",
+    "AsyncSubscriptionChangesWithRawResponse",
+    "SubscriptionChangesWithStreamingResponse",
+    "AsyncSubscriptionChangesWithStreamingResponse",
 ]
