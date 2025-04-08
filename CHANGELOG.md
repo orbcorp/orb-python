@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.19.0 (2025-04-08)
+
+Full Changelog: [v3.18.2...v3.19.0](https://github.com/orbcorp/orb-python/compare/v3.18.2...v3.19.0)
+
+### Features
+
+* **api:** api update ([#614](https://github.com/orbcorp/orb-python/issues/614)) ([900d258](https://github.com/orbcorp/orb-python/commit/900d258b7af45e1c777b20b561373b9438e42abb))
+
+
+### Chores
+
+* **internal:** slight transform perf improvement ([#616](https://github.com/orbcorp/orb-python/issues/616)) ([de565f2](https://github.com/orbcorp/orb-python/commit/de565f252353fa7f951ad8cc10574f82919e35aa))
+* **tests:** improve enum examples ([#617](https://github.com/orbcorp/orb-python/issues/617)) ([a0d4366](https://github.com/orbcorp/orb-python/commit/a0d4366a82d86555d6ac41a912ce22414b74dd50))
+
 ## 3.18.2 (2025-04-07)
 
 Full Changelog: [v3.18.1...v3.18.2](https://github.com/orbcorp/orb-python/compare/v3.18.1...v3.18.2)
