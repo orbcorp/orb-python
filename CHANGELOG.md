@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.19.1 (2025-04-16)
+
+Full Changelog: [v3.19.0...v3.19.1](https://github.com/orbcorp/orb-python/compare/v3.19.0...v3.19.1)
+
+### Bug Fixes
+
+* **client:** correctly reuse idempotency key ([0cdec4a](https://github.com/orbcorp/orb-python/commit/0cdec4a9188032b28280671e1a07839207f32265))
+* **perf:** optimize some hot paths ([a5f8e2b](https://github.com/orbcorp/orb-python/commit/a5f8e2b0e5a1069c23864821e6d07c3b314a89bd))
+* **perf:** skip traversing types for NotGiven values ([1416a8e](https://github.com/orbcorp/orb-python/commit/1416a8e2345aed3f03d5e2e0f144a3f100e0383b))
+
+
+### Chores
+
+* **internal:** base client updates ([d2a8b98](https://github.com/orbcorp/orb-python/commit/d2a8b98bfe31a91f12f8ef7a5e6d648755967d1b))
+* **internal:** bump pyright version ([35933d9](https://github.com/orbcorp/orb-python/commit/35933d9adaacef7d1603c294ff334433919506c7))
+* **internal:** expand CI branch coverage ([#619](https://github.com/orbcorp/orb-python/issues/619)) ([c1d283c](https://github.com/orbcorp/orb-python/commit/c1d283c07516a7df63dbde00d762afac5877f50c))
+* **internal:** reduce CI branch coverage ([45f5613](https://github.com/orbcorp/orb-python/commit/45f56132576369cc18c94075b3b963ce080ce1f3))
+* **internal:** update pyright settings ([e528807](https://github.com/orbcorp/orb-python/commit/e52880726bdbb63354c0163871756b3a809fef7f))
+
 ## 3.19.0 (2025-04-08)
 
 Full Changelog: [v3.18.2...v3.19.0](https://github.com/orbcorp/orb-python/compare/v3.18.2...v3.19.0)
