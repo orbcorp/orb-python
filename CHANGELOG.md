@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.19.2 (2025-04-18)
+
+Full Changelog: [v3.19.1...v3.19.2](https://github.com/orbcorp/orb-python/compare/v3.19.1...v3.19.2)
+
+### Chores
+
+* **internal:** update models test ([28df611](https://github.com/orbcorp/orb-python/commit/28df611e6d0c3948cefb2ed95f5b931c4da01d7a))
+
 ## 3.19.1 (2025-04-16)
 
 Full Changelog: [v3.19.0...v3.19.1](https://github.com/orbcorp/orb-python/compare/v3.19.0...v3.19.1)
