@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.19.2 (2025-04-22)
+
+Full Changelog: [v3.19.1...v3.19.2](https://github.com/orbcorp/orb-python/compare/v3.19.1...v3.19.2)
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([57796bf](https://github.com/orbcorp/orb-python/commit/57796bf80e447c8ef5687bbfe0c60a2d0038f981))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([c1a4723](https://github.com/orbcorp/orb-python/commit/c1a472380f49e766d1ea3adaa8f621112687e93d))
+* **internal:** fix list file params ([4281d11](https://github.com/orbcorp/orb-python/commit/4281d1153244369d4424731fffb29a52d55d91a8))
+* **internal:** import reformatting ([3912d52](https://github.com/orbcorp/orb-python/commit/3912d5225dce95e20ae41f51342f2dde1f960aca))
+* **internal:** refactor retries to not use recursion ([dd2a4b7](https://github.com/orbcorp/orb-python/commit/dd2a4b7e48c890763c1fddbd4285713f6658ce49))
+* **internal:** update models test ([28df611](https://github.com/orbcorp/orb-python/commit/28df611e6d0c3948cefb2ed95f5b931c4da01d7a))
+
 ## 3.19.1 (2025-04-16)
 
 Full Changelog: [v3.19.0...v3.19.1](https://github.com/orbcorp/orb-python/compare/v3.19.0...v3.19.1)
