@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.19.3 (2025-05-09)
+
+Full Changelog: [v3.19.2...v3.19.3](https://github.com/orbcorp/orb-python/compare/v3.19.2...v3.19.3)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([f1b3637](https://github.com/orbcorp/orb-python/commit/f1b36376d33f17c1f2e6a6233a75ea278587398e))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([3acaf7c](https://github.com/orbcorp/orb-python/commit/3acaf7c67e8d50d65b70f9e17fc5f828297a7f17))
+* **ci:** only use depot for staging repos ([3bec73f](https://github.com/orbcorp/orb-python/commit/3bec73ffde0195acc8fb8bf662f4ebaf787ff6bc))
+* **ci:** run on more branches and use depot runners ([8e10744](https://github.com/orbcorp/orb-python/commit/8e107446f9a89c01a62ef4e853ffb3f17f7e4277))
+* **internal:** avoid errors for isinstance checks on proxies ([5bbd76d](https://github.com/orbcorp/orb-python/commit/5bbd76d645f33c75a78272cd080096196c1f1407))
+* **internal:** minor formatting changes ([0e52bb3](https://github.com/orbcorp/orb-python/commit/0e52bb34ec9734c03ca0a225467c4b6d6e158b4e))
+* use lazy imports for resources ([e79a6ec](https://github.com/orbcorp/orb-python/commit/e79a6ec9eb46e1b04b0b511edaf25294e27934fc))
+
 ## 3.19.2 (2025-04-22)
 
 Full Changelog: [v3.19.1...v3.19.2](https://github.com/orbcorp/orb-python/compare/v3.19.1...v3.19.2)
