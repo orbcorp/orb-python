@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.19.4 (2025-05-15)
+
+Full Changelog: [v3.19.3...v3.19.4](https://github.com/orbcorp/orb-python/compare/v3.19.3...v3.19.4)
+
+### Chores
+
+* **ci:** fix installation instructions ([997813b](https://github.com/orbcorp/orb-python/commit/997813bc837a49c3426c21b8180cd12c0c43ac04))
+* **ci:** upload sdks to package manager ([de596fc](https://github.com/orbcorp/orb-python/commit/de596fc553718d58021c546d77d0d655cfbc1129))
+
 ## 3.19.3 (2025-05-09)
 
 Full Changelog: [v3.19.2...v3.19.3](https://github.com/orbcorp/orb-python/compare/v3.19.2...v3.19.3)
