@@ -93,7 +93,7 @@ class TopUps(SyncAPIResource):
               threshold, the top-up will be triggered.
 
           active_from: The date from which the top-up is active. If unspecified, the top-up is active
-              immediately.
+              immediately. This should not be more than 10 days in the past.
 
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
@@ -277,7 +277,7 @@ class TopUps(SyncAPIResource):
               threshold, the top-up will be triggered.
 
           active_from: The date from which the top-up is active. If unspecified, the top-up is active
-              immediately.
+              immediately. This should not be more than 10 days in the past.
 
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
@@ -488,7 +488,7 @@ class AsyncTopUps(AsyncAPIResource):
               threshold, the top-up will be triggered.
 
           active_from: The date from which the top-up is active. If unspecified, the top-up is active
-              immediately.
+              immediately. This should not be more than 10 days in the past.
 
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.
@@ -672,7 +672,7 @@ class AsyncTopUps(AsyncAPIResource):
               threshold, the top-up will be triggered.
 
           active_from: The date from which the top-up is active. If unspecified, the top-up is active
-              immediately.
+              immediately. This should not be more than 10 days in the past.
 
           expires_after: The number of days or months after which the top-up expires. If unspecified, it
               does not expire.

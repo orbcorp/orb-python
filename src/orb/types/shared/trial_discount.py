@@ -9,13 +9,13 @@ __all__ = ["TrialDiscount"]
 
 
 class TrialDiscount(BaseModel):
-    applies_to_price_ids: List[str]
+    discount_type: Literal["trial"]
+
+    applies_to_price_ids: Optional[List[str]] = None
     """List of price_ids that this discount applies to.
 
     For plan/plan phase discounts, this can be a subset of prices.
     """
-
-    discount_type: Literal["trial"]
 
     reason: Optional[str] = None
 

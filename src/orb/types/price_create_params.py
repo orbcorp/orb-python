@@ -10,101 +10,129 @@ __all__ = [
     "NewFloatingUnitPrice",
     "NewFloatingUnitPriceUnitConfig",
     "NewFloatingUnitPriceBillingCycleConfiguration",
+    "NewFloatingUnitPriceDimensionalPriceConfiguration",
     "NewFloatingUnitPriceInvoicingCycleConfiguration",
     "NewFloatingPackagePrice",
     "NewFloatingPackagePricePackageConfig",
     "NewFloatingPackagePriceBillingCycleConfiguration",
+    "NewFloatingPackagePriceDimensionalPriceConfiguration",
     "NewFloatingPackagePriceInvoicingCycleConfiguration",
     "NewFloatingMatrixPrice",
     "NewFloatingMatrixPriceMatrixConfig",
     "NewFloatingMatrixPriceMatrixConfigMatrixValue",
     "NewFloatingMatrixPriceBillingCycleConfiguration",
+    "NewFloatingMatrixPriceDimensionalPriceConfiguration",
     "NewFloatingMatrixPriceInvoicingCycleConfiguration",
     "NewFloatingMatrixWithAllocationPrice",
     "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig",
     "NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
     "NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration",
+    "NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration",
     "NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPrice",
     "NewFloatingTieredPriceTieredConfig",
     "NewFloatingTieredPriceTieredConfigTier",
     "NewFloatingTieredPriceBillingCycleConfiguration",
+    "NewFloatingTieredPriceDimensionalPriceConfiguration",
     "NewFloatingTieredPriceInvoicingCycleConfiguration",
     "NewFloatingTieredBpsPrice",
     "NewFloatingTieredBpsPriceTieredBpsConfig",
     "NewFloatingTieredBpsPriceTieredBpsConfigTier",
     "NewFloatingTieredBpsPriceBillingCycleConfiguration",
+    "NewFloatingTieredBpsPriceDimensionalPriceConfiguration",
     "NewFloatingTieredBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBpsPrice",
     "NewFloatingBpsPriceBpsConfig",
     "NewFloatingBpsPriceBillingCycleConfiguration",
+    "NewFloatingBpsPriceDimensionalPriceConfiguration",
     "NewFloatingBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBulkBpsPrice",
     "NewFloatingBulkBpsPriceBulkBpsConfig",
     "NewFloatingBulkBpsPriceBulkBpsConfigTier",
     "NewFloatingBulkBpsPriceBillingCycleConfiguration",
+    "NewFloatingBulkBpsPriceDimensionalPriceConfiguration",
     "NewFloatingBulkBpsPriceInvoicingCycleConfiguration",
     "NewFloatingBulkPrice",
     "NewFloatingBulkPriceBulkConfig",
     "NewFloatingBulkPriceBulkConfigTier",
     "NewFloatingBulkPriceBillingCycleConfiguration",
+    "NewFloatingBulkPriceDimensionalPriceConfiguration",
     "NewFloatingBulkPriceInvoicingCycleConfiguration",
     "NewFloatingThresholdTotalAmountPrice",
     "NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration",
+    "NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration",
     "NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPackagePrice",
     "NewFloatingTieredPackagePriceBillingCycleConfiguration",
+    "NewFloatingTieredPackagePriceDimensionalPriceConfiguration",
     "NewFloatingTieredPackagePriceInvoicingCycleConfiguration",
     "NewFloatingGroupedTieredPrice",
     "NewFloatingGroupedTieredPriceBillingCycleConfiguration",
+    "NewFloatingGroupedTieredPriceDimensionalPriceConfiguration",
     "NewFloatingGroupedTieredPriceInvoicingCycleConfiguration",
     "NewFloatingMaxGroupTieredPackagePrice",
     "NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration",
     "NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "NewFloatingTieredWithMinimumPrice",
     "NewFloatingTieredWithMinimumPriceBillingCycleConfiguration",
+    "NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration",
     "NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingPackageWithAllocationPrice",
     "NewFloatingPackageWithAllocationPriceBillingCycleConfiguration",
+    "NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration",
     "NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingTieredPackageWithMinimumPrice",
     "NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration",
+    "NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration",
     "NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingUnitWithPercentPrice",
     "NewFloatingUnitWithPercentPriceBillingCycleConfiguration",
+    "NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration",
     "NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration",
     "NewFloatingTieredWithProrationPrice",
     "NewFloatingTieredWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration",
     "NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration",
     "NewFloatingUnitWithProrationPrice",
     "NewFloatingUnitWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration",
     "NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration",
     "NewFloatingGroupedAllocationPrice",
     "NewFloatingGroupedAllocationPriceBillingCycleConfiguration",
+    "NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration",
     "NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration",
     "NewFloatingGroupedWithProratedMinimumPrice",
     "NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration",
+    "NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration",
     "NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingGroupedWithMeteredMinimumPrice",
     "NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration",
+    "NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration",
     "NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration",
     "NewFloatingMatrixWithDisplayNamePrice",
     "NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration",
+    "NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration",
     "NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration",
     "NewFloatingBulkWithProrationPrice",
     "NewFloatingBulkWithProrationPriceBillingCycleConfiguration",
+    "NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration",
     "NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration",
     "NewFloatingGroupedTieredPackagePrice",
     "NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration",
+    "NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration",
     "NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration",
     "NewFloatingScalableMatrixWithUnitPricingPrice",
     "NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
+    "NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration",
     "NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
     "NewFloatingScalableMatrixWithTieredPricingPrice",
     "NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
+    "NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
     "NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
     "NewFloatingCumulativeGroupedBulkPrice",
     "NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration",
+    "NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration",
     "NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration",
 ]
 
@@ -147,6 +175,9 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingUnitPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -184,6 +215,20 @@ class NewFloatingUnitPriceBillingCycleConfiguration(TypedDict, total=False):
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingUnitPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingUnitPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -232,6 +277,9 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -276,6 +324,20 @@ class NewFloatingPackagePriceBillingCycleConfiguration(TypedDict, total=False):
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -323,6 +385,9 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingMatrixPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -381,6 +446,20 @@ class NewFloatingMatrixPriceBillingCycleConfiguration(TypedDict, total=False):
     """The unit of billing period duration."""
 
 
+class NewFloatingMatrixPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingMatrixPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -426,6 +505,9 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -487,6 +569,20 @@ class NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration(TypedDict, t
     """The unit of billing period duration."""
 
 
+class NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -532,6 +628,9 @@ class NewFloatingTieredPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingTieredPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -583,6 +682,20 @@ class NewFloatingTieredPriceBillingCycleConfiguration(TypedDict, total=False):
     """The unit of billing period duration."""
 
 
+class NewFloatingTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -628,6 +741,9 @@ class NewFloatingTieredBpsPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingTieredBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -685,6 +801,20 @@ class NewFloatingTieredBpsPriceBillingCycleConfiguration(TypedDict, total=False)
     """The unit of billing period duration."""
 
 
+class NewFloatingTieredBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingTieredBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -731,6 +861,9 @@ class NewFloatingBpsPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -771,6 +904,20 @@ class NewFloatingBpsPriceBillingCycleConfiguration(TypedDict, total=False):
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -818,6 +965,9 @@ class NewFloatingBulkBpsPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingBulkBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -872,6 +1022,20 @@ class NewFloatingBulkBpsPriceBillingCycleConfiguration(TypedDict, total=False):
     """The unit of billing period duration."""
 
 
+class NewFloatingBulkBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingBulkBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -917,6 +1081,9 @@ class NewFloatingBulkPrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewFloatingBulkPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -965,6 +1132,20 @@ class NewFloatingBulkPriceBillingCycleConfiguration(TypedDict, total=False):
     """The unit of billing period duration."""
 
 
+class NewFloatingBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class NewFloatingBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -1011,6 +1192,9 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1043,6 +1227,20 @@ class NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration(TypedDict, t
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1091,6 +1289,9 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingTieredPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1123,6 +1324,20 @@ class NewFloatingTieredPackagePriceBillingCycleConfiguration(TypedDict, total=Fa
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1171,6 +1386,9 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingGroupedTieredPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1203,6 +1421,20 @@ class NewFloatingGroupedTieredPriceBillingCycleConfiguration(TypedDict, total=Fa
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingGroupedTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingGroupedTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1251,6 +1483,9 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1283,6 +1518,20 @@ class NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration(TypedDict, 
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1331,6 +1580,9 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1363,6 +1615,20 @@ class NewFloatingTieredWithMinimumPriceBillingCycleConfiguration(TypedDict, tota
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1411,6 +1677,9 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1443,6 +1712,20 @@ class NewFloatingPackageWithAllocationPriceBillingCycleConfiguration(TypedDict, 
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1491,6 +1774,9 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1523,6 +1809,20 @@ class NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration(TypedDic
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1571,6 +1871,9 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1603,6 +1906,20 @@ class NewFloatingUnitWithPercentPriceBillingCycleConfiguration(TypedDict, total=
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1651,6 +1968,9 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1683,6 +2003,20 @@ class NewFloatingTieredWithProrationPriceBillingCycleConfiguration(TypedDict, to
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1731,6 +2065,9 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1763,6 +2100,20 @@ class NewFloatingUnitWithProrationPriceBillingCycleConfiguration(TypedDict, tota
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1811,6 +2162,9 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1843,6 +2197,20 @@ class NewFloatingGroupedAllocationPriceBillingCycleConfiguration(TypedDict, tota
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1891,6 +2259,9 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1923,6 +2294,20 @@ class NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration(TypedD
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1971,6 +2356,9 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2003,6 +2391,20 @@ class NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration(TypedDi
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2051,6 +2453,9 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2083,6 +2488,20 @@ class NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration(TypedDict, 
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2131,6 +2550,9 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2163,6 +2585,20 @@ class NewFloatingBulkWithProrationPriceBillingCycleConfiguration(TypedDict, tota
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2211,6 +2647,9 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2243,6 +2682,20 @@ class NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration(TypedDict, t
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2291,6 +2744,11 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[
+        NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2323,6 +2781,20 @@ class NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration(Typ
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2371,6 +2843,11 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[
+        NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2403,6 +2880,20 @@ class NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration(T
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2451,6 +2942,9 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    dimensional_price_configuration: Optional[NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2483,6 +2977,20 @@ class NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration(TypedDict, 
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):

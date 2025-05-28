@@ -50,9 +50,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -129,9 +134,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -226,9 +236,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -337,9 +352,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -445,9 +465,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -548,9 +573,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -638,9 +668,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -719,9 +754,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -799,9 +839,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -872,9 +917,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -945,9 +995,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1018,9 +1073,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1091,9 +1151,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1164,9 +1229,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1237,9 +1307,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1310,9 +1385,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1383,9 +1463,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1456,9 +1541,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1529,9 +1619,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1602,9 +1697,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1675,9 +1775,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1748,9 +1853,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1821,9 +1931,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1894,9 +2009,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -1967,9 +2087,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2040,9 +2165,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2113,9 +2243,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2186,9 +2321,14 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2313,7 +2453,6 @@ class TestPrices:
     @parametrize
     def test_method_evaluate(self, client: Orb) -> None:
         price = client.prices.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -2322,20 +2461,60 @@ class TestPrices:
     @parametrize
     def test_method_evaluate_with_all_params(self, client: Orb) -> None:
         price = client.prices.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             customer_id="customer_id",
+            events=[
+                {
+                    "event_name": "event_name",
+                    "properties": {},
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                }
+            ],
             external_customer_id="external_customer_id",
-            filter="my_numeric_property > 100 AND my_other_property = 'bar'",
-            grouping_keys=["case when my_event_type = 'foo' then true else false end"],
+            price_evaluations=[
+                {
+                    "filter": "my_numeric_property > 100 AND my_other_property = 'bar'",
+                    "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
+                    "price": {
+                        "cadence": "annual",
+                        "currency": "currency",
+                        "item_id": "item_id",
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "metadata": {"foo": "string"},
+                    },
+                    "price_id": "price_id",
+                }
+            ],
         )
         assert_matches_type(PriceEvaluateResponse, price, path=["response"])
 
     @parametrize
     def test_raw_response_evaluate(self, client: Orb) -> None:
         response = client.prices.with_raw_response.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -2348,7 +2527,6 @@ class TestPrices:
     @parametrize
     def test_streaming_response_evaluate(self, client: Orb) -> None:
         with client.prices.with_streaming_response.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -2359,15 +2537,6 @@ class TestPrices:
             assert_matches_type(PriceEvaluateResponse, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_evaluate(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
-            client.prices.with_raw_response.evaluate(
-                price_id="",
-                timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-                timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
 
     @parametrize
     def test_method_fetch(self, client: Orb) -> None:
@@ -2439,9 +2608,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2518,9 +2692,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2615,9 +2794,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2726,9 +2910,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2834,9 +3023,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -2937,9 +3131,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3027,9 +3226,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3108,9 +3312,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3188,9 +3397,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3261,9 +3475,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3334,9 +3553,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3407,9 +3631,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3480,9 +3709,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3553,9 +3787,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3626,9 +3865,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3699,9 +3943,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3772,9 +4021,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3845,9 +4099,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3918,9 +4177,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -3991,9 +4255,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4064,9 +4333,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4137,9 +4411,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4210,9 +4489,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4283,9 +4567,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4356,9 +4645,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4429,9 +4723,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4502,9 +4801,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4575,9 +4879,14 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
             external_price_id="external_price_id",
             fixed_price_quantity=0,
-            invoice_grouping_key="invoice_grouping_key",
+            invoice_grouping_key="x",
             invoicing_cycle_configuration={
                 "duration": 0,
                 "duration_unit": "day",
@@ -4702,7 +5011,6 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_evaluate(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -4711,20 +5019,60 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_evaluate_with_all_params(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
             customer_id="customer_id",
+            events=[
+                {
+                    "event_name": "event_name",
+                    "properties": {},
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                }
+            ],
             external_customer_id="external_customer_id",
-            filter="my_numeric_property > 100 AND my_other_property = 'bar'",
-            grouping_keys=["case when my_event_type = 'foo' then true else false end"],
+            price_evaluations=[
+                {
+                    "filter": "my_numeric_property > 100 AND my_other_property = 'bar'",
+                    "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
+                    "price": {
+                        "cadence": "annual",
+                        "currency": "currency",
+                        "item_id": "item_id",
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "metadata": {"foo": "string"},
+                    },
+                    "price_id": "price_id",
+                }
+            ],
         )
         assert_matches_type(PriceEvaluateResponse, price, path=["response"])
 
     @parametrize
     async def test_raw_response_evaluate(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -4737,7 +5085,6 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_evaluate(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.evaluate(
-            price_id="price_id",
             timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -4748,15 +5095,6 @@ class TestAsyncPrices:
             assert_matches_type(PriceEvaluateResponse, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_evaluate(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `price_id` but received ''"):
-            await async_client.prices.with_raw_response.evaluate(
-                price_id="",
-                timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
-                timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
 
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:

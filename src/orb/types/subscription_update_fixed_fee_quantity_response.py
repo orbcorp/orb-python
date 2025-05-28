@@ -17,18 +17,28 @@ __all__ = [
     "AdjustmentInterval",
     "AdjustmentIntervalAdjustment",
     "AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustmentFilter",
     "AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustmentFilter",
     "AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment",
+    "AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustmentFilter",
     "AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment",
+    "AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustmentFilter",
     "AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment",
+    "AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustmentFilter",
     "BillingCycleAnchorConfiguration",
     "DiscountInterval",
     "DiscountIntervalAmountDiscountInterval",
+    "DiscountIntervalAmountDiscountIntervalFilter",
     "DiscountIntervalPercentageDiscountInterval",
+    "DiscountIntervalPercentageDiscountIntervalFilter",
     "DiscountIntervalUsageDiscountInterval",
+    "DiscountIntervalUsageDiscountIntervalFilter",
     "FixedFeeQuantitySchedule",
     "MaximumInterval",
+    "MaximumIntervalFilter",
     "MinimumInterval",
+    "MinimumIntervalFilter",
     "PendingSubscriptionChange",
     "PriceInterval",
     "PriceIntervalFixedFeeQuantityTransition",
@@ -38,6 +48,17 @@ __all__ = [
 ]
 
 
+class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
     id: str
 
@@ -45,6 +66,9 @@ class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -65,6 +89,17 @@ class AdjustmentIntervalAdjustmentPlanPhaseUsageDiscountAdjustment(BaseModel):
     """
 
 
+class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
     id: str
 
@@ -79,6 +114,9 @@ class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
 
+    filters: List[AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
+
     is_invoice_level: bool
     """
     True for adjustments that apply to an entire invocice, false for adjustments
@@ -92,6 +130,17 @@ class AdjustmentIntervalAdjustmentPlanPhaseAmountDiscountAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
+class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseModel):
     id: str
 
@@ -99,6 +148,9 @@ class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseMode
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -119,6 +171,17 @@ class AdjustmentIntervalAdjustmentPlanPhasePercentageDiscountAdjustment(BaseMode
     """The reason for the adjustment."""
 
 
+class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
     id: str
 
@@ -126,6 +189,9 @@ class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -149,6 +215,17 @@ class AdjustmentIntervalAdjustmentPlanPhaseMinimumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
+class AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment(BaseModel):
     id: str
 
@@ -156,6 +233,9 @@ class AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentIntervalAdjustmentPlanPhaseMaximumAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -227,12 +307,20 @@ class BillingCycleAnchorConfiguration(BaseModel):
     """
 
 
+class DiscountIntervalAmountDiscountIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class DiscountIntervalAmountDiscountInterval(BaseModel):
     amount_discount: str
     """Only available if discount_type is `amount`."""
-
-    applies_to_price_ids: List[str]
-    """The price ids that this discount interval applies to."""
 
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this discount interval applies to."""
@@ -242,14 +330,25 @@ class DiscountIntervalAmountDiscountInterval(BaseModel):
     end_date: Optional[datetime] = None
     """The end date of the discount interval."""
 
+    filters: List[DiscountIntervalAmountDiscountIntervalFilter]
+    """The filters that determine which prices this discount interval applies to."""
+
     start_date: datetime
     """The start date of the discount interval."""
 
 
-class DiscountIntervalPercentageDiscountInterval(BaseModel):
-    applies_to_price_ids: List[str]
-    """The price ids that this discount interval applies to."""
+class DiscountIntervalPercentageDiscountIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
 
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class DiscountIntervalPercentageDiscountInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this discount interval applies to."""
 
@@ -257,6 +356,9 @@ class DiscountIntervalPercentageDiscountInterval(BaseModel):
 
     end_date: Optional[datetime] = None
     """The end date of the discount interval."""
+
+    filters: List[DiscountIntervalPercentageDiscountIntervalFilter]
+    """The filters that determine which prices this discount interval applies to."""
 
     percentage_discount: float
     """
@@ -268,10 +370,18 @@ class DiscountIntervalPercentageDiscountInterval(BaseModel):
     """The start date of the discount interval."""
 
 
-class DiscountIntervalUsageDiscountInterval(BaseModel):
-    applies_to_price_ids: List[str]
-    """The price ids that this discount interval applies to."""
+class DiscountIntervalUsageDiscountIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
 
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class DiscountIntervalUsageDiscountInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this discount interval applies to."""
 
@@ -279,6 +389,9 @@ class DiscountIntervalUsageDiscountInterval(BaseModel):
 
     end_date: Optional[datetime] = None
     """The end date of the discount interval."""
+
+    filters: List[DiscountIntervalUsageDiscountIntervalFilter]
+    """The filters that determine which prices this discount interval applies to."""
 
     start_date: datetime
     """The start date of the discount interval."""
@@ -310,15 +423,26 @@ class FixedFeeQuantitySchedule(BaseModel):
     start_date: datetime
 
 
-class MaximumInterval(BaseModel):
-    applies_to_price_ids: List[str]
-    """The price ids that this maximum interval applies to."""
+class MaximumIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
 
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class MaximumInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this maximum interval applies to."""
 
     end_date: Optional[datetime] = None
     """The end date of the maximum interval."""
+
+    filters: List[MaximumIntervalFilter]
+    """The filters that determine which prices this maximum interval applies to."""
 
     maximum_amount: str
     """
@@ -330,15 +454,26 @@ class MaximumInterval(BaseModel):
     """The start date of the maximum interval."""
 
 
-class MinimumInterval(BaseModel):
-    applies_to_price_ids: List[str]
-    """The price ids that this minimum interval applies to."""
+class MinimumIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
 
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class MinimumInterval(BaseModel):
     applies_to_price_interval_ids: List[str]
     """The price interval ids that this minimum interval applies to."""
 
     end_date: Optional[datetime] = None
     """The end date of the minimum interval."""
+
+    filters: List[MinimumIntervalFilter]
+    """The filters that determine which prices this minimum interval applies to."""
 
     minimum_amount: str
     """
@@ -551,6 +686,9 @@ class SubscriptionUpdateFixedFeeQuantityResponse(BaseModel):
     minimum_intervals: List[MinimumInterval]
     """The minimum intervals for this subscription sorted by the start_date."""
 
+    name: str
+    """The name of the subscription."""
+
     net_terms: int
     """
     Determines the difference between the invoice issue date for subscription
@@ -562,7 +700,7 @@ class SubscriptionUpdateFixedFeeQuantityResponse(BaseModel):
     pending_subscription_change: Optional[PendingSubscriptionChange] = None
     """A pending subscription change if one exists on this subscription."""
 
-    plan: Plan
+    plan: Optional[Plan] = None
     """
     The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
     subscribed to by a customer. Plans define the billing behavior of the

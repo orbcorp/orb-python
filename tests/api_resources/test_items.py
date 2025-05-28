@@ -26,6 +26,14 @@ class TestItems:
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Orb) -> None:
+        item = client.items.create(
+            name="API requests",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.items.with_raw_response.create(
             name="API requests",
@@ -66,6 +74,7 @@ class TestItems:
                     "external_entity_id": "external_entity_id",
                 }
             ],
+            metadata={"foo": "string"},
             name="name",
         )
         assert_matches_type(Item, item, path=["response"])
@@ -135,6 +144,44 @@ class TestItems:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_archive(self, client: Orb) -> None:
+        item = client.items.archive(
+            "item_id",
+        )
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
+    def test_raw_response_archive(self, client: Orb) -> None:
+        response = client.items.with_raw_response.archive(
+            "item_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        item = response.parse()
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
+    def test_streaming_response_archive(self, client: Orb) -> None:
+        with client.items.with_streaming_response.archive(
+            "item_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            item = response.parse()
+            assert_matches_type(Item, item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_archive(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `item_id` but received ''"):
+            client.items.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         item = client.items.fetch(
             "item_id",
@@ -184,6 +231,14 @@ class TestAsyncItems:
         assert_matches_type(Item, item, path=["response"])
 
     @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
+        item = await async_client.items.create(
+            name="API requests",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.items.with_raw_response.create(
             name="API requests",
@@ -224,6 +279,7 @@ class TestAsyncItems:
                     "external_entity_id": "external_entity_id",
                 }
             ],
+            metadata={"foo": "string"},
             name="name",
         )
         assert_matches_type(Item, item, path=["response"])
@@ -291,6 +347,44 @@ class TestAsyncItems:
             assert_matches_type(AsyncPage[Item], item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_archive(self, async_client: AsyncOrb) -> None:
+        item = await async_client.items.archive(
+            "item_id",
+        )
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
+    async def test_raw_response_archive(self, async_client: AsyncOrb) -> None:
+        response = await async_client.items.with_raw_response.archive(
+            "item_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        item = response.parse()
+        assert_matches_type(Item, item, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_archive(self, async_client: AsyncOrb) -> None:
+        async with async_client.items.with_streaming_response.archive(
+            "item_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            item = await response.parse()
+            assert_matches_type(Item, item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_archive(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `item_id` but received ''"):
+            await async_client.items.with_raw_response.archive(
+                "",
+            )
 
     @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:

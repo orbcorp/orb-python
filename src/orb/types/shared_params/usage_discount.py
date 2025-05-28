@@ -9,18 +9,18 @@ __all__ = ["UsageDiscount"]
 
 
 class UsageDiscount(TypedDict, total=False):
-    applies_to_price_ids: Required[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     discount_type: Required[Literal["usage"]]
 
     usage_discount: Required[float]
     """Only available if discount_type is `usage`.
 
     Number of usage units that this discount is for
+    """
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
     """
 
     reason: Optional[str]

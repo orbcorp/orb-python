@@ -9,13 +9,13 @@ __all__ = ["TrialDiscount"]
 
 
 class TrialDiscount(TypedDict, total=False):
-    applies_to_price_ids: Required[List[str]]
+    discount_type: Required[Literal["trial"]]
+
+    applies_to_price_ids: Optional[List[str]]
     """List of price_ids that this discount applies to.
 
     For plan/plan phase discounts, this can be a subset of prices.
     """
-
-    discount_type: Required[Literal["trial"]]
 
     reason: Optional[str]
 

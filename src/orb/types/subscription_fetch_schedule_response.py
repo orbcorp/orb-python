@@ -26,6 +26,6 @@ class SubscriptionFetchScheduleResponse(BaseModel):
 
     end_date: Optional[datetime] = None
 
-    plan: Plan
+    plan: Optional[Plan] = None
 
     start_date: datetime

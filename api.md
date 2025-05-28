@@ -260,6 +260,7 @@ Methods:
 - <code title="post /items">client.items.<a href="./src/orb/resources/items.py">create</a>(\*\*<a href="src/orb/types/item_create_params.py">params</a>) -> <a href="./src/orb/types/item.py">Item</a></code>
 - <code title="put /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">update</a>(item_id, \*\*<a href="src/orb/types/item_update_params.py">params</a>) -> <a href="./src/orb/types/item.py">Item</a></code>
 - <code title="get /items">client.items.<a href="./src/orb/resources/items.py">list</a>(\*\*<a href="src/orb/types/item_list_params.py">params</a>) -> <a href="./src/orb/types/item.py">SyncPage[Item]</a></code>
+- <code title="post /items/{item_id}/archive">client.items.<a href="./src/orb/resources/items.py">archive</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 - <code title="get /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">fetch</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 
 # Metrics
@@ -291,13 +292,41 @@ Methods:
 - <code title="put /plans/{plan_id}">client.plans.<a href="./src/orb/resources/plans/plans.py">update</a>(plan_id, \*\*<a href="src/orb/types/plan_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 - <code title="get /plans">client.plans.<a href="./src/orb/resources/plans/plans.py">list</a>(\*\*<a href="src/orb/types/plan_list_params.py">params</a>) -> <a href="./src/orb/types/plan.py">SyncPage[Plan]</a></code>
 - <code title="get /plans/{plan_id}">client.plans.<a href="./src/orb/resources/plans/plans.py">fetch</a>(plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="post /plans/{plan_id}/set_default_version">client.plans.<a href="./src/orb/resources/plans/plans.py">set_default_version</a>(plan_id, \*\*<a href="src/orb/types/plan_set_default_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 
 ## ExternalPlanID
 
 Methods:
 
-- <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
-- <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="post /plans/external_plan_id/{external_plan_id}/set_default_version">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">set_default_version</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_set_default_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+
+### Versions
+
+Types:
+
+```python
+from orb.types.plans.external_plan_id import VersionCreateResponse, VersionRetrieveResponse
+```
+
+Methods:
+
+- <code title="post /plans/external_plan_id/{external_plan_id}/versions">client.plans.external_plan_id.versions.<a href="./src/orb/resources/plans/external_plan_id/versions.py">create</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id/version_create_params.py">params</a>) -> <a href="./src/orb/types/plans/external_plan_id/version_create_response.py">VersionCreateResponse</a></code>
+- <code title="get /plans/external_plan_id/{external_plan_id}/versions/{version}">client.plans.external_plan_id.versions.<a href="./src/orb/resources/plans/external_plan_id/versions.py">retrieve</a>(version, \*, external_plan_id) -> <a href="./src/orb/types/plans/external_plan_id/version_retrieve_response.py">VersionRetrieveResponse</a></code>
+
+## Versions
+
+Types:
+
+```python
+from orb.types.plans import VersionCreateResponse, VersionRetrieveResponse
+```
+
+Methods:
+
+- <code title="post /plans/{plan_id}/versions">client.plans.versions.<a href="./src/orb/resources/plans/versions.py">create</a>(plan_id, \*\*<a href="src/orb/types/plans/version_create_params.py">params</a>) -> <a href="./src/orb/types/plans/version_create_response.py">VersionCreateResponse</a></code>
+- <code title="get /plans/{plan_id}/versions/{version}">client.plans.versions.<a href="./src/orb/resources/plans/versions.py">retrieve</a>(version, \*, plan_id) -> <a href="./src/orb/types/plans/version_retrieve_response.py">VersionRetrieveResponse</a></code>
 
 # Prices
 
@@ -312,7 +341,7 @@ Methods:
 - <code title="post /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">create</a>(\*\*<a href="src/orb/types/price_create_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
 - <code title="put /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">update</a>(price_id, \*\*<a href="src/orb/types/price_update_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
 - <code title="get /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">list</a>(\*\*<a href="src/orb/types/price_list_params.py">params</a>) -> <a href="./src/orb/types/price.py">SyncPage[Price]</a></code>
-- <code title="post /prices/{price_id}/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate</a>(price_id, \*\*<a href="src/orb/types/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_response.py">PriceEvaluateResponse</a></code>
+- <code title="post /prices/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate</a>(\*\*<a href="src/orb/types/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_response.py">PriceEvaluateResponse</a></code>
 - <code title="get /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">fetch</a>(price_id) -> <a href="./src/orb/types/price.py">Price</a></code>
 
 ## ExternalPriceID

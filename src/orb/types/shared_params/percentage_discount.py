@@ -9,18 +9,18 @@ __all__ = ["PercentageDiscount"]
 
 
 class PercentageDiscount(TypedDict, total=False):
-    applies_to_price_ids: Required[List[str]]
-    """List of price_ids that this discount applies to.
-
-    For plan/plan phase discounts, this can be a subset of prices.
-    """
-
     discount_type: Required[Literal["percentage"]]
 
     percentage_discount: Required[float]
     """Only available if discount_type is `percentage`.
 
     This is a number between 0 and 1.
+    """
+
+    applies_to_price_ids: Optional[List[str]]
+    """List of price_ids that this discount applies to.
+
+    For plan/plan phase discounts, this can be a subset of prices.
     """
 
     reason: Optional[str]

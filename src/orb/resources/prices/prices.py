@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Union, Optional, cast
+from typing import Any, Dict, Union, Iterable, Optional, cast
 from datetime import datetime
 from typing_extensions import Literal, overload
 
@@ -70,6 +70,8 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -86,7 +88,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -115,6 +117,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -157,6 +161,10 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -173,7 +181,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -202,6 +210,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -244,6 +254,10 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -260,7 +274,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -289,6 +303,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -333,6 +349,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -351,7 +371,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -380,6 +400,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -422,6 +444,10 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -438,7 +464,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -467,6 +493,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -509,6 +537,10 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -527,7 +559,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -556,6 +588,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -598,6 +632,8 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingBpsPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -614,7 +650,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -643,6 +679,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -685,6 +723,10 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingBulkBpsPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -701,7 +743,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -730,6 +772,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -772,6 +816,8 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingBulkPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -788,7 +834,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -817,6 +863,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -861,6 +909,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -879,7 +931,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -908,6 +960,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -952,6 +1006,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -970,7 +1028,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -999,6 +1057,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1043,6 +1103,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1061,7 +1125,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1090,6 +1154,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1134,6 +1200,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1152,7 +1222,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1181,6 +1251,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1225,6 +1297,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1243,7 +1319,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1272,6 +1348,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1316,6 +1394,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1334,7 +1416,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1363,6 +1445,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1407,6 +1491,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1425,7 +1513,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1454,6 +1542,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1498,6 +1588,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1516,7 +1610,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1545,6 +1639,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1589,6 +1685,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1607,7 +1707,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1636,6 +1736,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1680,6 +1782,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1698,7 +1804,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1727,6 +1833,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1771,6 +1879,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1789,7 +1901,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1818,6 +1930,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1862,6 +1976,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1880,7 +1998,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -1909,6 +2027,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -1953,6 +2073,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1971,7 +2095,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2000,6 +2124,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2044,6 +2170,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2062,7 +2192,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2091,6 +2221,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2135,6 +2267,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2153,7 +2289,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2182,6 +2318,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2226,6 +2364,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2244,7 +2386,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2273,6 +2415,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2317,6 +2461,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2335,7 +2483,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2364,6 +2512,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2408,6 +2558,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2426,7 +2580,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2455,6 +2609,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2499,6 +2655,10 @@ class Prices(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2517,7 +2677,7 @@ class Prices(SyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -2546,6 +2706,8 @@ class Prices(SyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -2644,6 +2806,8 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2702,6 +2866,7 @@ class Prices(SyncAPIResource):
                         "billed_in_advance": billed_in_advance,
                         "billing_cycle_configuration": billing_cycle_configuration,
                         "conversion_rate": conversion_rate,
+                        "dimensional_price_configuration": dimensional_price_configuration,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
@@ -2851,14 +3016,13 @@ class Prices(SyncAPIResource):
 
     def evaluate(
         self,
-        price_id: str,
         *,
         timeframe_end: Union[str, datetime],
         timeframe_start: Union[str, datetime],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        events: Optional[Iterable[price_evaluate_params.Event]] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        filter: Optional[str] | NotGiven = NOT_GIVEN,
-        grouping_keys: List[str] | NotGiven = NOT_GIVEN,
+        price_evaluations: Iterable[price_evaluate_params.PriceEvaluation] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2868,13 +3032,23 @@ class Prices(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> PriceEvaluateResponse:
         """
-        This endpoint is used to evaluate the output of a price for a given customer and
-        time range. It enables filtering and grouping the output using
+        This endpoint is used to evaluate the output of price(s) for a given customer
+        and time range over either ingested events or preview events. It enables
+        filtering and grouping the output using
         [computed properties](/extensibility/advanced-metrics#computed-properties),
         supporting the following workflows:
 
         1. Showing detailed usage and costs to the end customer.
         2. Auditing subtotals on invoice line items.
+
+        Prices may either reference existing prices in your Orb account or be defined
+        inline in the request body. Up to 100 prices can be evaluated in a single
+        request.
+
+        Price evaluation by default uses ingested events, but you can also provide a
+        list of preview events to use instead. Up to 500 preview events can be provided
+        in a single request. When using ingested events, the start of the time range
+        must be no more than 100 days ago.
 
         For these workflows, the expressiveness of computed properties in both the
         filters and grouping is critical. For example, if you'd like to show your
@@ -2885,8 +3059,7 @@ class Prices(SyncAPIResource):
         with the following `filter`:
         `my_property = 'foo' AND my_other_property = 'bar'`.
 
-        By default, the start of the time range must be no more than 100 days ago and
-        the length of the results must be no greater than 1000. Note that this is a POST
+        The length of the results must be no greater than 1000. Note that this is a POST
         endpoint rather than a GET endpoint because it employs a JSON body rather than
         query parameters.
 
@@ -2897,15 +3070,11 @@ class Prices(SyncAPIResource):
 
           customer_id: The ID of the customer to which this evaluation is scoped.
 
+          events: Optional list of preview events to use instead of actual usage data (max 500)
+
           external_customer_id: The external customer ID of the customer to which this evaluation is scoped.
 
-          filter: A boolean
-              [computed property](/extensibility/advanced-metrics#computed-properties) used to
-              filter the underlying billable metric
-
-          grouping_keys: Properties (or
-              [computed properties](/extensibility/advanced-metrics#computed-properties)) used
-              to group the underlying billable metric
+          price_evaluations: List of prices to evaluate (max 100)
 
           extra_headers: Send extra headers
 
@@ -2917,18 +3086,16 @@ class Prices(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not price_id:
-            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return self._post(
-            f"/prices/{price_id}/evaluate",
+            "/prices/evaluate",
             body=maybe_transform(
                 {
                     "timeframe_end": timeframe_end,
                     "timeframe_start": timeframe_start,
                     "customer_id": customer_id,
+                    "events": events,
                     "external_customer_id": external_customer_id,
-                    "filter": filter,
-                    "grouping_keys": grouping_keys,
+                    "price_evaluations": price_evaluations,
                 },
                 price_evaluate_params.PriceEvaluateParams,
             ),
@@ -3018,6 +3185,8 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3034,7 +3203,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3063,6 +3232,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3105,6 +3276,10 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3121,7 +3296,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3150,6 +3325,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3192,6 +3369,10 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3208,7 +3389,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3237,6 +3418,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3281,6 +3464,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3299,7 +3486,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3328,6 +3515,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3370,6 +3559,10 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3386,7 +3579,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3415,6 +3608,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3457,6 +3652,10 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredBpsPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3475,7 +3674,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3504,6 +3703,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3546,6 +3747,8 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingBpsPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3562,7 +3765,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3591,6 +3794,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3633,6 +3838,10 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingBulkBpsPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3649,7 +3858,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3678,6 +3887,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3720,6 +3931,8 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingBulkPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3736,7 +3949,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3765,6 +3978,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3809,6 +4024,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3827,7 +4046,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3856,6 +4075,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3900,6 +4121,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3918,7 +4143,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -3947,6 +4172,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -3991,6 +4218,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4009,7 +4240,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4038,6 +4269,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4082,6 +4315,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4100,7 +4337,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4129,6 +4366,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4173,6 +4412,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4191,7 +4434,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4220,6 +4463,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4264,6 +4509,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4282,7 +4531,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4311,6 +4560,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4355,6 +4606,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4373,7 +4628,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4402,6 +4657,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4446,6 +4703,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4464,7 +4725,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4493,6 +4754,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4537,6 +4800,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4555,7 +4822,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4584,6 +4851,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4628,6 +4897,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4646,7 +4919,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4675,6 +4948,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4719,6 +4994,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4737,7 +5016,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4766,6 +5045,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4810,6 +5091,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4828,7 +5113,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4857,6 +5142,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4901,6 +5188,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4919,7 +5210,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -4948,6 +5239,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -4992,6 +5285,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5010,7 +5307,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5039,6 +5336,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5083,6 +5382,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5101,7 +5404,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5130,6 +5433,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5174,6 +5479,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5192,7 +5501,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5221,6 +5530,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5265,6 +5576,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5283,7 +5598,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5312,6 +5627,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5356,6 +5673,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5374,7 +5695,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5403,6 +5724,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5447,6 +5770,10 @@ class AsyncPrices(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[
+            price_create_params.NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration
+        ]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5465,7 +5792,7 @@ class AsyncPrices(AsyncAPIResource):
     ) -> Price:
         """
         This endpoint is used to create a [price](/product-catalog/price-configuration).
-        A price created using this endpoint is always an add-on, meaning that it’s not
+        A price created using this endpoint is always an add-on, meaning that it's not
         associated with a specific plan and can instead be individually added to
         subscriptions, including subscriptions on different plans.
 
@@ -5494,6 +5821,8 @@ class AsyncPrices(AsyncAPIResource):
               months.
 
           conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
 
           external_price_id: An alias for the price.
 
@@ -5592,6 +5921,8 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
         | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
+        | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5650,6 +5981,7 @@ class AsyncPrices(AsyncAPIResource):
                         "billed_in_advance": billed_in_advance,
                         "billing_cycle_configuration": billing_cycle_configuration,
                         "conversion_rate": conversion_rate,
+                        "dimensional_price_configuration": dimensional_price_configuration,
                         "external_price_id": external_price_id,
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
@@ -5799,14 +6131,13 @@ class AsyncPrices(AsyncAPIResource):
 
     async def evaluate(
         self,
-        price_id: str,
         *,
         timeframe_end: Union[str, datetime],
         timeframe_start: Union[str, datetime],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        events: Optional[Iterable[price_evaluate_params.Event]] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        filter: Optional[str] | NotGiven = NOT_GIVEN,
-        grouping_keys: List[str] | NotGiven = NOT_GIVEN,
+        price_evaluations: Iterable[price_evaluate_params.PriceEvaluation] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -5816,13 +6147,23 @@ class AsyncPrices(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> PriceEvaluateResponse:
         """
-        This endpoint is used to evaluate the output of a price for a given customer and
-        time range. It enables filtering and grouping the output using
+        This endpoint is used to evaluate the output of price(s) for a given customer
+        and time range over either ingested events or preview events. It enables
+        filtering and grouping the output using
         [computed properties](/extensibility/advanced-metrics#computed-properties),
         supporting the following workflows:
 
         1. Showing detailed usage and costs to the end customer.
         2. Auditing subtotals on invoice line items.
+
+        Prices may either reference existing prices in your Orb account or be defined
+        inline in the request body. Up to 100 prices can be evaluated in a single
+        request.
+
+        Price evaluation by default uses ingested events, but you can also provide a
+        list of preview events to use instead. Up to 500 preview events can be provided
+        in a single request. When using ingested events, the start of the time range
+        must be no more than 100 days ago.
 
         For these workflows, the expressiveness of computed properties in both the
         filters and grouping is critical. For example, if you'd like to show your
@@ -5833,8 +6174,7 @@ class AsyncPrices(AsyncAPIResource):
         with the following `filter`:
         `my_property = 'foo' AND my_other_property = 'bar'`.
 
-        By default, the start of the time range must be no more than 100 days ago and
-        the length of the results must be no greater than 1000. Note that this is a POST
+        The length of the results must be no greater than 1000. Note that this is a POST
         endpoint rather than a GET endpoint because it employs a JSON body rather than
         query parameters.
 
@@ -5845,15 +6185,11 @@ class AsyncPrices(AsyncAPIResource):
 
           customer_id: The ID of the customer to which this evaluation is scoped.
 
+          events: Optional list of preview events to use instead of actual usage data (max 500)
+
           external_customer_id: The external customer ID of the customer to which this evaluation is scoped.
 
-          filter: A boolean
-              [computed property](/extensibility/advanced-metrics#computed-properties) used to
-              filter the underlying billable metric
-
-          grouping_keys: Properties (or
-              [computed properties](/extensibility/advanced-metrics#computed-properties)) used
-              to group the underlying billable metric
+          price_evaluations: List of prices to evaluate (max 100)
 
           extra_headers: Send extra headers
 
@@ -5865,18 +6201,16 @@ class AsyncPrices(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not price_id:
-            raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return await self._post(
-            f"/prices/{price_id}/evaluate",
+            "/prices/evaluate",
             body=await async_maybe_transform(
                 {
                     "timeframe_end": timeframe_end,
                     "timeframe_start": timeframe_start,
                     "customer_id": customer_id,
+                    "events": events,
                     "external_customer_id": external_customer_id,
-                    "filter": filter,
-                    "grouping_keys": grouping_keys,
+                    "price_evaluations": price_evaluations,
                 },
                 price_evaluate_params.PriceEvaluateParams,
             ),
