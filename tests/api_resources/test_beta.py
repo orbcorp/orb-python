@@ -47,6 +47,10 @@ class TestBeta:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "plan_phase_order": 0,
@@ -111,6 +115,10 @@ class TestBeta:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "plan_phase_order": 0,
@@ -306,6 +314,10 @@ class TestAsyncBeta:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "plan_phase_order": 0,
@@ -370,6 +382,10 @@ class TestAsyncBeta:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "plan_phase_order": 0,

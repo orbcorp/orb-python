@@ -61,6 +61,10 @@ class TestSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -162,6 +166,10 @@ class TestSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -594,6 +602,10 @@ class TestSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -750,6 +762,10 @@ class TestSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -844,6 +860,10 @@ class TestSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -1234,6 +1254,10 @@ class TestAsyncSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -1335,6 +1359,10 @@ class TestAsyncSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -1767,6 +1795,10 @@ class TestAsyncSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -1923,6 +1955,10 @@ class TestAsyncSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [
@@ -2017,6 +2053,10 @@ class TestAsyncSubscriptions:
                         "amount": "10.00",
                         "cadence": "monthly",
                         "currency": "USD",
+                        "custom_expiration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
                         "expires_at_end_of_cadence": True,
                     },
                     "discounts": [

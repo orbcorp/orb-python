@@ -16,6 +16,7 @@ __all__ = [
     "UnitPriceBillableMetric",
     "UnitPriceBillingCycleConfiguration",
     "UnitPriceCreditAllocation",
+    "UnitPriceCreditAllocationCustomExpiration",
     "UnitPriceInvoicingCycleConfiguration",
     "UnitPriceItem",
     "UnitPriceMaximum",
@@ -28,6 +29,7 @@ __all__ = [
     "PackagePriceBillableMetric",
     "PackagePriceBillingCycleConfiguration",
     "PackagePriceCreditAllocation",
+    "PackagePriceCreditAllocationCustomExpiration",
     "PackagePriceInvoicingCycleConfiguration",
     "PackagePriceItem",
     "PackagePriceMaximum",
@@ -40,6 +42,7 @@ __all__ = [
     "MatrixPriceBillableMetric",
     "MatrixPriceBillingCycleConfiguration",
     "MatrixPriceCreditAllocation",
+    "MatrixPriceCreditAllocationCustomExpiration",
     "MatrixPriceInvoicingCycleConfiguration",
     "MatrixPriceItem",
     "MatrixPriceMatrixConfig",
@@ -53,6 +56,7 @@ __all__ = [
     "TieredPriceBillableMetric",
     "TieredPriceBillingCycleConfiguration",
     "TieredPriceCreditAllocation",
+    "TieredPriceCreditAllocationCustomExpiration",
     "TieredPriceInvoicingCycleConfiguration",
     "TieredPriceItem",
     "TieredPriceMaximum",
@@ -66,6 +70,7 @@ __all__ = [
     "TieredBpsPriceBillableMetric",
     "TieredBpsPriceBillingCycleConfiguration",
     "TieredBpsPriceCreditAllocation",
+    "TieredBpsPriceCreditAllocationCustomExpiration",
     "TieredBpsPriceInvoicingCycleConfiguration",
     "TieredBpsPriceItem",
     "TieredBpsPriceMaximum",
@@ -80,6 +85,7 @@ __all__ = [
     "BpsPriceBillingCycleConfiguration",
     "BpsPriceBpsConfig",
     "BpsPriceCreditAllocation",
+    "BpsPriceCreditAllocationCustomExpiration",
     "BpsPriceInvoicingCycleConfiguration",
     "BpsPriceItem",
     "BpsPriceMaximum",
@@ -93,6 +99,7 @@ __all__ = [
     "BulkBpsPriceBulkBpsConfig",
     "BulkBpsPriceBulkBpsConfigTier",
     "BulkBpsPriceCreditAllocation",
+    "BulkBpsPriceCreditAllocationCustomExpiration",
     "BulkBpsPriceInvoicingCycleConfiguration",
     "BulkBpsPriceItem",
     "BulkBpsPriceMaximum",
@@ -106,6 +113,7 @@ __all__ = [
     "BulkPriceBulkConfig",
     "BulkPriceBulkConfigTier",
     "BulkPriceCreditAllocation",
+    "BulkPriceCreditAllocationCustomExpiration",
     "BulkPriceInvoicingCycleConfiguration",
     "BulkPriceItem",
     "BulkPriceMaximum",
@@ -117,6 +125,7 @@ __all__ = [
     "ThresholdTotalAmountPriceBillableMetric",
     "ThresholdTotalAmountPriceBillingCycleConfiguration",
     "ThresholdTotalAmountPriceCreditAllocation",
+    "ThresholdTotalAmountPriceCreditAllocationCustomExpiration",
     "ThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
@@ -128,6 +137,7 @@ __all__ = [
     "TieredPackagePriceBillableMetric",
     "TieredPackagePriceBillingCycleConfiguration",
     "TieredPackagePriceCreditAllocation",
+    "TieredPackagePriceCreditAllocationCustomExpiration",
     "TieredPackagePriceInvoicingCycleConfiguration",
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
@@ -139,6 +149,7 @@ __all__ = [
     "GroupedTieredPriceBillableMetric",
     "GroupedTieredPriceBillingCycleConfiguration",
     "GroupedTieredPriceCreditAllocation",
+    "GroupedTieredPriceCreditAllocationCustomExpiration",
     "GroupedTieredPriceInvoicingCycleConfiguration",
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
@@ -150,6 +161,7 @@ __all__ = [
     "TieredWithMinimumPriceBillableMetric",
     "TieredWithMinimumPriceBillingCycleConfiguration",
     "TieredWithMinimumPriceCreditAllocation",
+    "TieredWithMinimumPriceCreditAllocationCustomExpiration",
     "TieredWithMinimumPriceInvoicingCycleConfiguration",
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
@@ -161,6 +173,7 @@ __all__ = [
     "TieredPackageWithMinimumPriceBillableMetric",
     "TieredPackageWithMinimumPriceBillingCycleConfiguration",
     "TieredPackageWithMinimumPriceCreditAllocation",
+    "TieredPackageWithMinimumPriceCreditAllocationCustomExpiration",
     "TieredPackageWithMinimumPriceInvoicingCycleConfiguration",
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
@@ -172,6 +185,7 @@ __all__ = [
     "PackageWithAllocationPriceBillableMetric",
     "PackageWithAllocationPriceBillingCycleConfiguration",
     "PackageWithAllocationPriceCreditAllocation",
+    "PackageWithAllocationPriceCreditAllocationCustomExpiration",
     "PackageWithAllocationPriceInvoicingCycleConfiguration",
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
@@ -183,6 +197,7 @@ __all__ = [
     "UnitWithPercentPriceBillableMetric",
     "UnitWithPercentPriceBillingCycleConfiguration",
     "UnitWithPercentPriceCreditAllocation",
+    "UnitWithPercentPriceCreditAllocationCustomExpiration",
     "UnitWithPercentPriceInvoicingCycleConfiguration",
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
@@ -194,6 +209,7 @@ __all__ = [
     "MatrixWithAllocationPriceBillableMetric",
     "MatrixWithAllocationPriceBillingCycleConfiguration",
     "MatrixWithAllocationPriceCreditAllocation",
+    "MatrixWithAllocationPriceCreditAllocationCustomExpiration",
     "MatrixWithAllocationPriceInvoicingCycleConfiguration",
     "MatrixWithAllocationPriceItem",
     "MatrixWithAllocationPriceMatrixWithAllocationConfig",
@@ -207,6 +223,7 @@ __all__ = [
     "TieredWithProrationPriceBillableMetric",
     "TieredWithProrationPriceBillingCycleConfiguration",
     "TieredWithProrationPriceCreditAllocation",
+    "TieredWithProrationPriceCreditAllocationCustomExpiration",
     "TieredWithProrationPriceInvoicingCycleConfiguration",
     "TieredWithProrationPriceItem",
     "TieredWithProrationPriceMaximum",
@@ -218,6 +235,7 @@ __all__ = [
     "UnitWithProrationPriceBillableMetric",
     "UnitWithProrationPriceBillingCycleConfiguration",
     "UnitWithProrationPriceCreditAllocation",
+    "UnitWithProrationPriceCreditAllocationCustomExpiration",
     "UnitWithProrationPriceInvoicingCycleConfiguration",
     "UnitWithProrationPriceItem",
     "UnitWithProrationPriceMaximum",
@@ -229,6 +247,7 @@ __all__ = [
     "GroupedAllocationPriceBillableMetric",
     "GroupedAllocationPriceBillingCycleConfiguration",
     "GroupedAllocationPriceCreditAllocation",
+    "GroupedAllocationPriceCreditAllocationCustomExpiration",
     "GroupedAllocationPriceInvoicingCycleConfiguration",
     "GroupedAllocationPriceItem",
     "GroupedAllocationPriceMaximum",
@@ -240,6 +259,7 @@ __all__ = [
     "GroupedWithProratedMinimumPriceBillableMetric",
     "GroupedWithProratedMinimumPriceBillingCycleConfiguration",
     "GroupedWithProratedMinimumPriceCreditAllocation",
+    "GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration",
     "GroupedWithProratedMinimumPriceInvoicingCycleConfiguration",
     "GroupedWithProratedMinimumPriceItem",
     "GroupedWithProratedMinimumPriceMaximum",
@@ -251,6 +271,7 @@ __all__ = [
     "GroupedWithMeteredMinimumPriceBillableMetric",
     "GroupedWithMeteredMinimumPriceBillingCycleConfiguration",
     "GroupedWithMeteredMinimumPriceCreditAllocation",
+    "GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration",
     "GroupedWithMeteredMinimumPriceInvoicingCycleConfiguration",
     "GroupedWithMeteredMinimumPriceItem",
     "GroupedWithMeteredMinimumPriceMaximum",
@@ -262,6 +283,7 @@ __all__ = [
     "MatrixWithDisplayNamePriceBillableMetric",
     "MatrixWithDisplayNamePriceBillingCycleConfiguration",
     "MatrixWithDisplayNamePriceCreditAllocation",
+    "MatrixWithDisplayNamePriceCreditAllocationCustomExpiration",
     "MatrixWithDisplayNamePriceInvoicingCycleConfiguration",
     "MatrixWithDisplayNamePriceItem",
     "MatrixWithDisplayNamePriceMaximum",
@@ -273,6 +295,7 @@ __all__ = [
     "BulkWithProrationPriceBillableMetric",
     "BulkWithProrationPriceBillingCycleConfiguration",
     "BulkWithProrationPriceCreditAllocation",
+    "BulkWithProrationPriceCreditAllocationCustomExpiration",
     "BulkWithProrationPriceInvoicingCycleConfiguration",
     "BulkWithProrationPriceItem",
     "BulkWithProrationPriceMaximum",
@@ -284,6 +307,7 @@ __all__ = [
     "GroupedTieredPackagePriceBillableMetric",
     "GroupedTieredPackagePriceBillingCycleConfiguration",
     "GroupedTieredPackagePriceCreditAllocation",
+    "GroupedTieredPackagePriceCreditAllocationCustomExpiration",
     "GroupedTieredPackagePriceInvoicingCycleConfiguration",
     "GroupedTieredPackagePriceItem",
     "GroupedTieredPackagePriceMaximum",
@@ -295,6 +319,7 @@ __all__ = [
     "MaxGroupTieredPackagePriceBillableMetric",
     "MaxGroupTieredPackagePriceBillingCycleConfiguration",
     "MaxGroupTieredPackagePriceCreditAllocation",
+    "MaxGroupTieredPackagePriceCreditAllocationCustomExpiration",
     "MaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "MaxGroupTieredPackagePriceItem",
     "MaxGroupTieredPackagePriceMaximum",
@@ -306,6 +331,7 @@ __all__ = [
     "ScalableMatrixWithUnitPricingPriceBillableMetric",
     "ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
     "ScalableMatrixWithUnitPricingPriceCreditAllocation",
+    "ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration",
     "ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
     "ScalableMatrixWithUnitPricingPriceItem",
     "ScalableMatrixWithUnitPricingPriceMaximum",
@@ -317,6 +343,7 @@ __all__ = [
     "ScalableMatrixWithTieredPricingPriceBillableMetric",
     "ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
     "ScalableMatrixWithTieredPricingPriceCreditAllocation",
+    "ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration",
     "ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
     "ScalableMatrixWithTieredPricingPriceItem",
     "ScalableMatrixWithTieredPricingPriceMaximum",
@@ -328,6 +355,7 @@ __all__ = [
     "CumulativeGroupedBulkPriceBillableMetric",
     "CumulativeGroupedBulkPriceBillingCycleConfiguration",
     "CumulativeGroupedBulkPriceCreditAllocation",
+    "CumulativeGroupedBulkPriceCreditAllocationCustomExpiration",
     "CumulativeGroupedBulkPriceInvoicingCycleConfiguration",
     "CumulativeGroupedBulkPriceItem",
     "CumulativeGroupedBulkPriceMaximum",
@@ -348,10 +376,18 @@ class UnitPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitPriceInvoicingCycleConfiguration(BaseModel):
@@ -493,10 +529,18 @@ class PackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class PackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class PackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[PackagePriceCreditAllocationCustomExpiration] = None
 
 
 class PackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -645,10 +689,18 @@ class MatrixPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixPriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixPriceInvoicingCycleConfiguration(BaseModel):
@@ -808,10 +860,18 @@ class TieredPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPriceInvoicingCycleConfiguration(BaseModel):
@@ -964,10 +1024,18 @@ class TieredBpsPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredBpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredBpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredBpsPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredBpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -1134,10 +1202,18 @@ class BpsPriceBpsConfig(BaseModel):
     """Optional currency amount maximum to cap spend per event"""
 
 
+class BpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BpsPriceCreditAllocationCustomExpiration] = None
 
 
 class BpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -1293,10 +1369,18 @@ class BulkBpsPriceBulkBpsConfig(BaseModel):
     """
 
 
+class BulkBpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkBpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkBpsPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkBpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -1446,10 +1530,18 @@ class BulkPriceBulkConfig(BaseModel):
     """Bulk tiers for rating based on total usage volume"""
 
 
+class BulkPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkPriceInvoicingCycleConfiguration(BaseModel):
@@ -1586,10 +1678,18 @@ class ThresholdTotalAmountPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ThresholdTotalAmountPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ThresholdTotalAmountPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ThresholdTotalAmountPriceCreditAllocationCustomExpiration] = None
 
 
 class ThresholdTotalAmountPriceInvoicingCycleConfiguration(BaseModel):
@@ -1726,10 +1826,18 @@ class TieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -1866,10 +1974,18 @@ class GroupedTieredPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedTieredPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedTieredPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedTieredPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedTieredPriceInvoicingCycleConfiguration(BaseModel):
@@ -2006,10 +2122,18 @@ class TieredWithMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredWithMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredWithMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -2146,10 +2270,18 @@ class TieredPackageWithMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPackageWithMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackageWithMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPackageWithMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPackageWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -2286,10 +2418,18 @@ class PackageWithAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class PackageWithAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class PackageWithAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[PackageWithAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class PackageWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2426,10 +2566,18 @@ class UnitWithPercentPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitWithPercentPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithPercentPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitWithPercentPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitWithPercentPriceInvoicingCycleConfiguration(BaseModel):
@@ -2566,10 +2714,18 @@ class MatrixWithAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixWithAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixWithAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixWithAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2732,10 +2888,18 @@ class TieredWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2872,10 +3036,18 @@ class UnitWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -3012,10 +3184,18 @@ class GroupedAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -3152,10 +3332,18 @@ class GroupedWithProratedMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedWithProratedMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedWithProratedMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -3292,10 +3480,18 @@ class GroupedWithMeteredMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedWithMeteredMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedWithMeteredMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -3432,10 +3628,18 @@ class MatrixWithDisplayNamePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixWithDisplayNamePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixWithDisplayNamePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixWithDisplayNamePriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixWithDisplayNamePriceInvoicingCycleConfiguration(BaseModel):
@@ -3572,10 +3776,18 @@ class BulkWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class BulkWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -3712,10 +3924,18 @@ class GroupedTieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedTieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedTieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedTieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedTieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -3852,10 +4072,18 @@ class MaxGroupTieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MaxGroupTieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MaxGroupTieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MaxGroupTieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class MaxGroupTieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -3992,10 +4220,18 @@ class ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ScalableMatrixWithUnitPricingPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration] = None
 
 
 class ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(BaseModel):
@@ -4132,10 +4368,18 @@ class ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ScalableMatrixWithTieredPricingPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration] = None
 
 
 class ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(BaseModel):
@@ -4272,10 +4516,18 @@ class CumulativeGroupedBulkPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class CumulativeGroupedBulkPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class CumulativeGroupedBulkPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[CumulativeGroupedBulkPriceCreditAllocationCustomExpiration] = None
 
 
 class CumulativeGroupedBulkPriceInvoicingCycleConfiguration(BaseModel):
