@@ -6,7 +6,7 @@ from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
-    "VersionCreateParams",
+    "BetaCreatePlanVersionParams",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "AddAdjustmentAdjustmentNewPercentageDiscount",
@@ -286,7 +286,7 @@ __all__ = [
 ]
 
 
-class VersionCreateParams(TypedDict, total=False):
+class BetaCreatePlanVersionParams(TypedDict, total=False):
     version: Required[int]
     """New version number."""
 

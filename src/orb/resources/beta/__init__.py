@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .versions import (
-    Versions,
-    AsyncVersions,
-    VersionsWithRawResponse,
-    AsyncVersionsWithRawResponse,
-    VersionsWithStreamingResponse,
-    AsyncVersionsWithStreamingResponse,
+from .beta import (
+    Beta,
+    AsyncBeta,
+    BetaWithRawResponse,
+    AsyncBetaWithRawResponse,
+    BetaWithStreamingResponse,
+    AsyncBetaWithStreamingResponse,
 )
 from .external_plan_id import (
     ExternalPlanID,
@@ -18,16 +18,16 @@ from .external_plan_id import (
 )
 
 __all__ = [
-    "Versions",
-    "AsyncVersions",
-    "VersionsWithRawResponse",
-    "AsyncVersionsWithRawResponse",
-    "VersionsWithStreamingResponse",
-    "AsyncVersionsWithStreamingResponse",
     "ExternalPlanID",
     "AsyncExternalPlanID",
     "ExternalPlanIDWithRawResponse",
     "AsyncExternalPlanIDWithRawResponse",
     "ExternalPlanIDWithStreamingResponse",
     "AsyncExternalPlanIDWithStreamingResponse",
+    "Beta",
+    "AsyncBeta",
+    "BetaWithRawResponse",
+    "AsyncBetaWithRawResponse",
+    "BetaWithStreamingResponse",
+    "AsyncBetaWithStreamingResponse",
 ]

@@ -8,14 +8,6 @@ from .plans import (
     PlansWithStreamingResponse,
     AsyncPlansWithStreamingResponse,
 )
-from .versions import (
-    Versions,
-    AsyncVersions,
-    VersionsWithRawResponse,
-    AsyncVersionsWithRawResponse,
-    VersionsWithStreamingResponse,
-    AsyncVersionsWithStreamingResponse,
-)
 from .external_plan_id import (
     ExternalPlanID,
     AsyncExternalPlanID,
@@ -32,12 +24,6 @@ __all__ = [
     "AsyncExternalPlanIDWithRawResponse",
     "ExternalPlanIDWithStreamingResponse",
     "AsyncExternalPlanIDWithStreamingResponse",
-    "Versions",
-    "AsyncVersions",
-    "VersionsWithRawResponse",
-    "AsyncVersionsWithRawResponse",
-    "VersionsWithStreamingResponse",
-    "AsyncVersionsWithStreamingResponse",
     "Plans",
     "AsyncPlans",
     "PlansWithRawResponse",

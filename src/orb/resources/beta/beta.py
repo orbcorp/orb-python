@@ -7,50 +7,63 @@ from typing import Iterable, Optional
 import httpx
 
 from ... import _legacy_response
+from ...types import beta_create_plan_version_params, beta_set_default_plan_version_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.plans import version_create_params
+from ...types.plan import Plan
 from ..._base_client import make_request_options
-from ...types.plans.version_create_response import VersionCreateResponse
-from ...types.plans.version_retrieve_response import VersionRetrieveResponse
+from .external_plan_id import (
+    ExternalPlanID,
+    AsyncExternalPlanID,
+    ExternalPlanIDWithRawResponse,
+    AsyncExternalPlanIDWithRawResponse,
+    ExternalPlanIDWithStreamingResponse,
+    AsyncExternalPlanIDWithStreamingResponse,
+)
+from ...types.plan_version import PlanVersion
 
-__all__ = ["Versions", "AsyncVersions"]
+__all__ = ["Beta", "AsyncBeta"]
 
 
-class Versions(SyncAPIResource):
+class Beta(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> VersionsWithRawResponse:
+    def external_plan_id(self) -> ExternalPlanID:
+        return ExternalPlanID(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> BetaWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
         """
-        return VersionsWithRawResponse(self)
+        return BetaWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> VersionsWithStreamingResponse:
+    def with_streaming_response(self) -> BetaWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
         """
-        return VersionsWithStreamingResponse(self)
+        return BetaWithStreamingResponse(self)
 
-    def create(
+    def create_plan_version(
         self,
         plan_id: str,
         *,
         version: int,
-        add_adjustments: Optional[Iterable[version_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[version_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[version_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[version_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[version_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[version_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[beta_create_plan_version_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[beta_create_plan_version_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[beta_create_plan_version_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[beta_create_plan_version_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[beta_create_plan_version_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[beta_create_plan_version_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         set_as_default: Optional[bool] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -59,7 +72,7 @@ class Versions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> VersionCreateResponse:
+    ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
         It is recommended for
@@ -109,7 +122,7 @@ class Versions(SyncAPIResource):
                     "replace_prices": replace_prices,
                     "set_as_default": set_as_default,
                 },
-                version_create_params.VersionCreateParams,
+                beta_create_plan_version_params.BetaCreatePlanVersionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -118,10 +131,10 @@ class Versions(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=VersionCreateResponse,
+            cast_to=PlanVersion,
         )
 
-    def retrieve(
+    def fetch_plan_version(
         self,
         version: str,
         *,
@@ -132,7 +145,7 @@ class Versions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VersionRetrieveResponse:
+    ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
         It is recommended for
@@ -159,41 +172,96 @@ class Versions(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VersionRetrieveResponse,
+            cast_to=PlanVersion,
+        )
+
+    def set_default_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Plan:
+        """This API endpoint is in beta and its interface may change.
+
+        It is recommended for
+        use only in test mode.
+
+        This endpoint allows setting the default version of a plan.
+
+        Args:
+          version: Plan version to set as the default.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return self._post(
+            f"/plans/{plan_id}/set_default_version",
+            body=maybe_transform(
+                {"version": version}, beta_set_default_plan_version_params.BetaSetDefaultPlanVersionParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Plan,
         )
 
 
-class AsyncVersions(AsyncAPIResource):
+class AsyncBeta(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncVersionsWithRawResponse:
+    def external_plan_id(self) -> AsyncExternalPlanID:
+        return AsyncExternalPlanID(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncBetaWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/orbcorp/orb-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncVersionsWithRawResponse(self)
+        return AsyncBetaWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncVersionsWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncBetaWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/orbcorp/orb-python#with_streaming_response
         """
-        return AsyncVersionsWithStreamingResponse(self)
+        return AsyncBetaWithStreamingResponse(self)
 
-    async def create(
+    async def create_plan_version(
         self,
         plan_id: str,
         *,
         version: int,
-        add_adjustments: Optional[Iterable[version_create_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[version_create_params.AddPrice]] | NotGiven = NOT_GIVEN,
-        remove_adjustments: Optional[Iterable[version_create_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[version_create_params.RemovePrice]] | NotGiven = NOT_GIVEN,
-        replace_adjustments: Optional[Iterable[version_create_params.ReplaceAdjustment]] | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[version_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[beta_create_plan_version_params.AddAdjustment]] | NotGiven = NOT_GIVEN,
+        add_prices: Optional[Iterable[beta_create_plan_version_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        remove_adjustments: Optional[Iterable[beta_create_plan_version_params.RemoveAdjustment]] | NotGiven = NOT_GIVEN,
+        remove_prices: Optional[Iterable[beta_create_plan_version_params.RemovePrice]] | NotGiven = NOT_GIVEN,
+        replace_adjustments: Optional[Iterable[beta_create_plan_version_params.ReplaceAdjustment]]
+        | NotGiven = NOT_GIVEN,
+        replace_prices: Optional[Iterable[beta_create_plan_version_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         set_as_default: Optional[bool] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -202,7 +270,7 @@ class AsyncVersions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> VersionCreateResponse:
+    ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
         It is recommended for
@@ -252,7 +320,7 @@ class AsyncVersions(AsyncAPIResource):
                     "replace_prices": replace_prices,
                     "set_as_default": set_as_default,
                 },
-                version_create_params.VersionCreateParams,
+                beta_create_plan_version_params.BetaCreatePlanVersionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -261,10 +329,10 @@ class AsyncVersions(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=VersionCreateResponse,
+            cast_to=PlanVersion,
         )
 
-    async def retrieve(
+    async def fetch_plan_version(
         self,
         version: str,
         *,
@@ -275,7 +343,7 @@ class AsyncVersions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VersionRetrieveResponse:
+    ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
         It is recommended for
@@ -302,53 +370,131 @@ class AsyncVersions(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VersionRetrieveResponse,
+            cast_to=PlanVersion,
+        )
+
+    async def set_default_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Plan:
+        """This API endpoint is in beta and its interface may change.
+
+        It is recommended for
+        use only in test mode.
+
+        This endpoint allows setting the default version of a plan.
+
+        Args:
+          version: Plan version to set as the default.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return await self._post(
+            f"/plans/{plan_id}/set_default_version",
+            body=await async_maybe_transform(
+                {"version": version}, beta_set_default_plan_version_params.BetaSetDefaultPlanVersionParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Plan,
         )
 
 
-class VersionsWithRawResponse:
-    def __init__(self, versions: Versions) -> None:
-        self._versions = versions
+class BetaWithRawResponse:
+    def __init__(self, beta: Beta) -> None:
+        self._beta = beta
 
-        self.create = _legacy_response.to_raw_response_wrapper(
-            versions.create,
+        self.create_plan_version = _legacy_response.to_raw_response_wrapper(
+            beta.create_plan_version,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
-            versions.retrieve,
+        self.fetch_plan_version = _legacy_response.to_raw_response_wrapper(
+            beta.fetch_plan_version,
         )
-
-
-class AsyncVersionsWithRawResponse:
-    def __init__(self, versions: AsyncVersions) -> None:
-        self._versions = versions
-
-        self.create = _legacy_response.async_to_raw_response_wrapper(
-            versions.create,
-        )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
-            versions.retrieve,
+        self.set_default_plan_version = _legacy_response.to_raw_response_wrapper(
+            beta.set_default_plan_version,
         )
 
+    @cached_property
+    def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
+        return ExternalPlanIDWithRawResponse(self._beta.external_plan_id)
 
-class VersionsWithStreamingResponse:
-    def __init__(self, versions: Versions) -> None:
-        self._versions = versions
 
-        self.create = to_streamed_response_wrapper(
-            versions.create,
+class AsyncBetaWithRawResponse:
+    def __init__(self, beta: AsyncBeta) -> None:
+        self._beta = beta
+
+        self.create_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            beta.create_plan_version,
         )
-        self.retrieve = to_streamed_response_wrapper(
-            versions.retrieve,
+        self.fetch_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            beta.fetch_plan_version,
+        )
+        self.set_default_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            beta.set_default_plan_version,
         )
 
+    @cached_property
+    def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
+        return AsyncExternalPlanIDWithRawResponse(self._beta.external_plan_id)
 
-class AsyncVersionsWithStreamingResponse:
-    def __init__(self, versions: AsyncVersions) -> None:
-        self._versions = versions
 
-        self.create = async_to_streamed_response_wrapper(
-            versions.create,
+class BetaWithStreamingResponse:
+    def __init__(self, beta: Beta) -> None:
+        self._beta = beta
+
+        self.create_plan_version = to_streamed_response_wrapper(
+            beta.create_plan_version,
         )
-        self.retrieve = async_to_streamed_response_wrapper(
-            versions.retrieve,
+        self.fetch_plan_version = to_streamed_response_wrapper(
+            beta.fetch_plan_version,
         )
+        self.set_default_plan_version = to_streamed_response_wrapper(
+            beta.set_default_plan_version,
+        )
+
+    @cached_property
+    def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
+        return ExternalPlanIDWithStreamingResponse(self._beta.external_plan_id)
+
+
+class AsyncBetaWithStreamingResponse:
+    def __init__(self, beta: AsyncBeta) -> None:
+        self._beta = beta
+
+        self.create_plan_version = async_to_streamed_response_wrapper(
+            beta.create_plan_version,
+        )
+        self.fetch_plan_version = async_to_streamed_response_wrapper(
+            beta.fetch_plan_version,
+        )
+        self.set_default_plan_version = async_to_streamed_response_wrapper(
+            beta.set_default_plan_version,
+        )
+
+    @cached_property
+    def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        return AsyncExternalPlanIDWithStreamingResponse(self._beta.external_plan_id)

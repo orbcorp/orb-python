@@ -36,6 +36,7 @@ from ._base_client import (
 
 if TYPE_CHECKING:
     from .resources import (
+        beta,
         items,
         plans,
         alerts,
@@ -56,6 +57,7 @@ if TYPE_CHECKING:
     from .resources.alerts import Alerts, AsyncAlerts
     from .resources.metrics import Metrics, AsyncMetrics
     from .resources.invoices import Invoices, AsyncInvoices
+    from .resources.beta.beta import Beta, AsyncBeta
     from .resources.top_level import TopLevel, AsyncTopLevel
     from .resources.plans.plans import Plans, AsyncPlans
     from .resources.credit_notes import CreditNotes, AsyncCreditNotes
@@ -144,6 +146,12 @@ class Orb(SyncAPIClient):
         from .resources.top_level import TopLevel
 
         return TopLevel(self)
+
+    @cached_property
+    def beta(self) -> Beta:
+        from .resources.beta import Beta
+
+        return Beta(self)
 
     @cached_property
     def coupons(self) -> Coupons:
@@ -464,6 +472,12 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncTopLevel(self)
 
     @cached_property
+    def beta(self) -> AsyncBeta:
+        from .resources.beta import AsyncBeta
+
+        return AsyncBeta(self)
+
+    @cached_property
     def coupons(self) -> AsyncCoupons:
         from .resources.coupons import AsyncCoupons
 
@@ -723,6 +737,12 @@ class OrbWithRawResponse:
         return TopLevelWithRawResponse(self._client.top_level)
 
     @cached_property
+    def beta(self) -> beta.BetaWithRawResponse:
+        from .resources.beta import BetaWithRawResponse
+
+        return BetaWithRawResponse(self._client.beta)
+
+    @cached_property
     def coupons(self) -> coupons.CouponsWithRawResponse:
         from .resources.coupons import CouponsWithRawResponse
 
@@ -818,6 +838,12 @@ class AsyncOrbWithRawResponse:
         from .resources.top_level import AsyncTopLevelWithRawResponse
 
         return AsyncTopLevelWithRawResponse(self._client.top_level)
+
+    @cached_property
+    def beta(self) -> beta.AsyncBetaWithRawResponse:
+        from .resources.beta import AsyncBetaWithRawResponse
+
+        return AsyncBetaWithRawResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithRawResponse:
@@ -917,6 +943,12 @@ class OrbWithStreamedResponse:
         return TopLevelWithStreamingResponse(self._client.top_level)
 
     @cached_property
+    def beta(self) -> beta.BetaWithStreamingResponse:
+        from .resources.beta import BetaWithStreamingResponse
+
+        return BetaWithStreamingResponse(self._client.beta)
+
+    @cached_property
     def coupons(self) -> coupons.CouponsWithStreamingResponse:
         from .resources.coupons import CouponsWithStreamingResponse
 
@@ -1012,6 +1044,12 @@ class AsyncOrbWithStreamedResponse:
         from .resources.top_level import AsyncTopLevelWithStreamingResponse
 
         return AsyncTopLevelWithStreamingResponse(self._client.top_level)
+
+    @cached_property
+    def beta(self) -> beta.AsyncBetaWithStreamingResponse:
+        from .resources.beta import AsyncBetaWithStreamingResponse
+
+        return AsyncBetaWithStreamingResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithStreamingResponse:
