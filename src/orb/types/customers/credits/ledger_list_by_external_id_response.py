@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from ...._utils import PropertyInfo
+from ...invoice import Invoice
 from ...._models import BaseModel
 
 __all__ = [
@@ -79,6 +80,9 @@ class IncrementLedgerEntry(BaseModel):
     """
 
     starting_balance: float
+
+    created_invoices: Optional[List[Invoice]] = None
+    """If the increment resulted in invoice creation, the list of created invoices"""
 
 
 class DecrementLedgerEntryCreditBlock(BaseModel):

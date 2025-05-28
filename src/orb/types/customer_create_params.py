@@ -16,6 +16,7 @@ __all__ = [
     "TaxConfiguration",
     "TaxConfigurationNewAvalaraTaxConfiguration",
     "TaxConfigurationNewTaxJarConfiguration",
+    "TaxConfigurationNewSphereConfiguration",
     "TaxID",
 ]
 
@@ -281,7 +282,17 @@ class TaxConfigurationNewTaxJarConfiguration(TypedDict, total=False):
     tax_provider: Required[Literal["taxjar"]]
 
 
-TaxConfiguration: TypeAlias = Union[TaxConfigurationNewAvalaraTaxConfiguration, TaxConfigurationNewTaxJarConfiguration]
+class TaxConfigurationNewSphereConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["sphere"]]
+
+
+TaxConfiguration: TypeAlias = Union[
+    TaxConfigurationNewAvalaraTaxConfiguration,
+    TaxConfigurationNewTaxJarConfiguration,
+    TaxConfigurationNewSphereConfiguration,
+]
 
 
 class TaxID(TypedDict, total=False):

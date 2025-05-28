@@ -13,12 +13,19 @@ __all__ = [
     "InvoiceLineItemCreateResponse",
     "Adjustment",
     "AdjustmentMonetaryUsageDiscountAdjustment",
+    "AdjustmentMonetaryUsageDiscountAdjustmentFilter",
     "AdjustmentMonetaryAmountDiscountAdjustment",
+    "AdjustmentMonetaryAmountDiscountAdjustmentFilter",
     "AdjustmentMonetaryPercentageDiscountAdjustment",
+    "AdjustmentMonetaryPercentageDiscountAdjustmentFilter",
     "AdjustmentMonetaryMinimumAdjustment",
+    "AdjustmentMonetaryMinimumAdjustmentFilter",
     "AdjustmentMonetaryMaximumAdjustment",
+    "AdjustmentMonetaryMaximumAdjustmentFilter",
     "Maximum",
+    "MaximumFilter",
     "Minimum",
+    "MinimumFilter",
     "SubLineItem",
     "SubLineItemMatrixSubLineItem",
     "SubLineItemMatrixSubLineItemGrouping",
@@ -32,6 +39,17 @@ __all__ = [
 ]
 
 
+class AdjustmentMonetaryUsageDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentMonetaryUsageDiscountAdjustment(BaseModel):
     id: str
 
@@ -42,6 +60,9 @@ class AdjustmentMonetaryUsageDiscountAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentMonetaryUsageDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -57,6 +78,17 @@ class AdjustmentMonetaryUsageDiscountAdjustment(BaseModel):
     The number of usage units by which to discount the price this adjustment applies
     to in a given billing period.
     """
+
+
+class AdjustmentMonetaryAmountDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class AdjustmentMonetaryAmountDiscountAdjustment(BaseModel):
@@ -76,6 +108,9 @@ class AdjustmentMonetaryAmountDiscountAdjustment(BaseModel):
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
 
+    filters: List[AdjustmentMonetaryAmountDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
+
     is_invoice_level: bool
     """
     True for adjustments that apply to an entire invocice, false for adjustments
@@ -84,6 +119,17 @@ class AdjustmentMonetaryAmountDiscountAdjustment(BaseModel):
 
     reason: Optional[str] = None
     """The reason for the adjustment."""
+
+
+class AdjustmentMonetaryPercentageDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class AdjustmentMonetaryPercentageDiscountAdjustment(BaseModel):
@@ -96,6 +142,9 @@ class AdjustmentMonetaryPercentageDiscountAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentMonetaryPercentageDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -113,6 +162,17 @@ class AdjustmentMonetaryPercentageDiscountAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
+class AdjustmentMonetaryMinimumAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentMonetaryMinimumAdjustment(BaseModel):
     id: str
 
@@ -123,6 +183,9 @@ class AdjustmentMonetaryMinimumAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentMonetaryMinimumAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -143,6 +206,17 @@ class AdjustmentMonetaryMinimumAdjustment(BaseModel):
     """The reason for the adjustment."""
 
 
+class AdjustmentMonetaryMaximumAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class AdjustmentMonetaryMaximumAdjustment(BaseModel):
     id: str
 
@@ -153,6 +227,9 @@ class AdjustmentMonetaryMaximumAdjustment(BaseModel):
 
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
+
+    filters: List[AdjustmentMonetaryMaximumAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool
     """
@@ -182,6 +259,17 @@ Adjustment: TypeAlias = Annotated[
 ]
 
 
+class MaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class Maximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -189,8 +277,22 @@ class Maximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[MaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class MinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class Minimum(BaseModel):
@@ -199,6 +301,9 @@ class Minimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[MinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""

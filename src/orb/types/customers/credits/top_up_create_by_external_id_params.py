@@ -37,7 +37,8 @@ class TopUpCreateByExternalIDParams(TypedDict, total=False):
     active_from: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """The date from which the top-up is active.
 
-    If unspecified, the top-up is active immediately.
+    If unspecified, the top-up is active immediately. This should not be more than
+    10 days in the past.
     """
 
     expires_after: Optional[int]

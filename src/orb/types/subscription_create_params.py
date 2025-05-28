@@ -24,91 +24,130 @@ __all__ = [
     "AddPricePriceNewSubscriptionUnitPrice",
     "AddPricePriceNewSubscriptionUnitPriceUnitConfig",
     "AddPricePriceNewSubscriptionUnitPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionUnitPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionPackagePrice",
     "AddPricePriceNewSubscriptionPackagePricePackageConfig",
     "AddPricePriceNewSubscriptionPackagePriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionPackagePriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionMatrixPrice",
     "AddPricePriceNewSubscriptionMatrixPriceMatrixConfig",
     "AddPricePriceNewSubscriptionMatrixPriceMatrixConfigMatrixValue",
     "AddPricePriceNewSubscriptionMatrixPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionMatrixPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionTieredPrice",
     "AddPricePriceNewSubscriptionTieredPriceTieredConfig",
     "AddPricePriceNewSubscriptionTieredPriceTieredConfigTier",
     "AddPricePriceNewSubscriptionTieredPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionTieredPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionTieredBpsPrice",
     "AddPricePriceNewSubscriptionTieredBpsPriceTieredBpsConfig",
     "AddPricePriceNewSubscriptionTieredBpsPriceTieredBpsConfigTier",
     "AddPricePriceNewSubscriptionTieredBpsPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionTieredBpsPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionBpsPrice",
     "AddPricePriceNewSubscriptionBpsPriceBpsConfig",
     "AddPricePriceNewSubscriptionBpsPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionBpsPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionBulkBpsPrice",
     "AddPricePriceNewSubscriptionBulkBpsPriceBulkBpsConfig",
     "AddPricePriceNewSubscriptionBulkBpsPriceBulkBpsConfigTier",
     "AddPricePriceNewSubscriptionBulkBpsPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionBulkBpsPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionBulkPrice",
     "AddPricePriceNewSubscriptionBulkPriceBulkConfig",
     "AddPricePriceNewSubscriptionBulkPriceBulkConfigTier",
     "AddPricePriceNewSubscriptionBulkPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionBulkPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionThresholdTotalAmountPrice",
     "AddPricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionTieredPackagePrice",
     "AddPricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionTieredPackagePriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionTieredWithMinimumPrice",
     "AddPricePriceNewSubscriptionTieredWithMinimumPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionTieredWithMinimumPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionUnitWithPercentPrice",
     "AddPricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionUnitWithPercentPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionPackageWithAllocationPrice",
     "AddPricePriceNewSubscriptionPackageWithAllocationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionPackageWithAllocationPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionTierWithProrationPrice",
     "AddPricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionTierWithProrationPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionUnitWithProrationPrice",
     "AddPricePriceNewSubscriptionUnitWithProrationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionUnitWithProrationPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionGroupedAllocationPrice",
     "AddPricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionGroupedAllocationPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionGroupedWithProratedMinimumPrice",
     "AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionBulkWithProrationPrice",
     "AddPricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionBulkWithProrationPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPrice",
     "AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPrice",
     "AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionCumulativeGroupedBulkPrice",
     "AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionMaxGroupTieredPackagePrice",
     "AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPrice",
     "AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionMatrixWithDisplayNamePrice",
     "AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceInvoicingCycleConfiguration",
     "AddPricePriceNewSubscriptionGroupedTieredPackagePrice",
     "AddPricePriceNewSubscriptionGroupedTieredPackagePriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration",
     "AddPricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPrice",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration",
+    "AddPricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredPackageWithMinimumPrice",
+    "AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration",
+    "AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedTieredPrice",
+    "AddPricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration",
+    "AddPricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration",
+    "AddPricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration",
     "BillingCycleAnchorConfiguration",
     "RemoveAdjustment",
     "RemovePrice",
@@ -126,91 +165,130 @@ __all__ = [
     "ReplacePricePriceNewSubscriptionUnitPrice",
     "ReplacePricePriceNewSubscriptionUnitPriceUnitConfig",
     "ReplacePricePriceNewSubscriptionUnitPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionUnitPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionPackagePrice",
     "ReplacePricePriceNewSubscriptionPackagePricePackageConfig",
     "ReplacePricePriceNewSubscriptionPackagePriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionPackagePriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionMatrixPrice",
     "ReplacePricePriceNewSubscriptionMatrixPriceMatrixConfig",
     "ReplacePricePriceNewSubscriptionMatrixPriceMatrixConfigMatrixValue",
     "ReplacePricePriceNewSubscriptionMatrixPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionMatrixPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionTieredPrice",
     "ReplacePricePriceNewSubscriptionTieredPriceTieredConfig",
     "ReplacePricePriceNewSubscriptionTieredPriceTieredConfigTier",
     "ReplacePricePriceNewSubscriptionTieredPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionTieredPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionTieredBpsPrice",
     "ReplacePricePriceNewSubscriptionTieredBpsPriceTieredBpsConfig",
     "ReplacePricePriceNewSubscriptionTieredBpsPriceTieredBpsConfigTier",
     "ReplacePricePriceNewSubscriptionTieredBpsPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionTieredBpsPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionBpsPrice",
     "ReplacePricePriceNewSubscriptionBpsPriceBpsConfig",
     "ReplacePricePriceNewSubscriptionBpsPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionBpsPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionBulkBpsPrice",
     "ReplacePricePriceNewSubscriptionBulkBpsPriceBulkBpsConfig",
     "ReplacePricePriceNewSubscriptionBulkBpsPriceBulkBpsConfigTier",
     "ReplacePricePriceNewSubscriptionBulkBpsPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionBulkBpsPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionBulkPrice",
     "ReplacePricePriceNewSubscriptionBulkPriceBulkConfig",
     "ReplacePricePriceNewSubscriptionBulkPriceBulkConfigTier",
     "ReplacePricePriceNewSubscriptionBulkPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionBulkPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionThresholdTotalAmountPrice",
     "ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionTieredPackagePrice",
     "ReplacePricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionTieredPackagePriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionTieredWithMinimumPrice",
     "ReplacePricePriceNewSubscriptionTieredWithMinimumPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionTieredWithMinimumPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionUnitWithPercentPrice",
     "ReplacePricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionUnitWithPercentPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionPackageWithAllocationPrice",
     "ReplacePricePriceNewSubscriptionPackageWithAllocationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionPackageWithAllocationPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionTierWithProrationPrice",
     "ReplacePricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionTierWithProrationPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionUnitWithProrationPrice",
     "ReplacePricePriceNewSubscriptionUnitWithProrationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionUnitWithProrationPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedAllocationPrice",
     "ReplacePricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedAllocationPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPrice",
     "ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionBulkWithProrationPrice",
     "ReplacePricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionBulkWithProrationPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPrice",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPrice",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPrice",
     "ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePrice",
     "ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPrice",
     "ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePrice",
     "ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceInvoicingCycleConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedTieredPackagePrice",
     "ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration",
     "ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPrice",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration",
+    "ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPrice",
+    "ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration",
+    "ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedTieredPrice",
+    "ReplacePricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration",
+    "ReplacePricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration",
 ]
 
 
@@ -251,6 +329,12 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """
 
     credits_overage_rate: Optional[float]
+
+    currency: Optional[str]
+    """The currency to use for the subscription.
+
+    If not specified, the invoicing currency for the plan will be used.
+    """
 
     customer_id: Optional[str]
 
@@ -297,6 +381,12 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    name: Optional[str]
+    """The name to use for the subscription.
+
+    If not specified, the plan name will be used.
     """
 
     net_terms: Optional[int]
@@ -374,10 +464,10 @@ class SubscriptionCreateParams(TypedDict, total=False):
 class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["percentage_discount"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     percentage_discount: Required[float]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -389,10 +479,10 @@ class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
 class AddAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["usage_discount"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     usage_discount: Required[float]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -406,7 +496,7 @@ class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     amount_discount: Required[str]
 
-    applies_to_price_ids: Required[List[str]]
+    applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
@@ -419,13 +509,13 @@ class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
     adjustment_type: Required[Literal["minimum"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     item_id: Required[str]
     """The item ID that revenue from this minimum will be attributed to."""
 
     minimum_amount: Required[str]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -437,10 +527,10 @@ class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     adjustment_type: Required[Literal["maximum"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     maximum_amount: Required[str]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -533,6 +623,20 @@ class AddPricePriceNewSubscriptionUnitPriceBillingCycleConfiguration(TypedDict, 
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionUnitPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -581,6 +685,9 @@ class AddPricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -634,6 +741,20 @@ class AddPricePriceNewSubscriptionPackagePriceBillingCycleConfiguration(TypedDic
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -682,6 +803,9 @@ class AddPricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -746,6 +870,20 @@ class AddPricePriceNewSubscriptionMatrixPriceBillingCycleConfiguration(TypedDict
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionMatrixPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -794,6 +932,9 @@ class AddPricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -851,6 +992,20 @@ class AddPricePriceNewSubscriptionTieredPriceBillingCycleConfiguration(TypedDict
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -899,6 +1054,9 @@ class AddPricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -962,6 +1120,20 @@ class AddPricePriceNewSubscriptionTieredBpsPriceBillingCycleConfiguration(TypedD
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionTieredBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -1011,6 +1183,9 @@ class AddPricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1057,6 +1232,20 @@ class AddPricePriceNewSubscriptionBpsPriceBillingCycleConfiguration(TypedDict, t
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1107,6 +1296,9 @@ class AddPricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -1167,6 +1359,20 @@ class AddPricePriceNewSubscriptionBulkBpsPriceBillingCycleConfiguration(TypedDic
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionBulkBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -1215,6 +1421,9 @@ class AddPricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -1269,6 +1478,20 @@ class AddPricePriceNewSubscriptionBulkPriceBillingCycleConfiguration(TypedDict, 
     """The unit of billing period duration."""
 
 
+class AddPricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class AddPricePriceNewSubscriptionBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -1318,6 +1541,9 @@ class AddPricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[AddPricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1356,6 +1582,20 @@ class AddPricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfigura
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionThresholdTotalAmountPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1409,6 +1649,11 @@ class AddPricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total=Fal
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1449,6 +1694,20 @@ class AddPricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguration(Ty
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1500,6 +1759,11 @@ class AddPricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1538,6 +1802,20 @@ class AddPricePriceNewSubscriptionTieredWithMinimumPriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionTieredWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1589,6 +1867,11 @@ class AddPricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1629,6 +1912,20 @@ class AddPricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfiguration(
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionUnitWithPercentPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1680,6 +1977,11 @@ class AddPricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1718,6 +2020,20 @@ class AddPricePriceNewSubscriptionPackageWithAllocationPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionPackageWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1771,6 +2087,11 @@ class AddPricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1811,6 +2132,20 @@ class AddPricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionTierWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1862,6 +2197,11 @@ class AddPricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1902,6 +2242,20 @@ class AddPricePriceNewSubscriptionUnitWithProrationPriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionUnitWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -1953,6 +2307,11 @@ class AddPricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -1993,6 +2352,20 @@ class AddPricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionGroupedAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2044,6 +2417,11 @@ class AddPricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2084,6 +2462,20 @@ class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceBillingCycleCon
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2137,6 +2529,11 @@ class AddPricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict, tot
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2177,6 +2574,20 @@ class AddPricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionBulkWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2228,6 +2639,11 @@ class AddPricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2268,6 +2684,22 @@ class AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceBillingCycle
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2321,6 +2753,11 @@ class AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPrice(TypedDict, 
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2361,6 +2798,22 @@ class AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceBillingCyc
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(
@@ -2416,6 +2869,11 @@ class AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPrice(TypedDict
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2456,6 +2914,20 @@ class AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2509,6 +2981,11 @@ class AddPricePriceNewSubscriptionCumulativeGroupedBulkPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2549,6 +3026,20 @@ class AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2602,6 +3093,11 @@ class AddPricePriceNewSubscriptionMaxGroupTieredPackagePrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2642,6 +3138,20 @@ class AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceBillingCycleConf
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2695,6 +3205,11 @@ class AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPrice(TypedDict, tota
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2735,6 +3250,20 @@ class AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2788,6 +3317,11 @@ class AddPricePriceNewSubscriptionMatrixWithDisplayNamePrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2828,6 +3362,20 @@ class AddPricePriceNewSubscriptionGroupedTieredPackagePriceBillingCycleConfigura
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class AddPricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -2881,6 +3429,11 @@ class AddPricePriceNewSubscriptionGroupedTieredPackagePrice(TypedDict, total=Fal
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -2896,6 +3449,370 @@ class AddPricePriceNewSubscriptionGroupedTieredPackagePrice(TypedDict, total=Fal
     invoicing_cycle_configuration: Optional[
         AddPricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration
     ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[Optional[str]]]
+    """One or two matrix keys to filter usage to this Matrix value by.
+
+    For example, ["region", "tier"] could be used to filter cloud usage by a cloud
+    region and an instance tier.
+    """
+
+    unit_amount: Required[str]
+    """Unit price for the specified dimension_values"""
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig(TypedDict, total=False):
+    allocation: Required[float]
+    """Allocation to be used to calculate the price"""
+
+    default_unit_amount: Required[str]
+    """Default per unit rate for any usage not bucketed into a specified matrix_value"""
+
+    dimensions: Required[List[Optional[str]]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    matrix_values: Required[
+        Iterable[AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]
+    ]
+    """Matrix values for specified matrix grouping keys"""
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionMatrixWithAllocationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    matrix_with_allocation_config: Required[
+        AddPricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig
+    ]
+
+    model_type: Required[Literal["matrix_with_allocation"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[
+        AddPricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration
+    ]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[
+        AddPricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration
+    ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionTieredPackageWithMinimumPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["tiered_package_with_minimum"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    tiered_package_with_minimum_config: Required[Dict[str, object]]
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[
+        AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration
+    ]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[
+        AddPricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+    ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class AddPricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class AddPricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class AddPricePriceNewSubscriptionGroupedTieredPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_tiered_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_tiered"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[AddPricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        AddPricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[AddPricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration]
     """Within each billing cycle, specifies the cadence at which invoices are produced.
 
     If unspecified, a single invoice is produced per billing cycle.
@@ -2941,6 +3858,9 @@ AddPricePrice: TypeAlias = Union[
     AddPricePriceNewSubscriptionGroupedWithMeteredMinimumPrice,
     AddPricePriceNewSubscriptionMatrixWithDisplayNamePrice,
     AddPricePriceNewSubscriptionGroupedTieredPackagePrice,
+    AddPricePriceNewSubscriptionMatrixWithAllocationPrice,
+    AddPricePriceNewSubscriptionTieredPackageWithMinimumPrice,
+    AddPricePriceNewSubscriptionGroupedTieredPrice,
 ]
 
 
@@ -3033,10 +3953,10 @@ class RemovePrice(TypedDict, total=False):
 class ReplaceAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["percentage_discount"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     percentage_discount: Required[float]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -3048,10 +3968,10 @@ class ReplaceAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
 class ReplaceAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["usage_discount"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     usage_discount: Required[float]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -3065,7 +3985,7 @@ class ReplaceAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     amount_discount: Required[str]
 
-    applies_to_price_ids: Required[List[str]]
+    applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
@@ -3078,13 +3998,13 @@ class ReplaceAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 class ReplaceAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
     adjustment_type: Required[Literal["minimum"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     item_id: Required[str]
     """The item ID that revenue from this minimum will be attributed to."""
 
     minimum_amount: Required[str]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -3096,10 +4016,10 @@ class ReplaceAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 class ReplaceAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
     adjustment_type: Required[Literal["maximum"]]
 
-    applies_to_price_ids: Required[List[str]]
-    """The set of price IDs to which this adjustment applies."""
-
     maximum_amount: Required[str]
+
+    applies_to_price_ids: Optional[List[str]]
+    """The set of price IDs to which this adjustment applies."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
@@ -3177,6 +4097,20 @@ class ReplacePricePriceNewSubscriptionUnitPriceBillingCycleConfiguration(TypedDi
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionUnitPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3225,6 +4159,9 @@ class ReplacePricePriceNewSubscriptionUnitPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionUnitPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3278,6 +4215,20 @@ class ReplacePricePriceNewSubscriptionPackagePriceBillingCycleConfiguration(Type
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3326,6 +4277,9 @@ class ReplacePricePriceNewSubscriptionPackagePrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionPackagePriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3390,6 +4344,20 @@ class ReplacePricePriceNewSubscriptionMatrixPriceBillingCycleConfiguration(Typed
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionMatrixPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3438,6 +4406,9 @@ class ReplacePricePriceNewSubscriptionMatrixPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionMatrixPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3495,6 +4466,20 @@ class ReplacePricePriceNewSubscriptionTieredPriceBillingCycleConfiguration(Typed
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3543,6 +4528,9 @@ class ReplacePricePriceNewSubscriptionTieredPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionTieredPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3606,6 +4594,20 @@ class ReplacePricePriceNewSubscriptionTieredBpsPriceBillingCycleConfiguration(Ty
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionTieredBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3655,6 +4657,11 @@ class ReplacePricePriceNewSubscriptionTieredBpsPrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredBpsPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -3701,6 +4708,20 @@ class ReplacePricePriceNewSubscriptionBpsPriceBillingCycleConfiguration(TypedDic
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -3751,6 +4772,9 @@ class ReplacePricePriceNewSubscriptionBpsPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3811,6 +4835,20 @@ class ReplacePricePriceNewSubscriptionBulkBpsPriceBillingCycleConfiguration(Type
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionBulkBpsPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3859,6 +4897,9 @@ class ReplacePricePriceNewSubscriptionBulkBpsPrice(TypedDict, total=False):
     An ISO 4217 currency string, or custom pricing unit identifier, in which this
     price is billed.
     """
+
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionBulkBpsPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
 
     external_price_id: Optional[str]
     """An alias for the price."""
@@ -3913,6 +4954,20 @@ class ReplacePricePriceNewSubscriptionBulkPriceBillingCycleConfiguration(TypedDi
     """The unit of billing period duration."""
 
 
+class ReplacePricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
 class ReplacePricePriceNewSubscriptionBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
     duration: Required[int]
     """The duration of the billing period."""
@@ -3962,6 +5017,9 @@ class ReplacePricePriceNewSubscriptionBulkPrice(TypedDict, total=False):
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[ReplacePricePriceNewSubscriptionBulkPriceDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4000,6 +5058,20 @@ class ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceBillingCycleConfi
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4053,6 +5125,11 @@ class ReplacePricePriceNewSubscriptionThresholdTotalAmountPrice(TypedDict, total
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionThresholdTotalAmountPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4093,6 +5170,20 @@ class ReplacePricePriceNewSubscriptionTieredPackagePriceBillingCycleConfiguratio
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4144,6 +5235,11 @@ class ReplacePricePriceNewSubscriptionTieredPackagePrice(TypedDict, total=False)
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4184,6 +5280,20 @@ class ReplacePricePriceNewSubscriptionTieredWithMinimumPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionTieredWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4237,6 +5347,11 @@ class ReplacePricePriceNewSubscriptionTieredWithMinimumPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredWithMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4277,6 +5392,20 @@ class ReplacePricePriceNewSubscriptionUnitWithPercentPriceBillingCycleConfigurat
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionUnitWithPercentPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4328,6 +5457,11 @@ class ReplacePricePriceNewSubscriptionUnitWithPercentPrice(TypedDict, total=Fals
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionUnitWithPercentPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4368,6 +5502,20 @@ class ReplacePricePriceNewSubscriptionPackageWithAllocationPriceBillingCycleConf
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionPackageWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4421,6 +5569,11 @@ class ReplacePricePriceNewSubscriptionPackageWithAllocationPrice(TypedDict, tota
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionPackageWithAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4461,6 +5614,20 @@ class ReplacePricePriceNewSubscriptionTierWithProrationPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionTierWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4514,6 +5681,11 @@ class ReplacePricePriceNewSubscriptionTierWithProrationPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTierWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4554,6 +5726,20 @@ class ReplacePricePriceNewSubscriptionUnitWithProrationPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionUnitWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4607,6 +5793,11 @@ class ReplacePricePriceNewSubscriptionUnitWithProrationPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionUnitWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4647,6 +5838,20 @@ class ReplacePricePriceNewSubscriptionGroupedAllocationPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionGroupedAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4700,6 +5905,11 @@ class ReplacePricePriceNewSubscriptionGroupedAllocationPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4740,6 +5950,22 @@ class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceBillingCycl
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceInvoicingCycleConfiguration(
@@ -4795,6 +6021,11 @@ class ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPrice(TypedDict,
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4835,6 +6066,20 @@ class ReplacePricePriceNewSubscriptionBulkWithProrationPriceBillingCycleConfigur
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionBulkWithProrationPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -4888,6 +6133,11 @@ class ReplacePricePriceNewSubscriptionBulkWithProrationPrice(TypedDict, total=Fa
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionBulkWithProrationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -4930,6 +6180,22 @@ class ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceBillingC
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(
@@ -4985,6 +6251,11 @@ class ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPrice(TypedDi
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5027,6 +6298,22 @@ class ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceBillin
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(
@@ -5082,6 +6369,11 @@ class ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPrice(Typed
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5122,6 +6414,20 @@ class ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceBillingCycleConf
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -5175,6 +6481,11 @@ class ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPrice(TypedDict, tota
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionCumulativeGroupedBulkPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5215,6 +6526,20 @@ class ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceBillingCycleConf
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -5268,6 +6593,11 @@ class ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePrice(TypedDict, tota
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionMaxGroupTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5308,6 +6638,22 @@ class ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceBillingCycle
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -5361,6 +6707,11 @@ class ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPrice(TypedDict, 
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5401,6 +6752,20 @@ class ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceBillingCycleConf
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -5454,6 +6819,11 @@ class ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePrice(TypedDict, tota
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5494,6 +6864,20 @@ class ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceBillingCycleConfi
 
     duration_unit: Required[Literal["day", "month"]]
     """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
 
 
 class ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration(TypedDict, total=False):
@@ -5547,6 +6931,11 @@ class ReplacePricePriceNewSubscriptionGroupedTieredPackagePrice(TypedDict, total
     price is billed.
     """
 
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
     external_price_id: Optional[str]
     """An alias for the price."""
 
@@ -5561,6 +6950,374 @@ class ReplacePricePriceNewSubscriptionGroupedTieredPackagePrice(TypedDict, total
 
     invoicing_cycle_configuration: Optional[
         ReplacePricePriceNewSubscriptionGroupedTieredPackagePriceInvoicingCycleConfiguration
+    ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[Optional[str]]]
+    """One or two matrix keys to filter usage to this Matrix value by.
+
+    For example, ["region", "tier"] could be used to filter cloud usage by a cloud
+    region and an instance tier.
+    """
+
+    unit_amount: Required[str]
+    """Unit price for the specified dimension_values"""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig(TypedDict, total=False):
+    allocation: Required[float]
+    """Allocation to be used to calculate the price"""
+
+    default_unit_amount: Required[str]
+    """Default per unit rate for any usage not bucketed into a specified matrix_value"""
+
+    dimensions: Required[List[Optional[str]]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    matrix_values: Required[
+        Iterable[ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue]
+    ]
+    """Matrix values for specified matrix grouping keys"""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionMatrixWithAllocationPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    matrix_with_allocation_config: Required[
+        ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceMatrixWithAllocationConfig
+    ]
+
+    model_type: Required[Literal["matrix_with_allocation"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[
+        ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceBillingCycleConfiguration
+    ]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[
+        ReplacePricePriceNewSubscriptionMatrixWithAllocationPriceInvoicingCycleConfiguration
+    ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration(
+    TypedDict, total=False
+):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["tiered_package_with_minimum"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    tiered_package_with_minimum_config: Required[Dict[str, object]]
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceBillingCycleConfiguration
+    ]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[
+        ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPriceInvoicingCycleConfiguration
+    ]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class ReplacePricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration(TypedDict, total=False):
+    dimension_values: Required[List[str]]
+    """
+    The list of dimension values matching (in order) the dimensions of the price
+    group
+    """
+
+    dimensional_price_group_id: Optional[str]
+    """The id of the dimensional price group to include this price in"""
+
+    external_dimensional_price_group_id: Optional[str]
+    """The external id of the dimensional price group to include this price in"""
+
+
+class ReplacePricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration(TypedDict, total=False):
+    duration: Required[int]
+    """The duration of the billing period."""
+
+    duration_unit: Required[Literal["day", "month"]]
+    """The unit of billing period duration."""
+
+
+class ReplacePricePriceNewSubscriptionGroupedTieredPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_tiered_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_tiered"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[ReplacePricePriceNewSubscriptionGroupedTieredPriceBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedTieredPriceDimensionalPriceConfiguration
+    ]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[
+        ReplacePricePriceNewSubscriptionGroupedTieredPriceInvoicingCycleConfiguration
     ]
     """Within each billing cycle, specifies the cadence at which invoices are produced.
 
@@ -5607,6 +7364,9 @@ ReplacePricePrice: TypeAlias = Union[
     ReplacePricePriceNewSubscriptionGroupedWithMeteredMinimumPrice,
     ReplacePricePriceNewSubscriptionMatrixWithDisplayNamePrice,
     ReplacePricePriceNewSubscriptionGroupedTieredPackagePrice,
+    ReplacePricePriceNewSubscriptionMatrixWithAllocationPrice,
+    ReplacePricePriceNewSubscriptionTieredPackageWithMinimumPrice,
+    ReplacePricePriceNewSubscriptionGroupedTieredPrice,
 ]
 
 

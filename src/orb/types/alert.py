@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Alert", "Customer", "Metric", "Plan", "Subscription", "Threshold"]
+__all__ = ["Alert", "Customer", "Metric", "Plan", "Subscription", "Threshold", "BalanceAlertStatus"]
 
 
 class Customer(BaseModel):
@@ -45,6 +45,14 @@ class Threshold(BaseModel):
     For credit balance alerts, the alert will fire at or below this value. For usage
     and cost alerts, the alert will fire at or above this value.
     """
+
+
+class BalanceAlertStatus(BaseModel):
+    in_alert: bool
+    """Whether the alert is currently in-alert or not."""
+
+    threshold_value: float
+    """The value of the threshold that defines the alert status."""
 
 
 class Alert(BaseModel):
@@ -86,3 +94,9 @@ class Alert(BaseModel):
         "cost_exceeded",
     ]
     """The type of alert. This must be a valid alert type."""
+
+    balance_alert_status: Optional[List[BalanceAlertStatus]] = None
+    """The current status of the alert.
+
+    This field is only present for credit balance alerts.
+    """

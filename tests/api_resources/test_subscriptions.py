@@ -46,8 +46,8 @@ class TestSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -90,9 +90,14 @@ class TestSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -114,6 +119,7 @@ class TestSubscriptions:
             },
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
+            currency="currency",
             customer_id="customer_id",
             default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -125,6 +131,7 @@ class TestSubscriptions:
             initial_phase_order=2,
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
+            name="name",
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
@@ -141,8 +148,8 @@ class TestSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
@@ -183,9 +190,14 @@ class TestSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -615,9 +627,14 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -632,8 +649,8 @@ class TestSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -718,8 +735,8 @@ class TestSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -762,9 +779,14 @@ class TestSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -808,8 +830,8 @@ class TestSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
@@ -850,9 +872,14 @@ class TestSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -1192,8 +1219,8 @@ class TestAsyncSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1236,9 +1263,14 @@ class TestAsyncSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -1260,6 +1292,7 @@ class TestAsyncSubscriptions:
             },
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
+            currency="currency",
             customer_id="customer_id",
             default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1271,6 +1304,7 @@ class TestAsyncSubscriptions:
             initial_phase_order=2,
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
+            name="name",
             net_terms=0,
             per_credit_overage_amount=0,
             plan_id="ZMwNQefe7J3ecf7W",
@@ -1287,8 +1321,8 @@ class TestAsyncSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
@@ -1329,9 +1363,14 @@ class TestAsyncSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -1761,9 +1800,14 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -1778,8 +1822,8 @@ class TestAsyncSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1864,8 +1908,8 @@ class TestAsyncSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1908,9 +1952,14 @@ class TestAsyncSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",
@@ -1954,8 +2003,8 @@ class TestAsyncSubscriptions:
                 {
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
-                        "applies_to_price_ids": ["price_1", "price_2"],
                         "percentage_discount": 0,
+                        "applies_to_price_ids": ["price_1", "price_2"],
                         "is_invoice_level": True,
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
@@ -1996,9 +2045,14 @@ class TestAsyncSubscriptions:
                         },
                         "conversion_rate": 0,
                         "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
                         "external_price_id": "external_price_id",
                         "fixed_price_quantity": 0,
-                        "invoice_grouping_key": "invoice_grouping_key",
+                        "invoice_grouping_key": "x",
                         "invoicing_cycle_configuration": {
                             "duration": 0,
                             "duration_unit": "day",

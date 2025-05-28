@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import Dict, List
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -21,5 +21,13 @@ class Item(BaseModel):
     created_at: datetime
 
     external_connections: List[ExternalConnection]
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
 
     name: str
