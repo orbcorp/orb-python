@@ -16,6 +16,7 @@ __all__ = [
     "AddAdjustmentAdjustmentNewMaximum",
     "AddPrice",
     "AddPriceAllocationPrice",
+    "AddPriceAllocationPriceCustomExpiration",
     "AddPricePrice",
     "AddPricePriceNewPlanUnitPrice",
     "AddPricePriceNewPlanUnitPriceUnitConfig",
@@ -155,6 +156,7 @@ __all__ = [
     "ReplaceAdjustmentAdjustmentNewMaximum",
     "ReplacePrice",
     "ReplacePriceAllocationPrice",
+    "ReplacePriceAllocationPriceCustomExpiration",
     "ReplacePricePrice",
     "ReplacePricePriceNewPlanUnitPrice",
     "ReplacePricePriceNewPlanUnitPriceUnitConfig",
@@ -407,6 +409,12 @@ class AddAdjustment(TypedDict, total=False):
     """The phase to add this adjustment to."""
 
 
+class AddPriceAllocationPriceCustomExpiration(TypedDict, total=False):
+    duration: Required[int]
+
+    duration_unit: Required[Literal["day", "month"]]
+
+
 class AddPriceAllocationPrice(TypedDict, total=False):
     amount: Required[str]
     """An amount of the currency to allocate to the customer at the specified cadence."""
@@ -420,10 +428,13 @@ class AddPriceAllocationPrice(TypedDict, total=False):
     this price.
     """
 
-    expires_at_end_of_cadence: Required[bool]
+    custom_expiration: Optional[AddPriceAllocationPriceCustomExpiration]
+    """The custom expiration for the allocation."""
+
+    expires_at_end_of_cadence: Optional[bool]
     """
     Whether the allocated amount should expire at the end of the cadence or roll
-    over to the next period.
+    over to the next period. Set to null if using custom_expiration.
     """
 
 
@@ -3568,6 +3579,12 @@ class ReplaceAdjustment(TypedDict, total=False):
     """The phase to replace this adjustment from."""
 
 
+class ReplacePriceAllocationPriceCustomExpiration(TypedDict, total=False):
+    duration: Required[int]
+
+    duration_unit: Required[Literal["day", "month"]]
+
+
 class ReplacePriceAllocationPrice(TypedDict, total=False):
     amount: Required[str]
     """An amount of the currency to allocate to the customer at the specified cadence."""
@@ -3581,10 +3598,13 @@ class ReplacePriceAllocationPrice(TypedDict, total=False):
     this price.
     """
 
-    expires_at_end_of_cadence: Required[bool]
+    custom_expiration: Optional[ReplacePriceAllocationPriceCustomExpiration]
+    """The custom expiration for the allocation."""
+
+    expires_at_end_of_cadence: Optional[bool]
     """
     Whether the allocated amount should expire at the end of the cadence or roll
-    over to the next period.
+    over to the next period. Set to null if using custom_expiration.
     """
 
 
