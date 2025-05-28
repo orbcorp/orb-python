@@ -9,24 +9,16 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import plan_list_params, plan_create_params, plan_update_params, plan_set_default_version_params
+from ...types import plan_list_params, plan_create_params, plan_update_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
-from .versions import (
-    Versions,
-    AsyncVersions,
-    VersionsWithRawResponse,
-    AsyncVersionsWithRawResponse,
-    VersionsWithStreamingResponse,
-    AsyncVersionsWithStreamingResponse,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ...types.plan import Plan
 from ..._base_client import AsyncPaginator, make_request_options
-from .external_plan_id.external_plan_id import (
+from .external_plan_id import (
     ExternalPlanID,
     AsyncExternalPlanID,
     ExternalPlanIDWithRawResponse,
@@ -42,10 +34,6 @@ class Plans(SyncAPIResource):
     @cached_property
     def external_plan_id(self) -> ExternalPlanID:
         return ExternalPlanID(self._client)
-
-    @cached_property
-    def versions(self) -> Versions:
-        return Versions(self._client)
 
     @cached_property
     def with_raw_response(self) -> PlansWithRawResponse:
@@ -316,63 +304,11 @@ class Plans(SyncAPIResource):
             cast_to=Plan,
         )
 
-    def set_default_version(
-        self,
-        plan_id: str,
-        *,
-        version: int,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Plan:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
-        This endpoint allows setting the default version of a plan.
-
-        Args:
-          version: Plan version to set as the default.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not plan_id:
-            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
-        return self._post(
-            f"/plans/{plan_id}/set_default_version",
-            body=maybe_transform({"version": version}, plan_set_default_version_params.PlanSetDefaultVersionParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Plan,
-        )
-
 
 class AsyncPlans(AsyncAPIResource):
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanID:
         return AsyncExternalPlanID(self._client)
-
-    @cached_property
-    def versions(self) -> AsyncVersions:
-        return AsyncVersions(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncPlansWithRawResponse:
@@ -643,56 +579,6 @@ class AsyncPlans(AsyncAPIResource):
             cast_to=Plan,
         )
 
-    async def set_default_version(
-        self,
-        plan_id: str,
-        *,
-        version: int,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Plan:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
-        This endpoint allows setting the default version of a plan.
-
-        Args:
-          version: Plan version to set as the default.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not plan_id:
-            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
-        return await self._post(
-            f"/plans/{plan_id}/set_default_version",
-            body=await async_maybe_transform(
-                {"version": version}, plan_set_default_version_params.PlanSetDefaultVersionParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Plan,
-        )
-
 
 class PlansWithRawResponse:
     def __init__(self, plans: Plans) -> None:
@@ -710,17 +596,10 @@ class PlansWithRawResponse:
         self.fetch = _legacy_response.to_raw_response_wrapper(
             plans.fetch,
         )
-        self.set_default_version = _legacy_response.to_raw_response_wrapper(
-            plans.set_default_version,
-        )
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
         return ExternalPlanIDWithRawResponse(self._plans.external_plan_id)
-
-    @cached_property
-    def versions(self) -> VersionsWithRawResponse:
-        return VersionsWithRawResponse(self._plans.versions)
 
 
 class AsyncPlansWithRawResponse:
@@ -739,17 +618,10 @@ class AsyncPlansWithRawResponse:
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             plans.fetch,
         )
-        self.set_default_version = _legacy_response.async_to_raw_response_wrapper(
-            plans.set_default_version,
-        )
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
         return AsyncExternalPlanIDWithRawResponse(self._plans.external_plan_id)
-
-    @cached_property
-    def versions(self) -> AsyncVersionsWithRawResponse:
-        return AsyncVersionsWithRawResponse(self._plans.versions)
 
 
 class PlansWithStreamingResponse:
@@ -768,17 +640,10 @@ class PlansWithStreamingResponse:
         self.fetch = to_streamed_response_wrapper(
             plans.fetch,
         )
-        self.set_default_version = to_streamed_response_wrapper(
-            plans.set_default_version,
-        )
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
         return ExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
-
-    @cached_property
-    def versions(self) -> VersionsWithStreamingResponse:
-        return VersionsWithStreamingResponse(self._plans.versions)
 
 
 class AsyncPlansWithStreamingResponse:
@@ -797,14 +662,7 @@ class AsyncPlansWithStreamingResponse:
         self.fetch = async_to_streamed_response_wrapper(
             plans.fetch,
         )
-        self.set_default_version = async_to_streamed_response_wrapper(
-            plans.set_default_version,
-        )
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
         return AsyncExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
-
-    @cached_property
-    def versions(self) -> AsyncVersionsWithStreamingResponse:
-        return AsyncVersionsWithStreamingResponse(self._plans.versions)

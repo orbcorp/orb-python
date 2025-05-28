@@ -8,27 +8,27 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb.types import Plan, PlanVersion
 from tests.utils import assert_matches_type
-from orb.types.plans import VersionCreateResponse, VersionRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestVersions:
+class TestExternalPlanID:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: Orb) -> None:
-        version = client.plans.versions.create(
-            plan_id="plan_id",
+    def test_method_create_plan_version(self, client: Orb) -> None:
+        external_plan_id = client.beta.external_plan_id.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         )
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params(self, client: Orb) -> None:
-        version = client.plans.versions.create(
-            plan_id="plan_id",
+    def test_method_create_plan_version_with_all_params(self, client: Orb) -> None:
+        external_plan_id = client.beta.external_plan_id.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
             add_adjustments=[
                 {
@@ -146,106 +146,148 @@ class TestVersions:
             ],
             set_as_default=True,
         )
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: Orb) -> None:
-        response = client.plans.versions.with_raw_response.create(
-            plan_id="plan_id",
+    def test_raw_response_create_plan_version(self, client: Orb) -> None:
+        response = client.beta.external_plan_id.with_raw_response.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        version = response.parse()
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        external_plan_id = response.parse()
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: Orb) -> None:
-        with client.plans.versions.with_streaming_response.create(
-            plan_id="plan_id",
+    def test_streaming_response_create_plan_version(self, client: Orb) -> None:
+        with client.beta.external_plan_id.with_streaming_response.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            version = response.parse()
-            assert_matches_type(VersionCreateResponse, version, path=["response"])
+            external_plan_id = response.parse()
+            assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            client.plans.versions.with_raw_response.create(
-                plan_id="",
+    def test_path_params_create_plan_version(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            client.beta.external_plan_id.with_raw_response.create_plan_version(
+                external_plan_id="",
                 version=0,
             )
 
     @parametrize
-    def test_method_retrieve(self, client: Orb) -> None:
-        version = client.plans.versions.retrieve(
+    def test_method_fetch_plan_version(self, client: Orb) -> None:
+        external_plan_id = client.beta.external_plan_id.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         )
-        assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: Orb) -> None:
-        response = client.plans.versions.with_raw_response.retrieve(
+    def test_raw_response_fetch_plan_version(self, client: Orb) -> None:
+        response = client.beta.external_plan_id.with_raw_response.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        version = response.parse()
-        assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+        external_plan_id = response.parse()
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: Orb) -> None:
-        with client.plans.versions.with_streaming_response.retrieve(
+    def test_streaming_response_fetch_plan_version(self, client: Orb) -> None:
+        with client.beta.external_plan_id.with_streaming_response.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            version = response.parse()
-            assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+            external_plan_id = response.parse()
+            assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            client.plans.versions.with_raw_response.retrieve(
+    def test_path_params_fetch_plan_version(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            client.beta.external_plan_id.with_raw_response.fetch_plan_version(
                 version="version",
-                plan_id="",
+                external_plan_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
-            client.plans.versions.with_raw_response.retrieve(
+            client.beta.external_plan_id.with_raw_response.fetch_plan_version(
                 version="",
-                plan_id="plan_id",
+                external_plan_id="external_plan_id",
+            )
+
+    @parametrize
+    def test_method_set_default_plan_version(self, client: Orb) -> None:
+        external_plan_id = client.beta.external_plan_id.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        )
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    def test_raw_response_set_default_plan_version(self, client: Orb) -> None:
+        response = client.beta.external_plan_id.with_raw_response.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    def test_streaming_response_set_default_plan_version(self, client: Orb) -> None:
+        with client.beta.external_plan_id.with_streaming_response.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_plan_id = response.parse()
+            assert_matches_type(Plan, external_plan_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_set_default_plan_version(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            client.beta.external_plan_id.with_raw_response.set_default_plan_version(
+                external_plan_id="",
+                version=0,
             )
 
 
-class TestAsyncVersions:
+class TestAsyncExternalPlanID:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncOrb) -> None:
-        version = await async_client.plans.versions.create(
-            plan_id="plan_id",
+    async def test_method_create_plan_version(self, async_client: AsyncOrb) -> None:
+        external_plan_id = await async_client.beta.external_plan_id.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         )
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
-        version = await async_client.plans.versions.create(
-            plan_id="plan_id",
+    async def test_method_create_plan_version_with_all_params(self, async_client: AsyncOrb) -> None:
+        external_plan_id = await async_client.beta.external_plan_id.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
             add_adjustments=[
                 {
@@ -363,86 +405,128 @@ class TestAsyncVersions:
             ],
             set_as_default=True,
         )
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
-        response = await async_client.plans.versions.with_raw_response.create(
-            plan_id="plan_id",
+    async def test_raw_response_create_plan_version(self, async_client: AsyncOrb) -> None:
+        response = await async_client.beta.external_plan_id.with_raw_response.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        version = response.parse()
-        assert_matches_type(VersionCreateResponse, version, path=["response"])
+        external_plan_id = response.parse()
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
-        async with async_client.plans.versions.with_streaming_response.create(
-            plan_id="plan_id",
+    async def test_streaming_response_create_plan_version(self, async_client: AsyncOrb) -> None:
+        async with async_client.beta.external_plan_id.with_streaming_response.create_plan_version(
+            external_plan_id="external_plan_id",
             version=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            version = await response.parse()
-            assert_matches_type(VersionCreateResponse, version, path=["response"])
+            external_plan_id = await response.parse()
+            assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            await async_client.plans.versions.with_raw_response.create(
-                plan_id="",
+    async def test_path_params_create_plan_version(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            await async_client.beta.external_plan_id.with_raw_response.create_plan_version(
+                external_plan_id="",
                 version=0,
             )
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncOrb) -> None:
-        version = await async_client.plans.versions.retrieve(
+    async def test_method_fetch_plan_version(self, async_client: AsyncOrb) -> None:
+        external_plan_id = await async_client.beta.external_plan_id.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         )
-        assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncOrb) -> None:
-        response = await async_client.plans.versions.with_raw_response.retrieve(
+    async def test_raw_response_fetch_plan_version(self, async_client: AsyncOrb) -> None:
+        response = await async_client.beta.external_plan_id.with_raw_response.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        version = response.parse()
-        assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+        external_plan_id = response.parse()
+        assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncOrb) -> None:
-        async with async_client.plans.versions.with_streaming_response.retrieve(
+    async def test_streaming_response_fetch_plan_version(self, async_client: AsyncOrb) -> None:
+        async with async_client.beta.external_plan_id.with_streaming_response.fetch_plan_version(
             version="version",
-            plan_id="plan_id",
+            external_plan_id="external_plan_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            version = await response.parse()
-            assert_matches_type(VersionRetrieveResponse, version, path=["response"])
+            external_plan_id = await response.parse()
+            assert_matches_type(PlanVersion, external_plan_id, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `plan_id` but received ''"):
-            await async_client.plans.versions.with_raw_response.retrieve(
+    async def test_path_params_fetch_plan_version(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            await async_client.beta.external_plan_id.with_raw_response.fetch_plan_version(
                 version="version",
-                plan_id="",
+                external_plan_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
-            await async_client.plans.versions.with_raw_response.retrieve(
+            await async_client.beta.external_plan_id.with_raw_response.fetch_plan_version(
                 version="",
-                plan_id="plan_id",
+                external_plan_id="external_plan_id",
+            )
+
+    @parametrize
+    async def test_method_set_default_plan_version(self, async_client: AsyncOrb) -> None:
+        external_plan_id = await async_client.beta.external_plan_id.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        )
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    async def test_raw_response_set_default_plan_version(self, async_client: AsyncOrb) -> None:
+        response = await async_client.beta.external_plan_id.with_raw_response.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_plan_id = response.parse()
+        assert_matches_type(Plan, external_plan_id, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_set_default_plan_version(self, async_client: AsyncOrb) -> None:
+        async with async_client.beta.external_plan_id.with_streaming_response.set_default_plan_version(
+            external_plan_id="external_plan_id",
+            version=0,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_plan_id = await response.parse()
+            assert_matches_type(Plan, external_plan_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_set_default_plan_version(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
+            await async_client.beta.external_plan_id.with_raw_response.set_default_plan_version(
+                external_plan_id="",
+                version=0,
             )

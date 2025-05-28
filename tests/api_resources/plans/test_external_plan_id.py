@@ -104,48 +104,6 @@ class TestExternalPlanID:
                 "",
             )
 
-    @parametrize
-    def test_method_set_default_version(self, client: Orb) -> None:
-        external_plan_id = client.plans.external_plan_id.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
-
-    @parametrize
-    def test_raw_response_set_default_version(self, client: Orb) -> None:
-        response = client.plans.external_plan_id.with_raw_response.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
-
-    @parametrize
-    def test_streaming_response_set_default_version(self, client: Orb) -> None:
-        with client.plans.external_plan_id.with_streaming_response.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            external_plan_id = response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_set_default_version(self, client: Orb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
-            client.plans.external_plan_id.with_raw_response.set_default_version(
-                external_plan_id="",
-                version=0,
-            )
-
 
 class TestAsyncExternalPlanID:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -235,46 +193,4 @@ class TestAsyncExternalPlanID:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
             await async_client.plans.external_plan_id.with_raw_response.fetch(
                 "",
-            )
-
-    @parametrize
-    async def test_method_set_default_version(self, async_client: AsyncOrb) -> None:
-        external_plan_id = await async_client.plans.external_plan_id.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        )
-        assert_matches_type(Plan, external_plan_id, path=["response"])
-
-    @parametrize
-    async def test_raw_response_set_default_version(self, async_client: AsyncOrb) -> None:
-        response = await async_client.plans.external_plan_id.with_raw_response.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_plan_id = response.parse()
-        assert_matches_type(Plan, external_plan_id, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_set_default_version(self, async_client: AsyncOrb) -> None:
-        async with async_client.plans.external_plan_id.with_streaming_response.set_default_version(
-            external_plan_id="external_plan_id",
-            version=0,
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            external_plan_id = await response.parse()
-            assert_matches_type(Plan, external_plan_id, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_set_default_version(self, async_client: AsyncOrb) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_plan_id` but received ''"):
-            await async_client.plans.external_plan_id.with_raw_response.set_default_version(
-                external_plan_id="",
-                version=0,
             )

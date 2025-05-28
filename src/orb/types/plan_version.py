@@ -4,12 +4,13 @@ from typing import List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
-from ...price import Price
-from ...._utils import PropertyInfo
-from ...._models import BaseModel
+from .price import Price
+from .._utils import PropertyInfo
+from .._models import BaseModel
+from .plan_version_phase import PlanVersionPhase
 
 __all__ = [
-    "VersionRetrieveResponse",
+    "PlanVersion",
     "Adjustment",
     "AdjustmentPlanPhaseUsageDiscountAdjustment",
     "AdjustmentPlanPhaseUsageDiscountAdjustmentFilter",
@@ -21,7 +22,6 @@ __all__ = [
     "AdjustmentPlanPhaseMinimumAdjustmentFilter",
     "AdjustmentPlanPhaseMaximumAdjustment",
     "AdjustmentPlanPhaseMaximumAdjustmentFilter",
-    "PlanPhase",
 ]
 
 
@@ -245,26 +245,7 @@ Adjustment: TypeAlias = Annotated[
 ]
 
 
-class PlanPhase(BaseModel):
-    id: str
-
-    description: Optional[str] = None
-
-    duration: Optional[int] = None
-    """How many terms of length `duration_unit` this phase is active for.
-
-    If null, this phase is evergreen and active indefinitely
-    """
-
-    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "semi_annual", "annual"]] = None
-
-    name: str
-
-    order: int
-    """Determines the ordering of the phase in a plan's lifecycle. 1 = first phase."""
-
-
-class VersionRetrieveResponse(BaseModel):
+class PlanVersion(BaseModel):
     adjustments: List[Adjustment]
     """Adjustments for this plan.
 
@@ -273,7 +254,7 @@ class VersionRetrieveResponse(BaseModel):
 
     created_at: datetime
 
-    plan_phases: Optional[List[PlanPhase]] = None
+    plan_phases: Optional[List[PlanVersionPhase]] = None
 
     prices: List[Price]
     """Prices for this plan.

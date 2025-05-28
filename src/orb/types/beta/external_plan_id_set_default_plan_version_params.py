@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["PlanSetDefaultVersionParams"]
+__all__ = ["ExternalPlanIDSetDefaultPlanVersionParams"]
 
 
-class PlanSetDefaultVersionParams(TypedDict, total=False):
+class ExternalPlanIDSetDefaultPlanVersionParams(TypedDict, total=False):
     version: Required[int]
     """Plan version to set as the default."""
