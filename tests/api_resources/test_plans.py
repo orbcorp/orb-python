@@ -56,9 +56,14 @@ class TestPlans:
                     },
                     "conversion_rate": 0,
                     "currency": "currency",
+                    "dimensional_price_configuration": {
+                        "dimension_values": ["string"],
+                        "dimensional_price_group_id": "dimensional_price_group_id",
+                        "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                    },
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 0,
-                    "invoice_grouping_key": "invoice_grouping_key",
+                    "invoice_grouping_key": "x",
                     "invoicing_cycle_configuration": {
                         "duration": 0,
                         "duration_unit": "day",
@@ -282,9 +287,14 @@ class TestAsyncPlans:
                     },
                     "conversion_rate": 0,
                     "currency": "currency",
+                    "dimensional_price_configuration": {
+                        "dimension_values": ["string"],
+                        "dimensional_price_group_id": "dimensional_price_group_id",
+                        "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                    },
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 0,
-                    "invoice_grouping_key": "invoice_grouping_key",
+                    "invoice_grouping_key": "x",
                     "invoicing_cycle_configuration": {
                         "duration": 0,
                         "duration_unit": "day",

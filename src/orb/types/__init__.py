@@ -20,6 +20,7 @@ from .shared import (
 from .invoice import Invoice as Invoice
 from .customer import Customer as Customer
 from .credit_note import CreditNote as CreditNote
+from .plan_version import PlanVersion as PlanVersion
 from .subscription import Subscription as Subscription
 from .subscriptions import Subscriptions as Subscriptions
 from .billable_metric import BillableMetric as BillableMetric
@@ -33,6 +34,7 @@ from .item_update_params import ItemUpdateParams as ItemUpdateParams
 from .metric_list_params import MetricListParams as MetricListParams
 from .plan_create_params import PlanCreateParams as PlanCreateParams
 from .plan_update_params import PlanUpdateParams as PlanUpdateParams
+from .plan_version_phase import PlanVersionPhase as PlanVersionPhase
 from .subscription_usage import SubscriptionUsage as SubscriptionUsage
 from .alert_enable_params import AlertEnableParams as AlertEnableParams
 from .alert_update_params import AlertUpdateParams as AlertUpdateParams
@@ -72,11 +74,14 @@ from .subscription_update_params import SubscriptionUpdateParams as Subscription
 from .subscription_cancel_response import SubscriptionCancelResponse as SubscriptionCancelResponse
 from .subscription_create_response import SubscriptionCreateResponse as SubscriptionCreateResponse
 from .invoice_fetch_upcoming_params import InvoiceFetchUpcomingParams as InvoiceFetchUpcomingParams
+from .price_evaluate_multiple_params import PriceEvaluateMultipleParams as PriceEvaluateMultipleParams
+from .beta_create_plan_version_params import BetaCreatePlanVersionParams as BetaCreatePlanVersionParams
 from .invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse as InvoiceFetchUpcomingResponse
 from .invoice_line_item_create_params import InvoiceLineItemCreateParams as InvoiceLineItemCreateParams
 from .subscription_fetch_costs_params import SubscriptionFetchCostsParams as SubscriptionFetchCostsParams
 from .subscription_fetch_usage_params import SubscriptionFetchUsageParams as SubscriptionFetchUsageParams
 from .alert_create_for_customer_params import AlertCreateForCustomerParams as AlertCreateForCustomerParams
+from .price_evaluate_multiple_response import PriceEvaluateMultipleResponse as PriceEvaluateMultipleResponse
 from .subscription_change_apply_params import SubscriptionChangeApplyParams as SubscriptionChangeApplyParams
 from .subscription_update_trial_params import SubscriptionUpdateTrialParams as SubscriptionUpdateTrialParams
 from .invoice_line_item_create_response import InvoiceLineItemCreateResponse as InvoiceLineItemCreateResponse
@@ -90,6 +95,7 @@ from .subscription_change_cancel_response import SubscriptionChangeCancelRespons
 from .subscription_price_intervals_params import SubscriptionPriceIntervalsParams as SubscriptionPriceIntervalsParams
 from .subscription_trigger_phase_response import SubscriptionTriggerPhaseResponse as SubscriptionTriggerPhaseResponse
 from .alert_create_for_subscription_params import AlertCreateForSubscriptionParams as AlertCreateForSubscriptionParams
+from .beta_set_default_plan_version_params import BetaSetDefaultPlanVersionParams as BetaSetDefaultPlanVersionParams
 from .subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse as SubscriptionFetchScheduleResponse
 from .customer_update_by_external_id_params import CustomerUpdateByExternalIDParams as CustomerUpdateByExternalIDParams
 from .dimensional_price_group_create_params import (

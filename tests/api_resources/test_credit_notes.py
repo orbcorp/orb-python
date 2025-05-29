@@ -28,6 +28,7 @@ class TestCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
@@ -40,8 +41,8 @@ class TestCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
-            memo="An optional memo for my credit note.",
             reason="duplicate",
+            memo="An optional memo for my credit note.",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
@@ -54,6 +55,7 @@ class TestCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         )
 
         assert response.is_closed is True
@@ -70,6 +72,7 @@ class TestCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,6 +170,7 @@ class TestAsyncCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
@@ -179,8 +183,8 @@ class TestAsyncCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
-            memo="An optional memo for my credit note.",
             reason="duplicate",
+            memo="An optional memo for my credit note.",
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
@@ -193,6 +197,7 @@ class TestAsyncCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         )
 
         assert response.is_closed is True
@@ -209,6 +214,7 @@ class TestAsyncCreditNotes:
                     "invoice_line_item_id": "4khy3nwzktxv7",
                 }
             ],
+            reason="duplicate",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

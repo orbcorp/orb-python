@@ -85,6 +85,7 @@ class Subscriptions(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -96,6 +97,7 @@ class Subscriptions(SyncAPIResource):
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -390,6 +392,9 @@ class Subscriptions(SyncAPIResource):
               by its redemption code, or cannot be redeemed, an error response will be
               returned and the subscription creation or plan change will not be scheduled.
 
+          currency: The currency to use for the subscription. If not specified, the invoicing
+              currency for the plan will be used.
+
           default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
               is not provided, it is determined by the plan configuration.
 
@@ -410,6 +415,9 @@ class Subscriptions(SyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name to use for the subscription. If not specified, the plan name will be
+              used.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -469,6 +477,7 @@ class Subscriptions(SyncAPIResource):
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
+                    "currency": currency,
                     "customer_id": customer_id,
                     "default_invoice_memo": default_invoice_memo,
                     "end_date": end_date,
@@ -480,6 +489,7 @@ class Subscriptions(SyncAPIResource):
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
+                    "name": name,
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
@@ -1956,7 +1966,7 @@ class Subscriptions(SyncAPIResource):
               `immediate` unless it's explicitly set to `upcoming_invoice`.
 
           effective_date: The date that the quantity change should take effect, localized to the
-              customer's timezone. Ifthis parameter is not passed in, the quantity change is
+              customer's timezone. If this parameter is not passed in, the quantity change is
               effective according to `change_option`.
 
           extra_headers: Send extra headers
@@ -2099,6 +2109,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         credits_overage_rate: Optional[float] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | NotGiven = NOT_GIVEN,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
@@ -2110,6 +2121,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         initial_phase_order: Optional[int] | NotGiven = NOT_GIVEN,
         invoicing_threshold: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        name: Optional[str] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         per_credit_overage_amount: Optional[float] | NotGiven = NOT_GIVEN,
         plan_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2404,6 +2416,9 @@ class AsyncSubscriptions(AsyncAPIResource):
               by its redemption code, or cannot be redeemed, an error response will be
               returned and the subscription creation or plan change will not be scheduled.
 
+          currency: The currency to use for the subscription. If not specified, the invoicing
+              currency for the plan will be used.
+
           default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
               is not provided, it is determined by the plan configuration.
 
@@ -2424,6 +2439,9 @@ class AsyncSubscriptions(AsyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name to use for the subscription. If not specified, the plan name will be
+              used.
 
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
@@ -2483,6 +2501,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
                     "credits_overage_rate": credits_overage_rate,
+                    "currency": currency,
                     "customer_id": customer_id,
                     "default_invoice_memo": default_invoice_memo,
                     "end_date": end_date,
@@ -2494,6 +2513,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "initial_phase_order": initial_phase_order,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
+                    "name": name,
                     "net_terms": net_terms,
                     "per_credit_overage_amount": per_credit_overage_amount,
                     "plan_id": plan_id,
@@ -3970,7 +3990,7 @@ class AsyncSubscriptions(AsyncAPIResource):
               `immediate` unless it's explicitly set to `upcoming_invoice`.
 
           effective_date: The date that the quantity change should take effect, localized to the
-              customer's timezone. Ifthis parameter is not passed in, the quantity change is
+              customer's timezone. If this parameter is not passed in, the quantity change is
               effective according to `change_option`.
 
           extra_headers: Send extra headers

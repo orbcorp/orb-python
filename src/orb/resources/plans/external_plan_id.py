@@ -57,7 +57,7 @@ class ExternalPlanID(SyncAPIResource):
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
 
-        Other fields on a customer are currently immutable.
+        Other fields on a plan are currently immutable.
 
         Args:
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
@@ -188,7 +188,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         This endpoint can be used to update the `external_plan_id`, and `metadata` of an
         existing plan.
 
-        Other fields on a customer are currently immutable.
+        Other fields on a plan are currently immutable.
 
         Args:
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system

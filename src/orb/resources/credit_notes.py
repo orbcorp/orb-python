@@ -46,9 +46,8 @@ class CreditNotes(SyncAPIResource):
         self,
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
+        reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
         memo: Optional[str] | NotGiven = NOT_GIVEN,
-        reason: Optional[Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"]]
-        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -62,9 +61,9 @@ class CreditNotes(SyncAPIResource):
         [`Credit Note`](/invoicing/credit-notes).
 
         Args:
-          memo: An optional memo to attach to the credit note.
-
           reason: An optional reason for the credit note.
+
+          memo: An optional memo to attach to the credit note.
 
           extra_headers: Send extra headers
 
@@ -81,8 +80,8 @@ class CreditNotes(SyncAPIResource):
             body=maybe_transform(
                 {
                     "line_items": line_items,
-                    "memo": memo,
                     "reason": reason,
+                    "memo": memo,
                 },
                 credit_note_create_params.CreditNoteCreateParams,
             ),
@@ -214,9 +213,8 @@ class AsyncCreditNotes(AsyncAPIResource):
         self,
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
+        reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
         memo: Optional[str] | NotGiven = NOT_GIVEN,
-        reason: Optional[Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"]]
-        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -230,9 +228,9 @@ class AsyncCreditNotes(AsyncAPIResource):
         [`Credit Note`](/invoicing/credit-notes).
 
         Args:
-          memo: An optional memo to attach to the credit note.
-
           reason: An optional reason for the credit note.
+
+          memo: An optional memo to attach to the credit note.
 
           extra_headers: Send extra headers
 
@@ -249,8 +247,8 @@ class AsyncCreditNotes(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "line_items": line_items,
-                    "memo": memo,
                     "reason": reason,
+                    "memo": memo,
                 },
                 credit_note_create_params.CreditNoteCreateParams,
             ),

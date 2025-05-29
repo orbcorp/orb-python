@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.20.0 (2025-05-28)
+
+Full Changelog: [v3.19.4...v3.20.0](https://github.com/orbcorp/orb-python/compare/v3.19.4...v3.20.0)
+
+### Features
+
+* **api:** api update ([fdbf7cd](https://github.com/orbcorp/orb-python/commit/fdbf7cdf4722807ab09f34d7fdc99b7858b8c516))
+* **api:** api update ([3d10507](https://github.com/orbcorp/orb-python/commit/3d10507620fa336baa4832e15bcea21d90f238bb))
+* **api:** manual updates ([28fd390](https://github.com/orbcorp/orb-python/commit/28fd390a506a484ea47673df0ce56a9b391bf150))
+
+
+### Chores
+
+* **docs:** grammar improvements ([a64eaa1](https://github.com/orbcorp/orb-python/commit/a64eaa14476b601c1a2d97761dd112d3fe90161e))
+
 ## 3.19.4 (2025-05-15)
 
 Full Changelog: [v3.19.3...v3.19.4](https://github.com/orbcorp/orb-python/compare/v3.19.3...v3.19.4)

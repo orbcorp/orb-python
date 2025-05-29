@@ -16,41 +16,53 @@ __all__ = [
     "UnitPriceBillableMetric",
     "UnitPriceBillingCycleConfiguration",
     "UnitPriceCreditAllocation",
+    "UnitPriceCreditAllocationCustomExpiration",
     "UnitPriceInvoicingCycleConfiguration",
     "UnitPriceItem",
     "UnitPriceMaximum",
+    "UnitPriceMaximumFilter",
     "UnitPriceMinimum",
+    "UnitPriceMinimumFilter",
     "UnitPriceUnitConfig",
     "UnitPriceDimensionalPriceConfiguration",
     "PackagePrice",
     "PackagePriceBillableMetric",
     "PackagePriceBillingCycleConfiguration",
     "PackagePriceCreditAllocation",
+    "PackagePriceCreditAllocationCustomExpiration",
     "PackagePriceInvoicingCycleConfiguration",
     "PackagePriceItem",
     "PackagePriceMaximum",
+    "PackagePriceMaximumFilter",
     "PackagePriceMinimum",
+    "PackagePriceMinimumFilter",
     "PackagePricePackageConfig",
     "PackagePriceDimensionalPriceConfiguration",
     "MatrixPrice",
     "MatrixPriceBillableMetric",
     "MatrixPriceBillingCycleConfiguration",
     "MatrixPriceCreditAllocation",
+    "MatrixPriceCreditAllocationCustomExpiration",
     "MatrixPriceInvoicingCycleConfiguration",
     "MatrixPriceItem",
     "MatrixPriceMatrixConfig",
     "MatrixPriceMatrixConfigMatrixValue",
     "MatrixPriceMaximum",
+    "MatrixPriceMaximumFilter",
     "MatrixPriceMinimum",
+    "MatrixPriceMinimumFilter",
     "MatrixPriceDimensionalPriceConfiguration",
     "TieredPrice",
     "TieredPriceBillableMetric",
     "TieredPriceBillingCycleConfiguration",
     "TieredPriceCreditAllocation",
+    "TieredPriceCreditAllocationCustomExpiration",
     "TieredPriceInvoicingCycleConfiguration",
     "TieredPriceItem",
     "TieredPriceMaximum",
+    "TieredPriceMaximumFilter",
     "TieredPriceMinimum",
+    "TieredPriceMinimumFilter",
     "TieredPriceTieredConfig",
     "TieredPriceTieredConfigTier",
     "TieredPriceDimensionalPriceConfiguration",
@@ -58,10 +70,13 @@ __all__ = [
     "TieredBpsPriceBillableMetric",
     "TieredBpsPriceBillingCycleConfiguration",
     "TieredBpsPriceCreditAllocation",
+    "TieredBpsPriceCreditAllocationCustomExpiration",
     "TieredBpsPriceInvoicingCycleConfiguration",
     "TieredBpsPriceItem",
     "TieredBpsPriceMaximum",
+    "TieredBpsPriceMaximumFilter",
     "TieredBpsPriceMinimum",
+    "TieredBpsPriceMinimumFilter",
     "TieredBpsPriceTieredBpsConfig",
     "TieredBpsPriceTieredBpsConfigTier",
     "TieredBpsPriceDimensionalPriceConfiguration",
@@ -70,10 +85,13 @@ __all__ = [
     "BpsPriceBillingCycleConfiguration",
     "BpsPriceBpsConfig",
     "BpsPriceCreditAllocation",
+    "BpsPriceCreditAllocationCustomExpiration",
     "BpsPriceInvoicingCycleConfiguration",
     "BpsPriceItem",
     "BpsPriceMaximum",
+    "BpsPriceMaximumFilter",
     "BpsPriceMinimum",
+    "BpsPriceMinimumFilter",
     "BpsPriceDimensionalPriceConfiguration",
     "BulkBpsPrice",
     "BulkBpsPriceBillableMetric",
@@ -81,10 +99,13 @@ __all__ = [
     "BulkBpsPriceBulkBpsConfig",
     "BulkBpsPriceBulkBpsConfigTier",
     "BulkBpsPriceCreditAllocation",
+    "BulkBpsPriceCreditAllocationCustomExpiration",
     "BulkBpsPriceInvoicingCycleConfiguration",
     "BulkBpsPriceItem",
     "BulkBpsPriceMaximum",
+    "BulkBpsPriceMaximumFilter",
     "BulkBpsPriceMinimum",
+    "BulkBpsPriceMinimumFilter",
     "BulkBpsPriceDimensionalPriceConfiguration",
     "BulkPrice",
     "BulkPriceBillableMetric",
@@ -92,192 +113,255 @@ __all__ = [
     "BulkPriceBulkConfig",
     "BulkPriceBulkConfigTier",
     "BulkPriceCreditAllocation",
+    "BulkPriceCreditAllocationCustomExpiration",
     "BulkPriceInvoicingCycleConfiguration",
     "BulkPriceItem",
     "BulkPriceMaximum",
+    "BulkPriceMaximumFilter",
     "BulkPriceMinimum",
+    "BulkPriceMinimumFilter",
     "BulkPriceDimensionalPriceConfiguration",
     "ThresholdTotalAmountPrice",
     "ThresholdTotalAmountPriceBillableMetric",
     "ThresholdTotalAmountPriceBillingCycleConfiguration",
     "ThresholdTotalAmountPriceCreditAllocation",
+    "ThresholdTotalAmountPriceCreditAllocationCustomExpiration",
     "ThresholdTotalAmountPriceInvoicingCycleConfiguration",
     "ThresholdTotalAmountPriceItem",
     "ThresholdTotalAmountPriceMaximum",
+    "ThresholdTotalAmountPriceMaximumFilter",
     "ThresholdTotalAmountPriceMinimum",
+    "ThresholdTotalAmountPriceMinimumFilter",
     "ThresholdTotalAmountPriceDimensionalPriceConfiguration",
     "TieredPackagePrice",
     "TieredPackagePriceBillableMetric",
     "TieredPackagePriceBillingCycleConfiguration",
     "TieredPackagePriceCreditAllocation",
+    "TieredPackagePriceCreditAllocationCustomExpiration",
     "TieredPackagePriceInvoicingCycleConfiguration",
     "TieredPackagePriceItem",
     "TieredPackagePriceMaximum",
+    "TieredPackagePriceMaximumFilter",
     "TieredPackagePriceMinimum",
+    "TieredPackagePriceMinimumFilter",
     "TieredPackagePriceDimensionalPriceConfiguration",
     "GroupedTieredPrice",
     "GroupedTieredPriceBillableMetric",
     "GroupedTieredPriceBillingCycleConfiguration",
     "GroupedTieredPriceCreditAllocation",
+    "GroupedTieredPriceCreditAllocationCustomExpiration",
     "GroupedTieredPriceInvoicingCycleConfiguration",
     "GroupedTieredPriceItem",
     "GroupedTieredPriceMaximum",
+    "GroupedTieredPriceMaximumFilter",
     "GroupedTieredPriceMinimum",
+    "GroupedTieredPriceMinimumFilter",
     "GroupedTieredPriceDimensionalPriceConfiguration",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceBillableMetric",
     "TieredWithMinimumPriceBillingCycleConfiguration",
     "TieredWithMinimumPriceCreditAllocation",
+    "TieredWithMinimumPriceCreditAllocationCustomExpiration",
     "TieredWithMinimumPriceInvoicingCycleConfiguration",
     "TieredWithMinimumPriceItem",
     "TieredWithMinimumPriceMaximum",
+    "TieredWithMinimumPriceMaximumFilter",
     "TieredWithMinimumPriceMinimum",
+    "TieredWithMinimumPriceMinimumFilter",
     "TieredWithMinimumPriceDimensionalPriceConfiguration",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceBillableMetric",
     "TieredPackageWithMinimumPriceBillingCycleConfiguration",
     "TieredPackageWithMinimumPriceCreditAllocation",
+    "TieredPackageWithMinimumPriceCreditAllocationCustomExpiration",
     "TieredPackageWithMinimumPriceInvoicingCycleConfiguration",
     "TieredPackageWithMinimumPriceItem",
     "TieredPackageWithMinimumPriceMaximum",
+    "TieredPackageWithMinimumPriceMaximumFilter",
     "TieredPackageWithMinimumPriceMinimum",
+    "TieredPackageWithMinimumPriceMinimumFilter",
     "TieredPackageWithMinimumPriceDimensionalPriceConfiguration",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceBillableMetric",
     "PackageWithAllocationPriceBillingCycleConfiguration",
     "PackageWithAllocationPriceCreditAllocation",
+    "PackageWithAllocationPriceCreditAllocationCustomExpiration",
     "PackageWithAllocationPriceInvoicingCycleConfiguration",
     "PackageWithAllocationPriceItem",
     "PackageWithAllocationPriceMaximum",
+    "PackageWithAllocationPriceMaximumFilter",
     "PackageWithAllocationPriceMinimum",
+    "PackageWithAllocationPriceMinimumFilter",
     "PackageWithAllocationPriceDimensionalPriceConfiguration",
     "UnitWithPercentPrice",
     "UnitWithPercentPriceBillableMetric",
     "UnitWithPercentPriceBillingCycleConfiguration",
     "UnitWithPercentPriceCreditAllocation",
+    "UnitWithPercentPriceCreditAllocationCustomExpiration",
     "UnitWithPercentPriceInvoicingCycleConfiguration",
     "UnitWithPercentPriceItem",
     "UnitWithPercentPriceMaximum",
+    "UnitWithPercentPriceMaximumFilter",
     "UnitWithPercentPriceMinimum",
+    "UnitWithPercentPriceMinimumFilter",
     "UnitWithPercentPriceDimensionalPriceConfiguration",
     "MatrixWithAllocationPrice",
     "MatrixWithAllocationPriceBillableMetric",
     "MatrixWithAllocationPriceBillingCycleConfiguration",
     "MatrixWithAllocationPriceCreditAllocation",
+    "MatrixWithAllocationPriceCreditAllocationCustomExpiration",
     "MatrixWithAllocationPriceInvoicingCycleConfiguration",
     "MatrixWithAllocationPriceItem",
     "MatrixWithAllocationPriceMatrixWithAllocationConfig",
     "MatrixWithAllocationPriceMatrixWithAllocationConfigMatrixValue",
     "MatrixWithAllocationPriceMaximum",
+    "MatrixWithAllocationPriceMaximumFilter",
     "MatrixWithAllocationPriceMinimum",
+    "MatrixWithAllocationPriceMinimumFilter",
     "MatrixWithAllocationPriceDimensionalPriceConfiguration",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceBillableMetric",
     "TieredWithProrationPriceBillingCycleConfiguration",
     "TieredWithProrationPriceCreditAllocation",
+    "TieredWithProrationPriceCreditAllocationCustomExpiration",
     "TieredWithProrationPriceInvoicingCycleConfiguration",
     "TieredWithProrationPriceItem",
     "TieredWithProrationPriceMaximum",
+    "TieredWithProrationPriceMaximumFilter",
     "TieredWithProrationPriceMinimum",
+    "TieredWithProrationPriceMinimumFilter",
     "TieredWithProrationPriceDimensionalPriceConfiguration",
     "UnitWithProrationPrice",
     "UnitWithProrationPriceBillableMetric",
     "UnitWithProrationPriceBillingCycleConfiguration",
     "UnitWithProrationPriceCreditAllocation",
+    "UnitWithProrationPriceCreditAllocationCustomExpiration",
     "UnitWithProrationPriceInvoicingCycleConfiguration",
     "UnitWithProrationPriceItem",
     "UnitWithProrationPriceMaximum",
+    "UnitWithProrationPriceMaximumFilter",
     "UnitWithProrationPriceMinimum",
+    "UnitWithProrationPriceMinimumFilter",
     "UnitWithProrationPriceDimensionalPriceConfiguration",
     "GroupedAllocationPrice",
     "GroupedAllocationPriceBillableMetric",
     "GroupedAllocationPriceBillingCycleConfiguration",
     "GroupedAllocationPriceCreditAllocation",
+    "GroupedAllocationPriceCreditAllocationCustomExpiration",
     "GroupedAllocationPriceInvoicingCycleConfiguration",
     "GroupedAllocationPriceItem",
     "GroupedAllocationPriceMaximum",
+    "GroupedAllocationPriceMaximumFilter",
     "GroupedAllocationPriceMinimum",
+    "GroupedAllocationPriceMinimumFilter",
     "GroupedAllocationPriceDimensionalPriceConfiguration",
     "GroupedWithProratedMinimumPrice",
     "GroupedWithProratedMinimumPriceBillableMetric",
     "GroupedWithProratedMinimumPriceBillingCycleConfiguration",
     "GroupedWithProratedMinimumPriceCreditAllocation",
+    "GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration",
     "GroupedWithProratedMinimumPriceInvoicingCycleConfiguration",
     "GroupedWithProratedMinimumPriceItem",
     "GroupedWithProratedMinimumPriceMaximum",
+    "GroupedWithProratedMinimumPriceMaximumFilter",
     "GroupedWithProratedMinimumPriceMinimum",
+    "GroupedWithProratedMinimumPriceMinimumFilter",
     "GroupedWithProratedMinimumPriceDimensionalPriceConfiguration",
     "GroupedWithMeteredMinimumPrice",
     "GroupedWithMeteredMinimumPriceBillableMetric",
     "GroupedWithMeteredMinimumPriceBillingCycleConfiguration",
     "GroupedWithMeteredMinimumPriceCreditAllocation",
+    "GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration",
     "GroupedWithMeteredMinimumPriceInvoicingCycleConfiguration",
     "GroupedWithMeteredMinimumPriceItem",
     "GroupedWithMeteredMinimumPriceMaximum",
+    "GroupedWithMeteredMinimumPriceMaximumFilter",
     "GroupedWithMeteredMinimumPriceMinimum",
+    "GroupedWithMeteredMinimumPriceMinimumFilter",
     "GroupedWithMeteredMinimumPriceDimensionalPriceConfiguration",
     "MatrixWithDisplayNamePrice",
     "MatrixWithDisplayNamePriceBillableMetric",
     "MatrixWithDisplayNamePriceBillingCycleConfiguration",
     "MatrixWithDisplayNamePriceCreditAllocation",
+    "MatrixWithDisplayNamePriceCreditAllocationCustomExpiration",
     "MatrixWithDisplayNamePriceInvoicingCycleConfiguration",
     "MatrixWithDisplayNamePriceItem",
     "MatrixWithDisplayNamePriceMaximum",
+    "MatrixWithDisplayNamePriceMaximumFilter",
     "MatrixWithDisplayNamePriceMinimum",
+    "MatrixWithDisplayNamePriceMinimumFilter",
     "MatrixWithDisplayNamePriceDimensionalPriceConfiguration",
     "BulkWithProrationPrice",
     "BulkWithProrationPriceBillableMetric",
     "BulkWithProrationPriceBillingCycleConfiguration",
     "BulkWithProrationPriceCreditAllocation",
+    "BulkWithProrationPriceCreditAllocationCustomExpiration",
     "BulkWithProrationPriceInvoicingCycleConfiguration",
     "BulkWithProrationPriceItem",
     "BulkWithProrationPriceMaximum",
+    "BulkWithProrationPriceMaximumFilter",
     "BulkWithProrationPriceMinimum",
+    "BulkWithProrationPriceMinimumFilter",
     "BulkWithProrationPriceDimensionalPriceConfiguration",
     "GroupedTieredPackagePrice",
     "GroupedTieredPackagePriceBillableMetric",
     "GroupedTieredPackagePriceBillingCycleConfiguration",
     "GroupedTieredPackagePriceCreditAllocation",
+    "GroupedTieredPackagePriceCreditAllocationCustomExpiration",
     "GroupedTieredPackagePriceInvoicingCycleConfiguration",
     "GroupedTieredPackagePriceItem",
     "GroupedTieredPackagePriceMaximum",
+    "GroupedTieredPackagePriceMaximumFilter",
     "GroupedTieredPackagePriceMinimum",
+    "GroupedTieredPackagePriceMinimumFilter",
     "GroupedTieredPackagePriceDimensionalPriceConfiguration",
     "MaxGroupTieredPackagePrice",
     "MaxGroupTieredPackagePriceBillableMetric",
     "MaxGroupTieredPackagePriceBillingCycleConfiguration",
     "MaxGroupTieredPackagePriceCreditAllocation",
+    "MaxGroupTieredPackagePriceCreditAllocationCustomExpiration",
     "MaxGroupTieredPackagePriceInvoicingCycleConfiguration",
     "MaxGroupTieredPackagePriceItem",
     "MaxGroupTieredPackagePriceMaximum",
+    "MaxGroupTieredPackagePriceMaximumFilter",
     "MaxGroupTieredPackagePriceMinimum",
+    "MaxGroupTieredPackagePriceMinimumFilter",
     "MaxGroupTieredPackagePriceDimensionalPriceConfiguration",
     "ScalableMatrixWithUnitPricingPrice",
     "ScalableMatrixWithUnitPricingPriceBillableMetric",
     "ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration",
     "ScalableMatrixWithUnitPricingPriceCreditAllocation",
+    "ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration",
     "ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration",
     "ScalableMatrixWithUnitPricingPriceItem",
     "ScalableMatrixWithUnitPricingPriceMaximum",
+    "ScalableMatrixWithUnitPricingPriceMaximumFilter",
     "ScalableMatrixWithUnitPricingPriceMinimum",
+    "ScalableMatrixWithUnitPricingPriceMinimumFilter",
     "ScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration",
     "ScalableMatrixWithTieredPricingPrice",
     "ScalableMatrixWithTieredPricingPriceBillableMetric",
     "ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration",
     "ScalableMatrixWithTieredPricingPriceCreditAllocation",
+    "ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration",
     "ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration",
     "ScalableMatrixWithTieredPricingPriceItem",
     "ScalableMatrixWithTieredPricingPriceMaximum",
+    "ScalableMatrixWithTieredPricingPriceMaximumFilter",
     "ScalableMatrixWithTieredPricingPriceMinimum",
+    "ScalableMatrixWithTieredPricingPriceMinimumFilter",
     "ScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration",
     "CumulativeGroupedBulkPrice",
     "CumulativeGroupedBulkPriceBillableMetric",
     "CumulativeGroupedBulkPriceBillingCycleConfiguration",
     "CumulativeGroupedBulkPriceCreditAllocation",
+    "CumulativeGroupedBulkPriceCreditAllocationCustomExpiration",
     "CumulativeGroupedBulkPriceInvoicingCycleConfiguration",
     "CumulativeGroupedBulkPriceItem",
     "CumulativeGroupedBulkPriceMaximum",
+    "CumulativeGroupedBulkPriceMaximumFilter",
     "CumulativeGroupedBulkPriceMinimum",
+    "CumulativeGroupedBulkPriceMinimumFilter",
     "CumulativeGroupedBulkPriceDimensionalPriceConfiguration",
 ]
 
@@ -292,10 +376,18 @@ class UnitPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitPriceInvoicingCycleConfiguration(BaseModel):
@@ -310,6 +402,17 @@ class UnitPriceItem(BaseModel):
     name: str
 
 
+class UnitPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class UnitPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -317,8 +420,22 @@ class UnitPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[UnitPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class UnitPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class UnitPriceMinimum(BaseModel):
@@ -327,6 +444,9 @@ class UnitPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[UnitPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -409,10 +529,18 @@ class PackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class PackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class PackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[PackagePriceCreditAllocationCustomExpiration] = None
 
 
 class PackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -427,6 +555,17 @@ class PackagePriceItem(BaseModel):
     name: str
 
 
+class PackagePriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class PackagePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -434,8 +573,22 @@ class PackagePriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[PackagePriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class PackagePriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class PackagePriceMinimum(BaseModel):
@@ -444,6 +597,9 @@ class PackagePriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[PackagePriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -533,10 +689,18 @@ class MatrixPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixPriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixPriceInvoicingCycleConfiguration(BaseModel):
@@ -574,6 +738,17 @@ class MatrixPriceMatrixConfig(BaseModel):
     """Matrix values for specified matrix grouping keys"""
 
 
+class MatrixPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class MatrixPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -581,8 +756,22 @@ class MatrixPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[MatrixPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class MatrixPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class MatrixPriceMinimum(BaseModel):
@@ -591,6 +780,9 @@ class MatrixPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[MatrixPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -668,10 +860,18 @@ class TieredPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPriceInvoicingCycleConfiguration(BaseModel):
@@ -686,6 +886,17 @@ class TieredPriceItem(BaseModel):
     name: str
 
 
+class TieredPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -693,8 +904,22 @@ class TieredPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredPriceMinimum(BaseModel):
@@ -703,6 +928,9 @@ class TieredPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -796,10 +1024,18 @@ class TieredBpsPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredBpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredBpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredBpsPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredBpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -814,6 +1050,17 @@ class TieredBpsPriceItem(BaseModel):
     name: str
 
 
+class TieredBpsPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredBpsPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -821,8 +1068,22 @@ class TieredBpsPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredBpsPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredBpsPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredBpsPriceMinimum(BaseModel):
@@ -831,6 +1092,9 @@ class TieredBpsPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredBpsPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -938,10 +1202,18 @@ class BpsPriceBpsConfig(BaseModel):
     """Optional currency amount maximum to cap spend per event"""
 
 
+class BpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BpsPriceCreditAllocationCustomExpiration] = None
 
 
 class BpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -956,6 +1228,17 @@ class BpsPriceItem(BaseModel):
     name: str
 
 
+class BpsPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class BpsPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -963,8 +1246,22 @@ class BpsPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[BpsPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class BpsPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class BpsPriceMinimum(BaseModel):
@@ -973,6 +1270,9 @@ class BpsPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[BpsPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1069,10 +1369,18 @@ class BulkBpsPriceBulkBpsConfig(BaseModel):
     """
 
 
+class BulkBpsPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkBpsPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkBpsPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkBpsPriceInvoicingCycleConfiguration(BaseModel):
@@ -1087,6 +1395,17 @@ class BulkBpsPriceItem(BaseModel):
     name: str
 
 
+class BulkBpsPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class BulkBpsPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1094,8 +1413,22 @@ class BulkBpsPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[BulkBpsPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class BulkBpsPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class BulkBpsPriceMinimum(BaseModel):
@@ -1104,6 +1437,9 @@ class BulkBpsPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[BulkBpsPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1194,10 +1530,18 @@ class BulkPriceBulkConfig(BaseModel):
     """Bulk tiers for rating based on total usage volume"""
 
 
+class BulkPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkPriceInvoicingCycleConfiguration(BaseModel):
@@ -1212,6 +1556,17 @@ class BulkPriceItem(BaseModel):
     name: str
 
 
+class BulkPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class BulkPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1219,8 +1574,22 @@ class BulkPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[BulkPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class BulkPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class BulkPriceMinimum(BaseModel):
@@ -1229,6 +1598,9 @@ class BulkPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[BulkPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1306,10 +1678,18 @@ class ThresholdTotalAmountPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ThresholdTotalAmountPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ThresholdTotalAmountPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ThresholdTotalAmountPriceCreditAllocationCustomExpiration] = None
 
 
 class ThresholdTotalAmountPriceInvoicingCycleConfiguration(BaseModel):
@@ -1324,6 +1704,17 @@ class ThresholdTotalAmountPriceItem(BaseModel):
     name: str
 
 
+class ThresholdTotalAmountPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class ThresholdTotalAmountPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1331,8 +1722,22 @@ class ThresholdTotalAmountPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[ThresholdTotalAmountPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class ThresholdTotalAmountPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class ThresholdTotalAmountPriceMinimum(BaseModel):
@@ -1341,6 +1746,9 @@ class ThresholdTotalAmountPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[ThresholdTotalAmountPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1418,10 +1826,18 @@ class TieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -1436,6 +1852,17 @@ class TieredPackagePriceItem(BaseModel):
     name: str
 
 
+class TieredPackagePriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredPackagePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1443,8 +1870,22 @@ class TieredPackagePriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredPackagePriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredPackagePriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredPackagePriceMinimum(BaseModel):
@@ -1453,6 +1894,9 @@ class TieredPackagePriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredPackagePriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1530,10 +1974,18 @@ class GroupedTieredPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedTieredPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedTieredPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedTieredPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedTieredPriceInvoicingCycleConfiguration(BaseModel):
@@ -1548,6 +2000,17 @@ class GroupedTieredPriceItem(BaseModel):
     name: str
 
 
+class GroupedTieredPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class GroupedTieredPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1555,8 +2018,22 @@ class GroupedTieredPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[GroupedTieredPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class GroupedTieredPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class GroupedTieredPriceMinimum(BaseModel):
@@ -1565,6 +2042,9 @@ class GroupedTieredPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[GroupedTieredPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1642,10 +2122,18 @@ class TieredWithMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredWithMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredWithMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -1660,6 +2148,17 @@ class TieredWithMinimumPriceItem(BaseModel):
     name: str
 
 
+class TieredWithMinimumPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredWithMinimumPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1667,8 +2166,22 @@ class TieredWithMinimumPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredWithMinimumPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredWithMinimumPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredWithMinimumPriceMinimum(BaseModel):
@@ -1677,6 +2190,9 @@ class TieredWithMinimumPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredWithMinimumPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1754,10 +2270,18 @@ class TieredPackageWithMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredPackageWithMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredPackageWithMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredPackageWithMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredPackageWithMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -1772,6 +2296,17 @@ class TieredPackageWithMinimumPriceItem(BaseModel):
     name: str
 
 
+class TieredPackageWithMinimumPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredPackageWithMinimumPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1779,8 +2314,22 @@ class TieredPackageWithMinimumPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredPackageWithMinimumPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredPackageWithMinimumPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredPackageWithMinimumPriceMinimum(BaseModel):
@@ -1789,6 +2338,9 @@ class TieredPackageWithMinimumPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredPackageWithMinimumPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1866,10 +2418,18 @@ class PackageWithAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class PackageWithAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class PackageWithAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[PackageWithAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class PackageWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -1884,6 +2444,17 @@ class PackageWithAllocationPriceItem(BaseModel):
     name: str
 
 
+class PackageWithAllocationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class PackageWithAllocationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -1891,8 +2462,22 @@ class PackageWithAllocationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[PackageWithAllocationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class PackageWithAllocationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class PackageWithAllocationPriceMinimum(BaseModel):
@@ -1901,6 +2486,9 @@ class PackageWithAllocationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[PackageWithAllocationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -1978,10 +2566,18 @@ class UnitWithPercentPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitWithPercentPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithPercentPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitWithPercentPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitWithPercentPriceInvoicingCycleConfiguration(BaseModel):
@@ -1996,6 +2592,17 @@ class UnitWithPercentPriceItem(BaseModel):
     name: str
 
 
+class UnitWithPercentPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class UnitWithPercentPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2003,8 +2610,22 @@ class UnitWithPercentPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[UnitWithPercentPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class UnitWithPercentPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class UnitWithPercentPriceMinimum(BaseModel):
@@ -2013,6 +2634,9 @@ class UnitWithPercentPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[UnitWithPercentPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2090,10 +2714,18 @@ class MatrixWithAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixWithAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixWithAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixWithAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixWithAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2134,6 +2766,17 @@ class MatrixWithAllocationPriceMatrixWithAllocationConfig(BaseModel):
     """Matrix values for specified matrix grouping keys"""
 
 
+class MatrixWithAllocationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class MatrixWithAllocationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2141,8 +2784,22 @@ class MatrixWithAllocationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[MatrixWithAllocationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class MatrixWithAllocationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class MatrixWithAllocationPriceMinimum(BaseModel):
@@ -2151,6 +2808,9 @@ class MatrixWithAllocationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[MatrixWithAllocationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2228,10 +2888,18 @@ class TieredWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class TieredWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class TieredWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[TieredWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class TieredWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2246,6 +2914,17 @@ class TieredWithProrationPriceItem(BaseModel):
     name: str
 
 
+class TieredWithProrationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class TieredWithProrationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2253,8 +2932,22 @@ class TieredWithProrationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[TieredWithProrationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class TieredWithProrationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class TieredWithProrationPriceMinimum(BaseModel):
@@ -2263,6 +2956,9 @@ class TieredWithProrationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[TieredWithProrationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2340,10 +3036,18 @@ class UnitWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class UnitWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class UnitWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[UnitWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class UnitWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2358,6 +3062,17 @@ class UnitWithProrationPriceItem(BaseModel):
     name: str
 
 
+class UnitWithProrationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class UnitWithProrationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2365,8 +3080,22 @@ class UnitWithProrationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[UnitWithProrationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class UnitWithProrationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class UnitWithProrationPriceMinimum(BaseModel):
@@ -2375,6 +3104,9 @@ class UnitWithProrationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[UnitWithProrationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2452,10 +3184,18 @@ class GroupedAllocationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedAllocationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedAllocationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedAllocationPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedAllocationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2470,6 +3210,17 @@ class GroupedAllocationPriceItem(BaseModel):
     name: str
 
 
+class GroupedAllocationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class GroupedAllocationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2477,8 +3228,22 @@ class GroupedAllocationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[GroupedAllocationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class GroupedAllocationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class GroupedAllocationPriceMinimum(BaseModel):
@@ -2487,6 +3252,9 @@ class GroupedAllocationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[GroupedAllocationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2564,10 +3332,18 @@ class GroupedWithProratedMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedWithProratedMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedWithProratedMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedWithProratedMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -2582,6 +3358,17 @@ class GroupedWithProratedMinimumPriceItem(BaseModel):
     name: str
 
 
+class GroupedWithProratedMinimumPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class GroupedWithProratedMinimumPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2589,8 +3376,22 @@ class GroupedWithProratedMinimumPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[GroupedWithProratedMinimumPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class GroupedWithProratedMinimumPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class GroupedWithProratedMinimumPriceMinimum(BaseModel):
@@ -2599,6 +3400,9 @@ class GroupedWithProratedMinimumPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[GroupedWithProratedMinimumPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2676,10 +3480,18 @@ class GroupedWithMeteredMinimumPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedWithMeteredMinimumPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedWithMeteredMinimumPriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedWithMeteredMinimumPriceInvoicingCycleConfiguration(BaseModel):
@@ -2694,6 +3506,17 @@ class GroupedWithMeteredMinimumPriceItem(BaseModel):
     name: str
 
 
+class GroupedWithMeteredMinimumPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class GroupedWithMeteredMinimumPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2701,8 +3524,22 @@ class GroupedWithMeteredMinimumPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[GroupedWithMeteredMinimumPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class GroupedWithMeteredMinimumPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class GroupedWithMeteredMinimumPriceMinimum(BaseModel):
@@ -2711,6 +3548,9 @@ class GroupedWithMeteredMinimumPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[GroupedWithMeteredMinimumPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2788,10 +3628,18 @@ class MatrixWithDisplayNamePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MatrixWithDisplayNamePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MatrixWithDisplayNamePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MatrixWithDisplayNamePriceCreditAllocationCustomExpiration] = None
 
 
 class MatrixWithDisplayNamePriceInvoicingCycleConfiguration(BaseModel):
@@ -2806,6 +3654,17 @@ class MatrixWithDisplayNamePriceItem(BaseModel):
     name: str
 
 
+class MatrixWithDisplayNamePriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class MatrixWithDisplayNamePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2813,8 +3672,22 @@ class MatrixWithDisplayNamePriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[MatrixWithDisplayNamePriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class MatrixWithDisplayNamePriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class MatrixWithDisplayNamePriceMinimum(BaseModel):
@@ -2823,6 +3696,9 @@ class MatrixWithDisplayNamePriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[MatrixWithDisplayNamePriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -2900,10 +3776,18 @@ class BulkWithProrationPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class BulkWithProrationPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class BulkWithProrationPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[BulkWithProrationPriceCreditAllocationCustomExpiration] = None
 
 
 class BulkWithProrationPriceInvoicingCycleConfiguration(BaseModel):
@@ -2918,6 +3802,17 @@ class BulkWithProrationPriceItem(BaseModel):
     name: str
 
 
+class BulkWithProrationPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class BulkWithProrationPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -2925,8 +3820,22 @@ class BulkWithProrationPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[BulkWithProrationPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class BulkWithProrationPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class BulkWithProrationPriceMinimum(BaseModel):
@@ -2935,6 +3844,9 @@ class BulkWithProrationPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[BulkWithProrationPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -3012,10 +3924,18 @@ class GroupedTieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class GroupedTieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class GroupedTieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[GroupedTieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class GroupedTieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -3030,6 +3950,17 @@ class GroupedTieredPackagePriceItem(BaseModel):
     name: str
 
 
+class GroupedTieredPackagePriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class GroupedTieredPackagePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -3037,8 +3968,22 @@ class GroupedTieredPackagePriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[GroupedTieredPackagePriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class GroupedTieredPackagePriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class GroupedTieredPackagePriceMinimum(BaseModel):
@@ -3047,6 +3992,9 @@ class GroupedTieredPackagePriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[GroupedTieredPackagePriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -3124,10 +4072,18 @@ class MaxGroupTieredPackagePriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class MaxGroupTieredPackagePriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class MaxGroupTieredPackagePriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[MaxGroupTieredPackagePriceCreditAllocationCustomExpiration] = None
 
 
 class MaxGroupTieredPackagePriceInvoicingCycleConfiguration(BaseModel):
@@ -3142,6 +4098,17 @@ class MaxGroupTieredPackagePriceItem(BaseModel):
     name: str
 
 
+class MaxGroupTieredPackagePriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class MaxGroupTieredPackagePriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -3149,8 +4116,22 @@ class MaxGroupTieredPackagePriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[MaxGroupTieredPackagePriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class MaxGroupTieredPackagePriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class MaxGroupTieredPackagePriceMinimum(BaseModel):
@@ -3159,6 +4140,9 @@ class MaxGroupTieredPackagePriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[MaxGroupTieredPackagePriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -3236,10 +4220,18 @@ class ScalableMatrixWithUnitPricingPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ScalableMatrixWithUnitPricingPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ScalableMatrixWithUnitPricingPriceCreditAllocationCustomExpiration] = None
 
 
 class ScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration(BaseModel):
@@ -3254,6 +4246,17 @@ class ScalableMatrixWithUnitPricingPriceItem(BaseModel):
     name: str
 
 
+class ScalableMatrixWithUnitPricingPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class ScalableMatrixWithUnitPricingPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -3261,8 +4264,22 @@ class ScalableMatrixWithUnitPricingPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[ScalableMatrixWithUnitPricingPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class ScalableMatrixWithUnitPricingPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class ScalableMatrixWithUnitPricingPriceMinimum(BaseModel):
@@ -3271,6 +4288,9 @@ class ScalableMatrixWithUnitPricingPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[ScalableMatrixWithUnitPricingPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -3348,10 +4368,18 @@ class ScalableMatrixWithTieredPricingPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class ScalableMatrixWithTieredPricingPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[ScalableMatrixWithTieredPricingPriceCreditAllocationCustomExpiration] = None
 
 
 class ScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration(BaseModel):
@@ -3366,6 +4394,17 @@ class ScalableMatrixWithTieredPricingPriceItem(BaseModel):
     name: str
 
 
+class ScalableMatrixWithTieredPricingPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class ScalableMatrixWithTieredPricingPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -3373,8 +4412,22 @@ class ScalableMatrixWithTieredPricingPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[ScalableMatrixWithTieredPricingPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class ScalableMatrixWithTieredPricingPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class ScalableMatrixWithTieredPricingPriceMinimum(BaseModel):
@@ -3383,6 +4436,9 @@ class ScalableMatrixWithTieredPricingPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[ScalableMatrixWithTieredPricingPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""
@@ -3460,10 +4516,18 @@ class CumulativeGroupedBulkPriceBillingCycleConfiguration(BaseModel):
     duration_unit: Literal["day", "month"]
 
 
+class CumulativeGroupedBulkPriceCreditAllocationCustomExpiration(BaseModel):
+    duration: int
+
+    duration_unit: Literal["day", "month"]
+
+
 class CumulativeGroupedBulkPriceCreditAllocation(BaseModel):
     allows_rollover: bool
 
     currency: str
+
+    custom_expiration: Optional[CumulativeGroupedBulkPriceCreditAllocationCustomExpiration] = None
 
 
 class CumulativeGroupedBulkPriceInvoicingCycleConfiguration(BaseModel):
@@ -3478,6 +4542,17 @@ class CumulativeGroupedBulkPriceItem(BaseModel):
     name: str
 
 
+class CumulativeGroupedBulkPriceMaximumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
 class CumulativeGroupedBulkPriceMaximum(BaseModel):
     applies_to_price_ids: List[str]
     """List of price_ids that this maximum amount applies to.
@@ -3485,8 +4560,22 @@ class CumulativeGroupedBulkPriceMaximum(BaseModel):
     For plan/plan phase maximums, this can be a subset of prices.
     """
 
+    filters: List[CumulativeGroupedBulkPriceMaximumFilter]
+    """The filters that determine which prices to apply this maximum to."""
+
     maximum_amount: str
     """Maximum amount applied"""
+
+
+class CumulativeGroupedBulkPriceMinimumFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class CumulativeGroupedBulkPriceMinimum(BaseModel):
@@ -3495,6 +4584,9 @@ class CumulativeGroupedBulkPriceMinimum(BaseModel):
 
     For plan/plan phase minimums, this can be a subset of prices.
     """
+
+    filters: List[CumulativeGroupedBulkPriceMinimumFilter]
+    """The filters that determine which prices to apply this minimum to."""
 
     minimum_amount: str
     """Minimum amount applied"""

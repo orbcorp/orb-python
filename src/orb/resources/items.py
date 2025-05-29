@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Dict, Iterable, Optional
 
 import httpx
 
@@ -44,6 +44,7 @@ class Items(SyncAPIResource):
         self,
         *,
         name: str,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -58,6 +59,10 @@ class Items(SyncAPIResource):
         Args:
           name: The name of the item.
 
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -70,7 +75,13 @@ class Items(SyncAPIResource):
         """
         return self._post(
             "/items",
-            body=maybe_transform({"name": name}, item_create_params.ItemCreateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "metadata": metadata,
+                },
+                item_create_params.ItemCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -86,6 +97,7 @@ class Items(SyncAPIResource):
         item_id: str,
         *,
         external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -99,6 +111,10 @@ class Items(SyncAPIResource):
         This endpoint can be used to update properties on the Item.
 
         Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -116,6 +132,7 @@ class Items(SyncAPIResource):
             body=maybe_transform(
                 {
                     "external_connections": external_connections,
+                    "metadata": metadata,
                     "name": name,
                 },
                 item_update_params.ItemUpdateParams,
@@ -179,6 +196,46 @@ class Items(SyncAPIResource):
             model=Item,
         )
 
+    def archive(
+        self,
+        item_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """
+        Archive item
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
+        return self._post(
+            f"/items/{item_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
     def fetch(
         self,
         item_id: str,
@@ -237,6 +294,7 @@ class AsyncItems(AsyncAPIResource):
         self,
         *,
         name: str,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -251,6 +309,10 @@ class AsyncItems(AsyncAPIResource):
         Args:
           name: The name of the item.
 
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -263,7 +325,13 @@ class AsyncItems(AsyncAPIResource):
         """
         return await self._post(
             "/items",
-            body=await async_maybe_transform({"name": name}, item_create_params.ItemCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "metadata": metadata,
+                },
+                item_create_params.ItemCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -279,6 +347,7 @@ class AsyncItems(AsyncAPIResource):
         item_id: str,
         *,
         external_connections: Optional[Iterable[item_update_params.ExternalConnection]] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -292,6 +361,10 @@ class AsyncItems(AsyncAPIResource):
         This endpoint can be used to update properties on the Item.
 
         Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -309,6 +382,7 @@ class AsyncItems(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "external_connections": external_connections,
+                    "metadata": metadata,
                     "name": name,
                 },
                 item_update_params.ItemUpdateParams,
@@ -372,6 +446,46 @@ class AsyncItems(AsyncAPIResource):
             model=Item,
         )
 
+    async def archive(
+        self,
+        item_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Item:
+        """
+        Archive item
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not item_id:
+            raise ValueError(f"Expected a non-empty value for `item_id` but received {item_id!r}")
+        return await self._post(
+            f"/items/{item_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Item,
+        )
+
     async def fetch(
         self,
         item_id: str,
@@ -419,6 +533,9 @@ class ItemsWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             items.list,
         )
+        self.archive = _legacy_response.to_raw_response_wrapper(
+            items.archive,
+        )
         self.fetch = _legacy_response.to_raw_response_wrapper(
             items.fetch,
         )
@@ -436,6 +553,9 @@ class AsyncItemsWithRawResponse:
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             items.list,
+        )
+        self.archive = _legacy_response.async_to_raw_response_wrapper(
+            items.archive,
         )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             items.fetch,
@@ -455,6 +575,9 @@ class ItemsWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             items.list,
         )
+        self.archive = to_streamed_response_wrapper(
+            items.archive,
+        )
         self.fetch = to_streamed_response_wrapper(
             items.fetch,
         )
@@ -472,6 +595,9 @@ class AsyncItemsWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             items.list,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            items.archive,
         )
         self.fetch = async_to_streamed_response_wrapper(
             items.fetch,
