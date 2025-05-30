@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from datetime import datetime
 
 from .._models import BaseModel
@@ -31,7 +31,7 @@ class Data(BaseModel):
     customer
     """
 
-    properties: object
+    properties: Dict[str, object]
     """A dictionary of custom properties.
 
     Values in this dictionary must be numeric, boolean, or strings. Nested

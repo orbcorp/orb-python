@@ -167,7 +167,7 @@ class Event(TypedDict, total=False):
     event_name: Required[str]
     """A name to meaningfully identify the action or event type."""
 
-    properties: Required[object]
+    properties: Required[Dict[str, object]]
     """A dictionary of custom properties.
 
     Values in this dictionary must be numeric, boolean, or strings. Nested

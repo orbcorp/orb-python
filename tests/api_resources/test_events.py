@@ -28,7 +28,7 @@ class TestEvents:
         event = client.events.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
         assert_matches_type(EventUpdateResponse, event, path=["response"])
@@ -38,7 +38,7 @@ class TestEvents:
         event = client.events.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             customer_id="customer_id",
             external_customer_id="external_customer_id",
@@ -50,7 +50,7 @@ class TestEvents:
         response = client.events.with_raw_response.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
 
@@ -64,7 +64,7 @@ class TestEvents:
         with client.events.with_streaming_response.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         ) as response:
             assert not response.is_closed
@@ -81,7 +81,7 @@ class TestEvents:
             client.events.with_raw_response.update(
                 event_id="",
                 event_name="event_name",
-                properties={},
+                properties={"foo": "bar"},
                 timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             )
 
@@ -130,7 +130,7 @@ class TestEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],
@@ -144,7 +144,7 @@ class TestEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
@@ -162,7 +162,7 @@ class TestEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],
@@ -180,7 +180,7 @@ class TestEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],
@@ -242,7 +242,7 @@ class TestAsyncEvents:
         event = await async_client.events.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
         assert_matches_type(EventUpdateResponse, event, path=["response"])
@@ -252,7 +252,7 @@ class TestAsyncEvents:
         event = await async_client.events.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             customer_id="customer_id",
             external_customer_id="external_customer_id",
@@ -264,7 +264,7 @@ class TestAsyncEvents:
         response = await async_client.events.with_raw_response.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         )
 
@@ -278,7 +278,7 @@ class TestAsyncEvents:
         async with async_client.events.with_streaming_response.update(
             event_id="event_id",
             event_name="event_name",
-            properties={},
+            properties={"foo": "bar"},
             timestamp=parse_datetime("2020-12-09T16:09:53Z"),
         ) as response:
             assert not response.is_closed
@@ -295,7 +295,7 @@ class TestAsyncEvents:
             await async_client.events.with_raw_response.update(
                 event_id="",
                 event_name="event_name",
-                properties={},
+                properties={"foo": "bar"},
                 timestamp=parse_datetime("2020-12-09T16:09:53Z"),
             )
 
@@ -344,7 +344,7 @@ class TestAsyncEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],
@@ -358,7 +358,7 @@ class TestAsyncEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
@@ -376,7 +376,7 @@ class TestAsyncEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],
@@ -394,7 +394,7 @@ class TestAsyncEvents:
                 {
                     "event_name": "event_name",
                     "idempotency_key": "idempotency_key",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                 }
             ],

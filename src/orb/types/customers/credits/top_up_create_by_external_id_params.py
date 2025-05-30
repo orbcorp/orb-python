@@ -70,6 +70,8 @@ class InvoiceSettings(TypedDict, total=False):
 
     require_successful_payment: bool
     """
-    If true, new credit blocks created by this top-up will require that the
-    corresponding invoice is paid before they can be drawn down from.
+    When true, credit blocks created by this top-up will require that the
+    corresponding invoice is paid before they are drawn down from. If any topup
+    block is pending payment, further automatic top-ups will be paused until the
+    invoice is paid or voided.
     """

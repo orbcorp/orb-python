@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from datetime import datetime
 
 import httpx
@@ -72,7 +72,7 @@ class Events(SyncAPIResource):
         event_id: str,
         *,
         event_name: str,
-        properties: object,
+        properties: Dict[str, object],
         timestamp: Union[str, datetime],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -623,7 +623,7 @@ class AsyncEvents(AsyncAPIResource):
         event_id: str,
         *,
         event_name: str,
-        properties: object,
+        properties: Dict[str, object],
         timestamp: Union[str, datetime],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
