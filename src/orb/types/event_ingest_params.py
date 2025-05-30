@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -35,7 +35,7 @@ class Event(TypedDict, total=False):
     for safe request retries.
     """
 
-    properties: Required[object]
+    properties: Required[Dict[str, object]]
     """A dictionary of custom properties.
 
     Values in this dictionary must be numeric, boolean, or strings. Nested

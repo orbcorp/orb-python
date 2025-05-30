@@ -2527,7 +2527,7 @@ class TestPrices:
             events=[
                 {
                     "event_name": "event_name",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
@@ -5144,7 +5144,7 @@ class TestAsyncPrices:
             events=[
                 {
                     "event_name": "event_name",
-                    "properties": {},
+                    "properties": {"foo": "bar"},
                     "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
                     "customer_id": "customer_id",
                     "external_customer_id": "external_customer_id",
