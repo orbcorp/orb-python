@@ -17,6 +17,7 @@ from ..types import (
     subscription_fetch_costs_params,
     subscription_fetch_usage_params,
     subscription_update_trial_params,
+    subscription_redeem_coupon_params,
     subscription_trigger_phase_params,
     subscription_fetch_schedule_params,
     subscription_price_intervals_params,
@@ -37,6 +38,7 @@ from ..types.subscription_cancel_response import SubscriptionCancelResponse
 from ..types.subscription_create_response import SubscriptionCreateResponse
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
 from ..types.subscription_update_trial_response import SubscriptionUpdateTrialResponse
+from ..types.subscription_redeem_coupon_response import SubscriptionRedeemCouponResponse
 from ..types.subscription_trigger_phase_response import SubscriptionTriggerPhaseResponse
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
 from ..types.subscription_price_intervals_response import SubscriptionPriceIntervalsResponse
@@ -1359,6 +1361,68 @@ class Subscriptions(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=SubscriptionPriceIntervalsResponse,
+        )
+
+    def redeem_coupon(
+        self,
+        subscription_id: str,
+        *,
+        change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        coupon_id: str,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> SubscriptionRedeemCouponResponse:
+        """
+        Redeem a coupon effective at a given time.
+
+        Args:
+          coupon_id: Coupon ID to be redeemed for this subscription.
+
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
+          change_date: The date that the coupon discount should take effect. This parameter can only be
+              passed if the `change_option` is `requested_date`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return self._post(
+            f"/subscriptions/{subscription_id}/redeem_coupon",
+            body=maybe_transform(
+                {
+                    "change_option": change_option,
+                    "coupon_id": coupon_id,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
+                    "change_date": change_date,
+                },
+                subscription_redeem_coupon_params.SubscriptionRedeemCouponParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=SubscriptionRedeemCouponResponse,
         )
 
     def schedule_plan_change(
@@ -3385,6 +3449,68 @@ class AsyncSubscriptions(AsyncAPIResource):
             cast_to=SubscriptionPriceIntervalsResponse,
         )
 
+    async def redeem_coupon(
+        self,
+        subscription_id: str,
+        *,
+        change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
+        coupon_id: str,
+        allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
+        change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> SubscriptionRedeemCouponResponse:
+        """
+        Redeem a coupon effective at a given time.
+
+        Args:
+          coupon_id: Coupon ID to be redeemed for this subscription.
+
+          allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
+              credit note. Consider using this as a safety mechanism if you do not expect
+              existing invoices to be changed.
+
+          change_date: The date that the coupon discount should take effect. This parameter can only be
+              passed if the `change_option` is `requested_date`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not subscription_id:
+            raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
+        return await self._post(
+            f"/subscriptions/{subscription_id}/redeem_coupon",
+            body=await async_maybe_transform(
+                {
+                    "change_option": change_option,
+                    "coupon_id": coupon_id,
+                    "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
+                    "change_date": change_date,
+                },
+                subscription_redeem_coupon_params.SubscriptionRedeemCouponParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=SubscriptionRedeemCouponResponse,
+        )
+
     async def schedule_plan_change(
         self,
         subscription_id: str,
@@ -4132,6 +4258,9 @@ class SubscriptionsWithRawResponse:
         self.price_intervals = _legacy_response.to_raw_response_wrapper(
             subscriptions.price_intervals,
         )
+        self.redeem_coupon = _legacy_response.to_raw_response_wrapper(
+            subscriptions.redeem_coupon,
+        )
         self.schedule_plan_change = _legacy_response.to_raw_response_wrapper(
             subscriptions.schedule_plan_change,
         )
@@ -4185,6 +4314,9 @@ class AsyncSubscriptionsWithRawResponse:
         )
         self.price_intervals = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.price_intervals,
+        )
+        self.redeem_coupon = _legacy_response.async_to_raw_response_wrapper(
+            subscriptions.redeem_coupon,
         )
         self.schedule_plan_change = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.schedule_plan_change,
@@ -4240,6 +4372,9 @@ class SubscriptionsWithStreamingResponse:
         self.price_intervals = to_streamed_response_wrapper(
             subscriptions.price_intervals,
         )
+        self.redeem_coupon = to_streamed_response_wrapper(
+            subscriptions.redeem_coupon,
+        )
         self.schedule_plan_change = to_streamed_response_wrapper(
             subscriptions.schedule_plan_change,
         )
@@ -4293,6 +4428,9 @@ class AsyncSubscriptionsWithStreamingResponse:
         )
         self.price_intervals = async_to_streamed_response_wrapper(
             subscriptions.price_intervals,
+        )
+        self.redeem_coupon = async_to_streamed_response_wrapper(
+            subscriptions.redeem_coupon,
         )
         self.schedule_plan_change = async_to_streamed_response_wrapper(
             subscriptions.schedule_plan_change,
