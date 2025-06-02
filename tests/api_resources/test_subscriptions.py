@@ -15,6 +15,7 @@ from orb.types import (
     SubscriptionCreateResponse,
     SubscriptionFetchCostsResponse,
     SubscriptionUpdateTrialResponse,
+    SubscriptionRedeemCouponResponse,
     SubscriptionTriggerPhaseResponse,
     SubscriptionFetchScheduleResponse,
     SubscriptionPriceIntervalsResponse,
@@ -728,6 +729,63 @@ class TestSubscriptions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             client.subscriptions.with_raw_response.price_intervals(
                 subscription_id="",
+            )
+
+    @parametrize
+    def test_method_redeem_coupon(self, client: Orb) -> None:
+        subscription = client.subscriptions.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        )
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    def test_method_redeem_coupon_with_all_params(self, client: Orb) -> None:
+        subscription = client.subscriptions.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+            allow_invoice_credit_or_void=True,
+            change_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_redeem_coupon(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_redeem_coupon(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_redeem_coupon(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            client.subscriptions.with_raw_response.redeem_coupon(
+                subscription_id="",
+                change_option="requested_date",
+                coupon_id="coupon_id",
             )
 
     @parametrize
@@ -1921,6 +1979,63 @@ class TestAsyncSubscriptions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
             await async_client.subscriptions.with_raw_response.price_intervals(
                 subscription_id="",
+            )
+
+    @parametrize
+    async def test_method_redeem_coupon(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        )
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    async def test_method_redeem_coupon_with_all_params(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+            allow_invoice_credit_or_void=True,
+            change_date=parse_datetime("2017-07-21T17:32:28Z"),
+        )
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_redeem_coupon(self, async_client: AsyncOrb) -> None:
+        response = await async_client.subscriptions.with_raw_response.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_redeem_coupon(self, async_client: AsyncOrb) -> None:
+        async with async_client.subscriptions.with_streaming_response.redeem_coupon(
+            subscription_id="subscription_id",
+            change_option="requested_date",
+            coupon_id="coupon_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_redeem_coupon(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `subscription_id` but received ''"):
+            await async_client.subscriptions.with_raw_response.redeem_coupon(
+                subscription_id="",
+                change_option="requested_date",
+                coupon_id="coupon_id",
             )
 
     @parametrize

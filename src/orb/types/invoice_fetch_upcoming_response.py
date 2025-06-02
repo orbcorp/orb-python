@@ -760,7 +760,7 @@ class LineItem(BaseModel):
     partially_invoiced_amount: str
     """Any amount applied from a partial invoice"""
 
-    price: Optional[Price] = None
+    price: Price
     """
     The Price resource represents a price that can be billed on a subscription,
     resulting in a charge on an invoice in the form of an invoice line item. Prices
