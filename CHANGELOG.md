@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.22.0 (2025-06-02)
+
+Full Changelog: [v3.21.0...v3.22.0](https://github.com/orbcorp/orb-python/compare/v3.21.0...v3.22.0)
+
+### Features
+
+* **api:** api update ([3deb3ab](https://github.com/orbcorp/orb-python/commit/3deb3ab6bf04d89551aa40deba99afcd29ee8099))
+* **client:** add follow_redirects request option ([5185843](https://github.com/orbcorp/orb-python/commit/51858434884f222b3c9974529aaf1958e5fba808))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([c0cdb68](https://github.com/orbcorp/orb-python/commit/c0cdb684679416fb188bc77f8e822f8bcb345b50))
+
 ## 3.21.0 (2025-05-30)
 
 Full Changelog: [v3.20.0...v3.21.0](https://github.com/orbcorp/orb-python/compare/v3.20.0...v3.21.0)
