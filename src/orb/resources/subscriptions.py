@@ -1958,7 +1958,7 @@ class Subscriptions(SyncAPIResource):
     ) -> SubscriptionUnschedulePendingPlanChangesResponse:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
-        subscription.
+        subscription. When called, all upcoming plan changes will be unscheduled.
 
         Args:
           extra_headers: Send extra headers
@@ -4044,7 +4044,7 @@ class AsyncSubscriptions(AsyncAPIResource):
     ) -> SubscriptionUnschedulePendingPlanChangesResponse:
         """
         This endpoint can be used to unschedule any pending plan changes on an existing
-        subscription.
+        subscription. When called, all upcoming plan changes will be unscheduled.
 
         Args:
           extra_headers: Send extra headers
