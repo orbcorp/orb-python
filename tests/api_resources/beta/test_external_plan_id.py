@@ -35,8 +35,19 @@ class TestExternalPlanID:
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
+                        "applies_to_all": True,
+                        "applies_to_item_ids": ["item_1", "item_2"],
                         "applies_to_price_ids": ["price_1", "price_2"],
+                        "currency": "currency",
+                        "filters": [
+                            {
+                                "field": "price_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                         "is_invoice_level": True,
+                        "price_type": "usage",
                     },
                     "plan_phase_order": 0,
                 }
@@ -101,8 +112,19 @@ class TestExternalPlanID:
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
+                        "applies_to_all": True,
+                        "applies_to_item_ids": ["item_1", "item_2"],
                         "applies_to_price_ids": ["price_1", "price_2"],
+                        "currency": "currency",
+                        "filters": [
+                            {
+                                "field": "price_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                         "is_invoice_level": True,
+                        "price_type": "usage",
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
                     "plan_phase_order": 0,
@@ -302,8 +324,19 @@ class TestAsyncExternalPlanID:
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
+                        "applies_to_all": True,
+                        "applies_to_item_ids": ["item_1", "item_2"],
                         "applies_to_price_ids": ["price_1", "price_2"],
+                        "currency": "currency",
+                        "filters": [
+                            {
+                                "field": "price_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                         "is_invoice_level": True,
+                        "price_type": "usage",
                     },
                     "plan_phase_order": 0,
                 }
@@ -368,8 +401,19 @@ class TestAsyncExternalPlanID:
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
+                        "applies_to_all": True,
+                        "applies_to_item_ids": ["item_1", "item_2"],
                         "applies_to_price_ids": ["price_1", "price_2"],
+                        "currency": "currency",
+                        "filters": [
+                            {
+                                "field": "price_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                         "is_invoice_level": True,
+                        "price_type": "usage",
                     },
                     "replaces_adjustment_id": "replaces_adjustment_id",
                     "plan_phase_order": 0,
