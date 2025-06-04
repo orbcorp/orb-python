@@ -1368,9 +1368,10 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        coupon_id: str,
         allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        coupon_id: Optional[str] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1383,14 +1384,16 @@ class Subscriptions(SyncAPIResource):
         Redeem a coupon effective at a given time.
 
         Args:
-          coupon_id: Coupon ID to be redeemed for this subscription.
-
           allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
               credit note. Consider using this as a safety mechanism if you do not expect
               existing invoices to be changed.
 
           change_date: The date that the coupon discount should take effect. This parameter can only be
               passed if the `change_option` is `requested_date`.
+
+          coupon_id: Coupon ID to be redeemed for this subscription.
+
+          coupon_redemption_code: Redemption code of the coupon to be redeemed for this subscription.
 
           extra_headers: Send extra headers
 
@@ -1409,9 +1412,10 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "change_option": change_option,
-                    "coupon_id": coupon_id,
                     "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "change_date": change_date,
+                    "coupon_id": coupon_id,
+                    "coupon_redemption_code": coupon_redemption_code,
                 },
                 subscription_redeem_coupon_params.SubscriptionRedeemCouponParams,
             ),
@@ -3454,9 +3458,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         change_option: Literal["requested_date", "end_of_subscription_term", "immediate"],
-        coupon_id: str,
         allow_invoice_credit_or_void: Optional[bool] | NotGiven = NOT_GIVEN,
         change_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        coupon_id: Optional[str] | NotGiven = NOT_GIVEN,
+        coupon_redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3469,14 +3474,16 @@ class AsyncSubscriptions(AsyncAPIResource):
         Redeem a coupon effective at a given time.
 
         Args:
-          coupon_id: Coupon ID to be redeemed for this subscription.
-
           allow_invoice_credit_or_void: If false, this request will fail if it would void an issued invoice or create a
               credit note. Consider using this as a safety mechanism if you do not expect
               existing invoices to be changed.
 
           change_date: The date that the coupon discount should take effect. This parameter can only be
               passed if the `change_option` is `requested_date`.
+
+          coupon_id: Coupon ID to be redeemed for this subscription.
+
+          coupon_redemption_code: Redemption code of the coupon to be redeemed for this subscription.
 
           extra_headers: Send extra headers
 
@@ -3495,9 +3502,10 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "change_option": change_option,
-                    "coupon_id": coupon_id,
                     "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
                     "change_date": change_date,
+                    "coupon_id": coupon_id,
+                    "coupon_redemption_code": coupon_redemption_code,
                 },
                 subscription_redeem_coupon_params.SubscriptionRedeemCouponParams,
             ),
