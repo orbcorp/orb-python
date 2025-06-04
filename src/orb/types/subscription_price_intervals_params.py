@@ -150,10 +150,15 @@ __all__ = [
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "AddAdjustmentAdjustmentNewPercentageDiscount",
+    "AddAdjustmentAdjustmentNewPercentageDiscountFilter",
     "AddAdjustmentAdjustmentNewUsageDiscount",
+    "AddAdjustmentAdjustmentNewUsageDiscountFilter",
     "AddAdjustmentAdjustmentNewAmountDiscount",
+    "AddAdjustmentAdjustmentNewAmountDiscountFilter",
     "AddAdjustmentAdjustmentNewMinimum",
+    "AddAdjustmentAdjustmentNewMinimumFilter",
     "AddAdjustmentAdjustmentNewMaximum",
+    "AddAdjustmentAdjustmentNewMaximumFilter",
     "Edit",
     "EditFixedFeeQuantityTransition",
     "EditAdjustment",
@@ -3238,19 +3243,56 @@ class Add(TypedDict, total=False):
     """
 
 
+class AddAdjustmentAdjustmentNewPercentageDiscountFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
+
+
 class AddAdjustmentAdjustmentNewPercentageDiscount(TypedDict, total=False):
     adjustment_type: Required[Literal["percentage_discount"]]
 
     percentage_discount: Required[float]
 
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[List[str]]
+    """The set of item IDs to which this adjustment applies."""
+
     applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AddAdjustmentAdjustmentNewPercentageDiscountFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
 
     Otherwise, it will be applied at the invoice level, possibly to multiple prices.
     """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
+
+
+class AddAdjustmentAdjustmentNewUsageDiscountFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
 
 
 class AddAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
@@ -3258,14 +3300,40 @@ class AddAdjustmentAdjustmentNewUsageDiscount(TypedDict, total=False):
 
     usage_discount: Required[float]
 
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[List[str]]
+    """The set of item IDs to which this adjustment applies."""
+
     applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AddAdjustmentAdjustmentNewUsageDiscountFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
 
     Otherwise, it will be applied at the invoice level, possibly to multiple prices.
     """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
+
+
+class AddAdjustmentAdjustmentNewAmountDiscountFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
 
 
 class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
@@ -3273,14 +3341,40 @@ class AddAdjustmentAdjustmentNewAmountDiscount(TypedDict, total=False):
 
     amount_discount: Required[str]
 
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[List[str]]
+    """The set of item IDs to which this adjustment applies."""
+
     applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AddAdjustmentAdjustmentNewAmountDiscountFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
 
     Otherwise, it will be applied at the invoice level, possibly to multiple prices.
     """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
+
+
+class AddAdjustmentAdjustmentNewMinimumFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
 
 
 class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
@@ -3291,14 +3385,40 @@ class AddAdjustmentAdjustmentNewMinimum(TypedDict, total=False):
 
     minimum_amount: Required[str]
 
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[List[str]]
+    """The set of item IDs to which this adjustment applies."""
+
     applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AddAdjustmentAdjustmentNewMinimumFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
 
     Otherwise, it will be applied at the invoice level, possibly to multiple prices.
     """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
+
+
+class AddAdjustmentAdjustmentNewMaximumFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
 
 
 class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
@@ -3306,14 +3426,29 @@ class AddAdjustmentAdjustmentNewMaximum(TypedDict, total=False):
 
     maximum_amount: Required[str]
 
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[List[str]]
+    """The set of item IDs to which this adjustment applies."""
+
     applies_to_price_ids: Optional[List[str]]
     """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AddAdjustmentAdjustmentNewMaximumFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
     """When false, this adjustment will be applied to a single price.
 
     Otherwise, it will be applied at the invoice level, possibly to multiple prices.
     """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
 
 
 AddAdjustmentAdjustment: TypeAlias = Union[
