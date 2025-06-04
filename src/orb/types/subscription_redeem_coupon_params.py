@@ -14,9 +14,6 @@ __all__ = ["SubscriptionRedeemCouponParams"]
 class SubscriptionRedeemCouponParams(TypedDict, total=False):
     change_option: Required[Literal["requested_date", "end_of_subscription_term", "immediate"]]
 
-    coupon_id: Required[str]
-    """Coupon ID to be redeemed for this subscription."""
-
     allow_invoice_credit_or_void: Optional[bool]
     """
     If false, this request will fail if it would void an issued invoice or create a
@@ -29,3 +26,9 @@ class SubscriptionRedeemCouponParams(TypedDict, total=False):
 
     This parameter can only be passed if the `change_option` is `requested_date`.
     """
+
+    coupon_id: Optional[str]
+    """Coupon ID to be redeemed for this subscription."""
+
+    coupon_redemption_code: Optional[str]
+    """Redemption code of the coupon to be redeemed for this subscription."""
