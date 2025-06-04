@@ -736,7 +736,6 @@ class TestSubscriptions:
         subscription = client.subscriptions.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         )
         assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
 
@@ -745,9 +744,10 @@ class TestSubscriptions:
         subscription = client.subscriptions.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
             allow_invoice_credit_or_void=True,
             change_date=parse_datetime("2017-07-21T17:32:28Z"),
+            coupon_id="coupon_id",
+            coupon_redemption_code="coupon_redemption_code",
         )
         assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
 
@@ -756,7 +756,6 @@ class TestSubscriptions:
         response = client.subscriptions.with_raw_response.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         )
 
         assert response.is_closed is True
@@ -769,7 +768,6 @@ class TestSubscriptions:
         with client.subscriptions.with_streaming_response.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -785,7 +783,6 @@ class TestSubscriptions:
             client.subscriptions.with_raw_response.redeem_coupon(
                 subscription_id="",
                 change_option="requested_date",
-                coupon_id="coupon_id",
             )
 
     @parametrize
@@ -1986,7 +1983,6 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         )
         assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
 
@@ -1995,9 +1991,10 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
             allow_invoice_credit_or_void=True,
             change_date=parse_datetime("2017-07-21T17:32:28Z"),
+            coupon_id="coupon_id",
+            coupon_redemption_code="coupon_redemption_code",
         )
         assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
 
@@ -2006,7 +2003,6 @@ class TestAsyncSubscriptions:
         response = await async_client.subscriptions.with_raw_response.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         )
 
         assert response.is_closed is True
@@ -2019,7 +2015,6 @@ class TestAsyncSubscriptions:
         async with async_client.subscriptions.with_streaming_response.redeem_coupon(
             subscription_id="subscription_id",
             change_option="requested_date",
-            coupon_id="coupon_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2035,7 +2030,6 @@ class TestAsyncSubscriptions:
             await async_client.subscriptions.with_raw_response.redeem_coupon(
                 subscription_id="",
                 change_option="requested_date",
-                coupon_id="coupon_id",
             )
 
     @parametrize
