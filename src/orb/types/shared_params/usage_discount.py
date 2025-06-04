@@ -2,10 +2,21 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["UsageDiscount"]
+__all__ = ["UsageDiscount", "Filter"]
+
+
+class Filter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[List[str]]
+    """The IDs or values that match this filter."""
 
 
 class UsageDiscount(TypedDict, total=False):
@@ -22,5 +33,8 @@ class UsageDiscount(TypedDict, total=False):
 
     For plan/plan phase discounts, this can be a subset of prices.
     """
+
+    filters: Optional[Iterable[Filter]]
+    """The filters that determine which prices to apply this discount to."""
 
     reason: Optional[str]

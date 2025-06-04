@@ -64,6 +64,13 @@ class TestInvoices:
                 "discount_type": "percentage",
                 "percentage_discount": 0.15,
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "filters": [
+                    {
+                        "field": "price_id",
+                        "operator": "includes",
+                        "values": ["string"],
+                    }
+                ],
                 "reason": "reason",
             },
             external_customer_id="external-customer-id",
@@ -508,6 +515,13 @@ class TestAsyncInvoices:
                 "discount_type": "percentage",
                 "percentage_discount": 0.15,
                 "applies_to_price_ids": ["h74gfhdjvn7ujokd", "7hfgtgjnbvc3ujkl"],
+                "filters": [
+                    {
+                        "field": "price_id",
+                        "operator": "includes",
+                        "values": ["string"],
+                    }
+                ],
                 "reason": "reason",
             },
             external_customer_id="external-customer-id",
