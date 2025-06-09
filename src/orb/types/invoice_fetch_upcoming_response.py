@@ -4,55 +4,38 @@ from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
-from .price import Price
 from .._utils import PropertyInfo
 from .._models import BaseModel
+from .shared.price import Price
+from .shared.address import Address
+from .shared.maximum import Maximum
+from .shared.minimum import Minimum
 from .shared.discount import Discount
+from .shared.tax_amount import TaxAmount
+from .shared.invoice_tiny import InvoiceTiny
+from .shared.customer_tax_id import CustomerTaxID
+from .shared.credit_note_tiny import CreditNoteTiny
+from .shared.customer_minified import CustomerMinified
+from .shared.tier_sub_line_item import TierSubLineItem
+from .shared.other_sub_line_item import OtherSubLineItem
+from .shared.matrix_sub_line_item import MatrixSubLineItem
+from .shared.subscription_minified import SubscriptionMinified
 from .shared.invoice_level_discount import InvoiceLevelDiscount
+from .shared.monetary_maximum_adjustment import MonetaryMaximumAdjustment
+from .shared.monetary_minimum_adjustment import MonetaryMinimumAdjustment
+from .shared.monetary_usage_discount_adjustment import MonetaryUsageDiscountAdjustment
+from .shared.monetary_amount_discount_adjustment import MonetaryAmountDiscountAdjustment
+from .shared.monetary_percentage_discount_adjustment import MonetaryPercentageDiscountAdjustment
 
 __all__ = [
     "InvoiceFetchUpcomingResponse",
     "AutoCollection",
-    "BillingAddress",
     "CreditNote",
-    "Customer",
     "CustomerBalanceTransaction",
-    "CustomerBalanceTransactionCreditNote",
-    "CustomerBalanceTransactionInvoice",
-    "CustomerTaxID",
     "LineItem",
     "LineItemAdjustment",
-    "LineItemAdjustmentMonetaryUsageDiscountAdjustment",
-    "LineItemAdjustmentMonetaryUsageDiscountAdjustmentFilter",
-    "LineItemAdjustmentMonetaryAmountDiscountAdjustment",
-    "LineItemAdjustmentMonetaryAmountDiscountAdjustmentFilter",
-    "LineItemAdjustmentMonetaryPercentageDiscountAdjustment",
-    "LineItemAdjustmentMonetaryPercentageDiscountAdjustmentFilter",
-    "LineItemAdjustmentMonetaryMinimumAdjustment",
-    "LineItemAdjustmentMonetaryMinimumAdjustmentFilter",
-    "LineItemAdjustmentMonetaryMaximumAdjustment",
-    "LineItemAdjustmentMonetaryMaximumAdjustmentFilter",
-    "LineItemMaximum",
-    "LineItemMaximumFilter",
-    "LineItemMinimum",
-    "LineItemMinimumFilter",
     "LineItemSubLineItem",
-    "LineItemSubLineItemMatrixSubLineItem",
-    "LineItemSubLineItemMatrixSubLineItemGrouping",
-    "LineItemSubLineItemMatrixSubLineItemMatrixConfig",
-    "LineItemSubLineItemTierSubLineItem",
-    "LineItemSubLineItemTierSubLineItemGrouping",
-    "LineItemSubLineItemTierSubLineItemTierConfig",
-    "LineItemSubLineItemOtherSubLineItem",
-    "LineItemSubLineItemOtherSubLineItemGrouping",
-    "LineItemTaxAmount",
-    "Maximum",
-    "MaximumFilter",
-    "Minimum",
-    "MinimumFilter",
     "PaymentAttempt",
-    "ShippingAddress",
-    "Subscription",
 ]
 
 
@@ -81,20 +64,6 @@ class AutoCollection(BaseModel):
     """
 
 
-class BillingAddress(BaseModel):
-    city: Optional[str] = None
-
-    country: Optional[str] = None
-
-    line1: Optional[str] = None
-
-    line2: Optional[str] = None
-
-    postal_code: Optional[str] = None
-
-    state: Optional[str] = None
-
-
 class CreditNote(BaseModel):
     id: str
 
@@ -114,22 +83,6 @@ class CreditNote(BaseModel):
     If the credit note has a status of `void`, this gives a timestamp when the
     credit note was voided.
     """
-
-
-class Customer(BaseModel):
-    id: str
-
-    external_customer_id: Optional[str] = None
-
-
-class CustomerBalanceTransactionCreditNote(BaseModel):
-    id: str
-    """The id of the Credit note"""
-
-
-class CustomerBalanceTransactionInvoice(BaseModel):
-    id: str
-    """The Invoice id"""
 
 
 class CustomerBalanceTransaction(BaseModel):
@@ -154,7 +107,7 @@ class CustomerBalanceTransaction(BaseModel):
     created_at: datetime
     """The creation time of this transaction."""
 
-    credit_note: Optional[CustomerBalanceTransactionCreditNote] = None
+    credit_note: Optional[CreditNoteTiny] = None
 
     description: Optional[str] = None
     """An optional description provided for manual customer balance adjustments."""
@@ -165,7 +118,7 @@ class CustomerBalanceTransaction(BaseModel):
     customer's currency.
     """
 
-    invoice: Optional[CustomerBalanceTransactionInvoice] = None
+    invoice: Optional[InvoiceTiny] = None
 
     starting_balance: str
     """
@@ -176,529 +129,20 @@ class CustomerBalanceTransaction(BaseModel):
     type: Literal["increment", "decrement"]
 
 
-class CustomerTaxID(BaseModel):
-    country: Literal[
-        "AD",
-        "AE",
-        "AR",
-        "AT",
-        "AU",
-        "BE",
-        "BG",
-        "BH",
-        "BO",
-        "BR",
-        "CA",
-        "CH",
-        "CL",
-        "CN",
-        "CO",
-        "CR",
-        "CY",
-        "CZ",
-        "DE",
-        "DK",
-        "EE",
-        "DO",
-        "EC",
-        "EG",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "GE",
-        "GR",
-        "HK",
-        "HR",
-        "HU",
-        "ID",
-        "IE",
-        "IL",
-        "IN",
-        "IS",
-        "IT",
-        "JP",
-        "KE",
-        "KR",
-        "KZ",
-        "LI",
-        "LT",
-        "LU",
-        "LV",
-        "MT",
-        "MX",
-        "MY",
-        "NG",
-        "NL",
-        "NO",
-        "NZ",
-        "OM",
-        "PE",
-        "PH",
-        "PL",
-        "PT",
-        "RO",
-        "RS",
-        "RU",
-        "SA",
-        "SE",
-        "SG",
-        "SI",
-        "SK",
-        "SV",
-        "TH",
-        "TR",
-        "TW",
-        "UA",
-        "US",
-        "UY",
-        "VE",
-        "VN",
-        "ZA",
-    ]
-
-    type: Literal[
-        "ad_nrt",
-        "ae_trn",
-        "ar_cuit",
-        "eu_vat",
-        "au_abn",
-        "au_arn",
-        "bg_uic",
-        "bh_vat",
-        "bo_tin",
-        "br_cnpj",
-        "br_cpf",
-        "ca_bn",
-        "ca_gst_hst",
-        "ca_pst_bc",
-        "ca_pst_mb",
-        "ca_pst_sk",
-        "ca_qst",
-        "ch_vat",
-        "cl_tin",
-        "cn_tin",
-        "co_nit",
-        "cr_tin",
-        "do_rcn",
-        "ec_ruc",
-        "eg_tin",
-        "es_cif",
-        "eu_oss_vat",
-        "gb_vat",
-        "ge_vat",
-        "hk_br",
-        "hu_tin",
-        "id_npwp",
-        "il_vat",
-        "in_gst",
-        "is_vat",
-        "jp_cn",
-        "jp_rn",
-        "jp_trn",
-        "ke_pin",
-        "kr_brn",
-        "kz_bin",
-        "li_uid",
-        "mx_rfc",
-        "my_frp",
-        "my_itn",
-        "my_sst",
-        "ng_tin",
-        "no_vat",
-        "no_voec",
-        "nz_gst",
-        "om_vat",
-        "pe_ruc",
-        "ph_tin",
-        "ro_tin",
-        "rs_pib",
-        "ru_inn",
-        "ru_kpp",
-        "sa_vat",
-        "sg_gst",
-        "sg_uen",
-        "si_tin",
-        "sv_nit",
-        "th_vat",
-        "tr_tin",
-        "tw_vat",
-        "ua_vat",
-        "us_ein",
-        "uy_ruc",
-        "ve_rif",
-        "vn_tin",
-        "za_vat",
-    ]
-
-    value: str
-
-
-class LineItemAdjustmentMonetaryUsageDiscountAdjustmentFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemAdjustmentMonetaryUsageDiscountAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["usage_discount"]
-
-    amount: str
-    """The value applied by an adjustment."""
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    filters: List[LineItemAdjustmentMonetaryUsageDiscountAdjustmentFilter]
-    """The filters that determine which prices to apply this adjustment to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-    usage_discount: float
-    """
-    The number of usage units by which to discount the price this adjustment applies
-    to in a given billing period.
-    """
-
-
-class LineItemAdjustmentMonetaryAmountDiscountAdjustmentFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemAdjustmentMonetaryAmountDiscountAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["amount_discount"]
-
-    amount: str
-    """The value applied by an adjustment."""
-
-    amount_discount: str
-    """
-    The amount by which to discount the prices this adjustment applies to in a given
-    billing period.
-    """
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    filters: List[LineItemAdjustmentMonetaryAmountDiscountAdjustmentFilter]
-    """The filters that determine which prices to apply this adjustment to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
-class LineItemAdjustmentMonetaryPercentageDiscountAdjustmentFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemAdjustmentMonetaryPercentageDiscountAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["percentage_discount"]
-
-    amount: str
-    """The value applied by an adjustment."""
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    filters: List[LineItemAdjustmentMonetaryPercentageDiscountAdjustmentFilter]
-    """The filters that determine which prices to apply this adjustment to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    percentage_discount: float
-    """
-    The percentage (as a value between 0 and 1) by which to discount the price
-    intervals this adjustment applies to in a given billing period.
-    """
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
-class LineItemAdjustmentMonetaryMinimumAdjustmentFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemAdjustmentMonetaryMinimumAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["minimum"]
-
-    amount: str
-    """The value applied by an adjustment."""
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    filters: List[LineItemAdjustmentMonetaryMinimumAdjustmentFilter]
-    """The filters that determine which prices to apply this adjustment to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    item_id: str
-    """The item ID that revenue from this minimum will be attributed to."""
-
-    minimum_amount: str
-    """
-    The minimum amount to charge in a given billing period for the prices this
-    adjustment applies to.
-    """
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
-class LineItemAdjustmentMonetaryMaximumAdjustmentFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemAdjustmentMonetaryMaximumAdjustment(BaseModel):
-    id: str
-
-    adjustment_type: Literal["maximum"]
-
-    amount: str
-    """The value applied by an adjustment."""
-
-    applies_to_price_ids: List[str]
-    """The price IDs that this adjustment applies to."""
-
-    filters: List[LineItemAdjustmentMonetaryMaximumAdjustmentFilter]
-    """The filters that determine which prices to apply this adjustment to."""
-
-    is_invoice_level: bool
-    """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
-    """
-
-    maximum_amount: str
-    """
-    The maximum amount to charge in a given billing period for the prices this
-    adjustment applies to.
-    """
-
-    reason: Optional[str] = None
-    """The reason for the adjustment."""
-
-
 LineItemAdjustment: TypeAlias = Annotated[
     Union[
-        LineItemAdjustmentMonetaryUsageDiscountAdjustment,
-        LineItemAdjustmentMonetaryAmountDiscountAdjustment,
-        LineItemAdjustmentMonetaryPercentageDiscountAdjustment,
-        LineItemAdjustmentMonetaryMinimumAdjustment,
-        LineItemAdjustmentMonetaryMaximumAdjustment,
+        MonetaryUsageDiscountAdjustment,
+        MonetaryAmountDiscountAdjustment,
+        MonetaryPercentageDiscountAdjustment,
+        MonetaryMinimumAdjustment,
+        MonetaryMaximumAdjustment,
     ],
     PropertyInfo(discriminator="adjustment_type"),
 ]
 
-
-class LineItemMaximumFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemMaximum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this maximum amount applies to.
-
-    For plan/plan phase maximums, this can be a subset of prices.
-    """
-
-    filters: List[LineItemMaximumFilter]
-    """The filters that determine which prices to apply this maximum to."""
-
-    maximum_amount: str
-    """Maximum amount applied"""
-
-
-class LineItemMinimumFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class LineItemMinimum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this minimum amount applies to.
-
-    For plan/plan phase minimums, this can be a subset of prices.
-    """
-
-    filters: List[LineItemMinimumFilter]
-    """The filters that determine which prices to apply this minimum to."""
-
-    minimum_amount: str
-    """Minimum amount applied"""
-
-
-class LineItemSubLineItemMatrixSubLineItemGrouping(BaseModel):
-    key: str
-
-    value: Optional[str] = None
-    """No value indicates the default group"""
-
-
-class LineItemSubLineItemMatrixSubLineItemMatrixConfig(BaseModel):
-    dimension_values: List[Optional[str]]
-    """The ordered dimension values for this line item."""
-
-
-class LineItemSubLineItemMatrixSubLineItem(BaseModel):
-    amount: str
-    """The total amount for this sub line item."""
-
-    grouping: Optional[LineItemSubLineItemMatrixSubLineItemGrouping] = None
-
-    matrix_config: LineItemSubLineItemMatrixSubLineItemMatrixConfig
-
-    name: str
-
-    quantity: float
-
-    type: Literal["matrix"]
-
-
-class LineItemSubLineItemTierSubLineItemGrouping(BaseModel):
-    key: str
-
-    value: Optional[str] = None
-    """No value indicates the default group"""
-
-
-class LineItemSubLineItemTierSubLineItemTierConfig(BaseModel):
-    first_unit: float
-
-    last_unit: Optional[float] = None
-
-    unit_amount: str
-
-
-class LineItemSubLineItemTierSubLineItem(BaseModel):
-    amount: str
-    """The total amount for this sub line item."""
-
-    grouping: Optional[LineItemSubLineItemTierSubLineItemGrouping] = None
-
-    name: str
-
-    quantity: float
-
-    tier_config: LineItemSubLineItemTierSubLineItemTierConfig
-
-    type: Literal["tier"]
-
-
-class LineItemSubLineItemOtherSubLineItemGrouping(BaseModel):
-    key: str
-
-    value: Optional[str] = None
-    """No value indicates the default group"""
-
-
-class LineItemSubLineItemOtherSubLineItem(BaseModel):
-    amount: str
-    """The total amount for this sub line item."""
-
-    grouping: Optional[LineItemSubLineItemOtherSubLineItemGrouping] = None
-
-    name: str
-
-    quantity: float
-
-    type: Literal["'null'"]
-
-
 LineItemSubLineItem: TypeAlias = Annotated[
-    Union[
-        LineItemSubLineItemMatrixSubLineItem, LineItemSubLineItemTierSubLineItem, LineItemSubLineItemOtherSubLineItem
-    ],
-    PropertyInfo(discriminator="type"),
+    Union[MatrixSubLineItem, TierSubLineItem, OtherSubLineItem], PropertyInfo(discriminator="type")
 ]
-
-
-class LineItemTaxAmount(BaseModel):
-    amount: str
-    """The amount of additional tax incurred by this tax rate."""
-
-    tax_rate_description: str
-    """The human-readable description of the applied tax rate."""
-
-    tax_rate_percentage: Optional[str] = None
-    """The tax rate percentage, out of 100."""
 
 
 class LineItem(BaseModel):
@@ -742,13 +186,13 @@ class LineItem(BaseModel):
     values for this particular grouping.
     """
 
-    maximum: Optional[LineItemMaximum] = None
+    maximum: Optional[Maximum] = None
     """This field is deprecated in favor of `adjustments`."""
 
     maximum_amount: Optional[str] = None
     """This field is deprecated in favor of `adjustments`."""
 
-    minimum: Optional[LineItemMinimum] = None
+    minimum: Optional[Minimum] = None
     """This field is deprecated in favor of `adjustments`."""
 
     minimum_amount: Optional[str] = None
@@ -789,7 +233,7 @@ class LineItem(BaseModel):
     subtotal: str
     """The line amount before before any adjustments."""
 
-    tax_amounts: List[LineItemTaxAmount]
+    tax_amounts: List[TaxAmount]
     """An array of tax rates and their incurred tax amounts.
 
     Empty if no tax integration is configured.
@@ -799,56 +243,6 @@ class LineItem(BaseModel):
     """
     A list of customer ids that were used to calculate the usage for this line item.
     """
-
-
-class MaximumFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class Maximum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this maximum amount applies to.
-
-    For plan/plan phase maximums, this can be a subset of prices.
-    """
-
-    filters: List[MaximumFilter]
-    """The filters that determine which prices to apply this maximum to."""
-
-    maximum_amount: str
-    """Maximum amount applied"""
-
-
-class MinimumFilter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
-
-    operator: Literal["includes", "excludes"]
-    """Should prices that match the filter be included or excluded."""
-
-    values: List[str]
-    """The IDs or values that match this filter."""
-
-
-class Minimum(BaseModel):
-    applies_to_price_ids: List[str]
-    """List of price_ids that this minimum amount applies to.
-
-    For plan/plan phase minimums, this can be a subset of prices.
-    """
-
-    filters: List[MinimumFilter]
-    """The filters that determine which prices to apply this minimum to."""
-
-    minimum_amount: str
-    """Minimum amount applied"""
 
 
 class PaymentAttempt(BaseModel):
@@ -871,24 +265,6 @@ class PaymentAttempt(BaseModel):
     """Whether the payment attempt succeeded."""
 
 
-class ShippingAddress(BaseModel):
-    city: Optional[str] = None
-
-    country: Optional[str] = None
-
-    line1: Optional[str] = None
-
-    line2: Optional[str] = None
-
-    postal_code: Optional[str] = None
-
-    state: Optional[str] = None
-
-
-class Subscription(BaseModel):
-    id: str
-
-
 class InvoiceFetchUpcomingResponse(BaseModel):
     id: str
 
@@ -900,7 +276,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
 
     auto_collection: AutoCollection
 
-    billing_address: Optional[BillingAddress] = None
+    billing_address: Optional[Address] = None
 
     created_at: datetime
     """The creation time of the resource in Orb."""
@@ -911,7 +287,7 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     currency: str
     """An ISO 4217 currency string or `credits`"""
 
-    customer: Customer
+    customer: CustomerMinified
 
     customer_balance_transactions: List[CustomerBalanceTransaction]
 
@@ -1129,11 +505,11 @@ class InvoiceFetchUpcomingResponse(BaseModel):
     scheduled to be issued.
     """
 
-    shipping_address: Optional[ShippingAddress] = None
+    shipping_address: Optional[Address] = None
 
     status: Literal["issued", "paid", "synced", "void", "draft"]
 
-    subscription: Optional[Subscription] = None
+    subscription: Optional[SubscriptionMinified] = None
 
     subtotal: str
     """The total before any discounts and minimums are applied."""

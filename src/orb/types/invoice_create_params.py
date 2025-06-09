@@ -8,8 +8,9 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 from .shared_params.discount import Discount
+from .shared_params.unit_config import UnitConfig
 
-__all__ = ["InvoiceCreateParams", "LineItem", "LineItemUnitConfig"]
+__all__ = ["InvoiceCreateParams", "LineItem"]
 
 
 class InvoiceCreateParams(TypedDict, total=False):
@@ -69,11 +70,6 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
 
-class LineItemUnitConfig(TypedDict, total=False):
-    unit_amount: Required[str]
-    """Rate per unit of usage"""
-
-
 class LineItem(TypedDict, total=False):
     end_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """A date string to specify the line item's end date in the customer's timezone."""
@@ -91,4 +87,4 @@ class LineItem(TypedDict, total=False):
     start_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """A date string to specify the line item's start date in the customer's timezone."""
 
-    unit_config: Required[LineItemUnitConfig]
+    unit_config: Required[UnitConfig]

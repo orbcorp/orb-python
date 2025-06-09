@@ -5,7 +5,9 @@ from __future__ import annotations
 from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["AlertCreateForExternalCustomerParams", "Threshold"]
+from .threshold_param import ThresholdParam
+
+__all__ = ["AlertCreateForExternalCustomerParams"]
 
 
 class AlertCreateForExternalCustomerParams(TypedDict, total=False):
@@ -15,14 +17,5 @@ class AlertCreateForExternalCustomerParams(TypedDict, total=False):
     type: Required[Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"]]
     """The type of alert to create. This must be a valid alert type."""
 
-    thresholds: Optional[Iterable[Threshold]]
+    thresholds: Optional[Iterable[ThresholdParam]]
     """The thresholds that define the values at which the alert will be triggered."""
-
-
-class Threshold(TypedDict, total=False):
-    value: Required[float]
-    """The value at which an alert will fire.
-
-    For credit balance alerts, the alert will fire at or below this value. For usage
-    and cost alerts, the alert will fire at or above this value.
-    """

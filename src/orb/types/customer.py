@@ -5,224 +5,23 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .shared.address import Address
+from .shared.customer_tax_id import CustomerTaxID
+from .shared.customer_minified import CustomerMinified
 
 __all__ = [
     "Customer",
-    "BillingAddress",
     "Hierarchy",
-    "HierarchyChild",
-    "HierarchyParent",
-    "ShippingAddress",
-    "TaxID",
     "AccountingSyncConfiguration",
     "AccountingSyncConfigurationAccountingProvider",
     "ReportingConfiguration",
 ]
 
 
-class BillingAddress(BaseModel):
-    city: Optional[str] = None
-
-    country: Optional[str] = None
-
-    line1: Optional[str] = None
-
-    line2: Optional[str] = None
-
-    postal_code: Optional[str] = None
-
-    state: Optional[str] = None
-
-
-class HierarchyChild(BaseModel):
-    id: str
-
-    external_customer_id: Optional[str] = None
-
-
-class HierarchyParent(BaseModel):
-    id: str
-
-    external_customer_id: Optional[str] = None
-
-
 class Hierarchy(BaseModel):
-    children: List[HierarchyChild]
+    children: List[CustomerMinified]
 
-    parent: Optional[HierarchyParent] = None
-
-
-class ShippingAddress(BaseModel):
-    city: Optional[str] = None
-
-    country: Optional[str] = None
-
-    line1: Optional[str] = None
-
-    line2: Optional[str] = None
-
-    postal_code: Optional[str] = None
-
-    state: Optional[str] = None
-
-
-class TaxID(BaseModel):
-    country: Literal[
-        "AD",
-        "AE",
-        "AR",
-        "AT",
-        "AU",
-        "BE",
-        "BG",
-        "BH",
-        "BO",
-        "BR",
-        "CA",
-        "CH",
-        "CL",
-        "CN",
-        "CO",
-        "CR",
-        "CY",
-        "CZ",
-        "DE",
-        "DK",
-        "EE",
-        "DO",
-        "EC",
-        "EG",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "GE",
-        "GR",
-        "HK",
-        "HR",
-        "HU",
-        "ID",
-        "IE",
-        "IL",
-        "IN",
-        "IS",
-        "IT",
-        "JP",
-        "KE",
-        "KR",
-        "KZ",
-        "LI",
-        "LT",
-        "LU",
-        "LV",
-        "MT",
-        "MX",
-        "MY",
-        "NG",
-        "NL",
-        "NO",
-        "NZ",
-        "OM",
-        "PE",
-        "PH",
-        "PL",
-        "PT",
-        "RO",
-        "RS",
-        "RU",
-        "SA",
-        "SE",
-        "SG",
-        "SI",
-        "SK",
-        "SV",
-        "TH",
-        "TR",
-        "TW",
-        "UA",
-        "US",
-        "UY",
-        "VE",
-        "VN",
-        "ZA",
-    ]
-
-    type: Literal[
-        "ad_nrt",
-        "ae_trn",
-        "ar_cuit",
-        "eu_vat",
-        "au_abn",
-        "au_arn",
-        "bg_uic",
-        "bh_vat",
-        "bo_tin",
-        "br_cnpj",
-        "br_cpf",
-        "ca_bn",
-        "ca_gst_hst",
-        "ca_pst_bc",
-        "ca_pst_mb",
-        "ca_pst_sk",
-        "ca_qst",
-        "ch_vat",
-        "cl_tin",
-        "cn_tin",
-        "co_nit",
-        "cr_tin",
-        "do_rcn",
-        "ec_ruc",
-        "eg_tin",
-        "es_cif",
-        "eu_oss_vat",
-        "gb_vat",
-        "ge_vat",
-        "hk_br",
-        "hu_tin",
-        "id_npwp",
-        "il_vat",
-        "in_gst",
-        "is_vat",
-        "jp_cn",
-        "jp_rn",
-        "jp_trn",
-        "ke_pin",
-        "kr_brn",
-        "kz_bin",
-        "li_uid",
-        "mx_rfc",
-        "my_frp",
-        "my_itn",
-        "my_sst",
-        "ng_tin",
-        "no_vat",
-        "no_voec",
-        "nz_gst",
-        "om_vat",
-        "pe_ruc",
-        "ph_tin",
-        "ro_tin",
-        "rs_pib",
-        "ru_inn",
-        "ru_kpp",
-        "sa_vat",
-        "sg_gst",
-        "sg_uen",
-        "si_tin",
-        "sv_nit",
-        "th_vat",
-        "tr_tin",
-        "tw_vat",
-        "ua_vat",
-        "us_ein",
-        "uy_ruc",
-        "ve_rif",
-        "vn_tin",
-        "za_vat",
-    ]
-
-    value: str
+    parent: Optional[CustomerMinified] = None
 
 
 class AccountingSyncConfigurationAccountingProvider(BaseModel):
@@ -251,7 +50,7 @@ class Customer(BaseModel):
     balance: str
     """The customer's current balance in their currency."""
 
-    billing_address: Optional[BillingAddress] = None
+    billing_address: Optional[Address] = None
 
     created_at: datetime
 
@@ -304,9 +103,9 @@ class Customer(BaseModel):
 
     portal_url: Optional[str] = None
 
-    shipping_address: Optional[ShippingAddress] = None
+    shipping_address: Optional[Address] = None
 
-    tax_id: Optional[TaxID] = None
+    tax_id: Optional[CustomerTaxID] = None
     """
     Tax IDs are commonly required to be displayed on customer invoices, which are
     added to the headers of invoices.

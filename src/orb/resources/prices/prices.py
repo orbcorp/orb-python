@@ -22,7 +22,6 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ...types.price import Price
 from ..._base_client import AsyncPaginator, make_request_options
 from .external_price_id import (
     ExternalPriceID,
@@ -32,8 +31,20 @@ from .external_price_id import (
     ExternalPriceIDWithStreamingResponse,
     AsyncExternalPriceIDWithStreamingResponse,
 )
+from ...types.shared.price import Price
 from ...types.price_evaluate_response import PriceEvaluateResponse
+from ...types.shared_params.bps_config import BPSConfig
+from ...types.shared_params.bulk_config import BulkConfig
+from ...types.shared_params.unit_config import UnitConfig
+from ...types.shared_params.matrix_config import MatrixConfig
+from ...types.shared_params.tiered_config import TieredConfig
+from ...types.shared_params.package_config import PackageConfig
+from ...types.shared_params.bulk_bps_config import BulkBPSConfig
+from ...types.shared_params.tiered_bps_config import TieredBPSConfig
 from ...types.price_evaluate_multiple_response import PriceEvaluateMultipleResponse
+from ...types.shared_params.matrix_with_allocation_config import MatrixWithAllocationConfig
+from ...types.shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
+from ...types.shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
 __all__ = ["Prices", "AsyncPrices"]
 
@@ -71,19 +82,16 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["unit"],
         name: str,
-        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
+        unit_config: UnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -162,21 +170,16 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["package"],
         name: str,
-        package_config: price_create_params.NewFloatingPackagePricePackageConfig,
+        package_config: PackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -253,23 +256,18 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig,
+        matrix_config: MatrixConfig,
         model_type: Literal["matrix"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -346,27 +344,18 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
+        matrix_with_allocation_config: MatrixWithAllocationConfig,
         model_type: Literal["matrix_with_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -445,21 +434,16 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered"],
         name: str,
-        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
+        tiered_config: TieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -538,23 +522,16 @@ class Prices(SyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_bps"],
         name: str,
-        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
+        tiered_bps_config: TieredBPSConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredBpsPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -628,7 +605,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig,
+        bps_config: BPSConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -636,16 +613,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingBpsPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -719,7 +693,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig,
+        bulk_bps_config: BulkBPSConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -727,18 +701,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingBulkBpsPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -812,7 +781,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig,
+        bulk_config: BulkConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -820,16 +789,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingBulkPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -911,22 +877,13 @@ class Prices(SyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1008,22 +965,13 @@ class Prices(SyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1105,22 +1053,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1202,22 +1141,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1299,22 +1229,13 @@ class Prices(SyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1396,22 +1317,13 @@ class Prices(SyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1493,22 +1405,13 @@ class Prices(SyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1590,22 +1493,13 @@ class Prices(SyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1687,22 +1581,13 @@ class Prices(SyncAPIResource):
         tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1784,22 +1669,13 @@ class Prices(SyncAPIResource):
         unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1881,22 +1757,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1978,22 +1845,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2075,22 +1933,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2172,22 +2021,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2269,22 +2109,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2366,22 +2197,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2463,22 +2285,13 @@ class Prices(SyncAPIResource):
         scalable_matrix_with_unit_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2560,22 +2373,13 @@ class Prices(SyncAPIResource):
         scalable_matrix_with_tiered_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2657,22 +2461,13 @@ class Prices(SyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2807,29 +2602,25 @@ class Prices(SyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"],
         name: str,
-        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
+        unit_config: UnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
-        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
-        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
-        | NotGiven = NOT_GIVEN,
-        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
-        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
-        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
-        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig | NotGiven = NOT_GIVEN,
-        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig | NotGiven = NOT_GIVEN,
+        package_config: PackageConfig | NotGiven = NOT_GIVEN,
+        matrix_config: MatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: MatrixWithAllocationConfig | NotGiven = NOT_GIVEN,
+        tiered_config: TieredConfig | NotGiven = NOT_GIVEN,
+        tiered_bps_config: TieredBPSConfig | NotGiven = NOT_GIVEN,
+        bps_config: BPSConfig | NotGiven = NOT_GIVEN,
+        bulk_bps_config: BulkBPSConfig | NotGiven = NOT_GIVEN,
+        bulk_config: BulkConfig | NotGiven = NOT_GIVEN,
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -3283,19 +3074,16 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["unit"],
         name: str,
-        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig,
+        unit_config: UnitConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3374,21 +3162,16 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["package"],
         name: str,
-        package_config: price_create_params.NewFloatingPackagePricePackageConfig,
+        package_config: PackageConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingPackagePriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3465,23 +3248,18 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig,
+        matrix_config: MatrixConfig,
         model_type: Literal["matrix"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingMatrixPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3558,27 +3336,18 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig,
+        matrix_with_allocation_config: MatrixWithAllocationConfig,
         model_type: Literal["matrix_with_allocation"],
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3657,21 +3426,16 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered"],
         name: str,
-        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig,
+        tiered_config: TieredConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingTieredPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3750,23 +3514,16 @@ class AsyncPrices(AsyncAPIResource):
         item_id: str,
         model_type: Literal["tiered_bps"],
         name: str,
-        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig,
+        tiered_bps_config: TieredBPSConfig,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingTieredBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredBpsPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredBpsPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3840,7 +3597,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig,
+        bps_config: BPSConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -3848,16 +3605,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingBpsPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBpsPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3931,7 +3685,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig,
+        bulk_bps_config: BulkBPSConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -3939,18 +3693,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingBulkBpsPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkBpsPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4024,7 +3773,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig,
+        bulk_config: BulkConfig,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -4032,16 +3781,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingBulkPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingBulkPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4123,22 +3869,13 @@ class AsyncPrices(AsyncAPIResource):
         threshold_total_amount_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingThresholdTotalAmountPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4220,22 +3957,13 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4317,22 +4045,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4414,22 +4133,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMaxGroupTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4511,22 +4221,13 @@ class AsyncPrices(AsyncAPIResource):
         tiered_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4608,22 +4309,13 @@ class AsyncPrices(AsyncAPIResource):
         package_with_allocation_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingPackageWithAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4705,22 +4397,13 @@ class AsyncPrices(AsyncAPIResource):
         tiered_package_with_minimum_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredPackageWithMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4802,22 +4485,13 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_percent_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithPercentPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4899,22 +4573,13 @@ class AsyncPrices(AsyncAPIResource):
         tiered_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingTieredWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4996,22 +4661,13 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_proration_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingUnitWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5093,22 +4749,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedAllocationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5190,22 +4837,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithProratedMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5287,22 +4925,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5384,22 +5013,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingMatrixWithDisplayNamePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5481,22 +5101,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingBulkWithProrationPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5578,22 +5189,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingGroupedTieredPackagePriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5675,22 +5277,13 @@ class AsyncPrices(AsyncAPIResource):
         scalable_matrix_with_unit_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5772,22 +5365,13 @@ class AsyncPrices(AsyncAPIResource):
         scalable_matrix_with_tiered_pricing_config: Dict[str, object],
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5869,22 +5453,13 @@ class AsyncPrices(AsyncAPIResource):
         name: str,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceBillingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceDimensionalPriceConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[
-            price_create_params.NewFloatingCumulativeGroupedBulkPriceInvoicingCycleConfiguration
-        ]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6019,29 +5594,25 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"],
         name: str,
-        unit_config: price_create_params.NewFloatingUnitPriceUnitConfig | NotGiven = NOT_GIVEN,
+        unit_config: UnitConfig | NotGiven = NOT_GIVEN,
         billable_metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceBillingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        dimensional_price_configuration: Optional[price_create_params.NewFloatingUnitPriceDimensionalPriceConfiguration]
-        | NotGiven = NOT_GIVEN,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
         fixed_price_quantity: Optional[float] | NotGiven = NOT_GIVEN,
         invoice_grouping_key: Optional[str] | NotGiven = NOT_GIVEN,
-        invoicing_cycle_configuration: Optional[price_create_params.NewFloatingUnitPriceInvoicingCycleConfiguration]
-        | NotGiven = NOT_GIVEN,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        package_config: price_create_params.NewFloatingPackagePricePackageConfig | NotGiven = NOT_GIVEN,
-        matrix_config: price_create_params.NewFloatingMatrixPriceMatrixConfig | NotGiven = NOT_GIVEN,
-        matrix_with_allocation_config: price_create_params.NewFloatingMatrixWithAllocationPriceMatrixWithAllocationConfig
-        | NotGiven = NOT_GIVEN,
-        tiered_config: price_create_params.NewFloatingTieredPriceTieredConfig | NotGiven = NOT_GIVEN,
-        tiered_bps_config: price_create_params.NewFloatingTieredBpsPriceTieredBpsConfig | NotGiven = NOT_GIVEN,
-        bps_config: price_create_params.NewFloatingBpsPriceBpsConfig | NotGiven = NOT_GIVEN,
-        bulk_bps_config: price_create_params.NewFloatingBulkBpsPriceBulkBpsConfig | NotGiven = NOT_GIVEN,
-        bulk_config: price_create_params.NewFloatingBulkPriceBulkConfig | NotGiven = NOT_GIVEN,
+        package_config: PackageConfig | NotGiven = NOT_GIVEN,
+        matrix_config: MatrixConfig | NotGiven = NOT_GIVEN,
+        matrix_with_allocation_config: MatrixWithAllocationConfig | NotGiven = NOT_GIVEN,
+        tiered_config: TieredConfig | NotGiven = NOT_GIVEN,
+        tiered_bps_config: TieredBPSConfig | NotGiven = NOT_GIVEN,
+        bps_config: BPSConfig | NotGiven = NOT_GIVEN,
+        bulk_bps_config: BulkBPSConfig | NotGiven = NOT_GIVEN,
+        bulk_config: BulkConfig | NotGiven = NOT_GIVEN,
         threshold_total_amount_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         tiered_package_config: Dict[str, object] | NotGiven = NOT_GIVEN,
         grouped_tiered_config: Dict[str, object] | NotGiven = NOT_GIVEN,
