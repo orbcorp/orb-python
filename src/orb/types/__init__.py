@@ -57,6 +57,7 @@ from .shared import (
     NewAmountDiscount as NewAmountDiscount,
     AdjustmentInterval as AdjustmentInterval,
     BillableMetricTiny as BillableMetricTiny,
+    ConversionRateTier as ConversionRateTier,
     NewAllocationPrice as NewAllocationPrice,
     NewPlanMatrixPrice as NewPlanMatrixPrice,
     NewPlanTieredPrice as NewPlanTieredPrice,
@@ -82,18 +83,22 @@ from .shared import (
     NewFloatingPackagePrice as NewFloatingPackagePrice,
     SubLineItemMatrixConfig as SubLineItemMatrixConfig,
     BillingCycleRelativeDate as BillingCycleRelativeDate,
+    ConversionRateUnitConfig as ConversionRateUnitConfig,
+    UnitConversionRateConfig as UnitConversionRateConfig,
     BillingCycleConfiguration as BillingCycleConfiguration,
     MonetaryMaximumAdjustment as MonetaryMaximumAdjustment,
     MonetaryMinimumAdjustment as MonetaryMinimumAdjustment,
     NewFloatingTieredBPSPrice as NewFloatingTieredBPSPrice,
     NewPlanGroupedTieredPrice as NewPlanGroupedTieredPrice,
     NewPlanTieredPackagePrice as NewPlanTieredPackagePrice,
+    ConversionRateTieredConfig as ConversionRateTieredConfig,
     FixedFeeQuantityTransition as FixedFeeQuantityTransition,
     MatrixWithAllocationConfig as MatrixWithAllocationConfig,
     PercentageDiscountInterval as PercentageDiscountInterval,
     PlanPhaseMaximumAdjustment as PlanPhaseMaximumAdjustment,
     PlanPhaseMinimumAdjustment as PlanPhaseMinimumAdjustment,
     SubscriptionChangeMinified as SubscriptionChangeMinified,
+    TieredConversionRateConfig as TieredConversionRateConfig,
     NewPlanUnitWithPercentPrice as NewPlanUnitWithPercentPrice,
     ChangedSubscriptionResources as ChangedSubscriptionResources,
     NewBillingCycleConfiguration as NewBillingCycleConfiguration,
@@ -236,7 +241,6 @@ from .subscription_price_intervals_params import SubscriptionPriceIntervalsParam
 from .alert_create_for_subscription_params import AlertCreateForSubscriptionParams as AlertCreateForSubscriptionParams
 from .beta_set_default_plan_version_params import BetaSetDefaultPlanVersionParams as BetaSetDefaultPlanVersionParams
 from .new_subscription_package_price_param import NewSubscriptionPackagePriceParam as NewSubscriptionPackagePriceParam
-from .price_evaluate_preview_events_params import PriceEvaluatePreviewEventsParams as PriceEvaluatePreviewEventsParams
 from .subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse as SubscriptionFetchScheduleResponse
 from .customer_update_by_external_id_params import CustomerUpdateByExternalIDParams as CustomerUpdateByExternalIDParams
 from .dimensional_price_group_create_params import (
@@ -245,9 +249,6 @@ from .dimensional_price_group_create_params import (
 from .new_subscription_bulk_bps_price_param import NewSubscriptionBulkBPSPriceParam as NewSubscriptionBulkBPSPriceParam
 from .subscription_change_retrieve_response import (
     SubscriptionChangeRetrieveResponse as SubscriptionChangeRetrieveResponse,
-)
-from .price_evaluate_preview_events_response import (
-    PriceEvaluatePreviewEventsResponse as PriceEvaluatePreviewEventsResponse,
 )
 from .new_accounting_sync_configuration_param import (
     NewAccountingSyncConfigurationParam as NewAccountingSyncConfigurationParam,

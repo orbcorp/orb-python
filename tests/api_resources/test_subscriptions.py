@@ -95,10 +95,6 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -214,10 +210,6 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -660,10 +652,6 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -895,10 +883,6 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1007,10 +991,6 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1417,10 +1397,6 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1536,10 +1512,6 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1982,10 +1954,6 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2217,10 +2185,6 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -2329,10 +2293,6 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
-                        "conversion_rate_config": {
-                            "conversion_rate_type": "unit",
-                            "unit_config": {"unit_amount": "unit_amount"},
-                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
