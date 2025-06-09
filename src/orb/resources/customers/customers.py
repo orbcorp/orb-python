@@ -47,6 +47,11 @@ from .balance_transactions import (
     BalanceTransactionsWithStreamingResponse,
     AsyncBalanceTransactionsWithStreamingResponse,
 )
+from ...types.address_input_param import AddressInputParam
+from ...types.shared_params.customer_tax_id import CustomerTaxID
+from ...types.customer_hierarchy_config_param import CustomerHierarchyConfigParam
+from ...types.new_reporting_configuration_param import NewReportingConfigurationParam
+from ...types.new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
 
 __all__ = ["Customers", "AsyncCustomers"]
 
@@ -88,23 +93,22 @@ class Customers(SyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[customer_create_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_create_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -321,25 +325,24 @@ class Customers(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[customer_update_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_update_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -832,26 +835,24 @@ class Customers(SyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[customer_update_by_external_id_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_update_by_external_id_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
-        | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1091,23 +1092,22 @@ class AsyncCustomers(AsyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[customer_create_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_create_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_create_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_create_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_create_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_create_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         timezone: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1324,25 +1324,24 @@ class AsyncCustomers(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[customer_update_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_update_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_update_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_update_params.ReportingConfiguration] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_update_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_update_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1835,26 +1834,24 @@ class AsyncCustomers(AsyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[customer_update_by_external_id_params.AccountingSyncConfiguration]
-        | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[customer_update_by_external_id_params.BillingAddress] | NotGiven = NOT_GIVEN,
+        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[customer_update_by_external_id_params.Hierarchy] | NotGiven = NOT_GIVEN,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         name: Optional[str] | NotGiven = NOT_GIVEN,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | NotGiven = NOT_GIVEN,
         payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[customer_update_by_external_id_params.ReportingConfiguration]
-        | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[customer_update_by_external_id_params.ShippingAddress] | NotGiven = NOT_GIVEN,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
+        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[customer_update_by_external_id_params.TaxID] | NotGiven = NOT_GIVEN,
+        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

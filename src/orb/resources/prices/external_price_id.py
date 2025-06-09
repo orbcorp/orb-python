@@ -12,9 +12,9 @@ from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.price import Price
 from ..._base_client import make_request_options
 from ...types.prices import external_price_id_update_params
+from ...types.shared.price import Price
 
 __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 

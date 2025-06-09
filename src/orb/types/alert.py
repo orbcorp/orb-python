@@ -5,14 +5,11 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .threshold import Threshold
+from .shared.customer_minified import CustomerMinified
+from .shared.subscription_minified import SubscriptionMinified
 
-__all__ = ["Alert", "Customer", "Metric", "Plan", "Subscription", "Threshold", "BalanceAlertStatus"]
-
-
-class Customer(BaseModel):
-    id: str
-
-    external_customer_id: Optional[str] = None
+__all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus"]
 
 
 class Metric(BaseModel):
@@ -34,19 +31,6 @@ class Plan(BaseModel):
     plan_version: str
 
 
-class Subscription(BaseModel):
-    id: str
-
-
-class Threshold(BaseModel):
-    value: float
-    """The value at which an alert will fire.
-
-    For credit balance alerts, the alert will fire at or below this value. For usage
-    and cost alerts, the alert will fire at or above this value.
-    """
-
-
 class BalanceAlertStatus(BaseModel):
     in_alert: bool
     """Whether the alert is currently in-alert or not."""
@@ -65,7 +49,7 @@ class Alert(BaseModel):
     currency: Optional[str] = None
     """The name of the currency the credit balance or invoice cost is denominated in."""
 
-    customer: Optional[Customer] = None
+    customer: Optional[CustomerMinified] = None
     """The customer the alert applies to."""
 
     enabled: bool
@@ -77,7 +61,7 @@ class Alert(BaseModel):
     plan: Optional[Plan] = None
     """The plan the alert applies to."""
 
-    subscription: Optional[Subscription] = None
+    subscription: Optional[SubscriptionMinified] = None
     """The subscription the alert applies to."""
 
     thresholds: Optional[List[Threshold]] = None
