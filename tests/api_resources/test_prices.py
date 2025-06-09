@@ -11,6 +11,7 @@ from orb import Orb, AsyncOrb
 from orb.types import (
     PriceEvaluateResponse,
     PriceEvaluateMultipleResponse,
+    PriceEvaluatePreviewEventsResponse,
 )
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
@@ -51,6 +52,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -135,6 +140,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -237,6 +246,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -353,6 +366,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -466,6 +483,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -574,6 +595,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -669,6 +694,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -755,6 +784,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -840,6 +873,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -918,6 +955,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -996,6 +1037,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1074,6 +1119,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1152,6 +1201,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1230,6 +1283,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1308,6 +1365,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1386,6 +1447,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1464,6 +1529,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1542,6 +1611,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1620,6 +1693,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1698,6 +1775,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1776,6 +1857,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1854,6 +1939,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -1932,6 +2021,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2010,6 +2103,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2088,6 +2185,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2166,6 +2267,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2244,6 +2349,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2322,6 +2431,10 @@ class TestPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2552,6 +2665,10 @@ class TestPrices:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2595,6 +2712,98 @@ class TestPrices:
 
             price = response.parse()
             assert_matches_type(PriceEvaluateMultipleResponse, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_evaluate_preview_events(self, client: Orb) -> None:
+        price = client.prices.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    def test_method_evaluate_preview_events_with_all_params(self, client: Orb) -> None:
+        price = client.prices.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            customer_id="customer_id",
+            events=[
+                {
+                    "event_name": "event_name",
+                    "properties": {"foo": "bar"},
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                }
+            ],
+            external_customer_id="external_customer_id",
+            price_evaluations=[
+                {
+                    "filter": "my_numeric_property > 100 AND my_other_property = 'bar'",
+                    "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
+                    "price": {
+                        "cadence": "annual",
+                        "currency": "currency",
+                        "item_id": "item_id",
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "metadata": {"foo": "string"},
+                    },
+                    "price_id": "price_id",
+                }
+            ],
+        )
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_evaluate_preview_events(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_evaluate_preview_events(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2668,6 +2877,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2752,6 +2965,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2854,6 +3071,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2970,6 +3191,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3083,6 +3308,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3191,6 +3420,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3286,6 +3519,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3372,6 +3609,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3457,6 +3698,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3535,6 +3780,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3613,6 +3862,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3691,6 +3944,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3769,6 +4026,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3847,6 +4108,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -3925,6 +4190,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4003,6 +4272,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4081,6 +4354,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4159,6 +4436,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4237,6 +4518,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4315,6 +4600,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4393,6 +4682,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4471,6 +4764,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4549,6 +4846,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4627,6 +4928,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4705,6 +5010,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4783,6 +5092,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4861,6 +5174,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -4939,6 +5256,10 @@ class TestAsyncPrices:
                 "duration_unit": "day",
             },
             conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
             dimensional_price_configuration={
                 "dimension_values": ["string"],
                 "dimensional_price_group_id": "dimensional_price_group_id",
@@ -5169,6 +5490,10 @@ class TestAsyncPrices:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -5212,6 +5537,98 @@ class TestAsyncPrices:
 
             price = await response.parse()
             assert_matches_type(PriceEvaluateMultipleResponse, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_evaluate_preview_events(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    async def test_method_evaluate_preview_events_with_all_params(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+            customer_id="customer_id",
+            events=[
+                {
+                    "event_name": "event_name",
+                    "properties": {"foo": "bar"},
+                    "timestamp": parse_datetime("2020-12-09T16:09:53Z"),
+                    "customer_id": "customer_id",
+                    "external_customer_id": "external_customer_id",
+                }
+            ],
+            external_customer_id="external_customer_id",
+            price_evaluations=[
+                {
+                    "filter": "my_numeric_property > 100 AND my_other_property = 'bar'",
+                    "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
+                    "price": {
+                        "cadence": "annual",
+                        "currency": "currency",
+                        "item_id": "item_id",
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {"unit_amount": "unit_amount"},
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "metadata": {"foo": "string"},
+                    },
+                    "price_id": "price_id",
+                }
+            ],
+        )
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_evaluate_preview_events(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_evaluate_preview_events(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.evaluate_preview_events(
+            timeframe_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            timeframe_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(PriceEvaluatePreviewEventsResponse, price, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
