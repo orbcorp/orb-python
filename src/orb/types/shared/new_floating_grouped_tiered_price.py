@@ -1,15 +1,23 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
-from typing_extensions import Literal
+from typing import Dict, Union, Optional
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from ..._utils import PropertyInfo
 from ..._models import BaseModel
+from .unit_conversion_rate_config import UnitConversionRateConfig
+from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingGroupedTieredPrice"]
+__all__ = ["NewFloatingGroupedTieredPrice", "ConversionRateConfig"]
+
+ConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
+    PropertyInfo(discriminator="conversion_rate_type"),
+]
 
 
 class NewFloatingGroupedTieredPrice(BaseModel):
@@ -49,6 +57,9 @@ class NewFloatingGroupedTieredPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[ConversionRateConfig] = None
+    """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] = None
     """For dimensional price: specifies a price group and dimension values"""
