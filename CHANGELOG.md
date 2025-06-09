@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.0.0 (2025-06-09)
+
+Full Changelog: [v3.24.0...v4.0.0](https://github.com/orbcorp/orb-python/compare/v3.24.0...v4.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** breaking change to re-use types
+
+### Features
+
+* **api:** api update ([1703727](https://github.com/orbcorp/orb-python/commit/17037277fa161738f83680233c04f597741b1c1c))
+* **api:** api update ([a76a33a](https://github.com/orbcorp/orb-python/commit/a76a33a422924747a24845a5e083cdca26e59c9b))
+* **api:** manual updates ([45ce124](https://github.com/orbcorp/orb-python/commit/45ce124f58e30ccb43cc3e0d3e3ce9c28c0b54a2))
+* **client:** breaking change to re-use types ([fd639a0](https://github.com/orbcorp/orb-python/commit/fd639a083f97949fea5cdbc9c0e24b593445d44f))
+
 ## 3.24.0 (2025-06-04)
 
 Full Changelog: [v3.23.0...v3.24.0](https://github.com/orbcorp/orb-python/compare/v3.23.0...v3.24.0)
