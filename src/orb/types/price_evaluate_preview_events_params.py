@@ -40,10 +40,10 @@ from .shared_params.new_floating_scalable_matrix_with_tiered_pricing_price impor
     NewFloatingScalableMatrixWithTieredPricingPrice,
 )
 
-__all__ = ["PriceEvaluateMultipleParams", "Event", "PriceEvaluation", "PriceEvaluationPrice"]
+__all__ = ["PriceEvaluatePreviewEventsParams", "Event", "PriceEvaluation", "PriceEvaluationPrice"]
 
 
-class PriceEvaluateMultipleParams(TypedDict, total=False):
+class PriceEvaluatePreviewEventsParams(TypedDict, total=False):
     timeframe_end: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The exclusive upper bound for event timestamps"""
 
@@ -53,8 +53,8 @@ class PriceEvaluateMultipleParams(TypedDict, total=False):
     customer_id: Optional[str]
     """The ID of the customer to which this evaluation is scoped."""
 
-    events: Optional[Iterable[Event]]
-    """Optional list of preview events to use instead of actual usage data"""
+    events: Iterable[Event]
+    """List of preview events to use instead of actual usage data"""
 
     external_customer_id: Optional[str]
     """The external customer ID of the customer to which this evaluation is scoped."""
