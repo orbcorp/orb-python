@@ -13,40 +13,70 @@ from .shared_params.tiered_config import TieredConfig
 from .shared_params.package_config import PackageConfig
 from .shared_params.bulk_bps_config import BulkBPSConfig
 from .shared_params.tiered_bps_config import TieredBPSConfig
+from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
 from .shared_params.matrix_with_allocation_config import MatrixWithAllocationConfig
+from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
 __all__ = [
     "PriceCreateParams",
     "NewFloatingUnitPrice",
+    "NewFloatingUnitPriceConversionRateConfig",
     "NewFloatingPackagePrice",
+    "NewFloatingPackagePriceConversionRateConfig",
     "NewFloatingMatrixPrice",
+    "NewFloatingMatrixPriceConversionRateConfig",
     "NewFloatingMatrixWithAllocationPrice",
+    "NewFloatingMatrixWithAllocationPriceConversionRateConfig",
     "NewFloatingTieredPrice",
+    "NewFloatingTieredPriceConversionRateConfig",
     "NewFloatingTieredBPSPrice",
+    "NewFloatingTieredBPSPriceConversionRateConfig",
     "NewFloatingBPSPrice",
+    "NewFloatingBPSPriceConversionRateConfig",
     "NewFloatingBulkBPSPrice",
+    "NewFloatingBulkBPSPriceConversionRateConfig",
     "NewFloatingBulkPrice",
+    "NewFloatingBulkPriceConversionRateConfig",
     "NewFloatingThresholdTotalAmountPrice",
+    "NewFloatingThresholdTotalAmountPriceConversionRateConfig",
     "NewFloatingTieredPackagePrice",
+    "NewFloatingTieredPackagePriceConversionRateConfig",
     "NewFloatingGroupedTieredPrice",
+    "NewFloatingGroupedTieredPriceConversionRateConfig",
     "NewFloatingMaxGroupTieredPackagePrice",
+    "NewFloatingMaxGroupTieredPackagePriceConversionRateConfig",
     "NewFloatingTieredWithMinimumPrice",
+    "NewFloatingTieredWithMinimumPriceConversionRateConfig",
     "NewFloatingPackageWithAllocationPrice",
+    "NewFloatingPackageWithAllocationPriceConversionRateConfig",
     "NewFloatingTieredPackageWithMinimumPrice",
+    "NewFloatingTieredPackageWithMinimumPriceConversionRateConfig",
     "NewFloatingUnitWithPercentPrice",
+    "NewFloatingUnitWithPercentPriceConversionRateConfig",
     "NewFloatingTieredWithProrationPrice",
+    "NewFloatingTieredWithProrationPriceConversionRateConfig",
     "NewFloatingUnitWithProrationPrice",
+    "NewFloatingUnitWithProrationPriceConversionRateConfig",
     "NewFloatingGroupedAllocationPrice",
+    "NewFloatingGroupedAllocationPriceConversionRateConfig",
     "NewFloatingGroupedWithProratedMinimumPrice",
+    "NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig",
     "NewFloatingGroupedWithMeteredMinimumPrice",
+    "NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig",
     "NewFloatingMatrixWithDisplayNamePrice",
+    "NewFloatingMatrixWithDisplayNamePriceConversionRateConfig",
     "NewFloatingBulkWithProrationPrice",
+    "NewFloatingBulkWithProrationPriceConversionRateConfig",
     "NewFloatingGroupedTieredPackagePrice",
+    "NewFloatingGroupedTieredPackagePriceConversionRateConfig",
     "NewFloatingScalableMatrixWithUnitPricingPrice",
+    "NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig",
     "NewFloatingScalableMatrixWithTieredPricingPrice",
+    "NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig",
     "NewFloatingCumulativeGroupedBulkPrice",
+    "NewFloatingCumulativeGroupedBulkPriceConversionRateConfig",
 ]
 
 
@@ -88,6 +118,9 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingUnitPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -115,6 +148,9 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingUnitPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingPackagePrice(TypedDict, total=False):
@@ -155,6 +191,9 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingPackagePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -182,6 +221,9 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingPackagePriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingMatrixPrice(TypedDict, total=False):
@@ -222,6 +264,9 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingMatrixPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -249,6 +294,9 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingMatrixPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
@@ -289,6 +337,9 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingMatrixWithAllocationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -316,6 +367,11 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingMatrixWithAllocationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingTieredPrice(TypedDict, total=False):
@@ -356,6 +412,9 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -383,6 +442,9 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingTieredBPSPrice(TypedDict, total=False):
@@ -423,6 +485,9 @@ class NewFloatingTieredBPSPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredBPSPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -450,6 +515,9 @@ class NewFloatingTieredBPSPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingBPSPrice(TypedDict, total=False):
@@ -490,6 +558,9 @@ class NewFloatingBPSPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingBPSPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -517,6 +588,9 @@ class NewFloatingBPSPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingBulkBPSPrice(TypedDict, total=False):
@@ -557,6 +631,9 @@ class NewFloatingBulkBPSPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingBulkBPSPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -584,6 +661,9 @@ class NewFloatingBulkBPSPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingBulkBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingBulkPrice(TypedDict, total=False):
@@ -624,6 +704,9 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingBulkPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -651,6 +734,9 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingBulkPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
@@ -691,6 +777,9 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingThresholdTotalAmountPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -718,6 +807,11 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingThresholdTotalAmountPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingTieredPackagePrice(TypedDict, total=False):
@@ -758,6 +852,9 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredPackagePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -785,6 +882,11 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredPackagePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingGroupedTieredPrice(TypedDict, total=False):
@@ -825,6 +927,9 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingGroupedTieredPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -852,6 +957,11 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingGroupedTieredPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
@@ -892,6 +1002,9 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingMaxGroupTieredPackagePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -919,6 +1032,11 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingMaxGroupTieredPackagePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
@@ -959,6 +1077,9 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredWithMinimumPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -986,6 +1107,11 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredWithMinimumPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
@@ -1026,6 +1152,9 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingPackageWithAllocationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1053,6 +1182,11 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingPackageWithAllocationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
@@ -1093,6 +1227,9 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredPackageWithMinimumPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1120,6 +1257,11 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredPackageWithMinimumPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
@@ -1160,6 +1302,9 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingUnitWithPercentPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1187,6 +1332,11 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingUnitWithPercentPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
@@ -1227,6 +1377,9 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingTieredWithProrationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1254,6 +1407,11 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingTieredWithProrationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
@@ -1294,6 +1452,9 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingUnitWithProrationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1321,6 +1482,11 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingUnitWithProrationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
@@ -1361,6 +1527,9 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingGroupedAllocationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1388,6 +1557,11 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingGroupedAllocationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
@@ -1428,6 +1602,9 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1455,6 +1632,11 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
@@ -1495,6 +1677,9 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1522,6 +1707,11 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
@@ -1562,6 +1752,9 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingMatrixWithDisplayNamePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1589,6 +1782,11 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingMatrixWithDisplayNamePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
@@ -1629,6 +1827,9 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingBulkWithProrationPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1656,6 +1857,11 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingBulkWithProrationPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
@@ -1696,6 +1902,9 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingGroupedTieredPackagePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1723,6 +1932,11 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingGroupedTieredPackagePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
@@ -1763,6 +1977,9 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1790,6 +2007,11 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
@@ -1830,6 +2052,9 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1857,6 +2082,11 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+
+NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 
 class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
@@ -1897,6 +2127,9 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
+    conversion_rate_config: Optional[NewFloatingCumulativeGroupedBulkPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
 
@@ -1925,6 +2158,10 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
 
+
+NewFloatingCumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
 
 PriceCreateParams: TypeAlias = Union[
     NewFloatingUnitPrice,

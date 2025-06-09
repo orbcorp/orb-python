@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypeAlias, TypedDict
 
@@ -40,7 +40,7 @@ from .shared_params.new_floating_scalable_matrix_with_tiered_pricing_price impor
     NewFloatingScalableMatrixWithTieredPricingPrice,
 )
 
-__all__ = ["PriceEvaluateMultipleParams", "Event", "PriceEvaluation", "PriceEvaluationPrice"]
+__all__ = ["PriceEvaluateMultipleParams", "PriceEvaluation", "PriceEvaluationPrice"]
 
 
 class PriceEvaluateMultipleParams(TypedDict, total=False):
@@ -53,42 +53,11 @@ class PriceEvaluateMultipleParams(TypedDict, total=False):
     customer_id: Optional[str]
     """The ID of the customer to which this evaluation is scoped."""
 
-    events: Optional[Iterable[Event]]
-    """Optional list of preview events to use instead of actual usage data (max 500)"""
-
     external_customer_id: Optional[str]
     """The external customer ID of the customer to which this evaluation is scoped."""
 
     price_evaluations: Iterable[PriceEvaluation]
     """List of prices to evaluate (max 100)"""
-
-
-class Event(TypedDict, total=False):
-    event_name: Required[str]
-    """A name to meaningfully identify the action or event type."""
-
-    properties: Required[Dict[str, object]]
-    """A dictionary of custom properties.
-
-    Values in this dictionary must be numeric, boolean, or strings. Nested
-    dictionaries are disallowed.
-    """
-
-    timestamp: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
-    """An ISO 8601 format date with no timezone offset (i.e.
-
-    UTC). This should represent the time that usage was recorded, and is
-    particularly important to attribute usage to a given billing period.
-    """
-
-    customer_id: Optional[str]
-    """The Orb Customer identifier"""
-
-    external_customer_id: Optional[str]
-    """
-    An alias for the Orb customer, whose mapping is specified when creating the
-    customer
-    """
 
 
 PriceEvaluationPrice: TypeAlias = Union[

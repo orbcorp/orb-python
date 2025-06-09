@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Dict, Union, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
+from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
+from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionScalableMatrixWithTieredPricingPriceParam"]
+__all__ = ["NewSubscriptionScalableMatrixWithTieredPricingPriceParam", "ConversionRateConfig"]
+
+ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewSubscriptionScalableMatrixWithTieredPricingPriceParam(TypedDict, total=False):
@@ -45,6 +49,9 @@ class NewSubscriptionScalableMatrixWithTieredPricingPriceParam(TypedDict, total=
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[ConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
