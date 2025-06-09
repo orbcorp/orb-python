@@ -2,14 +2,148 @@
 
 ```python
 from orb.types import (
+    Address,
+    AdjustmentInterval,
+    AggregatedCost,
+    Allocation,
     AmountDiscount,
+    AmountDiscountInterval,
+    BillableMetricTiny,
+    BillingCycleAnchorConfiguration,
+    BillingCycleConfiguration,
     BillingCycleRelativeDate,
+    BPSConfig,
+    BPSTier,
+    BulkBPSConfig,
+    BulkBPSTier,
+    BulkConfig,
+    BulkTier,
+    ChangedSubscriptionResources,
+    ConversionRateTier,
+    ConversionRateTieredConfig,
+    ConversionRateUnitConfig,
+    CouponRedemption,
+    CreditNote,
+    CreditNoteTiny,
+    CustomExpiration,
+    CustomerMinified,
+    CustomerTaxID,
+    DimensionalPriceConfiguration,
     Discount,
+    FixedFeeQuantityScheduleEntry,
+    FixedFeeQuantityTransition,
+    Invoice,
     InvoiceLevelDiscount,
+    InvoiceTiny,
+    ItemSlim,
+    MatrixConfig,
+    MatrixSubLineItem,
+    MatrixValue,
+    MatrixWithAllocationConfig,
+    Maximum,
+    MaximumInterval,
+    Minimum,
+    MinimumInterval,
+    MonetaryAmountDiscountAdjustment,
+    MonetaryMaximumAdjustment,
+    MonetaryMinimumAdjustment,
+    MonetaryPercentageDiscountAdjustment,
+    MonetaryUsageDiscountAdjustment,
+    NewAllocationPrice,
+    NewAmountDiscount,
+    NewBillingCycleConfiguration,
+    NewDimensionalPriceConfiguration,
+    NewFloatingBPSPrice,
+    NewFloatingBulkBPSPrice,
+    NewFloatingBulkPrice,
+    NewFloatingBulkWithProrationPrice,
+    NewFloatingCumulativeGroupedBulkPrice,
+    NewFloatingGroupedAllocationPrice,
+    NewFloatingGroupedTieredPackagePrice,
+    NewFloatingGroupedTieredPrice,
+    NewFloatingGroupedWithMeteredMinimumPrice,
+    NewFloatingGroupedWithProratedMinimumPrice,
+    NewFloatingMatrixPrice,
+    NewFloatingMatrixWithAllocationPrice,
+    NewFloatingMatrixWithDisplayNamePrice,
+    NewFloatingMaxGroupTieredPackagePrice,
+    NewFloatingPackagePrice,
+    NewFloatingPackageWithAllocationPrice,
+    NewFloatingScalableMatrixWithTieredPricingPrice,
+    NewFloatingScalableMatrixWithUnitPricingPrice,
+    NewFloatingThresholdTotalAmountPrice,
+    NewFloatingTieredBPSPrice,
+    NewFloatingTieredPackagePrice,
+    NewFloatingTieredPackageWithMinimumPrice,
+    NewFloatingTieredPrice,
+    NewFloatingTieredWithMinimumPrice,
+    NewFloatingTieredWithProrationPrice,
+    NewFloatingUnitPrice,
+    NewFloatingUnitWithPercentPrice,
+    NewFloatingUnitWithProrationPrice,
+    NewMaximum,
+    NewMinimum,
+    NewPercentageDiscount,
+    NewPlanBPSPrice,
+    NewPlanBulkBPSPrice,
+    NewPlanBulkPrice,
+    NewPlanBulkWithProrationPrice,
+    NewPlanCumulativeGroupedBulkPrice,
+    NewPlanGroupedAllocationPrice,
+    NewPlanGroupedTieredPackagePrice,
+    NewPlanGroupedTieredPrice,
+    NewPlanGroupedWithMeteredMinimumPrice,
+    NewPlanGroupedWithProratedMinimumPrice,
+    NewPlanMatrixPrice,
+    NewPlanMatrixWithAllocationPrice,
+    NewPlanMatrixWithDisplayNamePrice,
+    NewPlanMaxGroupTieredPackagePrice,
+    NewPlanPackagePrice,
+    NewPlanPackageWithAllocationPrice,
+    NewPlanScalableMatrixWithTieredPricingPrice,
+    NewPlanScalableMatrixWithUnitPricingPrice,
+    NewPlanThresholdTotalAmountPrice,
+    NewPlanTierWithProrationPrice,
+    NewPlanTieredBPSPrice,
+    NewPlanTieredPackagePrice,
+    NewPlanTieredPackageWithMinimumPrice,
+    NewPlanTieredPrice,
+    NewPlanTieredWithMinimumPrice,
+    NewPlanUnitPrice,
+    NewPlanUnitWithPercentPrice,
+    NewPlanUnitWithProrationPrice,
+    NewUsageDiscount,
+    OtherSubLineItem,
+    PackageConfig,
     PaginationMetadata,
+    PerPriceCost,
     PercentageDiscount,
+    PercentageDiscountInterval,
+    PlanPhaseAmountDiscountAdjustment,
+    PlanPhaseMaximumAdjustment,
+    PlanPhaseMinimumAdjustment,
+    PlanPhasePercentageDiscountAdjustment,
+    PlanPhaseUsageDiscountAdjustment,
+    Price,
+    PriceInterval,
+    SubLineItemGrouping,
+    SubLineItemMatrixConfig,
+    SubscriptionChangeMinified,
+    SubscriptionMinified,
+    SubscriptionTrialInfo,
+    TaxAmount,
+    Tier,
+    TierConfig,
+    TierSubLineItem,
+    TieredBPSConfig,
+    TieredConfig,
+    TieredConversionRateConfig,
+    TransformPriceFilter,
     TrialDiscount,
+    UnitConfig,
+    UnitConversionRateConfig,
     UsageDiscount,
+    UsageDiscountInterval,
 )
 ```
 
@@ -70,24 +204,28 @@ Methods:
 
 # CreditNotes
 
-Types:
-
-```python
-from orb.types import CreditNote
-```
-
 Methods:
 
-- <code title="post /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">create</a>(\*\*<a href="src/orb/types/credit_note_create_params.py">params</a>) -> <a href="./src/orb/types/credit_note.py">CreditNote</a></code>
-- <code title="get /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">list</a>(\*\*<a href="src/orb/types/credit_note_list_params.py">params</a>) -> <a href="./src/orb/types/credit_note.py">SyncPage[CreditNote]</a></code>
-- <code title="get /credit_notes/{credit_note_id}">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">fetch</a>(credit_note_id) -> <a href="./src/orb/types/credit_note.py">CreditNote</a></code>
+- <code title="post /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">create</a>(\*\*<a href="src/orb/types/credit_note_create_params.py">params</a>) -> <a href="./src/orb/types/shared/credit_note.py">CreditNote</a></code>
+- <code title="get /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">list</a>(\*\*<a href="src/orb/types/credit_note_list_params.py">params</a>) -> <a href="./src/orb/types/shared/credit_note.py">SyncPage[CreditNote]</a></code>
+- <code title="get /credit_notes/{credit_note_id}">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">fetch</a>(credit_note_id) -> <a href="./src/orb/types/shared/credit_note.py">CreditNote</a></code>
 
 # Customers
 
 Types:
 
 ```python
-from orb.types import Customer
+from orb.types import (
+    AccountingProviderConfig,
+    AddressInput,
+    Customer,
+    CustomerHierarchyConfig,
+    NewAccountingSyncConfiguration,
+    NewAvalaraTaxConfiguration,
+    NewReportingConfiguration,
+    NewSphereConfiguration,
+    NewTaxJarConfiguration,
+)
 ```
 
 Methods:
@@ -134,6 +272,14 @@ Types:
 
 ```python
 from orb.types.customers.credits import (
+    AffectedBlock,
+    AmendmentLedgerEntry,
+    CreditBlockExpiryLedgerEntry,
+    DecrementLedgerEntry,
+    ExpirationChangeLedgerEntry,
+    IncrementLedgerEntry,
+    VoidInitiatedLedgerEntry,
+    VoidLedgerEntry,
     LedgerListResponse,
     LedgerCreateEntryResponse,
     LedgerCreateEntryByExternalIDResponse,
@@ -154,6 +300,7 @@ Types:
 
 ```python
 from orb.types.customers.credits import (
+    TopUpInvoiceSettings,
     TopUpCreateResponse,
     TopUpListResponse,
     TopUpCreateByExternalIDResponse,
@@ -254,20 +401,20 @@ Methods:
 Types:
 
 ```python
-from orb.types import Invoice, InvoiceFetchUpcomingResponse
+from orb.types import InvoiceFetchUpcomingResponse
 ```
 
 Methods:
 
-- <code title="post /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">create</a>(\*\*<a href="src/orb/types/invoice_create_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
-- <code title="put /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">update</a>(invoice_id, \*\*<a href="src/orb/types/invoice_update_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
-- <code title="get /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">list</a>(\*\*<a href="src/orb/types/invoice_list_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">SyncPage[Invoice]</a></code>
-- <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
+- <code title="post /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">create</a>(\*\*<a href="src/orb/types/invoice_create_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="put /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">update</a>(invoice_id, \*\*<a href="src/orb/types/invoice_update_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="get /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">list</a>(\*\*<a href="src/orb/types/invoice_list_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">SyncPage[Invoice]</a></code>
+- <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="get /invoices/upcoming">client.invoices.<a href="./src/orb/resources/invoices.py">fetch_upcoming</a>(\*\*<a href="src/orb/types/invoice_fetch_upcoming_params.py">params</a>) -> <a href="./src/orb/types/invoice_fetch_upcoming_response.py">InvoiceFetchUpcomingResponse</a></code>
-- <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
-- <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
-- <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
-- <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 
 # Items
 
@@ -329,27 +476,28 @@ Types:
 ```python
 from orb.types import (
     EvaluatePriceGroup,
-    Price,
     PriceEvaluateResponse,
     PriceEvaluateMultipleResponse,
+    PriceEvaluatePreviewEventsResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">create</a>(\*\*<a href="src/orb/types/price_create_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
-- <code title="put /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">update</a>(price_id, \*\*<a href="src/orb/types/price_update_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
-- <code title="get /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">list</a>(\*\*<a href="src/orb/types/price_list_params.py">params</a>) -> <a href="./src/orb/types/price.py">SyncPage[Price]</a></code>
+- <code title="post /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">create</a>(\*\*<a href="src/orb/types/price_create_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
+- <code title="put /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">update</a>(price_id, \*\*<a href="src/orb/types/price_update_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
+- <code title="get /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">list</a>(\*\*<a href="src/orb/types/price_list_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">SyncPage[Price]</a></code>
 - <code title="post /prices/{price_id}/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate</a>(price_id, \*\*<a href="src/orb/types/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_response.py">PriceEvaluateResponse</a></code>
 - <code title="post /prices/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate_multiple</a>(\*\*<a href="src/orb/types/price_evaluate_multiple_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_multiple_response.py">PriceEvaluateMultipleResponse</a></code>
-- <code title="get /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">fetch</a>(price_id) -> <a href="./src/orb/types/price.py">Price</a></code>
+- <code title="post /prices/evaluate_preview_events">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate_preview_events</a>(\*\*<a href="src/orb/types/price_evaluate_preview_events_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_preview_events_response.py">PriceEvaluatePreviewEventsResponse</a></code>
+- <code title="get /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">fetch</a>(price_id) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
 
 ## ExternalPriceID
 
 Methods:
 
-- <code title="put /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">update</a>(external_price_id, \*\*<a href="src/orb/types/prices/external_price_id_update_params.py">params</a>) -> <a href="./src/orb/types/price.py">Price</a></code>
-- <code title="get /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">fetch</a>(external_price_id) -> <a href="./src/orb/types/price.py">Price</a></code>
+- <code title="put /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">update</a>(external_price_id, \*\*<a href="src/orb/types/prices/external_price_id_update_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
+- <code title="get /prices/external_price_id/{external_price_id}">client.prices.external_price_id.<a href="./src/orb/resources/prices/external_price_id.py">fetch</a>(external_price_id) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
 
 # Subscriptions
 
@@ -357,44 +505,62 @@ Types:
 
 ```python
 from orb.types import (
+    DiscountOverride,
+    NewSubscriptionBPSPrice,
+    NewSubscriptionBulkBPSPrice,
+    NewSubscriptionBulkPrice,
+    NewSubscriptionBulkWithProrationPrice,
+    NewSubscriptionCumulativeGroupedBulkPrice,
+    NewSubscriptionGroupedAllocationPrice,
+    NewSubscriptionGroupedTieredPackagePrice,
+    NewSubscriptionGroupedTieredPrice,
+    NewSubscriptionGroupedWithMeteredMinimumPrice,
+    NewSubscriptionGroupedWithProratedMinimumPrice,
+    NewSubscriptionMatrixPrice,
+    NewSubscriptionMatrixWithAllocationPrice,
+    NewSubscriptionMatrixWithDisplayNamePrice,
+    NewSubscriptionMaxGroupTieredPackagePrice,
+    NewSubscriptionPackagePrice,
+    NewSubscriptionPackageWithAllocationPrice,
+    NewSubscriptionScalableMatrixWithTieredPricingPrice,
+    NewSubscriptionScalableMatrixWithUnitPricingPrice,
+    NewSubscriptionThresholdTotalAmountPrice,
+    NewSubscriptionTierWithProrationPrice,
+    NewSubscriptionTieredBPSPrice,
+    NewSubscriptionTieredPackagePrice,
+    NewSubscriptionTieredPackageWithMinimumPrice,
+    NewSubscriptionTieredPrice,
+    NewSubscriptionTieredWithMinimumPrice,
+    NewSubscriptionUnitPrice,
+    NewSubscriptionUnitWithPercentPrice,
+    NewSubscriptionUnitWithProrationPrice,
     Subscription,
     SubscriptionUsage,
     Subscriptions,
-    SubscriptionCreateResponse,
-    SubscriptionCancelResponse,
     SubscriptionFetchCostsResponse,
     SubscriptionFetchScheduleResponse,
-    SubscriptionPriceIntervalsResponse,
-    SubscriptionRedeemCouponResponse,
-    SubscriptionSchedulePlanChangeResponse,
-    SubscriptionTriggerPhaseResponse,
-    SubscriptionUnscheduleCancellationResponse,
-    SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
-    SubscriptionUnschedulePendingPlanChangesResponse,
-    SubscriptionUpdateFixedFeeQuantityResponse,
-    SubscriptionUpdateTrialResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /subscriptions">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">create</a>(\*\*<a href="src/orb/types/subscription_create_params.py">params</a>) -> <a href="./src/orb/types/subscription_create_response.py">SubscriptionCreateResponse</a></code>
+- <code title="post /subscriptions">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">create</a>(\*\*<a href="src/orb/types/subscription_create_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
 - <code title="put /subscriptions/{subscription_id}">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="get /subscriptions">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">list</a>(\*\*<a href="src/orb/types/subscription_list_params.py">params</a>) -> <a href="./src/orb/types/subscription.py">SyncPage[Subscription]</a></code>
-- <code title="post /subscriptions/{subscription_id}/cancel">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">cancel</a>(subscription_id, \*\*<a href="src/orb/types/subscription_cancel_params.py">params</a>) -> <a href="./src/orb/types/subscription_cancel_response.py">SubscriptionCancelResponse</a></code>
+- <code title="post /subscriptions/{subscription_id}/cancel">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">cancel</a>(subscription_id, \*\*<a href="src/orb/types/subscription_cancel_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
 - <code title="get /subscriptions/{subscription_id}">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch</a>(subscription_id) -> <a href="./src/orb/types/subscription.py">Subscription</a></code>
 - <code title="get /subscriptions/{subscription_id}/costs">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_costs</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_costs_params.py">params</a>) -> <a href="./src/orb/types/subscription_fetch_costs_response.py">SubscriptionFetchCostsResponse</a></code>
 - <code title="get /subscriptions/{subscription_id}/schedule">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_schedule</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_schedule_params.py">params</a>) -> <a href="./src/orb/types/subscription_fetch_schedule_response.py">SyncPage[SubscriptionFetchScheduleResponse]</a></code>
 - <code title="get /subscriptions/{subscription_id}/usage">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_usage</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_usage_params.py">params</a>) -> <a href="./src/orb/types/subscription_usage.py">SubscriptionUsage</a></code>
-- <code title="post /subscriptions/{subscription_id}/price_intervals">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">price_intervals</a>(subscription_id, \*\*<a href="src/orb/types/subscription_price_intervals_params.py">params</a>) -> <a href="./src/orb/types/subscription_price_intervals_response.py">SubscriptionPriceIntervalsResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/redeem_coupon">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">redeem_coupon</a>(subscription_id, \*\*<a href="src/orb/types/subscription_redeem_coupon_params.py">params</a>) -> <a href="./src/orb/types/subscription_redeem_coupon_response.py">SubscriptionRedeemCouponResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/schedule_plan_change">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">schedule_plan_change</a>(subscription_id, \*\*<a href="src/orb/types/subscription_schedule_plan_change_params.py">params</a>) -> <a href="./src/orb/types/subscription_schedule_plan_change_response.py">SubscriptionSchedulePlanChangeResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/trigger_phase">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">trigger_phase</a>(subscription_id, \*\*<a href="src/orb/types/subscription_trigger_phase_params.py">params</a>) -> <a href="./src/orb/types/subscription_trigger_phase_response.py">SubscriptionTriggerPhaseResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/unschedule_cancellation">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_cancellation</a>(subscription_id) -> <a href="./src/orb/types/subscription_unschedule_cancellation_response.py">SubscriptionUnscheduleCancellationResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_fixed_fee_quantity_updates</a>(subscription_id, \*\*<a href="src/orb/types/subscription_unschedule_fixed_fee_quantity_updates_params.py">params</a>) -> <a href="./src/orb/types/subscription_unschedule_fixed_fee_quantity_updates_response.py">SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/unschedule_pending_plan_changes">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_pending_plan_changes</a>(subscription_id) -> <a href="./src/orb/types/subscription_unschedule_pending_plan_changes_response.py">SubscriptionUnschedulePendingPlanChangesResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/update_fixed_fee_quantity">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_fixed_fee_quantity</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_fixed_fee_quantity_params.py">params</a>) -> <a href="./src/orb/types/subscription_update_fixed_fee_quantity_response.py">SubscriptionUpdateFixedFeeQuantityResponse</a></code>
-- <code title="post /subscriptions/{subscription_id}/update_trial">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_trial</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_trial_params.py">params</a>) -> <a href="./src/orb/types/subscription_update_trial_response.py">SubscriptionUpdateTrialResponse</a></code>
+- <code title="post /subscriptions/{subscription_id}/price_intervals">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">price_intervals</a>(subscription_id, \*\*<a href="src/orb/types/subscription_price_intervals_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/redeem_coupon">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">redeem_coupon</a>(subscription_id, \*\*<a href="src/orb/types/subscription_redeem_coupon_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/schedule_plan_change">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">schedule_plan_change</a>(subscription_id, \*\*<a href="src/orb/types/subscription_schedule_plan_change_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/trigger_phase">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">trigger_phase</a>(subscription_id, \*\*<a href="src/orb/types/subscription_trigger_phase_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/unschedule_cancellation">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_cancellation</a>(subscription_id) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_fixed_fee_quantity_updates</a>(subscription_id, \*\*<a href="src/orb/types/subscription_unschedule_fixed_fee_quantity_updates_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/unschedule_pending_plan_changes">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">unschedule_pending_plan_changes</a>(subscription_id) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/update_fixed_fee_quantity">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_fixed_fee_quantity</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_fixed_fee_quantity_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
+- <code title="post /subscriptions/{subscription_id}/update_trial">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">update_trial</a>(subscription_id, \*\*<a href="src/orb/types/subscription_update_trial_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
 
 # Webhooks
 
@@ -408,7 +574,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import Alert
+from orb.types import Alert, Threshold
 ```
 
 Methods:
@@ -448,6 +614,7 @@ Types:
 
 ```python
 from orb.types import (
+    MutatedSubscription,
     SubscriptionChangeRetrieveResponse,
     SubscriptionChangeApplyResponse,
     SubscriptionChangeCancelResponse,

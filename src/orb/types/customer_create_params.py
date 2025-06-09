@@ -2,23 +2,19 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = [
-    "CustomerCreateParams",
-    "AccountingSyncConfiguration",
-    "AccountingSyncConfigurationAccountingProvider",
-    "BillingAddress",
-    "Hierarchy",
-    "ReportingConfiguration",
-    "ShippingAddress",
-    "TaxConfiguration",
-    "TaxConfigurationNewAvalaraTaxConfiguration",
-    "TaxConfigurationNewTaxJarConfiguration",
-    "TaxConfigurationNewSphereConfiguration",
-    "TaxID",
-]
+from .address_input_param import AddressInputParam
+from .shared_params.customer_tax_id import CustomerTaxID
+from .new_sphere_configuration_param import NewSphereConfigurationParam
+from .customer_hierarchy_config_param import CustomerHierarchyConfigParam
+from .new_tax_jar_configuration_param import NewTaxJarConfigurationParam
+from .new_reporting_configuration_param import NewReportingConfigurationParam
+from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam
+from .new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
+
+__all__ = ["CustomerCreateParams", "TaxConfiguration"]
 
 
 class CustomerCreateParams(TypedDict, total=False):
@@ -32,7 +28,7 @@ class CustomerCreateParams(TypedDict, total=False):
     name: Required[str]
     """The full name of the customer"""
 
-    accounting_sync_configuration: Optional[AccountingSyncConfiguration]
+    accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam]
 
     additional_emails: Optional[List[str]]
     """Additional email addresses for this customer.
@@ -47,7 +43,7 @@ class CustomerCreateParams(TypedDict, total=False):
     when a payment provider is provided on customer creation.
     """
 
-    billing_address: Optional[BillingAddress]
+    billing_address: Optional[AddressInputParam]
 
     currency: Optional[str]
     """An ISO 4217 currency string used for the customer's invoices and balance.
@@ -64,7 +60,7 @@ class CustomerCreateParams(TypedDict, total=False):
     an existing identifier in your system.
     """
 
-    hierarchy: Optional[Hierarchy]
+    hierarchy: Optional[CustomerHierarchyConfigParam]
     """The hierarchical relationships for this customer."""
 
     metadata: Optional[Dict[str, Optional[str]]]
@@ -87,13 +83,13 @@ class CustomerCreateParams(TypedDict, total=False):
     This is used for creating charges or invoices in the external system via Orb.
     """
 
-    reporting_configuration: Optional[ReportingConfiguration]
+    reporting_configuration: Optional[NewReportingConfigurationParam]
 
-    shipping_address: Optional[ShippingAddress]
+    shipping_address: Optional[AddressInputParam]
 
     tax_configuration: Optional[TaxConfiguration]
 
-    tax_id: Optional[TaxID]
+    tax_id: Optional[CustomerTaxID]
     """
     Tax IDs are commonly required to be displayed on customer invoices, which are
     added to the headers of invoices.
@@ -210,249 +206,6 @@ class CustomerCreateParams(TypedDict, total=False):
     """
 
 
-class AccountingSyncConfigurationAccountingProvider(TypedDict, total=False):
-    external_provider_id: Required[str]
-
-    provider_type: Required[str]
-
-
-class AccountingSyncConfiguration(TypedDict, total=False):
-    accounting_providers: Optional[Iterable[AccountingSyncConfigurationAccountingProvider]]
-
-    excluded: Optional[bool]
-
-
-class BillingAddress(TypedDict, total=False):
-    city: Optional[str]
-
-    country: Optional[str]
-
-    line1: Optional[str]
-
-    line2: Optional[str]
-
-    postal_code: Optional[str]
-
-    state: Optional[str]
-
-
-class Hierarchy(TypedDict, total=False):
-    child_customer_ids: List[str]
-    """A list of child customer IDs to add to the hierarchy.
-
-    The desired child customers must not already be part of another hierarchy.
-    """
-
-    parent_customer_id: Optional[str]
-    """The ID of the parent customer in the hierarchy.
-
-    The desired parent customer must not be a child of another customer.
-    """
-
-
-class ReportingConfiguration(TypedDict, total=False):
-    exempt: Required[bool]
-
-
-class ShippingAddress(TypedDict, total=False):
-    city: Optional[str]
-
-    country: Optional[str]
-
-    line1: Optional[str]
-
-    line2: Optional[str]
-
-    postal_code: Optional[str]
-
-    state: Optional[str]
-
-
-class TaxConfigurationNewAvalaraTaxConfiguration(TypedDict, total=False):
-    tax_exempt: Required[bool]
-
-    tax_provider: Required[Literal["avalara"]]
-
-    tax_exemption_code: Optional[str]
-
-
-class TaxConfigurationNewTaxJarConfiguration(TypedDict, total=False):
-    tax_exempt: Required[bool]
-
-    tax_provider: Required[Literal["taxjar"]]
-
-
-class TaxConfigurationNewSphereConfiguration(TypedDict, total=False):
-    tax_exempt: Required[bool]
-
-    tax_provider: Required[Literal["sphere"]]
-
-
 TaxConfiguration: TypeAlias = Union[
-    TaxConfigurationNewAvalaraTaxConfiguration,
-    TaxConfigurationNewTaxJarConfiguration,
-    TaxConfigurationNewSphereConfiguration,
+    NewAvalaraTaxConfigurationParam, NewTaxJarConfigurationParam, NewSphereConfigurationParam
 ]
-
-
-class TaxID(TypedDict, total=False):
-    country: Required[
-        Literal[
-            "AD",
-            "AE",
-            "AR",
-            "AT",
-            "AU",
-            "BE",
-            "BG",
-            "BH",
-            "BO",
-            "BR",
-            "CA",
-            "CH",
-            "CL",
-            "CN",
-            "CO",
-            "CR",
-            "CY",
-            "CZ",
-            "DE",
-            "DK",
-            "EE",
-            "DO",
-            "EC",
-            "EG",
-            "ES",
-            "EU",
-            "FI",
-            "FR",
-            "GB",
-            "GE",
-            "GR",
-            "HK",
-            "HR",
-            "HU",
-            "ID",
-            "IE",
-            "IL",
-            "IN",
-            "IS",
-            "IT",
-            "JP",
-            "KE",
-            "KR",
-            "KZ",
-            "LI",
-            "LT",
-            "LU",
-            "LV",
-            "MT",
-            "MX",
-            "MY",
-            "NG",
-            "NL",
-            "NO",
-            "NZ",
-            "OM",
-            "PE",
-            "PH",
-            "PL",
-            "PT",
-            "RO",
-            "RS",
-            "RU",
-            "SA",
-            "SE",
-            "SG",
-            "SI",
-            "SK",
-            "SV",
-            "TH",
-            "TR",
-            "TW",
-            "UA",
-            "US",
-            "UY",
-            "VE",
-            "VN",
-            "ZA",
-        ]
-    ]
-
-    type: Required[
-        Literal[
-            "ad_nrt",
-            "ae_trn",
-            "ar_cuit",
-            "eu_vat",
-            "au_abn",
-            "au_arn",
-            "bg_uic",
-            "bh_vat",
-            "bo_tin",
-            "br_cnpj",
-            "br_cpf",
-            "ca_bn",
-            "ca_gst_hst",
-            "ca_pst_bc",
-            "ca_pst_mb",
-            "ca_pst_sk",
-            "ca_qst",
-            "ch_vat",
-            "cl_tin",
-            "cn_tin",
-            "co_nit",
-            "cr_tin",
-            "do_rcn",
-            "ec_ruc",
-            "eg_tin",
-            "es_cif",
-            "eu_oss_vat",
-            "gb_vat",
-            "ge_vat",
-            "hk_br",
-            "hu_tin",
-            "id_npwp",
-            "il_vat",
-            "in_gst",
-            "is_vat",
-            "jp_cn",
-            "jp_rn",
-            "jp_trn",
-            "ke_pin",
-            "kr_brn",
-            "kz_bin",
-            "li_uid",
-            "mx_rfc",
-            "my_frp",
-            "my_itn",
-            "my_sst",
-            "ng_tin",
-            "no_vat",
-            "no_voec",
-            "nz_gst",
-            "om_vat",
-            "pe_ruc",
-            "ph_tin",
-            "ro_tin",
-            "rs_pib",
-            "ru_inn",
-            "ru_kpp",
-            "sa_vat",
-            "sg_gst",
-            "sg_uen",
-            "si_tin",
-            "sv_nit",
-            "th_vat",
-            "tr_tin",
-            "tw_vat",
-            "ua_vat",
-            "us_ein",
-            "uy_ruc",
-            "ve_rif",
-            "vn_tin",
-            "za_vat",
-        ]
-    ]
-
-    value: Required[str]

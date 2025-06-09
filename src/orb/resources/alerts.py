@@ -26,6 +26,7 @@ from .._response import to_streamed_response_wrapper, async_to_streamed_response
 from ..pagination import SyncPage, AsyncPage
 from ..types.alert import Alert
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.threshold_param import ThresholdParam
 
 __all__ = ["Alerts", "AsyncAlerts"]
 
@@ -87,7 +88,7 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        thresholds: Iterable[alert_update_params.Threshold],
+        thresholds: Iterable[ThresholdParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -213,7 +214,7 @@ class Alerts(SyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -278,7 +279,7 @@ class Alerts(SyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -343,7 +344,7 @@ class Alerts(SyncAPIResource):
         self,
         subscription_id: str,
         *,
-        thresholds: Iterable[alert_create_for_subscription_params.Threshold],
+        thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -562,7 +563,7 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        thresholds: Iterable[alert_update_params.Threshold],
+        thresholds: Iterable[ThresholdParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -688,7 +689,7 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[alert_create_for_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -753,7 +754,7 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[alert_create_for_external_customer_params.Threshold]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -818,7 +819,7 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         subscription_id: str,
         *,
-        thresholds: Iterable[alert_create_for_subscription_params.Threshold],
+        thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
         metric_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

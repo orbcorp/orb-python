@@ -11,19 +11,9 @@ from orb import Orb, AsyncOrb
 from orb.types import (
     Subscription,
     SubscriptionUsage,
-    SubscriptionCancelResponse,
-    SubscriptionCreateResponse,
+    MutatedSubscription,
     SubscriptionFetchCostsResponse,
-    SubscriptionUpdateTrialResponse,
-    SubscriptionRedeemCouponResponse,
-    SubscriptionTriggerPhaseResponse,
     SubscriptionFetchScheduleResponse,
-    SubscriptionPriceIntervalsResponse,
-    SubscriptionSchedulePlanChangeResponse,
-    SubscriptionUnscheduleCancellationResponse,
-    SubscriptionUpdateFixedFeeQuantityResponse,
-    SubscriptionUnschedulePendingPlanChangesResponse,
-    SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse,
 )
 from orb._utils import parse_date, parse_datetime
 from tests.utils import assert_matches_type
@@ -38,7 +28,7 @@ class TestSubscriptions:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         subscription = client.subscriptions.create()
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Orb) -> None:
@@ -105,6 +95,10 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -220,6 +214,10 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -243,7 +241,7 @@ class TestSubscriptions:
             trial_duration_days=0,
             usage_customer_ids=["string"],
         )
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
@@ -252,7 +250,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
@@ -261,7 +259,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -361,7 +359,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_cancel_with_all_params(self, client: Orb) -> None:
@@ -371,7 +369,7 @@ class TestSubscriptions:
             allow_invoice_credit_or_void=True,
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_cancel(self, client: Orb) -> None:
@@ -383,7 +381,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_cancel(self, client: Orb) -> None:
@@ -395,7 +393,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -611,7 +609,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.price_intervals(
             subscription_id="subscription_id",
         )
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -662,6 +660,10 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -728,7 +730,7 @@ class TestSubscriptions:
                 }
             ],
         )
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -740,7 +742,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -752,7 +754,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -770,7 +772,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             change_option="requested_date",
         )
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_redeem_coupon_with_all_params(self, client: Orb) -> None:
@@ -782,7 +784,7 @@ class TestSubscriptions:
             coupon_id="coupon_id",
             coupon_redemption_code="coupon_redemption_code",
         )
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_redeem_coupon(self, client: Orb) -> None:
@@ -794,7 +796,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_redeem_coupon(self, client: Orb) -> None:
@@ -806,7 +808,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -824,7 +826,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             change_option="requested_date",
         )
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_schedule_plan_change_with_all_params(self, client: Orb) -> None:
@@ -893,6 +895,10 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1001,6 +1007,10 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1023,7 +1033,7 @@ class TestSubscriptions:
             trial_duration_days=0,
             usage_customer_ids=["string"],
         )
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_schedule_plan_change(self, client: Orb) -> None:
@@ -1035,7 +1045,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_schedule_plan_change(self, client: Orb) -> None:
@@ -1047,7 +1057,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1064,7 +1074,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.trigger_phase(
             subscription_id="subscription_id",
         )
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_trigger_phase_with_all_params(self, client: Orb) -> None:
@@ -1073,7 +1083,7 @@ class TestSubscriptions:
             allow_invoice_credit_or_void=True,
             effective_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_trigger_phase(self, client: Orb) -> None:
@@ -1084,7 +1094,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_trigger_phase(self, client: Orb) -> None:
@@ -1095,7 +1105,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1111,7 +1121,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.unschedule_cancellation(
             "subscription_id",
         )
-        assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_cancellation(self, client: Orb) -> None:
@@ -1122,7 +1132,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_unschedule_cancellation(self, client: Orb) -> None:
@@ -1133,7 +1143,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1150,7 +1160,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             price_id="price_id",
         )
-        assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
@@ -1162,7 +1172,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, client: Orb) -> None:
@@ -1174,7 +1184,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1191,7 +1201,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.unschedule_pending_plan_changes(
             "subscription_id",
         )
-        assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
@@ -1202,7 +1212,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_unschedule_pending_plan_changes(self, client: Orb) -> None:
@@ -1213,7 +1223,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1231,7 +1241,7 @@ class TestSubscriptions:
             price_id="price_id",
             quantity=0,
         )
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_update_fixed_fee_quantity_with_all_params(self, client: Orb) -> None:
@@ -1243,7 +1253,7 @@ class TestSubscriptions:
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_update_fixed_fee_quantity(self, client: Orb) -> None:
@@ -1256,7 +1266,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_update_fixed_fee_quantity(self, client: Orb) -> None:
@@ -1269,7 +1279,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1288,7 +1298,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
         )
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_method_update_trial_with_all_params(self, client: Orb) -> None:
@@ -1297,7 +1307,7 @@ class TestSubscriptions:
             trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
             shift=True,
         )
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_raw_response_update_trial(self, client: Orb) -> None:
@@ -1309,7 +1319,7 @@ class TestSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     def test_streaming_response_update_trial(self, client: Orb) -> None:
@@ -1321,7 +1331,7 @@ class TestSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = response.parse()
-            assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1340,7 +1350,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.create()
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -1407,6 +1417,10 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1522,6 +1536,10 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -1545,7 +1563,7 @@ class TestAsyncSubscriptions:
             trial_duration_days=0,
             usage_customer_ids=["string"],
         )
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
@@ -1554,7 +1572,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
@@ -1563,7 +1581,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionCreateResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1663,7 +1681,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             cancel_option="end_of_subscription_term",
         )
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_cancel_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -1673,7 +1691,7 @@ class TestAsyncSubscriptions:
             allow_invoice_credit_or_void=True,
             cancellation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncOrb) -> None:
@@ -1685,7 +1703,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncOrb) -> None:
@@ -1697,7 +1715,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionCancelResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1913,7 +1931,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.price_intervals(
             subscription_id="subscription_id",
         )
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -1964,6 +1982,10 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
@@ -2030,7 +2052,7 @@ class TestAsyncSubscriptions:
                 }
             ],
         )
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -2042,7 +2064,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -2054,7 +2076,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionPriceIntervalsResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2072,7 +2094,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             change_option="requested_date",
         )
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_redeem_coupon_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -2084,7 +2106,7 @@ class TestAsyncSubscriptions:
             coupon_id="coupon_id",
             coupon_redemption_code="coupon_redemption_code",
         )
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_redeem_coupon(self, async_client: AsyncOrb) -> None:
@@ -2096,7 +2118,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_redeem_coupon(self, async_client: AsyncOrb) -> None:
@@ -2108,7 +2130,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionRedeemCouponResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2126,7 +2148,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             change_option="requested_date",
         )
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_schedule_plan_change_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -2195,6 +2217,10 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -2303,6 +2329,10 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
                         "currency": "currency",
                         "dimensional_price_configuration": {
                             "dimension_values": ["string"],
@@ -2325,7 +2355,7 @@ class TestAsyncSubscriptions:
             trial_duration_days=0,
             usage_customer_ids=["string"],
         )
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_schedule_plan_change(self, async_client: AsyncOrb) -> None:
@@ -2337,7 +2367,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_schedule_plan_change(self, async_client: AsyncOrb) -> None:
@@ -2349,7 +2379,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionSchedulePlanChangeResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2366,7 +2396,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.trigger_phase(
             subscription_id="subscription_id",
         )
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_trigger_phase_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -2375,7 +2405,7 @@ class TestAsyncSubscriptions:
             allow_invoice_credit_or_void=True,
             effective_date=parse_date("2019-12-27"),
         )
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_trigger_phase(self, async_client: AsyncOrb) -> None:
@@ -2386,7 +2416,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_trigger_phase(self, async_client: AsyncOrb) -> None:
@@ -2397,7 +2427,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionTriggerPhaseResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2413,7 +2443,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.unschedule_cancellation(
             "subscription_id",
         )
-        assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_cancellation(self, async_client: AsyncOrb) -> None:
@@ -2424,7 +2454,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_unschedule_cancellation(self, async_client: AsyncOrb) -> None:
@@ -2435,7 +2465,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionUnscheduleCancellationResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2452,7 +2482,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             price_id="price_id",
         )
-        assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
@@ -2464,7 +2494,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_unschedule_fixed_fee_quantity_updates(self, async_client: AsyncOrb) -> None:
@@ -2476,7 +2506,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionUnscheduleFixedFeeQuantityUpdatesResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2493,7 +2523,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.unschedule_pending_plan_changes(
             "subscription_id",
         )
-        assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_unschedule_pending_plan_changes(self, async_client: AsyncOrb) -> None:
@@ -2504,7 +2534,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_unschedule_pending_plan_changes(self, async_client: AsyncOrb) -> None:
@@ -2515,7 +2545,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionUnschedulePendingPlanChangesResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2533,7 +2563,7 @@ class TestAsyncSubscriptions:
             price_id="price_id",
             quantity=0,
         )
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_update_fixed_fee_quantity_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -2545,7 +2575,7 @@ class TestAsyncSubscriptions:
             change_option="immediate",
             effective_date=parse_date("2022-12-21"),
         )
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
@@ -2558,7 +2588,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_update_fixed_fee_quantity(self, async_client: AsyncOrb) -> None:
@@ -2571,7 +2601,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionUpdateFixedFeeQuantityResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -2590,7 +2620,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
         )
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_method_update_trial_with_all_params(self, async_client: AsyncOrb) -> None:
@@ -2599,7 +2629,7 @@ class TestAsyncSubscriptions:
             trial_end_date=parse_datetime("2017-07-21T17:32:28Z"),
             shift=True,
         )
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_update_trial(self, async_client: AsyncOrb) -> None:
@@ -2611,7 +2641,7 @@ class TestAsyncSubscriptions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         subscription = response.parse()
-        assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+        assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
     @parametrize
     async def test_streaming_response_update_trial(self, async_client: AsyncOrb) -> None:
@@ -2623,7 +2653,7 @@ class TestAsyncSubscriptions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             subscription = await response.parse()
-            assert_matches_type(SubscriptionUpdateTrialResponse, subscription, path=["response"])
+            assert_matches_type(MutatedSubscription, subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

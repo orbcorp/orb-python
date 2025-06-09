@@ -5,18 +5,10 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from ..._models import BaseModel
+from ..shared.invoice_tiny import InvoiceTiny
+from ..shared.credit_note_tiny import CreditNoteTiny
 
-__all__ = ["BalanceTransactionListResponse", "CreditNote", "Invoice"]
-
-
-class CreditNote(BaseModel):
-    id: str
-    """The id of the Credit note"""
-
-
-class Invoice(BaseModel):
-    id: str
-    """The Invoice id"""
+__all__ = ["BalanceTransactionListResponse"]
 
 
 class BalanceTransactionListResponse(BaseModel):
@@ -41,7 +33,7 @@ class BalanceTransactionListResponse(BaseModel):
     created_at: datetime
     """The creation time of this transaction."""
 
-    credit_note: Optional[CreditNote] = None
+    credit_note: Optional[CreditNoteTiny] = None
 
     description: Optional[str] = None
     """An optional description provided for manual customer balance adjustments."""
@@ -52,7 +44,7 @@ class BalanceTransactionListResponse(BaseModel):
     customer's currency.
     """
 
-    invoice: Optional[Invoice] = None
+    invoice: Optional[InvoiceTiny] = None
 
     starting_balance: str
     """
