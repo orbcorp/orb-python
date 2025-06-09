@@ -19,6 +19,9 @@ from orb.types import (
     BulkConfig,
     BulkTier,
     ChangedSubscriptionResources,
+    ConversionRateTier,
+    ConversionRateTieredConfig,
+    ConversionRateUnitConfig,
     CouponRedemption,
     CreditNote,
     CreditNoteTiny,
@@ -134,9 +137,11 @@ from orb.types import (
     TierSubLineItem,
     TieredBPSConfig,
     TieredConfig,
+    TieredConversionRateConfig,
     TransformPriceFilter,
     TrialDiscount,
     UnitConfig,
+    UnitConversionRateConfig,
     UsageDiscount,
     UsageDiscountInterval,
 )
@@ -469,12 +474,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import (
-    EvaluatePriceGroup,
-    PriceEvaluateResponse,
-    PriceEvaluateMultipleResponse,
-    PriceEvaluatePreviewEventsResponse,
-)
+from orb.types import EvaluatePriceGroup, PriceEvaluateResponse, PriceEvaluateMultipleResponse
 ```
 
 Methods:
@@ -484,7 +484,6 @@ Methods:
 - <code title="get /prices">client.prices.<a href="./src/orb/resources/prices/prices.py">list</a>(\*\*<a href="src/orb/types/price_list_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">SyncPage[Price]</a></code>
 - <code title="post /prices/{price_id}/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate</a>(price_id, \*\*<a href="src/orb/types/price_evaluate_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_response.py">PriceEvaluateResponse</a></code>
 - <code title="post /prices/evaluate">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate_multiple</a>(\*\*<a href="src/orb/types/price_evaluate_multiple_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_multiple_response.py">PriceEvaluateMultipleResponse</a></code>
-- <code title="post /prices/evaluate_preview_events">client.prices.<a href="./src/orb/resources/prices/prices.py">evaluate_preview_events</a>(\*\*<a href="src/orb/types/price_evaluate_preview_events_params.py">params</a>) -> <a href="./src/orb/types/price_evaluate_preview_events_response.py">PriceEvaluatePreviewEventsResponse</a></code>
 - <code title="get /prices/{price_id}">client.prices.<a href="./src/orb/resources/prices/prices.py">fetch</a>(price_id) -> <a href="./src/orb/types/shared/price.py">Price</a></code>
 
 ## ExternalPriceID

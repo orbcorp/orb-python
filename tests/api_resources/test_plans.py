@@ -55,10 +55,6 @@ class TestPlans:
                         "duration_unit": "day",
                     },
                     "conversion_rate": 0,
-                    "conversion_rate_config": {
-                        "conversion_rate_type": "unit",
-                        "unit_config": {"unit_amount": "unit_amount"},
-                    },
                     "currency": "currency",
                     "dimensional_price_configuration": {
                         "dimension_values": ["string"],
@@ -290,10 +286,6 @@ class TestAsyncPlans:
                         "duration_unit": "day",
                     },
                     "conversion_rate": 0,
-                    "conversion_rate_config": {
-                        "conversion_rate_type": "unit",
-                        "unit_config": {"unit_amount": "unit_amount"},
-                    },
                     "currency": "currency",
                     "dimensional_price_configuration": {
                         "dimension_values": ["string"],

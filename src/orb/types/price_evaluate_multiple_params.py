@@ -54,7 +54,7 @@ class PriceEvaluateMultipleParams(TypedDict, total=False):
     """The ID of the customer to which this evaluation is scoped."""
 
     events: Optional[Iterable[Event]]
-    """Optional list of preview events to use instead of actual usage data"""
+    """Optional list of preview events to use instead of actual usage data (max 500)"""
 
     external_customer_id: Optional[str]
     """The external customer ID of the customer to which this evaluation is scoped."""

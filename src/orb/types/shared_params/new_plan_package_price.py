@@ -2,60 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing import Dict, Optional
+from typing_extensions import Literal, Required, TypedDict
 
 from .package_config import PackageConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = [
-    "NewPlanPackagePrice",
-    "ConversionRateConfig",
-    "ConversionRateConfigUnitConversionRateConfig",
-    "ConversionRateConfigUnitConversionRateConfigUnitConfig",
-    "ConversionRateConfigTieredConversionRateConfig",
-    "ConversionRateConfigTieredConversionRateConfigTieredConfig",
-    "ConversionRateConfigTieredConversionRateConfigTieredConfigTier",
-]
-
-
-class ConversionRateConfigUnitConversionRateConfigUnitConfig(TypedDict, total=False):
-    unit_amount: Required[str]
-    """Amount per unit of overage"""
-
-
-class ConversionRateConfigUnitConversionRateConfig(TypedDict, total=False):
-    conversion_rate_type: Required[Literal["unit"]]
-
-    unit_config: Required[ConversionRateConfigUnitConversionRateConfigUnitConfig]
-
-
-class ConversionRateConfigTieredConversionRateConfigTieredConfigTier(TypedDict, total=False):
-    first_unit: Required[float]
-    """Exclusive tier starting value"""
-
-    unit_amount: Required[str]
-    """Amount per unit of overage"""
-
-    last_unit: Optional[float]
-    """Inclusive tier ending value. If null, this is treated as the last tier"""
-
-
-class ConversionRateConfigTieredConversionRateConfigTieredConfig(TypedDict, total=False):
-    tiers: Required[Iterable[ConversionRateConfigTieredConversionRateConfigTieredConfigTier]]
-    """Tiers for rating based on total usage quantities into the specified tier"""
-
-
-class ConversionRateConfigTieredConversionRateConfig(TypedDict, total=False):
-    conversion_rate_type: Required[Literal["tiered"]]
-
-    tiered_config: Required[ConversionRateConfigTieredConversionRateConfigTieredConfig]
-
-
-ConversionRateConfig: TypeAlias = Union[
-    ConversionRateConfigUnitConversionRateConfig, ConversionRateConfigTieredConversionRateConfig
-]
+__all__ = ["NewPlanPackagePrice"]
 
 
 class NewPlanPackagePrice(TypedDict, total=False):
@@ -92,9 +46,6 @@ class NewPlanPackagePrice(TypedDict, total=False):
 
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[ConversionRateConfig]
-    """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
     """
