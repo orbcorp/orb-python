@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.0.1 (2025-06-12)
+
+Full Changelog: [v4.0.0...v4.0.1](https://github.com/orbcorp/orb-python/compare/v4.0.0...v4.0.1)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([08ecc1c](https://github.com/orbcorp/orb-python/commit/08ecc1c10f8c26e66c02e333b89e910cedd61570))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([f228f15](https://github.com/orbcorp/orb-python/commit/f228f15fa9f2fdaf5b7398a3f233aea4419ba3fb))
+
 ## 4.0.0 (2025-06-09)
 
 Full Changelog: [v3.24.0...v4.0.0](https://github.com/orbcorp/orb-python/compare/v3.24.0...v4.0.0)
