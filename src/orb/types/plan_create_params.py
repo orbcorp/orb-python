@@ -5,12 +5,18 @@ from __future__ import annotations
 from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
+from .shared_params.new_maximum import NewMaximum
+from .shared_params.new_minimum import NewMinimum
 from .shared_params.new_plan_bps_price import NewPlanBPSPrice
+from .shared_params.new_usage_discount import NewUsageDiscount
+from .shared_params.new_amount_discount import NewAmountDiscount
 from .shared_params.new_plan_bulk_price import NewPlanBulkPrice
 from .shared_params.new_plan_unit_price import NewPlanUnitPrice
+from .shared_params.new_allocation_price import NewAllocationPrice
 from .shared_params.new_plan_matrix_price import NewPlanMatrixPrice
 from .shared_params.new_plan_tiered_price import NewPlanTieredPrice
 from .shared_params.new_plan_package_price import NewPlanPackagePrice
+from .shared_params.new_percentage_discount import NewPercentageDiscount
 from .shared_params.new_plan_bulk_bps_price import NewPlanBulkBPSPrice
 from .shared_params.new_plan_tiered_bps_price import NewPlanTieredBPSPrice
 from .shared_params.new_plan_grouped_tiered_price import NewPlanGroupedTieredPrice
@@ -36,7 +42,7 @@ from .shared_params.new_plan_scalable_matrix_with_tiered_pricing_price import (
     NewPlanScalableMatrixWithTieredPricingPrice,
 )
 
-__all__ = ["PlanCreateParams", "Price"]
+__all__ = ["PlanCreateParams", "Price", "PricePrice", "Adjustment", "AdjustmentAdjustment", "PlanPhase"]
 
 
 class PlanCreateParams(TypedDict, total=False):
@@ -52,6 +58,12 @@ class PlanCreateParams(TypedDict, total=False):
     """Prices for this plan.
 
     If the plan has phases, this includes prices across all phases of the plan.
+    """
+
+    adjustments: Optional[Iterable[Adjustment]]
+    """Adjustments for this plan.
+
+    If the plan has phases, this includes adjustments across all phases of the plan.
     """
 
     default_invoice_memo: Optional[str]
@@ -75,6 +87,12 @@ class PlanCreateParams(TypedDict, total=False):
     to 0.
     """
 
+    plan_phases: Optional[Iterable[PlanPhase]]
+    """Configuration of pre-defined phases, each with their own prices and adjustments.
+
+    Leave unspecified for plans with a single phase.
+    """
+
     status: Literal["active", "draft"]
     """The status of the plan to create (either active or draft).
 
@@ -82,7 +100,7 @@ class PlanCreateParams(TypedDict, total=False):
     """
 
 
-Price: TypeAlias = Union[
+PricePrice: TypeAlias = Union[
     NewPlanUnitPrice,
     NewPlanPackagePrice,
     NewPlanMatrixPrice,
@@ -112,3 +130,43 @@ Price: TypeAlias = Union[
     NewPlanMatrixWithAllocationPrice,
     NewPlanGroupedTieredPrice,
 ]
+
+
+class Price(TypedDict, total=False):
+    allocation_price: Optional[NewAllocationPrice]
+    """The allocation price to add to the plan."""
+
+    plan_phase_order: Optional[int]
+    """The phase to add this price to."""
+
+    price: Optional[PricePrice]
+    """The price to add to the plan"""
+
+
+AdjustmentAdjustment: TypeAlias = Union[
+    NewPercentageDiscount, NewUsageDiscount, NewAmountDiscount, NewMinimum, NewMaximum
+]
+
+
+class Adjustment(TypedDict, total=False):
+    adjustment: Required[AdjustmentAdjustment]
+    """The definition of a new adjustment to create and add to the plan."""
+
+    plan_phase_order: Optional[int]
+    """The phase to add this adjustment to."""
+
+
+class PlanPhase(TypedDict, total=False):
+    order: Required[int]
+    """Determines the ordering of the phase in a plan's lifecycle. 1 = first phase."""
+
+    align_billing_with_phase_start_date: Optional[bool]
+    """Align billing cycle day with phase start date."""
+
+    duration: Optional[int]
+    """How many terms of length `duration_unit` this phase is active for.
+
+    If null, this phase is evergreen and active indefinitely
+    """
+
+    duration_unit: Optional[Literal["daily", "monthly", "quarterly", "semi_annual", "annual"]]
