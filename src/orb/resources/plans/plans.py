@@ -60,10 +60,12 @@ class Plans(SyncAPIResource):
         currency: str,
         name: str,
         prices: Iterable[plan_create_params.Price],
+        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | NotGiven = NOT_GIVEN,
         status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -83,6 +85,9 @@ class Plans(SyncAPIResource):
           prices: Prices for this plan. If the plan has phases, this includes prices across all
               phases of the plan.
 
+          adjustments: Adjustments for this plan. If the plan has phases, this includes adjustments
+              across all phases of the plan.
+
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
@@ -92,6 +97,9 @@ class Plans(SyncAPIResource):
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
               to 0.
+
+          plan_phases: Configuration of pre-defined phases, each with their own prices and adjustments.
+              Leave unspecified for plans with a single phase.
 
           status: The status of the plan to create (either active or draft). If not specified,
               this defaults to active.
@@ -113,10 +121,12 @@ class Plans(SyncAPIResource):
                     "currency": currency,
                     "name": name,
                     "prices": prices,
+                    "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
+                    "plan_phases": plan_phases,
                     "status": status,
                 },
                 plan_create_params.PlanCreateParams,
@@ -335,10 +345,12 @@ class AsyncPlans(AsyncAPIResource):
         currency: str,
         name: str,
         prices: Iterable[plan_create_params.Price],
+        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | NotGiven = NOT_GIVEN,
         default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
         external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | NotGiven = NOT_GIVEN,
         status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -358,6 +370,9 @@ class AsyncPlans(AsyncAPIResource):
           prices: Prices for this plan. If the plan has phases, this includes prices across all
               phases of the plan.
 
+          adjustments: Adjustments for this plan. If the plan has phases, this includes adjustments
+              across all phases of the plan.
+
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
@@ -367,6 +382,9 @@ class AsyncPlans(AsyncAPIResource):
           net_terms: The net terms determines the difference between the invoice date and the issue
               date for the invoice. If you intend the invoice to be due on issue, set this
               to 0.
+
+          plan_phases: Configuration of pre-defined phases, each with their own prices and adjustments.
+              Leave unspecified for plans with a single phase.
 
           status: The status of the plan to create (either active or draft). If not specified,
               this defaults to active.
@@ -388,10 +406,12 @@ class AsyncPlans(AsyncAPIResource):
                     "currency": currency,
                     "name": name,
                     "prices": prices,
+                    "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
+                    "plan_phases": plan_phases,
                     "status": status,
                 },
                 plan_create_params.PlanCreateParams,

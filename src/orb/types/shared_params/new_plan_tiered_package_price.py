@@ -86,3 +86,9 @@ class NewPlanTieredPackagePrice(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """

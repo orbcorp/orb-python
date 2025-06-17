@@ -96,6 +96,7 @@ class TestBeta:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -179,6 +180,7 @@ class TestBeta:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -393,6 +395,7 @@ class TestAsyncBeta:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -476,6 +479,7 @@ class TestAsyncBeta:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
