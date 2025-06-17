@@ -172,6 +172,7 @@ class LineItem(BaseModel):
     """The number of prepaid credits applied."""
 
     discount: Optional[Discount] = None
+    """This field is deprecated in favor of `adjustments`"""
 
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
