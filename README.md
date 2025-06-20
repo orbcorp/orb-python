@@ -1,6 +1,6 @@
 # Orb Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/orb-billing.svg)](https://pypi.org/project/orb-billing/)
+[![PyPI version](<https://img.shields.io/pypi/v/orb-billing.svg?label=pypi%20(stable)>)](https://pypi.org/project/orb-billing/)
 
 The Orb Python library provides convenient access to the Orb REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -67,6 +67,41 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install orb-billing[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import os
+import asyncio
+from orb import DefaultAioHttpClient
+from orb import AsyncOrb
+
+
+async def main() -> None:
+    async with AsyncOrb(
+        api_key=os.environ.get("ORB_API_KEY"),  # This is the default and can be omitted
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        customer = await client.customers.create(
+            email="example-customer@withorb.com",
+            name="My Customer",
+        )
+        print(customer.id)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -257,7 +292,7 @@ client.with_options(max_retries=5).customers.create(
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from orb import Orb

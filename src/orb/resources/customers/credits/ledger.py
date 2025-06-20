@@ -550,12 +550,12 @@ class Ledger(SyncAPIResource):
         customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -678,8 +678,6 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
-
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
               expire.
@@ -696,6 +694,8 @@ class Ledger(SyncAPIResource):
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
+
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1036,11 +1036,7 @@ class Ledger(SyncAPIResource):
         """
         ...
 
-    @required_args(
-        ["amount", "entry_type"],
-        ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
-    )
+    @required_args(["amount", "entry_type"], ["entry_type", "target_expiry_date"], ["amount", "block_id", "entry_type"])
     def create_entry(
         self,
         customer_id: str,
@@ -1446,12 +1442,12 @@ class Ledger(SyncAPIResource):
         external_customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1574,8 +1570,6 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
-
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
               expire.
@@ -1592,6 +1586,8 @@ class Ledger(SyncAPIResource):
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
+
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1932,11 +1928,7 @@ class Ledger(SyncAPIResource):
         """
         ...
 
-    @required_args(
-        ["amount", "entry_type"],
-        ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
-    )
+    @required_args(["amount", "entry_type"], ["entry_type", "target_expiry_date"], ["amount", "block_id", "entry_type"])
     def create_entry_by_external_id(
         self,
         external_customer_id: str,
@@ -2689,12 +2681,12 @@ class AsyncLedger(AsyncAPIResource):
         customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2817,8 +2809,6 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
-
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
               expire.
@@ -2835,6 +2825,8 @@ class AsyncLedger(AsyncAPIResource):
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
+
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3175,11 +3167,7 @@ class AsyncLedger(AsyncAPIResource):
         """
         ...
 
-    @required_args(
-        ["amount", "entry_type"],
-        ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
-    )
+    @required_args(["amount", "entry_type"], ["entry_type", "target_expiry_date"], ["amount", "block_id", "entry_type"])
     async def create_entry(
         self,
         customer_id: str,
@@ -3585,12 +3573,12 @@ class AsyncLedger(AsyncAPIResource):
         external_customer_id: str,
         *,
         entry_type: Literal["expiration_change"],
-        expiry_date: Union[str, datetime, None],
         target_expiry_date: Union[str, date],
         amount: Optional[float] | NotGiven = NOT_GIVEN,
         block_id: Optional[str] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3713,8 +3701,6 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
-
           target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
               denoting when credits transferred (as part of a partial block expiration) should
               expire.
@@ -3731,6 +3717,8 @@ class AsyncLedger(AsyncAPIResource):
           description: Optional metadata that can be specified when adding ledger results via the API.
               For example, this can be used to note an increment refers to trial credits, or
               for noting corrections as a result of an incident, etc.
+
+          expiry_date: An ISO 8601 format date that identifies the origination credit block to expire
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -4071,11 +4059,7 @@ class AsyncLedger(AsyncAPIResource):
         """
         ...
 
-    @required_args(
-        ["amount", "entry_type"],
-        ["entry_type", "expiry_date", "target_expiry_date"],
-        ["amount", "block_id", "entry_type"],
-    )
+    @required_args(["amount", "entry_type"], ["entry_type", "target_expiry_date"], ["amount", "block_id", "entry_type"])
     async def create_entry_by_external_id(
         self,
         external_customer_id: str,

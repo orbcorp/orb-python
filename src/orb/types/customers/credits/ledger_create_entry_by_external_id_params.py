@@ -132,9 +132,6 @@ class AddDecrementCreditLedgerEntryRequestParams(TypedDict, total=False):
 class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     entry_type: Required[Literal["expiration_change"]]
 
-    expiry_date: Required[Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]]
-    """An ISO 8601 format date that identifies the origination credit block to expire"""
-
     target_expiry_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
     A future date (specified in YYYY-MM-DD format) used for expiration change,
@@ -167,6 +164,9 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
     For example, this can be used to note an increment refers to trial credits, or
     for noting corrections as a result of an incident, etc.
     """
+
+    expiry_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+    """An ISO 8601 format date that identifies the origination credit block to expire"""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.

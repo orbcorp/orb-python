@@ -96,6 +96,7 @@ class TestExternalPlanID:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -179,6 +180,7 @@ class TestExternalPlanID:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -312,7 +314,9 @@ class TestExternalPlanID:
 
 
 class TestAsyncExternalPlanID:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create_plan_version(self, async_client: AsyncOrb) -> None:
@@ -393,6 +397,7 @@ class TestAsyncExternalPlanID:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
@@ -476,6 +481,7 @@ class TestAsyncExternalPlanID:
                             "duration_unit": "day",
                         },
                         "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                 }
             ],
