@@ -1,5 +1,35 @@
 # Changelog
 
+## 4.1.0 (2025-06-23)
+
+Full Changelog: [v4.0.1...v4.1.0](https://github.com/orbcorp/orb-python/compare/v4.0.1...v4.1.0)
+
+### Features
+
+* **api:** api update ([145fb49](https://github.com/orbcorp/orb-python/commit/145fb49e263d98b69ebc44766fb21256792fb408))
+* **api:** api update ([3e7554d](https://github.com/orbcorp/orb-python/commit/3e7554d9cb500e444e5e72c39324e8d478842dde))
+* **api:** api update ([54a55d0](https://github.com/orbcorp/orb-python/commit/54a55d0284936e49b95b011203a57c1c844c34f9))
+* **client:** add support for aiohttp ([afa214a](https://github.com/orbcorp/orb-python/commit/afa214aa4a2fc5db65335f063784df2e6e61292e))
+
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([9e77c70](https://github.com/orbcorp/orb-python/commit/9e77c705608f1f437d3487d1a8f3dbb383a7e533))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([897e15e](https://github.com/orbcorp/orb-python/commit/897e15e361e1fd1a5941122f2fcbc025610c231b))
+* **internal:** update conftest.py ([981e413](https://github.com/orbcorp/orb-python/commit/981e41335feb9bc86d7e465b12112854c5277c55))
+* **readme:** update badges ([121b76c](https://github.com/orbcorp/orb-python/commit/121b76c47ed179936c95dd3a4033e25a49d68d8a))
+* **tests:** add tests for httpx client instantiation & proxies ([41f738c](https://github.com/orbcorp/orb-python/commit/41f738c81995546912f43a79c61172557fe2153a))
+* **tests:** skip some failing tests on the latest python versions ([b67c12c](https://github.com/orbcorp/orb-python/commit/b67c12ca7d3e2c860848de2a3018eb6b24a69c4d))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([3d851a6](https://github.com/orbcorp/orb-python/commit/3d851a625d25c16779644d2bba29e0f8c9e87c7e))
+
 ## 4.0.1 (2025-06-12)
 
 Full Changelog: [v4.0.0...v4.0.1](https://github.com/orbcorp/orb-python/compare/v4.0.0...v4.0.1)
