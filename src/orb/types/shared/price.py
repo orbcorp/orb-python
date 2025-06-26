@@ -147,6 +147,12 @@ class UnitPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     unit_config: UnitConfig
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
@@ -213,6 +219,12 @@ class PackagePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -277,6 +289,12 @@ class MatrixPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -338,6 +356,12 @@ class TieredPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_config: TieredConfig
 
@@ -402,6 +426,12 @@ class TieredBPSPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_bps_config: TieredBPSConfig
 
@@ -469,6 +499,12 @@ class BPSPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -532,6 +568,12 @@ class BulkBPSPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
@@ -597,6 +639,12 @@ class BulkPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -658,6 +706,12 @@ class ThresholdTotalAmountPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     threshold_total_amount_config: Dict[str, object]
 
@@ -722,6 +776,12 @@ class TieredPackagePrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_package_config: Dict[str, object]
 
@@ -789,6 +849,12 @@ class GroupedTieredPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -850,6 +916,12 @@ class TieredWithMinimumPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_with_minimum_config: Dict[str, object]
 
@@ -914,6 +986,12 @@ class TieredPackageWithMinimumPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_package_with_minimum_config: Dict[str, object]
 
@@ -981,6 +1059,12 @@ class PackageWithAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1042,6 +1126,12 @@ class UnitWithPercentPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     unit_with_percent_config: Dict[str, object]
 
@@ -1109,6 +1199,12 @@ class MatrixWithAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1170,6 +1266,12 @@ class TieredWithProrationPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     tiered_with_proration_config: Dict[str, object]
 
@@ -1234,6 +1336,12 @@ class UnitWithProrationPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     unit_with_proration_config: Dict[str, object]
 
@@ -1301,6 +1409,12 @@ class GroupedAllocationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1364,6 +1478,12 @@ class GroupedWithProratedMinimumPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
@@ -1429,6 +1549,12 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1492,6 +1618,12 @@ class MatrixWithDisplayNamePrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
@@ -1557,6 +1689,12 @@ class BulkWithProrationPrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1620,6 +1758,12 @@ class GroupedTieredPackagePrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
@@ -1685,6 +1829,12 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     price_type: Literal["usage_price", "fixed_price"]
 
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
@@ -1746,6 +1896,12 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     scalable_matrix_with_unit_pricing_config: Dict[str, object]
 
@@ -1810,6 +1966,12 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     scalable_matrix_with_tiered_pricing_config: Dict[str, object]
 
@@ -1876,6 +2038,12 @@ class CumulativeGroupedBulkPrice(BaseModel):
     plan_phase_order: Optional[int] = None
 
     price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
