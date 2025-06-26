@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.2.1 (2025-06-26)
+
+Full Changelog: [v4.2.0...v4.2.1](https://github.com/orbcorp/orb-python/compare/v4.2.0...v4.2.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([1d8a57a](https://github.com/orbcorp/orb-python/commit/1d8a57a938f215d4b2ef504ae3c537b2c2a87d29))
+
 ## 4.2.0 (2025-06-26)
 
 Full Changelog: [v4.1.0...v4.2.0](https://github.com/orbcorp/orb-python/compare/v4.1.0...v4.2.0)
