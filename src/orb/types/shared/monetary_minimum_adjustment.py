@@ -40,3 +40,10 @@ class MonetaryMinimumAdjustment(BaseModel):
 
     reason: Optional[str] = None
     """The reason for the adjustment."""
+
+    replaces_adjustment_id: Optional[str] = None
+    """The adjustment id this adjustment replaces.
+
+    This adjustment will take the place of the replaced adjustment in plan version
+    migrations.
+    """
