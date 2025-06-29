@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.2.2 (2025-06-29)
+
+Full Changelog: [v4.2.1...v4.2.2](https://github.com/orbcorp/orb-python/compare/v4.2.1...v4.2.2)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([b0e1f19](https://github.com/orbcorp/orb-python/commit/b0e1f199cb2e10484399e0af3604a91e3c7d48bb))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([e1cbecc](https://github.com/orbcorp/orb-python/commit/e1cbeccba5d407c8a7314c52e98a8b05c0b0049c))
+
 ## 4.2.1 (2025-06-26)
 
 Full Changelog: [v4.2.0...v4.2.1](https://github.com/orbcorp/orb-python/compare/v4.2.0...v4.2.1)
