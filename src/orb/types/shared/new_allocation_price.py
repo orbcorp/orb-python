@@ -13,7 +13,7 @@ class NewAllocationPrice(BaseModel):
     amount: str
     """An amount of the currency to allocate to the customer at the specified cadence."""
 
-    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual"]
     """The cadence at which to allocate the amount to the customer."""
 
     currency: str
