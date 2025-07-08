@@ -88,6 +88,13 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     to 0.
     """
 
+    invoice_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
+    """
+    An ISO 8601 format date that denotes when this invoice should be dated in the
+    customer's timezone. If not provided, the invoice date will default to the
+    credit block's effective date.
+    """
+
     memo: Optional[str]
     """An optional memo to display on the invoice."""
 
