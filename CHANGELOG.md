@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.4.1 (2025-07-09)
+
+Full Changelog: [v4.4.0...v4.4.1](https://github.com/orbcorp/orb-python/compare/v4.4.0...v4.4.1)
+
+### Bug Fixes
+
+* **parsing:** correctly handle nested discriminated unions ([7911534](https://github.com/orbcorp/orb-python/commit/791153479d7474d601721dee8f6d3776738fb166))
+
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([efc47f2](https://github.com/orbcorp/orb-python/commit/efc47f2b2d20840cbef95824091cd2d5a9676dbf))
+* **package:** mark python 3.13 as supported ([21d5e3b](https://github.com/orbcorp/orb-python/commit/21d5e3b4494b542d1b72ff9deab08d6736c349e1))
+
 ## 4.4.0 (2025-07-08)
 
 Full Changelog: [v4.3.0...v4.4.0](https://github.com/orbcorp/orb-python/compare/v4.3.0...v4.4.0)
