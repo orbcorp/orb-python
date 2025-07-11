@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.4.2 (2025-07-11)
+
+Full Changelog: [v4.4.1...v4.4.2](https://github.com/orbcorp/orb-python/compare/v4.4.1...v4.4.2)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([958c8b9](https://github.com/orbcorp/orb-python/commit/958c8b911c0b66d54e7f384f8fc4a7096a550a44))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([ea7d8b3](https://github.com/orbcorp/orb-python/commit/ea7d8b30d3f960def16a2484720df085a87be756))
+
 ## 4.4.1 (2025-07-09)
 
 Full Changelog: [v4.4.0...v4.4.1](https://github.com/orbcorp/orb-python/compare/v4.4.0...v4.4.1)
