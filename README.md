@@ -83,7 +83,6 @@ pip install orb-billing[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from orb import DefaultAioHttpClient
 from orb import AsyncOrb
@@ -91,7 +90,7 @@ from orb import AsyncOrb
 
 async def main() -> None:
     async with AsyncOrb(
-        api_key=os.environ.get("ORB_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         customer = await client.customers.create(
