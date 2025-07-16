@@ -90,17 +90,17 @@ class CreditNotes(SyncAPIResource):
         Args:
           reason: An optional reason for the credit note.
 
-          end_date: An optional date string to specify the global credit note service period end
-              date in the customer's timezone. This will be applied to all line items. If not
-              provided, line items will use their original invoice line item service periods.
-              This date is inclusive.
+          end_date: A date string to specify the global credit note service period end date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           memo: An optional memo to attach to the credit note.
 
-          start_date: An optional date string to specify the global credit note service period end
-              date in the customer's timezone. This will be applied to all line items. If not
-              provided, line items will use their original invoice line item service periods.
-              This date is inclusive.
+          start_date: A date string to specify the global credit note service period start date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           extra_headers: Send extra headers
 
@@ -296,17 +296,17 @@ class AsyncCreditNotes(AsyncAPIResource):
         Args:
           reason: An optional reason for the credit note.
 
-          end_date: An optional date string to specify the global credit note service period end
-              date in the customer's timezone. This will be applied to all line items. If not
-              provided, line items will use their original invoice line item service periods.
-              This date is inclusive.
+          end_date: A date string to specify the global credit note service period end date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           memo: An optional memo to attach to the credit note.
 
-          start_date: An optional date string to specify the global credit note service period end
-              date in the customer's timezone. This will be applied to all line items. If not
-              provided, line items will use their original invoice line item service periods.
-              This date is inclusive.
+          start_date: A date string to specify the global credit note service period start date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           extra_headers: Send extra headers
 
