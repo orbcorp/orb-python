@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb._utils import parse_datetime
+from orb._utils import parse_date, parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.shared import CreditNote
@@ -39,10 +39,14 @@ class TestCreditNotes:
                 {
                     "amount": "amount",
                     "invoice_line_item_id": "4khy3nwzktxv7",
+                    "end_date": parse_date("2023-09-22"),
+                    "start_date": parse_date("2023-09-22"),
                 }
             ],
             reason="duplicate",
+            end_date=parse_date("2023-09-22"),
             memo="An optional memo for my credit note.",
+            start_date=parse_date("2023-09-22"),
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 
@@ -183,10 +187,14 @@ class TestAsyncCreditNotes:
                 {
                     "amount": "amount",
                     "invoice_line_item_id": "4khy3nwzktxv7",
+                    "end_date": parse_date("2023-09-22"),
+                    "start_date": parse_date("2023-09-22"),
                 }
             ],
             reason="duplicate",
+            end_date=parse_date("2023-09-22"),
             memo="An optional memo for my credit note.",
+            start_date=parse_date("2023-09-22"),
         )
         assert_matches_type(CreditNote, credit_note, path=["response"])
 

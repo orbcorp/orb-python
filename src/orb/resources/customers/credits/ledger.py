@@ -123,8 +123,8 @@ class Ledger(SyncAPIResource):
         deductions take place from a non-expiring credit block.
 
         If there are multiple blocks with the same expiration date, Orb will deduct from
-        the block with the _lower cost basis_ first (e.g. trial credits with a $0 cost
-        basis before paid credits with a $5.00 cost basis).
+        the block with the _lower cost basis_ first (e.g. trial credits with a \\$$0 cost
+        basis before paid credits with a \\$$5.00 cost basis).
 
         It's also possible for a single usage event's deduction to _span_ credit blocks.
         In this case, Orb will deduct from the next block, ending at the credit block
@@ -2069,8 +2069,8 @@ class Ledger(SyncAPIResource):
         deductions take place from a non-expiring credit block.
 
         If there are multiple blocks with the same expiration date, Orb will deduct from
-        the block with the _lower cost basis_ first (e.g. trial credits with a $0 cost
-        basis before paid credits with a $5.00 cost basis).
+        the block with the _lower cost basis_ first (e.g. trial credits with a \\$$0 cost
+        basis before paid credits with a \\$$5.00 cost basis).
 
         It's also possible for a single usage event's deduction to _span_ credit blocks.
         In this case, Orb will deduct from the next block, ending at the credit block
@@ -2254,8 +2254,8 @@ class AsyncLedger(AsyncAPIResource):
         deductions take place from a non-expiring credit block.
 
         If there are multiple blocks with the same expiration date, Orb will deduct from
-        the block with the _lower cost basis_ first (e.g. trial credits with a $0 cost
-        basis before paid credits with a $5.00 cost basis).
+        the block with the _lower cost basis_ first (e.g. trial credits with a \\$$0 cost
+        basis before paid credits with a \\$$5.00 cost basis).
 
         It's also possible for a single usage event's deduction to _span_ credit blocks.
         In this case, Orb will deduct from the next block, ending at the credit block
@@ -4200,8 +4200,8 @@ class AsyncLedger(AsyncAPIResource):
         deductions take place from a non-expiring credit block.
 
         If there are multiple blocks with the same expiration date, Orb will deduct from
-        the block with the _lower cost basis_ first (e.g. trial credits with a $0 cost
-        basis before paid credits with a $5.00 cost basis).
+        the block with the _lower cost basis_ first (e.g. trial credits with a \\$$0 cost
+        basis before paid credits with a \\$$5.00 cost basis).
 
         It's also possible for a single usage event's deduction to _span_ credit blocks.
         In this case, Orb will deduct from the next block, ending at the credit block

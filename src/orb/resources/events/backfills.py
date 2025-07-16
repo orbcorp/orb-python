@@ -104,11 +104,11 @@ class Backfills(SyncAPIResource):
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
-              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              default, Orb allows backfills up to 31 days in duration at a time. Reach out to
               discuss extending this limit and your use case.
 
           timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill. By
-              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              default, Orb allows backfills up to 31 days in duration at a time. Reach out to
               discuss extending this limit and your use case.
 
           close_time: The time at which no more events will be accepted for this backfill. The
@@ -420,11 +420,11 @@ class AsyncBackfills(AsyncAPIResource):
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
-              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              default, Orb allows backfills up to 31 days in duration at a time. Reach out to
               discuss extending this limit and your use case.
 
           timeframe_start: The (inclusive) start of the usage timeframe affected by this backfill. By
-              default, Orb allows backfills up to 10 days in duration at a time. Reach out to
+              default, Orb allows backfills up to 31 days in duration at a time. Reach out to
               discuss extending this limit and your use case.
 
           close_time: The time at which no more events will be accepted for this backfill. The
