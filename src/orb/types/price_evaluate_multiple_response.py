@@ -15,6 +15,9 @@ class Data(BaseModel):
     price_groups: List[EvaluatePriceGroup]
     """The computed price groups associated with input price."""
 
+    external_price_id: Optional[str] = None
+    """The external ID of the price"""
+
     inline_price_index: Optional[int] = None
     """The index of the inline price"""
 

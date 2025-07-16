@@ -124,6 +124,9 @@ PriceEvaluationPrice: TypeAlias = Union[
 
 
 class PriceEvaluation(TypedDict, total=False):
+    external_price_id: Optional[str]
+    """The external ID of a price to evaluate that exists in your Orb account."""
+
     filter: Optional[str]
     """
     A boolean

@@ -60,6 +60,12 @@ class LineItem(BaseModel):
     discounts: Optional[List[LineItemDiscount]] = None
     """Any line item discounts from the invoice's line item."""
 
+    end_time_exclusive: Optional[datetime] = None
+    """The end time of the service period for this credit note line item."""
+
+    start_time_inclusive: Optional[datetime] = None
+    """The start time of the service period for this credit note line item."""
+
 
 class MaximumAmountAdjustmentAppliesToPrice(BaseModel):
     id: str
