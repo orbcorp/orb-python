@@ -111,17 +111,17 @@ class Costs(SyncAPIResource):
 
         A customer that uses a few API calls a day but has a minimum commitment might
         exhibit the following pattern for their subtotal and total in the first few days
-        of the month. Here, we assume that each API call is $2.50, the customer's plan
-        has a monthly minimum of $50 for this price, and that the subscription's billing
-        period bounds are aligned to the first of the month:
+        of the month. Here, we assume that each API call is \\$$2.50, the customer's plan
+        has a monthly minimum of \\$$50 for this price, and that the subscription's
+        billing period bounds are aligned to the first of the month:
 
         | timeframe_start | timeframe_end | Cumulative usage | Subtotal | Total (incl. commitment) |
         | --------------- | ------------- | ---------------- | -------- | ------------------------ |
-        | 2023-02-01      | 2023-02-02    | 9                | $22.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-03    | 19               | $47.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-04    | 20               | $50.00   | $50.00                   |
-        | 2023-02-01      | 2023-02-05    | 28               | $70.00   | $70.00                   |
-        | 2023-02-01      | 2023-02-06    | 36               | $90.00   | $90.00                   |
+        | 2023-02-01      | 2023-02-02    | 9                | \\$$22.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-03    | 19               | \\$$47.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-04    | 20               | \\$$50.00  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-05    | 28               | \\$$70.00  | \\$$70.00                  |
+        | 2023-02-01      | 2023-02-06    | 36               | \\$$90.00  | \\$$90.00                  |
 
         ### Periodic values
 
@@ -287,17 +287,17 @@ class Costs(SyncAPIResource):
 
         A customer that uses a few API calls a day but has a minimum commitment might
         exhibit the following pattern for their subtotal and total in the first few days
-        of the month. Here, we assume that each API call is $2.50, the customer's plan
-        has a monthly minimum of $50 for this price, and that the subscription's billing
-        period bounds are aligned to the first of the month:
+        of the month. Here, we assume that each API call is \\$$2.50, the customer's plan
+        has a monthly minimum of \\$$50 for this price, and that the subscription's
+        billing period bounds are aligned to the first of the month:
 
         | timeframe_start | timeframe_end | Cumulative usage | Subtotal | Total (incl. commitment) |
         | --------------- | ------------- | ---------------- | -------- | ------------------------ |
-        | 2023-02-01      | 2023-02-02    | 9                | $22.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-03    | 19               | $47.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-04    | 20               | $50.00   | $50.00                   |
-        | 2023-02-01      | 2023-02-05    | 28               | $70.00   | $70.00                   |
-        | 2023-02-01      | 2023-02-06    | 36               | $90.00   | $90.00                   |
+        | 2023-02-01      | 2023-02-02    | 9                | \\$$22.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-03    | 19               | \\$$47.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-04    | 20               | \\$$50.00  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-05    | 28               | \\$$70.00  | \\$$70.00                  |
+        | 2023-02-01      | 2023-02-06    | 36               | \\$$90.00  | \\$$90.00                  |
 
         ### Periodic values
 
@@ -486,17 +486,17 @@ class AsyncCosts(AsyncAPIResource):
 
         A customer that uses a few API calls a day but has a minimum commitment might
         exhibit the following pattern for their subtotal and total in the first few days
-        of the month. Here, we assume that each API call is $2.50, the customer's plan
-        has a monthly minimum of $50 for this price, and that the subscription's billing
-        period bounds are aligned to the first of the month:
+        of the month. Here, we assume that each API call is \\$$2.50, the customer's plan
+        has a monthly minimum of \\$$50 for this price, and that the subscription's
+        billing period bounds are aligned to the first of the month:
 
         | timeframe_start | timeframe_end | Cumulative usage | Subtotal | Total (incl. commitment) |
         | --------------- | ------------- | ---------------- | -------- | ------------------------ |
-        | 2023-02-01      | 2023-02-02    | 9                | $22.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-03    | 19               | $47.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-04    | 20               | $50.00   | $50.00                   |
-        | 2023-02-01      | 2023-02-05    | 28               | $70.00   | $70.00                   |
-        | 2023-02-01      | 2023-02-06    | 36               | $90.00   | $90.00                   |
+        | 2023-02-01      | 2023-02-02    | 9                | \\$$22.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-03    | 19               | \\$$47.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-04    | 20               | \\$$50.00  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-05    | 28               | \\$$70.00  | \\$$70.00                  |
+        | 2023-02-01      | 2023-02-06    | 36               | \\$$90.00  | \\$$90.00                  |
 
         ### Periodic values
 
@@ -662,17 +662,17 @@ class AsyncCosts(AsyncAPIResource):
 
         A customer that uses a few API calls a day but has a minimum commitment might
         exhibit the following pattern for their subtotal and total in the first few days
-        of the month. Here, we assume that each API call is $2.50, the customer's plan
-        has a monthly minimum of $50 for this price, and that the subscription's billing
-        period bounds are aligned to the first of the month:
+        of the month. Here, we assume that each API call is \\$$2.50, the customer's plan
+        has a monthly minimum of \\$$50 for this price, and that the subscription's
+        billing period bounds are aligned to the first of the month:
 
         | timeframe_start | timeframe_end | Cumulative usage | Subtotal | Total (incl. commitment) |
         | --------------- | ------------- | ---------------- | -------- | ------------------------ |
-        | 2023-02-01      | 2023-02-02    | 9                | $22.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-03    | 19               | $47.50   | $50.00                   |
-        | 2023-02-01      | 2023-02-04    | 20               | $50.00   | $50.00                   |
-        | 2023-02-01      | 2023-02-05    | 28               | $70.00   | $70.00                   |
-        | 2023-02-01      | 2023-02-06    | 36               | $90.00   | $90.00                   |
+        | 2023-02-01      | 2023-02-02    | 9                | \\$$22.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-03    | 19               | \\$$47.50  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-04    | 20               | \\$$50.00  | \\$$50.00                  |
+        | 2023-02-01      | 2023-02-05    | 28               | \\$$70.00  | \\$$70.00                  |
+        | 2023-02-01      | 2023-02-06    | 36               | \\$$90.00  | \\$$90.00                  |
 
         ### Periodic values
 

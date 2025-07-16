@@ -275,7 +275,7 @@ class Edit(TypedDict, total=False):
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
     """The updated end date of this price interval.
 
-    If not specified, the start date will not be updated.
+    If not specified, the end date will not be updated.
     """
 
     filter: Optional[str]
@@ -317,7 +317,7 @@ class EditAdjustment(TypedDict, total=False):
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
     """The updated end date of this adjustment interval.
 
-    If not specified, the start date will not be updated.
+    If not specified, the end date will not be updated.
     """
 
     start_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]

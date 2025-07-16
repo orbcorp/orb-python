@@ -106,7 +106,10 @@ class Subscription(BaseModel):
     """
 
     discount_intervals: List[DiscountInterval]
-    """The discount intervals for this subscription sorted by the start_date."""
+    """The discount intervals for this subscription sorted by the start_date.
+
+    This field is deprecated in favor of `adjustment_intervals`.
+    """
 
     end_date: Optional[datetime] = None
     """The date Orb stops billing for this subscription."""
@@ -116,7 +119,10 @@ class Subscription(BaseModel):
     invoicing_threshold: Optional[str] = None
 
     maximum_intervals: List[MaximumInterval]
-    """The maximum intervals for this subscription sorted by the start_date."""
+    """The maximum intervals for this subscription sorted by the start_date.
+
+    This field is deprecated in favor of `adjustment_intervals`.
+    """
 
     metadata: Dict[str, str]
     """User specified key-value pairs for the resource.
@@ -127,7 +133,10 @@ class Subscription(BaseModel):
     """
 
     minimum_intervals: List[MinimumInterval]
-    """The minimum intervals for this subscription sorted by the start_date."""
+    """The minimum intervals for this subscription sorted by the start_date.
+
+    This field is deprecated in favor of `adjustment_intervals`.
+    """
 
     name: str
     """The name of the subscription."""

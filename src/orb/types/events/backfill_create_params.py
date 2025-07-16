@@ -15,14 +15,14 @@ class BackfillCreateParams(TypedDict, total=False):
     timeframe_end: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The (exclusive) end of the usage timeframe affected by this backfill.
 
-    By default, Orb allows backfills up to 10 days in duration at a time. Reach out
+    By default, Orb allows backfills up to 31 days in duration at a time. Reach out
     to discuss extending this limit and your use case.
     """
 
     timeframe_start: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The (inclusive) start of the usage timeframe affected by this backfill.
 
-    By default, Orb allows backfills up to 10 days in duration at a time. Reach out
+    By default, Orb allows backfills up to 31 days in duration at a time. Reach out
     to discuss extending this limit and your use case.
     """
 

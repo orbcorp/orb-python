@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Union, Iterable, Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 import httpx
@@ -47,7 +47,9 @@ class CreditNotes(SyncAPIResource):
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
         reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
+        end_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -60,10 +62,45 @@ class CreditNotes(SyncAPIResource):
         This endpoint is used to create a single
         [`Credit Note`](/invoicing/credit-notes).
 
+        The credit note service period configuration supports two explicit modes:
+
+        1. Global service periods: Specify start_date and end_date at the credit note
+           level. These dates will be applied to all line items uniformly.
+
+        2. Individual service periods: Specify start_date and end_date for each line
+           item. When using this mode, ALL line items must have individual periods
+           specified.
+
+        3. Default behavior: If no service periods are specified (neither global nor
+           individual), the original invoice line item service periods will be used.
+
+        Note: Mixing global and individual service periods in the same request is not
+        allowed to prevent confusion.
+
+        Service period dates are normalized to the start of the day in the customer's
+        timezone to ensure consistent handling across different timezones.
+
+        Date Format: Use start_date and end_date with format "YYYY-MM-DD" (e.g.,
+        "2023-09-22") to match other Orb APIs like /v1/invoice_line_items.
+
+        Note: Both start_date and end_date are inclusive - the service period will cover
+        both the start date and end date completely (from start of start_date to end of
+        end_date).
+
         Args:
           reason: An optional reason for the credit note.
 
+          end_date: A date string to specify the global credit note service period end date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
+
           memo: An optional memo to attach to the credit note.
+
+          start_date: A date string to specify the global credit note service period start date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           extra_headers: Send extra headers
 
@@ -81,7 +118,9 @@ class CreditNotes(SyncAPIResource):
                 {
                     "line_items": line_items,
                     "reason": reason,
+                    "end_date": end_date,
                     "memo": memo,
+                    "start_date": start_date,
                 },
                 credit_note_create_params.CreditNoteCreateParams,
             ),
@@ -214,7 +253,9 @@ class AsyncCreditNotes(AsyncAPIResource):
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
         reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
+        end_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -227,10 +268,45 @@ class AsyncCreditNotes(AsyncAPIResource):
         This endpoint is used to create a single
         [`Credit Note`](/invoicing/credit-notes).
 
+        The credit note service period configuration supports two explicit modes:
+
+        1. Global service periods: Specify start_date and end_date at the credit note
+           level. These dates will be applied to all line items uniformly.
+
+        2. Individual service periods: Specify start_date and end_date for each line
+           item. When using this mode, ALL line items must have individual periods
+           specified.
+
+        3. Default behavior: If no service periods are specified (neither global nor
+           individual), the original invoice line item service periods will be used.
+
+        Note: Mixing global and individual service periods in the same request is not
+        allowed to prevent confusion.
+
+        Service period dates are normalized to the start of the day in the customer's
+        timezone to ensure consistent handling across different timezones.
+
+        Date Format: Use start_date and end_date with format "YYYY-MM-DD" (e.g.,
+        "2023-09-22") to match other Orb APIs like /v1/invoice_line_items.
+
+        Note: Both start_date and end_date are inclusive - the service period will cover
+        both the start date and end date completely (from start of start_date to end of
+        end_date).
+
         Args:
           reason: An optional reason for the credit note.
 
+          end_date: A date string to specify the global credit note service period end date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
+
           memo: An optional memo to attach to the credit note.
+
+          start_date: A date string to specify the global credit note service period start date in the
+              customer's timezone. This will be applied to all line items that don't have
+              their own individual service periods specified. If not provided, line items will
+              use their original invoice line item service periods. This date is inclusive.
 
           extra_headers: Send extra headers
 
@@ -248,7 +324,9 @@ class AsyncCreditNotes(AsyncAPIResource):
                 {
                     "line_items": line_items,
                     "reason": reason,
+                    "end_date": end_date,
                     "memo": memo,
+                    "start_date": start_date,
                 },
                 credit_note_create_params.CreditNoteCreateParams,
             ),
