@@ -177,7 +177,7 @@ class Costs(SyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
@@ -353,7 +353,7 @@ class Costs(SyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
@@ -552,7 +552,7 @@ class AsyncCosts(AsyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
@@ -728,7 +728,7 @@ class AsyncCosts(AsyncAPIResource):
         `grouping_value` and `secondary_grouping_value` available.
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
