@@ -833,7 +833,7 @@ class Subscriptions(SyncAPIResource):
         same day).
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
@@ -2919,7 +2919,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         same day).
 
         Args:
-          currency: The currency or custom pricing unit to use.
+          currency: The currency to use.
 
           timeframe_end: Costs returned are exclusive of `timeframe_end`.
 
