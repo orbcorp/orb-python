@@ -29,14 +29,6 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     line_items: Required[Iterable[LineItem]]
 
-    net_terms: Required[int]
-    """
-    Determines the difference between the invoice issue date for subscription
-    invoices as the date that they are due. A value of '0' here represents that the
-    invoice is due on issue, whereas a value of 30 represents that the customer has
-    30 days to pay the invoice.
-    """
-
     customer_id: Optional[str]
     """The id of the `Customer` to create this invoice for.
 
@@ -60,6 +52,14 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    net_terms: Optional[int]
+    """
+    Determines the difference between the invoice issue date for subscription
+    invoices as the date that they are due. A value of '0' here represents that the
+    invoice is due on issue, whereas a value of 30 represents that the customer has
+    30 days to pay the invoice.
     """
 
     will_auto_issue: bool

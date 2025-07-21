@@ -57,12 +57,12 @@ class Invoices(SyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
-        net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         discount: Optional[Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         will_auto_issue: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -82,11 +82,6 @@ class Invoices(SyncAPIResource):
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of '0' here represents that the
-              invoice is due on issue, whereas a value of 30 represents that the customer has
-              30 days to pay the invoice.
-
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
 
@@ -100,6 +95,11 @@ class Invoices(SyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: Determines the difference between the invoice issue date for subscription
+              invoices as the date that they are due. A value of '0' here represents that the
+              invoice is due on issue, whereas a value of 30 represents that the customer has
+              30 days to pay the invoice.
 
           will_auto_issue: When true, this invoice will be submitted for issuance upon creation. When
               false, the resulting invoice will require manual review to issue. Defaulted to
@@ -122,12 +122,12 @@ class Invoices(SyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
-                    "net_terms": net_terms,
                     "customer_id": customer_id,
                     "discount": discount,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
+                    "net_terms": net_terms,
                     "will_auto_issue": will_auto_issue,
                 },
                 invoice_create_params.InvoiceCreateParams,
@@ -597,12 +597,12 @@ class AsyncInvoices(AsyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
-        net_terms: int,
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         discount: Optional[Discount] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         will_auto_issue: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -622,11 +622,6 @@ class AsyncInvoices(AsyncAPIResource):
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of '0' here represents that the
-              invoice is due on issue, whereas a value of 30 represents that the customer has
-              30 days to pay the invoice.
-
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
 
@@ -640,6 +635,11 @@ class AsyncInvoices(AsyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: Determines the difference between the invoice issue date for subscription
+              invoices as the date that they are due. A value of '0' here represents that the
+              invoice is due on issue, whereas a value of 30 represents that the customer has
+              30 days to pay the invoice.
 
           will_auto_issue: When true, this invoice will be submitted for issuance upon creation. When
               false, the resulting invoice will require manual review to issue. Defaulted to
@@ -662,12 +662,12 @@ class AsyncInvoices(AsyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
-                    "net_terms": net_terms,
                     "customer_id": customer_id,
                     "discount": discount,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
+                    "net_terms": net_terms,
                     "will_auto_issue": will_auto_issue,
                 },
                 invoice_create_params.InvoiceCreateParams,
