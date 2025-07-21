@@ -38,7 +38,6 @@ class TestInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -58,7 +57,6 @@ class TestInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -76,6 +74,7 @@ class TestInvoices:
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
+            net_terms=0,
             will_auto_issue=False,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -96,7 +95,6 @@ class TestInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         )
 
         assert response.is_closed is True
@@ -120,7 +118,6 @@ class TestInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -491,7 +488,6 @@ class TestAsyncInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -511,7 +507,6 @@ class TestAsyncInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -529,6 +524,7 @@ class TestAsyncInvoices:
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
+            net_terms=0,
             will_auto_issue=False,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -549,7 +545,6 @@ class TestAsyncInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         )
 
         assert response.is_closed is True
@@ -573,7 +568,6 @@ class TestAsyncInvoices:
                     "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
-            net_terms=0,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
