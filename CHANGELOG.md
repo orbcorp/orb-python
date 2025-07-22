@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.8.1 (2025-07-22)
+
+Full Changelog: [v4.8.0...v4.8.1](https://github.com/orbcorp/orb-python/compare/v4.8.0...v4.8.1)
+
+### Bug Fixes
+
+* **parsing:** parse extra field types ([4b3a543](https://github.com/orbcorp/orb-python/commit/4b3a54366880f6ff2955db1d3d9986af47d1e25a))
+
 ## 4.8.0 (2025-07-21)
 
 Full Changelog: [v4.7.0...v4.8.0](https://github.com/orbcorp/orb-python/compare/v4.7.0...v4.8.0)
