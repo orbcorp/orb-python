@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.9.0 (2025-07-24)
+
+Full Changelog: [v4.8.1...v4.9.0](https://github.com/orbcorp/orb-python/compare/v4.8.1...v4.9.0)
+
+### Features
+
+* **api:** api update ([8eb1072](https://github.com/orbcorp/orb-python/commit/8eb107295f3e00437f5143d790884a35252639c0))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([b95d016](https://github.com/orbcorp/orb-python/commit/b95d01634114df214eb92cdade208dcd3333b905))
+
 ## 4.8.1 (2025-07-22)
 
 Full Changelog: [v4.8.0...v4.8.1](https://github.com/orbcorp/orb-python/compare/v4.8.0...v4.8.1)
