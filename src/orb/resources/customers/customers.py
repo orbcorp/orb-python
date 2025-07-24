@@ -371,8 +371,11 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
-              past or current subscriptions.
+          external_customer_id: The external customer ID. This can only be set if the customer has no existing
+              external customer ID. Since this action may change usage quantities for all
+              existing subscriptions, it is disallowed if the customer has issued invoices
+              with usage line items and subject to the same restrictions as backdated
+              subscription creation.
 
           hierarchy: The hierarchical relationships for this customer.
 
@@ -880,8 +883,11 @@ class Customers(SyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
-              past or current subscriptions.
+          external_customer_id: The external customer ID. This can only be set if the customer has no existing
+              external customer ID. Since this action may change usage quantities for all
+              existing subscriptions, it is disallowed if the customer has issued invoices
+              with usage line items and subject to the same restrictions as backdated
+              subscription creation.
 
           hierarchy: The hierarchical relationships for this customer.
 
@@ -1370,8 +1376,11 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
-              past or current subscriptions.
+          external_customer_id: The external customer ID. This can only be set if the customer has no existing
+              external customer ID. Since this action may change usage quantities for all
+              existing subscriptions, it is disallowed if the customer has issued invoices
+              with usage line items and subject to the same restrictions as backdated
+              subscription creation.
 
           hierarchy: The hierarchical relationships for this customer.
 
@@ -1879,8 +1888,11 @@ class AsyncCustomers(AsyncAPIResource):
 
           email: A valid customer email, to be used for invoicing and notifications.
 
-          external_customer_id: The external customer ID. This can only be set if empty and the customer has no
-              past or current subscriptions.
+          external_customer_id: The external customer ID. This can only be set if the customer has no existing
+              external customer ID. Since this action may change usage quantities for all
+              existing subscriptions, it is disallowed if the customer has issued invoices
+              with usage line items and subject to the same restrictions as backdated
+              subscription creation.
 
           hierarchy: The hierarchical relationships for this customer.
 

@@ -81,7 +81,7 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     saved payment method.
     """
 
-    net_terms: Required[int]
+    net_terms: Required[Optional[int]]
     """
     The net terms determines the difference between the invoice date and the issue
     date for the invoice. If you intend the invoice to be due on issue, set this
