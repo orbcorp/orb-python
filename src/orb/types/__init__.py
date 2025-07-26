@@ -247,6 +247,9 @@ from .customer_update_by_external_id_params import CustomerUpdateByExternalIDPar
 from .dimensional_price_group_create_params import (
     DimensionalPriceGroupCreateParams as DimensionalPriceGroupCreateParams,
 )
+from .dimensional_price_group_update_params import (
+    DimensionalPriceGroupUpdateParams as DimensionalPriceGroupUpdateParams,
+)
 from .new_subscription_bulk_bps_price_param import NewSubscriptionBulkBPSPriceParam as NewSubscriptionBulkBPSPriceParam
 from .subscription_change_retrieve_response import (
     SubscriptionChangeRetrieveResponse as SubscriptionChangeRetrieveResponse,

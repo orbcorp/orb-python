@@ -86,6 +86,8 @@ __all__ = [
     "ScalableMatrixWithTieredPricingPriceConversionRateConfig",
     "CumulativeGroupedBulkPrice",
     "CumulativeGroupedBulkPriceConversionRateConfig",
+    "GroupedWithMinMaxThresholdsPrice",
+    "GroupedWithMinMaxThresholdsPriceConversionRateConfig",
 ]
 
 UnitPriceConversionRateConfig: TypeAlias = Annotated[
@@ -2048,6 +2050,76 @@ class CumulativeGroupedBulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
+GroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
+    PropertyInfo(discriminator="conversion_rate_type"),
+]
+
+
+class GroupedWithMinMaxThresholdsPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[GroupedWithMinMaxThresholdsPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    grouped_with_min_max_thresholds_config: Dict[str, object]
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["grouped_with_min_max_thresholds"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
@@ -2078,6 +2150,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithUnitPricingPrice,
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
+        GroupedWithMinMaxThresholdsPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]

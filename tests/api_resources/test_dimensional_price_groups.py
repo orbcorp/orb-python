@@ -8,7 +8,9 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
-from orb.types import DimensionalPriceGroup
+from orb.types import (
+    DimensionalPriceGroup,
+)
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 
@@ -104,6 +106,55 @@ class TestDimensionalPriceGroups:
         ):
             client.dimensional_price_groups.with_raw_response.retrieve(
                 "",
+            )
+
+    @parametrize
+    def test_method_update(self, client: Orb) -> None:
+        dimensional_price_group = client.dimensional_price_groups.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        )
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Orb) -> None:
+        dimensional_price_group = client.dimensional_price_groups.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+            external_dimensional_price_group_id="external_dimensional_price_group_id",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.dimensional_price_groups.with_raw_response.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dimensional_price_group = response.parse()
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.dimensional_price_groups.with_streaming_response.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dimensional_price_group = response.parse()
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `dimensional_price_group_id` but received ''"
+        ):
+            client.dimensional_price_groups.with_raw_response.update(
+                dimensional_price_group_id="",
             )
 
     @parametrize
@@ -231,6 +282,55 @@ class TestAsyncDimensionalPriceGroups:
         ):
             await async_client.dimensional_price_groups.with_raw_response.retrieve(
                 "",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncOrb) -> None:
+        dimensional_price_group = await async_client.dimensional_price_groups.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        )
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
+        dimensional_price_group = await async_client.dimensional_price_groups.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+            external_dimensional_price_group_id="external_dimensional_price_group_id",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
+        response = await async_client.dimensional_price_groups.with_raw_response.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dimensional_price_group = response.parse()
+        assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
+        async with async_client.dimensional_price_groups.with_streaming_response.update(
+            dimensional_price_group_id="dimensional_price_group_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dimensional_price_group = await response.parse()
+            assert_matches_type(DimensionalPriceGroup, dimensional_price_group, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `dimensional_price_group_id` but received ''"
+        ):
+            await async_client.dimensional_price_groups.with_raw_response.update(
+                dimensional_price_group_id="",
             )
 
     @parametrize
