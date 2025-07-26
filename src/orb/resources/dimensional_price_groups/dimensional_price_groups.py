@@ -7,7 +7,11 @@ from typing import Dict, List, Optional
 import httpx
 
 from ... import _legacy_response
-from ...types import dimensional_price_group_list_params, dimensional_price_group_create_params
+from ...types import (
+    dimensional_price_group_list_params,
+    dimensional_price_group_create_params,
+    dimensional_price_group_update_params,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -148,6 +152,68 @@ class DimensionalPriceGroups(SyncAPIResource):
             f"/dimensional_price_groups/{dimensional_price_group_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DimensionalPriceGroup,
+        )
+
+    def update(
+        self,
+        dimensional_price_group_id: str,
+        *,
+        external_dimensional_price_group_id: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> DimensionalPriceGroup:
+        """
+        This endpoint can be used to update the `external_dimensional_price_group_id`
+        and `metadata` of an existing dimensional price group. Other fields on a
+        dimensional price group are currently immutable.
+
+        Args:
+          external_dimensional_price_group_id: An optional user-defined ID for this dimensional price group resource, used
+              throughout the system as an alias for this dimensional price group. Use this
+              field to identify a dimensional price group by an existing identifier in your
+              system.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not dimensional_price_group_id:
+            raise ValueError(
+                f"Expected a non-empty value for `dimensional_price_group_id` but received {dimensional_price_group_id!r}"
+            )
+        return self._put(
+            f"/dimensional_price_groups/{dimensional_price_group_id}",
+            body=maybe_transform(
+                {
+                    "external_dimensional_price_group_id": external_dimensional_price_group_id,
+                    "metadata": metadata,
+                },
+                dimensional_price_group_update_params.DimensionalPriceGroupUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=DimensionalPriceGroup,
         )
@@ -326,6 +392,68 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
             cast_to=DimensionalPriceGroup,
         )
 
+    async def update(
+        self,
+        dimensional_price_group_id: str,
+        *,
+        external_dimensional_price_group_id: Optional[str] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> DimensionalPriceGroup:
+        """
+        This endpoint can be used to update the `external_dimensional_price_group_id`
+        and `metadata` of an existing dimensional price group. Other fields on a
+        dimensional price group are currently immutable.
+
+        Args:
+          external_dimensional_price_group_id: An optional user-defined ID for this dimensional price group resource, used
+              throughout the system as an alias for this dimensional price group. Use this
+              field to identify a dimensional price group by an existing identifier in your
+              system.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not dimensional_price_group_id:
+            raise ValueError(
+                f"Expected a non-empty value for `dimensional_price_group_id` but received {dimensional_price_group_id!r}"
+            )
+        return await self._put(
+            f"/dimensional_price_groups/{dimensional_price_group_id}",
+            body=await async_maybe_transform(
+                {
+                    "external_dimensional_price_group_id": external_dimensional_price_group_id,
+                    "metadata": metadata,
+                },
+                dimensional_price_group_update_params.DimensionalPriceGroupUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=DimensionalPriceGroup,
+        )
+
     def list(
         self,
         *,
@@ -386,6 +514,9 @@ class DimensionalPriceGroupsWithRawResponse:
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             dimensional_price_groups.retrieve,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            dimensional_price_groups.update,
+        )
         self.list = _legacy_response.to_raw_response_wrapper(
             dimensional_price_groups.list,
         )
@@ -406,6 +537,9 @@ class AsyncDimensionalPriceGroupsWithRawResponse:
         )
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             dimensional_price_groups.retrieve,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            dimensional_price_groups.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             dimensional_price_groups.list,
@@ -428,6 +562,9 @@ class DimensionalPriceGroupsWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             dimensional_price_groups.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            dimensional_price_groups.update,
+        )
         self.list = to_streamed_response_wrapper(
             dimensional_price_groups.list,
         )
@@ -448,6 +585,9 @@ class AsyncDimensionalPriceGroupsWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             dimensional_price_groups.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            dimensional_price_groups.update,
         )
         self.list = async_to_streamed_response_wrapper(
             dimensional_price_groups.list,

@@ -59,6 +59,60 @@ class TestExternalDimensionalPriceGroupID:
                 "",
             )
 
+    @parametrize
+    def test_method_update(self, client: Orb) -> None:
+        external_dimensional_price_group_id = (
+            client.dimensional_price_groups.external_dimensional_price_group_id.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+            )
+        )
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Orb) -> None:
+        external_dimensional_price_group_id = (
+            client.dimensional_price_groups.external_dimensional_price_group_id.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+                body_external_dimensional_price_group_id="external_dimensional_price_group_id",
+                metadata={"foo": "string"},
+            )
+        )
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Orb) -> None:
+        response = client.dimensional_price_groups.external_dimensional_price_group_id.with_raw_response.update(
+            path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_dimensional_price_group_id = response.parse()
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Orb) -> None:
+        with client.dimensional_price_groups.external_dimensional_price_group_id.with_streaming_response.update(
+            path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_dimensional_price_group_id = response.parse()
+            assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Orb) -> None:
+        with pytest.raises(
+            ValueError,
+            match=r"Expected a non-empty value for `path_external_dimensional_price_group_id` but received ''",
+        ):
+            client.dimensional_price_groups.external_dimensional_price_group_id.with_raw_response.update(
+                path_external_dimensional_price_group_id="",
+            )
+
 
 class TestAsyncExternalDimensionalPriceGroupID:
     parametrize = pytest.mark.parametrize(
@@ -109,4 +163,62 @@ class TestAsyncExternalDimensionalPriceGroupID:
         ):
             await async_client.dimensional_price_groups.external_dimensional_price_group_id.with_raw_response.retrieve(
                 "",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncOrb) -> None:
+        external_dimensional_price_group_id = (
+            await async_client.dimensional_price_groups.external_dimensional_price_group_id.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+            )
+        )
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
+        external_dimensional_price_group_id = (
+            await async_client.dimensional_price_groups.external_dimensional_price_group_id.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+                body_external_dimensional_price_group_id="external_dimensional_price_group_id",
+                metadata={"foo": "string"},
+            )
+        )
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncOrb) -> None:
+        response = (
+            await async_client.dimensional_price_groups.external_dimensional_price_group_id.with_raw_response.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+            )
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        external_dimensional_price_group_id = response.parse()
+        assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncOrb) -> None:
+        async with (
+            async_client.dimensional_price_groups.external_dimensional_price_group_id.with_streaming_response.update(
+                path_external_dimensional_price_group_id="external_dimensional_price_group_id",
+            )
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_dimensional_price_group_id = await response.parse()
+            assert_matches_type(DimensionalPriceGroup, external_dimensional_price_group_id, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(
+            ValueError,
+            match=r"Expected a non-empty value for `path_external_dimensional_price_group_id` but received ''",
+        ):
+            await async_client.dimensional_price_groups.external_dimensional_price_group_id.with_raw_response.update(
+                path_external_dimensional_price_group_id="",
             )
