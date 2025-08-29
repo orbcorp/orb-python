@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.11.1 (2025-08-29)
+
+Full Changelog: [v4.11.0...v4.11.1](https://github.com/orbcorp/orb-python/compare/v4.11.0...v4.11.1)
+
+### Bug Fixes
+
+* avoid newer type syntax ([ed14985](https://github.com/orbcorp/orb-python/commit/ed1498501df2c509468c09ff5ba8bce65075da95))
+
+
+### Chores
+
+* **internal:** change ci workflow machines ([8bbb971](https://github.com/orbcorp/orb-python/commit/8bbb9719f7691b5df47372534a244bcb1d3694b4))
+* **internal:** codegen related update ([dc31ae3](https://github.com/orbcorp/orb-python/commit/dc31ae311d333c6c3fb9c737c320f20e5f172c84))
+* **internal:** update pyright exclude list ([c2f7eb1](https://github.com/orbcorp/orb-python/commit/c2f7eb1c72398ae541a42240e522e0a3a1d0ef49))
+
 ## 4.11.0 (2025-07-30)
 
 Full Changelog: [v4.10.0...v4.11.0](https://github.com/orbcorp/orb-python/compare/v4.10.0...v4.11.0)
