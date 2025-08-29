@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.11.0 (2025-07-30)
+
+Full Changelog: [v4.10.0...v4.11.0](https://github.com/orbcorp/orb-python/compare/v4.10.0...v4.11.0)
+
+### Features
+
+* **client:** support file upload requests ([d4b17b0](https://github.com/orbcorp/orb-python/commit/d4b17b0534e20d7c0005e8c91ff3de022aa5f7c6))
+
 ## 4.10.0 (2025-07-26)
 
 Full Changelog: [v4.9.0...v4.10.0](https://github.com/orbcorp/orb-python/compare/v4.9.0...v4.10.0)
