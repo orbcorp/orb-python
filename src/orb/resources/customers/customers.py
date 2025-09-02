@@ -96,6 +96,7 @@ class Customers(SyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -145,6 +146,11 @@ class Customers(SyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval. If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -334,6 +340,7 @@ class Customers(SyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email_delivery": email_delivery,
@@ -367,6 +374,7 @@ class Customers(SyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
@@ -404,6 +412,11 @@ class Customers(SyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval.If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -599,6 +612,7 @@ class Customers(SyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -919,6 +933,7 @@ class Customers(SyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
@@ -955,6 +970,11 @@ class Customers(SyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval.If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1150,6 +1170,7 @@ class Customers(SyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -1218,6 +1239,7 @@ class AsyncCustomers(AsyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -1267,6 +1289,11 @@ class AsyncCustomers(AsyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval. If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1456,6 +1483,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email_delivery": email_delivery,
@@ -1489,6 +1517,7 @@ class AsyncCustomers(AsyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1526,6 +1555,11 @@ class AsyncCustomers(AsyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval.If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1721,6 +1755,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -2041,6 +2076,7 @@ class AsyncCustomers(AsyncAPIResource):
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
         additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
+        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
         email: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2077,6 +2113,11 @@ class AsyncCustomers(AsyncAPIResource):
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
               when a payment provider is provided on customer creation.
+
+          auto_issuance: Used to determine if invoices for this customer will be automatically issued. If
+              true, invoices will be automatically issued. If false, invoices will require
+              manual approval.If `null` is specified, the customer's auto issuance setting
+              will be inherited from the account-level setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -2272,6 +2313,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "accounting_sync_configuration": accounting_sync_configuration,
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,

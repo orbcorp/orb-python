@@ -5,14 +5,11 @@ from __future__ import annotations
 from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-from .shared_params.bps_config import BPSConfig
 from .shared_params.bulk_config import BulkConfig
 from .shared_params.unit_config import UnitConfig
 from .shared_params.matrix_config import MatrixConfig
 from .shared_params.tiered_config import TieredConfig
 from .shared_params.package_config import PackageConfig
-from .shared_params.bulk_bps_config import BulkBPSConfig
-from .shared_params.tiered_bps_config import TieredBPSConfig
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
 from .shared_params.matrix_with_allocation_config import MatrixWithAllocationConfig
 from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
@@ -31,52 +28,51 @@ __all__ = [
     "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3",
     "NewFloatingTieredPrice",
     "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4",
-    "NewFloatingTieredBPSPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5",
-    "NewFloatingBPSPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6",
-    "NewFloatingBulkBPSPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7",
     "NewFloatingBulkPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5",
     "NewFloatingThresholdTotalAmountPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6",
     "NewFloatingTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7",
     "NewFloatingGroupedTieredPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8",
     "NewFloatingMaxGroupTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9",
     "NewFloatingTieredWithMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10",
     "NewFloatingPackageWithAllocationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11",
     "NewFloatingTieredPackageWithMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12",
     "NewFloatingUnitWithPercentPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13",
     "NewFloatingTieredWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14",
     "NewFloatingUnitWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15",
     "NewFloatingGroupedAllocationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16",
     "NewFloatingGroupedWithProratedMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17",
     "NewFloatingGroupedWithMeteredMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18",
     "NewFloatingMatrixWithDisplayNamePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19",
     "NewFloatingBulkWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20",
     "NewFloatingGroupedTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21",
     "NewFloatingScalableMatrixWithUnitPricingPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22",
     "NewFloatingScalableMatrixWithTieredPricingPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23",
     "NewFloatingCumulativeGroupedBulkPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent27",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24",
+    "NewFloatingGroupedWithMinMaxThresholdsPrice",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25",
+    "NewFloatingMinimumCompositePrice",
+    "NewFloatingMinimumCompositePriceMinimumConfig",
+    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26",
 ]
 
 
@@ -455,7 +451,9 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4: TypeAlias = Union[
 ]
 
 
-class NewFloatingTieredBPSPrice(TypedDict, total=False):
+class NewFloatingBulkPrice(TypedDict, total=False):
+    bulk_config: Required[BulkConfig]
+
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -465,12 +463,10 @@ class NewFloatingTieredBPSPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["tiered_bps"]]
+    model_type: Required[Literal["bulk"]]
 
     name: Required[str]
     """The name of the price."""
-
-    tiered_bps_config: Required[TieredBPSConfig]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -530,9 +526,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5: TypeAlias = Union[
 ]
 
 
-class NewFloatingBPSPrice(TypedDict, total=False):
-    bps_config: Required[BPSConfig]
-
+class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -542,10 +536,12 @@ class NewFloatingBPSPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["bps"]]
+    model_type: Required[Literal["threshold_total_amount"]]
 
     name: Required[str]
     """The name of the price."""
+
+    threshold_total_amount_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -605,9 +601,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6: TypeAlias = Union[
 ]
 
 
-class NewFloatingBulkBPSPrice(TypedDict, total=False):
-    bulk_bps_config: Required[BulkBPSConfig]
-
+class NewFloatingTieredPackagePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -617,10 +611,12 @@ class NewFloatingBulkBPSPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["bulk_bps"]]
+    model_type: Required[Literal["tiered_package"]]
 
     name: Required[str]
     """The name of the price."""
+
+    tiered_package_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -680,19 +676,19 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7: TypeAlias = Union[
 ]
 
 
-class NewFloatingBulkPrice(TypedDict, total=False):
-    bulk_config: Required[BulkConfig]
-
+class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
+    grouped_tiered_config: Required[Dict[str, object]]
+
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["bulk"]]
+    model_type: Required[Literal["grouped_tiered"]]
 
     name: Required[str]
     """The name of the price."""
@@ -755,7 +751,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8: TypeAlias = Union[
 ]
 
 
-class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
+class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -765,12 +761,12 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["threshold_total_amount"]]
+    max_group_tiered_package_config: Required[Dict[str, object]]
+
+    model_type: Required[Literal["max_group_tiered_package"]]
 
     name: Required[str]
     """The name of the price."""
-
-    threshold_total_amount_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -830,7 +826,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9: TypeAlias = Union[
 ]
 
 
-class NewFloatingTieredPackagePrice(TypedDict, total=False):
+class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -840,12 +836,12 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["tiered_package"]]
+    model_type: Required[Literal["tiered_with_minimum"]]
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_package_config: Required[Dict[str, object]]
+    tiered_with_minimum_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -905,22 +901,22 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10: TypeAlias = Union[
 ]
 
 
-class NewFloatingGroupedTieredPrice(TypedDict, total=False):
+class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_tiered_config: Required[Dict[str, object]]
-
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_tiered"]]
+    model_type: Required[Literal["package_with_allocation"]]
 
     name: Required[str]
     """The name of the price."""
+
+    package_with_allocation_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -980,7 +976,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11: TypeAlias = Union[
 ]
 
 
-class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
+class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -990,12 +986,12 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    max_group_tiered_package_config: Required[Dict[str, object]]
-
-    model_type: Required[Literal["max_group_tiered_package"]]
+    model_type: Required[Literal["tiered_package_with_minimum"]]
 
     name: Required[str]
     """The name of the price."""
+
+    tiered_package_with_minimum_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1055,7 +1051,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12: TypeAlias = Union[
 ]
 
 
-class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
+class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1065,12 +1061,12 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["tiered_with_minimum"]]
+    model_type: Required[Literal["unit_with_percent"]]
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_with_minimum_config: Required[Dict[str, object]]
+    unit_with_percent_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1130,7 +1126,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13: TypeAlias = Union[
 ]
 
 
-class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
+class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1140,12 +1136,12 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["package_with_allocation"]]
+    model_type: Required[Literal["tiered_with_proration"]]
 
     name: Required[str]
     """The name of the price."""
 
-    package_with_allocation_config: Required[Dict[str, object]]
+    tiered_with_proration_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1205,7 +1201,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14: TypeAlias = Union[
 ]
 
 
-class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
+class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1215,12 +1211,12 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["tiered_package_with_minimum"]]
+    model_type: Required[Literal["unit_with_proration"]]
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_package_with_minimum_config: Required[Dict[str, object]]
+    unit_with_proration_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1280,22 +1276,22 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15: TypeAlias = Union[
 ]
 
 
-class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
+class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
+    grouped_allocation_config: Required[Dict[str, object]]
+
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["unit_with_percent"]]
+    model_type: Required[Literal["grouped_allocation"]]
 
     name: Required[str]
     """The name of the price."""
-
-    unit_with_percent_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1355,22 +1351,22 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16: TypeAlias = Union[
 ]
 
 
-class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
+class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
+    grouped_with_prorated_minimum_config: Required[Dict[str, object]]
+
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["tiered_with_proration"]]
+    model_type: Required[Literal["grouped_with_prorated_minimum"]]
 
     name: Required[str]
     """The name of the price."""
-
-    tiered_with_proration_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1430,22 +1426,22 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17: TypeAlias = Union[
 ]
 
 
-class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
+class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
+    grouped_with_metered_minimum_config: Required[Dict[str, object]]
+
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["unit_with_proration"]]
+    model_type: Required[Literal["grouped_with_metered_minimum"]]
 
     name: Required[str]
     """The name of the price."""
-
-    unit_with_proration_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1505,19 +1501,19 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18: TypeAlias = Union[
 ]
 
 
-class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
+class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_allocation_config: Required[Dict[str, object]]
-
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_allocation"]]
+    matrix_with_display_name_config: Required[Dict[str, object]]
+
+    model_type: Required[Literal["matrix_with_display_name"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1580,19 +1576,19 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19: TypeAlias = Union[
 ]
 
 
-class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
+class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
+    bulk_with_proration_config: Required[Dict[str, object]]
+
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_with_prorated_minimum_config: Required[Dict[str, object]]
-
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_with_prorated_minimum"]]
+    model_type: Required[Literal["bulk_with_proration"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1655,19 +1651,19 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20: TypeAlias = Union[
 ]
 
 
-class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
+class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_with_metered_minimum_config: Required[Dict[str, object]]
+    grouped_tiered_package_config: Required[Dict[str, object]]
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_with_metered_minimum"]]
+    model_type: Required[Literal["grouped_tiered_package"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1730,7 +1726,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21: TypeAlias = Union[
 ]
 
 
-class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
+class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1740,12 +1736,12 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    matrix_with_display_name_config: Required[Dict[str, object]]
-
-    model_type: Required[Literal["matrix_with_display_name"]]
+    model_type: Required[Literal["scalable_matrix_with_unit_pricing"]]
 
     name: Required[str]
     """The name of the price."""
+
+    scalable_matrix_with_unit_pricing_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1805,9 +1801,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22: TypeAlias = Union[
 ]
 
 
-class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
-    bulk_with_proration_config: Required[Dict[str, object]]
-
+class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -1817,10 +1811,12 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["bulk_with_proration"]]
+    model_type: Required[Literal["scalable_matrix_with_tiered_pricing"]]
 
     name: Required[str]
     """The name of the price."""
+
+    scalable_matrix_with_tiered_pricing_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -1880,19 +1876,19 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23: TypeAlias = Union[
 ]
 
 
-class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
+class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
+
+    cumulative_grouped_bulk_config: Required[Dict[str, object]]
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_tiered_package_config: Required[Dict[str, object]]
-
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_tiered_package"]]
+    model_type: Required[Literal["cumulative_grouped_bulk"]]
 
     name: Required[str]
     """The name of the price."""
@@ -1955,22 +1951,22 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24: TypeAlias = Union[
 ]
 
 
-class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
+class NewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
+    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["scalable_matrix_with_unit_pricing"]]
+    model_type: Required[Literal["grouped_with_min_max_thresholds"]]
 
     name: Required[str]
     """The name of the price."""
-
-    scalable_matrix_with_unit_pricing_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -2030,7 +2026,7 @@ NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25: TypeAlias = Union[
 ]
 
 
-class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
+class NewFloatingMinimumCompositePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
@@ -2040,12 +2036,12 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["scalable_matrix_with_tiered_pricing"]]
+    minimum_config: Required[NewFloatingMinimumCompositePriceMinimumConfig]
+
+    model_type: Required[Literal["minimum"]]
 
     name: Required[str]
     """The name of the price."""
-
-    scalable_matrix_with_tiered_pricing_config: Required[Dict[str, object]]
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
@@ -2100,82 +2096,18 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     """
 
 
+class NewFloatingMinimumCompositePriceMinimumConfig(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool]
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
 NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
-
-
-class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    cumulative_grouped_bulk_config: Required[Dict[str, object]]
-
-    currency: Required[str]
-    """An ISO 4217 currency string for which this price is billed in."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    model_type: Required[Literal["cumulative_grouped_bulk"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent27]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent27: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -2185,9 +2117,6 @@ PriceCreateParams: TypeAlias = Union[
     NewFloatingMatrixPrice,
     NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
-    NewFloatingTieredBPSPrice,
-    NewFloatingBPSPrice,
-    NewFloatingBulkBPSPrice,
     NewFloatingBulkPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
@@ -2208,4 +2137,6 @@ PriceCreateParams: TypeAlias = Union[
     NewFloatingScalableMatrixWithUnitPricingPrice,
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
+    NewFloatingGroupedWithMinMaxThresholdsPrice,
+    NewFloatingMinimumCompositePrice,
 ]

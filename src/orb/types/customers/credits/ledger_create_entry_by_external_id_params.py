@@ -82,10 +82,19 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     """
 
     net_terms: Required[Optional[int]]
+    """The net terms determines the due date of the invoice.
+
+    Due date is calculated based on the invoice or issuance date, depending on the
+    account's configured due date calculation method. A value of '0' here represents
+    that the invoice is due on issue, whereas a value of '30' represents that the
+    customer has 30 days to pay the invoice. Do not set this field if you want to
+    set a custom due date.
     """
-    The net terms determines the difference between the invoice date and the issue
-    date for the invoice. If you intend the invoice to be due on issue, set this
-    to 0.
+
+    custom_due_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
+    """An optional custom due date for the invoice.
+
+    If not set, the due date will be calculated based on the `net_terms` value.
     """
 
     invoice_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]

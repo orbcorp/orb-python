@@ -38,6 +38,12 @@ class InvoiceCreateParams(TypedDict, total=False):
     discount: Optional[Discount]
     """An optional discount to attach to the invoice."""
 
+    due_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
+    """An optional custom due date for the invoice.
+
+    If not set, the due date will be calculated based on the `net_terms` value.
+    """
+
     external_customer_id: Optional[str]
     """The `external_customer_id` of the `Customer` to create this invoice for.
 
@@ -45,7 +51,10 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     memo: Optional[str]
-    """An optional memo to attach to the invoice."""
+    """An optional memo to attach to the invoice.
+
+    If no memo is provided, we will attach the default memo
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -55,11 +64,13 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     net_terms: Optional[int]
-    """
-    Determines the difference between the invoice issue date for subscription
-    invoices as the date that they are due. A value of '0' here represents that the
-    invoice is due on issue, whereas a value of 30 represents that the customer has
-    30 days to pay the invoice.
+    """The net terms determines the due date of the invoice.
+
+    Due date is calculated based on the invoice or issuance date, depending on the
+    account's configured due date calculation method. A value of '0' here represents
+    that the invoice is due on issue, whereas a value of '30' represents that the
+    customer has 30 days to pay the invoice. Do not set this field if you want to
+    set a custom due date.
     """
 
     will_auto_issue: bool

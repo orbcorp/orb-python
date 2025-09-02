@@ -554,293 +554,6 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_6(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
-        price = client.prices.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                        "maximum_amount": "maximum_amount",
-                        "per_unit_maximum": "per_unit_maximum",
-                    }
-                ]
-            },
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_overload_6(self, client: Orb) -> None:
-        response = client.prices.with_raw_response.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_overload_6(self, client: Orb) -> None:
-        with client.prices.with_streaming_response.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_create_overload_7(self, client: Orb) -> None:
-        price = client.prices.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
-        price = client.prices.create(
-            bps_config={
-                "bps": 0,
-                "per_unit_maximum": "per_unit_maximum",
-            },
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_overload_7(self, client: Orb) -> None:
-        response = client.prices.with_raw_response.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_overload_7(self, client: Orb) -> None:
-        with client.prices.with_streaming_response.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_create_overload_8(self, client: Orb) -> None:
-        price = client.prices.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
-        price = client.prices.create(
-            bulk_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "maximum_amount": "maximum_amount",
-                        "per_unit_maximum": "per_unit_maximum",
-                    }
-                ]
-            },
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_overload_8(self, client: Orb) -> None:
-        response = client.prices.with_raw_response.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_overload_8(self, client: Orb) -> None:
-        with client.prices.with_streaming_response.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_create_overload_9(self, client: Orb) -> None:
-        price = client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
             currency="currency",
@@ -851,7 +564,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_config={
                 "tiers": [
@@ -894,7 +607,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_raw_response_create_overload_9(self, client: Orb) -> None:
+    def test_raw_response_create_overload_6(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
@@ -910,7 +623,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_overload_9(self, client: Orb) -> None:
+    def test_streaming_response_create_overload_6(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
@@ -928,7 +641,7 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_overload_10(self, client: Orb) -> None:
+    def test_method_create_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
@@ -940,7 +653,7 @@ class TestPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params_overload_10(self, client: Orb) -> None:
+    def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
@@ -948,6 +661,252 @@ class TestPrices:
             model_type="threshold_total_amount",
             name="Annual fee",
             threshold_total_amount_config={"foo": "bar"},
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_7(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="threshold_total_amount",
+            name="Annual fee",
+            threshold_total_amount_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_7(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="threshold_total_amount",
+            name="Annual fee",
+            threshold_total_amount_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_8(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_8(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_8(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_9(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_9(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_9(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_10(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_10(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
+            name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -981,9 +940,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="threshold_total_amount",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -997,9 +956,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="threshold_total_amount",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1015,9 +974,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1027,9 +986,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1063,9 +1022,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1079,9 +1038,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1096,10 +1055,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1108,10 +1067,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1144,10 +1103,10 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1160,10 +1119,10 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1179,9 +1138,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1191,9 +1150,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1227,9 +1186,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1243,9 +1202,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1261,9 +1220,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1273,9 +1232,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1309,9 +1268,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1325,9 +1284,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1343,9 +1302,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1355,9 +1314,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1391,9 +1350,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1407,9 +1366,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1425,9 +1384,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1437,9 +1396,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1473,9 +1432,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1489,9 +1448,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1506,10 +1465,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1518,10 +1477,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1554,10 +1513,10 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1570,10 +1529,10 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1588,10 +1547,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1600,10 +1559,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1636,10 +1595,10 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1652,10 +1611,10 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1670,10 +1629,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -1682,10 +1641,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -1718,10 +1677,10 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -1734,10 +1693,10 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1752,9 +1711,9 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1764,9 +1723,9 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -1800,9 +1759,9 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         )
 
@@ -1816,9 +1775,9 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -1832,11 +1791,11 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_21(self, client: Orb) -> None:
         price = client.prices.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1844,11 +1803,11 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_21(self, client: Orb) -> None:
         price = client.prices.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -1880,11 +1839,11 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_21(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         )
 
@@ -1896,11 +1855,11 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_21(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -1916,9 +1875,9 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1928,9 +1887,9 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -1964,9 +1923,9 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         )
 
@@ -1980,9 +1939,9 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -1999,9 +1958,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2011,9 +1970,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -2047,9 +2006,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2063,9 +2022,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2078,24 +2037,24 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_24(self, client: Orb) -> None:
         price = client.prices.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_24(self, client: Orb) -> None:
         price = client.prices.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -2126,12 +2085,12 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_24(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2142,12 +2101,12 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_24(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2161,10 +2120,10 @@ class TestPrices:
     def test_method_create_overload_25(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2173,10 +2132,10 @@ class TestPrices:
     def test_method_create_with_all_params_overload_25(self, client: Orb) -> None:
         price = client.prices.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -2209,10 +2168,10 @@ class TestPrices:
     def test_raw_response_create_overload_25(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
 
@@ -2225,10 +2184,10 @@ class TestPrices:
     def test_streaming_response_create_overload_25(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -2244,10 +2203,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2256,10 +2215,10 @@ class TestPrices:
         price = client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -2292,10 +2251,10 @@ class TestPrices:
         response = client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2308,10 +2267,10 @@ class TestPrices:
         with client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2327,9 +2286,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -2339,9 +2298,12 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={
+                "minimum_amount": "minimum_amount",
+                "prorated": True,
+            },
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -2375,9 +2337,9 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -2391,90 +2353,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
-            name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_create_overload_28(self, client: Orb) -> None:
-        price = client.prices.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_method_create_with_all_params_overload_28(self, client: Orb) -> None:
-        price = client.prices.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_overload_28(self, client: Orb) -> None:
-        response = client.prices.with_raw_response.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_overload_28(self, client: Orb) -> None:
-        with client.prices.with_streaming_response.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -3374,293 +3254,6 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_6(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                        "maximum_amount": "maximum_amount",
-                        "per_unit_maximum": "per_unit_maximum",
-                    }
-                ]
-            },
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
-        response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
-        async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="tiered_bps",
-            name="Annual fee",
-            tiered_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "minimum_amount": "minimum_amount",
-                    }
-                ]
-            },
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            bps_config={
-                "bps": 0,
-                "per_unit_maximum": "per_unit_maximum",
-            },
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
-        response = await async_client.prices.with_raw_response.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
-        async with async_client.prices.with_streaming_response.create(
-            bps_config={"bps": 0},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bps",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            bulk_bps_config={
-                "tiers": [
-                    {
-                        "bps": 0,
-                        "maximum_amount": "maximum_amount",
-                        "per_unit_maximum": "per_unit_maximum",
-                    }
-                ]
-            },
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
-        response = await async_client.prices.with_raw_response.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
-        async with async_client.prices.with_streaming_response.create(
-            bulk_bps_config={"tiers": [{"bps": 0}]},
-            cadence="annual",
-            currency="currency",
-            item_id="item_id",
-            model_type="bulk_bps",
-            name="Annual fee",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
             currency="currency",
@@ -3671,7 +3264,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_config={
                 "tiers": [
@@ -3714,7 +3307,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+    async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
@@ -3730,7 +3323,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+    async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
             cadence="annual",
@@ -3748,7 +3341,7 @@ class TestAsyncPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_overload_10(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
@@ -3760,7 +3353,7 @@ class TestAsyncPrices:
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params_overload_10(self, async_client: AsyncOrb) -> None:
+    async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
@@ -3768,6 +3361,252 @@ class TestAsyncPrices:
             model_type="threshold_total_amount",
             name="Annual fee",
             threshold_total_amount_config={"foo": "bar"},
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="threshold_total_amount",
+            name="Annual fee",
+            threshold_total_amount_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="threshold_total_amount",
+            name="Annual fee",
+            threshold_total_amount_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            model_type="tiered_package",
+            name="Annual fee",
+            tiered_package_config={"foo": "bar"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["string"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="annual",
+            currency="currency",
+            grouped_tiered_config={"foo": "bar"},
+            item_id="item_id",
+            model_type="grouped_tiered",
+            name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_10(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
+            name="Annual fee",
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_10(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="annual",
+            currency="currency",
+            item_id="item_id",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
+            name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -3801,9 +3640,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="threshold_total_amount",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -3817,9 +3656,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="threshold_total_amount",
+            max_group_tiered_package_config={"foo": "bar"},
+            model_type="max_group_tiered_package",
             name="Annual fee",
-            threshold_total_amount_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -3835,9 +3674,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -3847,9 +3686,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -3883,9 +3722,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -3899,9 +3738,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package",
+            model_type="tiered_with_minimum",
             name="Annual fee",
-            tiered_package_config={"foo": "bar"},
+            tiered_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -3916,10 +3755,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -3928,10 +3767,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -3964,10 +3803,10 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -3980,10 +3819,10 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_tiered_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered",
+            model_type="package_with_allocation",
             name="Annual fee",
+            package_with_allocation_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -3999,9 +3838,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4011,9 +3850,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4047,9 +3886,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4063,9 +3902,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            max_group_tiered_package_config={"foo": "bar"},
-            model_type="max_group_tiered_package",
+            model_type="tiered_package_with_minimum",
             name="Annual fee",
+            tiered_package_with_minimum_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4081,9 +3920,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4093,9 +3932,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4129,9 +3968,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4145,9 +3984,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_with_minimum",
+            model_type="unit_with_percent",
             name="Annual fee",
-            tiered_with_minimum_config={"foo": "bar"},
+            unit_with_percent_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4163,9 +4002,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4175,9 +4014,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4211,9 +4050,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4227,9 +4066,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="package_with_allocation",
+            model_type="tiered_with_proration",
             name="Annual fee",
-            package_with_allocation_config={"foo": "bar"},
+            tiered_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4245,9 +4084,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4257,9 +4096,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4293,9 +4132,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4309,9 +4148,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="tiered_package_with_minimum",
+            model_type="unit_with_proration",
             name="Annual fee",
-            tiered_package_with_minimum_config={"foo": "bar"},
+            unit_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4326,10 +4165,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4338,10 +4177,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4374,10 +4213,10 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4390,10 +4229,10 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_percent",
+            model_type="grouped_allocation",
             name="Annual fee",
-            unit_with_percent_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4408,10 +4247,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4420,10 +4259,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4456,10 +4295,10 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4472,10 +4311,10 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="tiered_with_proration",
+            model_type="grouped_with_prorated_minimum",
             name="Annual fee",
-            tiered_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4490,10 +4329,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4502,10 +4341,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4538,10 +4377,10 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4554,10 +4393,10 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_metered_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="unit_with_proration",
+            model_type="grouped_with_metered_minimum",
             name="Annual fee",
-            unit_with_proration_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4572,9 +4411,9 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4584,9 +4423,9 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -4620,9 +4459,9 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         )
 
@@ -4636,9 +4475,9 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_allocation_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_allocation",
+            matrix_with_display_name_config={"foo": "bar"},
+            model_type="matrix_with_display_name",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -4652,11 +4491,11 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_21(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4664,11 +4503,11 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_21(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -4700,11 +4539,11 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_21(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         )
 
@@ -4716,11 +4555,11 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_21(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
+            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
-            grouped_with_prorated_minimum_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_prorated_minimum",
+            model_type="bulk_with_proration",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -4736,9 +4575,9 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4748,9 +4587,9 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -4784,9 +4623,9 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         )
 
@@ -4800,9 +4639,9 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
-            grouped_with_metered_minimum_config={"foo": "bar"},
+            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_with_metered_minimum",
+            model_type="grouped_tiered_package",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -4819,9 +4658,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -4831,9 +4670,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4867,9 +4706,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4883,9 +4722,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            matrix_with_display_name_config={"foo": "bar"},
-            model_type="matrix_with_display_name",
+            model_type="scalable_matrix_with_unit_pricing",
             name="Annual fee",
+            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4898,24 +4737,24 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_24(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_24(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -4946,12 +4785,12 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_24(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -4962,12 +4801,12 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_24(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            bulk_with_proration_config={"foo": "bar"},
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="bulk_with_proration",
+            model_type="scalable_matrix_with_tiered_pricing",
             name="Annual fee",
+            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -4981,10 +4820,10 @@ class TestAsyncPrices:
     async def test_method_create_overload_25(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4993,10 +4832,10 @@ class TestAsyncPrices:
     async def test_method_create_with_all_params_overload_25(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -5029,10 +4868,10 @@ class TestAsyncPrices:
     async def test_raw_response_create_overload_25(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         )
 
@@ -5045,10 +4884,10 @@ class TestAsyncPrices:
     async def test_streaming_response_create_overload_25(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
+            cumulative_grouped_bulk_config={"foo": "bar"},
             currency="currency",
-            grouped_tiered_package_config={"foo": "bar"},
             item_id="item_id",
-            model_type="grouped_tiered_package",
+            model_type="cumulative_grouped_bulk",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -5064,10 +4903,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -5076,10 +4915,10 @@ class TestAsyncPrices:
         price = await async_client.prices.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -5112,10 +4951,10 @@ class TestAsyncPrices:
         response = await async_client.prices.with_raw_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -5128,10 +4967,10 @@ class TestAsyncPrices:
         async with async_client.prices.with_streaming_response.create(
             cadence="annual",
             currency="currency",
+            grouped_with_min_max_thresholds_config={"foo": "bar"},
             item_id="item_id",
-            model_type="scalable_matrix_with_unit_pricing",
+            model_type="grouped_with_min_max_thresholds",
             name="Annual fee",
-            scalable_matrix_with_unit_pricing_config={"foo": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -5147,9 +4986,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -5159,9 +4998,12 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={
+                "minimum_amount": "minimum_amount",
+                "prorated": True,
+            },
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -5195,9 +5037,9 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
         )
 
         assert response.is_closed is True
@@ -5211,90 +5053,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            model_type="scalable_matrix_with_tiered_pricing",
-            name="Annual fee",
-            scalable_matrix_with_tiered_pricing_config={"foo": "bar"},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            price = await response.parse()
-            assert_matches_type(Price, price, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_overload_28(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_method_create_with_all_params_overload_28(self, async_client: AsyncOrb) -> None:
-        price = await async_client.prices.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-            billable_metric_id="billable_metric_id",
-            billed_in_advance=True,
-            billing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            conversion_rate=0,
-            conversion_rate_config={
-                "conversion_rate_type": "unit",
-                "unit_config": {"unit_amount": "unit_amount"},
-            },
-            dimensional_price_configuration={
-                "dimension_values": ["string"],
-                "dimensional_price_group_id": "dimensional_price_group_id",
-                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
-            },
-            external_price_id="external_price_id",
-            fixed_price_quantity=0,
-            invoice_grouping_key="x",
-            invoicing_cycle_configuration={
-                "duration": 0,
-                "duration_unit": "day",
-            },
-            metadata={"foo": "string"},
-        )
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_overload_28(self, async_client: AsyncOrb) -> None:
-        response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
-            name="Annual fee",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        price = response.parse()
-        assert_matches_type(Price, price, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_overload_28(self, async_client: AsyncOrb) -> None:
-        async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
-            cumulative_grouped_bulk_config={"foo": "bar"},
-            currency="currency",
-            item_id="item_id",
-            model_type="cumulative_grouped_bulk",
+            minimum_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum",
             name="Annual fee",
         ) as response:
             assert not response.is_closed

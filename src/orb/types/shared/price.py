@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypeAlias
 
@@ -13,15 +13,13 @@ from .discount import Discount
 from ..._models import BaseModel
 from .item_slim import ItemSlim
 from .allocation import Allocation
-from .bps_config import BPSConfig
 from .bulk_config import BulkConfig
 from .unit_config import UnitConfig
 from .matrix_config import MatrixConfig
 from .tiered_config import TieredConfig
 from .package_config import PackageConfig
-from .bulk_bps_config import BulkBPSConfig
-from .tiered_bps_config import TieredBPSConfig
 from .billable_metric_tiny import BillableMetricTiny
+from .transform_price_filter import TransformPriceFilter
 from .billing_cycle_configuration import BillingCycleConfiguration
 from .unit_conversion_rate_config import UnitConversionRateConfig
 from .matrix_with_allocation_config import MatrixWithAllocationConfig
@@ -31,66 +29,63 @@ from .dimensional_price_configuration import DimensionalPriceConfiguration
 __all__ = [
     "Price",
     "UnitPrice",
-    "UnitPriceUnnamedTypeWithobjectParent84",
+    "UnitPriceUnnamedTypeWithobjectParent77",
     "PackagePrice",
-    "PackagePriceUnnamedTypeWithobjectParent85",
+    "PackagePriceUnnamedTypeWithobjectParent78",
     "MatrixPrice",
-    "MatrixPriceUnnamedTypeWithobjectParent86",
+    "MatrixPriceUnnamedTypeWithobjectParent79",
     "TieredPrice",
-    "TieredPriceUnnamedTypeWithobjectParent87",
-    "TieredBPSPrice",
-    "TieredBPSPriceUnnamedTypeWithobjectParent88",
-    "BPSPrice",
-    "BPSPriceUnnamedTypeWithobjectParent89",
-    "BulkBPSPrice",
-    "BulkBPSPriceUnnamedTypeWithobjectParent90",
+    "TieredPriceUnnamedTypeWithobjectParent80",
     "BulkPrice",
-    "BulkPriceUnnamedTypeWithobjectParent91",
+    "BulkPriceUnnamedTypeWithobjectParent81",
     "ThresholdTotalAmountPrice",
-    "ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92",
+    "ThresholdTotalAmountPriceUnnamedTypeWithobjectParent82",
     "TieredPackagePrice",
-    "TieredPackagePriceUnnamedTypeWithobjectParent93",
+    "TieredPackagePriceUnnamedTypeWithobjectParent83",
     "GroupedTieredPrice",
-    "GroupedTieredPriceUnnamedTypeWithobjectParent94",
+    "GroupedTieredPriceUnnamedTypeWithobjectParent84",
     "TieredWithMinimumPrice",
-    "TieredWithMinimumPriceUnnamedTypeWithobjectParent95",
+    "TieredWithMinimumPriceUnnamedTypeWithobjectParent85",
     "TieredPackageWithMinimumPrice",
-    "TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96",
+    "TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent86",
     "PackageWithAllocationPrice",
-    "PackageWithAllocationPriceUnnamedTypeWithobjectParent97",
+    "PackageWithAllocationPriceUnnamedTypeWithobjectParent87",
     "UnitWithPercentPrice",
-    "UnitWithPercentPriceUnnamedTypeWithobjectParent98",
+    "UnitWithPercentPriceUnnamedTypeWithobjectParent88",
     "MatrixWithAllocationPrice",
-    "MatrixWithAllocationPriceUnnamedTypeWithobjectParent99",
+    "MatrixWithAllocationPriceUnnamedTypeWithobjectParent89",
     "TieredWithProrationPrice",
-    "TieredWithProrationPriceUnnamedTypeWithobjectParent100",
+    "TieredWithProrationPriceUnnamedTypeWithobjectParent90",
     "UnitWithProrationPrice",
-    "UnitWithProrationPriceUnnamedTypeWithobjectParent101",
+    "UnitWithProrationPriceUnnamedTypeWithobjectParent91",
     "GroupedAllocationPrice",
-    "GroupedAllocationPriceUnnamedTypeWithobjectParent102",
+    "GroupedAllocationPriceUnnamedTypeWithobjectParent92",
     "GroupedWithProratedMinimumPrice",
-    "GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103",
+    "GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent93",
     "GroupedWithMeteredMinimumPrice",
-    "GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104",
+    "GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent94",
     "MatrixWithDisplayNamePrice",
-    "MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105",
+    "MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent95",
     "BulkWithProrationPrice",
-    "BulkWithProrationPriceUnnamedTypeWithobjectParent106",
+    "BulkWithProrationPriceUnnamedTypeWithobjectParent96",
     "GroupedTieredPackagePrice",
-    "GroupedTieredPackagePriceUnnamedTypeWithobjectParent107",
+    "GroupedTieredPackagePriceUnnamedTypeWithobjectParent97",
     "MaxGroupTieredPackagePrice",
-    "MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108",
+    "MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent98",
     "ScalableMatrixWithUnitPricingPrice",
-    "ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109",
+    "ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent99",
     "ScalableMatrixWithTieredPricingPrice",
-    "ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110",
+    "ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent100",
     "CumulativeGroupedBulkPrice",
-    "CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111",
+    "CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent101",
     "GroupedWithMinMaxThresholdsPrice",
-    "GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112",
+    "GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent102",
+    "MinimumCompositePrice",
+    "MinimumCompositePriceUnnamedTypeWithobjectParent103",
+    "MinimumCompositePriceMinimumConfig",
 ]
 
-UnitPriceUnnamedTypeWithobjectParent84: TypeAlias = Annotated[
+UnitPriceUnnamedTypeWithobjectParent77: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -104,9 +99,11 @@ class UnitPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitPriceUnnamedTypeWithobjectParent84] = None
+    conversion_rate_config: Optional[UnitPriceUnnamedTypeWithobjectParent77] = None
 
     created_at: datetime
 
@@ -159,7 +156,7 @@ class UnitPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-PackagePriceUnnamedTypeWithobjectParent85: TypeAlias = Annotated[
+PackagePriceUnnamedTypeWithobjectParent78: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -173,9 +170,11 @@ class PackagePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[PackagePriceUnnamedTypeWithobjectParent85] = None
+    conversion_rate_config: Optional[PackagePriceUnnamedTypeWithobjectParent78] = None
 
     created_at: datetime
 
@@ -228,7 +227,7 @@ class PackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixPriceUnnamedTypeWithobjectParent86: TypeAlias = Annotated[
+MatrixPriceUnnamedTypeWithobjectParent79: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -242,9 +241,11 @@ class MatrixPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixPriceUnnamedTypeWithobjectParent86] = None
+    conversion_rate_config: Optional[MatrixPriceUnnamedTypeWithobjectParent79] = None
 
     created_at: datetime
 
@@ -297,7 +298,7 @@ class MatrixPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPriceUnnamedTypeWithobjectParent87: TypeAlias = Annotated[
+TieredPriceUnnamedTypeWithobjectParent80: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -311,9 +312,11 @@ class TieredPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPriceUnnamedTypeWithobjectParent87] = None
+    conversion_rate_config: Optional[TieredPriceUnnamedTypeWithobjectParent80] = None
 
     created_at: datetime
 
@@ -366,214 +369,7 @@ class TieredPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredBPSPriceUnnamedTypeWithobjectParent88: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
-]
-
-
-class TieredBPSPrice(BaseModel):
-    id: str
-
-    billable_metric: Optional[BillableMetricTiny] = None
-
-    billing_cycle_configuration: BillingCycleConfiguration
-
-    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
-
-    conversion_rate: Optional[float] = None
-
-    conversion_rate_config: Optional[TieredBPSPriceUnnamedTypeWithobjectParent88] = None
-
-    created_at: datetime
-
-    credit_allocation: Optional[Allocation] = None
-
-    currency: str
-
-    discount: Optional[Discount] = None
-
-    external_price_id: Optional[str] = None
-
-    fixed_price_quantity: Optional[float] = None
-
-    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
-
-    item: ItemSlim
-
-    maximum: Optional[Maximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    metadata: Dict[str, str]
-    """User specified key-value pairs for the resource.
-
-    If not present, this defaults to an empty dictionary. Individual keys can be
-    removed by setting the value to `null`, and the entire metadata mapping can be
-    cleared by setting `metadata` to `null`.
-    """
-
-    minimum: Optional[Minimum] = None
-
-    minimum_amount: Optional[str] = None
-
-    price_model_type: Literal["tiered_bps"] = FieldInfo(alias="model_type")
-
-    name: str
-
-    plan_phase_order: Optional[int] = None
-
-    price_type: Literal["usage_price", "fixed_price"]
-
-    replaces_price_id: Optional[str] = None
-    """The price id this price replaces.
-
-    This price will take the place of the replaced price in plan version migrations.
-    """
-
-    tiered_bps_config: TieredBPSConfig
-
-    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
-
-
-BPSPriceUnnamedTypeWithobjectParent89: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
-]
-
-
-class BPSPrice(BaseModel):
-    id: str
-
-    billable_metric: Optional[BillableMetricTiny] = None
-
-    billing_cycle_configuration: BillingCycleConfiguration
-
-    bps_config: BPSConfig
-
-    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
-
-    conversion_rate: Optional[float] = None
-
-    conversion_rate_config: Optional[BPSPriceUnnamedTypeWithobjectParent89] = None
-
-    created_at: datetime
-
-    credit_allocation: Optional[Allocation] = None
-
-    currency: str
-
-    discount: Optional[Discount] = None
-
-    external_price_id: Optional[str] = None
-
-    fixed_price_quantity: Optional[float] = None
-
-    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
-
-    item: ItemSlim
-
-    maximum: Optional[Maximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    metadata: Dict[str, str]
-    """User specified key-value pairs for the resource.
-
-    If not present, this defaults to an empty dictionary. Individual keys can be
-    removed by setting the value to `null`, and the entire metadata mapping can be
-    cleared by setting `metadata` to `null`.
-    """
-
-    minimum: Optional[Minimum] = None
-
-    minimum_amount: Optional[str] = None
-
-    price_model_type: Literal["bps"] = FieldInfo(alias="model_type")
-
-    name: str
-
-    plan_phase_order: Optional[int] = None
-
-    price_type: Literal["usage_price", "fixed_price"]
-
-    replaces_price_id: Optional[str] = None
-    """The price id this price replaces.
-
-    This price will take the place of the replaced price in plan version migrations.
-    """
-
-    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
-
-
-BulkBPSPriceUnnamedTypeWithobjectParent90: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
-]
-
-
-class BulkBPSPrice(BaseModel):
-    id: str
-
-    billable_metric: Optional[BillableMetricTiny] = None
-
-    billing_cycle_configuration: BillingCycleConfiguration
-
-    bulk_bps_config: BulkBPSConfig
-
-    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
-
-    conversion_rate: Optional[float] = None
-
-    conversion_rate_config: Optional[BulkBPSPriceUnnamedTypeWithobjectParent90] = None
-
-    created_at: datetime
-
-    credit_allocation: Optional[Allocation] = None
-
-    currency: str
-
-    discount: Optional[Discount] = None
-
-    external_price_id: Optional[str] = None
-
-    fixed_price_quantity: Optional[float] = None
-
-    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
-
-    item: ItemSlim
-
-    maximum: Optional[Maximum] = None
-
-    maximum_amount: Optional[str] = None
-
-    metadata: Dict[str, str]
-    """User specified key-value pairs for the resource.
-
-    If not present, this defaults to an empty dictionary. Individual keys can be
-    removed by setting the value to `null`, and the entire metadata mapping can be
-    cleared by setting `metadata` to `null`.
-    """
-
-    minimum: Optional[Minimum] = None
-
-    minimum_amount: Optional[str] = None
-
-    price_model_type: Literal["bulk_bps"] = FieldInfo(alias="model_type")
-
-    name: str
-
-    plan_phase_order: Optional[int] = None
-
-    price_type: Literal["usage_price", "fixed_price"]
-
-    replaces_price_id: Optional[str] = None
-    """The price id this price replaces.
-
-    This price will take the place of the replaced price in plan version migrations.
-    """
-
-    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
-
-
-BulkPriceUnnamedTypeWithobjectParent91: TypeAlias = Annotated[
+BulkPriceUnnamedTypeWithobjectParent81: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -589,9 +385,11 @@ class BulkPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BulkPriceUnnamedTypeWithobjectParent91] = None
+    conversion_rate_config: Optional[BulkPriceUnnamedTypeWithobjectParent81] = None
 
     created_at: datetime
 
@@ -642,7 +440,7 @@ class BulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92: TypeAlias = Annotated[
+ThresholdTotalAmountPriceUnnamedTypeWithobjectParent82: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -656,9 +454,11 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92] = None
+    conversion_rate_config: Optional[ThresholdTotalAmountPriceUnnamedTypeWithobjectParent82] = None
 
     created_at: datetime
 
@@ -711,7 +511,7 @@ class ThresholdTotalAmountPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPackagePriceUnnamedTypeWithobjectParent93: TypeAlias = Annotated[
+TieredPackagePriceUnnamedTypeWithobjectParent83: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -725,9 +525,11 @@ class TieredPackagePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPackagePriceUnnamedTypeWithobjectParent93] = None
+    conversion_rate_config: Optional[TieredPackagePriceUnnamedTypeWithobjectParent83] = None
 
     created_at: datetime
 
@@ -780,7 +582,7 @@ class TieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedTieredPriceUnnamedTypeWithobjectParent94: TypeAlias = Annotated[
+GroupedTieredPriceUnnamedTypeWithobjectParent84: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -794,9 +596,11 @@ class GroupedTieredPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedTieredPriceUnnamedTypeWithobjectParent94] = None
+    conversion_rate_config: Optional[GroupedTieredPriceUnnamedTypeWithobjectParent84] = None
 
     created_at: datetime
 
@@ -849,7 +653,7 @@ class GroupedTieredPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredWithMinimumPriceUnnamedTypeWithobjectParent95: TypeAlias = Annotated[
+TieredWithMinimumPriceUnnamedTypeWithobjectParent85: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -863,9 +667,11 @@ class TieredWithMinimumPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredWithMinimumPriceUnnamedTypeWithobjectParent95] = None
+    conversion_rate_config: Optional[TieredWithMinimumPriceUnnamedTypeWithobjectParent85] = None
 
     created_at: datetime
 
@@ -918,7 +724,7 @@ class TieredWithMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96: TypeAlias = Annotated[
+TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent86: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -932,9 +738,11 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96] = None
+    conversion_rate_config: Optional[TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent86] = None
 
     created_at: datetime
 
@@ -987,7 +795,7 @@ class TieredPackageWithMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-PackageWithAllocationPriceUnnamedTypeWithobjectParent97: TypeAlias = Annotated[
+PackageWithAllocationPriceUnnamedTypeWithobjectParent87: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1001,9 +809,11 @@ class PackageWithAllocationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[PackageWithAllocationPriceUnnamedTypeWithobjectParent97] = None
+    conversion_rate_config: Optional[PackageWithAllocationPriceUnnamedTypeWithobjectParent87] = None
 
     created_at: datetime
 
@@ -1056,7 +866,7 @@ class PackageWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-UnitWithPercentPriceUnnamedTypeWithobjectParent98: TypeAlias = Annotated[
+UnitWithPercentPriceUnnamedTypeWithobjectParent88: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1070,9 +880,11 @@ class UnitWithPercentPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitWithPercentPriceUnnamedTypeWithobjectParent98] = None
+    conversion_rate_config: Optional[UnitWithPercentPriceUnnamedTypeWithobjectParent88] = None
 
     created_at: datetime
 
@@ -1125,7 +937,7 @@ class UnitWithPercentPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixWithAllocationPriceUnnamedTypeWithobjectParent99: TypeAlias = Annotated[
+MatrixWithAllocationPriceUnnamedTypeWithobjectParent89: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1139,9 +951,11 @@ class MatrixWithAllocationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixWithAllocationPriceUnnamedTypeWithobjectParent99] = None
+    conversion_rate_config: Optional[MatrixWithAllocationPriceUnnamedTypeWithobjectParent89] = None
 
     created_at: datetime
 
@@ -1194,7 +1008,7 @@ class MatrixWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredWithProrationPriceUnnamedTypeWithobjectParent100: TypeAlias = Annotated[
+TieredWithProrationPriceUnnamedTypeWithobjectParent90: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1208,9 +1022,11 @@ class TieredWithProrationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredWithProrationPriceUnnamedTypeWithobjectParent100] = None
+    conversion_rate_config: Optional[TieredWithProrationPriceUnnamedTypeWithobjectParent90] = None
 
     created_at: datetime
 
@@ -1263,7 +1079,7 @@ class TieredWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-UnitWithProrationPriceUnnamedTypeWithobjectParent101: TypeAlias = Annotated[
+UnitWithProrationPriceUnnamedTypeWithobjectParent91: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1277,9 +1093,11 @@ class UnitWithProrationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitWithProrationPriceUnnamedTypeWithobjectParent101] = None
+    conversion_rate_config: Optional[UnitWithProrationPriceUnnamedTypeWithobjectParent91] = None
 
     created_at: datetime
 
@@ -1332,7 +1150,7 @@ class UnitWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedAllocationPriceUnnamedTypeWithobjectParent102: TypeAlias = Annotated[
+GroupedAllocationPriceUnnamedTypeWithobjectParent92: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1346,9 +1164,11 @@ class GroupedAllocationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedAllocationPriceUnnamedTypeWithobjectParent102] = None
+    conversion_rate_config: Optional[GroupedAllocationPriceUnnamedTypeWithobjectParent92] = None
 
     created_at: datetime
 
@@ -1401,7 +1221,7 @@ class GroupedAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103: TypeAlias = Annotated[
+GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent93: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1415,9 +1235,11 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103] = None
+    conversion_rate_config: Optional[GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent93] = None
 
     created_at: datetime
 
@@ -1470,7 +1292,7 @@ class GroupedWithProratedMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104: TypeAlias = Annotated[
+GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent94: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1484,9 +1306,11 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104] = None
+    conversion_rate_config: Optional[GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent94] = None
 
     created_at: datetime
 
@@ -1539,7 +1363,7 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105: TypeAlias = Annotated[
+MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent95: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1553,9 +1377,11 @@ class MatrixWithDisplayNamePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105] = None
+    conversion_rate_config: Optional[MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent95] = None
 
     created_at: datetime
 
@@ -1608,7 +1434,7 @@ class MatrixWithDisplayNamePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-BulkWithProrationPriceUnnamedTypeWithobjectParent106: TypeAlias = Annotated[
+BulkWithProrationPriceUnnamedTypeWithobjectParent96: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1624,9 +1450,11 @@ class BulkWithProrationPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BulkWithProrationPriceUnnamedTypeWithobjectParent106] = None
+    conversion_rate_config: Optional[BulkWithProrationPriceUnnamedTypeWithobjectParent96] = None
 
     created_at: datetime
 
@@ -1677,7 +1505,7 @@ class BulkWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedTieredPackagePriceUnnamedTypeWithobjectParent107: TypeAlias = Annotated[
+GroupedTieredPackagePriceUnnamedTypeWithobjectParent97: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1691,9 +1519,11 @@ class GroupedTieredPackagePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedTieredPackagePriceUnnamedTypeWithobjectParent107] = None
+    conversion_rate_config: Optional[GroupedTieredPackagePriceUnnamedTypeWithobjectParent97] = None
 
     created_at: datetime
 
@@ -1746,7 +1576,7 @@ class GroupedTieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108: TypeAlias = Annotated[
+MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent98: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1760,9 +1590,11 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108] = None
+    conversion_rate_config: Optional[MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent98] = None
 
     created_at: datetime
 
@@ -1815,7 +1647,7 @@ class MaxGroupTieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109: TypeAlias = Annotated[
+ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent99: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1829,9 +1661,11 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109] = None
+    conversion_rate_config: Optional[ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent99] = None
 
     created_at: datetime
 
@@ -1884,7 +1718,7 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110: TypeAlias = Annotated[
+ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent100: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1898,9 +1732,11 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110] = None
+    conversion_rate_config: Optional[ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent100] = None
 
     created_at: datetime
 
@@ -1953,7 +1789,7 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111: TypeAlias = Annotated[
+CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent101: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -1967,9 +1803,11 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111] = None
+    conversion_rate_config: Optional[CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent101] = None
 
     created_at: datetime
 
@@ -2022,7 +1860,7 @@ class CumulativeGroupedBulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112: TypeAlias = Annotated[
+GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent102: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -2036,9 +1874,11 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112] = None
+    conversion_rate_config: Optional[GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent102] = None
 
     created_at: datetime
 
@@ -2091,15 +1931,94 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
+MinimumCompositePriceUnnamedTypeWithobjectParent103: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class MinimumCompositePriceMinimumConfig(BaseModel):
+    minimum_amount: str
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool] = None
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
+class MinimumCompositePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[MinimumCompositePriceUnnamedTypeWithobjectParent103] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    minimum_config: MinimumCompositePriceMinimumConfig
+
+    price_model_type: Literal["minimum"] = FieldInfo(alias="model_type")
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
         PackagePrice,
         MatrixPrice,
         TieredPrice,
-        TieredBPSPrice,
-        BPSPrice,
-        BulkBPSPrice,
         BulkPrice,
         ThresholdTotalAmountPrice,
         TieredPackagePrice,
@@ -2122,6 +2041,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
         GroupedWithMinMaxThresholdsPrice,
+        MinimumCompositePrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]

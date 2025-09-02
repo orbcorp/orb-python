@@ -10,9 +10,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingGroupedWithMeteredMinimumPrice", "UnnamedTypeWithobjectParent121"]
+__all__ = ["NewFloatingGroupedWithMeteredMinimumPrice", "UnnamedTypeWithobjectParent110"]
 
-UnnamedTypeWithobjectParent121: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+UnnamedTypeWithobjectParent110: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
@@ -53,7 +53,7 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent121]
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent110]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]

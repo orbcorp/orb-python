@@ -101,6 +101,7 @@ class TestLedger:
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
+                "custom_due_date": parse_date("2019-12-27"),
                 "invoice_date": parse_date("2019-12-27"),
                 "memo": "memo",
                 "require_successful_payment": True,
@@ -415,6 +416,7 @@ class TestLedger:
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
+                "custom_due_date": parse_date("2019-12-27"),
                 "invoice_date": parse_date("2019-12-27"),
                 "memo": "memo",
                 "require_successful_payment": True,
@@ -845,6 +847,7 @@ class TestAsyncLedger:
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
+                "custom_due_date": parse_date("2019-12-27"),
                 "invoice_date": parse_date("2019-12-27"),
                 "memo": "memo",
                 "require_successful_payment": True,
@@ -1159,6 +1162,7 @@ class TestAsyncLedger:
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
+                "custom_due_date": parse_date("2019-12-27"),
                 "invoice_date": parse_date("2019-12-27"),
                 "memo": "memo",
                 "require_successful_payment": True,

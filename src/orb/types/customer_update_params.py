@@ -34,6 +34,14 @@ class CustomerUpdateParams(TypedDict, total=False):
     when a payment provider is provided on customer creation.
     """
 
+    auto_issuance: Optional[bool]
+    """Used to determine if invoices for this customer will be automatically issued.
+
+    If true, invoices will be automatically issued. If false, invoices will require
+    manual approval.If `null` is specified, the customer's auto issuance setting
+    will be inherited from the account-level setting.
+    """
+
     billing_address: Optional[AddressInputParam]
 
     currency: Optional[str]

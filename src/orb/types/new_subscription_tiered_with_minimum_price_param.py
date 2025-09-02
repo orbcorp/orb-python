@@ -10,9 +10,9 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionTieredWithMinimumPriceParam", "UnnamedTypeWithobjectParent193"]
+__all__ = ["NewSubscriptionTieredWithMinimumPriceParam", "UnnamedTypeWithobjectParent189"]
 
-UnnamedTypeWithobjectParent193: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+UnnamedTypeWithobjectParent189: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewSubscriptionTieredWithMinimumPriceParam(TypedDict, total=False):
@@ -50,7 +50,7 @@ class NewSubscriptionTieredWithMinimumPriceParam(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent193]
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent189]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]

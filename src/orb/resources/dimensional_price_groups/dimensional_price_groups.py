@@ -74,7 +74,7 @@ class DimensionalPriceGroups(SyncAPIResource):
     ) -> DimensionalPriceGroup:
         """
         A dimensional price group is used to partition the result of a billable metric
-        by a set of dimensions. Prices in a price group must specify the parition used
+        by a set of dimensions. Prices in a price group must specify the partition used
         to derive their usage.
 
         For example, suppose we have a billable metric that measures the number of
@@ -310,7 +310,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
     ) -> DimensionalPriceGroup:
         """
         A dimensional price group is used to partition the result of a billable metric
-        by a set of dimensions. Prices in a price group must specify the parition used
+        by a set of dimensions. Prices in a price group must specify the partition used
         to derive their usage.
 
         For example, suppose we have a billable metric that measures the number of

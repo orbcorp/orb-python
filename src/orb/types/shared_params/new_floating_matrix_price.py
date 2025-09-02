@@ -11,9 +11,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingMatrixPrice", "UnnamedTypeWithobjectParent123"]
+__all__ = ["NewFloatingMatrixPrice", "UnnamedTypeWithobjectParent112"]
 
-UnnamedTypeWithobjectParent123: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+UnnamedTypeWithobjectParent112: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingMatrixPrice(TypedDict, total=False):
@@ -54,7 +54,7 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent123]
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent112]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
