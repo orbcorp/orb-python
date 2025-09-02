@@ -45,6 +45,7 @@ class TestCustomers:
             },
             additional_emails=["dev@stainless.com"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -134,6 +135,7 @@ class TestCustomers:
             },
             additional_emails=["string"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -456,6 +458,7 @@ class TestCustomers:
             },
             additional_emails=["string"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -559,6 +562,7 @@ class TestAsyncCustomers:
             },
             additional_emails=["dev@stainless.com"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -648,6 +652,7 @@ class TestAsyncCustomers:
             },
             additional_emails=["string"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -982,6 +987,7 @@ class TestAsyncCustomers:
             },
             additional_emails=["string"],
             auto_collection=True,
+            auto_issuance=True,
             billing_address={
                 "city": "city",
                 "country": "country",

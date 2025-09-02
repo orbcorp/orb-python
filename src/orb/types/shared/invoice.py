@@ -99,6 +99,7 @@ class CustomerBalanceTransaction(BaseModel):
         "credit_note_voided",
         "overpayment_refund",
         "external_payment",
+        "small_invoice_carryover",
     ]
 
     amount: str
@@ -232,7 +233,7 @@ class LineItem(BaseModel):
     """
 
     subtotal: str
-    """The line amount before before any adjustments."""
+    """The line amount before any adjustments."""
 
     tax_amounts: List[TaxAmount]
     """An array of tax rates and their incurred tax amounts.
@@ -261,6 +262,12 @@ class PaymentAttempt(BaseModel):
 
     payment_provider_id: Optional[str] = None
     """The ID of the payment attempt in the payment provider."""
+
+    receipt_pdf: Optional[str] = None
+    """URL to the downloadable PDF version of the receipt.
+
+    This field will be `null` for payment attempts that did not succeed.
+    """
 
     succeeded: bool
     """Whether the payment attempt succeeded."""

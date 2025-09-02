@@ -25,6 +25,7 @@ class BalanceTransactionCreateResponse(BaseModel):
         "credit_note_voided",
         "overpayment_refund",
         "external_payment",
+        "small_invoice_carryover",
     ]
 
     amount: str

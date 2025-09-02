@@ -71,6 +71,7 @@ class TestInvoices:
                 ],
                 "reason": "reason",
             },
+            due_date=parse_date("2023-09-22"),
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
@@ -138,7 +139,9 @@ class TestInvoices:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.update(
             invoice_id="invoice_id",
+            due_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
+            net_terms=0,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 
@@ -521,6 +524,7 @@ class TestAsyncInvoices:
                 ],
                 "reason": "reason",
             },
+            due_date=parse_date("2023-09-22"),
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
@@ -588,7 +592,9 @@ class TestAsyncInvoices:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.update(
             invoice_id="invoice_id",
+            due_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
+            net_terms=0,
         )
         assert_matches_type(Invoice, invoice, path=["response"])
 

@@ -12,9 +12,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanUnitWithPercentPrice", "UnnamedTypeWithobjectParent82"]
+__all__ = ["NewPlanUnitWithPercentPrice", "UnnamedTypeWithobjectParent75"]
 
-UnnamedTypeWithobjectParent82: TypeAlias = Annotated[
+UnnamedTypeWithobjectParent75: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -54,7 +54,7 @@ class NewPlanUnitWithPercentPrice(BaseModel):
     conversion_rate: Optional[float] = None
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent82] = None
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent75] = None
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str] = None

@@ -125,7 +125,7 @@ class InvoiceLineItemCreateResponse(BaseModel):
     """
 
     subtotal: str
-    """The line amount before before any adjustments."""
+    """The line amount before any adjustments."""
 
     tax_amounts: List[TaxAmount]
     """An array of tax rates and their incurred tax amounts.

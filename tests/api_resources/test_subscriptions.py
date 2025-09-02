@@ -684,6 +684,7 @@ class TestSubscriptions:
             ],
             add_adjustments=[
                 {
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -701,7 +702,7 @@ class TestSubscriptions:
                         "is_invoice_level": True,
                         "price_type": "usage",
                     },
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "adjustment_id": "h74gfhdjvn7ujokd",
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 }
             ],
@@ -2008,6 +2009,7 @@ class TestAsyncSubscriptions:
             ],
             add_adjustments=[
                 {
+                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -2025,7 +2027,7 @@ class TestAsyncSubscriptions:
                         "is_invoice_level": True,
                         "price_type": "usage",
                     },
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "adjustment_id": "h74gfhdjvn7ujokd",
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                 }
             ],

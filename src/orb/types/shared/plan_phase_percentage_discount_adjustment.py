@@ -22,8 +22,8 @@ class PlanPhasePercentageDiscountAdjustment(BaseModel):
 
     is_invoice_level: bool
     """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
+    True for adjustments that apply to an entire invoice, false for adjustments that
+    apply to only one price.
     """
 
     percentage_discount: float

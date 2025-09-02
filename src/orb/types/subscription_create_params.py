@@ -11,7 +11,6 @@ from .._utils import PropertyInfo
 from .discount_override_param import DiscountOverrideParam
 from .shared_params.new_maximum import NewMaximum
 from .shared_params.new_minimum import NewMinimum
-from .new_subscription_bps_price_param import NewSubscriptionBPSPriceParam
 from .shared_params.new_usage_discount import NewUsageDiscount
 from .new_subscription_bulk_price_param import NewSubscriptionBulkPriceParam
 from .new_subscription_unit_price_param import NewSubscriptionUnitPriceParam
@@ -20,11 +19,12 @@ from .shared_params.new_allocation_price import NewAllocationPrice
 from .new_subscription_matrix_price_param import NewSubscriptionMatrixPriceParam
 from .new_subscription_tiered_price_param import NewSubscriptionTieredPriceParam
 from .new_subscription_package_price_param import NewSubscriptionPackagePriceParam
-from .new_subscription_bulk_bps_price_param import NewSubscriptionBulkBPSPriceParam
 from .shared_params.new_percentage_discount import NewPercentageDiscount
-from .new_subscription_tiered_bps_price_param import NewSubscriptionTieredBPSPriceParam
+from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
 from .new_subscription_grouped_tiered_price_param import NewSubscriptionGroupedTieredPriceParam
 from .new_subscription_tiered_package_price_param import NewSubscriptionTieredPackagePriceParam
+from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
+from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_subscription_unit_with_percent_price_param import NewSubscriptionUnitWithPercentPriceParam
 from .new_subscription_grouped_allocation_price_param import NewSubscriptionGroupedAllocationPriceParam
 from .new_subscription_bulk_with_proration_price_param import NewSubscriptionBulkWithProrationPriceParam
@@ -32,6 +32,7 @@ from .new_subscription_tier_with_proration_price_param import NewSubscriptionTie
 from .new_subscription_tiered_with_minimum_price_param import NewSubscriptionTieredWithMinimumPriceParam
 from .new_subscription_unit_with_proration_price_param import NewSubscriptionUnitWithProrationPriceParam
 from .shared_params.billing_cycle_anchor_configuration import BillingCycleAnchorConfiguration
+from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 from .new_subscription_grouped_tiered_package_price_param import NewSubscriptionGroupedTieredPackagePriceParam
 from .new_subscription_matrix_with_allocation_price_param import NewSubscriptionMatrixWithAllocationPriceParam
 from .new_subscription_threshold_total_amount_price_param import NewSubscriptionThresholdTotalAmountPriceParam
@@ -59,12 +60,22 @@ __all__ = [
     "AddAdjustmentAdjustment",
     "AddPrice",
     "AddPricePrice",
+    "AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice",
+    "AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193",
+    "AddPricePriceNewSubscriptionMinimumCompositePrice",
+    "AddPricePriceNewSubscriptionMinimumCompositePriceMinimumConfig",
+    "AddPricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent194",
     "RemoveAdjustment",
     "RemovePrice",
     "ReplaceAdjustment",
     "ReplaceAdjustmentAdjustment",
     "ReplacePrice",
     "ReplacePricePrice",
+    "ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice",
+    "ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195",
+    "ReplacePricePriceNewSubscriptionMinimumCompositePrice",
+    "ReplacePricePriceNewSubscriptionMinimumCompositePriceMinimumConfig",
+    "ReplacePricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent196",
 ]
 
 
@@ -265,14 +276,192 @@ class AddAdjustment(TypedDict, total=False):
     """
 
 
+AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[
+        AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193
+    ]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class AddPricePriceNewSubscriptionMinimumCompositePriceMinimumConfig(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool]
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
+AddPricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent194: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPricePriceNewSubscriptionMinimumCompositePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    minimum_config: Required[AddPricePriceNewSubscriptionMinimumCompositePriceMinimumConfig]
+
+    model_type: Required[Literal["minimum"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent194]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
 AddPricePrice: TypeAlias = Union[
     NewSubscriptionUnitPriceParam,
     NewSubscriptionPackagePriceParam,
     NewSubscriptionMatrixPriceParam,
     NewSubscriptionTieredPriceParam,
-    NewSubscriptionTieredBPSPriceParam,
-    NewSubscriptionBPSPriceParam,
-    NewSubscriptionBulkBPSPriceParam,
     NewSubscriptionBulkPriceParam,
     NewSubscriptionThresholdTotalAmountPriceParam,
     NewSubscriptionTieredPackagePriceParam,
@@ -294,6 +483,8 @@ AddPricePrice: TypeAlias = Union[
     NewSubscriptionMatrixWithAllocationPriceParam,
     NewSubscriptionTieredPackageWithMinimumPriceParam,
     NewSubscriptionGroupedTieredPriceParam,
+    AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice,
+    AddPricePriceNewSubscriptionMinimumCompositePrice,
 ]
 
 
@@ -372,14 +563,194 @@ class ReplaceAdjustment(TypedDict, total=False):
     """The id of the adjustment on the plan to replace in the subscription."""
 
 
+ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[
+        ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195
+    ]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class ReplacePricePriceNewSubscriptionMinimumCompositePriceMinimumConfig(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool]
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
+ReplacePricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent196: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class ReplacePricePriceNewSubscriptionMinimumCompositePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    minimum_config: Required[ReplacePricePriceNewSubscriptionMinimumCompositePriceMinimumConfig]
+
+    model_type: Required[Literal["minimum"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[
+        ReplacePricePriceNewSubscriptionMinimumCompositePriceUnnamedTypeWithobjectParent196
+    ]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
 ReplacePricePrice: TypeAlias = Union[
     NewSubscriptionUnitPriceParam,
     NewSubscriptionPackagePriceParam,
     NewSubscriptionMatrixPriceParam,
     NewSubscriptionTieredPriceParam,
-    NewSubscriptionTieredBPSPriceParam,
-    NewSubscriptionBPSPriceParam,
-    NewSubscriptionBulkBPSPriceParam,
     NewSubscriptionBulkPriceParam,
     NewSubscriptionThresholdTotalAmountPriceParam,
     NewSubscriptionTieredPackagePriceParam,
@@ -401,6 +772,8 @@ ReplacePricePrice: TypeAlias = Union[
     NewSubscriptionMatrixWithAllocationPriceParam,
     NewSubscriptionTieredPackageWithMinimumPriceParam,
     NewSubscriptionGroupedTieredPriceParam,
+    ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice,
+    ReplacePricePriceNewSubscriptionMinimumCompositePrice,
 ]
 
 

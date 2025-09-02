@@ -22,8 +22,8 @@ class PlanPhaseUsageDiscountAdjustment(BaseModel):
 
     is_invoice_level: bool
     """
-    True for adjustments that apply to an entire invocice, false for adjustments
-    that apply to only one price.
+    True for adjustments that apply to an entire invoice, false for adjustments that
+    apply to only one price.
     """
 
     plan_phase_order: Optional[int] = None

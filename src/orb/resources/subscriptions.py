@@ -1463,7 +1463,7 @@ class Subscriptions(SyncAPIResource):
         It returns
         the serialized updated subscription object.
 
-        The body parameter `change_option` determines when the plan change occurrs. Orb
+        The body parameter `change_option` determines when the plan change occurs. Orb
         supports three options:
 
         - `end_of_subscription_term`: changes the plan at the end of the existing plan's
@@ -3549,7 +3549,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         It returns
         the serialized updated subscription object.
 
-        The body parameter `change_option` determines when the plan change occurrs. Orb
+        The body parameter `change_option` determines when the plan change occurs. Orb
         supports three options:
 
         - `end_of_subscription_term`: changes the plan at the end of the existing plan's
