@@ -10,9 +10,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanTieredPackagePrice", "ConversionRateConfig"]
+__all__ = ["NewPlanTieredPackagePrice", "UnnamedTypeWithobjectParent162"]
 
-ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+UnnamedTypeWithobjectParent162: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewPlanTieredPackagePrice(TypedDict, total=False):
@@ -50,7 +50,7 @@ class NewPlanTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[ConversionRateConfig]
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent162]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]

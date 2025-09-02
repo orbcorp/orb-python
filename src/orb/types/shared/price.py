@@ -31,68 +31,67 @@ from .dimensional_price_configuration import DimensionalPriceConfiguration
 __all__ = [
     "Price",
     "UnitPrice",
-    "UnitPriceConversionRateConfig",
+    "UnitPriceUnnamedTypeWithobjectParent84",
     "PackagePrice",
-    "PackagePriceConversionRateConfig",
+    "PackagePriceUnnamedTypeWithobjectParent85",
     "MatrixPrice",
-    "MatrixPriceConversionRateConfig",
+    "MatrixPriceUnnamedTypeWithobjectParent86",
     "TieredPrice",
-    "TieredPriceConversionRateConfig",
+    "TieredPriceUnnamedTypeWithobjectParent87",
     "TieredBPSPrice",
-    "TieredBPSPriceConversionRateConfig",
+    "TieredBPSPriceUnnamedTypeWithobjectParent88",
     "BPSPrice",
-    "BPSPriceConversionRateConfig",
+    "BPSPriceUnnamedTypeWithobjectParent89",
     "BulkBPSPrice",
-    "BulkBPSPriceConversionRateConfig",
+    "BulkBPSPriceUnnamedTypeWithobjectParent90",
     "BulkPrice",
-    "BulkPriceConversionRateConfig",
+    "BulkPriceUnnamedTypeWithobjectParent91",
     "ThresholdTotalAmountPrice",
-    "ThresholdTotalAmountPriceConversionRateConfig",
+    "ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92",
     "TieredPackagePrice",
-    "TieredPackagePriceConversionRateConfig",
+    "TieredPackagePriceUnnamedTypeWithobjectParent93",
     "GroupedTieredPrice",
-    "GroupedTieredPriceConversionRateConfig",
+    "GroupedTieredPriceUnnamedTypeWithobjectParent94",
     "TieredWithMinimumPrice",
-    "TieredWithMinimumPriceConversionRateConfig",
+    "TieredWithMinimumPriceUnnamedTypeWithobjectParent95",
     "TieredPackageWithMinimumPrice",
-    "TieredPackageWithMinimumPriceConversionRateConfig",
+    "TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96",
     "PackageWithAllocationPrice",
-    "PackageWithAllocationPriceConversionRateConfig",
+    "PackageWithAllocationPriceUnnamedTypeWithobjectParent97",
     "UnitWithPercentPrice",
-    "UnitWithPercentPriceConversionRateConfig",
+    "UnitWithPercentPriceUnnamedTypeWithobjectParent98",
     "MatrixWithAllocationPrice",
-    "MatrixWithAllocationPriceConversionRateConfig",
+    "MatrixWithAllocationPriceUnnamedTypeWithobjectParent99",
     "TieredWithProrationPrice",
-    "TieredWithProrationPriceConversionRateConfig",
+    "TieredWithProrationPriceUnnamedTypeWithobjectParent100",
     "UnitWithProrationPrice",
-    "UnitWithProrationPriceConversionRateConfig",
+    "UnitWithProrationPriceUnnamedTypeWithobjectParent101",
     "GroupedAllocationPrice",
-    "GroupedAllocationPriceConversionRateConfig",
+    "GroupedAllocationPriceUnnamedTypeWithobjectParent102",
     "GroupedWithProratedMinimumPrice",
-    "GroupedWithProratedMinimumPriceConversionRateConfig",
+    "GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103",
     "GroupedWithMeteredMinimumPrice",
-    "GroupedWithMeteredMinimumPriceConversionRateConfig",
+    "GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104",
     "MatrixWithDisplayNamePrice",
-    "MatrixWithDisplayNamePriceConversionRateConfig",
+    "MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105",
     "BulkWithProrationPrice",
-    "BulkWithProrationPriceConversionRateConfig",
+    "BulkWithProrationPriceUnnamedTypeWithobjectParent106",
     "GroupedTieredPackagePrice",
-    "GroupedTieredPackagePriceConversionRateConfig",
+    "GroupedTieredPackagePriceUnnamedTypeWithobjectParent107",
     "MaxGroupTieredPackagePrice",
-    "MaxGroupTieredPackagePriceConversionRateConfig",
+    "MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108",
     "ScalableMatrixWithUnitPricingPrice",
-    "ScalableMatrixWithUnitPricingPriceConversionRateConfig",
+    "ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109",
     "ScalableMatrixWithTieredPricingPrice",
-    "ScalableMatrixWithTieredPricingPriceConversionRateConfig",
+    "ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110",
     "CumulativeGroupedBulkPrice",
-    "CumulativeGroupedBulkPriceConversionRateConfig",
+    "CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111",
     "GroupedWithMinMaxThresholdsPrice",
-    "GroupedWithMinMaxThresholdsPriceConversionRateConfig",
+    "GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112",
 ]
 
-UnitPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+UnitPriceUnnamedTypeWithobjectParent84: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -107,7 +106,7 @@ class UnitPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[UnitPriceUnnamedTypeWithobjectParent84] = None
 
     created_at: datetime
 
@@ -160,9 +159,8 @@ class UnitPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-PackagePriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+PackagePriceUnnamedTypeWithobjectParent85: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -177,7 +175,7 @@ class PackagePrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[PackagePriceConversionRateConfig] = None
+    conversion_rate_config: Optional[PackagePriceUnnamedTypeWithobjectParent85] = None
 
     created_at: datetime
 
@@ -230,9 +228,8 @@ class PackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+MatrixPriceUnnamedTypeWithobjectParent86: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -247,7 +244,7 @@ class MatrixPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[MatrixPriceUnnamedTypeWithobjectParent86] = None
 
     created_at: datetime
 
@@ -300,9 +297,8 @@ class MatrixPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredPriceUnnamedTypeWithobjectParent87: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -317,7 +313,7 @@ class TieredPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredPriceUnnamedTypeWithobjectParent87] = None
 
     created_at: datetime
 
@@ -370,9 +366,8 @@ class TieredPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredBPSPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredBPSPriceUnnamedTypeWithobjectParent88: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -387,7 +382,7 @@ class TieredBPSPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredBPSPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredBPSPriceUnnamedTypeWithobjectParent88] = None
 
     created_at: datetime
 
@@ -440,9 +435,8 @@ class TieredBPSPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-BPSPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+BPSPriceUnnamedTypeWithobjectParent89: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -459,7 +453,7 @@ class BPSPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BPSPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[BPSPriceUnnamedTypeWithobjectParent89] = None
 
     created_at: datetime
 
@@ -510,9 +504,8 @@ class BPSPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-BulkBPSPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+BulkBPSPriceUnnamedTypeWithobjectParent90: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -529,7 +522,7 @@ class BulkBPSPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BulkBPSPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[BulkBPSPriceUnnamedTypeWithobjectParent90] = None
 
     created_at: datetime
 
@@ -580,9 +573,8 @@ class BulkBPSPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-BulkPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+BulkPriceUnnamedTypeWithobjectParent91: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -599,7 +591,7 @@ class BulkPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BulkPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[BulkPriceUnnamedTypeWithobjectParent91] = None
 
     created_at: datetime
 
@@ -650,9 +642,8 @@ class BulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ThresholdTotalAmountPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -667,7 +658,7 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ThresholdTotalAmountPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[ThresholdTotalAmountPriceUnnamedTypeWithobjectParent92] = None
 
     created_at: datetime
 
@@ -720,9 +711,8 @@ class ThresholdTotalAmountPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredPackagePriceUnnamedTypeWithobjectParent93: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -737,7 +727,7 @@ class TieredPackagePrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPackagePriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredPackagePriceUnnamedTypeWithobjectParent93] = None
 
     created_at: datetime
 
@@ -790,9 +780,8 @@ class TieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedTieredPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedTieredPriceUnnamedTypeWithobjectParent94: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -807,7 +796,7 @@ class GroupedTieredPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedTieredPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedTieredPriceUnnamedTypeWithobjectParent94] = None
 
     created_at: datetime
 
@@ -860,9 +849,8 @@ class GroupedTieredPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredWithMinimumPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredWithMinimumPriceUnnamedTypeWithobjectParent95: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -877,7 +865,7 @@ class TieredWithMinimumPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredWithMinimumPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredWithMinimumPriceUnnamedTypeWithobjectParent95] = None
 
     created_at: datetime
 
@@ -930,9 +918,8 @@ class TieredWithMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredPackageWithMinimumPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -947,7 +934,7 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredPackageWithMinimumPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredPackageWithMinimumPriceUnnamedTypeWithobjectParent96] = None
 
     created_at: datetime
 
@@ -1000,9 +987,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-PackageWithAllocationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+PackageWithAllocationPriceUnnamedTypeWithobjectParent97: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1017,7 +1003,7 @@ class PackageWithAllocationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[PackageWithAllocationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[PackageWithAllocationPriceUnnamedTypeWithobjectParent97] = None
 
     created_at: datetime
 
@@ -1070,9 +1056,8 @@ class PackageWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-UnitWithPercentPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+UnitWithPercentPriceUnnamedTypeWithobjectParent98: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1087,7 +1072,7 @@ class UnitWithPercentPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitWithPercentPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[UnitWithPercentPriceUnnamedTypeWithobjectParent98] = None
 
     created_at: datetime
 
@@ -1140,9 +1125,8 @@ class UnitWithPercentPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixWithAllocationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+MatrixWithAllocationPriceUnnamedTypeWithobjectParent99: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1157,7 +1141,7 @@ class MatrixWithAllocationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixWithAllocationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[MatrixWithAllocationPriceUnnamedTypeWithobjectParent99] = None
 
     created_at: datetime
 
@@ -1210,9 +1194,8 @@ class MatrixWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-TieredWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+TieredWithProrationPriceUnnamedTypeWithobjectParent100: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1227,7 +1210,7 @@ class TieredWithProrationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[TieredWithProrationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[TieredWithProrationPriceUnnamedTypeWithobjectParent100] = None
 
     created_at: datetime
 
@@ -1280,9 +1263,8 @@ class TieredWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-UnitWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+UnitWithProrationPriceUnnamedTypeWithobjectParent101: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1297,7 +1279,7 @@ class UnitWithProrationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[UnitWithProrationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[UnitWithProrationPriceUnnamedTypeWithobjectParent101] = None
 
     created_at: datetime
 
@@ -1350,9 +1332,8 @@ class UnitWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedAllocationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedAllocationPriceUnnamedTypeWithobjectParent102: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1367,7 +1348,7 @@ class GroupedAllocationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedAllocationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedAllocationPriceUnnamedTypeWithobjectParent102] = None
 
     created_at: datetime
 
@@ -1420,9 +1401,8 @@ class GroupedAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithProratedMinimumPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1437,7 +1417,7 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithProratedMinimumPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedWithProratedMinimumPriceUnnamedTypeWithobjectParent103] = None
 
     created_at: datetime
 
@@ -1490,9 +1470,8 @@ class GroupedWithProratedMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithMeteredMinimumPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1507,7 +1486,7 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithMeteredMinimumPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedWithMeteredMinimumPriceUnnamedTypeWithobjectParent104] = None
 
     created_at: datetime
 
@@ -1560,9 +1539,8 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MatrixWithDisplayNamePriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1577,7 +1555,7 @@ class MatrixWithDisplayNamePrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MatrixWithDisplayNamePriceConversionRateConfig] = None
+    conversion_rate_config: Optional[MatrixWithDisplayNamePriceUnnamedTypeWithobjectParent105] = None
 
     created_at: datetime
 
@@ -1630,9 +1608,8 @@ class MatrixWithDisplayNamePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-BulkWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+BulkWithProrationPriceUnnamedTypeWithobjectParent106: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1649,7 +1626,7 @@ class BulkWithProrationPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[BulkWithProrationPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[BulkWithProrationPriceUnnamedTypeWithobjectParent106] = None
 
     created_at: datetime
 
@@ -1700,9 +1677,8 @@ class BulkWithProrationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedTieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedTieredPackagePriceUnnamedTypeWithobjectParent107: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1717,7 +1693,7 @@ class GroupedTieredPackagePrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedTieredPackagePriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedTieredPackagePriceUnnamedTypeWithobjectParent107] = None
 
     created_at: datetime
 
@@ -1770,9 +1746,8 @@ class GroupedTieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-MaxGroupTieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1787,7 +1762,7 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[MaxGroupTieredPackagePriceConversionRateConfig] = None
+    conversion_rate_config: Optional[MaxGroupTieredPackagePriceUnnamedTypeWithobjectParent108] = None
 
     created_at: datetime
 
@@ -1840,9 +1815,8 @@ class MaxGroupTieredPackagePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ScalableMatrixWithUnitPricingPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1857,7 +1831,7 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ScalableMatrixWithUnitPricingPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[ScalableMatrixWithUnitPricingPriceUnnamedTypeWithobjectParent109] = None
 
     created_at: datetime
 
@@ -1910,9 +1884,8 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-ScalableMatrixWithTieredPricingPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1927,7 +1900,7 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[ScalableMatrixWithTieredPricingPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[ScalableMatrixWithTieredPricingPriceUnnamedTypeWithobjectParent110] = None
 
     created_at: datetime
 
@@ -1980,9 +1953,8 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-CumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -1997,7 +1969,7 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[CumulativeGroupedBulkPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[CumulativeGroupedBulkPriceUnnamedTypeWithobjectParent111] = None
 
     created_at: datetime
 
@@ -2050,9 +2022,8 @@ class CumulativeGroupedBulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
-GroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
@@ -2067,7 +2038,7 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     conversion_rate: Optional[float] = None
 
-    conversion_rate_config: Optional[GroupedWithMinMaxThresholdsPriceConversionRateConfig] = None
+    conversion_rate_config: Optional[GroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent112] = None
 
     created_at: datetime
 
