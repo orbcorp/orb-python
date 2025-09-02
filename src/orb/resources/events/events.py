@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import datetime
 
 import httpx
@@ -17,7 +17,7 @@ from .volume import (
     AsyncVolumeWithStreamingResponse,
 )
 from ...types import event_ingest_params, event_search_params, event_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .backfills import (
@@ -519,7 +519,7 @@ class Events(SyncAPIResource):
     def search(
         self,
         *,
-        event_ids: List[str],
+        event_ids: SequenceNotStr[str],
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1070,7 +1070,7 @@ class AsyncEvents(AsyncAPIResource):
     async def search(
         self,
         *,
-        event_ids: List[str],
+        event_ids: SequenceNotStr[str],
         timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

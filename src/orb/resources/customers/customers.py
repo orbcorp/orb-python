@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -23,7 +23,7 @@ from ...types import (
     customer_update_params,
     customer_update_by_external_id_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -94,7 +94,7 @@ class Customers(SyncAPIResource):
         email: str,
         name: str,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
@@ -365,7 +365,7 @@ class Customers(SyncAPIResource):
         customer_id: str,
         *,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
@@ -917,7 +917,7 @@ class Customers(SyncAPIResource):
         id: str,
         *,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1216,7 +1216,7 @@ class AsyncCustomers(AsyncAPIResource):
         email: str,
         name: str,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1487,7 +1487,7 @@ class AsyncCustomers(AsyncAPIResource):
         customer_id: str,
         *,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2039,7 +2039,7 @@ class AsyncCustomers(AsyncAPIResource):
         id: str,
         *,
         accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
         currency: Optional[str] | NotGiven = NOT_GIVEN,

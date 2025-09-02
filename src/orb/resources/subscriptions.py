@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Union, Iterable, Optional, cast
+from typing import Any, Dict, Union, Iterable, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -25,7 +25,7 @@ from ..types import (
     subscription_update_fixed_fee_quantity_params,
     subscription_unschedule_fixed_fee_quantity_updates_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -97,7 +97,7 @@ class Subscriptions(SyncAPIResource):
         replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
-        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -588,8 +588,8 @@ class Subscriptions(SyncAPIResource):
         created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1449,7 +1449,7 @@ class Subscriptions(SyncAPIResource):
         replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
-        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2183,7 +2183,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace_prices: Optional[Iterable[subscription_create_params.ReplacePrice]] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
-        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2674,8 +2674,8 @@ class AsyncSubscriptions(AsyncAPIResource):
         created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        external_customer_id: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Optional[Literal["active", "ended", "upcoming"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3535,7 +3535,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         replace_prices: Optional[Iterable[subscription_schedule_plan_change_params.ReplacePrice]]
         | NotGiven = NOT_GIVEN,
         trial_duration_days: Optional[int] | NotGiven = NOT_GIVEN,
-        usage_customer_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        usage_customer_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

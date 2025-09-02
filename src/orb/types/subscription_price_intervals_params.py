@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .shared_params.new_maximum import NewMaximum
 from .shared_params.new_minimum import NewMinimum
@@ -212,7 +213,7 @@ class Add(TypedDict, total=False):
     price_id: Optional[str]
     """The id of the price to add to the subscription."""
 
-    usage_customer_ids: Optional[List[str]]
+    usage_customer_ids: Optional[SequenceNotStr[str]]
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this subscription. By default, a subscription only considers usage events
@@ -299,7 +300,7 @@ class Edit(TypedDict, total=False):
     If not specified, the start date will not be updated.
     """
 
-    usage_customer_ids: Optional[List[str]]
+    usage_customer_ids: Optional[SequenceNotStr[str]]
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this subscription. By default, a subscription only considers usage events

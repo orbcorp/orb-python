@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .shared_params.new_floating_bps_price import NewFloatingBPSPrice
 from .shared_params.new_floating_bulk_price import NewFloatingBulkPrice
@@ -103,7 +104,7 @@ class PriceEvaluation(TypedDict, total=False):
     filter the underlying billable metric
     """
 
-    grouping_keys: List[str]
+    grouping_keys: SequenceNotStr[str]
     """
     Properties (or
     [computed properties](/extensibility/advanced-metrics#computed-properties)) used

@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["CustomerHierarchyConfigParam"]
 
 
 class CustomerHierarchyConfigParam(TypedDict, total=False):
-    child_customer_ids: List[str]
+    child_customer_ids: SequenceNotStr[str]
     """A list of child customer IDs to add to the hierarchy.
 
     The desired child customers must not already be part of another hierarchy.

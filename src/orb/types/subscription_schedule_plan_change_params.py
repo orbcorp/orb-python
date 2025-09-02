@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .discount_override_param import DiscountOverrideParam
 from .shared_params.new_maximum import NewMaximum
@@ -213,7 +214,7 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     provided, the trial on the plan will be skipped.
     """
 
-    usage_customer_ids: Optional[List[str]]
+    usage_customer_ids: Optional[SequenceNotStr[str]]
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this subscription. By default, a subscription only considers usage events
