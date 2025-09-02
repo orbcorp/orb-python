@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import httpx
 
@@ -12,7 +12,7 @@ from ...types import (
     dimensional_price_group_create_params,
     dimensional_price_group_update_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -60,7 +60,7 @@ class DimensionalPriceGroups(SyncAPIResource):
         self,
         *,
         billable_metric_id: str,
-        dimensions: List[str],
+        dimensions: SequenceNotStr[str],
         name: str,
         external_dimensional_price_group_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -296,7 +296,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         self,
         *,
         billable_metric_id: str,
-        dimensions: List[str],
+        dimensions: SequenceNotStr[str],
         name: str,
         external_dimensional_price_group_id: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,

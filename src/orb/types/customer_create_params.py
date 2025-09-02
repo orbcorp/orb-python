@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .address_input_param import AddressInputParam
 from .shared_params.customer_tax_id import CustomerTaxID
 from .new_sphere_configuration_param import NewSphereConfigurationParam
@@ -30,7 +31,7 @@ class CustomerCreateParams(TypedDict, total=False):
 
     accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam]
 
-    additional_emails: Optional[List[str]]
+    additional_emails: Optional[SequenceNotStr[str]]
     """Additional email addresses for this customer.
 
     If populated, these email addresses will be CC'd for customer communications.

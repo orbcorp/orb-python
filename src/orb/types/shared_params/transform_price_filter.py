@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["TransformPriceFilter"]
 
@@ -15,5 +16,5 @@ class TransformPriceFilter(TypedDict, total=False):
     operator: Required[Literal["includes", "excludes"]]
     """Should prices that match the filter be included or excluded."""
 
-    values: Required[List[str]]
+    values: Required[SequenceNotStr[str]]
     """The IDs or values that match this filter."""

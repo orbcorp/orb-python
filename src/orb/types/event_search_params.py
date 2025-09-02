@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EventSearchParams"]
 
 
 class EventSearchParams(TypedDict, total=False):
-    event_ids: Required[List[str]]
+    event_ids: Required[SequenceNotStr[str]]
     """This is an explicit array of IDs to filter by.
 
     Note that an event's ID is the idempotency_key that was originally used for

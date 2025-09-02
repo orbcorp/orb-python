@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["DimensionalPriceGroupCreateParams"]
 
@@ -11,7 +13,7 @@ __all__ = ["DimensionalPriceGroupCreateParams"]
 class DimensionalPriceGroupCreateParams(TypedDict, total=False):
     billable_metric_id: Required[str]
 
-    dimensions: Required[List[str]]
+    dimensions: Required[SequenceNotStr[str]]
     """The set of keys (in order) used to disambiguate prices in the group."""
 
     name: Required[str]

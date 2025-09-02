@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .transform_price_filter import TransformPriceFilter
 
 __all__ = ["NewAmountDiscount"]
@@ -18,10 +19,10 @@ class NewAmountDiscount(TypedDict, total=False):
     applies_to_all: Optional[Literal[True]]
     """If set, the adjustment will apply to every price on the subscription."""
 
-    applies_to_item_ids: Optional[List[str]]
+    applies_to_item_ids: Optional[SequenceNotStr[str]]
     """The set of item IDs to which this adjustment applies."""
 
-    applies_to_price_ids: Optional[List[str]]
+    applies_to_price_ids: Optional[SequenceNotStr[str]]
     """The set of price IDs to which this adjustment applies."""
 
     currency: Optional[str]
