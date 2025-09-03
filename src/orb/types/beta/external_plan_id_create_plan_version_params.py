@@ -21,6 +21,7 @@ from ..shared_params.new_plan_grouped_tiered_price import NewPlanGroupedTieredPr
 from ..shared_params.new_plan_tiered_package_price import NewPlanTieredPackagePrice
 from ..shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
 from ..shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
+from ..shared_params.new_plan_minimum_composite_price import NewPlanMinimumCompositePrice
 from ..shared_params.new_plan_unit_with_percent_price import NewPlanUnitWithPercentPrice
 from ..shared_params.new_plan_grouped_allocation_price import NewPlanGroupedAllocationPrice
 from ..shared_params.new_plan_bulk_with_proration_price import NewPlanBulkWithProrationPrice
@@ -50,10 +51,7 @@ __all__ = [
     "AddPrice",
     "AddPricePrice",
     "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice",
-    "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent158",
-    "AddPricePriceNewPlanMinimumCompositePrice",
-    "AddPricePriceNewPlanMinimumCompositePriceMinimumConfig",
-    "AddPricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent159",
+    "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160",
     "RemoveAdjustment",
     "RemovePrice",
     "ReplaceAdjustment",
@@ -61,10 +59,7 @@ __all__ = [
     "ReplacePrice",
     "ReplacePricePrice",
     "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice",
-    "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160",
-    "ReplacePricePriceNewPlanMinimumCompositePrice",
-    "ReplacePricePriceNewPlanMinimumCompositePriceMinimumConfig",
-    "ReplacePricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent161",
+    "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161",
 ]
 
 
@@ -107,7 +102,7 @@ class AddAdjustment(TypedDict, total=False):
     """The phase to add this adjustment to."""
 
 
-AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent158: TypeAlias = Union[
+AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -147,102 +142,7 @@ class AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=Fals
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent158]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    currency: Optional[str]
-    """
-    An ISO 4217 currency string, or custom pricing unit identifier, in which this
-    price is billed.
-    """
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-    reference_id: Optional[str]
-    """
-    A transient ID that can be used to reference this price when adding adjustments
-    in the same API call.
-    """
-
-
-class AddPricePriceNewPlanMinimumCompositePriceMinimumConfig(TypedDict, total=False):
-    minimum_amount: Required[str]
-    """The minimum amount to apply"""
-
-    prorated: Optional[bool]
-    """
-    By default, subtotals from minimum composite prices are prorated based on the
-    service period. Set to false to disable proration.
-    """
-
-
-AddPricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent159: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
-
-
-class AddPricePriceNewPlanMinimumCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    minimum_config: Required[AddPricePriceNewPlanMinimumCompositePriceMinimumConfig]
-
-    model_type: Required[Literal["minimum"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[AddPricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent159]
+    conversion_rate_config: Optional[AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -313,7 +213,7 @@ AddPricePrice: TypeAlias = Union[
     NewPlanTieredPackageWithMinimumPrice,
     NewPlanMatrixWithAllocationPrice,
     NewPlanGroupedTieredPrice,
-    AddPricePriceNewPlanMinimumCompositePrice,
+    NewPlanMinimumCompositePrice,
 ]
 
 
@@ -360,7 +260,7 @@ class ReplaceAdjustment(TypedDict, total=False):
     """The phase to replace this adjustment from."""
 
 
-ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160: TypeAlias = Union[
+ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -401,103 +301,8 @@ class ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[
-        ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160
+        ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161
     ]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    currency: Optional[str]
-    """
-    An ISO 4217 currency string, or custom pricing unit identifier, in which this
-    price is billed.
-    """
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-    reference_id: Optional[str]
-    """
-    A transient ID that can be used to reference this price when adding adjustments
-    in the same API call.
-    """
-
-
-class ReplacePricePriceNewPlanMinimumCompositePriceMinimumConfig(TypedDict, total=False):
-    minimum_amount: Required[str]
-    """The minimum amount to apply"""
-
-    prorated: Optional[bool]
-    """
-    By default, subtotals from minimum composite prices are prorated based on the
-    service period. Set to false to disable proration.
-    """
-
-
-ReplacePricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent161: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
-
-
-class ReplacePricePriceNewPlanMinimumCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    minimum_config: Required[ReplacePricePriceNewPlanMinimumCompositePriceMinimumConfig]
-
-    model_type: Required[Literal["minimum"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[ReplacePricePriceNewPlanMinimumCompositePriceUnnamedTypeWithobjectParent161]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -568,7 +373,7 @@ ReplacePricePrice: TypeAlias = Union[
     NewPlanTieredPackageWithMinimumPrice,
     NewPlanMatrixWithAllocationPrice,
     NewPlanGroupedTieredPrice,
-    ReplacePricePriceNewPlanMinimumCompositePrice,
+    NewPlanMinimumCompositePrice,
 ]
 
 

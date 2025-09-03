@@ -12,9 +12,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingScalableMatrixWithTieredPricingPrice", "UnnamedTypeWithobjectParent41"]
+__all__ = ["NewFloatingScalableMatrixWithTieredPricingPrice", "UnnamedTypeWithobjectParent42"]
 
-UnnamedTypeWithobjectParent41: TypeAlias = Annotated[
+UnnamedTypeWithobjectParent42: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -57,7 +57,7 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(BaseModel):
     conversion_rate: Optional[float] = None
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent41] = None
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent42] = None
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] = None

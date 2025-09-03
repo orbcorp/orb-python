@@ -12,9 +12,9 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanGroupedWithProratedMinimumPrice", "UnnamedTypeWithobjectParent59"]
+__all__ = ["NewPlanGroupedWithProratedMinimumPrice", "UnnamedTypeWithobjectParent60"]
 
-UnnamedTypeWithobjectParent59: TypeAlias = Annotated[
+UnnamedTypeWithobjectParent60: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
@@ -54,7 +54,7 @@ class NewPlanGroupedWithProratedMinimumPrice(BaseModel):
     conversion_rate: Optional[float] = None
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent59] = None
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent60] = None
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str] = None
