@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.13.0 (2025-09-03)
+
+Full Changelog: [v4.12.0...v4.13.0](https://github.com/orbcorp/orb-python/compare/v4.12.0...v4.13.0)
+
+### Features
+
+* **api:** api update ([2d0fee8](https://github.com/orbcorp/orb-python/commit/2d0fee8abad781f852eea8a081418626f27db1a1))
+* improve future compat with pydantic v3 ([28610aa](https://github.com/orbcorp/orb-python/commit/28610aa75f6e33ef94f8baa6b9618b5741050e2a))
+
 ## 4.12.0 (2025-09-03)
 
 Full Changelog: [v4.11.1...v4.12.0](https://github.com/orbcorp/orb-python/compare/v4.11.1...v4.12.0)
