@@ -60,7 +60,7 @@ __all__ = [
     "AddFixedFeeQuantityTransition",
     "AddPrice",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
-    "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193",
+    "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "Edit",
@@ -132,7 +132,7 @@ class AddFixedFeeQuantityTransition(TypedDict, total=False):
     """The quantity of the fixed fee quantity transition."""
 
 
-AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193: TypeAlias = Union[
+AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -175,7 +175,7 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent193]
+    conversion_rate_config: Optional[AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]

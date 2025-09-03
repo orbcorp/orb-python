@@ -62,7 +62,7 @@ __all__ = [
     "AddPrice",
     "AddPricePrice",
     "AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice",
-    "AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent194",
+    "AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "RemoveAdjustment",
     "RemovePrice",
     "ReplaceAdjustment",
@@ -70,7 +70,7 @@ __all__ = [
     "ReplacePrice",
     "ReplacePricePrice",
     "ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice",
-    "ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195",
+    "ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig",
 ]
 
 
@@ -259,7 +259,7 @@ class AddAdjustment(TypedDict, total=False):
     """
 
 
-AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent194: TypeAlias = Union[
+AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -299,9 +299,7 @@ class AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, to
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[
-        AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent194
-    ]
+    conversion_rate_config: Optional[AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -451,7 +449,7 @@ class ReplaceAdjustment(TypedDict, total=False):
     """The id of the adjustment on the plan to replace in the subscription."""
 
 
-ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195: TypeAlias = Union[
+ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -492,7 +490,7 @@ class ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[
-        ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent195
+        ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig
     ]
     """The configuration for the rate of the price currency to the invoicing currency."""
 

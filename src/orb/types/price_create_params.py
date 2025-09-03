@@ -19,60 +19,60 @@ from .shared_params.new_dimensional_price_configuration import NewDimensionalPri
 __all__ = [
     "PriceCreateParams",
     "NewFloatingUnitPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0",
+    "NewFloatingUnitPriceConversionRateConfig",
     "NewFloatingPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent1",
+    "NewFloatingPackagePriceConversionRateConfig",
     "NewFloatingMatrixPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent2",
+    "NewFloatingMatrixPriceConversionRateConfig",
     "NewFloatingMatrixWithAllocationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3",
+    "NewFloatingMatrixWithAllocationPriceConversionRateConfig",
     "NewFloatingTieredPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4",
+    "NewFloatingTieredPriceConversionRateConfig",
     "NewFloatingBulkPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5",
+    "NewFloatingBulkPriceConversionRateConfig",
     "NewFloatingThresholdTotalAmountPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6",
+    "NewFloatingThresholdTotalAmountPriceConversionRateConfig",
     "NewFloatingTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7",
+    "NewFloatingTieredPackagePriceConversionRateConfig",
     "NewFloatingGroupedTieredPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8",
+    "NewFloatingGroupedTieredPriceConversionRateConfig",
     "NewFloatingMaxGroupTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9",
+    "NewFloatingMaxGroupTieredPackagePriceConversionRateConfig",
     "NewFloatingTieredWithMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10",
+    "NewFloatingTieredWithMinimumPriceConversionRateConfig",
     "NewFloatingPackageWithAllocationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11",
+    "NewFloatingPackageWithAllocationPriceConversionRateConfig",
     "NewFloatingTieredPackageWithMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12",
+    "NewFloatingTieredPackageWithMinimumPriceConversionRateConfig",
     "NewFloatingUnitWithPercentPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13",
+    "NewFloatingUnitWithPercentPriceConversionRateConfig",
     "NewFloatingTieredWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14",
+    "NewFloatingTieredWithProrationPriceConversionRateConfig",
     "NewFloatingUnitWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15",
+    "NewFloatingUnitWithProrationPriceConversionRateConfig",
     "NewFloatingGroupedAllocationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16",
+    "NewFloatingGroupedAllocationPriceConversionRateConfig",
     "NewFloatingGroupedWithProratedMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17",
+    "NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig",
     "NewFloatingGroupedWithMeteredMinimumPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18",
+    "NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig",
     "NewFloatingMatrixWithDisplayNamePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19",
+    "NewFloatingMatrixWithDisplayNamePriceConversionRateConfig",
     "NewFloatingBulkWithProrationPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20",
+    "NewFloatingBulkWithProrationPriceConversionRateConfig",
     "NewFloatingGroupedTieredPackagePrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21",
+    "NewFloatingGroupedTieredPackagePriceConversionRateConfig",
     "NewFloatingScalableMatrixWithUnitPricingPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22",
+    "NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig",
     "NewFloatingScalableMatrixWithTieredPricingPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23",
+    "NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig",
     "NewFloatingCumulativeGroupedBulkPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24",
+    "NewFloatingCumulativeGroupedBulkPriceConversionRateConfig",
     "NewFloatingGroupedWithMinMaxThresholdsPrice",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25",
+    "NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "NewFloatingMinimumCompositePrice",
     "NewFloatingMinimumCompositePriceMinimumConfig",
-    "NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26",
+    "NewFloatingMinimumCompositePriceConversionRateConfig",
 ]
 
 
@@ -114,7 +114,7 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0]
+    conversion_rate_config: Optional[NewFloatingUnitPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -146,9 +146,7 @@ class NewFloatingUnitPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
+NewFloatingUnitPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingPackagePrice(TypedDict, total=False):
@@ -189,7 +187,7 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent1]
+    conversion_rate_config: Optional[NewFloatingPackagePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -221,9 +219,7 @@ class NewFloatingPackagePrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent1: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
+NewFloatingPackagePriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingMatrixPrice(TypedDict, total=False):
@@ -264,7 +260,7 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent2]
+    conversion_rate_config: Optional[NewFloatingMatrixPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -296,9 +292,7 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent2: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
+NewFloatingMatrixPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
@@ -339,7 +333,7 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3]
+    conversion_rate_config: Optional[NewFloatingMatrixWithAllocationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -371,7 +365,7 @@ class NewFloatingMatrixWithAllocationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3: TypeAlias = Union[
+NewFloatingMatrixWithAllocationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -414,7 +408,7 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4]
+    conversion_rate_config: Optional[NewFloatingTieredPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -446,9 +440,7 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
+NewFloatingTieredPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingBulkPrice(TypedDict, total=False):
@@ -489,7 +481,7 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5]
+    conversion_rate_config: Optional[NewFloatingBulkPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -521,9 +513,7 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5: TypeAlias = Union[
-    UnitConversionRateConfig, TieredConversionRateConfig
-]
+NewFloatingBulkPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
@@ -564,7 +554,7 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6]
+    conversion_rate_config: Optional[NewFloatingThresholdTotalAmountPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -596,7 +586,7 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6: TypeAlias = Union[
+NewFloatingThresholdTotalAmountPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -639,7 +629,7 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7]
+    conversion_rate_config: Optional[NewFloatingTieredPackagePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -671,7 +661,7 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7: TypeAlias = Union[
+NewFloatingTieredPackagePriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -714,7 +704,7 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8]
+    conversion_rate_config: Optional[NewFloatingGroupedTieredPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -746,7 +736,7 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8: TypeAlias = Union[
+NewFloatingGroupedTieredPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -789,7 +779,7 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9]
+    conversion_rate_config: Optional[NewFloatingMaxGroupTieredPackagePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -821,7 +811,7 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9: TypeAlias = Union[
+NewFloatingMaxGroupTieredPackagePriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -864,7 +854,7 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10]
+    conversion_rate_config: Optional[NewFloatingTieredWithMinimumPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -896,7 +886,7 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10: TypeAlias = Union[
+NewFloatingTieredWithMinimumPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -939,7 +929,7 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11]
+    conversion_rate_config: Optional[NewFloatingPackageWithAllocationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -971,7 +961,7 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11: TypeAlias = Union[
+NewFloatingPackageWithAllocationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1014,7 +1004,7 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12]
+    conversion_rate_config: Optional[NewFloatingTieredPackageWithMinimumPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1046,7 +1036,7 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12: TypeAlias = Union[
+NewFloatingTieredPackageWithMinimumPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1089,7 +1079,7 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13]
+    conversion_rate_config: Optional[NewFloatingUnitWithPercentPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1121,7 +1111,7 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13: TypeAlias = Union[
+NewFloatingUnitWithPercentPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1164,7 +1154,7 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14]
+    conversion_rate_config: Optional[NewFloatingTieredWithProrationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1196,7 +1186,7 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14: TypeAlias = Union[
+NewFloatingTieredWithProrationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1239,7 +1229,7 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15]
+    conversion_rate_config: Optional[NewFloatingUnitWithProrationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1271,7 +1261,7 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15: TypeAlias = Union[
+NewFloatingUnitWithProrationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1314,7 +1304,7 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16]
+    conversion_rate_config: Optional[NewFloatingGroupedAllocationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1346,7 +1336,7 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16: TypeAlias = Union[
+NewFloatingGroupedAllocationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1389,7 +1379,7 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17]
+    conversion_rate_config: Optional[NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1421,7 +1411,7 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17: TypeAlias = Union[
+NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1464,7 +1454,7 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18]
+    conversion_rate_config: Optional[NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1496,7 +1486,7 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18: TypeAlias = Union[
+NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1539,7 +1529,7 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19]
+    conversion_rate_config: Optional[NewFloatingMatrixWithDisplayNamePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1571,7 +1561,7 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19: TypeAlias = Union[
+NewFloatingMatrixWithDisplayNamePriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1614,7 +1604,7 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20]
+    conversion_rate_config: Optional[NewFloatingBulkWithProrationPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1646,7 +1636,7 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20: TypeAlias = Union[
+NewFloatingBulkWithProrationPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1689,7 +1679,7 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21]
+    conversion_rate_config: Optional[NewFloatingGroupedTieredPackagePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1721,7 +1711,7 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21: TypeAlias = Union[
+NewFloatingGroupedTieredPackagePriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1764,7 +1754,7 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22]
+    conversion_rate_config: Optional[NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1796,7 +1786,7 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22: TypeAlias = Union[
+NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1839,7 +1829,7 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23]
+    conversion_rate_config: Optional[NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1871,7 +1861,7 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23: TypeAlias = Union[
+NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1914,7 +1904,7 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24]
+    conversion_rate_config: Optional[NewFloatingCumulativeGroupedBulkPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -1946,7 +1936,7 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24: TypeAlias = Union[
+NewFloatingCumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -1989,7 +1979,7 @@ class NewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25]
+    conversion_rate_config: Optional[NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -2021,7 +2011,7 @@ class NewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25: TypeAlias = Union[
+NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -2064,7 +2054,7 @@ class NewFloatingMinimumCompositePrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26]
+    conversion_rate_config: Optional[NewFloatingMinimumCompositePriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -2107,7 +2097,7 @@ class NewFloatingMinimumCompositePriceMinimumConfig(TypedDict, total=False):
     """
 
 
-NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26: TypeAlias = Union[
+NewFloatingMinimumCompositePriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 

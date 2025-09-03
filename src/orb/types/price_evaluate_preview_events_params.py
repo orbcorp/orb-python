@@ -49,7 +49,7 @@ __all__ = [
     "PriceEvaluation",
     "PriceEvaluationPrice",
     "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
-    "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent164",
+    "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
 ]
 
 
@@ -101,7 +101,7 @@ class Event(TypedDict, total=False):
     """
 
 
-PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent164: TypeAlias = Union[
+PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -145,7 +145,7 @@ class PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict,
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[
-        PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent164
+        PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig
     ]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
