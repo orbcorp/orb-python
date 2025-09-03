@@ -141,7 +141,8 @@ class Customers(SyncAPIResource):
           name: The full name of the customer
 
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
@@ -407,7 +408,8 @@ class Customers(SyncAPIResource):
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
@@ -965,7 +967,8 @@ class Customers(SyncAPIResource):
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
@@ -1284,7 +1287,8 @@ class AsyncCustomers(AsyncAPIResource):
           name: The full name of the customer
 
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
@@ -1550,7 +1554,8 @@ class AsyncCustomers(AsyncAPIResource):
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`
@@ -2108,7 +2113,8 @@ class AsyncCustomers(AsyncAPIResource):
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
-              addresses will be CC'd for customer communications.
+              addresses will be CC'd for customer communications. The total number of email
+              addresses (including the primary email) cannot exceed 50.
 
           auto_collection: Used to determine if invoices for this customer will automatically attempt to
               charge a saved payment method, if available. This parameter defaults to `True`

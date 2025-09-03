@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,47 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionScalableMatrixWithTieredPricingPriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionScalableMatrixWithTieredPricingPriceParam",
+    "ScalableMatrixWithTieredPricingConfig",
+    "ScalableMatrixWithTieredPricingConfigMatrixScalingFactor",
+    "ScalableMatrixWithTieredPricingConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class ScalableMatrixWithTieredPricingConfigMatrixScalingFactor(TypedDict, total=False):
+    first_dimension_value: Required[str]
+    """First dimension value"""
+
+    scaling_factor: Required[str]
+    """Scaling factor"""
+
+    second_dimension_value: Optional[str]
+    """Second dimension value (optional)"""
+
+
+class ScalableMatrixWithTieredPricingConfigTier(TypedDict, total=False):
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class ScalableMatrixWithTieredPricingConfig(TypedDict, total=False):
+    first_dimension: Required[str]
+    """Used for the scalable matrix first dimension"""
+
+    matrix_scaling_factors: Required[Iterable[ScalableMatrixWithTieredPricingConfigMatrixScalingFactor]]
+    """Apply a scaling factor to each dimension"""
+
+    tiers: Required[Iterable[ScalableMatrixWithTieredPricingConfigTier]]
+    """Tier pricing structure"""
+
+    second_dimension: Optional[str]
+    """Used for the scalable matrix second dimension (optional)"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -23,11 +63,13 @@ class NewSubscriptionScalableMatrixWithTieredPricingPriceParam(TypedDict, total=
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["scalable_matrix_with_tiered_pricing"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    scalable_matrix_with_tiered_pricing_config: Required[Dict[str, object]]
+    scalable_matrix_with_tiered_pricing_config: Required[ScalableMatrixWithTieredPricingConfig]
+    """Configuration for scalable_matrix_with_tiered_pricing pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

@@ -24,11 +24,13 @@ class NewSubscriptionPackagePriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
     package_config: Required[PackageConfig]
+    """Configuration for package pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

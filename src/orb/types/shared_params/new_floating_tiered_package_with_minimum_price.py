@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,35 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingTieredPackageWithMinimumPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingTieredPackageWithMinimumPrice",
+    "TieredPackageWithMinimumConfig",
+    "TieredPackageWithMinimumConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class TieredPackageWithMinimumConfigTier(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """Minimum amount"""
+
+    per_unit: Required[str]
+    """Price per package"""
+
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+
+class TieredPackageWithMinimumConfig(TypedDict, total=False):
+    package_size: Required[float]
+    """Package size"""
+
+    tiers: Required[Iterable[TieredPackageWithMinimumConfigTier]]
+    """Apply tiered pricing after rounding up the quantity to the package size.
+
+    Tiers are defined using exclusive lower bounds.
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -26,11 +54,13 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package_with_minimum"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_package_with_minimum_config: Required[Dict[str, object]]
+    tiered_package_with_minimum_config: Required[TieredPackageWithMinimumConfig]
+    """Configuration for tiered_package_with_minimum pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,13 +10,33 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionBulkWithProrationPriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionBulkWithProrationPriceParam",
+    "BulkWithProrationConfig",
+    "BulkWithProrationConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class BulkWithProrationConfigTier(TypedDict, total=False):
+    unit_amount: Required[str]
+    """Cost per unit"""
+
+    tier_lower_bound: Optional[str]
+    """The lower bound for this tier"""
+
+
+class BulkWithProrationConfig(TypedDict, total=False):
+    tiers: Required[Iterable[BulkWithProrationConfigTier]]
+    """Bulk tiers for rating based on total usage volume"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewSubscriptionBulkWithProrationPriceParam(TypedDict, total=False):
-    bulk_with_proration_config: Required[Dict[str, object]]
+    bulk_with_proration_config: Required[BulkWithProrationConfig]
+    """Configuration for bulk_with_proration pricing"""
 
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
@@ -25,6 +45,7 @@ class NewSubscriptionBulkWithProrationPriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk_with_proration"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

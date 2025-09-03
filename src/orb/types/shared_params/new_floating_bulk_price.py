@@ -18,6 +18,7 @@ ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversi
 
 class NewFloatingBulkPrice(TypedDict, total=False):
     bulk_config: Required[BulkConfig]
+    """Configuration for bulk pricing"""
 
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
@@ -29,6 +30,7 @@ class NewFloatingBulkPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["bulk"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

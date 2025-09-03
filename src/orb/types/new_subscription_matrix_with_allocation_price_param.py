@@ -24,8 +24,10 @@ class NewSubscriptionMatrixWithAllocationPriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     matrix_with_allocation_config: Required[MatrixWithAllocationConfig]
+    """Configuration for matrix_with_allocation pricing"""
 
     model_type: Required[Literal["matrix_with_allocation"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

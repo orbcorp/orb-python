@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,32 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanCumulativeGroupedBulkPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanCumulativeGroupedBulkPrice",
+    "CumulativeGroupedBulkConfig",
+    "CumulativeGroupedBulkConfigDimensionValue",
+    "ConversionRateConfig",
+]
+
+
+class CumulativeGroupedBulkConfigDimensionValue(BaseModel):
+    grouping_key: str
+    """Grouping key value"""
+
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+    unit_amount: str
+    """Unit amount for this combination"""
+
+
+class CumulativeGroupedBulkConfig(BaseModel):
+    dimension_values: List[CumulativeGroupedBulkConfigDimensionValue]
+    """Each tier lower bound must have the same group of values."""
+
+    group: str
+    """Grouping key name"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -23,12 +48,14 @@ class NewPlanCumulativeGroupedBulkPrice(BaseModel):
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
 
-    cumulative_grouped_bulk_config: Dict[str, object]
+    cumulative_grouped_bulk_config: CumulativeGroupedBulkConfig
+    """Configuration for cumulative_grouped_bulk pricing"""
 
     item_id: str
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["cumulative_grouped_bulk"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

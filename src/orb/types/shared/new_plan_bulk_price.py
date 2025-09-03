@@ -22,6 +22,7 @@ ConversionRateConfig: TypeAlias = Annotated[
 
 class NewPlanBulkPrice(BaseModel):
     bulk_config: BulkConfig
+    """Configuration for bulk pricing"""
 
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
@@ -30,6 +31,7 @@ class NewPlanBulkPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["bulk"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

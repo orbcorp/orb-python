@@ -31,11 +31,13 @@ class NewFloatingUnitPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["unit"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
     unit_config: UnitConfig
+    """Configuration for unit pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

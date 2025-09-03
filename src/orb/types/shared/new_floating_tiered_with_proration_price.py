@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,29 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingTieredWithProrationPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingTieredWithProrationPrice",
+    "TieredWithProrationConfig",
+    "TieredWithProrationConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class TieredWithProrationConfigTier(BaseModel):
+    tier_lower_bound: str
+    """Inclusive tier starting value"""
+
+    unit_amount: str
+    """Amount per unit"""
+
+
+class TieredWithProrationConfig(BaseModel):
+    tiers: List[TieredWithProrationConfigTier]
+    """
+    Tiers for rating based on total usage quantities into the specified tier with
+    proration
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -30,11 +52,13 @@ class NewFloatingTieredWithProrationPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["tiered_with_proration"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    tiered_with_proration_config: Dict[str, object]
+    tiered_with_proration_config: TieredWithProrationConfig
+    """Configuration for tiered_with_proration pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,32 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionThresholdTotalAmountPriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionThresholdTotalAmountPriceParam",
+    "ThresholdTotalAmountConfig",
+    "ThresholdTotalAmountConfigConsumptionTable",
+    "ConversionRateConfig",
+]
+
+
+class ThresholdTotalAmountConfigConsumptionTable(TypedDict, total=False):
+    threshold: Required[str]
+    """Quantity threshold"""
+
+    total_amount: Required[str]
+    """Total amount for this threshold"""
+
+
+class ThresholdTotalAmountConfig(TypedDict, total=False):
+    consumption_table: Required[Iterable[ThresholdTotalAmountConfigConsumptionTable]]
+    """
+    When the quantity consumed passes a provided threshold, the configured total
+    will be charged
+    """
+
+    prorate: Optional[bool]
+    """If true, the unit price will be prorated to the billing period"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -23,11 +48,13 @@ class NewSubscriptionThresholdTotalAmountPriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["threshold_total_amount"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    threshold_total_amount_config: Required[Dict[str, object]]
+    threshold_total_amount_config: Required[ThresholdTotalAmountConfig]
+    """Configuration for threshold_total_amount pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

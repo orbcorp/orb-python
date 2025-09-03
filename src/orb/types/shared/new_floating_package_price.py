@@ -31,11 +31,13 @@ class NewFloatingPackagePrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["package"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
     package_config: PackageConfig
+    """Configuration for package pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

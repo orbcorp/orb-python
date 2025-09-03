@@ -49,6 +49,7 @@ __all__ = [
     "PriceEvaluation",
     "PriceEvaluationPrice",
     "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
+    "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig",
     "PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
 ]
 
@@ -101,6 +102,22 @@ class Event(TypedDict, total=False):
     """
 
 
+class PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(
+    TypedDict, total=False
+):
+    grouping_key: Required[str]
+    """The event property used to group before applying thresholds"""
+
+    maximum_charge: Required[str]
+    """The maximum amount to charge each group"""
+
+    minimum_charge: Required[str]
+    """The minimum amount to charge each group, regardless of usage"""
+
+    per_unit_rate: Required[str]
+    """The base price charged per group"""
+
+
 PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
@@ -113,12 +130,16 @@ class PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict,
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+    grouped_with_min_max_thresholds_config: Required[
+        PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig
+    ]
+    """Configuration for grouped_with_min_max_thresholds pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
@@ -180,31 +201,31 @@ class PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict,
 
 PriceEvaluationPrice: TypeAlias = Union[
     NewFloatingUnitPrice,
-    NewFloatingPackagePrice,
-    NewFloatingMatrixPrice,
-    NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
     NewFloatingBulkPrice,
+    NewFloatingPackagePrice,
+    NewFloatingMatrixPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
-    NewFloatingGroupedTieredPrice,
-    NewFloatingMaxGroupTieredPackagePrice,
     NewFloatingTieredWithMinimumPrice,
-    NewFloatingPackageWithAllocationPrice,
+    NewFloatingGroupedTieredPrice,
     NewFloatingTieredPackageWithMinimumPrice,
+    NewFloatingPackageWithAllocationPrice,
     NewFloatingUnitWithPercentPrice,
+    NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredWithProrationPrice,
     NewFloatingUnitWithProrationPrice,
     NewFloatingGroupedAllocationPrice,
+    NewFloatingBulkWithProrationPrice,
     NewFloatingGroupedWithProratedMinimumPrice,
     NewFloatingGroupedWithMeteredMinimumPrice,
+    PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice,
     NewFloatingMatrixWithDisplayNamePrice,
-    NewFloatingBulkWithProrationPrice,
     NewFloatingGroupedTieredPackagePrice,
+    NewFloatingMaxGroupTieredPackagePrice,
     NewFloatingScalableMatrixWithUnitPricingPrice,
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
-    PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice,
     NewFloatingMinimumCompositePrice,
 ]
 
@@ -228,10 +249,7 @@ class PriceEvaluation(TypedDict, total=False):
     """
 
     price: Optional[PriceEvaluationPrice]
-    """
-    An inline price definition to evaluate, allowing you to test price
-    configurations before adding them to Orb.
-    """
+    """New floating price request body params."""
 
     price_id: Optional[str]
     """The ID of a price to evaluate that exists in your Orb account."""

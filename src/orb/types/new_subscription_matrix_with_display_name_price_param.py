@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,32 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionMatrixWithDisplayNamePriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionMatrixWithDisplayNamePriceParam",
+    "MatrixWithDisplayNameConfig",
+    "MatrixWithDisplayNameConfigUnitAmount",
+    "ConversionRateConfig",
+]
+
+
+class MatrixWithDisplayNameConfigUnitAmount(TypedDict, total=False):
+    dimension_value: Required[str]
+    """The dimension value"""
+
+    display_name: Required[str]
+    """Display name for this dimension value"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class MatrixWithDisplayNameConfig(TypedDict, total=False):
+    dimension: Required[str]
+    """Used to determine the unit rate"""
+
+    unit_amounts: Required[Iterable[MatrixWithDisplayNameConfigUnitAmount]]
+    """Apply per unit pricing to each dimension value"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -22,9 +47,11 @@ class NewSubscriptionMatrixWithDisplayNamePriceParam(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    matrix_with_display_name_config: Required[Dict[str, object]]
+    matrix_with_display_name_config: Required[MatrixWithDisplayNameConfig]
+    """Configuration for matrix_with_display_name pricing"""
 
     model_type: Required[Literal["matrix_with_display_name"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

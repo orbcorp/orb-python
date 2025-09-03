@@ -27,11 +27,13 @@ class NewFloatingTieredPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
     tiered_config: Required[TieredConfig]
+    """Configuration for tiered pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

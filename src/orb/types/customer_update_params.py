@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Optional
-from typing_extensions import Literal, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
 from .address_input_param import AddressInputParam
@@ -15,7 +15,7 @@ from .new_reporting_configuration_param import NewReportingConfigurationParam
 from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam
 from .new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
 
-__all__ = ["CustomerUpdateParams", "TaxConfiguration"]
+__all__ = ["CustomerUpdateParams", "TaxConfiguration", "TaxConfigurationNewNumeralConfiguration"]
 
 
 class CustomerUpdateParams(TypedDict, total=False):
@@ -25,6 +25,8 @@ class CustomerUpdateParams(TypedDict, total=False):
     """Additional email addresses for this customer.
 
     If populated, these email addresses will be CC'd for customer communications.
+    The total number of email addresses (including the primary email) cannot
+    exceed 50.
     """
 
     auto_collection: Optional[bool]
@@ -249,6 +251,15 @@ class CustomerUpdateParams(TypedDict, total=False):
     """
 
 
+class TaxConfigurationNewNumeralConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["numeral"]]
+
+
 TaxConfiguration: TypeAlias = Union[
-    NewAvalaraTaxConfigurationParam, NewTaxJarConfigurationParam, NewSphereConfigurationParam
+    NewAvalaraTaxConfigurationParam,
+    NewTaxJarConfigurationParam,
+    NewSphereConfigurationParam,
+    TaxConfigurationNewNumeralConfiguration,
 ]

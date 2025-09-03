@@ -17,11 +17,8 @@ class MinimumConfig(TypedDict, total=False):
     minimum_amount: Required[str]
     """The minimum amount to apply"""
 
-    prorated: Optional[bool]
-    """
-    By default, subtotals from minimum composite prices are prorated based on the
-    service period. Set to false to disable proration.
-    """
+    prorated: bool
+    """If true, subtotals from this price are prorated based on the service period"""
 
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
@@ -35,8 +32,10 @@ class NewSubscriptionMinimumCompositePriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     minimum_config: Required[MinimumConfig]
+    """Configuration for minimum pricing"""
 
     model_type: Required[Literal["minimum"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
