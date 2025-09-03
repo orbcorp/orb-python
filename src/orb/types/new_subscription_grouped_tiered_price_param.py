@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,32 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionGroupedTieredPriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionGroupedTieredPriceParam",
+    "GroupedTieredConfig",
+    "GroupedTieredConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class GroupedTieredConfigTier(TypedDict, total=False):
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class GroupedTieredConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """The billable metric property used to group before tiering"""
+
+    tiers: Required[Iterable[GroupedTieredConfigTier]]
+    """
+    Apply tiered pricing to each segment generated after grouping with the provided
+    key
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -19,12 +44,14 @@ class NewSubscriptionGroupedTieredPriceParam(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
-    grouped_tiered_config: Required[Dict[str, object]]
+    grouped_tiered_config: Required[GroupedTieredConfig]
+    """Configuration for grouped_tiered pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_tiered"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

@@ -28,11 +28,13 @@ class NewPlanTieredPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["tiered"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
     tiered_config: TieredConfig
+    """Configuration for tiered pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

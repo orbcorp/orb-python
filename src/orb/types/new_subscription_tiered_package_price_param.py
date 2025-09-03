@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,32 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionTieredPackagePriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionTieredPackagePriceParam",
+    "TieredPackageConfig",
+    "TieredPackageConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class TieredPackageConfigTier(TypedDict, total=False):
+    per_unit: Required[str]
+    """Price per package"""
+
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+
+class TieredPackageConfig(TypedDict, total=False):
+    package_size: Required[str]
+    """Package size"""
+
+    tiers: Required[Iterable[TieredPackageConfigTier]]
+    """Apply tiered pricing after rounding up the quantity to the package size.
+
+    Tiers are defined using exclusive lower bounds.
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -23,11 +48,13 @@ class NewSubscriptionTieredPackagePriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_package"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_package_config: Required[Dict[str, object]]
+    tiered_package_config: Required[TieredPackageConfig]
+    """Configuration for tiered_package pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

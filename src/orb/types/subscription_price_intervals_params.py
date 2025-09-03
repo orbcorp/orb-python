@@ -60,6 +60,7 @@ __all__ = [
     "AddFixedFeeQuantityTransition",
     "AddPrice",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
+    "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
@@ -132,6 +133,20 @@ class AddFixedFeeQuantityTransition(TypedDict, total=False):
     """The quantity of the fixed fee quantity transition."""
 
 
+class AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """The event property used to group before applying thresholds"""
+
+    maximum_charge: Required[str]
+    """The maximum amount to charge each group"""
+
+    minimum_charge: Required[str]
+    """The minimum amount to charge each group, regardless of usage"""
+
+    per_unit_rate: Required[str]
+    """The base price charged per group"""
+
+
 AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
@@ -144,12 +159,16 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+    grouped_with_min_max_thresholds_config: Required[
+        AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig
+    ]
+    """Configuration for grouped_with_min_max_thresholds pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
@@ -209,31 +228,31 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
 
 AddPrice: TypeAlias = Union[
     NewFloatingUnitPrice,
-    NewFloatingPackagePrice,
-    NewFloatingMatrixPrice,
-    NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
     NewFloatingBulkPrice,
+    NewFloatingPackagePrice,
+    NewFloatingMatrixPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
-    NewFloatingGroupedTieredPrice,
-    NewFloatingMaxGroupTieredPackagePrice,
     NewFloatingTieredWithMinimumPrice,
-    NewFloatingPackageWithAllocationPrice,
+    NewFloatingGroupedTieredPrice,
     NewFloatingTieredPackageWithMinimumPrice,
+    NewFloatingPackageWithAllocationPrice,
     NewFloatingUnitWithPercentPrice,
+    NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredWithProrationPrice,
     NewFloatingUnitWithProrationPrice,
     NewFloatingGroupedAllocationPrice,
+    NewFloatingBulkWithProrationPrice,
     NewFloatingGroupedWithProratedMinimumPrice,
     NewFloatingGroupedWithMeteredMinimumPrice,
+    AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice,
     NewFloatingMatrixWithDisplayNamePrice,
-    NewFloatingBulkWithProrationPrice,
     NewFloatingGroupedTieredPackagePrice,
+    NewFloatingMaxGroupTieredPackagePrice,
     NewFloatingScalableMatrixWithUnitPricingPrice,
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
-    AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice,
     NewFloatingMinimumCompositePrice,
 ]
 
@@ -286,7 +305,7 @@ class Add(TypedDict, total=False):
     """
 
     price: Optional[AddPrice]
-    """The definition of a new price to create and add to the subscription."""
+    """New floating price request body params."""
 
     price_id: Optional[str]
     """The id of the price to add to the subscription."""

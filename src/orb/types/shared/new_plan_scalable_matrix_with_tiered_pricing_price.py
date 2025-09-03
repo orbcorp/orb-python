@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,47 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanScalableMatrixWithTieredPricingPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanScalableMatrixWithTieredPricingPrice",
+    "ScalableMatrixWithTieredPricingConfig",
+    "ScalableMatrixWithTieredPricingConfigMatrixScalingFactor",
+    "ScalableMatrixWithTieredPricingConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class ScalableMatrixWithTieredPricingConfigMatrixScalingFactor(BaseModel):
+    first_dimension_value: str
+    """First dimension value"""
+
+    scaling_factor: str
+    """Scaling factor"""
+
+    second_dimension_value: Optional[str] = None
+    """Second dimension value (optional)"""
+
+
+class ScalableMatrixWithTieredPricingConfigTier(BaseModel):
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class ScalableMatrixWithTieredPricingConfig(BaseModel):
+    first_dimension: str
+    """Used for the scalable matrix first dimension"""
+
+    matrix_scaling_factors: List[ScalableMatrixWithTieredPricingConfigMatrixScalingFactor]
+    """Apply a scaling factor to each dimension"""
+
+    tiers: List[ScalableMatrixWithTieredPricingConfigTier]
+    """Tier pricing structure"""
+
+    second_dimension: Optional[str] = None
+    """Used for the scalable matrix second dimension (optional)"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -27,11 +67,13 @@ class NewPlanScalableMatrixWithTieredPricingPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["scalable_matrix_with_tiered_pricing"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    scalable_matrix_with_tiered_pricing_config: Dict[str, object]
+    scalable_matrix_with_tiered_pricing_config: ScalableMatrixWithTieredPricingConfig
+    """Configuration for scalable_matrix_with_tiered_pricing pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

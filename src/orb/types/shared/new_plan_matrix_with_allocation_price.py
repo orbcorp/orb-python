@@ -28,8 +28,10 @@ class NewPlanMatrixWithAllocationPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     matrix_with_allocation_config: MatrixWithAllocationConfig
+    """Configuration for matrix_with_allocation pricing"""
 
     price_model_type: Literal["matrix_with_allocation"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

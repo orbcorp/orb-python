@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,29 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingTieredWithProrationPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingTieredWithProrationPrice",
+    "TieredWithProrationConfig",
+    "TieredWithProrationConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class TieredWithProrationConfigTier(TypedDict, total=False):
+    tier_lower_bound: Required[str]
+    """Inclusive tier starting value"""
+
+    unit_amount: Required[str]
+    """Amount per unit"""
+
+
+class TieredWithProrationConfig(TypedDict, total=False):
+    tiers: Required[Iterable[TieredWithProrationConfigTier]]
+    """
+    Tiers for rating based on total usage quantities into the specified tier with
+    proration
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -26,11 +48,13 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_proration"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_with_proration_config: Required[Dict[str, object]]
+    tiered_with_proration_config: Required[TieredWithProrationConfig]
+    """Configuration for tiered_with_proration pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,26 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanBulkWithProrationPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanBulkWithProrationPrice",
+    "BulkWithProrationConfig",
+    "BulkWithProrationConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class BulkWithProrationConfigTier(BaseModel):
+    unit_amount: str
+    """Cost per unit"""
+
+    tier_lower_bound: Optional[str] = None
+    """The lower bound for this tier"""
+
+
+class BulkWithProrationConfig(BaseModel):
+    tiers: List[BulkWithProrationConfigTier]
+    """Bulk tiers for rating based on total usage volume"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -20,7 +39,8 @@ ConversionRateConfig: TypeAlias = Annotated[
 
 
 class NewPlanBulkWithProrationPrice(BaseModel):
-    bulk_with_proration_config: Dict[str, object]
+    bulk_with_proration_config: BulkWithProrationConfig
+    """Configuration for bulk_with_proration pricing"""
 
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
@@ -29,6 +49,7 @@ class NewPlanBulkWithProrationPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["bulk_with_proration"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

@@ -12,7 +12,19 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingPackageWithAllocationPrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingPackageWithAllocationPrice", "PackageWithAllocationConfig", "ConversionRateConfig"]
+
+
+class PackageWithAllocationConfig(BaseModel):
+    allocation: str
+    """Usage allocation"""
+
+    package_amount: str
+    """Price per package"""
+
+    package_size: str
+    """Package size"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -30,11 +42,13 @@ class NewFloatingPackageWithAllocationPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["package_with_allocation"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    package_with_allocation_config: Dict[str, object]
+    package_with_allocation_config: PackageWithAllocationConfig
+    """Configuration for package_with_allocation pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

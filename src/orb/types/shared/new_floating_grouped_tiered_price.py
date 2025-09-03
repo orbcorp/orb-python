@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,27 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingGroupedTieredPrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingGroupedTieredPrice", "GroupedTieredConfig", "GroupedTieredConfigTier", "ConversionRateConfig"]
+
+
+class GroupedTieredConfigTier(BaseModel):
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class GroupedTieredConfig(BaseModel):
+    grouping_key: str
+    """The billable metric property used to group before tiering"""
+
+    tiers: List[GroupedTieredConfigTier]
+    """
+    Apply tiered pricing to each segment generated after grouping with the provided
+    key
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -26,12 +46,14 @@ class NewFloatingGroupedTieredPrice(BaseModel):
     currency: str
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_tiered_config: Dict[str, object]
+    grouped_tiered_config: GroupedTieredConfig
+    """Configuration for grouped_tiered pricing"""
 
     item_id: str
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["grouped_tiered"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

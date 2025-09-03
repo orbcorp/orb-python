@@ -27,8 +27,10 @@ class NewFloatingMatrixPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     matrix_config: Required[MatrixConfig]
+    """Configuration for matrix pricing"""
 
     model_type: Required[Literal["matrix"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

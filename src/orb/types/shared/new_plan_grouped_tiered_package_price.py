@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,35 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanGroupedTieredPackagePrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanGroupedTieredPackagePrice",
+    "GroupedTieredPackageConfig",
+    "GroupedTieredPackageConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class GroupedTieredPackageConfigTier(BaseModel):
+    per_unit: str
+    """Price per package"""
+
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+
+class GroupedTieredPackageConfig(BaseModel):
+    grouping_key: str
+    """The event property used to group before tiering"""
+
+    package_size: str
+    """Package size"""
+
+    tiers: List[GroupedTieredPackageConfigTier]
+    """Apply tiered pricing after rounding up the quantity to the package size.
+
+    Tiers are defined using exclusive lower bounds.
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -23,12 +51,14 @@ class NewPlanGroupedTieredPackagePrice(BaseModel):
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
 
-    grouped_tiered_package_config: Dict[str, object]
+    grouped_tiered_package_config: GroupedTieredPackageConfig
+    """Configuration for grouped_tiered_package pricing"""
 
     item_id: str
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["grouped_tiered_package"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

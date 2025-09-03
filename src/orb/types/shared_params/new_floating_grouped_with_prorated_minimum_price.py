@@ -10,7 +10,19 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingGroupedWithProratedMinimumPrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingGroupedWithProratedMinimumPrice", "GroupedWithProratedMinimumConfig", "ConversionRateConfig"]
+
+
+class GroupedWithProratedMinimumConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """How to determine the groups that should each have a minimum"""
+
+    minimum: Required[str]
+    """The minimum amount to charge per group"""
+
+    unit_rate: Required[str]
+    """The amount to charge per unit"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -22,12 +34,14 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_with_prorated_minimum_config: Required[Dict[str, object]]
+    grouped_with_prorated_minimum_config: Required[GroupedWithProratedMinimumConfig]
+    """Configuration for grouped_with_prorated_minimum pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_prorated_minimum"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

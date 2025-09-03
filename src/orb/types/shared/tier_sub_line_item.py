@@ -4,10 +4,17 @@ from typing import Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .tier_config import TierConfig
 from .sub_line_item_grouping import SubLineItemGrouping
 
-__all__ = ["TierSubLineItem"]
+__all__ = ["TierSubLineItem", "TierConfig"]
+
+
+class TierConfig(BaseModel):
+    first_unit: float
+
+    last_unit: Optional[float] = None
+
+    unit_amount: str
 
 
 class TierSubLineItem(BaseModel):

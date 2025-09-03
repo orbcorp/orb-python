@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,38 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingTieredWithMinimumPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingTieredWithMinimumPrice",
+    "TieredWithMinimumConfig",
+    "TieredWithMinimumConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class TieredWithMinimumConfigTier(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """Minimum amount"""
+
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class TieredWithMinimumConfig(TypedDict, total=False):
+    tiers: Required[Iterable[TieredWithMinimumConfigTier]]
+    """Tiered pricing with a minimum amount dependent on the volume tier.
+
+    Tiers are defined using exclusive lower bounds.
+    """
+
+    hide_zero_amount_tiers: bool
+    """If true, tiers with an accrued amount of 0 will not be included in the rating."""
+
+    prorate: bool
+    """If true, the unit price will be prorated to the billing period"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -26,11 +57,13 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["tiered_with_minimum"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    tiered_with_minimum_config: Required[Dict[str, object]]
+    tiered_with_minimum_config: Required[TieredWithMinimumConfig]
+    """Configuration for tiered_with_minimum pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

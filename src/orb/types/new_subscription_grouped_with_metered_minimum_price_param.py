@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,56 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionGroupedWithMeteredMinimumPriceParam", "ConversionRateConfig"]
+__all__ = [
+    "NewSubscriptionGroupedWithMeteredMinimumPriceParam",
+    "GroupedWithMeteredMinimumConfig",
+    "GroupedWithMeteredMinimumConfigScalingFactor",
+    "GroupedWithMeteredMinimumConfigUnitAmount",
+    "ConversionRateConfig",
+]
+
+
+class GroupedWithMeteredMinimumConfigScalingFactor(TypedDict, total=False):
+    scaling_factor: Required[str]
+    """Scaling factor"""
+
+    scaling_value: Required[str]
+    """Scaling value"""
+
+
+class GroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
+    pricing_value: Required[str]
+    """Pricing value"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class GroupedWithMeteredMinimumConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """Used to partition the usage into groups.
+
+    The minimum amount is applied to each group.
+    """
+
+    minimum_unit_amount: Required[str]
+    """The minimum amount to charge per group per unit"""
+
+    pricing_key: Required[str]
+    """Used to determine the unit rate"""
+
+    scaling_factors: Required[Iterable[GroupedWithMeteredMinimumConfigScalingFactor]]
+    """Scale the unit rates by the scaling factor."""
+
+    scaling_key: Required[str]
+    """Used to determine the unit rate scaling factor"""
+
+    unit_amounts: Required[Iterable[GroupedWithMeteredMinimumConfigUnitAmount]]
+    """Apply per unit pricing to each pricing value.
+
+    The minimum amount is applied any unmatched usage.
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -19,12 +68,14 @@ class NewSubscriptionGroupedWithMeteredMinimumPriceParam(TypedDict, total=False)
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
-    grouped_with_metered_minimum_config: Required[Dict[str, object]]
+    grouped_with_metered_minimum_config: Required[GroupedWithMeteredMinimumConfig]
+    """Configuration for grouped_with_metered_minimum pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_with_metered_minimum"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

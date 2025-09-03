@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,56 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanGroupedWithMeteredMinimumPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanGroupedWithMeteredMinimumPrice",
+    "GroupedWithMeteredMinimumConfig",
+    "GroupedWithMeteredMinimumConfigScalingFactor",
+    "GroupedWithMeteredMinimumConfigUnitAmount",
+    "ConversionRateConfig",
+]
+
+
+class GroupedWithMeteredMinimumConfigScalingFactor(BaseModel):
+    scaling_factor: str
+    """Scaling factor"""
+
+    scaling_value: str
+    """Scaling value"""
+
+
+class GroupedWithMeteredMinimumConfigUnitAmount(BaseModel):
+    pricing_value: str
+    """Pricing value"""
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class GroupedWithMeteredMinimumConfig(BaseModel):
+    grouping_key: str
+    """Used to partition the usage into groups.
+
+    The minimum amount is applied to each group.
+    """
+
+    minimum_unit_amount: str
+    """The minimum amount to charge per group per unit"""
+
+    pricing_key: str
+    """Used to determine the unit rate"""
+
+    scaling_factors: List[GroupedWithMeteredMinimumConfigScalingFactor]
+    """Scale the unit rates by the scaling factor."""
+
+    scaling_key: str
+    """Used to determine the unit rate scaling factor"""
+
+    unit_amounts: List[GroupedWithMeteredMinimumConfigUnitAmount]
+    """Apply per unit pricing to each pricing value.
+
+    The minimum amount is applied any unmatched usage.
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -23,12 +72,14 @@ class NewPlanGroupedWithMeteredMinimumPrice(BaseModel):
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
 
-    grouped_with_metered_minimum_config: Dict[str, object]
+    grouped_with_metered_minimum_config: GroupedWithMeteredMinimumConfig
+    """Configuration for grouped_with_metered_minimum pricing"""
 
     item_id: str
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["grouped_with_metered_minimum"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,27 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingGroupedTieredPrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingGroupedTieredPrice", "GroupedTieredConfig", "GroupedTieredConfigTier", "ConversionRateConfig"]
+
+
+class GroupedTieredConfigTier(TypedDict, total=False):
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class GroupedTieredConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """The billable metric property used to group before tiering"""
+
+    tiers: Required[Iterable[GroupedTieredConfigTier]]
+    """
+    Apply tiered pricing to each segment generated after grouping with the provided
+    key
+    """
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -22,12 +42,14 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
     currency: Required[str]
     """An ISO 4217 currency string for which this price is billed in."""
 
-    grouped_tiered_config: Required[Dict[str, object]]
+    grouped_tiered_config: Required[GroupedTieredConfig]
+    """Configuration for grouped_tiered pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_tiered"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
