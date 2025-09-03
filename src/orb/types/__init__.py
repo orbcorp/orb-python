@@ -91,6 +91,7 @@ from .shared import (
     NewPlanUnitWithPercentPrice as NewPlanUnitWithPercentPrice,
     ChangedSubscriptionResources as ChangedSubscriptionResources,
     NewBillingCycleConfiguration as NewBillingCycleConfiguration,
+    NewPlanMinimumCompositePrice as NewPlanMinimumCompositePrice,
     DimensionalPriceConfiguration as DimensionalPriceConfiguration,
     FixedFeeQuantityScheduleEntry as FixedFeeQuantityScheduleEntry,
     NewFloatingGroupedTieredPrice as NewFloatingGroupedTieredPrice,
@@ -105,6 +106,7 @@ from .shared import (
     NewFloatingUnitWithPercentPrice as NewFloatingUnitWithPercentPrice,
     MonetaryAmountDiscountAdjustment as MonetaryAmountDiscountAdjustment,
     NewDimensionalPriceConfiguration as NewDimensionalPriceConfiguration,
+    NewFloatingMinimumCompositePrice as NewFloatingMinimumCompositePrice,
     NewPlanGroupedTieredPackagePrice as NewPlanGroupedTieredPackagePrice,
     NewPlanMatrixWithAllocationPrice as NewPlanMatrixWithAllocationPrice,
     NewPlanThresholdTotalAmountPrice as NewPlanThresholdTotalAmountPrice,
@@ -261,6 +263,9 @@ from .new_subscription_tiered_package_price_param import (
 )
 from .subscription_update_fixed_fee_quantity_params import (
     SubscriptionUpdateFixedFeeQuantityParams as SubscriptionUpdateFixedFeeQuantityParams,
+)
+from .new_subscription_minimum_composite_price_param import (
+    NewSubscriptionMinimumCompositePriceParam as NewSubscriptionMinimumCompositePriceParam,
 )
 from .new_subscription_unit_with_percent_price_param import (
     NewSubscriptionUnitWithPercentPriceParam as NewSubscriptionUnitWithPercentPriceParam,

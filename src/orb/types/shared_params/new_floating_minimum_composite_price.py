@@ -10,21 +10,36 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanGroupedWithMeteredMinimumPrice", "UnnamedTypeWithobjectParent138"]
-
-UnnamedTypeWithobjectParent138: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+__all__ = ["NewFloatingMinimumCompositePrice", "MinimumConfig", "UnnamedTypeWithobjectParent118"]
 
 
-class NewPlanGroupedWithMeteredMinimumPrice(TypedDict, total=False):
+class MinimumConfig(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool]
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
+UnnamedTypeWithobjectParent118: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
+
+
+class NewFloatingMinimumCompositePrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
-    grouped_with_metered_minimum_config: Required[Dict[str, object]]
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    model_type: Required[Literal["grouped_with_metered_minimum"]]
+    minimum_config: Required[MinimumConfig]
+
+    model_type: Required[Literal["minimum"]]
 
     name: Required[str]
     """The name of the price."""
@@ -50,14 +65,8 @@ class NewPlanGroupedWithMeteredMinimumPrice(TypedDict, total=False):
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[UnnamedTypeWithobjectParent138]
+    conversion_rate_config: Optional[UnnamedTypeWithobjectParent118]
     """The configuration for the rate of the price currency to the invoicing currency."""
-
-    currency: Optional[str]
-    """
-    An ISO 4217 currency string, or custom pricing unit identifier, in which this
-    price is billed.
-    """
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
     """For dimensional price: specifies a price group and dimension values"""
@@ -85,10 +94,4 @@ class NewPlanGroupedWithMeteredMinimumPrice(TypedDict, total=False):
 
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-    reference_id: Optional[str]
-    """
-    A transient ID that can be used to reference this price when adding adjustments
-    in the same API call.
     """
