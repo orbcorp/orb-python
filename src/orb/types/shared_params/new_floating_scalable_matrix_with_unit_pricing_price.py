@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,41 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingScalableMatrixWithUnitPricingPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingScalableMatrixWithUnitPricingPrice",
+    "ScalableMatrixWithUnitPricingConfig",
+    "ScalableMatrixWithUnitPricingConfigMatrixScalingFactor",
+    "ConversionRateConfig",
+]
+
+
+class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(TypedDict, total=False):
+    first_dimension_value: Required[str]
+    """First dimension value"""
+
+    scaling_factor: Required[str]
+    """Scaling factor"""
+
+    second_dimension_value: Optional[str]
+    """Second dimension value (optional)"""
+
+
+class ScalableMatrixWithUnitPricingConfig(TypedDict, total=False):
+    first_dimension: Required[str]
+    """Used to determine the unit rate"""
+
+    matrix_scaling_factors: Required[Iterable[ScalableMatrixWithUnitPricingConfigMatrixScalingFactor]]
+    """Apply a scaling factor to each dimension"""
+
+    unit_price: Required[str]
+    """The final unit price to rate against the output of the matrix"""
+
+    prorate: Optional[bool]
+    """If true, the unit price will be prorated to the billing period"""
+
+    second_dimension: Optional[str]
+    """Used to determine the unit rate (optional)"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -26,11 +60,13 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["scalable_matrix_with_unit_pricing"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    scalable_matrix_with_unit_pricing_config: Required[Dict[str, object]]
+    scalable_matrix_with_unit_pricing_config: Required[ScalableMatrixWithUnitPricingConfig]
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

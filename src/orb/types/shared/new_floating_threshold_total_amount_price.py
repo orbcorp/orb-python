@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,32 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingThresholdTotalAmountPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingThresholdTotalAmountPrice",
+    "ThresholdTotalAmountConfig",
+    "ThresholdTotalAmountConfigConsumptionTable",
+    "ConversionRateConfig",
+]
+
+
+class ThresholdTotalAmountConfigConsumptionTable(BaseModel):
+    threshold: str
+    """Quantity threshold"""
+
+    total_amount: str
+    """Total amount for this threshold"""
+
+
+class ThresholdTotalAmountConfig(BaseModel):
+    consumption_table: List[ThresholdTotalAmountConfigConsumptionTable]
+    """
+    When the quantity consumed passes a provided threshold, the configured total
+    will be charged
+    """
+
+    prorate: Optional[bool] = None
+    """If true, the unit price will be prorated to the billing period"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -30,11 +55,13 @@ class NewFloatingThresholdTotalAmountPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["threshold_total_amount"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    threshold_total_amount_config: Dict[str, object]
+    threshold_total_amount_config: ThresholdTotalAmountConfig
+    """Configuration for threshold_total_amount pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

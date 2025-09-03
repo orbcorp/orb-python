@@ -15,7 +15,7 @@ from .new_reporting_configuration_param import NewReportingConfigurationParam
 from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam
 from .new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
 
-__all__ = ["CustomerCreateParams", "TaxConfiguration"]
+__all__ = ["CustomerCreateParams", "TaxConfiguration", "TaxConfigurationNewNumeralConfiguration"]
 
 
 class CustomerCreateParams(TypedDict, total=False):
@@ -35,6 +35,8 @@ class CustomerCreateParams(TypedDict, total=False):
     """Additional email addresses for this customer.
 
     If populated, these email addresses will be CC'd for customer communications.
+    The total number of email addresses (including the primary email) cannot
+    exceed 50.
     """
 
     auto_collection: Optional[bool]
@@ -254,6 +256,15 @@ class CustomerCreateParams(TypedDict, total=False):
     """
 
 
+class TaxConfigurationNewNumeralConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["numeral"]]
+
+
 TaxConfiguration: TypeAlias = Union[
-    NewAvalaraTaxConfigurationParam, NewTaxJarConfigurationParam, NewSphereConfigurationParam
+    NewAvalaraTaxConfigurationParam,
+    NewTaxJarConfigurationParam,
+    NewSphereConfigurationParam,
+    TaxConfigurationNewNumeralConfiguration,
 ]

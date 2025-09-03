@@ -20,10 +20,7 @@ class MinimumConfig(BaseModel):
     """The minimum amount to apply"""
 
     prorated: Optional[bool] = None
-    """
-    By default, subtotals from minimum composite prices are prorated based on the
-    service period. Set to false to disable proration.
-    """
+    """If true, subtotals from this price are prorated based on the service period"""
 
 
 ConversionRateConfig: TypeAlias = Annotated[
@@ -39,8 +36,10 @@ class NewPlanMinimumCompositePrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     minimum_config: MinimumConfig
+    """Configuration for minimum pricing"""
 
     price_model_type: Literal["minimum"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

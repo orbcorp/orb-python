@@ -10,7 +10,19 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanGroupedAllocationPrice", "ConversionRateConfig"]
+__all__ = ["NewPlanGroupedAllocationPrice", "GroupedAllocationConfig", "ConversionRateConfig"]
+
+
+class GroupedAllocationConfig(TypedDict, total=False):
+    allocation: Required[str]
+    """Usage allocation per group"""
+
+    grouping_key: Required[str]
+    """How to determine the groups that should each be allocated some quantity"""
+
+    overage_unit_rate: Required[str]
+    """Unit rate for post-allocation"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -19,12 +31,14 @@ class NewPlanGroupedAllocationPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
-    grouped_allocation_config: Required[Dict[str, object]]
+    grouped_allocation_config: Required[GroupedAllocationConfig]
+    """Configuration for grouped_allocation pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["grouped_allocation"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

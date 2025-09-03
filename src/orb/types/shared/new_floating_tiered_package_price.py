@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,27 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingTieredPackagePrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingTieredPackagePrice", "TieredPackageConfig", "TieredPackageConfigTier", "ConversionRateConfig"]
+
+
+class TieredPackageConfigTier(BaseModel):
+    per_unit: str
+    """Price per package"""
+
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+
+class TieredPackageConfig(BaseModel):
+    package_size: str
+    """Package size"""
+
+    tiers: List[TieredPackageConfigTier]
+    """Apply tiered pricing after rounding up the quantity to the package size.
+
+    Tiers are defined using exclusive lower bounds.
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -30,11 +50,13 @@ class NewFloatingTieredPackagePrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["tiered_package"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    tiered_package_config: Dict[str, object]
+    tiered_package_config: TieredPackageConfig
+    """Configuration for tiered_package pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,34 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingMaxGroupTieredPackagePrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingMaxGroupTieredPackagePrice",
+    "MaxGroupTieredPackageConfig",
+    "MaxGroupTieredPackageConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class MaxGroupTieredPackageConfigTier(BaseModel):
+    tier_lower_bound: str
+    """Tier lower bound"""
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class MaxGroupTieredPackageConfig(BaseModel):
+    grouping_key: str
+    """
+    The event property used to group before tiering the group with the highest value
+    """
+
+    package_size: str
+    """Package size"""
+
+    tiers: List[MaxGroupTieredPackageConfigTier]
+    """Apply tiered pricing to the largest group after grouping with the provided key."""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -29,9 +56,11 @@ class NewFloatingMaxGroupTieredPackagePrice(BaseModel):
     item_id: str
     """The id of the item the price will be associated with."""
 
-    max_group_tiered_package_config: Dict[str, object]
+    max_group_tiered_package_config: MaxGroupTieredPackageConfig
+    """Configuration for max_group_tiered_package pricing"""
 
     price_model_type: Literal["max_group_tiered_package"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""

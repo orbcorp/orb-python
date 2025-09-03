@@ -15,7 +15,6 @@ from .bulk_config import BulkConfig as BulkConfig
 from .credit_note import CreditNote as CreditNote
 from .new_maximum import NewMaximum as NewMaximum
 from .new_minimum import NewMinimum as NewMinimum
-from .tier_config import TierConfig as TierConfig
 from .unit_config import UnitConfig as UnitConfig
 from .invoice_tiny import InvoiceTiny as InvoiceTiny
 from .matrix_value import MatrixValue as MatrixValue
@@ -93,7 +92,6 @@ from .new_plan_grouped_allocation_price import NewPlanGroupedAllocationPrice as 
 from .billing_cycle_anchor_configuration import BillingCycleAnchorConfiguration as BillingCycleAnchorConfiguration
 from .monetary_usage_discount_adjustment import MonetaryUsageDiscountAdjustment as MonetaryUsageDiscountAdjustment
 from .new_plan_bulk_with_proration_price import NewPlanBulkWithProrationPrice as NewPlanBulkWithProrationPrice
-from .new_plan_tier_with_proration_price import NewPlanTierWithProrationPrice as NewPlanTierWithProrationPrice
 from .new_plan_tiered_with_minimum_price import NewPlanTieredWithMinimumPrice as NewPlanTieredWithMinimumPrice
 from .new_plan_unit_with_proration_price import NewPlanUnitWithProrationPrice as NewPlanUnitWithProrationPrice
 from .monetary_amount_discount_adjustment import MonetaryAmountDiscountAdjustment as MonetaryAmountDiscountAdjustment

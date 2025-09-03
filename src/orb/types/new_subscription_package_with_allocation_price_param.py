@@ -10,7 +10,19 @@ from .shared_params.tiered_conversion_rate_config import TieredConversionRateCon
 from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewSubscriptionPackageWithAllocationPriceParam", "ConversionRateConfig"]
+__all__ = ["NewSubscriptionPackageWithAllocationPriceParam", "PackageWithAllocationConfig", "ConversionRateConfig"]
+
+
+class PackageWithAllocationConfig(TypedDict, total=False):
+    allocation: Required[str]
+    """Usage allocation"""
+
+    package_amount: Required[str]
+    """Price per package"""
+
+    package_size: Required[str]
+    """Package size"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -23,11 +35,13 @@ class NewSubscriptionPackageWithAllocationPriceParam(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["package_with_allocation"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    package_with_allocation_config: Required[Dict[str, object]]
+    package_with_allocation_config: Required[PackageWithAllocationConfig]
+    """Configuration for package_with_allocation pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

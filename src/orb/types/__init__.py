@@ -22,7 +22,6 @@ from .shared import (
     CreditNote as CreditNote,
     NewMaximum as NewMaximum,
     NewMinimum as NewMinimum,
-    TierConfig as TierConfig,
     UnitConfig as UnitConfig,
     InvoiceTiny as InvoiceTiny,
     MatrixValue as MatrixValue,
@@ -99,7 +98,6 @@ from .shared import (
     NewPlanBulkWithProrationPrice as NewPlanBulkWithProrationPrice,
     NewPlanGroupedAllocationPrice as NewPlanGroupedAllocationPrice,
     NewPlanTieredWithMinimumPrice as NewPlanTieredWithMinimumPrice,
-    NewPlanTierWithProrationPrice as NewPlanTierWithProrationPrice,
     NewPlanUnitWithProrationPrice as NewPlanUnitWithProrationPrice,
     BillingCycleAnchorConfiguration as BillingCycleAnchorConfiguration,
     MonetaryUsageDiscountAdjustment as MonetaryUsageDiscountAdjustment,
@@ -275,9 +273,6 @@ from .new_subscription_grouped_allocation_price_param import (
 )
 from .new_subscription_bulk_with_proration_price_param import (
     NewSubscriptionBulkWithProrationPriceParam as NewSubscriptionBulkWithProrationPriceParam,
-)
-from .new_subscription_tier_with_proration_price_param import (
-    NewSubscriptionTierWithProrationPriceParam as NewSubscriptionTierWithProrationPriceParam,
 )
 from .new_subscription_tiered_with_minimum_price_param import (
     NewSubscriptionTieredWithMinimumPriceParam as NewSubscriptionTieredWithMinimumPriceParam,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,34 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingMaxGroupTieredPackagePrice", "ConversionRateConfig"]
+__all__ = [
+    "NewFloatingMaxGroupTieredPackagePrice",
+    "MaxGroupTieredPackageConfig",
+    "MaxGroupTieredPackageConfigTier",
+    "ConversionRateConfig",
+]
+
+
+class MaxGroupTieredPackageConfigTier(TypedDict, total=False):
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class MaxGroupTieredPackageConfig(TypedDict, total=False):
+    grouping_key: Required[str]
+    """
+    The event property used to group before tiering the group with the highest value
+    """
+
+    package_size: Required[str]
+    """Package size"""
+
+    tiers: Required[Iterable[MaxGroupTieredPackageConfigTier]]
+    """Apply tiered pricing to the largest group after grouping with the provided key."""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -25,9 +52,11 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    max_group_tiered_package_config: Required[Dict[str, object]]
+    max_group_tiered_package_config: Required[MaxGroupTieredPackageConfig]
+    """Configuration for max_group_tiered_package pricing"""
 
     model_type: Required[Literal["max_group_tiered_package"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

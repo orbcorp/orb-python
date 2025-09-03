@@ -15,4 +15,7 @@ class Tier(BaseModel):
     """Amount per unit"""
 
     last_unit: Optional[float] = None
-    """Inclusive tier ending value. If null, this is treated as the last tier"""
+    """Inclusive tier ending value.
+
+    This value is null if and only if this is the last tier.
+    """

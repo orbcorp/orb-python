@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .unit_conversion_rate_config import UnitConversionRateConfig
@@ -10,7 +10,32 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanCumulativeGroupedBulkPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanCumulativeGroupedBulkPrice",
+    "CumulativeGroupedBulkConfig",
+    "CumulativeGroupedBulkConfigDimensionValue",
+    "ConversionRateConfig",
+]
+
+
+class CumulativeGroupedBulkConfigDimensionValue(TypedDict, total=False):
+    grouping_key: Required[str]
+    """Grouping key value"""
+
+    tier_lower_bound: Required[str]
+    """Tier lower bound"""
+
+    unit_amount: Required[str]
+    """Unit amount for this combination"""
+
+
+class CumulativeGroupedBulkConfig(TypedDict, total=False):
+    dimension_values: Required[Iterable[CumulativeGroupedBulkConfigDimensionValue]]
+    """Each tier lower bound must have the same group of values."""
+
+    group: Required[str]
+    """Grouping key name"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -19,12 +44,14 @@ class NewPlanCumulativeGroupedBulkPrice(TypedDict, total=False):
     cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
     """The cadence to bill for this price on."""
 
-    cumulative_grouped_bulk_config: Required[Dict[str, object]]
+    cumulative_grouped_bulk_config: Required[CumulativeGroupedBulkConfig]
+    """Configuration for cumulative_grouped_bulk pricing"""
 
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["cumulative_grouped_bulk"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""

@@ -19,4 +19,4 @@ class MatrixConfig(TypedDict, total=False):
     """One or two event property values to evaluate matrix groups by"""
 
     matrix_values: Required[Iterable[MatrixValue]]
-    """Matrix values for specified matrix grouping keys"""
+    """Matrix values configuration"""

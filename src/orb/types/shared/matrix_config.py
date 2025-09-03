@@ -16,4 +16,4 @@ class MatrixConfig(BaseModel):
     """One or two event property values to evaluate matrix groups by"""
 
     matrix_values: List[MatrixValue]
-    """Matrix values for specified matrix grouping keys"""
+    """Matrix values configuration"""

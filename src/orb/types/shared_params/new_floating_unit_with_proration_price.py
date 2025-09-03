@@ -10,7 +10,13 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewFloatingUnitWithProrationPrice", "ConversionRateConfig"]
+__all__ = ["NewFloatingUnitWithProrationPrice", "UnitWithProrationConfig", "ConversionRateConfig"]
+
+
+class UnitWithProrationConfig(TypedDict, total=False):
+    unit_amount: Required[str]
+    """Rate per unit of usage"""
+
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
@@ -26,11 +32,13 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit_with_proration"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
-    unit_with_proration_config: Required[Dict[str, object]]
+    unit_with_proration_config: Required[UnitWithProrationConfig]
+    """Configuration for unit_with_proration pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.

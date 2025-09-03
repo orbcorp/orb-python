@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -12,7 +12,41 @@ from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanScalableMatrixWithUnitPricingPrice", "ConversionRateConfig"]
+__all__ = [
+    "NewPlanScalableMatrixWithUnitPricingPrice",
+    "ScalableMatrixWithUnitPricingConfig",
+    "ScalableMatrixWithUnitPricingConfigMatrixScalingFactor",
+    "ConversionRateConfig",
+]
+
+
+class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(BaseModel):
+    first_dimension_value: str
+    """First dimension value"""
+
+    scaling_factor: str
+    """Scaling factor"""
+
+    second_dimension_value: Optional[str] = None
+    """Second dimension value (optional)"""
+
+
+class ScalableMatrixWithUnitPricingConfig(BaseModel):
+    first_dimension: str
+    """Used to determine the unit rate"""
+
+    matrix_scaling_factors: List[ScalableMatrixWithUnitPricingConfigMatrixScalingFactor]
+    """Apply a scaling factor to each dimension"""
+
+    unit_price: str
+    """The final unit price to rate against the output of the matrix"""
+
+    prorate: Optional[bool] = None
+    """If true, the unit price will be prorated to the billing period"""
+
+    second_dimension: Optional[str] = None
+    """Used to determine the unit rate (optional)"""
+
 
 ConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
@@ -27,11 +61,13 @@ class NewPlanScalableMatrixWithUnitPricingPrice(BaseModel):
     """The id of the item the price will be associated with."""
 
     price_model_type: Literal["scalable_matrix_with_unit_pricing"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
 
     name: str
     """The name of the price."""
 
-    scalable_matrix_with_unit_pricing_config: Dict[str, object]
+    scalable_matrix_with_unit_pricing_config: ScalableMatrixWithUnitPricingConfig
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
 
     billable_metric_id: Optional[str] = None
     """The id of the billable metric for the price.

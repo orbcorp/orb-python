@@ -99,3 +99,4 @@ class LineItem(TypedDict, total=False):
     """A date string to specify the line item's start date in the customer's timezone."""
 
     unit_config: Required[UnitConfig]
+    """Configuration for unit pricing"""

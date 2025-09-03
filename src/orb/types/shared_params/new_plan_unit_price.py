@@ -24,11 +24,13 @@ class NewPlanUnitPrice(TypedDict, total=False):
     """The id of the item the price will be associated with."""
 
     model_type: Required[Literal["unit"]]
+    """The pricing model type"""
 
     name: Required[str]
     """The name of the price."""
 
     unit_config: Required[UnitConfig]
+    """Configuration for unit pricing"""
 
     billable_metric_id: Optional[str]
     """The id of the billable metric for the price.
