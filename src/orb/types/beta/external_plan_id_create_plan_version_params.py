@@ -51,7 +51,7 @@ __all__ = [
     "AddPrice",
     "AddPricePrice",
     "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice",
-    "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160",
+    "AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "RemoveAdjustment",
     "RemovePrice",
     "ReplaceAdjustment",
@@ -59,7 +59,7 @@ __all__ = [
     "ReplacePrice",
     "ReplacePricePrice",
     "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice",
-    "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161",
+    "ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig",
 ]
 
 
@@ -102,7 +102,7 @@ class AddAdjustment(TypedDict, total=False):
     """The phase to add this adjustment to."""
 
 
-AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160: TypeAlias = Union[
+AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -142,7 +142,7 @@ class AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=Fals
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent160]
+    conversion_rate_config: Optional[AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -260,7 +260,7 @@ class ReplaceAdjustment(TypedDict, total=False):
     """The phase to replace this adjustment from."""
 
 
-ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161: TypeAlias = Union[
+ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
@@ -300,9 +300,7 @@ class ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=
     conversion_rate: Optional[float]
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
-    conversion_rate_config: Optional[
-        ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceUnnamedTypeWithobjectParent161
-    ]
+    conversion_rate_config: Optional[ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]

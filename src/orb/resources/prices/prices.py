@@ -86,7 +86,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -178,7 +178,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent1]
+        conversion_rate_config: Optional[price_create_params.NewFloatingPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -270,7 +270,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent2]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -362,7 +362,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixWithAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -454,7 +454,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -546,7 +546,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5]
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -638,7 +638,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6]
+        conversion_rate_config: Optional[price_create_params.NewFloatingThresholdTotalAmountPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -730,7 +730,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -822,7 +822,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedTieredPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -914,7 +914,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMaxGroupTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1006,9 +1006,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredWithMinimumPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1100,9 +1098,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingPackageWithAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1195,7 +1191,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -1288,9 +1284,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithPercentPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1382,9 +1376,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1476,9 +1468,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1570,9 +1560,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1665,7 +1653,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -1759,7 +1747,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -1852,9 +1840,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixWithDisplayNamePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -1946,9 +1932,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2040,9 +2024,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2135,7 +2117,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -2229,7 +2211,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -2322,9 +2304,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingCumulativeGroupedBulkPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2417,7 +2397,7 @@ class Prices(SyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25
+            price_create_params.NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -2510,9 +2490,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMinimumCompositePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -2658,7 +2636,7 @@ class Prices(SyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3209,7 +3187,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3301,7 +3279,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent1]
+        conversion_rate_config: Optional[price_create_params.NewFloatingPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3393,7 +3371,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent2]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3485,7 +3463,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent3]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixWithAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3577,7 +3555,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent4]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3669,7 +3647,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent5]
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3761,7 +3739,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent6]
+        conversion_rate_config: Optional[price_create_params.NewFloatingThresholdTotalAmountPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3853,7 +3831,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent7]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -3945,7 +3923,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent8]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedTieredPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4037,7 +4015,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent9]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMaxGroupTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4129,9 +4107,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent10
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredWithMinimumPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4223,9 +4199,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent11
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingPackageWithAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4318,7 +4292,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent12
+            price_create_params.NewFloatingTieredPackageWithMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -4411,9 +4385,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent13
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithPercentPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4505,9 +4477,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent14
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingTieredWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4599,9 +4569,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent15
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4693,9 +4661,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent16
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedAllocationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -4788,7 +4754,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent17
+            price_create_params.NewFloatingGroupedWithProratedMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -4882,7 +4848,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent18
+            price_create_params.NewFloatingGroupedWithMeteredMinimumPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -4975,9 +4941,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent19
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMatrixWithDisplayNamePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5069,9 +5033,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent20
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkWithProrationPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5163,9 +5125,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent21
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingGroupedTieredPackagePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5258,7 +5218,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent22
+            price_create_params.NewFloatingScalableMatrixWithUnitPricingPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -5352,7 +5312,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent23
+            price_create_params.NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -5445,9 +5405,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent24
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingCumulativeGroupedBulkPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5540,7 +5498,7 @@ class AsyncPrices(AsyncAPIResource):
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
         conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent25
+            price_create_params.NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig
         ]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
@@ -5633,9 +5591,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[
-            price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent26
-        ]
+        conversion_rate_config: Optional[price_create_params.NewFloatingMinimumCompositePriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -5781,7 +5737,7 @@ class AsyncPrices(AsyncAPIResource):
         billed_in_advance: Optional[bool] | NotGiven = NOT_GIVEN,
         billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | NotGiven = NOT_GIVEN,
         conversion_rate: Optional[float] | NotGiven = NOT_GIVEN,
-        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceUnnamedTypeWithNoPropertyInfoOrParent0]
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | NotGiven = NOT_GIVEN,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | NotGiven = NOT_GIVEN,
         external_price_id: Optional[str] | NotGiven = NOT_GIVEN,
