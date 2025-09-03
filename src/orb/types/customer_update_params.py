@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .address_input_param import AddressInputParam
 from .shared_params.customer_tax_id import CustomerTaxID
 from .new_sphere_configuration_param import NewSphereConfigurationParam
@@ -20,7 +21,7 @@ __all__ = ["CustomerUpdateParams", "TaxConfiguration"]
 class CustomerUpdateParams(TypedDict, total=False):
     accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam]
 
-    additional_emails: Optional[List[str]]
+    additional_emails: Optional[SequenceNotStr[str]]
     """Additional email addresses for this customer.
 
     If populated, these email addresses will be CC'd for customer communications.
@@ -31,6 +32,14 @@ class CustomerUpdateParams(TypedDict, total=False):
     Used to determine if invoices for this customer will automatically attempt to
     charge a saved payment method, if available. This parameter defaults to `True`
     when a payment provider is provided on customer creation.
+    """
+
+    auto_issuance: Optional[bool]
+    """Used to determine if invoices for this customer will be automatically issued.
+
+    If true, invoices will be automatically issued. If false, invoices will require
+    manual approval.If `null` is specified, the customer's auto issuance setting
+    will be inherited from the account-level setting.
     """
 
     billing_address: Optional[AddressInputParam]

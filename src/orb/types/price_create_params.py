@@ -5,14 +5,11 @@ from __future__ import annotations
 from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-from .shared_params.bps_config import BPSConfig
 from .shared_params.bulk_config import BulkConfig
 from .shared_params.unit_config import UnitConfig
 from .shared_params.matrix_config import MatrixConfig
 from .shared_params.tiered_config import TieredConfig
 from .shared_params.package_config import PackageConfig
-from .shared_params.bulk_bps_config import BulkBPSConfig
-from .shared_params.tiered_bps_config import TieredBPSConfig
 from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
 from .shared_params.matrix_with_allocation_config import MatrixWithAllocationConfig
 from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
@@ -31,12 +28,6 @@ __all__ = [
     "NewFloatingMatrixWithAllocationPriceConversionRateConfig",
     "NewFloatingTieredPrice",
     "NewFloatingTieredPriceConversionRateConfig",
-    "NewFloatingTieredBPSPrice",
-    "NewFloatingTieredBPSPriceConversionRateConfig",
-    "NewFloatingBPSPrice",
-    "NewFloatingBPSPriceConversionRateConfig",
-    "NewFloatingBulkBPSPrice",
-    "NewFloatingBulkBPSPriceConversionRateConfig",
     "NewFloatingBulkPrice",
     "NewFloatingBulkPriceConversionRateConfig",
     "NewFloatingThresholdTotalAmountPrice",
@@ -77,6 +68,11 @@ __all__ = [
     "NewFloatingScalableMatrixWithTieredPricingPriceConversionRateConfig",
     "NewFloatingCumulativeGroupedBulkPrice",
     "NewFloatingCumulativeGroupedBulkPriceConversionRateConfig",
+    "NewFloatingGroupedWithMinMaxThresholdsPrice",
+    "NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
+    "NewFloatingMinimumCompositePrice",
+    "NewFloatingMinimumCompositePriceMinimumConfig",
+    "NewFloatingMinimumCompositePriceConversionRateConfig",
 ]
 
 
@@ -445,225 +441,6 @@ class NewFloatingTieredPrice(TypedDict, total=False):
 
 
 NewFloatingTieredPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
-
-
-class NewFloatingTieredBPSPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    currency: Required[str]
-    """An ISO 4217 currency string for which this price is billed in."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    model_type: Required[Literal["tiered_bps"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    tiered_bps_config: Required[TieredBPSConfig]
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[NewFloatingTieredBPSPriceConversionRateConfig]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-
-NewFloatingTieredBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
-
-
-class NewFloatingBPSPrice(TypedDict, total=False):
-    bps_config: Required[BPSConfig]
-
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    currency: Required[str]
-    """An ISO 4217 currency string for which this price is billed in."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    model_type: Required[Literal["bps"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[NewFloatingBPSPriceConversionRateConfig]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-
-NewFloatingBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
-
-
-class NewFloatingBulkBPSPrice(TypedDict, total=False):
-    bulk_bps_config: Required[BulkBPSConfig]
-
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
-    """The cadence to bill for this price on."""
-
-    currency: Required[str]
-    """An ISO 4217 currency string for which this price is billed in."""
-
-    item_id: Required[str]
-    """The id of the item the price will be associated with."""
-
-    model_type: Required[Literal["bulk_bps"]]
-
-    name: Required[str]
-    """The name of the price."""
-
-    billable_metric_id: Optional[str]
-    """The id of the billable metric for the price.
-
-    Only needed if the price is usage-based.
-    """
-
-    billed_in_advance: Optional[bool]
-    """
-    If the Price represents a fixed cost, the price will be billed in-advance if
-    this is true, and in-arrears if this is false.
-    """
-
-    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """
-    For custom cadence: specifies the duration of the billing period in days or
-    months.
-    """
-
-    conversion_rate: Optional[float]
-    """The per unit conversion rate of the price currency to the invoicing currency."""
-
-    conversion_rate_config: Optional[NewFloatingBulkBPSPriceConversionRateConfig]
-    """The configuration for the rate of the price currency to the invoicing currency."""
-
-    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
-    """For dimensional price: specifies a price group and dimension values"""
-
-    external_price_id: Optional[str]
-    """An alias for the price."""
-
-    fixed_price_quantity: Optional[float]
-    """
-    If the Price represents a fixed cost, this represents the quantity of units
-    applied.
-    """
-
-    invoice_grouping_key: Optional[str]
-    """The property used to group this price on an invoice"""
-
-    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
-    """Within each billing cycle, specifies the cadence at which invoices are produced.
-
-    If unspecified, a single invoice is produced per billing cycle.
-    """
-
-    metadata: Optional[Dict[str, Optional[str]]]
-    """User-specified key/value pairs for the resource.
-
-    Individual keys can be removed by setting the value to `null`, and the entire
-    metadata mapping can be cleared by setting `metadata` to `null`.
-    """
-
-
-NewFloatingBulkBPSPriceConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]
 
 
 class NewFloatingBulkPrice(TypedDict, total=False):
@@ -2163,15 +1940,173 @@ NewFloatingCumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Union[
     UnitConversionRateConfig, TieredConversionRateConfig
 ]
 
+
+class NewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
+NewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class NewFloatingMinimumCompositePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    minimum_config: Required[NewFloatingMinimumCompositePriceMinimumConfig]
+
+    model_type: Required[Literal["minimum"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[NewFloatingMinimumCompositePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
+class NewFloatingMinimumCompositePriceMinimumConfig(TypedDict, total=False):
+    minimum_amount: Required[str]
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool]
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
+
+NewFloatingMinimumCompositePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
 PriceCreateParams: TypeAlias = Union[
     NewFloatingUnitPrice,
     NewFloatingPackagePrice,
     NewFloatingMatrixPrice,
     NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
-    NewFloatingTieredBPSPrice,
-    NewFloatingBPSPrice,
-    NewFloatingBulkBPSPrice,
     NewFloatingBulkPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
@@ -2192,4 +2127,6 @@ PriceCreateParams: TypeAlias = Union[
     NewFloatingScalableMatrixWithUnitPricingPrice,
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
+    NewFloatingGroupedWithMinMaxThresholdsPrice,
+    NewFloatingMinimumCompositePrice,
 ]

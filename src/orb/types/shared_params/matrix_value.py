@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["MatrixValue"]
 
 
 class MatrixValue(TypedDict, total=False):
-    dimension_values: Required[List[Optional[str]]]
+    dimension_values: Required[SequenceNotStr[Optional[str]]]
     """One or two matrix keys to filter usage to this Matrix value by.
 
     For example, ["region", "tier"] could be used to filter cloud usage by a cloud

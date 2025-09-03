@@ -1,27 +1,21 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from .tier import Tier as Tier
-from .bps_tier import BPSTier as BPSTier
 from .discount import Discount as Discount
 from .bulk_tier import BulkTier as BulkTier
-from .bps_config import BPSConfig as BPSConfig
 from .bulk_config import BulkConfig as BulkConfig
 from .new_maximum import NewMaximum as NewMaximum
 from .new_minimum import NewMinimum as NewMinimum
 from .unit_config import UnitConfig as UnitConfig
 from .matrix_value import MatrixValue as MatrixValue
-from .bulk_bps_tier import BulkBPSTier as BulkBPSTier
 from .matrix_config import MatrixConfig as MatrixConfig
 from .tiered_config import TieredConfig as TieredConfig
 from .package_config import PackageConfig as PackageConfig
 from .trial_discount import TrialDiscount as TrialDiscount
 from .usage_discount import UsageDiscount as UsageDiscount
 from .amount_discount import AmountDiscount as AmountDiscount
-from .bulk_bps_config import BulkBPSConfig as BulkBPSConfig
 from .customer_tax_id import CustomerTaxID as CustomerTaxID
 from .custom_expiration import CustomExpiration as CustomExpiration
-from .tiered_bps_config import TieredBPSConfig as TieredBPSConfig
-from .new_plan_bps_price import NewPlanBPSPrice as NewPlanBPSPrice
 from .new_usage_discount import NewUsageDiscount as NewUsageDiscount
 from .new_amount_discount import NewAmountDiscount as NewAmountDiscount
 from .new_plan_bulk_price import NewPlanBulkPrice as NewPlanBulkPrice
@@ -31,28 +25,24 @@ from .conversion_rate_tier import ConversionRateTier as ConversionRateTier
 from .new_allocation_price import NewAllocationPrice as NewAllocationPrice
 from .new_plan_matrix_price import NewPlanMatrixPrice as NewPlanMatrixPrice
 from .new_plan_tiered_price import NewPlanTieredPrice as NewPlanTieredPrice
-from .new_floating_bps_price import NewFloatingBPSPrice as NewFloatingBPSPrice
 from .new_plan_package_price import NewPlanPackagePrice as NewPlanPackagePrice
 from .transform_price_filter import TransformPriceFilter as TransformPriceFilter
 from .new_floating_bulk_price import NewFloatingBulkPrice as NewFloatingBulkPrice
 from .new_floating_unit_price import NewFloatingUnitPrice as NewFloatingUnitPrice
 from .new_percentage_discount import NewPercentageDiscount as NewPercentageDiscount
-from .new_plan_bulk_bps_price import NewPlanBulkBPSPrice as NewPlanBulkBPSPrice
 from .new_floating_matrix_price import NewFloatingMatrixPrice as NewFloatingMatrixPrice
 from .new_floating_tiered_price import NewFloatingTieredPrice as NewFloatingTieredPrice
-from .new_plan_tiered_bps_price import NewPlanTieredBPSPrice as NewPlanTieredBPSPrice
 from .new_floating_package_price import NewFloatingPackagePrice as NewFloatingPackagePrice
 from .billing_cycle_relative_date import BillingCycleRelativeDate as BillingCycleRelativeDate
 from .conversion_rate_unit_config import ConversionRateUnitConfig as ConversionRateUnitConfig
-from .new_floating_bulk_bps_price import NewFloatingBulkBPSPrice as NewFloatingBulkBPSPrice
 from .unit_conversion_rate_config import UnitConversionRateConfig as UnitConversionRateConfig
 from .conversion_rate_tiered_config import ConversionRateTieredConfig as ConversionRateTieredConfig
 from .matrix_with_allocation_config import MatrixWithAllocationConfig as MatrixWithAllocationConfig
-from .new_floating_tiered_bps_price import NewFloatingTieredBPSPrice as NewFloatingTieredBPSPrice
 from .new_plan_grouped_tiered_price import NewPlanGroupedTieredPrice as NewPlanGroupedTieredPrice
 from .new_plan_tiered_package_price import NewPlanTieredPackagePrice as NewPlanTieredPackagePrice
 from .tiered_conversion_rate_config import TieredConversionRateConfig as TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration as NewBillingCycleConfiguration
+from .new_plan_minimum_composite_price import NewPlanMinimumCompositePrice as NewPlanMinimumCompositePrice
 from .new_plan_unit_with_percent_price import NewPlanUnitWithPercentPrice as NewPlanUnitWithPercentPrice
 from .new_floating_grouped_tiered_price import NewFloatingGroupedTieredPrice as NewFloatingGroupedTieredPrice
 from .new_floating_tiered_package_price import NewFloatingTieredPackagePrice as NewFloatingTieredPackagePrice
@@ -63,6 +53,7 @@ from .new_plan_tier_with_proration_price import NewPlanTierWithProrationPrice as
 from .new_plan_tiered_with_minimum_price import NewPlanTieredWithMinimumPrice as NewPlanTieredWithMinimumPrice
 from .new_plan_unit_with_proration_price import NewPlanUnitWithProrationPrice as NewPlanUnitWithProrationPrice
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration as NewDimensionalPriceConfiguration
+from .new_floating_minimum_composite_price import NewFloatingMinimumCompositePrice as NewFloatingMinimumCompositePrice
 from .new_floating_unit_with_percent_price import NewFloatingUnitWithPercentPrice as NewFloatingUnitWithPercentPrice
 from .new_floating_grouped_allocation_price import (
     NewFloatingGroupedAllocationPrice as NewFloatingGroupedAllocationPrice,

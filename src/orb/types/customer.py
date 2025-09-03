@@ -47,6 +47,13 @@ class Customer(BaseModel):
 
     auto_collection: bool
 
+    auto_issuance: Optional[bool] = None
+    """Whether invoices for this customer should be automatically issued.
+
+    If true, invoices will be automatically issued. If false, invoices will require
+    manual approval. If null, inherits the account-level setting.
+    """
+
     balance: str
     """The customer's current balance in their currency."""
 

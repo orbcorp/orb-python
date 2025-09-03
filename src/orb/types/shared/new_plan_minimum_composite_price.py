@@ -7,30 +7,40 @@ from pydantic import Field as FieldInfo
 
 from ..._utils import PropertyInfo
 from ..._models import BaseModel
-from .bps_config import BPSConfig
 from .unit_conversion_rate_config import UnitConversionRateConfig
 from .tiered_conversion_rate_config import TieredConversionRateConfig
 from .new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .new_dimensional_price_configuration import NewDimensionalPriceConfiguration
 
-__all__ = ["NewPlanBPSPrice", "ConversionRateConfig"]
+__all__ = ["NewPlanMinimumCompositePrice", "MinimumConfig", "ConversionRateConfig"]
+
+
+class MinimumConfig(BaseModel):
+    minimum_amount: str
+    """The minimum amount to apply"""
+
+    prorated: Optional[bool] = None
+    """
+    By default, subtotals from minimum composite prices are prorated based on the
+    service period. Set to false to disable proration.
+    """
+
 
 ConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 
-class NewPlanBPSPrice(BaseModel):
-    bps_config: BPSConfig
-
+class NewPlanMinimumCompositePrice(BaseModel):
     cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
     """The cadence to bill for this price on."""
 
     item_id: str
     """The id of the item the price will be associated with."""
 
-    price_model_type: Literal["bps"] = FieldInfo(alias="model_type")
+    minimum_config: MinimumConfig
+
+    price_model_type: Literal["minimum"] = FieldInfo(alias="model_type")
 
     name: str
     """The name of the price."""

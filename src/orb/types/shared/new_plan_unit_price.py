@@ -16,8 +16,7 @@ from .new_dimensional_price_configuration import NewDimensionalPriceConfiguratio
 __all__ = ["NewPlanUnitPrice", "ConversionRateConfig"]
 
 ConversionRateConfig: TypeAlias = Annotated[
-    Union[UnitConversionRateConfig, TieredConversionRateConfig, None],
-    PropertyInfo(discriminator="conversion_rate_type"),
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
 
 

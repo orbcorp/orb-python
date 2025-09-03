@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .shared_params.new_maximum import NewMaximum
 from .shared_params.new_minimum import NewMinimum
@@ -13,17 +14,19 @@ from .shared_params.new_usage_discount import NewUsageDiscount
 from .shared_params.new_amount_discount import NewAmountDiscount
 from .shared.billing_cycle_relative_date import BillingCycleRelativeDate
 from .shared_params.new_allocation_price import NewAllocationPrice
-from .shared_params.new_floating_bps_price import NewFloatingBPSPrice
 from .shared_params.new_floating_bulk_price import NewFloatingBulkPrice
 from .shared_params.new_floating_unit_price import NewFloatingUnitPrice
 from .shared_params.new_percentage_discount import NewPercentageDiscount
 from .shared_params.new_floating_matrix_price import NewFloatingMatrixPrice
 from .shared_params.new_floating_tiered_price import NewFloatingTieredPrice
 from .shared_params.new_floating_package_price import NewFloatingPackagePrice
-from .shared_params.new_floating_bulk_bps_price import NewFloatingBulkBPSPrice
-from .shared_params.new_floating_tiered_bps_price import NewFloatingTieredBPSPrice
+from .shared_params.unit_conversion_rate_config import UnitConversionRateConfig
+from .shared_params.tiered_conversion_rate_config import TieredConversionRateConfig
+from .shared_params.new_billing_cycle_configuration import NewBillingCycleConfiguration
 from .shared_params.new_floating_grouped_tiered_price import NewFloatingGroupedTieredPrice
 from .shared_params.new_floating_tiered_package_price import NewFloatingTieredPackagePrice
+from .shared_params.new_dimensional_price_configuration import NewDimensionalPriceConfiguration
+from .shared_params.new_floating_minimum_composite_price import NewFloatingMinimumCompositePrice
 from .shared_params.new_floating_unit_with_percent_price import NewFloatingUnitWithPercentPrice
 from .shared_params.new_floating_grouped_allocation_price import NewFloatingGroupedAllocationPrice
 from .shared_params.new_floating_bulk_with_proration_price import NewFloatingBulkWithProrationPrice
@@ -56,6 +59,8 @@ __all__ = [
     "AddDiscountUsageDiscountCreationParams",
     "AddFixedFeeQuantityTransition",
     "AddPrice",
+    "AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
+    "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "Edit",
@@ -127,15 +132,87 @@ class AddFixedFeeQuantityTransition(TypedDict, total=False):
     """The quantity of the fixed fee quantity transition."""
 
 
+AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    grouped_with_min_max_thresholds_config: Required[Dict[str, object]]
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_with_min_max_thresholds"]]
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
 AddPrice: TypeAlias = Union[
     NewFloatingUnitPrice,
     NewFloatingPackagePrice,
     NewFloatingMatrixPrice,
     NewFloatingMatrixWithAllocationPrice,
     NewFloatingTieredPrice,
-    NewFloatingTieredBPSPrice,
-    NewFloatingBPSPrice,
-    NewFloatingBulkBPSPrice,
     NewFloatingBulkPrice,
     NewFloatingThresholdTotalAmountPrice,
     NewFloatingTieredPackagePrice,
@@ -156,6 +233,8 @@ AddPrice: TypeAlias = Union[
     NewFloatingScalableMatrixWithUnitPricingPrice,
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
+    AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice,
+    NewFloatingMinimumCompositePrice,
 ]
 
 
@@ -212,7 +291,7 @@ class Add(TypedDict, total=False):
     price_id: Optional[str]
     """The id of the price to add to the subscription."""
 
-    usage_customer_ids: Optional[List[str]]
+    usage_customer_ids: Optional[SequenceNotStr[str]]
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this subscription. By default, a subscription only considers usage events
@@ -229,9 +308,6 @@ AddAdjustmentAdjustment: TypeAlias = Union[
 
 
 class AddAdjustment(TypedDict, total=False):
-    adjustment: Required[AddAdjustmentAdjustment]
-    """The definition of a new adjustment to create and add to the subscription."""
-
     start_date: Required[
         Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
     ]
@@ -241,6 +317,16 @@ class AddAdjustment(TypedDict, total=False):
     subscription. The adjustment will apply to invoice dates that overlap with this
     `start_date`. This `start_date` is treated as inclusive for in-advance prices,
     and exclusive for in-arrears prices.
+    """
+
+    adjustment: Optional[AddAdjustmentAdjustment]
+    """The definition of a new adjustment to create and add to the subscription."""
+
+    adjustment_id: Optional[str]
+    """The ID of the adjustment to add to the subscription.
+
+    Adjustment IDs can be re-used from existing subscriptions or plans, but
+    adjustments associated with coupon redemptions cannot be re-used.
     """
 
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
@@ -299,7 +385,7 @@ class Edit(TypedDict, total=False):
     If not specified, the start date will not be updated.
     """
 
-    usage_customer_ids: Optional[List[str]]
+    usage_customer_ids: Optional[SequenceNotStr[str]]
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this subscription. By default, a subscription only considers usage events

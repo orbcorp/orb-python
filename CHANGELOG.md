@@ -1,5 +1,26 @@
 # Changelog
 
+## 4.12.0 (2025-09-03)
+
+Full Changelog: [v4.11.1...v4.12.0](https://github.com/orbcorp/orb-python/compare/v4.11.1...v4.12.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** define shared model ConversionRateConfig
+
+### Features
+
+* **api:** api update ([9f4c932](https://github.com/orbcorp/orb-python/commit/9f4c9321d5fd23eafbca5a91411976d1ea73fc1c))
+* **api:** define shared model ConversionRateConfig ([fe3cedb](https://github.com/orbcorp/orb-python/commit/fe3cedb638aeda208d325e7ea78d7db90f596857))
+* extract minimum composite to type ([4dba245](https://github.com/orbcorp/orb-python/commit/4dba2455ca1d390b7079a462cc03dddc2ce89b01))
+* **types:** replace List[str] with SequenceNotStr in params ([7a4eb7b](https://github.com/orbcorp/orb-python/commit/7a4eb7bcce5a2db055a7bfa27b074311c310aecc))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([8427f8a](https://github.com/orbcorp/orb-python/commit/8427f8ae3bb00a9af89dd42b5c70479452350070))
+* **internal:** codegen related update ([4a2abd9](https://github.com/orbcorp/orb-python/commit/4a2abd95d4b6771171ca0f7de99a390c8b268dd9))
+
 ## 4.11.1 (2025-08-29)
 
 Full Changelog: [v4.11.0...v4.11.1](https://github.com/orbcorp/orb-python/compare/v4.11.0...v4.11.1)

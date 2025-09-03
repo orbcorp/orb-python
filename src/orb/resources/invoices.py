@@ -59,6 +59,7 @@ class Invoices(SyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         discount: Optional[Discount] | NotGiven = NOT_GIVEN,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -87,19 +88,24 @@ class Invoices(SyncAPIResource):
 
           discount: An optional discount to attach to the invoice.
 
+          due_date: An optional custom due date for the invoice. If not set, the due date will be
+              calculated based on the `net_terms` value.
+
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
 
-          memo: An optional memo to attach to the invoice.
+          memo: An optional memo to attach to the invoice. If no memo is provided, we will
+              attach the default memo
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of '0' here represents that the
-              invoice is due on issue, whereas a value of 30 represents that the customer has
-              30 days to pay the invoice.
+          net_terms: The net terms determines the due date of the invoice. Due date is calculated
+              based on the invoice or issuance date, depending on the account's configured due
+              date calculation method. A value of '0' here represents that the invoice is due
+              on issue, whereas a value of '30' represents that the customer has 30 days to
+              pay the invoice. Do not set this field if you want to set a custom due date.
 
           will_auto_issue: When true, this invoice will be submitted for issuance upon creation. When
               false, the resulting invoice will require manual review to issue. Defaulted to
@@ -124,6 +130,7 @@ class Invoices(SyncAPIResource):
                     "line_items": line_items,
                     "customer_id": customer_id,
                     "discount": discount,
+                    "due_date": due_date,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
@@ -146,7 +153,9 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -164,9 +173,18 @@ class Invoices(SyncAPIResource):
         `due_date` can only be modified if the invoice is in a `draft` state.
 
         Args:
+          due_date: An optional custom due date for the invoice. If not set, the due date will be
+              calculated based on the `net_terms` value.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: The net terms determines the due date of the invoice. Due date is calculated
+              based on the invoice or issuance date, depending on the account's configured due
+              date calculation method. A value of '0' here represents that the invoice is due
+              on issue, whereas a value of '30' represents that the customer has 30 days to
+              pay the invoice. Do not set this field if you want to set a custom due date.
 
           extra_headers: Send extra headers
 
@@ -182,7 +200,14 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._put(
             f"/invoices/{invoice_id}",
-            body=maybe_transform({"metadata": metadata}, invoice_update_params.InvoiceUpdateParams),
+            body=maybe_transform(
+                {
+                    "due_date": due_date,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                invoice_update_params.InvoiceUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -434,10 +459,10 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """This endpoint allows an invoice's status to be set the `paid` status.
+        """This endpoint allows an invoice's status to be set to the `paid` status.
 
-        This can
-        only be done to invoices that are in the `issued` status.
+        This
+        can only be done to invoices that are in the `issued` or `synced` status.
 
         Args:
           payment_received_date: A date string to specify the date of the payment.
@@ -531,10 +556,10 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """This endpoint allows an invoice's status to be set the `void` status.
+        """This endpoint allows an invoice's status to be set to the `void` status.
 
-        This can
-        only be done to invoices that are in the `issued` status.
+        This
+        can only be done to invoices that are in the `issued` status.
 
         If the associated invoice has used the customer balance to change the amount
         due, the customer balance operation will be reverted. For example, if the
@@ -599,6 +624,7 @@ class AsyncInvoices(AsyncAPIResource):
         line_items: Iterable[invoice_create_params.LineItem],
         customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         discount: Optional[Discount] | NotGiven = NOT_GIVEN,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
         external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
         memo: Optional[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
@@ -627,19 +653,24 @@ class AsyncInvoices(AsyncAPIResource):
 
           discount: An optional discount to attach to the invoice.
 
+          due_date: An optional custom due date for the invoice. If not set, the due date will be
+              calculated based on the `net_terms` value.
+
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
 
-          memo: An optional memo to attach to the invoice.
+          memo: An optional memo to attach to the invoice. If no memo is provided, we will
+              attach the default memo
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of '0' here represents that the
-              invoice is due on issue, whereas a value of 30 represents that the customer has
-              30 days to pay the invoice.
+          net_terms: The net terms determines the due date of the invoice. Due date is calculated
+              based on the invoice or issuance date, depending on the account's configured due
+              date calculation method. A value of '0' here represents that the invoice is due
+              on issue, whereas a value of '30' represents that the customer has 30 days to
+              pay the invoice. Do not set this field if you want to set a custom due date.
 
           will_auto_issue: When true, this invoice will be submitted for issuance upon creation. When
               false, the resulting invoice will require manual review to issue. Defaulted to
@@ -664,6 +695,7 @@ class AsyncInvoices(AsyncAPIResource):
                     "line_items": line_items,
                     "customer_id": customer_id,
                     "discount": discount,
+                    "due_date": due_date,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
@@ -686,7 +718,9 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -704,9 +738,18 @@ class AsyncInvoices(AsyncAPIResource):
         `due_date` can only be modified if the invoice is in a `draft` state.
 
         Args:
+          due_date: An optional custom due date for the invoice. If not set, the due date will be
+              calculated based on the `net_terms` value.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          net_terms: The net terms determines the due date of the invoice. Due date is calculated
+              based on the invoice or issuance date, depending on the account's configured due
+              date calculation method. A value of '0' here represents that the invoice is due
+              on issue, whereas a value of '30' represents that the customer has 30 days to
+              pay the invoice. Do not set this field if you want to set a custom due date.
 
           extra_headers: Send extra headers
 
@@ -722,7 +765,14 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._put(
             f"/invoices/{invoice_id}",
-            body=await async_maybe_transform({"metadata": metadata}, invoice_update_params.InvoiceUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "due_date": due_date,
+                    "metadata": metadata,
+                    "net_terms": net_terms,
+                },
+                invoice_update_params.InvoiceUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -974,10 +1024,10 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """This endpoint allows an invoice's status to be set the `paid` status.
+        """This endpoint allows an invoice's status to be set to the `paid` status.
 
-        This can
-        only be done to invoices that are in the `issued` status.
+        This
+        can only be done to invoices that are in the `issued` or `synced` status.
 
         Args:
           payment_received_date: A date string to specify the date of the payment.
@@ -1071,10 +1121,10 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """This endpoint allows an invoice's status to be set the `void` status.
+        """This endpoint allows an invoice's status to be set to the `void` status.
 
-        This can
-        only be done to invoices that are in the `issued` status.
+        This
+        can only be done to invoices that are in the `issued` status.
 
         If the associated invoice has used the customer balance to change the amount
         due, the customer balance operation will be reverted. For example, if the

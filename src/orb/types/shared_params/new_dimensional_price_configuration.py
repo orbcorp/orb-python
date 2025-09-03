@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["NewDimensionalPriceConfiguration"]
 
 
 class NewDimensionalPriceConfiguration(TypedDict, total=False):
-    dimension_values: Required[List[str]]
+    dimension_values: Required[SequenceNotStr[str]]
     """
     The list of dimension values matching (in order) the dimensions of the price
     group

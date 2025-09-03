@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .transform_price_filter import TransformPriceFilter
 
 __all__ = ["PercentageDiscount"]
@@ -19,7 +20,7 @@ class PercentageDiscount(TypedDict, total=False):
     This is a number between 0 and 1.
     """
 
-    applies_to_price_ids: Optional[List[str]]
+    applies_to_price_ids: Optional[SequenceNotStr[str]]
     """List of price_ids that this discount applies to.
 
     For plan/plan phase discounts, this can be a subset of prices.
