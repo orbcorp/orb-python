@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.14.0 (2025-09-05)
+
+Full Changelog: [v4.13.0...v4.14.0](https://github.com/orbcorp/orb-python/compare/v4.13.0...v4.14.0)
+
+### Features
+
+* **api:** api update ([95bd096](https://github.com/orbcorp/orb-python/commit/95bd096525c8f471fb3f8f31bafb1be1c80af9d7))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([255e19f](https://github.com/orbcorp/orb-python/commit/255e19fa3a417e6fd4aa372cc4e3e9b65ccf82c2))
+
 ## 4.13.0 (2025-09-03)
 
 Full Changelog: [v4.12.0...v4.13.0](https://github.com/orbcorp/orb-python/compare/v4.12.0...v4.13.0)
