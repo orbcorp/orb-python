@@ -180,7 +180,7 @@ class UnitPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -253,7 +253,7 @@ class TieredPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -329,7 +329,7 @@ class BulkPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -402,7 +402,7 @@ class PackagePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -475,7 +475,7 @@ class MatrixPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -564,7 +564,7 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -656,7 +656,7 @@ class TieredPackagePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -754,7 +754,7 @@ class TieredWithMinimumPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -849,7 +849,7 @@ class GroupedTieredPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -941,7 +941,7 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1028,7 +1028,7 @@ class PackageWithAllocationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1106,7 +1106,7 @@ class UnitWithPercentPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1182,7 +1182,7 @@ class MatrixWithAllocationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1268,7 +1268,7 @@ class TieredWithProrationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1346,7 +1346,7 @@ class UnitWithProrationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1433,7 +1433,7 @@ class GroupedAllocationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1519,7 +1519,7 @@ class BulkWithProrationPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1603,7 +1603,7 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1718,7 +1718,7 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1805,7 +1805,7 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1897,7 +1897,7 @@ class MatrixWithDisplayNamePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -1992,7 +1992,7 @@ class GroupedTieredPackagePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -2086,7 +2086,7 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -2186,7 +2186,7 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -2294,7 +2294,7 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -2391,7 +2391,7 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
@@ -2472,7 +2472,7 @@ class MinimumCompositePrice(BaseModel):
 
     plan_phase_order: Optional[int] = None
 
-    price_type: Literal["usage_price", "fixed_price"]
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
 
     replaces_price_id: Optional[str] = None
     """The price id this price replaces.
