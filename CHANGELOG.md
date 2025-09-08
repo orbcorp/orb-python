@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.14.1 (2025-09-08)
+
+Full Changelog: [v4.14.0...v4.14.1](https://github.com/orbcorp/orb-python/compare/v4.14.0...v4.14.1)
+
+### Bug Fixes
+
+* **types:** add missing types to method arguments ([ad3dc7d](https://github.com/orbcorp/orb-python/commit/ad3dc7d0d1d7a20d2a5d3e68000e793e6bc4afd5))
+
+
+### Chores
+
+* **tests:** simplify `get_platform` test ([dd4f6e1](https://github.com/orbcorp/orb-python/commit/dd4f6e1394dc2ddf53dc791658d300ebe321f8a8))
+
 ## 4.14.0 (2025-09-05)
 
 Full Changelog: [v4.13.0...v4.14.0](https://github.com/orbcorp/orb-python/compare/v4.13.0...v4.14.0)
