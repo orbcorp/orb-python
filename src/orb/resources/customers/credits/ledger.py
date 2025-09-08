@@ -1041,7 +1041,7 @@ class Ledger(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        amount: float | None | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
@@ -1056,7 +1056,7 @@ class Ledger(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1933,7 +1933,7 @@ class Ledger(SyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        amount: float | None | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
@@ -1950,7 +1950,7 @@ class Ledger(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3172,7 +3172,7 @@ class AsyncLedger(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        amount: float | None | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
@@ -3187,7 +3187,7 @@ class AsyncLedger(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4064,7 +4064,7 @@ class AsyncLedger(AsyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        amount: float | None | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
@@ -4081,7 +4081,7 @@ class AsyncLedger(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
         per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
         target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
+        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
         void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
