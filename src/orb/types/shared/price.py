@@ -598,7 +598,9 @@ class TieredPackagePriceTieredPackageConfig(BaseModel):
     tiers: List[TieredPackagePriceTieredPackageConfigTier]
     """Apply tiered pricing after rounding up the quantity to the package size.
 
-    Tiers are defined using exclusive lower bounds.
+    Tiers are defined using exclusive lower bounds. The tier bounds are defined
+    based on the total quantity rather than the number of packages, so they must be
+    multiples of the package size.
     """
 
 
