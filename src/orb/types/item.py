@@ -10,7 +10,9 @@ __all__ = ["Item", "ExternalConnection"]
 
 
 class ExternalConnection(BaseModel):
-    external_connection_name: Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok"]
+    external_connection_name: Literal[
+        "stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"
+    ]
 
     external_entity_id: str
 
