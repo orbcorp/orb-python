@@ -23,7 +23,7 @@ class ItemUpdateParams(TypedDict, total=False):
 
 class ExternalConnection(TypedDict, total=False):
     external_connection_name: Required[
-        Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok"]
+        Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"]
     ]
 
     external_entity_id: Required[str]
