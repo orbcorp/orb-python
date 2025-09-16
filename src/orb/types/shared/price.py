@@ -133,6 +133,8 @@ class UnitPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -205,6 +207,8 @@ class TieredPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -279,6 +283,8 @@ class BulkPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     bulk_config: BulkConfig
     """Configuration for bulk pricing"""
 
@@ -352,6 +358,8 @@ class PackagePrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -424,6 +432,8 @@ class MatrixPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -516,6 +526,8 @@ class ThresholdTotalAmountPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -610,6 +622,8 @@ class TieredPackagePrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -709,6 +723,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -800,6 +816,8 @@ class GroupedTieredPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -896,6 +914,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -980,6 +1000,8 @@ class PackageWithAllocationPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -1061,6 +1083,8 @@ class UnitWithPercentPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -1133,6 +1157,8 @@ class MatrixWithAllocationPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1223,6 +1249,8 @@ class TieredWithProrationPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -1300,6 +1328,8 @@ class UnitWithProrationPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1384,6 +1414,8 @@ class GroupedAllocationPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1471,6 +1503,8 @@ class BulkWithProrationPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     bulk_with_proration_config: BulkWithProrationPriceBulkWithProrationConfig
     """Configuration for bulk_with_proration pricing"""
 
@@ -1554,6 +1588,8 @@ class GroupedWithProratedMinimumPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1670,6 +1706,8 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -1756,6 +1794,8 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1848,6 +1888,8 @@ class MatrixWithDisplayNamePrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -1944,6 +1986,8 @@ class GroupedTieredPackagePrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -2037,6 +2081,8 @@ class MaxGroupTieredPackagePrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -2140,6 +2186,8 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
@@ -2249,6 +2297,8 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -2343,6 +2393,8 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     billing_cycle_configuration: BillingCycleConfiguration
 
+    billing_mode: Literal["in_advance", "in_arrear"]
+
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
     composite_price_filters: Optional[List[TransformPriceFilter]] = None
@@ -2423,6 +2475,8 @@ class MinimumCompositePrice(BaseModel):
     billable_metric: Optional[BillableMetricTiny] = None
 
     billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
 
     cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
 
