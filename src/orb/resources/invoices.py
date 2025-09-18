@@ -17,7 +17,7 @@ from ..types import (
     invoice_mark_paid_params,
     invoice_fetch_upcoming_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -57,20 +57,20 @@ class Invoices(SyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        discount: Optional[Discount] | NotGiven = NOT_GIVEN,
-        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        memo: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-        will_auto_issue: bool | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | Omit = omit,
+        discount: Optional[Discount] | Omit = omit,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        memo: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
+        will_auto_issue: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -153,15 +153,15 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
-        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -221,31 +221,31 @@ class Invoices(SyncAPIResource):
     def list(
         self,
         *,
-        amount: Optional[str] | NotGiven = NOT_GIVEN,
-        amount_gt: Optional[str] | NotGiven = NOT_GIVEN,
-        amount_lt: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        date_type: Optional[Literal["due_date", "invoice_date"]] | NotGiven = NOT_GIVEN,
-        due_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        due_date_window: Optional[str] | NotGiven = NOT_GIVEN,
-        due_date_gt: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        due_date_lt: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        invoice_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        is_recurring: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | NotGiven = NOT_GIVEN,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        amount: Optional[str] | Omit = omit,
+        amount_gt: Optional[str] | Omit = omit,
+        amount_lt: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
+        due_date: Union[str, date, None] | Omit = omit,
+        due_date_window: Optional[str] | Omit = omit,
+        due_date_gt: Union[str, date, None] | Omit = omit,
+        due_date_lt: Union[str, date, None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        invoice_date_gt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_gte: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lte: Union[str, datetime, None] | Omit = omit,
+        is_recurring: Optional[bool] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Invoice]:
         """
         This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
@@ -326,7 +326,7 @@ class Invoices(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Invoice:
         """
         This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
@@ -360,7 +360,7 @@ class Invoices(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvoiceFetchUpcomingResponse:
         """
         This endpoint can be used to fetch the upcoming
@@ -394,13 +394,13 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
-        synchronous: bool | NotGiven = NOT_GIVEN,
+        synchronous: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an eligible invoice to be issued manually.
@@ -449,14 +449,14 @@ class Invoices(SyncAPIResource):
         invoice_id: str,
         *,
         payment_received_date: Union[str, date],
-        external_id: Optional[str] | NotGiven = NOT_GIVEN,
-        notes: Optional[str] | NotGiven = NOT_GIVEN,
+        external_id: Optional[str] | Omit = omit,
+        notes: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an invoice's status to be set to the `paid` status.
@@ -512,7 +512,7 @@ class Invoices(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -553,7 +553,7 @@ class Invoices(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an invoice's status to be set to the `void` status.
@@ -622,20 +622,20 @@ class AsyncInvoices(AsyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        discount: Optional[Discount] | NotGiven = NOT_GIVEN,
-        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        memo: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-        will_auto_issue: bool | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | Omit = omit,
+        discount: Optional[Discount] | Omit = omit,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        memo: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
+        will_auto_issue: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -718,15 +718,15 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
-        due_date: Union[Union[str, date], Union[str, datetime], None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
+        due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -786,31 +786,31 @@ class AsyncInvoices(AsyncAPIResource):
     def list(
         self,
         *,
-        amount: Optional[str] | NotGiven = NOT_GIVEN,
-        amount_gt: Optional[str] | NotGiven = NOT_GIVEN,
-        amount_lt: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        date_type: Optional[Literal["due_date", "invoice_date"]] | NotGiven = NOT_GIVEN,
-        due_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        due_date_window: Optional[str] | NotGiven = NOT_GIVEN,
-        due_date_gt: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        due_date_lt: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        invoice_date_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        invoice_date_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        is_recurring: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | NotGiven = NOT_GIVEN,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        amount: Optional[str] | Omit = omit,
+        amount_gt: Optional[str] | Omit = omit,
+        amount_lt: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
+        due_date: Union[str, date, None] | Omit = omit,
+        due_date_window: Optional[str] | Omit = omit,
+        due_date_gt: Union[str, date, None] | Omit = omit,
+        due_date_lt: Union[str, date, None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        invoice_date_gt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_gte: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lte: Union[str, datetime, None] | Omit = omit,
+        is_recurring: Optional[bool] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Invoice, AsyncPage[Invoice]]:
         """
         This endpoint returns a list of all [`Invoice`](/core-concepts#invoice)s for an
@@ -891,7 +891,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Invoice:
         """
         This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
@@ -925,7 +925,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvoiceFetchUpcomingResponse:
         """
         This endpoint can be used to fetch the upcoming
@@ -959,13 +959,13 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
-        synchronous: bool | NotGiven = NOT_GIVEN,
+        synchronous: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an eligible invoice to be issued manually.
@@ -1014,14 +1014,14 @@ class AsyncInvoices(AsyncAPIResource):
         invoice_id: str,
         *,
         payment_received_date: Union[str, date],
-        external_id: Optional[str] | NotGiven = NOT_GIVEN,
-        notes: Optional[str] | NotGiven = NOT_GIVEN,
+        external_id: Optional[str] | Omit = omit,
+        notes: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an invoice's status to be set to the `paid` status.
@@ -1077,7 +1077,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
@@ -1118,7 +1118,7 @@ class AsyncInvoices(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
         """This endpoint allows an invoice's status to be set to the `void` status.

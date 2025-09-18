@@ -23,7 +23,7 @@ from ...types import (
     customer_update_params,
     customer_update_by_external_id_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -93,30 +93,30 @@ class Customers(SyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
-        timezone: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """
@@ -372,31 +372,31 @@ class Customers(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """
@@ -645,18 +645,18 @@ class Customers(SyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Customer]:
         """This endpoint returns a list of all customers for an account.
 
@@ -713,7 +713,7 @@ class Customers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -765,7 +765,7 @@ class Customers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Customer:
         """This endpoint is used to fetch customer details given an identifier.
 
@@ -804,7 +804,7 @@ class Customers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Customer:
         """
         This endpoint is used to fetch customer details given an `external_customer_id`
@@ -843,7 +843,7 @@ class Customers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -889,7 +889,7 @@ class Customers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -932,31 +932,31 @@ class Customers(SyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """
@@ -1239,30 +1239,30 @@ class AsyncCustomers(AsyncAPIResource):
         *,
         email: str,
         name: str,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_create_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
-        timezone: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_create_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """
@@ -1518,31 +1518,31 @@ class AsyncCustomers(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_update_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_update_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """
@@ -1791,18 +1791,18 @@ class AsyncCustomers(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Customer, AsyncPage[Customer]]:
         """This endpoint returns a list of all customers for an account.
 
@@ -1859,7 +1859,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -1911,7 +1911,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Customer:
         """This endpoint is used to fetch customer details given an identifier.
 
@@ -1950,7 +1950,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Customer:
         """
         This endpoint is used to fetch customer details given an `external_customer_id`
@@ -1989,7 +1989,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -2035,7 +2035,7 @@ class AsyncCustomers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -2078,31 +2078,31 @@ class AsyncCustomers(AsyncAPIResource):
         self,
         id: str,
         *,
-        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | NotGiven = NOT_GIVEN,
-        additional_emails: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        auto_collection: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_issuance: Optional[bool] | NotGiven = NOT_GIVEN,
-        billing_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        email_delivery: Optional[bool] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hierarchy: Optional[CustomerHierarchyConfigParam] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
+        accounting_sync_configuration: Optional[NewAccountingSyncConfigurationParam] | Omit = omit,
+        additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
+        billing_address: Optional[AddressInputParam] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        email_delivery: Optional[bool] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
-        | NotGiven = NOT_GIVEN,
-        payment_provider_id: Optional[str] | NotGiven = NOT_GIVEN,
-        reporting_configuration: Optional[NewReportingConfigurationParam] | NotGiven = NOT_GIVEN,
-        shipping_address: Optional[AddressInputParam] | NotGiven = NOT_GIVEN,
-        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | NotGiven = NOT_GIVEN,
-        tax_id: Optional[CustomerTaxID] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        payment_provider_id: Optional[str] | Omit = omit,
+        reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
+        shipping_address: Optional[AddressInputParam] | Omit = omit,
+        tax_configuration: Optional[customer_update_by_external_id_params.TaxConfiguration] | Omit = omit,
+        tax_id: Optional[CustomerTaxID] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Customer:
         """

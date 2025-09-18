@@ -17,7 +17,7 @@ from .volume import (
     AsyncVolumeWithStreamingResponse,
 )
 from ...types import event_ingest_params, event_search_params, event_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .backfills import (
@@ -74,14 +74,14 @@ class Events(SyncAPIResource):
         event_name: str,
         properties: Dict[str, object],
         timestamp: Union[str, datetime],
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventUpdateResponse:
         """
@@ -189,7 +189,7 @@ class Events(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventDeprecateResponse:
         """
@@ -263,14 +263,14 @@ class Events(SyncAPIResource):
         self,
         *,
         events: Iterable[event_ingest_params.Event],
-        backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
-        debug: bool | NotGiven = NOT_GIVEN,
+        backfill_id: Optional[str] | Omit = omit,
+        debug: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventIngestResponse:
         """Orb's event ingestion model and API is designed around two core principles:
@@ -520,14 +520,14 @@ class Events(SyncAPIResource):
         self,
         *,
         event_ids: SequenceNotStr[str],
-        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | Omit = omit,
+        timeframe_start: Union[str, datetime, None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventSearchResponse:
         """
@@ -625,14 +625,14 @@ class AsyncEvents(AsyncAPIResource):
         event_name: str,
         properties: Dict[str, object],
         timestamp: Union[str, datetime],
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventUpdateResponse:
         """
@@ -740,7 +740,7 @@ class AsyncEvents(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventDeprecateResponse:
         """
@@ -814,14 +814,14 @@ class AsyncEvents(AsyncAPIResource):
         self,
         *,
         events: Iterable[event_ingest_params.Event],
-        backfill_id: Optional[str] | NotGiven = NOT_GIVEN,
-        debug: bool | NotGiven = NOT_GIVEN,
+        backfill_id: Optional[str] | Omit = omit,
+        debug: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventIngestResponse:
         """Orb's event ingestion model and API is designed around two core principles:
@@ -1071,14 +1071,14 @@ class AsyncEvents(AsyncAPIResource):
         self,
         *,
         event_ids: SequenceNotStr[str],
-        timeframe_end: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        timeframe_start: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        timeframe_end: Union[str, datetime, None] | Omit = omit,
+        timeframe_start: Union[str, datetime, None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> EventSearchResponse:
         """

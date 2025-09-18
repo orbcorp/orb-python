@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ...types import coupon_list_params, coupon_create_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -57,14 +57,14 @@ class Coupons(SyncAPIResource):
         *,
         discount: coupon_create_params.Discount,
         redemption_code: str,
-        duration_in_months: Optional[int] | NotGiven = NOT_GIVEN,
-        max_redemptions: Optional[int] | NotGiven = NOT_GIVEN,
+        duration_in_months: Optional[int] | Omit = omit,
+        max_redemptions: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Coupon:
         """
@@ -114,16 +114,16 @@ class Coupons(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-        show_archived: Optional[bool] | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        redemption_code: Optional[str] | Omit = omit,
+        show_archived: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Coupon]:
         """
         This endpoint returns a list of all coupons for an account in a list format.
@@ -182,7 +182,7 @@ class Coupons(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Coupon:
         """This endpoint allows a coupon to be archived.
@@ -225,7 +225,7 @@ class Coupons(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Coupon:
         """This endpoint retrieves a coupon by its ID.
 
@@ -282,14 +282,14 @@ class AsyncCoupons(AsyncAPIResource):
         *,
         discount: coupon_create_params.Discount,
         redemption_code: str,
-        duration_in_months: Optional[int] | NotGiven = NOT_GIVEN,
-        max_redemptions: Optional[int] | NotGiven = NOT_GIVEN,
+        duration_in_months: Optional[int] | Omit = omit,
+        max_redemptions: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Coupon:
         """
@@ -339,16 +339,16 @@ class AsyncCoupons(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        redemption_code: Optional[str] | NotGiven = NOT_GIVEN,
-        show_archived: Optional[bool] | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        redemption_code: Optional[str] | Omit = omit,
+        show_archived: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Coupon, AsyncPage[Coupon]]:
         """
         This endpoint returns a list of all coupons for an account in a list format.
@@ -407,7 +407,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Coupon:
         """This endpoint allows a coupon to be archived.
@@ -450,7 +450,7 @@ class AsyncCoupons(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Coupon:
         """This endpoint retrieves a coupon by its ID.
 
