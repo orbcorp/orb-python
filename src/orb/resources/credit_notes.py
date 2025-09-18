@@ -10,7 +10,7 @@ import httpx
 
 from .. import _legacy_response
 from ..types import credit_note_list_params, credit_note_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -47,15 +47,15 @@ class CreditNotes(SyncAPIResource):
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
         reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
-        end_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        memo: Optional[str] | NotGiven = NOT_GIVEN,
-        start_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, date, None] | Omit = omit,
+        memo: Optional[str] | Omit = omit,
+        start_date: Union[str, date, None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CreditNote:
         """
@@ -137,18 +137,18 @@ class CreditNotes(SyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[CreditNote]:
         """Get a paginated list of CreditNotes.
 
@@ -202,7 +202,7 @@ class CreditNotes(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditNote:
         """
         This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)
@@ -253,15 +253,15 @@ class AsyncCreditNotes(AsyncAPIResource):
         *,
         line_items: Iterable[credit_note_create_params.LineItem],
         reason: Literal["duplicate", "fraudulent", "order_change", "product_unsatisfactory"],
-        end_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
-        memo: Optional[str] | NotGiven = NOT_GIVEN,
-        start_date: Union[str, date, None] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, date, None] | Omit = omit,
+        memo: Optional[str] | Omit = omit,
+        start_date: Union[str, date, None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CreditNote:
         """
@@ -343,18 +343,18 @@ class AsyncCreditNotes(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CreditNote, AsyncPage[CreditNote]]:
         """Get a paginated list of CreditNotes.
 
@@ -408,7 +408,7 @@ class AsyncCreditNotes(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditNote:
         """
         This endpoint is used to fetch a single [`Credit Note`](/invoicing/credit-notes)

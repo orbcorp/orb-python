@@ -18,7 +18,7 @@ from ..types import (
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -60,7 +60,7 @@ class Alerts(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Alert:
         """
         This endpoint retrieves an alert by its ID.
@@ -94,7 +94,7 @@ class Alerts(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """
@@ -133,21 +133,21 @@ class Alerts(SyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Alert]:
         """
         This endpoint returns a list of alerts within Orb.
@@ -214,13 +214,13 @@ class Alerts(SyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
@@ -279,13 +279,13 @@ class Alerts(SyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
@@ -346,13 +346,13 @@ class Alerts(SyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
-        metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        metric_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """
@@ -411,13 +411,13 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint allows you to disable an alert.
@@ -460,13 +460,13 @@ class Alerts(SyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint allows you to enable an alert.
@@ -535,7 +535,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Alert:
         """
         This endpoint retrieves an alert by its ID.
@@ -569,7 +569,7 @@ class AsyncAlerts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """
@@ -608,21 +608,21 @@ class AsyncAlerts(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Alert, AsyncPage[Alert]]:
         """
         This endpoint returns a list of alerts within Orb.
@@ -689,13 +689,13 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
@@ -754,13 +754,13 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         currency: str,
         type: Literal["credit_balance_depleted", "credit_balance_dropped", "credit_balance_recovered"],
-        thresholds: Optional[Iterable[ThresholdParam]] | NotGiven = NOT_GIVEN,
+        thresholds: Optional[Iterable[ThresholdParam]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint creates a new alert to monitor a customer's credit balance.
@@ -821,13 +821,13 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
-        metric_id: Optional[str] | NotGiven = NOT_GIVEN,
+        metric_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """
@@ -886,13 +886,13 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint allows you to disable an alert.
@@ -937,13 +937,13 @@ class AsyncAlerts(AsyncAPIResource):
         self,
         alert_configuration_id: str,
         *,
-        subscription_id: Optional[str] | NotGiven = NOT_GIVEN,
+        subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Alert:
         """This endpoint allows you to enable an alert.

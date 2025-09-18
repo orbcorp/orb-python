@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -50,17 +50,17 @@ class Backfills(SyncAPIResource):
         *,
         timeframe_end: Union[str, datetime],
         timeframe_start: Union[str, datetime],
-        close_time: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        deprecation_filter: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        replace_existing_events: bool | NotGiven = NOT_GIVEN,
+        close_time: Union[str, datetime, None] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        deprecation_filter: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        replace_existing_events: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillCreateResponse:
         """
@@ -165,14 +165,14 @@ class Backfills(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[BackfillListResponse]:
         """
         This endpoint returns a list of all backfills in a list format.
@@ -225,7 +225,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillCloseResponse:
         """Closing a backfill makes the updated usage visible in Orb.
@@ -269,7 +269,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BackfillFetchResponse:
         """
         This endpoint is used to fetch a backfill given an identifier.
@@ -302,7 +302,7 @@ class Backfills(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillRevertResponse:
         """Reverting a backfill undoes all the effects of closing the backfill.
@@ -366,17 +366,17 @@ class AsyncBackfills(AsyncAPIResource):
         *,
         timeframe_end: Union[str, datetime],
         timeframe_start: Union[str, datetime],
-        close_time: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        deprecation_filter: Optional[str] | NotGiven = NOT_GIVEN,
-        external_customer_id: Optional[str] | NotGiven = NOT_GIVEN,
-        replace_existing_events: bool | NotGiven = NOT_GIVEN,
+        close_time: Union[str, datetime, None] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        deprecation_filter: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        replace_existing_events: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillCreateResponse:
         """
@@ -481,14 +481,14 @@ class AsyncBackfills(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BackfillListResponse, AsyncPage[BackfillListResponse]]:
         """
         This endpoint returns a list of all backfills in a list format.
@@ -541,7 +541,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillCloseResponse:
         """Closing a backfill makes the updated usage visible in Orb.
@@ -585,7 +585,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BackfillFetchResponse:
         """
         This endpoint is used to fetch a backfill given an identifier.
@@ -618,7 +618,7 @@ class AsyncBackfills(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BackfillRevertResponse:
         """Reverting a backfill undoes all the effects of closing the backfill.
