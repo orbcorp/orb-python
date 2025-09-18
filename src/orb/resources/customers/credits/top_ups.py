@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from .... import _legacy_response
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -59,15 +59,15 @@ class TopUps(SyncAPIResource):
         invoice_settings: top_up_create_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
-        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expires_after: Optional[int] | NotGiven = NOT_GIVEN,
-        expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
+        active_from: Union[str, datetime, None] | Omit = omit,
+        expires_after: Optional[int] | Omit = omit,
+        expires_after_unit: Optional[Literal["day", "month"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> TopUpCreateResponse:
         """
@@ -141,14 +141,14 @@ class TopUps(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[TopUpListResponse]:
         """List top-ups
 
@@ -199,7 +199,7 @@ class TopUps(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -243,15 +243,15 @@ class TopUps(SyncAPIResource):
         invoice_settings: top_up_create_by_external_id_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
-        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expires_after: Optional[int] | NotGiven = NOT_GIVEN,
-        expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
+        active_from: Union[str, datetime, None] | Omit = omit,
+        expires_after: Optional[int] | Omit = omit,
+        expires_after_unit: Optional[Literal["day", "month"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> TopUpCreateByExternalIDResponse:
         """
@@ -333,7 +333,7 @@ class TopUps(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -374,14 +374,14 @@ class TopUps(SyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[TopUpListByExternalIDResponse]:
         """List top-ups by external ID
 
@@ -454,15 +454,15 @@ class AsyncTopUps(AsyncAPIResource):
         invoice_settings: top_up_create_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
-        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expires_after: Optional[int] | NotGiven = NOT_GIVEN,
-        expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
+        active_from: Union[str, datetime, None] | Omit = omit,
+        expires_after: Optional[int] | Omit = omit,
+        expires_after_unit: Optional[Literal["day", "month"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> TopUpCreateResponse:
         """
@@ -536,14 +536,14 @@ class AsyncTopUps(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TopUpListResponse, AsyncPage[TopUpListResponse]]:
         """List top-ups
 
@@ -594,7 +594,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -638,15 +638,15 @@ class AsyncTopUps(AsyncAPIResource):
         invoice_settings: top_up_create_by_external_id_params.InvoiceSettings,
         per_unit_cost_basis: str,
         threshold: str,
-        active_from: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expires_after: Optional[int] | NotGiven = NOT_GIVEN,
-        expires_after_unit: Optional[Literal["day", "month"]] | NotGiven = NOT_GIVEN,
+        active_from: Union[str, datetime, None] | Omit = omit,
+        expires_after: Optional[int] | Omit = omit,
+        expires_after_unit: Optional[Literal["day", "month"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> TopUpCreateByExternalIDResponse:
         """
@@ -728,7 +728,7 @@ class AsyncTopUps(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
         """
@@ -769,14 +769,14 @@ class AsyncTopUps(AsyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TopUpListByExternalIDResponse, AsyncPage[TopUpListByExternalIDResponse]]:
         """List top-ups by external ID
 

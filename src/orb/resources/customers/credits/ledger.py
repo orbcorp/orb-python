@@ -9,7 +9,7 @@ from typing_extensions import Literal, overload
 import httpx
 
 from .... import _legacy_response
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ...._utils import required_args, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -56,13 +56,13 @@ class Ledger(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        entry_status: Optional[Literal["committed", "pending"]] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        entry_status: Optional[Literal["committed", "pending"]] | Omit = omit,
         entry_type: Optional[
             Literal[
                 "increment",
@@ -74,15 +74,15 @@ class Ledger(SyncAPIResource):
                 "amendment",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        minimum_amount: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        limit: int | Omit = omit,
+        minimum_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[LedgerListResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -219,20 +219,20 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -394,15 +394,15 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -551,18 +551,18 @@ class Ledger(SyncAPIResource):
         *,
         entry_type: Literal["expiration_change"],
         target_expiry_date: Union[str, date],
-        amount: Optional[float] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        amount: Optional[float] | Omit = omit,
+        block_id: Optional[str] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -721,16 +721,16 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -884,15 +884,15 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -1041,29 +1041,29 @@ class Ledger(SyncAPIResource):
         self,
         customer_id: str,
         *,
-        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | Omit = omit,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
-        target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
+        target_expiry_date: Union[str, date] | Omit = omit,
+        block_id: Optional[str] | str | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         if not customer_id:
@@ -1109,22 +1109,22 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1286,15 +1286,15 @@ class Ledger(SyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1443,18 +1443,18 @@ class Ledger(SyncAPIResource):
         *,
         entry_type: Literal["expiration_change"],
         target_expiry_date: Union[str, date],
-        amount: Optional[float] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        amount: Optional[float] | Omit = omit,
+        block_id: Optional[str] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1613,16 +1613,16 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1776,15 +1776,15 @@ class Ledger(SyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -1933,31 +1933,31 @@ class Ledger(SyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | Omit = omit,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
-        target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
+        target_expiry_date: Union[str, date] | Omit = omit,
+        block_id: Optional[str] | str | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         if not external_customer_id:
@@ -2002,13 +2002,13 @@ class Ledger(SyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        entry_status: Optional[Literal["committed", "pending"]] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        entry_status: Optional[Literal["committed", "pending"]] | Omit = omit,
         entry_type: Optional[
             Literal[
                 "increment",
@@ -2020,15 +2020,15 @@ class Ledger(SyncAPIResource):
                 "amendment",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        minimum_amount: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        limit: int | Omit = omit,
+        minimum_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[LedgerListByExternalIDResponse]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -2187,13 +2187,13 @@ class AsyncLedger(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        entry_status: Optional[Literal["committed", "pending"]] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        entry_status: Optional[Literal["committed", "pending"]] | Omit = omit,
         entry_type: Optional[
             Literal[
                 "increment",
@@ -2205,15 +2205,15 @@ class AsyncLedger(AsyncAPIResource):
                 "amendment",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        minimum_amount: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        limit: int | Omit = omit,
+        minimum_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LedgerListResponse, AsyncPage[LedgerListResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system
@@ -2350,20 +2350,20 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2525,15 +2525,15 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2682,18 +2682,18 @@ class AsyncLedger(AsyncAPIResource):
         *,
         entry_type: Literal["expiration_change"],
         target_expiry_date: Union[str, date],
-        amount: Optional[float] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        amount: Optional[float] | Omit = omit,
+        block_id: Optional[str] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -2852,16 +2852,16 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -3015,15 +3015,15 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         """
@@ -3172,29 +3172,29 @@ class AsyncLedger(AsyncAPIResource):
         self,
         customer_id: str,
         *,
-        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | Omit = omit,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
-        target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
+        target_expiry_date: Union[str, date] | Omit = omit,
+        block_id: Optional[str] | str | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryResponse:
         if not customer_id:
@@ -3240,22 +3240,22 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["increment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3417,15 +3417,15 @@ class AsyncLedger(AsyncAPIResource):
         *,
         amount: float,
         entry_type: Literal["decrement"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3574,18 +3574,18 @@ class AsyncLedger(AsyncAPIResource):
         *,
         entry_type: Literal["expiration_change"],
         target_expiry_date: Union[str, date],
-        amount: Optional[float] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        amount: Optional[float] | Omit = omit,
+        block_id: Optional[str] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3744,16 +3744,16 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["void"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -3907,15 +3907,15 @@ class AsyncLedger(AsyncAPIResource):
         amount: float,
         block_id: str,
         entry_type: Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         """
@@ -4064,31 +4064,31 @@ class AsyncLedger(AsyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        amount: float | Optional[float] | NotGiven = NOT_GIVEN,
+        amount: float | Optional[float] | Omit = omit,
         entry_type: Literal["increment"]
         | Literal["decrement"]
         | Literal["expiration_change"]
         | Literal["void"]
         | Literal["amendment"],
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        expiry_date: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
+        currency: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        effective_date: Union[str, datetime, None] | Omit = omit,
+        expiry_date: Union[str, datetime, None] | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
-        | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        per_unit_cost_basis: Optional[str] | NotGiven = NOT_GIVEN,
-        target_expiry_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        block_id: Optional[str] | str | NotGiven = NOT_GIVEN,
-        void_reason: Optional[Literal["refund"]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        per_unit_cost_basis: Optional[str] | Omit = omit,
+        target_expiry_date: Union[str, date] | Omit = omit,
+        block_id: Optional[str] | str | Omit = omit,
+        void_reason: Optional[Literal["refund"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LedgerCreateEntryByExternalIDResponse:
         if not external_customer_id:
@@ -4133,13 +4133,13 @@ class AsyncLedger(AsyncAPIResource):
         self,
         external_customer_id: str,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        currency: Optional[str] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        entry_status: Optional[Literal["committed", "pending"]] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        currency: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        entry_status: Optional[Literal["committed", "pending"]] | Omit = omit,
         entry_type: Optional[
             Literal[
                 "increment",
@@ -4151,15 +4151,15 @@ class AsyncLedger(AsyncAPIResource):
                 "amendment",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        minimum_amount: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        limit: int | Omit = omit,
+        minimum_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LedgerListByExternalIDResponse, AsyncPage[LedgerListByExternalIDResponse]]:
         """
         The credits ledger provides _auditing_ functionality over Orb's credits system

@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional, cast
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,13 +43,13 @@ class ExternalPriceID(SyncAPIResource):
         self,
         external_price_id: str,
         *,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Price:
         """This endpoint allows you to update the `metadata` property on a price.
@@ -102,7 +102,7 @@ class ExternalPriceID(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Price:
         """This endpoint returns a price given an external price id.
 
@@ -157,13 +157,13 @@ class AsyncExternalPriceID(AsyncAPIResource):
         self,
         external_price_id: str,
         *,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Price:
         """This endpoint allows you to update the `metadata` property on a price.
@@ -216,7 +216,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Price:
         """This endpoint returns a price given an external price id.
 

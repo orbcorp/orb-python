@@ -10,7 +10,7 @@ import httpx
 
 from ... import _legacy_response
 from ...types import plan_list_params, plan_create_params, plan_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -60,19 +60,19 @@ class Plans(SyncAPIResource):
         currency: str,
         name: str,
         prices: Iterable[plan_create_params.Price],
-        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | NotGiven = NOT_GIVEN,
-        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
+        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
+        default_invoice_memo: Optional[str] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
+        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | Omit = omit,
+        status: Literal["active", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """
@@ -145,14 +145,14 @@ class Plans(SyncAPIResource):
         self,
         plan_id: str,
         *,
-        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """
@@ -204,19 +204,19 @@ class Plans(SyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["active", "archived", "draft"] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Literal["active", "archived", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Plan]:
         """
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
@@ -274,7 +274,7 @@ class Plans(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
@@ -345,19 +345,19 @@ class AsyncPlans(AsyncAPIResource):
         currency: str,
         name: str,
         prices: Iterable[plan_create_params.Price],
-        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | NotGiven = NOT_GIVEN,
-        default_invoice_memo: Optional[str] | NotGiven = NOT_GIVEN,
-        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
-        net_terms: Optional[int] | NotGiven = NOT_GIVEN,
-        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "draft"] | NotGiven = NOT_GIVEN,
+        adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
+        default_invoice_memo: Optional[str] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        net_terms: Optional[int] | Omit = omit,
+        plan_phases: Optional[Iterable[plan_create_params.PlanPhase]] | Omit = omit,
+        status: Literal["active", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """
@@ -430,14 +430,14 @@ class AsyncPlans(AsyncAPIResource):
         self,
         plan_id: str,
         *,
-        external_plan_id: Optional[str] | NotGiven = NOT_GIVEN,
-        metadata: Optional[Dict[str, Optional[str]]] | NotGiven = NOT_GIVEN,
+        external_plan_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """
@@ -489,19 +489,19 @@ class AsyncPlans(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at_gt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_gte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lt: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        created_at_lte: Union[str, datetime, None] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["active", "archived", "draft"] | NotGiven = NOT_GIVEN,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Literal["active", "archived", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Plan, AsyncPage[Plan]]:
         """
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
@@ -559,7 +559,7 @@ class AsyncPlans(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Plan:
         """
         This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details

@@ -7,7 +7,7 @@ from typing import Iterable, Optional
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -45,24 +45,21 @@ class ExternalPlanID(SyncAPIResource):
         external_plan_id: str,
         *,
         version: int,
-        add_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[external_plan_id_create_plan_version_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.AddAdjustment]] | Omit = omit,
+        add_prices: Optional[Iterable[external_plan_id_create_plan_version_params.AddPrice]] | Omit = omit,
         remove_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[external_plan_id_create_plan_version_params.RemovePrice]]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        remove_prices: Optional[Iterable[external_plan_id_create_plan_version_params.RemovePrice]] | Omit = omit,
         replace_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[external_plan_id_create_plan_version_params.ReplacePrice]]
-        | NotGiven = NOT_GIVEN,
-        set_as_default: Optional[bool] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        replace_prices: Optional[Iterable[external_plan_id_create_plan_version_params.ReplacePrice]] | Omit = omit,
+        set_as_default: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
@@ -136,7 +133,7 @@ class ExternalPlanID(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
@@ -177,7 +174,7 @@ class ExternalPlanID(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """This API endpoint is in beta and its interface may change.
@@ -244,24 +241,21 @@ class AsyncExternalPlanID(AsyncAPIResource):
         external_plan_id: str,
         *,
         version: int,
-        add_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.AddAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        add_prices: Optional[Iterable[external_plan_id_create_plan_version_params.AddPrice]] | NotGiven = NOT_GIVEN,
+        add_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.AddAdjustment]] | Omit = omit,
+        add_prices: Optional[Iterable[external_plan_id_create_plan_version_params.AddPrice]] | Omit = omit,
         remove_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.RemoveAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        remove_prices: Optional[Iterable[external_plan_id_create_plan_version_params.RemovePrice]]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        remove_prices: Optional[Iterable[external_plan_id_create_plan_version_params.RemovePrice]] | Omit = omit,
         replace_adjustments: Optional[Iterable[external_plan_id_create_plan_version_params.ReplaceAdjustment]]
-        | NotGiven = NOT_GIVEN,
-        replace_prices: Optional[Iterable[external_plan_id_create_plan_version_params.ReplacePrice]]
-        | NotGiven = NOT_GIVEN,
-        set_as_default: Optional[bool] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        replace_prices: Optional[Iterable[external_plan_id_create_plan_version_params.ReplacePrice]] | Omit = omit,
+        set_as_default: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
@@ -335,7 +329,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanVersion:
         """This API endpoint is in beta and its interface may change.
 
@@ -376,7 +370,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
         """This API endpoint is in beta and its interface may change.
