@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.18.0 (2025-09-19)
+
+Full Changelog: [v4.17.0...v4.18.0](https://github.com/orbcorp/orb-python/compare/v4.17.0...v4.18.0)
+
+### Features
+
+* **api:** api update ([dbf6aa2](https://github.com/orbcorp/orb-python/commit/dbf6aa2d3ce26ed36f06ff498852fb7a24bcd961))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([1e5179b](https://github.com/orbcorp/orb-python/commit/1e5179b2b1e4ecb99133c5b29906f4b93881330b))
+* **internal:** update pydantic dependency ([87c1a17](https://github.com/orbcorp/orb-python/commit/87c1a17cffa15cd5b5ba8b4b4c664293ac8621d4))
+* **types:** change optional parameter type from NotGiven to Omit ([a15b380](https://github.com/orbcorp/orb-python/commit/a15b380ba6a89174a979373c53c982c23653c3a2))
+
 ## 4.17.0 (2025-09-16)
 
 Full Changelog: [v4.16.0...v4.17.0](https://github.com/orbcorp/orb-python/compare/v4.16.0...v4.17.0)
