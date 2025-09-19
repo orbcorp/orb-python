@@ -62,11 +62,7 @@ class ExternalPlanID(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PlanVersion:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
+        """
         This endpoint allows the creation of a new plan version for an existing plan.
 
         Args:
@@ -258,11 +254,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PlanVersion:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
+        """
         This endpoint allows the creation of a new plan version for an existing plan.
 
         Args:
