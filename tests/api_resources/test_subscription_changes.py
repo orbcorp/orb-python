@@ -73,6 +73,7 @@ class TestSubscriptionChanges:
         subscription_change = client.subscription_changes.apply(
             subscription_change_id="subscription_change_id",
             description="description",
+            mark_as_paid=True,
             previously_collected_amount="previously_collected_amount",
         )
         assert_matches_type(SubscriptionChangeApplyResponse, subscription_change, path=["response"])
@@ -208,6 +209,7 @@ class TestAsyncSubscriptionChanges:
         subscription_change = await async_client.subscription_changes.apply(
             subscription_change_id="subscription_change_id",
             description="description",
+            mark_as_paid=True,
             previously_collected_amount="previously_collected_amount",
         )
         assert_matches_type(SubscriptionChangeApplyResponse, subscription_change, path=["response"])
