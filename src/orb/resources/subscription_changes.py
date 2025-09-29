@@ -89,6 +89,7 @@ class SubscriptionChanges(SyncAPIResource):
         subscription_change_id: str,
         *,
         description: Optional[str] | Omit = omit,
+        mark_as_paid: Optional[bool] | Omit = omit,
         previously_collected_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -107,7 +108,11 @@ class SubscriptionChanges(SyncAPIResource):
         Args:
           description: Description to apply to the balance transaction representing this credit.
 
-          previously_collected_amount: Amount already collected to apply to the customer's balance.
+          mark_as_paid: Mark all pending invoices that are payable as paid. If amount is also provided,
+              mark as paid and credit the difference to the customer's balance.
+
+          previously_collected_amount: Amount already collected to apply to the customer's balance. If mark_as_paid is
+              also provided, credit the difference to the customer's balance.
 
           extra_headers: Send extra headers
 
@@ -128,6 +133,7 @@ class SubscriptionChanges(SyncAPIResource):
             body=maybe_transform(
                 {
                     "description": description,
+                    "mark_as_paid": mark_as_paid,
                     "previously_collected_amount": previously_collected_amount,
                 },
                 subscription_change_apply_params.SubscriptionChangeApplyParams,
@@ -256,6 +262,7 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
         subscription_change_id: str,
         *,
         description: Optional[str] | Omit = omit,
+        mark_as_paid: Optional[bool] | Omit = omit,
         previously_collected_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -274,7 +281,11 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
         Args:
           description: Description to apply to the balance transaction representing this credit.
 
-          previously_collected_amount: Amount already collected to apply to the customer's balance.
+          mark_as_paid: Mark all pending invoices that are payable as paid. If amount is also provided,
+              mark as paid and credit the difference to the customer's balance.
+
+          previously_collected_amount: Amount already collected to apply to the customer's balance. If mark_as_paid is
+              also provided, credit the difference to the customer's balance.
 
           extra_headers: Send extra headers
 
@@ -295,6 +306,7 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "description": description,
+                    "mark_as_paid": mark_as_paid,
                     "previously_collected_amount": previously_collected_amount,
                 },
                 subscription_change_apply_params.SubscriptionChangeApplyParams,
