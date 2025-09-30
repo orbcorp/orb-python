@@ -32,7 +32,11 @@ class SubscriptionListParams(TypedDict, total=False):
 
     external_customer_id: Optional[SequenceNotStr[str]]
 
+    external_plan_id: Optional[str]
+
     limit: int
     """The number of items to fetch. Defaults to 20."""
+
+    plan_id: Optional[str]
 
     status: Optional[Literal["active", "ended", "upcoming"]]

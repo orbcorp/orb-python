@@ -334,7 +334,9 @@ class TestSubscriptions:
             cursor="cursor",
             customer_id=["string"],
             external_customer_id=["string"],
+            external_plan_id="external_plan_id",
             limit=1,
+            plan_id="plan_id",
             status="active",
         )
         assert_matches_type(SyncPage[Subscription], subscription, path=["response"])
@@ -1674,7 +1676,9 @@ class TestAsyncSubscriptions:
             cursor="cursor",
             customer_id=["string"],
             external_customer_id=["string"],
+            external_plan_id="external_plan_id",
             limit=1,
+            plan_id="plan_id",
             status="active",
         )
         assert_matches_type(AsyncPage[Subscription], subscription, path=["response"])
