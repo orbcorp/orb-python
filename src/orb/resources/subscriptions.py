@@ -590,7 +590,9 @@ class Subscriptions(SyncAPIResource):
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
         external_customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        plan_id: Optional[str] | Omit = omit,
         status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -641,7 +643,9 @@ class Subscriptions(SyncAPIResource):
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "external_customer_id": external_customer_id,
+                        "external_plan_id": external_plan_id,
                         "limit": limit,
+                        "plan_id": plan_id,
                         "status": status,
                     },
                     subscription_list_params.SubscriptionListParams,
@@ -2672,7 +2676,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
         external_customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        plan_id: Optional[str] | Omit = omit,
         status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2723,7 +2729,9 @@ class AsyncSubscriptions(AsyncAPIResource):
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "external_customer_id": external_customer_id,
+                        "external_plan_id": external_plan_id,
                         "limit": limit,
+                        "plan_id": plan_id,
                         "status": status,
                     },
                     subscription_list_params.SubscriptionListParams,
