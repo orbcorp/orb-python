@@ -54,10 +54,7 @@ class TestInvoices:
                     "name": "Line Item Name",
                     "quantity": 1,
                     "start_date": parse_date("2023-09-22"),
-                    "unit_config": {
-                        "unit_amount": "unit_amount",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
             customer_id="4khy3nwzktxv7",
@@ -510,10 +507,7 @@ class TestAsyncInvoices:
                     "name": "Line Item Name",
                     "quantity": 1,
                     "start_date": parse_date("2023-09-22"),
-                    "unit_config": {
-                        "unit_amount": "unit_amount",
-                        "scaling_factor": 0,
-                    },
+                    "unit_config": {"unit_amount": "unit_amount"},
                 }
             ],
             customer_id="4khy3nwzktxv7",
