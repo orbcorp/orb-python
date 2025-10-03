@@ -44,10 +44,7 @@ class TestPrices:
             item_id="item_id",
             model_type="unit",
             name="Annual fee",
-            unit_config={
-                "unit_amount": "unit_amount",
-                "scaling_factor": 0,
-            },
+            unit_config={"unit_amount": "unit_amount"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -3259,10 +3256,7 @@ class TestPrices:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {
-                            "unit_amount": "unit_amount",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "unit_amount"},
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -3355,10 +3349,7 @@ class TestPrices:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {
-                            "unit_amount": "unit_amount",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "unit_amount"},
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -3480,10 +3471,7 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="unit",
             name="Annual fee",
-            unit_config={
-                "unit_amount": "unit_amount",
-                "scaling_factor": 0,
-            },
+            unit_config={"unit_amount": "unit_amount"},
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -6695,10 +6683,7 @@ class TestAsyncPrices:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {
-                            "unit_amount": "unit_amount",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "unit_amount"},
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -6791,10 +6776,7 @@ class TestAsyncPrices:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {
-                            "unit_amount": "unit_amount",
-                            "scaling_factor": 0,
-                        },
+                        "unit_config": {"unit_amount": "unit_amount"},
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
