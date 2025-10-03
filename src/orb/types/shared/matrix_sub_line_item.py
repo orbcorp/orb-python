@@ -23,3 +23,6 @@ class MatrixSubLineItem(BaseModel):
     quantity: float
 
     type: Literal["matrix"]
+
+    scaled_quantity: Optional[float] = None
+    """The scaled quantity for this line item for specific pricing structures"""
