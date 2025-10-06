@@ -62,6 +62,9 @@ __all__ = [
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
+    "AddPriceNewFloatingEventOutputPrice",
+    "AddPriceNewFloatingEventOutputPriceEventOutputConfig",
+    "AddPriceNewFloatingEventOutputPriceConversionRateConfig",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "Edit",
@@ -226,6 +229,94 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
     """
 
 
+class AddPriceNewFloatingEventOutputPriceEventOutputConfig(TypedDict, total=False):
+    unit_rating_key: Required[str]
+    """The key in the event data to extract the unit rate from."""
+
+    grouping_key: Optional[str]
+    """An optional key in the event data to group by (e.g., event ID).
+
+    All events will also be grouped by their unit rate.
+    """
+
+
+AddPriceNewFloatingEventOutputPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPriceNewFloatingEventOutputPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    event_output_config: Required[AddPriceNewFloatingEventOutputPriceEventOutputConfig]
+    """Configuration for event_output pricing"""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["event_output"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPriceNewFloatingEventOutputPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
 AddPrice: TypeAlias = Union[
     NewFloatingUnitPrice,
     NewFloatingTieredPrice,
@@ -254,6 +345,7 @@ AddPrice: TypeAlias = Union[
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
     NewFloatingMinimumCompositePrice,
+    AddPriceNewFloatingEventOutputPrice,
 ]
 
 

@@ -119,6 +119,9 @@ __all__ = [
     "MinimumCompositePrice",
     "MinimumCompositePriceConversionRateConfig",
     "MinimumCompositePriceMinimumConfig",
+    "EventOutputPrice",
+    "EventOutputPriceConversionRateConfig",
+    "EventOutputPriceEventOutputConfig",
 ]
 
 UnitPriceConversionRateConfig: TypeAlias = Annotated[
@@ -158,6 +161,10 @@ class UnitPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -233,6 +240,10 @@ class TieredPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -311,6 +322,10 @@ class BulkPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -383,6 +398,10 @@ class PackagePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -458,6 +477,10 @@ class MatrixPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     matrix_config: MatrixConfig
     """Configuration for matrix pricing"""
@@ -552,6 +575,10 @@ class ThresholdTotalAmountPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -648,6 +675,10 @@ class TieredPackagePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -748,6 +779,10 @@ class TieredWithMinimumPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -845,6 +880,10 @@ class GroupedTieredPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -939,6 +978,10 @@ class TieredPackageWithMinimumPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1025,6 +1068,10 @@ class PackageWithAllocationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1108,6 +1155,10 @@ class UnitWithPercentPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1183,6 +1234,10 @@ class MatrixWithAllocationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     matrix_with_allocation_config: MatrixWithAllocationConfig
     """Configuration for matrix_with_allocation pricing"""
@@ -1274,6 +1329,10 @@ class TieredWithProrationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1354,6 +1413,10 @@ class UnitWithProrationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1443,6 +1506,10 @@ class GroupedAllocationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1531,6 +1598,10 @@ class BulkWithProrationPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1617,6 +1688,10 @@ class GroupedWithProratedMinimumPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1734,6 +1809,10 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1823,6 +1902,10 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -1914,6 +1997,10 @@ class MatrixWithDisplayNamePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     matrix_with_display_name_config: MatrixWithDisplayNamePriceMatrixWithDisplayNameConfig
     """Configuration for matrix_with_display_name pricing"""
@@ -2014,6 +2101,10 @@ class GroupedTieredPackagePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -2107,6 +2198,10 @@ class MaxGroupTieredPackagePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     max_group_tiered_package_config: MaxGroupTieredPackagePriceMaxGroupTieredPackageConfig
     """Configuration for max_group_tiered_package pricing"""
@@ -2212,6 +2307,10 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -2322,6 +2421,10 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -2421,6 +2524,10 @@ class CumulativeGroupedBulkPrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -2501,6 +2608,10 @@ class MinimumCompositePrice(BaseModel):
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
 
     maximum: Optional[Maximum] = None
 
@@ -2522,6 +2633,96 @@ class MinimumCompositePrice(BaseModel):
     """Configuration for minimum pricing"""
 
     price_model_type: Literal["minimum"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
+EventOutputPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class EventOutputPriceEventOutputConfig(BaseModel):
+    unit_rating_key: str
+    """The key in the event data to extract the unit rate from."""
+
+    grouping_key: Optional[str] = None
+    """An optional key in the event data to group by (e.g., event ID).
+
+    All events will also be grouped by their unit rate.
+    """
+
+
+class EventOutputPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[EventOutputPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    event_output_config: EventOutputPriceEventOutputConfig
+    """Configuration for event_output pricing"""
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["event_output"] = FieldInfo(alias="model_type")
     """The pricing model type"""
 
     name: str
@@ -2568,6 +2769,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
         MinimumCompositePrice,
+        EventOutputPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]

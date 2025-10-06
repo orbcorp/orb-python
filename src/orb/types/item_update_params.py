@@ -25,5 +25,7 @@ class ExternalConnection(TypedDict, total=False):
     external_connection_name: Required[
         Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"]
     ]
+    """The name of the external system this item is connected to."""
 
     external_entity_id: Required[str]
+    """The identifier of this item in the external system."""
