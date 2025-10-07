@@ -119,6 +119,9 @@ __all__ = [
     "MinimumCompositePrice",
     "MinimumCompositePriceConversionRateConfig",
     "MinimumCompositePriceMinimumConfig",
+    "PercentCompositePrice",
+    "PercentCompositePriceConversionRateConfig",
+    "PercentCompositePricePercentConfig",
     "EventOutputPrice",
     "EventOutputPriceConversionRateConfig",
     "EventOutputPriceEventOutputConfig",
@@ -2650,6 +2653,90 @@ class MinimumCompositePrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
+PercentCompositePriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class PercentCompositePricePercentConfig(BaseModel):
+    percent: float
+    """What percent of the component subtotals to charge"""
+
+
+class PercentCompositePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[PercentCompositePriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["percent"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    percent_config: PercentCompositePricePercentConfig
+    """Configuration for percent pricing"""
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
 EventOutputPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
@@ -2769,6 +2856,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
         MinimumCompositePrice,
+        PercentCompositePrice,
         EventOutputPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
