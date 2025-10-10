@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.25.1 (2025-10-10)
+
+Full Changelog: [v4.25.0...v4.25.1](https://github.com/orbcorp/orb-python/compare/v4.25.0...v4.25.1)
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([7b70917](https://github.com/orbcorp/orb-python/commit/7b7091726bf0b8b4115e025e775f4e194a2ddf86))
+
 ## 4.25.0 (2025-10-10)
 
 Full Changelog: [v4.24.0...v4.25.0](https://github.com/orbcorp/orb-python/compare/v4.24.0...v4.25.0)
