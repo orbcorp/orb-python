@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Optional
 from datetime import date
 
 import httpx
 
 from .. import _legacy_response
 from ..types import invoice_line_item_create_params
-from .._types import Body, Query, Headers, NotGiven, not_given
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -46,9 +46,10 @@ class InvoiceLineItems(SyncAPIResource):
         amount: str,
         end_date: Union[str, date],
         invoice_id: str,
-        name: str,
         quantity: float,
         start_date: Union[str, date],
+        item_id: Optional[str] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -62,6 +63,17 @@ class InvoiceLineItems(SyncAPIResource):
         This can only
         be done for invoices that are in a `draft` status.
 
+        The behavior depends on which parameters are provided:
+
+        - If `item_id` is provided without `name`: The item is looked up by ID, and the
+          item's name is used for the line item.
+        - If `name` is provided without `item_id`: An item with the given name is
+          searched for in the account. If found, that item is used. If not found, a new
+          item is created with that name. The new item's name is used for the line item.
+        - If both `item_id` and `name` are provided: The item is looked up by ID for
+          association, but the provided `name` is used for the line item (not the item's
+          name).
+
         Args:
           amount: The total amount in the invoice's currency to add to the line item.
 
@@ -69,12 +81,21 @@ class InvoiceLineItems(SyncAPIResource):
 
           invoice_id: The id of the Invoice to add this line item.
 
-          name: The item name associated with this line item. If an item with the same name
-              exists in Orb, that item will be associated with the line item.
-
           quantity: The number of units on the line item
 
           start_date: A date string to specify the line item's start date in the customer's timezone.
+
+          item_id: The id of the item to associate with this line item. If provided without `name`,
+              the item's name will be used for the price/line item. If provided with `name`,
+              the item will be associated but `name` will be used for the line item. At least
+              one of `name` or `item_id` must be provided.
+
+          name: The name to use for the line item. If `item_id` is not provided, Orb will search
+              for an item with this name. If found, that item will be associated with the line
+              item. If not found, a new item will be created with this name. If `item_id` is
+              provided, this name will be used for the line item, but the item association
+              will be based on `item_id`. At least one of `name` or `item_id` must be
+              provided.
 
           extra_headers: Send extra headers
 
@@ -93,9 +114,10 @@ class InvoiceLineItems(SyncAPIResource):
                     "amount": amount,
                     "end_date": end_date,
                     "invoice_id": invoice_id,
-                    "name": name,
                     "quantity": quantity,
                     "start_date": start_date,
+                    "item_id": item_id,
+                    "name": name,
                 },
                 invoice_line_item_create_params.InvoiceLineItemCreateParams,
             ),
@@ -136,9 +158,10 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
         amount: str,
         end_date: Union[str, date],
         invoice_id: str,
-        name: str,
         quantity: float,
         start_date: Union[str, date],
+        item_id: Optional[str] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,6 +175,17 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
         This can only
         be done for invoices that are in a `draft` status.
 
+        The behavior depends on which parameters are provided:
+
+        - If `item_id` is provided without `name`: The item is looked up by ID, and the
+          item's name is used for the line item.
+        - If `name` is provided without `item_id`: An item with the given name is
+          searched for in the account. If found, that item is used. If not found, a new
+          item is created with that name. The new item's name is used for the line item.
+        - If both `item_id` and `name` are provided: The item is looked up by ID for
+          association, but the provided `name` is used for the line item (not the item's
+          name).
+
         Args:
           amount: The total amount in the invoice's currency to add to the line item.
 
@@ -159,12 +193,21 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
 
           invoice_id: The id of the Invoice to add this line item.
 
-          name: The item name associated with this line item. If an item with the same name
-              exists in Orb, that item will be associated with the line item.
-
           quantity: The number of units on the line item
 
           start_date: A date string to specify the line item's start date in the customer's timezone.
+
+          item_id: The id of the item to associate with this line item. If provided without `name`,
+              the item's name will be used for the price/line item. If provided with `name`,
+              the item will be associated but `name` will be used for the line item. At least
+              one of `name` or `item_id` must be provided.
+
+          name: The name to use for the line item. If `item_id` is not provided, Orb will search
+              for an item with this name. If found, that item will be associated with the line
+              item. If not found, a new item will be created with this name. If `item_id` is
+              provided, this name will be used for the line item, but the item association
+              will be based on `item_id`. At least one of `name` or `item_id` must be
+              provided.
 
           extra_headers: Send extra headers
 
@@ -183,9 +226,10 @@ class AsyncInvoiceLineItems(AsyncAPIResource):
                     "amount": amount,
                     "end_date": end_date,
                     "invoice_id": invoice_id,
-                    "name": name,
                     "quantity": quantity,
                     "start_date": start_date,
+                    "item_id": item_id,
+                    "name": name,
                 },
                 invoice_line_item_create_params.InvoiceLineItemCreateParams,
             ),
