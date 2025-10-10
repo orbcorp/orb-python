@@ -24,9 +24,21 @@ class TestInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
+        )
+        assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Orb) -> None:
+        invoice_line_item = client.invoice_line_items.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+            item_id="4khy3nwzktxv7",
+            name="Item Name",
         )
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
 
@@ -36,7 +48,6 @@ class TestInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
         )
@@ -52,7 +63,6 @@ class TestInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
         ) as response:
@@ -76,9 +86,21 @@ class TestAsyncInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
+        )
+        assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncOrb) -> None:
+        invoice_line_item = await async_client.invoice_line_items.create(
+            amount="12.00",
+            end_date=parse_date("2023-09-22"),
+            invoice_id="4khy3nwzktxv7",
+            quantity=1,
+            start_date=parse_date("2023-09-22"),
+            item_id="4khy3nwzktxv7",
+            name="Item Name",
         )
         assert_matches_type(InvoiceLineItemCreateResponse, invoice_line_item, path=["response"])
 
@@ -88,7 +110,6 @@ class TestAsyncInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
         )
@@ -104,7 +125,6 @@ class TestAsyncInvoiceLineItems:
             amount="12.00",
             end_date=parse_date("2023-09-22"),
             invoice_id="4khy3nwzktxv7",
-            name="Item Name",
             quantity=1,
             start_date=parse_date("2023-09-22"),
         ) as response:
