@@ -60,6 +60,11 @@ __all__ = [
     "AddAdjustmentAdjustment",
     "AddPrice",
     "AddPricePrice",
+    "AddPricePriceNewSubscriptionBulkWithFiltersPrice",
+    "AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig",
+    "AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter",
+    "AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier",
+    "AddPricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig",
     "AddPricePriceNewSubscriptionTieredWithProrationPrice",
     "AddPricePriceNewSubscriptionTieredWithProrationPriceTieredWithProrationConfig",
     "AddPricePriceNewSubscriptionTieredWithProrationPriceTieredWithProrationConfigTier",
@@ -79,6 +84,11 @@ __all__ = [
     "ReplaceAdjustmentAdjustment",
     "ReplacePrice",
     "ReplacePricePrice",
+    "ReplacePricePriceNewSubscriptionBulkWithFiltersPrice",
+    "ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig",
+    "ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter",
+    "ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier",
+    "ReplacePricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig",
     "ReplacePricePriceNewSubscriptionTieredWithProrationPrice",
     "ReplacePricePriceNewSubscriptionTieredWithProrationPriceTieredWithProrationConfig",
     "ReplacePricePriceNewSubscriptionTieredWithProrationPriceTieredWithProrationConfigTier",
@@ -289,6 +299,116 @@ class AddAdjustment(TypedDict, total=False):
     This is the date that the adjustment will start affecting prices on the
     subscription. If null, the adjustment will start when the phase or subscription
     starts.
+    """
+
+
+class AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    property_key: Required[str]
+    """Event property key to filter on"""
+
+    property_value: Required[str]
+    """Event property value to match"""
+
+
+class AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    unit_amount: Required[str]
+    """Amount per unit"""
+
+    tier_lower_bound: Optional[str]
+    """The lower bound for this tier"""
+
+
+class AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    filters: Required[Iterable[AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
+    """Property filters to apply (all must match)"""
+
+    tiers: Required[Iterable[AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier]]
+    """Bulk tiers for rating based on total usage volume"""
+
+
+AddPricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=False):
+    bulk_with_filters_config: Required[AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig]
+    """Configuration for bulk_with_filters pricing"""
+
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["bulk_with_filters"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
     """
 
 
@@ -692,6 +812,7 @@ AddPricePrice: TypeAlias = Union[
     NewSubscriptionUnitPriceParam,
     NewSubscriptionTieredPriceParam,
     NewSubscriptionBulkPriceParam,
+    AddPricePriceNewSubscriptionBulkWithFiltersPrice,
     NewSubscriptionPackagePriceParam,
     NewSubscriptionMatrixPriceParam,
     NewSubscriptionThresholdTotalAmountPriceParam,
@@ -794,6 +915,116 @@ class ReplaceAdjustment(TypedDict, total=False):
 
     replaces_adjustment_id: Required[str]
     """The id of the adjustment on the plan to replace in the subscription."""
+
+
+class ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    property_key: Required[str]
+    """Event property key to filter on"""
+
+    property_value: Required[str]
+    """Event property value to match"""
+
+
+class ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    unit_amount: Required[str]
+    """Amount per unit"""
+
+    tier_lower_bound: Optional[str]
+    """The lower bound for this tier"""
+
+
+class ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    filters: Required[Iterable[ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
+    """Property filters to apply (all must match)"""
+
+    tiers: Required[Iterable[ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfigTier]]
+    """Bulk tiers for rating based on total usage volume"""
+
+
+ReplacePricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class ReplacePricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=False):
+    bulk_with_filters_config: Required[ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig]
+    """Configuration for bulk_with_filters pricing"""
+
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["bulk_with_filters"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[ReplacePricePriceNewSubscriptionBulkWithFiltersPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
 
 
 class ReplacePricePriceNewSubscriptionTieredWithProrationPriceTieredWithProrationConfigTier(TypedDict, total=False):
@@ -1198,6 +1429,7 @@ ReplacePricePrice: TypeAlias = Union[
     NewSubscriptionUnitPriceParam,
     NewSubscriptionTieredPriceParam,
     NewSubscriptionBulkPriceParam,
+    ReplacePricePriceNewSubscriptionBulkWithFiltersPrice,
     NewSubscriptionPackagePriceParam,
     NewSubscriptionMatrixPriceParam,
     NewSubscriptionThresholdTotalAmountPriceParam,
