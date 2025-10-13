@@ -361,6 +361,102 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
+        bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig,
+        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        currency: str,
+        item_id: str,
+        model_type: Literal["bulk_with_filters"],
+        name: str,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkWithFiltersPriceConversionRateConfig]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          bulk_with_filters_config: Configuration for bulk_with_filters pricing
+
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    def create(
+        self,
+        *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -2867,6 +2963,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
         ["bulk_config", "cadence", "currency", "item_id", "model_type", "name"],
+        ["bulk_with_filters_config", "cadence", "currency", "item_id", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_config"],
         ["cadence", "currency", "item_id", "matrix_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
@@ -2903,6 +3000,7 @@ class Prices(SyncAPIResource):
         model_type: Literal["unit"]
         | Literal["tiered"]
         | Literal["bulk"]
+        | Literal["bulk_with_filters"]
         | Literal["package"]
         | Literal["matrix"]
         | Literal["threshold_total_amount"]
@@ -2938,6 +3036,7 @@ class Prices(SyncAPIResource):
         conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingTieredPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingBulkPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingBulkWithFiltersPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingPackagePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingMatrixPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingThresholdTotalAmountPriceConversionRateConfig]
@@ -2973,6 +3072,8 @@ class Prices(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         tiered_config: TieredConfig | Omit = omit,
         bulk_config: BulkConfig | Omit = omit,
+        bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig
+        | Omit = omit,
         package_config: PackageConfig | Omit = omit,
         matrix_config: MatrixConfig | Omit = omit,
         threshold_total_amount_config: price_create_params.NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfig
@@ -3050,6 +3151,7 @@ class Prices(SyncAPIResource):
                         "metadata": metadata,
                         "tiered_config": tiered_config,
                         "bulk_config": bulk_config,
+                        "bulk_with_filters_config": bulk_with_filters_config,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
                         "threshold_total_amount_config": threshold_total_amount_config,
@@ -3811,6 +3913,102 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
+        bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig,
+        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        currency: str,
+        item_id: str,
+        model_type: Literal["bulk_with_filters"],
+        name: str,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[price_create_params.NewFloatingBulkWithFiltersPriceConversionRateConfig]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          bulk_with_filters_config: Configuration for bulk_with_filters pricing
+
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    async def create(
+        self,
+        *,
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
@@ -6317,6 +6515,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
         ["bulk_config", "cadence", "currency", "item_id", "model_type", "name"],
+        ["bulk_with_filters_config", "cadence", "currency", "item_id", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "package_config"],
         ["cadence", "currency", "item_id", "matrix_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "threshold_total_amount_config"],
@@ -6353,6 +6552,7 @@ class AsyncPrices(AsyncAPIResource):
         model_type: Literal["unit"]
         | Literal["tiered"]
         | Literal["bulk"]
+        | Literal["bulk_with_filters"]
         | Literal["package"]
         | Literal["matrix"]
         | Literal["threshold_total_amount"]
@@ -6388,6 +6588,7 @@ class AsyncPrices(AsyncAPIResource):
         conversion_rate_config: Optional[price_create_params.NewFloatingUnitPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingTieredPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingBulkPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingBulkWithFiltersPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingPackagePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingMatrixPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingThresholdTotalAmountPriceConversionRateConfig]
@@ -6423,6 +6624,8 @@ class AsyncPrices(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         tiered_config: TieredConfig | Omit = omit,
         bulk_config: BulkConfig | Omit = omit,
+        bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig
+        | Omit = omit,
         package_config: PackageConfig | Omit = omit,
         matrix_config: MatrixConfig | Omit = omit,
         threshold_total_amount_config: price_create_params.NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfig
@@ -6500,6 +6703,7 @@ class AsyncPrices(AsyncAPIResource):
                         "metadata": metadata,
                         "tiered_config": tiered_config,
                         "bulk_config": bulk_config,
+                        "bulk_with_filters_config": bulk_with_filters_config,
                         "package_config": package_config,
                         "matrix_config": matrix_config,
                         "threshold_total_amount_config": threshold_total_amount_config,
