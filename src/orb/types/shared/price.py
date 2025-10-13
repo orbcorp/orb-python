@@ -34,6 +34,11 @@ __all__ = [
     "TieredPriceConversionRateConfig",
     "BulkPrice",
     "BulkPriceConversionRateConfig",
+    "BulkWithFiltersPrice",
+    "BulkWithFiltersPriceBulkWithFiltersConfig",
+    "BulkWithFiltersPriceBulkWithFiltersConfigFilter",
+    "BulkWithFiltersPriceBulkWithFiltersConfigTier",
+    "BulkWithFiltersPriceConversionRateConfig",
     "PackagePrice",
     "PackagePriceConversionRateConfig",
     "MatrixPrice",
@@ -347,6 +352,109 @@ class BulkPrice(BaseModel):
     minimum_amount: Optional[str] = None
 
     price_model_type: Literal["bulk"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
+class BulkWithFiltersPriceBulkWithFiltersConfigFilter(BaseModel):
+    property_key: str
+    """Event property key to filter on"""
+
+    property_value: str
+    """Event property value to match"""
+
+
+class BulkWithFiltersPriceBulkWithFiltersConfigTier(BaseModel):
+    unit_amount: str
+    """Amount per unit"""
+
+    tier_lower_bound: Optional[str] = None
+    """The lower bound for this tier"""
+
+
+class BulkWithFiltersPriceBulkWithFiltersConfig(BaseModel):
+    filters: List[BulkWithFiltersPriceBulkWithFiltersConfigFilter]
+    """Property filters to apply (all must match)"""
+
+    tiers: List[BulkWithFiltersPriceBulkWithFiltersConfigTier]
+    """Bulk tiers for rating based on total usage volume"""
+
+
+BulkWithFiltersPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class BulkWithFiltersPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    bulk_with_filters_config: BulkWithFiltersPriceBulkWithFiltersConfig
+    """Configuration for bulk_with_filters pricing"""
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[TransformPriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[BulkWithFiltersPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["bulk_with_filters"] = FieldInfo(alias="model_type")
     """The pricing model type"""
 
     name: str
@@ -2832,6 +2940,7 @@ Price: TypeAlias = Annotated[
         UnitPrice,
         TieredPrice,
         BulkPrice,
+        BulkWithFiltersPrice,
         PackagePrice,
         MatrixPrice,
         ThresholdTotalAmountPrice,
