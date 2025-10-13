@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.26.0 (2025-10-13)
+
+Full Changelog: [v4.25.0...v4.26.0](https://github.com/orbcorp/orb-python/compare/v4.25.0...v4.26.0)
+
+### Features
+
+* **api:** api update ([82b04b7](https://github.com/orbcorp/orb-python/commit/82b04b7a1c56a8a03a4dc469b531b610602afac2))
+
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([7b70917](https://github.com/orbcorp/orb-python/commit/7b7091726bf0b8b4115e025e775f4e194a2ddf86))
+
 ## 4.25.0 (2025-10-10)
 
 Full Changelog: [v4.24.0...v4.25.0](https://github.com/orbcorp/orb-python/compare/v4.24.0...v4.25.0)
