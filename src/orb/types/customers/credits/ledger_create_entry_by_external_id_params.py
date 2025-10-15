@@ -104,6 +104,12 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     credit block's effective date.
     """
 
+    item_id: Optional[str]
+    """The ID of the Item to be used for the invoice line item.
+
+    If not provided, a default 'Credits' item will be used.
+    """
+
     memo: Optional[str]
     """An optional memo to display on the invoice."""
 
