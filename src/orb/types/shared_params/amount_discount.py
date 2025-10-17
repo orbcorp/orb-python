@@ -6,9 +6,19 @@ from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from ..._types import SequenceNotStr
-from .transform_price_filter import TransformPriceFilter
 
-__all__ = ["AmountDiscount"]
+__all__ = ["AmountDiscount", "Filter"]
+
+
+class Filter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[SequenceNotStr[str]]
+    """The IDs or values that match this filter."""
 
 
 class AmountDiscount(TypedDict, total=False):
@@ -23,7 +33,7 @@ class AmountDiscount(TypedDict, total=False):
     For plan/plan phase discounts, this can be a subset of prices.
     """
 
-    filters: Optional[Iterable[TransformPriceFilter]]
+    filters: Optional[Iterable[Filter]]
     """The filters that determine which prices to apply this discount to."""
 
     reason: Optional[str]

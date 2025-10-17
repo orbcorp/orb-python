@@ -53,7 +53,6 @@ from .subscription_minified import SubscriptionMinified as SubscriptionMinified
 from .invoice_level_discount import InvoiceLevelDiscount as InvoiceLevelDiscount
 from .new_plan_package_price import NewPlanPackagePrice as NewPlanPackagePrice
 from .sub_line_item_grouping import SubLineItemGrouping as SubLineItemGrouping
-from .transform_price_filter import TransformPriceFilter as TransformPriceFilter
 from .new_floating_bulk_price import NewFloatingBulkPrice as NewFloatingBulkPrice
 from .new_floating_unit_price import NewFloatingUnitPrice as NewFloatingUnitPrice
 from .new_percentage_discount import NewPercentageDiscount as NewPercentageDiscount

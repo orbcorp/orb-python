@@ -26,7 +26,6 @@ from .new_allocation_price import NewAllocationPrice as NewAllocationPrice
 from .new_plan_matrix_price import NewPlanMatrixPrice as NewPlanMatrixPrice
 from .new_plan_tiered_price import NewPlanTieredPrice as NewPlanTieredPrice
 from .new_plan_package_price import NewPlanPackagePrice as NewPlanPackagePrice
-from .transform_price_filter import TransformPriceFilter as TransformPriceFilter
 from .new_floating_bulk_price import NewFloatingBulkPrice as NewFloatingBulkPrice
 from .new_floating_unit_price import NewFloatingUnitPrice as NewFloatingUnitPrice
 from .new_percentage_discount import NewPercentageDiscount as NewPercentageDiscount
