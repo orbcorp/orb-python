@@ -62,7 +62,6 @@ from .shared import (
     NewFloatingBulkPrice as NewFloatingBulkPrice,
     NewFloatingUnitPrice as NewFloatingUnitPrice,
     SubscriptionMinified as SubscriptionMinified,
-    TransformPriceFilter as TransformPriceFilter,
     NewPercentageDiscount as NewPercentageDiscount,
     SubscriptionTrialInfo as SubscriptionTrialInfo,
     UsageDiscountInterval as UsageDiscountInterval,

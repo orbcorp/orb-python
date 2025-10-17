@@ -4,9 +4,19 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .transform_price_filter import TransformPriceFilter
 
-__all__ = ["PlanPhaseAmountDiscountAdjustment"]
+__all__ = ["PlanPhaseAmountDiscountAdjustment", "Filter"]
+
+
+class Filter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class PlanPhaseAmountDiscountAdjustment(BaseModel):
@@ -23,7 +33,7 @@ class PlanPhaseAmountDiscountAdjustment(BaseModel):
     applies_to_price_ids: List[str]
     """The price IDs that this adjustment applies to."""
 
-    filters: List[TransformPriceFilter]
+    filters: List[Filter]
     """The filters that determine which prices to apply this adjustment to."""
 
     is_invoice_level: bool

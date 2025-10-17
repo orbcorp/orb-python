@@ -3316,6 +3316,7 @@ class TestPrices:
             currency="currency",
             event_output_config={
                 "unit_rating_key": "x",
+                "default_unit_rate": "default_unit_rate",
                 "grouping_key": "grouping_key",
             },
             item_id="item_id",
@@ -7033,6 +7034,7 @@ class TestAsyncPrices:
             currency="currency",
             event_output_config={
                 "unit_rating_key": "x",
+                "default_unit_rate": "default_unit_rate",
                 "grouping_key": "grouping_key",
             },
             item_id="item_id",

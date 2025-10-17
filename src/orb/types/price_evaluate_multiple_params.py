@@ -365,6 +365,13 @@ class PriceEvaluationPriceNewFloatingEventOutputPriceEventOutputConfig(TypedDict
     unit_rating_key: Required[str]
     """The key in the event data to extract the unit rate from."""
 
+    default_unit_rate: Optional[str]
+    """
+    If provided, this amount will be used as the unit rate when an event does not
+    have a value for the `unit_rating_key`. If not provided, events missing a unit
+    rate will be ignored.
+    """
+
     grouping_key: Optional[str]
     """An optional key in the event data to group by (e.g., event ID).
 

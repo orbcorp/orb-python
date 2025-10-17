@@ -6,9 +6,19 @@ from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from ..._types import SequenceNotStr
-from .transform_price_filter import TransformPriceFilter
 
-__all__ = ["NewMinimum"]
+__all__ = ["NewMinimum", "Filter"]
+
+
+class Filter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[SequenceNotStr[str]]
+    """The IDs or values that match this filter."""
 
 
 class NewMinimum(TypedDict, total=False):
@@ -31,7 +41,7 @@ class NewMinimum(TypedDict, total=False):
     currency: Optional[str]
     """If set, only prices in the specified currency will have the adjustment applied."""
 
-    filters: Optional[Iterable[TransformPriceFilter]]
+    filters: Optional[Iterable[Filter]]
     """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: bool
