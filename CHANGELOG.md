@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.28.0 (2025-10-17)
+
+Full Changelog: [v4.27.0...v4.28.0](https://github.com/orbcorp/orb-python/compare/v4.27.0...v4.28.0)
+
+### Features
+
+* **api:** api update ([7d3610c](https://github.com/orbcorp/orb-python/commit/7d3610c1cfb01912098febdfce8148e36811fac5))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([e5d3c14](https://github.com/orbcorp/orb-python/commit/e5d3c14ead233cb6a49277d20fc1a71123a7a744))
+
 ## 4.27.0 (2025-10-15)
 
 Full Changelog: [v4.26.0...v4.27.0](https://github.com/orbcorp/orb-python/compare/v4.26.0...v4.27.0)
