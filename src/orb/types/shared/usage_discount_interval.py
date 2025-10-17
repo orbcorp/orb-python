@@ -5,9 +5,19 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .transform_price_filter import TransformPriceFilter
 
-__all__ = ["UsageDiscountInterval"]
+__all__ = ["UsageDiscountInterval", "Filter"]
+
+
+class Filter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class UsageDiscountInterval(BaseModel):
@@ -19,7 +29,7 @@ class UsageDiscountInterval(BaseModel):
     end_date: Optional[datetime] = None
     """The end date of the discount interval."""
 
-    filters: List[TransformPriceFilter]
+    filters: List[Filter]
     """The filters that determine which prices this discount interval applies to."""
 
     start_date: datetime

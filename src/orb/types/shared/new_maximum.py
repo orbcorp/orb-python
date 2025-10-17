@@ -4,9 +4,19 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .transform_price_filter import TransformPriceFilter
 
-__all__ = ["NewMaximum"]
+__all__ = ["NewMaximum", "Filter"]
+
+
+class Filter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
 
 
 class NewMaximum(BaseModel):
@@ -26,7 +36,7 @@ class NewMaximum(BaseModel):
     currency: Optional[str] = None
     """If set, only prices in the specified currency will have the adjustment applied."""
 
-    filters: Optional[List[TransformPriceFilter]] = None
+    filters: Optional[List[Filter]] = None
     """A list of filters that determine which prices this adjustment will apply to."""
 
     is_invoice_level: Optional[bool] = None

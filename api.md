@@ -127,7 +127,6 @@ from orb.types import (
     TierSubLineItem,
     TieredConfig,
     TieredConversionRateConfig,
-    TransformPriceFilter,
     TrialDiscount,
     UnitConfig,
     UnitConversionRateConfig,
