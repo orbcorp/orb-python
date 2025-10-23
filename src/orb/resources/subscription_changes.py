@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Union, Optional
+from datetime import date
 
 import httpx
 
@@ -90,6 +91,9 @@ class SubscriptionChanges(SyncAPIResource):
         *,
         description: Optional[str] | Omit = omit,
         mark_as_paid: Optional[bool] | Omit = omit,
+        payment_external_id: Optional[str] | Omit = omit,
+        payment_notes: Optional[str] | Omit = omit,
+        payment_received_date: Union[str, date, None] | Omit = omit,
         previously_collected_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -110,6 +114,14 @@ class SubscriptionChanges(SyncAPIResource):
 
           mark_as_paid: Mark all pending invoices that are payable as paid. If amount is also provided,
               mark as paid and credit the difference to the customer's balance.
+
+          payment_external_id: An optional external ID to associate with the payment. Only applicable when
+              mark_as_paid is true.
+
+          payment_notes: Optional notes about the payment. Only applicable when mark_as_paid is true.
+
+          payment_received_date: A date string to specify the date the payment was received. Only applicable when
+              mark_as_paid is true. If not provided, defaults to the current date.
 
           previously_collected_amount: Amount already collected to apply to the customer's balance. If mark_as_paid is
               also provided, credit the difference to the customer's balance.
@@ -134,6 +146,9 @@ class SubscriptionChanges(SyncAPIResource):
                 {
                     "description": description,
                     "mark_as_paid": mark_as_paid,
+                    "payment_external_id": payment_external_id,
+                    "payment_notes": payment_notes,
+                    "payment_received_date": payment_received_date,
                     "previously_collected_amount": previously_collected_amount,
                 },
                 subscription_change_apply_params.SubscriptionChangeApplyParams,
@@ -263,6 +278,9 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
         *,
         description: Optional[str] | Omit = omit,
         mark_as_paid: Optional[bool] | Omit = omit,
+        payment_external_id: Optional[str] | Omit = omit,
+        payment_notes: Optional[str] | Omit = omit,
+        payment_received_date: Union[str, date, None] | Omit = omit,
         previously_collected_amount: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -283,6 +301,14 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
 
           mark_as_paid: Mark all pending invoices that are payable as paid. If amount is also provided,
               mark as paid and credit the difference to the customer's balance.
+
+          payment_external_id: An optional external ID to associate with the payment. Only applicable when
+              mark_as_paid is true.
+
+          payment_notes: Optional notes about the payment. Only applicable when mark_as_paid is true.
+
+          payment_received_date: A date string to specify the date the payment was received. Only applicable when
+              mark_as_paid is true. If not provided, defaults to the current date.
 
           previously_collected_amount: Amount already collected to apply to the customer's balance. If mark_as_paid is
               also provided, credit the difference to the customer's balance.
@@ -307,6 +333,9 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
                 {
                     "description": description,
                     "mark_as_paid": mark_as_paid,
+                    "payment_external_id": payment_external_id,
+                    "payment_notes": payment_notes,
+                    "payment_received_date": payment_received_date,
                     "previously_collected_amount": previously_collected_amount,
                 },
                 subscription_change_apply_params.SubscriptionChangeApplyParams,
