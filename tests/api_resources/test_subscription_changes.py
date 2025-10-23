@@ -13,6 +13,7 @@ from orb.types import (
     SubscriptionChangeCancelResponse,
     SubscriptionChangeRetrieveResponse,
 )
+from orb._utils import parse_date
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -74,6 +75,9 @@ class TestSubscriptionChanges:
             subscription_change_id="subscription_change_id",
             description="description",
             mark_as_paid=True,
+            payment_external_id="payment_external_id",
+            payment_notes="payment_notes",
+            payment_received_date=parse_date("2019-12-27"),
             previously_collected_amount="previously_collected_amount",
         )
         assert_matches_type(SubscriptionChangeApplyResponse, subscription_change, path=["response"])
@@ -210,6 +214,9 @@ class TestAsyncSubscriptionChanges:
             subscription_change_id="subscription_change_id",
             description="description",
             mark_as_paid=True,
+            payment_external_id="payment_external_id",
+            payment_notes="payment_notes",
+            payment_received_date=parse_date("2019-12-27"),
             previously_collected_amount="previously_collected_amount",
         )
         assert_matches_type(SubscriptionChangeApplyResponse, subscription_change, path=["response"])
