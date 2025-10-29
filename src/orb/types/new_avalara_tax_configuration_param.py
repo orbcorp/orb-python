@@ -13,4 +13,11 @@ class NewAvalaraTaxConfigurationParam(TypedDict, total=False):
 
     tax_provider: Required[Literal["avalara"]]
 
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
     tax_exemption_code: Optional[str]

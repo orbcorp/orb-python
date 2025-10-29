@@ -15,7 +15,12 @@ from .new_reporting_configuration_param import NewReportingConfigurationParam
 from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam
 from .new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
 
-__all__ = ["CustomerCreateParams", "TaxConfiguration", "TaxConfigurationNewNumeralConfiguration"]
+__all__ = [
+    "CustomerCreateParams",
+    "TaxConfiguration",
+    "TaxConfigurationNewNumeralConfiguration",
+    "TaxConfigurationNewAnrokConfiguration",
+]
 
 
 class CustomerCreateParams(TypedDict, total=False):
@@ -261,10 +266,31 @@ class TaxConfigurationNewNumeralConfiguration(TypedDict, total=False):
 
     tax_provider: Required[Literal["numeral"]]
 
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
+
+class TaxConfigurationNewAnrokConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["anrok"]]
+
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
 
 TaxConfiguration: TypeAlias = Union[
     NewAvalaraTaxConfigurationParam,
     NewTaxJarConfigurationParam,
     NewSphereConfigurationParam,
     TaxConfigurationNewNumeralConfiguration,
+    TaxConfigurationNewAnrokConfiguration,
 ]
