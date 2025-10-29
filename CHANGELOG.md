@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.29.1 (2025-10-29)
+
+Full Changelog: [v4.29.0...v4.29.1](https://github.com/orbcorp/orb-python/compare/v4.29.0...v4.29.1)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([535143f](https://github.com/orbcorp/orb-python/commit/535143fa3295099fbd605a336f5ea24825b46ef4))
+
 ## 4.29.0 (2025-10-23)
 
 Full Changelog: [v4.28.0...v4.29.0](https://github.com/orbcorp/orb-python/compare/v4.28.0...v4.29.0)
