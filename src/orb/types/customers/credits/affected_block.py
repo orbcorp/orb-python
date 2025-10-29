@@ -6,10 +6,10 @@ from typing_extensions import Literal
 
 from ...._models import BaseModel
 
-__all__ = ["AffectedBlock", "BlockFilter"]
+__all__ = ["AffectedBlock", "Filter"]
 
 
-class BlockFilter(BaseModel):
+class Filter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
     """The property of the price to filter on."""
 
@@ -23,8 +23,8 @@ class BlockFilter(BaseModel):
 class AffectedBlock(BaseModel):
     id: str
 
-    block_filters: Optional[List[BlockFilter]] = None
-
     expiry_date: Optional[datetime] = None
+
+    filters: List[Filter]
 
     per_unit_cost_basis: Optional[str] = None
