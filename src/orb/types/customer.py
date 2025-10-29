@@ -269,4 +269,11 @@ class Customer(BaseModel):
 
     accounting_sync_configuration: Optional[AccountingSyncConfiguration] = None
 
+    automatic_tax_enabled: Optional[bool] = None
+    """Whether automatic tax calculation is enabled for this customer.
+
+    This field is nullable for backwards compatibility but will always return a
+    boolean value.
+    """
+
     reporting_configuration: Optional[ReportingConfiguration] = None

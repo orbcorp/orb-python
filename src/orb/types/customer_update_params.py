@@ -15,7 +15,12 @@ from .new_reporting_configuration_param import NewReportingConfigurationParam
 from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam
 from .new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
 
-__all__ = ["CustomerUpdateParams", "TaxConfiguration", "TaxConfigurationNewNumeralConfiguration"]
+__all__ = [
+    "CustomerUpdateParams",
+    "TaxConfiguration",
+    "TaxConfigurationNewNumeralConfiguration",
+    "TaxConfigurationNewAnrokConfiguration",
+]
 
 
 class CustomerUpdateParams(TypedDict, total=False):
@@ -42,6 +47,13 @@ class CustomerUpdateParams(TypedDict, total=False):
     If true, invoices will be automatically issued. If false, invoices will require
     manual approval.If `null` is specified, the customer's auto issuance setting
     will be inherited from the account-level setting.
+    """
+
+    automatic_tax_enabled: Optional[bool]
+    """Whether automatic tax calculation is enabled for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
     """
 
     billing_address: Optional[AddressInputParam]
@@ -256,10 +268,31 @@ class TaxConfigurationNewNumeralConfiguration(TypedDict, total=False):
 
     tax_provider: Required[Literal["numeral"]]
 
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
+
+class TaxConfigurationNewAnrokConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["anrok"]]
+
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
 
 TaxConfiguration: TypeAlias = Union[
     NewAvalaraTaxConfigurationParam,
     NewTaxJarConfigurationParam,
     NewSphereConfigurationParam,
     TaxConfigurationNewNumeralConfiguration,
+    TaxConfigurationNewAnrokConfiguration,
 ]

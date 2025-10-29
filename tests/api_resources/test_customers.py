@@ -76,6 +76,7 @@ class TestCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
@@ -136,6 +137,7 @@ class TestCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
+            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -168,6 +170,7 @@ class TestCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
@@ -459,6 +462,7 @@ class TestCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
+            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -491,6 +495,7 @@ class TestCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
@@ -593,6 +598,7 @@ class TestAsyncCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
@@ -653,6 +659,7 @@ class TestAsyncCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
+            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -685,6 +692,7 @@ class TestAsyncCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
@@ -988,6 +996,7 @@ class TestAsyncCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
+            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -1020,6 +1029,7 @@ class TestAsyncCustomers:
             tax_configuration={
                 "tax_exempt": True,
                 "tax_provider": "avalara",
+                "automatic_tax_enabled": True,
                 "tax_exemption_code": "tax_exemption_code",
             },
             tax_id={
