@@ -140,6 +140,7 @@ class TestInvoices:
         invoice = client.invoices.update(
             invoice_id="invoice_id",
             due_date=parse_date("2023-09-22"),
+            invoice_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
             net_terms=0,
         )
@@ -593,6 +594,7 @@ class TestAsyncInvoices:
         invoice = await async_client.invoices.update(
             invoice_id="invoice_id",
             due_date=parse_date("2023-09-22"),
+            invoice_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
             net_terms=0,
         )
