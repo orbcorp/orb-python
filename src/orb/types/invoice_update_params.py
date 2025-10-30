@@ -18,6 +18,9 @@ class InvoiceUpdateParams(TypedDict, total=False):
     If not set, the due date will be calculated based on the `net_terms` value.
     """
 
+    invoice_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
+    """The date of the invoice. Can only be modified for one-off draft invoices."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 

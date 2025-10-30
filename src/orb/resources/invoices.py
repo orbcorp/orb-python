@@ -154,6 +154,7 @@ class Invoices(SyncAPIResource):
         invoice_id: str,
         *,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -165,16 +166,19 @@ class Invoices(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, and `due_date`
-        properties on an invoice. If you pass null for the metadata value, it will clear
-        any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
+        `invoice_date` properties on an invoice. If you pass null for the metadata
+        value, it will clear any existing metadata for that invoice.
 
-        `metadata` can be modified regardless of invoice state. `net_terms` and
-        `due_date` can only be modified if the invoice is in a `draft` state.
+        `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
+        and `invoice_date` can only be modified if the invoice is in a `draft` state.
+        `invoice_date` can only be modified for non-subscription invoices.
 
         Args:
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
+
+          invoice_date: The date of the invoice. Can only be modified for one-off draft invoices.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -203,6 +207,7 @@ class Invoices(SyncAPIResource):
             body=maybe_transform(
                 {
                     "due_date": due_date,
+                    "invoice_date": invoice_date,
                     "metadata": metadata,
                     "net_terms": net_terms,
                 },
@@ -719,6 +724,7 @@ class AsyncInvoices(AsyncAPIResource):
         invoice_id: str,
         *,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -730,16 +736,19 @@ class AsyncInvoices(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, and `due_date`
-        properties on an invoice. If you pass null for the metadata value, it will clear
-        any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
+        `invoice_date` properties on an invoice. If you pass null for the metadata
+        value, it will clear any existing metadata for that invoice.
 
-        `metadata` can be modified regardless of invoice state. `net_terms` and
-        `due_date` can only be modified if the invoice is in a `draft` state.
+        `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
+        and `invoice_date` can only be modified if the invoice is in a `draft` state.
+        `invoice_date` can only be modified for non-subscription invoices.
 
         Args:
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
+
+          invoice_date: The date of the invoice. Can only be modified for one-off draft invoices.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -768,6 +777,7 @@ class AsyncInvoices(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "due_date": due_date,
+                    "invoice_date": invoice_date,
                     "metadata": metadata,
                     "net_terms": net_terms,
                 },
