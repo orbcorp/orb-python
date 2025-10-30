@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.31.0 (2025-10-30)
+
+Full Changelog: [v4.30.0...v4.31.0](https://github.com/orbcorp/orb-python/compare/v4.30.0...v4.31.0)
+
+### Features
+
+* **api:** api update ([2e76c33](https://github.com/orbcorp/orb-python/commit/2e76c33df34aee39ee5481aab71b9dfbbf697c68))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([d97e48e](https://github.com/orbcorp/orb-python/commit/d97e48edcb33561eb7fc2d8a307ea94be8ac3d9d))
+
 ## 4.30.0 (2025-10-29)
 
 Full Changelog: [v4.29.1...v4.30.0](https://github.com/orbcorp/orb-python/compare/v4.29.1...v4.30.0)
