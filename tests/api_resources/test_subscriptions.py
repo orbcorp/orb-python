@@ -68,6 +68,13 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -188,6 +195,13 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -630,6 +644,13 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -871,6 +892,13 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -984,6 +1012,13 @@ class TestSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -1395,6 +1430,13 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -1515,6 +1557,13 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -1957,6 +2006,13 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -2198,6 +2254,13 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
@@ -2311,6 +2374,13 @@ class TestAsyncSubscriptions:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "discounts": [
                         {
