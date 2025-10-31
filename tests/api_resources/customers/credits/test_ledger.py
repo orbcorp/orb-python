@@ -98,6 +98,13 @@ class TestLedger:
             description="description",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            filters=[
+                {
+                    "field": "item_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -414,6 +421,13 @@ class TestLedger:
             description="description",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            filters=[
+                {
+                    "field": "item_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -846,6 +860,13 @@ class TestAsyncLedger:
             description="description",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            filters=[
+                {
+                    "field": "item_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,
@@ -1162,6 +1183,13 @@ class TestAsyncLedger:
             description="description",
             effective_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             expiry_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            filters=[
+                {
+                    "field": "item_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
             invoice_settings={
                 "auto_collection": True,
                 "net_terms": 0,

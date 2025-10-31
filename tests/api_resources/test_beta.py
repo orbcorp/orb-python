@@ -63,6 +63,13 @@ class TestBeta:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -147,6 +154,13 @@ class TestBeta:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -364,6 +378,13 @@ class TestAsyncBeta:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -448,6 +469,13 @@ class TestAsyncBeta:
                             "duration_unit": "day",
                         },
                         "expires_at_end_of_cadence": True,
+                        "filters": [
+                            {
+                                "field": "item_id",
+                                "operator": "includes",
+                                "values": ["string"],
+                            }
+                        ],
                     },
                     "plan_phase_order": 0,
                     "price": {

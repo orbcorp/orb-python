@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Union, Optional, cast
+from typing import Any, Dict, Union, Iterable, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal, overload
 
@@ -223,6 +223,8 @@ class Ledger(SyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[Iterable[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsFilter]]
+        | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -362,6 +364,9 @@ class Ledger(SyncAPIResource):
               available for use.
 
           expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
+
+          filters: Optional filter to specify which items this credit block applies to. If not
+              specified, the block will apply to all items for the pricing unit.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -1051,6 +1056,8 @@ class Ledger(SyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[Iterable[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsFilter]]
+        | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -1080,6 +1087,7 @@ class Ledger(SyncAPIResource):
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
+                        "filters": filters,
                         "invoice_settings": invoice_settings,
                         "metadata": metadata,
                         "per_unit_cost_basis": per_unit_cost_basis,
@@ -1113,6 +1121,10 @@ class Ledger(SyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[
+            Iterable[ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsFilter]
+        ]
+        | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -1254,6 +1266,9 @@ class Ledger(SyncAPIResource):
               available for use.
 
           expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
+
+          filters: Optional filter to specify which items this credit block applies to. If not
+              specified, the block will apply to all items for the pricing unit.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -1943,6 +1958,10 @@ class Ledger(SyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[
+            Iterable[ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsFilter]
+        ]
+        | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -1976,6 +1995,7 @@ class Ledger(SyncAPIResource):
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
+                        "filters": filters,
                         "invoice_settings": invoice_settings,
                         "metadata": metadata,
                         "per_unit_cost_basis": per_unit_cost_basis,
@@ -2354,6 +2374,8 @@ class AsyncLedger(AsyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[Iterable[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsFilter]]
+        | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -2493,6 +2515,9 @@ class AsyncLedger(AsyncAPIResource):
               available for use.
 
           expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
+
+          filters: Optional filter to specify which items this credit block applies to. If not
+              specified, the block will apply to all items for the pricing unit.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -3182,6 +3207,8 @@ class AsyncLedger(AsyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[Iterable[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsFilter]]
+        | Omit = omit,
         invoice_settings: Optional[ledger_create_entry_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
         | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -3211,6 +3238,7 @@ class AsyncLedger(AsyncAPIResource):
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
+                        "filters": filters,
                         "invoice_settings": invoice_settings,
                         "metadata": metadata,
                         "per_unit_cost_basis": per_unit_cost_basis,
@@ -3244,6 +3272,10 @@ class AsyncLedger(AsyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[
+            Iterable[ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsFilter]
+        ]
+        | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -3385,6 +3417,9 @@ class AsyncLedger(AsyncAPIResource):
               available for use.
 
           expiry_date: An ISO 8601 format date that denotes when this credit balance should expire.
+
+          filters: Optional filter to specify which items this credit block applies to. If not
+              specified, the block will apply to all items for the pricing unit.
 
           invoice_settings: Passing `invoice_settings` automatically generates an invoice for the newly
               added credits. If `invoice_settings` is passed, you must specify
@@ -4074,6 +4109,10 @@ class AsyncLedger(AsyncAPIResource):
         description: Optional[str] | Omit = omit,
         effective_date: Union[str, datetime, None] | Omit = omit,
         expiry_date: Union[str, datetime, None] | Omit = omit,
+        filters: Optional[
+            Iterable[ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsFilter]
+        ]
+        | Omit = omit,
         invoice_settings: Optional[
             ledger_create_entry_by_external_id_params.AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings
         ]
@@ -4107,6 +4146,7 @@ class AsyncLedger(AsyncAPIResource):
                         "description": description,
                         "effective_date": effective_date,
                         "expiry_date": expiry_date,
+                        "filters": filters,
                         "invoice_settings": invoice_settings,
                         "metadata": metadata,
                         "per_unit_cost_basis": per_unit_cost_basis,

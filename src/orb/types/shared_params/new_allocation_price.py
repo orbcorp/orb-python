@@ -2,12 +2,24 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .custom_expiration import CustomExpiration
 
-__all__ = ["NewAllocationPrice"]
+__all__ = ["NewAllocationPrice", "Filter"]
+
+
+class Filter(TypedDict, total=False):
+    field: Required[Literal["item_id"]]
+    """The property of the price the block applies to. Only item_id is supported."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[SequenceNotStr[str]]
+    """The IDs or values that match this filter."""
 
 
 class NewAllocationPrice(TypedDict, total=False):
@@ -31,3 +43,6 @@ class NewAllocationPrice(TypedDict, total=False):
     Whether the allocated amount should expire at the end of the cadence or roll
     over to the next period. Set to null if using custom_expiration.
     """
+
+    filters: Optional[Iterable[Filter]]
+    """The filters that determine which items the allocation applies to."""

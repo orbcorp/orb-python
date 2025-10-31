@@ -2,15 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
 __all__ = [
     "LedgerCreateEntryByExternalIDParams",
     "AddIncrementCreditLedgerEntryRequestParams",
+    "AddIncrementCreditLedgerEntryRequestParamsFilter",
     "AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings",
     "AddDecrementCreditLedgerEntryRequestParams",
     "AddExpirationChangeCreditLedgerEntryRequestParams",
@@ -51,6 +53,12 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     expiry_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
     """An ISO 8601 format date that denotes when this credit balance should expire."""
 
+    filters: Optional[Iterable[AddIncrementCreditLedgerEntryRequestParamsFilter]]
+    """Optional filter to specify which items this credit block applies to.
+
+    If not specified, the block will apply to all items for the pricing unit.
+    """
+
     invoice_settings: Optional[AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings]
     """
     Passing `invoice_settings` automatically generates an invoice for the newly
@@ -72,6 +80,17 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
     How much, in the customer's currency, a customer paid for a single credit in
     this block
     """
+
+
+class AddIncrementCreditLedgerEntryRequestParamsFilter(TypedDict, total=False):
+    field: Required[Literal["item_id"]]
+    """The property of the price the block applies to. Only item_id is supported."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[SequenceNotStr[str]]
+    """The IDs or values that match this filter."""
 
 
 class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total=False):
