@@ -100,16 +100,6 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     saved payment method.
     """
 
-    net_terms: Required[Optional[int]]
-    """The net terms determines the due date of the invoice.
-
-    Due date is calculated based on the invoice or issuance date, depending on the
-    account's configured due date calculation method. A value of '0' here represents
-    that the invoice is due on issue, whereas a value of '30' represents that the
-    customer has 30 days to pay the invoice. Do not set this field if you want to
-    set a custom due date.
-    """
-
     custom_due_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
     """An optional custom due date for the invoice.
 
@@ -131,6 +121,16 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
 
     memo: Optional[str]
     """An optional memo to display on the invoice."""
+
+    net_terms: Optional[int]
+    """The net terms determines the due date of the invoice.
+
+    Due date is calculated based on the invoice or issuance date, depending on the
+    account's configured due date calculation method. A value of '0' here represents
+    that the invoice is due on issue, whereas a value of '30' represents that the
+    customer has 30 days to pay the invoice. Do not set this field if you want to
+    set a custom due date.
+    """
 
     require_successful_payment: bool
     """

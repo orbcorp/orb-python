@@ -141,12 +141,9 @@ class Beta(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanVersion:
-        """This API endpoint is in beta and its interface may change.
+        """This endpoint is used to fetch a plan version.
 
-        It is recommended for
-        use only in test mode.
-
-        This endpoint is used to fetch a plan version. It returns the phases, prices,
+        It returns the phases, prices,
         and adjustments present on this version of the plan.
 
         Args:
@@ -183,11 +180,7 @@ class Beta(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
+        """
         This endpoint allows setting the default version of a plan.
 
         Args:
@@ -334,12 +327,9 @@ class AsyncBeta(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanVersion:
-        """This API endpoint is in beta and its interface may change.
+        """This endpoint is used to fetch a plan version.
 
-        It is recommended for
-        use only in test mode.
-
-        This endpoint is used to fetch a plan version. It returns the phases, prices,
+        It returns the phases, prices,
         and adjustments present on this version of the plan.
 
         Args:
@@ -376,11 +366,7 @@ class AsyncBeta(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Plan:
-        """This API endpoint is in beta and its interface may change.
-
-        It is recommended for
-        use only in test mode.
-
+        """
         This endpoint allows setting the default version of a plan.
 
         Args:
