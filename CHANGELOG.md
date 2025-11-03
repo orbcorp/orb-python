@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.33.1 (2025-11-03)
+
+Full Changelog: [v4.33.0...v4.33.1](https://github.com/orbcorp/orb-python/compare/v4.33.0...v4.33.1)
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([6e89643](https://github.com/orbcorp/orb-python/commit/6e8964390b6ab4b4e01a6b76c833c91b46be9247))
+
 ## 4.33.0 (2025-10-31)
 
 Full Changelog: [v4.32.0...v4.33.0](https://github.com/orbcorp/orb-python/compare/v4.32.0...v4.33.0)
