@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.35.0 (2025-11-04)
+
+Full Changelog: [v4.34.0...v4.35.0](https://github.com/orbcorp/orb-python/compare/v4.34.0...v4.35.0)
+
+### Features
+
+* **api:** api update ([ec9d784](https://github.com/orbcorp/orb-python/commit/ec9d784f80d872b05772564fff97007df0dfe05b))
+
 ## 4.34.0 (2025-11-03)
 
 Full Changelog: [v4.33.1...v4.34.0](https://github.com/orbcorp/orb-python/compare/v4.33.1...v4.34.0)
