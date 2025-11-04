@@ -376,7 +376,6 @@ class Customers(SyncAPIResource):
         additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
-        automatic_tax_enabled: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -420,10 +419,6 @@ class Customers(SyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
-
-          automatic_tax_enabled: Whether automatic tax calculation is enabled for this customer. When null,
-              inherits from account-level setting. When true or false, overrides the account
-              setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -620,7 +615,6 @@ class Customers(SyncAPIResource):
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
-                    "automatic_tax_enabled": automatic_tax_enabled,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -942,7 +936,6 @@ class Customers(SyncAPIResource):
         additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
-        automatic_tax_enabled: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -985,10 +978,6 @@ class Customers(SyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
-
-          automatic_tax_enabled: Whether automatic tax calculation is enabled for this customer. When null,
-              inherits from account-level setting. When true or false, overrides the account
-              setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1185,7 +1174,6 @@ class Customers(SyncAPIResource):
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
-                    "automatic_tax_enabled": automatic_tax_enabled,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -1534,7 +1522,6 @@ class AsyncCustomers(AsyncAPIResource):
         additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
-        automatic_tax_enabled: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -1578,10 +1565,6 @@ class AsyncCustomers(AsyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
-
-          automatic_tax_enabled: Whether automatic tax calculation is enabled for this customer. When null,
-              inherits from account-level setting. When true or false, overrides the account
-              setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1778,7 +1761,6 @@ class AsyncCustomers(AsyncAPIResource):
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
-                    "automatic_tax_enabled": automatic_tax_enabled,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,
@@ -2100,7 +2082,6 @@ class AsyncCustomers(AsyncAPIResource):
         additional_emails: Optional[SequenceNotStr[str]] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
-        automatic_tax_enabled: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -2143,10 +2124,6 @@ class AsyncCustomers(AsyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
-
-          automatic_tax_enabled: Whether automatic tax calculation is enabled for this customer. When null,
-              inherits from account-level setting. When true or false, overrides the account
-              setting.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -2343,7 +2320,6 @@ class AsyncCustomers(AsyncAPIResource):
                     "additional_emails": additional_emails,
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
-                    "automatic_tax_enabled": automatic_tax_enabled,
                     "billing_address": billing_address,
                     "currency": currency,
                     "email": email,

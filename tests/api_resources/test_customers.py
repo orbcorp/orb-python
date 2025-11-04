@@ -137,7 +137,6 @@ class TestCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
-            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -462,7 +461,6 @@ class TestCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
-            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -659,7 +657,6 @@ class TestAsyncCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
-            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
@@ -996,7 +993,6 @@ class TestAsyncCustomers:
             additional_emails=["string"],
             auto_collection=True,
             auto_issuance=True,
-            automatic_tax_enabled=True,
             billing_address={
                 "city": "city",
                 "country": "country",
