@@ -49,13 +49,6 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
     will be inherited from the account-level setting.
     """
 
-    automatic_tax_enabled: Optional[bool]
-    """Whether automatic tax calculation is enabled for this customer.
-
-    When null, inherits from account-level setting. When true or false, overrides
-    the account setting.
-    """
-
     billing_address: Optional[AddressInputParam]
 
     currency: Optional[str]
