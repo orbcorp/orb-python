@@ -13,3 +13,6 @@ __all__ = ["TieredConfig"]
 class TieredConfig(TypedDict, total=False):
     tiers: Required[Iterable[Tier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
+
+    prorated: bool
+    """If true, subtotals from this price are prorated based on the service period"""

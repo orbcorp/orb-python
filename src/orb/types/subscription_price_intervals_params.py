@@ -95,6 +95,13 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
     existing invoices to be changed.
     """
 
+    can_defer_billing: Optional[bool]
+    """
+    If true, ending an in-arrears price interval mid-cycle will defer billing the
+    final line itemuntil the next scheduled invoice. If false, it will be billed on
+    its end date. If not provided, behaviorwill follow account default.
+    """
+
     edit: Iterable[Edit]
     """A list of price intervals to edit on the subscription."""
 
@@ -667,6 +674,13 @@ class Edit(TypedDict, total=False):
 
     If not specified, the billing cycle day will not be updated. Note that
     overlapping price intervals must have the same billing cycle day.
+    """
+
+    can_defer_billing: Optional[bool]
+    """
+    If true, ending an in-arrears price interval mid-cycle will defer billing the
+    final line itemuntil the next scheduled invoice. If false, it will be billed on
+    its end date. If not provided, behaviorwill follow account default.
     """
 
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
