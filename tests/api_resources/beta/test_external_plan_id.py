@@ -77,7 +77,10 @@ class TestExternalPlanID:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {"unit_amount": "unit_amount"},
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -168,7 +171,10 @@ class TestExternalPlanID:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {"unit_amount": "unit_amount"},
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -392,7 +398,10 @@ class TestAsyncExternalPlanID:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {"unit_amount": "unit_amount"},
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
@@ -483,7 +492,10 @@ class TestAsyncExternalPlanID:
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
-                        "unit_config": {"unit_amount": "unit_amount"},
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
                         "billing_cycle_configuration": {
