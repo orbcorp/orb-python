@@ -102,6 +102,9 @@ class Backfills(SyncAPIResource):
         expressiveness of computed properties allows you to deprecate existing events
         based on both a period of time and specific property values.
 
+        You may not have multiple backfills in a pending or pending_revert state with
+        overlapping timeframes.
+
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
               default, Orb allows backfills up to 31 days in duration at a time. Reach out to
@@ -417,6 +420,9 @@ class AsyncBackfills(AsyncAPIResource):
         [computed properties](/extensibility/advanced-metrics#computed-properties). The
         expressiveness of computed properties allows you to deprecate existing events
         based on both a period of time and specific property values.
+
+        You may not have multiple backfills in a pending or pending_revert state with
+        overlapping timeframes.
 
         Args:
           timeframe_end: The (exclusive) end of the usage timeframe affected by this backfill. By
