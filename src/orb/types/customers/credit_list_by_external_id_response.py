@@ -10,8 +10,8 @@ __all__ = ["CreditListByExternalIDResponse", "Filter"]
 
 
 class Filter(BaseModel):
-    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
-    """The property of the price to filter on."""
+    field: Literal["item_id"]
+    """The property of the price the block applies to. Only item_id is supported."""
 
     operator: Literal["includes", "excludes"]
     """Should prices that match the filter be included or excluded."""
