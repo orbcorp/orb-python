@@ -20,6 +20,7 @@ __all__ = [
     "TaxConfiguration",
     "TaxConfigurationNewNumeralConfiguration",
     "TaxConfigurationNewAnrokConfiguration",
+    "TaxConfigurationNewStripeTaxConfiguration",
 ]
 
 
@@ -287,10 +288,24 @@ class TaxConfigurationNewAnrokConfiguration(TypedDict, total=False):
     """
 
 
+class TaxConfigurationNewStripeTaxConfiguration(TypedDict, total=False):
+    tax_exempt: Required[bool]
+
+    tax_provider: Required[Literal["stripe"]]
+
+    automatic_tax_enabled: Optional[bool]
+    """Whether to automatically calculate tax for this customer.
+
+    When null, inherits from account-level setting. When true or false, overrides
+    the account setting.
+    """
+
+
 TaxConfiguration: TypeAlias = Union[
     NewAvalaraTaxConfigurationParam,
     NewTaxJarConfigurationParam,
     NewSphereConfigurationParam,
     TaxConfigurationNewNumeralConfiguration,
     TaxConfigurationNewAnrokConfiguration,
+    TaxConfigurationNewStripeTaxConfiguration,
 ]
