@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.38.1 (2025-11-10)
+
+Full Changelog: [v4.38.0...v4.38.1](https://github.com/orbcorp/orb-python/compare/v4.38.0...v4.38.1)
+
+### Bug Fixes
+
+* compat with Python 3.14 ([75b7725](https://github.com/orbcorp/orb-python/commit/75b77254bf8dd57ee066fbada4abec0fb86175c4))
+
+
+### Chores
+
+* **package:** drop Python 3.8 support ([579488e](https://github.com/orbcorp/orb-python/commit/579488e9e42086adf36bc23bafbab86d23ee763e))
+
 ## 4.38.0 (2025-11-07)
 
 Full Changelog: [v4.37.0...v4.38.0](https://github.com/orbcorp/orb-python/compare/v4.37.0...v4.38.0)
