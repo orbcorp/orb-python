@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.38.2 (2025-11-11)
+
+Full Changelog: [v4.38.1...v4.38.2](https://github.com/orbcorp/orb-python/compare/v4.38.1...v4.38.2)
+
+### Bug Fixes
+
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([710a354](https://github.com/orbcorp/orb-python/commit/710a3542341f4b708796263bfe898384df59aa6c))
+
 ## 4.38.1 (2025-11-10)
 
 Full Changelog: [v4.38.0...v4.38.1](https://github.com/orbcorp/orb-python/compare/v4.38.0...v4.38.1)
