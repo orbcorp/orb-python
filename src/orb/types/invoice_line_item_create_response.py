@@ -7,9 +7,6 @@ from typing_extensions import Annotated, TypeAlias
 from .._utils import PropertyInfo
 from .._models import BaseModel
 from .shared.price import Price
-from .shared.maximum import Maximum
-from .shared.minimum import Minimum
-from .shared.discount import Discount
 from .shared.tax_amount import TaxAmount
 from .shared.tier_sub_line_item import TierSubLineItem
 from .shared.other_sub_line_item import OtherSubLineItem
@@ -64,9 +61,6 @@ class InvoiceLineItemCreateResponse(BaseModel):
     credits_applied: str
     """The number of prepaid credits applied."""
 
-    discount: Optional[Discount] = None
-    """This field is deprecated in favor of `adjustments`"""
-
     end_date: datetime
     """The end date of the range of time applied for this line item's price."""
 
@@ -79,18 +73,6 @@ class InvoiceLineItemCreateResponse(BaseModel):
     be populated with the key and a value. The `amount` and `subtotal` will be the
     values for this particular grouping.
     """
-
-    maximum: Optional[Maximum] = None
-    """This field is deprecated in favor of `adjustments`."""
-
-    maximum_amount: Optional[str] = None
-    """This field is deprecated in favor of `adjustments`."""
-
-    minimum: Optional[Minimum] = None
-    """This field is deprecated in favor of `adjustments`."""
-
-    minimum_amount: Optional[str] = None
-    """This field is deprecated in favor of `adjustments`."""
 
     name: str
     """The name of the price associated with this line item."""
