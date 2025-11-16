@@ -147,6 +147,10 @@ __all__ = [
     "CumulativeGroupedBulkPriceConversionRateConfig",
     "CumulativeGroupedBulkPriceCumulativeGroupedBulkConfig",
     "CumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue",
+    "CumulativeGroupedAllocationPrice",
+    "CumulativeGroupedAllocationPriceCompositePriceFilter",
+    "CumulativeGroupedAllocationPriceConversionRateConfig",
+    "CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
@@ -3001,6 +3005,110 @@ class CumulativeGroupedBulkPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
 
+class CumulativeGroupedAllocationPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+CumulativeGroupedAllocationPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(BaseModel):
+    cumulative_allocation: str
+    """The overall allocation across all groups"""
+
+    group_allocation: str
+    """The allocation per individual group"""
+
+    grouping_key: str
+    """The event property used to group usage before applying allocations"""
+
+    unit_amount: str
+    """The amount to charge for each unit outside of the allocation"""
+
+
+class CumulativeGroupedAllocationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[CumulativeGroupedAllocationPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[CumulativeGroupedAllocationPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    cumulative_grouped_allocation_config: CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig
+    """Configuration for cumulative_grouped_allocation pricing"""
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["cumulative_grouped_allocation"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+
 class MinimumCompositePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
     """The property of the price to filter on."""
@@ -3331,6 +3439,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithUnitPricingPrice,
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
+        CumulativeGroupedAllocationPrice,
         MinimumCompositePrice,
         PercentCompositePrice,
         EventOutputPrice,
