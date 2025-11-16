@@ -16,7 +16,7 @@ from .shared.plan_phase_usage_discount_adjustment import PlanPhaseUsageDiscountA
 from .shared.plan_phase_amount_discount_adjustment import PlanPhaseAmountDiscountAdjustment
 from .shared.plan_phase_percentage_discount_adjustment import PlanPhasePercentageDiscountAdjustment
 
-__all__ = ["Plan", "Adjustment", "PlanPhase", "Product", "TrialConfig", "BasePlan"]
+__all__ = ["Plan", "Adjustment", "BasePlan", "PlanPhase", "Product", "TrialConfig"]
 
 Adjustment: TypeAlias = Annotated[
     Union[
@@ -28,6 +28,19 @@ Adjustment: TypeAlias = Annotated[
     ],
     PropertyInfo(discriminator="adjustment_type"),
 ]
+
+
+class BasePlan(BaseModel):
+    id: Optional[str] = None
+
+    external_plan_id: Optional[str] = None
+    """
+    An optional user-defined ID for this plan resource, used throughout the system
+    as an alias for this Plan. Use this field to identify a plan by an existing
+    identifier in your system.
+    """
+
+    name: Optional[str] = None
 
 
 class PlanPhase(BaseModel):
@@ -73,19 +86,6 @@ class TrialConfig(BaseModel):
     trial_period_unit: Literal["days"]
 
 
-class BasePlan(BaseModel):
-    id: Optional[str] = None
-
-    external_plan_id: Optional[str] = None
-    """
-    An optional user-defined ID for this plan resource, used throughout the system
-    as an alias for this Plan. Use this field to identify a plan by an existing
-    identifier in your system.
-    """
-
-    name: Optional[str] = None
-
-
 class Plan(BaseModel):
     id: str
 
@@ -93,6 +93,14 @@ class Plan(BaseModel):
     """Adjustments for this plan.
 
     If the plan has phases, this includes adjustments across all phases of the plan.
+    """
+
+    base_plan: Optional[BasePlan] = None
+
+    base_plan_id: Optional[str] = None
+    """
+    The parent plan id if the given plan was created by overriding one or more of
+    the parent's prices
     """
 
     created_at: datetime
@@ -168,11 +176,3 @@ class Plan(BaseModel):
     trial_config: TrialConfig
 
     version: int
-
-    base_plan: Optional[BasePlan] = None
-
-    base_plan_id: Optional[str] = None
-    """
-    The parent plan id if the given plan was created by overriding one or more of
-    the parent's prices
-    """
