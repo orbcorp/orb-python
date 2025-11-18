@@ -96,11 +96,15 @@ class Plan(BaseModel):
     """
 
     base_plan: Optional[BasePlan] = None
+    """
+    Legacy field representing the parent plan if the current plan is a 'child plan',
+    overriding prices from the parent.
+    """
 
     base_plan_id: Optional[str] = None
     """
-    The parent plan id if the given plan was created by overriding one or more of
-    the parent's prices
+    Legacy field representing the parent plan ID if the current plan is a 'child
+    plan', overriding prices from the parent.
     """
 
     created_at: datetime

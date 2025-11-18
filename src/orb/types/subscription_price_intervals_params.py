@@ -776,8 +776,8 @@ class Edit(TypedDict, total=False):
     can_defer_billing: Optional[bool]
     """
     If true, ending an in-arrears price interval mid-cycle will defer billing the
-    final line itemuntil the next scheduled invoice. If false, it will be billed on
-    its end date. If not provided, behaviorwill follow account default.
+    final line item until the next scheduled invoice. If false, it will be billed on
+    its end date. If not provided, behavior will follow account default.
     """
 
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
