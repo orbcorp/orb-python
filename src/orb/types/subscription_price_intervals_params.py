@@ -100,9 +100,8 @@ class SubscriptionPriceIntervalsParams(TypedDict, total=False):
 
     can_defer_billing: Optional[bool]
     """
-    If true, ending an in-arrears price interval mid-cycle will defer billing the
-    final line itemuntil the next scheduled invoice. If false, it will be billed on
-    its end date. If not provided, behaviorwill follow account default.
+    If set, the default value to use for added/edited price intervals with an
+    end_date set.
     """
 
     edit: Iterable[Edit]
@@ -665,6 +664,13 @@ class Add(TypedDict, total=False):
     allocation_price: Optional[NewAllocationPrice]
     """The definition of a new allocation price to create and add to the subscription."""
 
+    can_defer_billing: Optional[bool]
+    """
+    If true, an in-arrears price interval ending mid-cycle will defer billing the
+    final line item until the next scheduled invoice. If false, it will be billed on
+    its end date.
+    """
+
     discounts: Optional[Iterable[AddDiscount]]
     """A list of discounts to initialize on the price interval."""
 
@@ -775,9 +781,9 @@ class Edit(TypedDict, total=False):
 
     can_defer_billing: Optional[bool]
     """
-    If true, ending an in-arrears price interval mid-cycle will defer billing the
+    If true, an in-arrears price interval ending mid-cycle will defer billing the
     final line item until the next scheduled invoice. If false, it will be billed on
-    its end date. If not provided, behavior will follow account default.
+    its end date.
     """
 
     end_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate, None], PropertyInfo(format="iso8601")]
