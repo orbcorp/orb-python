@@ -75,6 +75,8 @@ class TestSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -205,6 +207,8 @@ class TestSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -657,7 +661,10 @@ class TestSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
+                    "can_defer_billing": True,
                     "discounts": [
                         {
                             "amount_discount": 0,
@@ -910,6 +917,8 @@ class TestSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -1033,6 +1042,8 @@ class TestSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -1454,6 +1465,8 @@ class TestAsyncSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -1584,6 +1597,8 @@ class TestAsyncSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -2036,7 +2051,10 @@ class TestAsyncSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
+                    "can_defer_billing": True,
                     "discounts": [
                         {
                             "amount_discount": 0,
@@ -2289,6 +2307,8 @@ class TestAsyncSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {
@@ -2412,6 +2432,8 @@ class TestAsyncSubscriptions:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
                         {

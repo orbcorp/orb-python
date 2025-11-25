@@ -44,3 +44,17 @@ class NewAllocationPrice(BaseModel):
 
     filters: Optional[List[Filter]] = None
     """The filters that determine which items the allocation applies to."""
+
+    item_id: Optional[str] = None
+    """
+    The item ID that line items representing charges for this allocation will be
+    associated with. If not provided, the default allocation item for the currency
+    will be used (e.g. 'Included Allocation (USD)').
+    """
+
+    per_unit_cost_basis: Optional[str] = None
+    """The (per-unit) cost basis of each created block.
+
+    If non-zero, a customer will be invoiced according to the quantity and per unit
+    cost basis specified for the allocation each cadence.
+    """

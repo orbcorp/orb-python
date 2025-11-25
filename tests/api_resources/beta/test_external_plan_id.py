@@ -70,6 +70,8 @@ class TestExternalPlanID:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -164,6 +166,8 @@ class TestExternalPlanID:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -391,6 +395,8 @@ class TestAsyncExternalPlanID:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -485,6 +491,8 @@ class TestAsyncExternalPlanID:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
