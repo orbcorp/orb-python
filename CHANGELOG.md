@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.43.0 (2025-11-25)
+
+Full Changelog: [v4.42.0...v4.43.0](https://github.com/orbcorp/orb-python/compare/v4.42.0...v4.43.0)
+
+### Features
+
+* **api:** api update ([db10b87](https://github.com/orbcorp/orb-python/commit/db10b87bf59ba633a0c3e278d5f1165a0c77d7ea))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([159b9e5](https://github.com/orbcorp/orb-python/commit/159b9e55b84a78a92b34d4073f65dfb7b75a30e4))
+
 ## 4.42.0 (2025-11-18)
 
 Full Changelog: [v4.41.0...v4.42.0](https://github.com/orbcorp/orb-python/compare/v4.41.0...v4.42.0)
