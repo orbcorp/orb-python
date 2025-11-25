@@ -51,6 +51,8 @@ class TestPlans:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -318,6 +320,8 @@ class TestAsyncPlans:
                                 "values": ["string"],
                             }
                         ],
+                        "item_id": "item_id",
+                        "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
                     "price": {
