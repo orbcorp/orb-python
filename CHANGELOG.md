@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.43.1 (2025-11-27)
+
+Full Changelog: [v4.43.0...v4.43.1](https://github.com/orbcorp/orb-python/compare/v4.43.0...v4.43.1)
+
+### Bug Fixes
+
+* ensure streams are always closed ([3c4918f](https://github.com/orbcorp/orb-python/commit/3c4918f9ee4f45e6a0fd7ea63436f663710a23b1))
+
 ## 4.43.0 (2025-11-25)
 
 Full Changelog: [v4.42.0...v4.43.0](https://github.com/orbcorp/orb-python/compare/v4.42.0...v4.43.0)
