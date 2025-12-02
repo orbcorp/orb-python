@@ -365,6 +365,10 @@ class Subscriptions(SyncAPIResource):
         subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
         \\$$10.00 for a subscription that invoices in USD.
 
+        ## Limits
+
+        By default, Orb limits the number of subscriptions per customer to 100.
+
         Args:
           add_adjustments: Additional adjustments to be added to the subscription. (Only available for
               accounts that have migrated off of legacy subscription overrides)
@@ -2455,6 +2459,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         specified in the subscription's invoicing currency, when creating a
         subscription. E.g. pass in `10.00` to issue an invoice when usage amounts hit
         \\$$10.00 for a subscription that invoices in USD.
+
+        ## Limits
+
+        By default, Orb limits the number of subscriptions per customer to 100.
 
         Args:
           add_adjustments: Additional adjustments to be added to the subscription. (Only available for
