@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.44.0 (2025-12-02)
+
+Full Changelog: [v4.43.1...v4.44.0](https://github.com/orbcorp/orb-python/compare/v4.43.1...v4.44.0)
+
+### Features
+
+* **api:** api update ([d05cd59](https://github.com/orbcorp/orb-python/commit/d05cd599518f89f531ddb4588e8bbf9ae4c9b6bb))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([fe99db5](https://github.com/orbcorp/orb-python/commit/fe99db5c9904f9a83fe60cf6738316226510d839))
+
 ## 4.43.1 (2025-11-27)
 
 Full Changelog: [v4.43.0...v4.43.1](https://github.com/orbcorp/orb-python/compare/v4.43.0...v4.43.1)
