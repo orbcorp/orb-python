@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.45.0 (2025-12-03)
+
+Full Changelog: [v4.44.0...v4.45.0](https://github.com/orbcorp/orb-python/compare/v4.44.0...v4.45.0)
+
+### Features
+
+* **api:** api update ([3959281](https://github.com/orbcorp/orb-python/commit/3959281daeb67e4c41bade06590d66a246659d86))
+
+
+### Chores
+
+* **docs:** use environment variables for authentication in code snippets ([5527cac](https://github.com/orbcorp/orb-python/commit/5527cac85f39a9178e2ea77203bbc8141f1bbca5))
+* update lockfile ([b78de8a](https://github.com/orbcorp/orb-python/commit/b78de8a33d1cea6a7de2c018ba98b8014e8f3e68))
+
 ## 4.44.0 (2025-12-02)
 
 Full Changelog: [v4.43.1...v4.44.0](https://github.com/orbcorp/orb-python/compare/v4.43.1...v4.44.0)
