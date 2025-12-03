@@ -103,6 +103,7 @@ class Customers(SyncAPIResource):
         external_customer_id: Optional[str] | Omit = omit,
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -165,6 +166,9 @@ class Customers(SyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -348,6 +352,7 @@ class Customers(SyncAPIResource):
                     "external_customer_id": external_customer_id,
                     "hierarchy": hierarchy,
                     "metadata": metadata,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
@@ -384,6 +389,7 @@ class Customers(SyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -438,6 +444,9 @@ class Customers(SyncAPIResource):
               by setting `metadata` to `null`.
 
           name: The full name of the customer
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode:
@@ -623,6 +632,7 @@ class Customers(SyncAPIResource):
                     "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
@@ -944,6 +954,7 @@ class Customers(SyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -997,6 +1008,9 @@ class Customers(SyncAPIResource):
               by setting `metadata` to `null`.
 
           name: The full name of the customer
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode:
@@ -1182,6 +1196,7 @@ class Customers(SyncAPIResource):
                     "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
@@ -1249,6 +1264,7 @@ class AsyncCustomers(AsyncAPIResource):
         external_customer_id: Optional[str] | Omit = omit,
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -1311,6 +1327,9 @@ class AsyncCustomers(AsyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode, the connection must first be configured in the Orb
@@ -1494,6 +1513,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "external_customer_id": external_customer_id,
                     "hierarchy": hierarchy,
                     "metadata": metadata,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
@@ -1530,6 +1550,7 @@ class AsyncCustomers(AsyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -1584,6 +1605,9 @@ class AsyncCustomers(AsyncAPIResource):
               by setting `metadata` to `null`.
 
           name: The full name of the customer
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode:
@@ -1769,6 +1793,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,
@@ -2090,6 +2115,7 @@ class AsyncCustomers(AsyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
         payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
@@ -2143,6 +2169,9 @@ class AsyncCustomers(AsyncAPIResource):
               by setting `metadata` to `null`.
 
           name: The full name of the customer
+
+          payment_configuration: Payment configuration for the customer, applicable when using Orb Invoicing with
+              a supported payment provider such as Stripe.
 
           payment_provider: This is used for creating charges or invoices in an external system via Orb.
               When not in test mode:
@@ -2328,6 +2357,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "hierarchy": hierarchy,
                     "metadata": metadata,
                     "name": name,
+                    "payment_configuration": payment_configuration,
                     "payment_provider": payment_provider,
                     "payment_provider_id": payment_provider_id,
                     "reporting_configuration": reporting_configuration,

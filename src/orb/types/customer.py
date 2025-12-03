@@ -14,6 +14,8 @@ __all__ = [
     "Hierarchy",
     "AccountingSyncConfiguration",
     "AccountingSyncConfigurationAccountingProvider",
+    "PaymentConfiguration",
+    "PaymentConfigurationPaymentProvider",
     "ReportingConfiguration",
 ]
 
@@ -34,6 +36,25 @@ class AccountingSyncConfiguration(BaseModel):
     accounting_providers: List[AccountingSyncConfigurationAccountingProvider]
 
     excluded: bool
+
+
+class PaymentConfigurationPaymentProvider(BaseModel):
+    provider_type: Literal["stripe"]
+    """The payment provider to configure."""
+
+    excluded_payment_method_types: Optional[List[str]] = None
+    """List of Stripe payment method types to exclude for this customer.
+
+    Excluded payment methods will not be available for the customer to select during
+    payment, and will not be used for auto-collection. If a customer's default
+    payment method becomes excluded, Orb will attempt to use the next available
+    compatible payment method for auto-collection.
+    """
+
+
+class PaymentConfiguration(BaseModel):
+    payment_providers: Optional[List[PaymentConfigurationPaymentProvider]] = None
+    """Provider-specific payment configuration."""
 
 
 class ReportingConfiguration(BaseModel):
@@ -274,6 +295,12 @@ class Customer(BaseModel):
 
     This field is nullable for backwards compatibility but will always return a
     boolean value.
+    """
+
+    payment_configuration: Optional[PaymentConfiguration] = None
+    """
+    Payment configuration for the customer, applicable when using Orb Invoicing with
+    a supported payment provider such as Stripe.
     """
 
     reporting_configuration: Optional[ReportingConfiguration] = None
