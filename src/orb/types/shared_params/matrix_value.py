@@ -11,6 +11,8 @@ __all__ = ["MatrixValue"]
 
 
 class MatrixValue(TypedDict, total=False):
+    """Configuration for a single matrix value"""
+
     dimension_values: Required[SequenceNotStr[Optional[str]]]
     """One or two matrix keys to filter usage to this Matrix value by"""
 

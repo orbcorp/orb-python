@@ -14,6 +14,8 @@ __all__ = ["NewPlanGroupedAllocationPrice", "GroupedAllocationConfig", "Conversi
 
 
 class GroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for grouped_allocation pricing"""
+
     allocation: Required[str]
     """Usage allocation per group"""
 

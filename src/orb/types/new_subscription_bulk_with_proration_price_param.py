@@ -19,6 +19,8 @@ __all__ = [
 
 
 class BulkWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier with proration"""
+
     unit_amount: Required[str]
     """Cost per unit"""
 
@@ -27,6 +29,8 @@ class BulkWithProrationConfigTier(TypedDict, total=False):
 
 
 class BulkWithProrationConfig(TypedDict, total=False):
+    """Configuration for bulk_with_proration pricing"""
+
     tiers: Required[Iterable[BulkWithProrationConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 

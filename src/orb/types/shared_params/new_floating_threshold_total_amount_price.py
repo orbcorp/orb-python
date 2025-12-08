@@ -19,6 +19,8 @@ __all__ = [
 
 
 class ThresholdTotalAmountConfigConsumptionTable(TypedDict, total=False):
+    """Configuration for a single threshold"""
+
     threshold: Required[str]
     """Quantity threshold"""
 
@@ -27,6 +29,8 @@ class ThresholdTotalAmountConfigConsumptionTable(TypedDict, total=False):
 
 
 class ThresholdTotalAmountConfig(TypedDict, total=False):
+    """Configuration for threshold_total_amount pricing"""
+
     consumption_table: Required[Iterable[ThresholdTotalAmountConfigConsumptionTable]]
     """
     When the quantity consumed passes a provided threshold, the configured total

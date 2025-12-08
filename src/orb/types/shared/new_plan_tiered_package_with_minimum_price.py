@@ -21,6 +21,8 @@ __all__ = [
 
 
 class TieredPackageWithMinimumConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     minimum_amount: str
     """Minimum amount"""
 
@@ -32,6 +34,8 @@ class TieredPackageWithMinimumConfigTier(BaseModel):
 
 
 class TieredPackageWithMinimumConfig(BaseModel):
+    """Configuration for tiered_package_with_minimum pricing"""
+
     package_size: float
     """Package size"""
 

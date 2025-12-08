@@ -21,6 +21,8 @@ __all__ = [
 
 
 class MatrixWithDisplayNameConfigUnitAmount(BaseModel):
+    """Configuration for a unit amount item"""
+
     dimension_value: str
     """The dimension value"""
 
@@ -32,6 +34,8 @@ class MatrixWithDisplayNameConfigUnitAmount(BaseModel):
 
 
 class MatrixWithDisplayNameConfig(BaseModel):
+    """Configuration for matrix_with_display_name pricing"""
+
     dimension: str
     """Used to determine the unit rate"""
 

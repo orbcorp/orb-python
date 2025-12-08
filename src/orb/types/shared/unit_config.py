@@ -8,6 +8,8 @@ __all__ = ["UnitConfig"]
 
 
 class UnitConfig(BaseModel):
+    """Configuration for unit pricing"""
+
     unit_amount: str
     """Rate per unit of usage"""
 

@@ -83,6 +83,8 @@ class AddIncrementCreditLedgerEntryRequestParams(TypedDict, total=False):
 
 
 class AddIncrementCreditLedgerEntryRequestParamsFilter(TypedDict, total=False):
+    """A PriceFilter that only allows item_id field for block filters."""
+
     field: Required[Literal["item_id"]]
     """The property of the price the block applies to. Only item_id is supported."""
 
@@ -94,6 +96,10 @@ class AddIncrementCreditLedgerEntryRequestParamsFilter(TypedDict, total=False):
 
 
 class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total=False):
+    """
+    Passing `invoice_settings` automatically generates an invoice for the newly added credits. If `invoice_settings` is passed, you must specify per_unit_cost_basis, as the calculation of the invoice total is done on that basis.
+    """
+
     auto_collection: Required[bool]
     """
     Whether the credits purchase invoice should auto collect with the customer's

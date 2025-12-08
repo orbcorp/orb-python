@@ -13,10 +13,14 @@ __all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus"]
 
 
 class Metric(BaseModel):
+    """The metric the alert applies to."""
+
     id: str
 
 
 class Plan(BaseModel):
+    """The plan the alert applies to."""
+
     id: Optional[str] = None
 
     external_plan_id: Optional[str] = None
@@ -32,6 +36,8 @@ class Plan(BaseModel):
 
 
 class BalanceAlertStatus(BaseModel):
+    """Alert status is used to determine if an alert is currently in-alert or not."""
+
     in_alert: bool
     """Whether the alert is currently in-alert or not."""
 
@@ -40,6 +46,13 @@ class BalanceAlertStatus(BaseModel):
 
 
 class Alert(BaseModel):
+    """
+    [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+    Alerts created through the API can be scoped to either customers or subscriptions.
+    """
+
     id: str
     """Also referred to as alert_id in this documentation."""
 

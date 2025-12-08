@@ -14,6 +14,8 @@ __all__ = ["NewFloatingPackageWithAllocationPrice", "PackageWithAllocationConfig
 
 
 class PackageWithAllocationConfig(TypedDict, total=False):
+    """Configuration for package_with_allocation pricing"""
+
     allocation: Required[str]
     """Usage allocation"""
 

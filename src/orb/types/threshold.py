@@ -6,6 +6,10 @@ __all__ = ["Threshold"]
 
 
 class Threshold(BaseModel):
+    """
+    Thresholds are used to define the conditions under which an alert will be triggered.
+    """
+
     value: float
     """The value at which an alert will fire.
 

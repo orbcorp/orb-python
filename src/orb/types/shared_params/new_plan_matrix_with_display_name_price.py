@@ -19,6 +19,8 @@ __all__ = [
 
 
 class MatrixWithDisplayNameConfigUnitAmount(TypedDict, total=False):
+    """Configuration for a unit amount item"""
+
     dimension_value: Required[str]
     """The dimension value"""
 
@@ -30,6 +32,8 @@ class MatrixWithDisplayNameConfigUnitAmount(TypedDict, total=False):
 
 
 class MatrixWithDisplayNameConfig(TypedDict, total=False):
+    """Configuration for matrix_with_display_name pricing"""
+
     dimension: Required[str]
     """Used to determine the unit rate"""
 

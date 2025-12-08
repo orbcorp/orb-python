@@ -31,6 +31,10 @@ Adjustment: TypeAlias = Annotated[
 
 
 class BasePlan(BaseModel):
+    """
+    Legacy field representing the parent plan if the current plan is a 'child plan', overriding prices from the parent.
+    """
+
     id: Optional[str] = None
 
     external_plan_id: Optional[str] = None
@@ -87,6 +91,12 @@ class TrialConfig(BaseModel):
 
 
 class Plan(BaseModel):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     id: str
 
     adjustments: List[Adjustment]

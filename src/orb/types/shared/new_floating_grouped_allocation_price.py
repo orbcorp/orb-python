@@ -16,6 +16,8 @@ __all__ = ["NewFloatingGroupedAllocationPrice", "GroupedAllocationConfig", "Conv
 
 
 class GroupedAllocationConfig(BaseModel):
+    """Configuration for grouped_allocation pricing"""
+
     allocation: str
     """Usage allocation per group"""
 

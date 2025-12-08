@@ -6,6 +6,8 @@ __all__ = ["PackageConfig"]
 
 
 class PackageConfig(BaseModel):
+    """Configuration for package pricing"""
+
     package_amount: str
     """A currency amount to rate usage by"""
 

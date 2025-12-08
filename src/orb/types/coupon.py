@@ -15,6 +15,10 @@ Discount: TypeAlias = Annotated[Union[PercentageDiscount, AmountDiscount], Prope
 
 
 class Coupon(BaseModel):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     id: str
     """Also referred to as coupon_id in this documentation."""
 

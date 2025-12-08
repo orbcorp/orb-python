@@ -19,6 +19,8 @@ __all__ = [
 
 
 class CumulativeGroupedBulkConfigDimensionValue(TypedDict, total=False):
+    """Configuration for a dimension value entry"""
+
     grouping_key: Required[str]
     """Grouping key value"""
 
@@ -30,6 +32,8 @@ class CumulativeGroupedBulkConfigDimensionValue(TypedDict, total=False):
 
 
 class CumulativeGroupedBulkConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_bulk pricing"""
+
     dimension_values: Required[Iterable[CumulativeGroupedBulkConfigDimensionValue]]
     """Each tier lower bound must have the same group of values."""
 

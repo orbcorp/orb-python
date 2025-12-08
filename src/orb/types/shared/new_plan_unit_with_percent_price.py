@@ -16,6 +16,8 @@ __all__ = ["NewPlanUnitWithPercentPrice", "UnitWithPercentConfig", "ConversionRa
 
 
 class UnitWithPercentConfig(BaseModel):
+    """Configuration for unit_with_percent pricing"""
+
     percent: str
     """What percent, out of 100, of the calculated total to charge"""
 

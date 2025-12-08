@@ -14,6 +14,8 @@ __all__ = ["NewSubscriptionUnitWithProrationPriceParam", "UnitWithProrationConfi
 
 
 class UnitWithProrationConfig(TypedDict, total=False):
+    """Configuration for unit_with_proration pricing"""
+
     unit_amount: Required[str]
     """Rate per unit of usage"""
 

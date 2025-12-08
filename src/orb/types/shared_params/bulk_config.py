@@ -11,5 +11,7 @@ __all__ = ["BulkConfig"]
 
 
 class BulkConfig(TypedDict, total=False):
+    """Configuration for bulk pricing"""
+
     tiers: Required[Iterable[BulkTier]]
     """Bulk tiers for rating based on total usage volume"""

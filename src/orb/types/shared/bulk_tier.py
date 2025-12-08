@@ -8,6 +8,8 @@ __all__ = ["BulkTier"]
 
 
 class BulkTier(BaseModel):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: str
     """Amount per unit"""
 

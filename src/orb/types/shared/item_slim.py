@@ -6,6 +6,10 @@ __all__ = ["ItemSlim"]
 
 
 class ItemSlim(BaseModel):
+    """
+    A minimal representation of an Item containing only the essential identifying information.
+    """
+
     id: str
     """The Orb-assigned unique identifier for the item."""
 
