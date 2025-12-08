@@ -21,6 +21,8 @@ __all__ = [
 
 
 class TieredWithProrationConfigTier(BaseModel):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: str
     """Inclusive tier starting value"""
 
@@ -29,6 +31,8 @@ class TieredWithProrationConfigTier(BaseModel):
 
 
 class TieredWithProrationConfig(BaseModel):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: List[TieredWithProrationConfigTier]
     """
     Tiers for rating based on total usage quantities into the specified tier with

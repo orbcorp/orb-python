@@ -16,6 +16,8 @@ __all__ = ["NewFloatingTieredPackagePrice", "TieredPackageConfig", "TieredPackag
 
 
 class TieredPackageConfigTier(BaseModel):
+    """Configuration for a single tier with business logic"""
+
     per_unit: str
     """Price per package"""
 
@@ -24,6 +26,8 @@ class TieredPackageConfigTier(BaseModel):
 
 
 class TieredPackageConfig(BaseModel):
+    """Configuration for tiered_package pricing"""
+
     package_size: str
     """Package size"""
 

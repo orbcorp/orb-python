@@ -140,6 +140,8 @@ class AddAdjustment(TypedDict, total=False):
 
 
 class AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    """Configuration for a single property filter"""
+
     property_key: Required[str]
     """Event property key to filter on"""
 
@@ -148,6 +150,8 @@ class AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedD
 
 
 class AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: Required[str]
     """Amount per unit"""
 
@@ -156,6 +160,8 @@ class AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDic
 
 
 class AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    """Configuration for bulk_with_filters pricing"""
+
     filters: Required[Iterable[AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
     """Property filters to apply (all must match)"""
 
@@ -250,6 +256,8 @@ class AddPricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
 
 
 class AddPricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: Required[str]
     """Inclusive tier starting value"""
 
@@ -258,6 +266,8 @@ class AddPricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigTier(
 
 
 class AddPricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfig(TypedDict, total=False):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: Required[Iterable[AddPricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigTier]]
     """
     Tiers for rating based on total usage quantities into the specified tier with
@@ -352,6 +362,8 @@ class AddPricePriceNewPlanTieredWithProrationPrice(TypedDict, total=False):
 
 
 class AddPricePriceNewPlanGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(TypedDict, total=False):
+    """Configuration for grouped_with_min_max_thresholds pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before applying thresholds"""
 
@@ -454,6 +466,8 @@ class AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=Fals
 
 
 class AddPricePriceNewPlanCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_allocation pricing"""
+
     cumulative_allocation: Required[str]
     """The overall allocation across all groups"""
 
@@ -556,6 +570,8 @@ class AddPricePriceNewPlanCumulativeGroupedAllocationPrice(TypedDict, total=Fals
 
 
 class AddPricePriceNewPlanPercentCompositePricePercentConfig(TypedDict, total=False):
+    """Configuration for percent pricing"""
+
     percent: Required[float]
     """What percent of the component subtotals to charge"""
 
@@ -647,6 +663,8 @@ class AddPricePriceNewPlanPercentCompositePrice(TypedDict, total=False):
 
 
 class AddPricePriceNewPlanEventOutputPriceEventOutputConfig(TypedDict, total=False):
+    """Configuration for event_output pricing"""
+
     unit_rating_key: Required[str]
     """The key in the event data to extract the unit rate from."""
 
@@ -829,6 +847,8 @@ class ReplaceAdjustment(TypedDict, total=False):
 
 
 class ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    """Configuration for a single property filter"""
+
     property_key: Required[str]
     """Event property key to filter on"""
 
@@ -837,6 +857,8 @@ class ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter(Ty
 
 
 class ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: Required[str]
     """Amount per unit"""
 
@@ -845,6 +867,8 @@ class ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier(Type
 
 
 class ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    """Configuration for bulk_with_filters pricing"""
+
     filters: Required[Iterable[ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
     """Property filters to apply (all must match)"""
 
@@ -939,6 +963,8 @@ class ReplacePricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
 
 
 class ReplacePricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: Required[str]
     """Inclusive tier starting value"""
 
@@ -947,6 +973,8 @@ class ReplacePricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigT
 
 
 class ReplacePricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfig(TypedDict, total=False):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: Required[Iterable[ReplacePricePriceNewPlanTieredWithProrationPriceTieredWithProrationConfigTier]]
     """
     Tiers for rating based on total usage quantities into the specified tier with
@@ -1041,6 +1069,8 @@ class ReplacePricePriceNewPlanTieredWithProrationPrice(TypedDict, total=False):
 
 
 class ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(TypedDict, total=False):
+    """Configuration for grouped_with_min_max_thresholds pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before applying thresholds"""
 
@@ -1143,6 +1173,8 @@ class ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=
 
 
 class ReplacePricePriceNewPlanCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_allocation pricing"""
+
     cumulative_allocation: Required[str]
     """The overall allocation across all groups"""
 
@@ -1245,6 +1277,8 @@ class ReplacePricePriceNewPlanCumulativeGroupedAllocationPrice(TypedDict, total=
 
 
 class ReplacePricePriceNewPlanPercentCompositePricePercentConfig(TypedDict, total=False):
+    """Configuration for percent pricing"""
+
     percent: Required[float]
     """What percent of the component subtotals to charge"""
 
@@ -1336,6 +1370,8 @@ class ReplacePricePriceNewPlanPercentCompositePrice(TypedDict, total=False):
 
 
 class ReplacePricePriceNewPlanEventOutputPriceEventOutputConfig(TypedDict, total=False):
+    """Configuration for event_output pricing"""
+
     unit_rating_key: Required[str]
     """The key in the event data to extract the unit rate from."""
 

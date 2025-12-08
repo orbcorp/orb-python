@@ -21,6 +21,8 @@ __all__ = [
 
 
 class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(BaseModel):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: str
     """First dimension value"""
 
@@ -32,6 +34,8 @@ class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(BaseModel):
 
 
 class ScalableMatrixWithUnitPricingConfig(BaseModel):
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
+
     first_dimension: str
     """Used to determine the unit rate"""
 

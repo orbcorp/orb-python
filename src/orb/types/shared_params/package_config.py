@@ -8,6 +8,8 @@ __all__ = ["PackageConfig"]
 
 
 class PackageConfig(TypedDict, total=False):
+    """Configuration for package pricing"""
+
     package_amount: Required[str]
     """A currency amount to rate usage by"""
 

@@ -12,6 +12,8 @@ __all__ = ["MatrixConfig"]
 
 
 class MatrixConfig(TypedDict, total=False):
+    """Configuration for matrix pricing"""
+
     default_unit_amount: Required[str]
     """Default per unit rate for any usage not bucketed into a specified matrix_value"""
 

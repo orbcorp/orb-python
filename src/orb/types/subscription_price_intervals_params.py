@@ -154,6 +154,8 @@ class AddFixedFeeQuantityTransition(TypedDict, total=False):
 
 
 class AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    """Configuration for a single property filter"""
+
     property_key: Required[str]
     """Event property key to filter on"""
 
@@ -162,6 +164,8 @@ class AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDi
 
 
 class AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: Required[str]
     """Amount per unit"""
 
@@ -170,6 +174,8 @@ class AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict
 
 
 class AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    """Configuration for bulk_with_filters pricing"""
+
     filters: Required[Iterable[AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
     """Property filters to apply (all must match)"""
 
@@ -255,6 +261,8 @@ class AddPriceNewFloatingBulkWithFiltersPrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(TypedDict, total=False):
+    """Configuration for grouped_with_min_max_thresholds pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before applying thresholds"""
 
@@ -348,6 +356,8 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
 
 
 class AddPriceNewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_allocation pricing"""
+
     cumulative_allocation: Required[str]
     """The overall allocation across all groups"""
 
@@ -441,6 +451,8 @@ class AddPriceNewFloatingCumulativeGroupedAllocationPrice(TypedDict, total=False
 
 
 class AddPriceNewFloatingPercentCompositePricePercentConfig(TypedDict, total=False):
+    """Configuration for percent pricing"""
+
     percent: Required[float]
     """What percent of the component subtotals to charge"""
 
@@ -523,6 +535,8 @@ class AddPriceNewFloatingPercentCompositePrice(TypedDict, total=False):
 
 
 class AddPriceNewFloatingEventOutputPriceEventOutputConfig(TypedDict, total=False):
+    """Configuration for event_output pricing"""
+
     unit_rating_key: Required[str]
     """The key in the event data to extract the unit rate from."""
 

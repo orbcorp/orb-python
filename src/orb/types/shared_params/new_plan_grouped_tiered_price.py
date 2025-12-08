@@ -14,6 +14,8 @@ __all__ = ["NewPlanGroupedTieredPrice", "GroupedTieredConfig", "GroupedTieredCon
 
 
 class GroupedTieredConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     tier_lower_bound: Required[str]
     """Tier lower bound"""
 
@@ -22,6 +24,8 @@ class GroupedTieredConfigTier(TypedDict, total=False):
 
 
 class GroupedTieredConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered pricing"""
+
     grouping_key: Required[str]
     """The billable metric property used to group before tiering"""
 

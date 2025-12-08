@@ -437,6 +437,8 @@ class BulkPrice(BaseModel):
 
 
 class BulkWithFiltersPriceBulkWithFiltersConfigFilter(BaseModel):
+    """Configuration for a single property filter"""
+
     property_key: str
     """Event property key to filter on"""
 
@@ -445,6 +447,8 @@ class BulkWithFiltersPriceBulkWithFiltersConfigFilter(BaseModel):
 
 
 class BulkWithFiltersPriceBulkWithFiltersConfigTier(BaseModel):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: str
     """Amount per unit"""
 
@@ -453,6 +457,8 @@ class BulkWithFiltersPriceBulkWithFiltersConfigTier(BaseModel):
 
 
 class BulkWithFiltersPriceBulkWithFiltersConfig(BaseModel):
+    """Configuration for bulk_with_filters pricing"""
+
     filters: List[BulkWithFiltersPriceBulkWithFiltersConfigFilter]
     """Property filters to apply (all must match)"""
 
@@ -747,6 +753,8 @@ ThresholdTotalAmountPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class ThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable(BaseModel):
+    """Configuration for a single threshold"""
+
     threshold: str
     """Quantity threshold"""
 
@@ -755,6 +763,8 @@ class ThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable(BaseMo
 
 
 class ThresholdTotalAmountPriceThresholdTotalAmountConfig(BaseModel):
+    """Configuration for threshold_total_amount pricing"""
+
     consumption_table: List[ThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable]
     """
     When the quantity consumed passes a provided threshold, the configured total
@@ -856,6 +866,8 @@ TieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class TieredPackagePriceTieredPackageConfigTier(BaseModel):
+    """Configuration for a single tier with business logic"""
+
     per_unit: str
     """Price per package"""
 
@@ -864,6 +876,8 @@ class TieredPackagePriceTieredPackageConfigTier(BaseModel):
 
 
 class TieredPackagePriceTieredPackageConfig(BaseModel):
+    """Configuration for tiered_package pricing"""
+
     package_size: str
     """Package size"""
 
@@ -967,6 +981,8 @@ TieredWithMinimumPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class TieredWithMinimumPriceTieredWithMinimumConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     minimum_amount: str
     """Minimum amount"""
 
@@ -978,6 +994,8 @@ class TieredWithMinimumPriceTieredWithMinimumConfigTier(BaseModel):
 
 
 class TieredWithMinimumPriceTieredWithMinimumConfig(BaseModel):
+    """Configuration for tiered_with_minimum pricing"""
+
     tiers: List[TieredWithMinimumPriceTieredWithMinimumConfigTier]
     """Tiered pricing with a minimum amount dependent on the volume tier.
 
@@ -1082,6 +1100,8 @@ GroupedTieredPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedTieredPriceGroupedTieredConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     tier_lower_bound: str
     """Tier lower bound"""
 
@@ -1090,6 +1110,8 @@ class GroupedTieredPriceGroupedTieredConfigTier(BaseModel):
 
 
 class GroupedTieredPriceGroupedTieredConfig(BaseModel):
+    """Configuration for grouped_tiered pricing"""
+
     grouping_key: str
     """The billable metric property used to group before tiering"""
 
@@ -1191,6 +1213,8 @@ TieredPackageWithMinimumPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     minimum_amount: str
     """Minimum amount"""
 
@@ -1202,6 +1226,8 @@ class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier(BaseModel)
 
 
 class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfig(BaseModel):
+    """Configuration for tiered_package_with_minimum pricing"""
+
     package_size: float
     """Package size"""
 
@@ -1303,6 +1329,8 @@ PackageWithAllocationPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class PackageWithAllocationPricePackageWithAllocationConfig(BaseModel):
+    """Configuration for package_with_allocation pricing"""
+
     allocation: str
     """Usage allocation"""
 
@@ -1404,6 +1432,8 @@ UnitWithPercentPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class UnitWithPercentPriceUnitWithPercentConfig(BaseModel):
+    """Configuration for unit_with_percent pricing"""
+
     percent: str
     """What percent, out of 100, of the calculated total to charge"""
 
@@ -1592,6 +1622,8 @@ TieredWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class TieredWithProrationPriceTieredWithProrationConfigTier(BaseModel):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: str
     """Inclusive tier starting value"""
 
@@ -1600,6 +1632,8 @@ class TieredWithProrationPriceTieredWithProrationConfigTier(BaseModel):
 
 
 class TieredWithProrationPriceTieredWithProrationConfig(BaseModel):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: List[TieredWithProrationPriceTieredWithProrationConfigTier]
     """
     Tiers for rating based on total usage quantities into the specified tier with
@@ -1698,6 +1732,8 @@ UnitWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class UnitWithProrationPriceUnitWithProrationConfig(BaseModel):
+    """Configuration for unit_with_proration pricing"""
+
     unit_amount: str
     """Rate per unit of usage"""
 
@@ -1793,6 +1829,8 @@ GroupedAllocationPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedAllocationPriceGroupedAllocationConfig(BaseModel):
+    """Configuration for grouped_allocation pricing"""
+
     allocation: str
     """Usage allocation per group"""
 
@@ -1878,6 +1916,8 @@ class GroupedAllocationPrice(BaseModel):
 
 
 class BulkWithProrationPriceBulkWithProrationConfigTier(BaseModel):
+    """Configuration for a single bulk pricing tier with proration"""
+
     unit_amount: str
     """Cost per unit"""
 
@@ -1886,6 +1926,8 @@ class BulkWithProrationPriceBulkWithProrationConfigTier(BaseModel):
 
 
 class BulkWithProrationPriceBulkWithProrationConfig(BaseModel):
+    """Configuration for bulk_with_proration pricing"""
+
     tiers: List[BulkWithProrationPriceBulkWithProrationConfigTier]
     """Bulk tiers for rating based on total usage volume"""
 
@@ -1997,6 +2039,8 @@ GroupedWithProratedMinimumPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig(BaseModel):
+    """Configuration for grouped_with_prorated_minimum pricing"""
+
     grouping_key: str
     """How to determine the groups that should each have a minimum"""
 
@@ -2098,6 +2142,8 @@ GroupedWithMeteredMinimumPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigScalingFactor(BaseModel):
+    """Configuration for a scaling factor"""
+
     scaling_factor: str
     """Scaling factor"""
 
@@ -2106,6 +2152,8 @@ class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigScalingFactor
 
 
 class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount(BaseModel):
+    """Configuration for a unit amount"""
+
     pricing_value: str
     """Pricing value"""
 
@@ -2114,6 +2162,8 @@ class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount(Ba
 
 
 class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig(BaseModel):
+    """Configuration for grouped_with_metered_minimum pricing"""
+
     grouping_key: str
     """Used to partition the usage into groups.
 
@@ -2230,6 +2280,8 @@ GroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(BaseModel):
+    """Configuration for grouped_with_min_max_thresholds pricing"""
+
     grouping_key: str
     """The event property used to group before applying thresholds"""
 
@@ -2334,6 +2386,8 @@ MatrixWithDisplayNamePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class MatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount(BaseModel):
+    """Configuration for a unit amount item"""
+
     dimension_value: str
     """The dimension value"""
 
@@ -2345,6 +2399,8 @@ class MatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount(BaseModel)
 
 
 class MatrixWithDisplayNamePriceMatrixWithDisplayNameConfig(BaseModel):
+    """Configuration for matrix_with_display_name pricing"""
+
     dimension: str
     """Used to determine the unit rate"""
 
@@ -2443,6 +2499,8 @@ GroupedTieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class GroupedTieredPackagePriceGroupedTieredPackageConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     per_unit: str
     """Price per package"""
 
@@ -2451,6 +2509,8 @@ class GroupedTieredPackagePriceGroupedTieredPackageConfigTier(BaseModel):
 
 
 class GroupedTieredPackagePriceGroupedTieredPackageConfig(BaseModel):
+    """Configuration for grouped_tiered_package pricing"""
+
     grouping_key: str
     """The event property used to group before tiering"""
 
@@ -2555,6 +2615,8 @@ MaxGroupTieredPackagePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     tier_lower_bound: str
     """Tier lower bound"""
 
@@ -2563,6 +2625,8 @@ class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(BaseModel):
 
 
 class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfig(BaseModel):
+    """Configuration for max_group_tiered_package pricing"""
+
     grouping_key: str
     """
     The event property used to group before tiering the group with the highest value
@@ -2666,6 +2730,8 @@ ScalableMatrixWithUnitPricingPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfigMatrixScalingFactor(BaseModel):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: str
     """First dimension value"""
 
@@ -2677,6 +2743,8 @@ class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfigMatri
 
 
 class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(BaseModel):
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
+
     first_dimension: str
     """Used to determine the unit rate"""
 
@@ -2786,6 +2854,8 @@ ScalableMatrixWithTieredPricingPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigMatrixScalingFactor(BaseModel):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: str
     """First dimension value"""
 
@@ -2797,6 +2867,8 @@ class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigM
 
 
 class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier(BaseModel):
+    """Configuration for a single tier entry with business logic"""
+
     tier_lower_bound: str
     """Tier lower bound"""
 
@@ -2805,6 +2877,8 @@ class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigT
 
 
 class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(BaseModel):
+    """Configuration for scalable_matrix_with_tiered_pricing pricing"""
+
     first_dimension: str
     """Used for the scalable matrix first dimension"""
 
@@ -2913,6 +2987,8 @@ CumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class CumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue(BaseModel):
+    """Configuration for a dimension value entry"""
+
     grouping_key: str
     """Grouping key value"""
 
@@ -2924,6 +3000,8 @@ class CumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue(BaseMo
 
 
 class CumulativeGroupedBulkPriceCumulativeGroupedBulkConfig(BaseModel):
+    """Configuration for cumulative_grouped_bulk pricing"""
+
     dimension_values: List[CumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue]
     """Each tier lower bound must have the same group of values."""
 
@@ -3022,6 +3100,8 @@ CumulativeGroupedAllocationPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(BaseModel):
+    """Configuration for cumulative_grouped_allocation pricing"""
+
     cumulative_allocation: str
     """The overall allocation across all groups"""
 
@@ -3126,6 +3206,8 @@ MinimumCompositePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class MinimumCompositePriceMinimumConfig(BaseModel):
+    """Configuration for minimum pricing"""
+
     minimum_amount: str
     """The minimum amount to apply"""
 
@@ -3224,6 +3306,8 @@ PercentCompositePriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class PercentCompositePricePercentConfig(BaseModel):
+    """Configuration for percent pricing"""
+
     percent: float
     """What percent of the component subtotals to charge"""
 
@@ -3319,6 +3403,8 @@ EventOutputPriceConversionRateConfig: TypeAlias = Annotated[
 
 
 class EventOutputPriceEventOutputConfig(BaseModel):
+    """Configuration for event_output pricing"""
+
     unit_rating_key: str
     """The key in the event data to extract the unit rate from."""
 

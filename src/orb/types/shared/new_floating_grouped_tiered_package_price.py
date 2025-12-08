@@ -21,6 +21,8 @@ __all__ = [
 
 
 class GroupedTieredPackageConfigTier(BaseModel):
+    """Configuration for a single tier"""
+
     per_unit: str
     """Price per package"""
 
@@ -29,6 +31,8 @@ class GroupedTieredPackageConfigTier(BaseModel):
 
 
 class GroupedTieredPackageConfig(BaseModel):
+    """Configuration for grouped_tiered_package pricing"""
+
     grouping_key: str
     """The event property used to group before tiering"""
 

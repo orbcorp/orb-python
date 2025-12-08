@@ -20,6 +20,8 @@ __all__ = [
 
 
 class GroupedWithMeteredMinimumConfigScalingFactor(TypedDict, total=False):
+    """Configuration for a scaling factor"""
+
     scaling_factor: Required[str]
     """Scaling factor"""
 
@@ -28,6 +30,8 @@ class GroupedWithMeteredMinimumConfigScalingFactor(TypedDict, total=False):
 
 
 class GroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
+    """Configuration for a unit amount"""
+
     pricing_value: Required[str]
     """Pricing value"""
 
@@ -36,6 +40,8 @@ class GroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
 
 
 class GroupedWithMeteredMinimumConfig(TypedDict, total=False):
+    """Configuration for grouped_with_metered_minimum pricing"""
+
     grouping_key: Required[str]
     """Used to partition the usage into groups.
 

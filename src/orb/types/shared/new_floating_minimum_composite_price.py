@@ -16,6 +16,8 @@ __all__ = ["NewFloatingMinimumCompositePrice", "MinimumConfig", "ConversionRateC
 
 
 class MinimumConfig(BaseModel):
+    """Configuration for minimum pricing"""
+
     minimum_amount: str
     """The minimum amount to apply"""
 

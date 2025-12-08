@@ -16,6 +16,8 @@ __all__ = ["NewPlanMinimumCompositePrice", "MinimumConfig", "ConversionRateConfi
 
 
 class MinimumConfig(BaseModel):
+    """Configuration for minimum pricing"""
+
     minimum_amount: str
     """The minimum amount to apply"""
 

@@ -8,6 +8,8 @@ __all__ = ["UnitConfig"]
 
 
 class UnitConfig(TypedDict, total=False):
+    """Configuration for unit pricing"""
+
     unit_amount: Required[str]
     """Rate per unit of usage"""
 

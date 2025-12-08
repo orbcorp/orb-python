@@ -19,6 +19,8 @@ __all__ = [
 
 
 class TieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier with business logic"""
+
     per_unit: Required[str]
     """Price per package"""
 
@@ -27,6 +29,8 @@ class TieredPackageConfigTier(TypedDict, total=False):
 
 
 class TieredPackageConfig(TypedDict, total=False):
+    """Configuration for tiered_package pricing"""
+
     package_size: Required[str]
     """Package size"""
 

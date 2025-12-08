@@ -9,6 +9,8 @@ __all__ = ["MatrixConfig"]
 
 
 class MatrixConfig(BaseModel):
+    """Configuration for matrix pricing"""
+
     default_unit_amount: str
     """Default per unit rate for any usage not bucketed into a specified matrix_value"""
 

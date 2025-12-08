@@ -8,6 +8,8 @@ __all__ = ["MatrixValue"]
 
 
 class MatrixValue(BaseModel):
+    """Configuration for a single matrix value"""
+
     dimension_values: List[Optional[str]]
     """One or two matrix keys to filter usage to this Matrix value by"""
 

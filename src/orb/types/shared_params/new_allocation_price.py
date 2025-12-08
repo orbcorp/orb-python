@@ -12,6 +12,8 @@ __all__ = ["NewAllocationPrice", "Filter"]
 
 
 class Filter(TypedDict, total=False):
+    """A PriceFilter that only allows item_id field for block filters."""
+
     field: Required[Literal["item_id"]]
     """The property of the price the block applies to. Only item_id is supported."""
 

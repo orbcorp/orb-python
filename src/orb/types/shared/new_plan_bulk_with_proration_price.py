@@ -21,6 +21,8 @@ __all__ = [
 
 
 class BulkWithProrationConfigTier(BaseModel):
+    """Configuration for a single bulk pricing tier with proration"""
+
     unit_amount: str
     """Cost per unit"""
 
@@ -29,6 +31,8 @@ class BulkWithProrationConfigTier(BaseModel):
 
 
 class BulkWithProrationConfig(BaseModel):
+    """Configuration for bulk_with_proration pricing"""
+
     tiers: List[BulkWithProrationConfigTier]
     """Bulk tiers for rating based on total usage volume"""
 

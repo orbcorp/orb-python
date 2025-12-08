@@ -9,5 +9,7 @@ __all__ = ["BulkConfig"]
 
 
 class BulkConfig(BaseModel):
+    """Configuration for bulk pricing"""
+
     tiers: List[BulkTier]
     """Bulk tiers for rating based on total usage volume"""

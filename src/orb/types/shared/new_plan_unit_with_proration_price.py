@@ -16,6 +16,8 @@ __all__ = ["NewPlanUnitWithProrationPrice", "UnitWithProrationConfig", "Conversi
 
 
 class UnitWithProrationConfig(BaseModel):
+    """Configuration for unit_with_proration pricing"""
+
     unit_amount: str
     """Rate per unit of usage"""
 

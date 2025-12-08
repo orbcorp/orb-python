@@ -10,6 +10,8 @@ __all__ = ["CreditListByExternalIDResponse", "Filter"]
 
 
 class Filter(BaseModel):
+    """A PriceFilter that only allows item_id field for block filters."""
+
     field: Literal["item_id"]
     """The property of the price the block applies to. Only item_id is supported."""
 

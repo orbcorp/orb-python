@@ -9,6 +9,8 @@ __all__ = ["Tier"]
 
 
 class Tier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     first_unit: Required[float]
     """Exclusive tier starting value"""
 

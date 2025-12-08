@@ -19,6 +19,8 @@ __all__ = [
 
 
 class MaxGroupTieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     tier_lower_bound: Required[str]
     """Tier lower bound"""
 
@@ -27,6 +29,8 @@ class MaxGroupTieredPackageConfigTier(TypedDict, total=False):
 
 
 class MaxGroupTieredPackageConfig(TypedDict, total=False):
+    """Configuration for max_group_tiered_package pricing"""
+
     grouping_key: Required[str]
     """
     The event property used to group before tiering the group with the highest value

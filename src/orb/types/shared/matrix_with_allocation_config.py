@@ -8,6 +8,8 @@ __all__ = ["MatrixWithAllocationConfig", "MatrixValue"]
 
 
 class MatrixValue(BaseModel):
+    """Configuration for a single matrix value"""
+
     dimension_values: List[Optional[str]]
     """One or two matrix keys to filter usage to this Matrix value by.
 
@@ -20,6 +22,8 @@ class MatrixValue(BaseModel):
 
 
 class MatrixWithAllocationConfig(BaseModel):
+    """Configuration for matrix pricing with usage allocation"""
+
     allocation: str
     """Usage allocation"""
 

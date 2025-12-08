@@ -10,6 +10,10 @@ __all__ = ["BackfillCreateResponse"]
 
 
 class BackfillCreateResponse(BaseModel):
+    """
+    A backfill represents an update to historical usage data, adding or replacing events in a timeframe.
+    """
+
     id: str
 
     close_time: Optional[datetime] = None

@@ -8,6 +8,10 @@ __all__ = ["ThresholdParam"]
 
 
 class ThresholdParam(TypedDict, total=False):
+    """
+    Thresholds are used to define the conditions under which an alert will be triggered.
+    """
+
     value: Required[float]
     """The value at which an alert will fire.
 
