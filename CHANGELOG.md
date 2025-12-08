@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.46.1 (2025-12-08)
+
+Full Changelog: [v4.46.0...v4.46.1](https://github.com/orbcorp/orb-python/compare/v4.46.0...v4.46.1)
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([4d0910a](https://github.com/orbcorp/orb-python/commit/4d0910a183bb2435b91cfecd4c643e50e23eff67))
+
 ## 4.46.0 (2025-12-06)
 
 Full Changelog: [v4.45.0...v4.46.0](https://github.com/orbcorp/orb-python/compare/v4.45.0...v4.46.0)
