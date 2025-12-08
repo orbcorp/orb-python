@@ -11,6 +11,11 @@ __all__ = ["PriceInterval"]
 
 
 class PriceInterval(BaseModel):
+    """
+    The Price Interval resource represents a period of time for which a price will bill on a subscription. A
+    subscription’s price intervals define its billing behavior.
+    """
+
     id: str
 
     billing_cycle_day: int

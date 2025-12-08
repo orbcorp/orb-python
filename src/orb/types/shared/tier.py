@@ -8,6 +8,8 @@ __all__ = ["Tier"]
 
 
 class Tier(BaseModel):
+    """Configuration for a single tier"""
+
     first_unit: float
     """Exclusive tier starting value"""
 

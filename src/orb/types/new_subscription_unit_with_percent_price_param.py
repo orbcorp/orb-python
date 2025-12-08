@@ -14,6 +14,8 @@ __all__ = ["NewSubscriptionUnitWithPercentPriceParam", "UnitWithPercentConfig", 
 
 
 class UnitWithPercentConfig(TypedDict, total=False):
+    """Configuration for unit_with_percent pricing"""
+
     percent: Required[str]
     """What percent, out of 100, of the calculated total to charge"""
 

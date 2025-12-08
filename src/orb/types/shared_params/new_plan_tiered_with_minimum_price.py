@@ -19,6 +19,8 @@ __all__ = [
 
 
 class TieredWithMinimumConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     minimum_amount: Required[str]
     """Minimum amount"""
 
@@ -30,6 +32,8 @@ class TieredWithMinimumConfigTier(TypedDict, total=False):
 
 
 class TieredWithMinimumConfig(TypedDict, total=False):
+    """Configuration for tiered_with_minimum pricing"""
+
     tiers: Required[Iterable[TieredWithMinimumConfigTier]]
     """Tiered pricing with a minimum amount dependent on the volume tier.
 

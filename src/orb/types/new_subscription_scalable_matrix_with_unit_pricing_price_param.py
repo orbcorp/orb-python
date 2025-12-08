@@ -19,6 +19,8 @@ __all__ = [
 
 
 class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(TypedDict, total=False):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: Required[str]
     """First dimension value"""
 
@@ -30,6 +32,8 @@ class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(TypedDict, total=Fa
 
 
 class ScalableMatrixWithUnitPricingConfig(TypedDict, total=False):
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
+
     first_dimension: Required[str]
     """Used to determine the unit rate"""
 

@@ -29,6 +29,10 @@ Adjustment: TypeAlias = Annotated[
 
 
 class PlanVersion(BaseModel):
+    """
+    The PlanVersion resource represents the prices and adjustments present on a specific version of a plan.
+    """
+
     adjustments: List[Adjustment]
     """Adjustments for this plan.
 

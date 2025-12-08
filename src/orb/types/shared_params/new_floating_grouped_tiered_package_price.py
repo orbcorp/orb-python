@@ -19,6 +19,8 @@ __all__ = [
 
 
 class GroupedTieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     per_unit: Required[str]
     """Price per package"""
 
@@ -27,6 +29,8 @@ class GroupedTieredPackageConfigTier(TypedDict, total=False):
 
 
 class GroupedTieredPackageConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered_package pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before tiering"""
 

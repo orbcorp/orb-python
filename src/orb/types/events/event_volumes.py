@@ -9,6 +9,12 @@ __all__ = ["EventVolumes", "Data"]
 
 
 class Data(BaseModel):
+    """An EventVolume contains the event volume ingested in an hourly window.
+
+    The timestamp used
+    for the aggregation is the `timestamp` datetime field on events.
+    """
+
     count: int
     """The number of events ingested with a timestamp between the timeframe"""
 

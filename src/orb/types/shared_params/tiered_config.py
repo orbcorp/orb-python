@@ -11,6 +11,8 @@ __all__ = ["TieredConfig"]
 
 
 class TieredConfig(TypedDict, total=False):
+    """Configuration for tiered pricing"""
+
     tiers: Required[Iterable[Tier]]
     """Tiers for rating based on total usage quantities into the specified tier"""
 

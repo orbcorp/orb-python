@@ -424,6 +424,8 @@ class NewFloatingBulkWithFiltersPrice(TypedDict, total=False):
 
 
 class NewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, total=False):
+    """Configuration for a single property filter"""
+
     property_key: Required[str]
     """Event property key to filter on"""
 
@@ -432,6 +434,8 @@ class NewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter(TypedDict, tota
 
 
 class NewFloatingBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: Required[str]
     """Amount per unit"""
 
@@ -440,6 +444,8 @@ class NewFloatingBulkWithFiltersPriceBulkWithFiltersConfigTier(TypedDict, total=
 
 
 class NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig(TypedDict, total=False):
+    """Configuration for bulk_with_filters pricing"""
+
     filters: Required[Iterable[NewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter]]
     """Property filters to apply (all must match)"""
 
@@ -675,6 +681,8 @@ class NewFloatingThresholdTotalAmountPrice(TypedDict, total=False):
 
 
 class NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable(TypedDict, total=False):
+    """Configuration for a single threshold"""
+
     threshold: Required[str]
     """Quantity threshold"""
 
@@ -683,6 +691,8 @@ class NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionT
 
 
 class NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfig(TypedDict, total=False):
+    """Configuration for threshold_total_amount pricing"""
+
     consumption_table: Required[
         Iterable[NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable]
     ]
@@ -773,6 +783,8 @@ class NewFloatingTieredPackagePrice(TypedDict, total=False):
 
 
 class NewFloatingTieredPackagePriceTieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier with business logic"""
+
     per_unit: Required[str]
     """Price per package"""
 
@@ -781,6 +793,8 @@ class NewFloatingTieredPackagePriceTieredPackageConfigTier(TypedDict, total=Fals
 
 
 class NewFloatingTieredPackagePriceTieredPackageConfig(TypedDict, total=False):
+    """Configuration for tiered_package pricing"""
+
     package_size: Required[str]
     """Package size"""
 
@@ -871,6 +885,8 @@ class NewFloatingTieredWithMinimumPrice(TypedDict, total=False):
 
 
 class NewFloatingTieredWithMinimumPriceTieredWithMinimumConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     minimum_amount: Required[str]
     """Minimum amount"""
 
@@ -882,6 +898,8 @@ class NewFloatingTieredWithMinimumPriceTieredWithMinimumConfigTier(TypedDict, to
 
 
 class NewFloatingTieredWithMinimumPriceTieredWithMinimumConfig(TypedDict, total=False):
+    """Configuration for tiered_with_minimum pricing"""
+
     tiers: Required[Iterable[NewFloatingTieredWithMinimumPriceTieredWithMinimumConfigTier]]
     """Tiered pricing with a minimum amount dependent on the volume tier.
 
@@ -973,6 +991,8 @@ class NewFloatingGroupedTieredPrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedTieredPriceGroupedTieredConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     tier_lower_bound: Required[str]
     """Tier lower bound"""
 
@@ -981,6 +1001,8 @@ class NewFloatingGroupedTieredPriceGroupedTieredConfigTier(TypedDict, total=Fals
 
 
 class NewFloatingGroupedTieredPriceGroupedTieredConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered pricing"""
+
     grouping_key: Required[str]
     """The billable metric property used to group before tiering"""
 
@@ -1069,6 +1091,8 @@ class NewFloatingTieredPackageWithMinimumPrice(TypedDict, total=False):
 
 
 class NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     minimum_amount: Required[str]
     """Minimum amount"""
 
@@ -1080,6 +1104,8 @@ class NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier
 
 
 class NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfig(TypedDict, total=False):
+    """Configuration for tiered_package_with_minimum pricing"""
+
     package_size: Required[float]
     """Package size"""
 
@@ -1168,6 +1194,8 @@ class NewFloatingPackageWithAllocationPrice(TypedDict, total=False):
 
 
 class NewFloatingPackageWithAllocationPricePackageWithAllocationConfig(TypedDict, total=False):
+    """Configuration for package_with_allocation pricing"""
+
     allocation: Required[str]
     """Usage allocation"""
 
@@ -1256,6 +1284,8 @@ class NewFloatingUnitWithPercentPrice(TypedDict, total=False):
 
 
 class NewFloatingUnitWithPercentPriceUnitWithPercentConfig(TypedDict, total=False):
+    """Configuration for unit_with_percent pricing"""
+
     percent: Required[str]
     """What percent, out of 100, of the calculated total to charge"""
 
@@ -1418,6 +1448,8 @@ class NewFloatingTieredWithProrationPrice(TypedDict, total=False):
 
 
 class NewFloatingTieredWithProrationPriceTieredWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: Required[str]
     """Inclusive tier starting value"""
 
@@ -1426,6 +1458,8 @@ class NewFloatingTieredWithProrationPriceTieredWithProrationConfigTier(TypedDict
 
 
 class NewFloatingTieredWithProrationPriceTieredWithProrationConfig(TypedDict, total=False):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: Required[Iterable[NewFloatingTieredWithProrationPriceTieredWithProrationConfigTier]]
     """
     Tiers for rating based on total usage quantities into the specified tier with
@@ -1511,6 +1545,8 @@ class NewFloatingUnitWithProrationPrice(TypedDict, total=False):
 
 
 class NewFloatingUnitWithProrationPriceUnitWithProrationConfig(TypedDict, total=False):
+    """Configuration for unit_with_proration pricing"""
+
     unit_amount: Required[str]
     """Rate per unit of usage"""
 
@@ -1593,6 +1629,8 @@ class NewFloatingGroupedAllocationPrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedAllocationPriceGroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for grouped_allocation pricing"""
+
     allocation: Required[str]
     """Usage allocation per group"""
 
@@ -1681,6 +1719,8 @@ class NewFloatingBulkWithProrationPrice(TypedDict, total=False):
 
 
 class NewFloatingBulkWithProrationPriceBulkWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier with proration"""
+
     unit_amount: Required[str]
     """Cost per unit"""
 
@@ -1689,6 +1729,8 @@ class NewFloatingBulkWithProrationPriceBulkWithProrationConfigTier(TypedDict, to
 
 
 class NewFloatingBulkWithProrationPriceBulkWithProrationConfig(TypedDict, total=False):
+    """Configuration for bulk_with_proration pricing"""
+
     tiers: Required[Iterable[NewFloatingBulkWithProrationPriceBulkWithProrationConfigTier]]
     """Bulk tiers for rating based on total usage volume"""
 
@@ -1773,6 +1815,8 @@ class NewFloatingGroupedWithProratedMinimumPrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig(TypedDict, total=False):
+    """Configuration for grouped_with_prorated_minimum pricing"""
+
     grouping_key: Required[str]
     """How to determine the groups that should each have a minimum"""
 
@@ -1863,6 +1907,8 @@ class NewFloatingGroupedWithMeteredMinimumPrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigScalingFactor(TypedDict, total=False):
+    """Configuration for a scaling factor"""
+
     scaling_factor: Required[str]
     """Scaling factor"""
 
@@ -1871,6 +1917,8 @@ class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigSc
 
 
 class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
+    """Configuration for a unit amount"""
+
     pricing_value: Required[str]
     """Pricing value"""
 
@@ -1879,6 +1927,8 @@ class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUn
 
 
 class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig(TypedDict, total=False):
+    """Configuration for grouped_with_metered_minimum pricing"""
+
     grouping_key: Required[str]
     """Used to partition the usage into groups.
 
@@ -1986,6 +2036,8 @@ class NewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(TypedDict, total=False):
+    """Configuration for grouped_with_min_max_thresholds pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before applying thresholds"""
 
@@ -2077,6 +2129,8 @@ class NewFloatingMatrixWithDisplayNamePrice(TypedDict, total=False):
 
 
 class NewFloatingMatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount(TypedDict, total=False):
+    """Configuration for a unit amount item"""
+
     dimension_value: Required[str]
     """The dimension value"""
 
@@ -2088,6 +2142,8 @@ class NewFloatingMatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount
 
 
 class NewFloatingMatrixWithDisplayNamePriceMatrixWithDisplayNameConfig(TypedDict, total=False):
+    """Configuration for matrix_with_display_name pricing"""
+
     dimension: Required[str]
     """Used to determine the unit rate"""
 
@@ -2173,6 +2229,8 @@ class NewFloatingGroupedTieredPackagePrice(TypedDict, total=False):
 
 
 class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     per_unit: Required[str]
     """Price per package"""
 
@@ -2181,6 +2239,8 @@ class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfigTier(TypedDi
 
 
 class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered_package pricing"""
+
     grouping_key: Required[str]
     """The event property used to group before tiering"""
 
@@ -2272,6 +2332,8 @@ class NewFloatingMaxGroupTieredPackagePrice(TypedDict, total=False):
 
 
 class NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(TypedDict, total=False):
+    """Configuration for a single tier"""
+
     tier_lower_bound: Required[str]
     """Tier lower bound"""
 
@@ -2280,6 +2342,8 @@ class NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(Typed
 
 
 class NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfig(TypedDict, total=False):
+    """Configuration for max_group_tiered_package pricing"""
+
     grouping_key: Required[str]
     """
     The event property used to group before tiering the group with the highest value
@@ -2374,6 +2438,8 @@ class NewFloatingScalableMatrixWithUnitPricingPrice(TypedDict, total=False):
 class NewFloatingScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfigMatrixScalingFactor(
     TypedDict, total=False
 ):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: Required[str]
     """First dimension value"""
 
@@ -2385,6 +2451,8 @@ class NewFloatingScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricing
 
 
 class NewFloatingScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(TypedDict, total=False):
+    """Configuration for scalable_matrix_with_unit_pricing pricing"""
+
     first_dimension: Required[str]
     """Used to determine the unit rate"""
 
@@ -2485,6 +2553,8 @@ class NewFloatingScalableMatrixWithTieredPricingPrice(TypedDict, total=False):
 class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigMatrixScalingFactor(
     TypedDict, total=False
 ):
+    """Configuration for a single matrix scaling factor"""
+
     first_dimension_value: Required[str]
     """First dimension value"""
 
@@ -2496,6 +2566,8 @@ class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPri
 
 
 class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier(TypedDict, total=False):
+    """Configuration for a single tier entry with business logic"""
+
     tier_lower_bound: Required[str]
     """Tier lower bound"""
 
@@ -2504,6 +2576,8 @@ class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPri
 
 
 class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(TypedDict, total=False):
+    """Configuration for scalable_matrix_with_tiered_pricing pricing"""
+
     first_dimension: Required[str]
     """Used for the scalable matrix first dimension"""
 
@@ -2599,6 +2673,8 @@ class NewFloatingCumulativeGroupedBulkPrice(TypedDict, total=False):
 
 
 class NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue(TypedDict, total=False):
+    """Configuration for a dimension value entry"""
+
     grouping_key: Required[str]
     """Grouping key value"""
 
@@ -2610,6 +2686,8 @@ class NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionV
 
 
 class NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_bulk pricing"""
+
     dimension_values: Required[Iterable[NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue]]
     """Each tier lower bound must have the same group of values."""
 
@@ -2697,6 +2775,8 @@ class NewFloatingCumulativeGroupedAllocationPrice(TypedDict, total=False):
 
 
 class NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(TypedDict, total=False):
+    """Configuration for cumulative_grouped_allocation pricing"""
+
     cumulative_allocation: Required[str]
     """The overall allocation across all groups"""
 
@@ -2788,6 +2868,8 @@ class NewFloatingMinimumCompositePrice(TypedDict, total=False):
 
 
 class NewFloatingMinimumCompositePriceMinimumConfig(TypedDict, total=False):
+    """Configuration for minimum pricing"""
+
     minimum_amount: Required[str]
     """The minimum amount to apply"""
 
@@ -2873,6 +2955,8 @@ class NewFloatingPercentCompositePrice(TypedDict, total=False):
 
 
 class NewFloatingPercentCompositePricePercentConfig(TypedDict, total=False):
+    """Configuration for percent pricing"""
+
     percent: Required[float]
     """What percent of the component subtotals to charge"""
 
@@ -2955,6 +3039,8 @@ class NewFloatingEventOutputPrice(TypedDict, total=False):
 
 
 class NewFloatingEventOutputPriceEventOutputConfig(TypedDict, total=False):
+    """Configuration for event_output pricing"""
+
     unit_rating_key: Required[str]
     """The key in the event data to extract the unit rate from."""
 

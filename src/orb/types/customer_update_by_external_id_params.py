@@ -280,6 +280,10 @@ class PaymentConfigurationPaymentProvider(TypedDict, total=False):
 
 
 class PaymentConfiguration(TypedDict, total=False):
+    """
+    Payment configuration for the customer, applicable when using Orb Invoicing with a supported payment provider such as Stripe.
+    """
+
     payment_providers: Iterable[PaymentConfigurationPaymentProvider]
     """Provider-specific payment configuration."""
 

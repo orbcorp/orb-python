@@ -9,6 +9,8 @@ __all__ = ["TieredConfig"]
 
 
 class TieredConfig(BaseModel):
+    """Configuration for tiered pricing"""
+
     tiers: List[Tier]
     """Tiers for rating based on total usage quantities into the specified tier"""
 

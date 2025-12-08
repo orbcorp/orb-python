@@ -11,6 +11,8 @@ __all__ = ["MatrixWithAllocationConfig", "MatrixValue"]
 
 
 class MatrixValue(TypedDict, total=False):
+    """Configuration for a single matrix value"""
+
     dimension_values: Required[SequenceNotStr[Optional[str]]]
     """One or two matrix keys to filter usage to this Matrix value by.
 
@@ -23,6 +25,8 @@ class MatrixValue(TypedDict, total=False):
 
 
 class MatrixWithAllocationConfig(TypedDict, total=False):
+    """Configuration for matrix pricing with usage allocation"""
+
     allocation: Required[str]
     """Usage allocation"""
 

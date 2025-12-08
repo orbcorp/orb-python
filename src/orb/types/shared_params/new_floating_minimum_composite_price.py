@@ -14,6 +14,8 @@ __all__ = ["NewFloatingMinimumCompositePrice", "MinimumConfig", "ConversionRateC
 
 
 class MinimumConfig(TypedDict, total=False):
+    """Configuration for minimum pricing"""
+
     minimum_amount: Required[str]
     """The minimum amount to apply"""
 

@@ -74,6 +74,8 @@ class MaximumAmountAdjustmentAppliesToPrice(BaseModel):
 
 
 class MaximumAmountAdjustment(BaseModel):
+    """The maximum amount applied on the original invoice"""
+
     amount_applied: str
 
     discount_type: Literal["percentage"]
@@ -104,6 +106,11 @@ class Discount(BaseModel):
 
 
 class CreditNote(BaseModel):
+    """
+    The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+    particular invoice.
+    """
+
     id: str
     """The Orb id of this credit note."""
 

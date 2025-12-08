@@ -10,6 +10,10 @@ __all__ = ["Item", "ExternalConnection"]
 
 
 class ExternalConnection(BaseModel):
+    """
+    Represents a connection between an Item and an external system for invoicing or tax calculation purposes.
+    """
+
     external_connection_name: Literal[
         "stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"
     ]
@@ -20,6 +24,12 @@ class ExternalConnection(BaseModel):
 
 
 class Item(BaseModel):
+    """The Item resource represents a sellable product or good.
+
+    Items are associated with all line items, billable metrics,
+    and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+    """
+
     id: str
     """The Orb-assigned unique identifier for the item."""
 

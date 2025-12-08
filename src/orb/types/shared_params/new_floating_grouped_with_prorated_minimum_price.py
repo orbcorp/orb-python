@@ -14,6 +14,8 @@ __all__ = ["NewFloatingGroupedWithProratedMinimumPrice", "GroupedWithProratedMin
 
 
 class GroupedWithProratedMinimumConfig(TypedDict, total=False):
+    """Configuration for grouped_with_prorated_minimum pricing"""
+
     grouping_key: Required[str]
     """How to determine the groups that should each have a minimum"""
 

@@ -16,6 +16,8 @@ __all__ = ["NewFloatingUnitWithProrationPrice", "UnitWithProrationConfig", "Conv
 
 
 class UnitWithProrationConfig(BaseModel):
+    """Configuration for unit_with_proration pricing"""
+
     unit_amount: str
     """Rate per unit of usage"""
 

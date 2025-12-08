@@ -9,6 +9,8 @@ __all__ = ["BulkTier"]
 
 
 class BulkTier(TypedDict, total=False):
+    """Configuration for a single bulk pricing tier"""
+
     unit_amount: Required[str]
     """Amount per unit"""
 

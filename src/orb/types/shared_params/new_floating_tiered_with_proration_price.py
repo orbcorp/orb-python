@@ -19,6 +19,8 @@ __all__ = [
 
 
 class TieredWithProrationConfigTier(TypedDict, total=False):
+    """Configuration for a single tiered with proration tier"""
+
     tier_lower_bound: Required[str]
     """Inclusive tier starting value"""
 
@@ -27,6 +29,8 @@ class TieredWithProrationConfigTier(TypedDict, total=False):
 
 
 class TieredWithProrationConfig(TypedDict, total=False):
+    """Configuration for tiered_with_proration pricing"""
+
     tiers: Required[Iterable[TieredWithProrationConfigTier]]
     """
     Tiers for rating based on total usage quantities into the specified tier with

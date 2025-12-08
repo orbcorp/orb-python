@@ -11,6 +11,12 @@ __all__ = ["SubscriptionChangeApplyResponse"]
 
 
 class SubscriptionChangeApplyResponse(BaseModel):
+    """
+    A subscription change represents a desired new subscription / pending change to an existing subscription. It
+    is a way to first preview the effects on the subscription as well as any changes/creation of invoices
+    (see `subscription.changed_resources`).
+    """
+
     id: str
 
     change_type: str
