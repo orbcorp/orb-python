@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.46.2 (2025-12-09)
+
+Full Changelog: [v4.46.1...v4.46.2](https://github.com/orbcorp/orb-python/compare/v4.46.1...v4.46.2)
+
+### Chores
+
+* add missing docstrings ([073bfcb](https://github.com/orbcorp/orb-python/commit/073bfcb247316e483dc732908e7c0ab0d42a3551))
+
 ## 4.46.1 (2025-12-08)
 
 Full Changelog: [v4.46.0...v4.46.1](https://github.com/orbcorp/orb-python/compare/v4.46.0...v4.46.1)
