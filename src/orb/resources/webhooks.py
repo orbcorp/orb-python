@@ -56,7 +56,11 @@ class Webhooks(SyncAPIResource):
         now = datetime.now(tz=timezone.utc)
 
         try:
-            timestamp = datetime.fromisoformat(msg_timestamp).astimezone()
+            timestamp = datetime.fromisoformat(msg_timestamp)
+            # If the timestamp doesn't have timezone info, assume it's UTC
+            if timestamp.tzinfo is None:
+                timestamp = timestamp.replace(tzinfo=timezone.utc)
+            timestamp = timestamp.astimezone()
         except Exception as err:
             raise ValueError("Invalid signature headers. Could not convert to timestamp") from err
 
@@ -140,7 +144,11 @@ class AsyncWebhooks(AsyncAPIResource):
         now = datetime.now(tz=timezone.utc)
 
         try:
-            timestamp = datetime.fromisoformat(msg_timestamp).astimezone()
+            timestamp = datetime.fromisoformat(msg_timestamp)
+            # If the timestamp doesn't have timezone info, assume it's UTC
+            if timestamp.tzinfo is None:
+                timestamp = timestamp.replace(tzinfo=timezone.utc)
+            timestamp = timestamp.astimezone()
         except Exception as err:
             raise ValueError("Invalid signature headers. Could not convert to timestamp") from err
 
