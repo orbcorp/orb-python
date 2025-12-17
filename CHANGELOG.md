@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.46.3 (2025-12-17)
+
+Full Changelog: [v4.46.2...v4.46.3](https://github.com/orbcorp/orb-python/compare/v4.46.2...v4.46.3)
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([25a4f49](https://github.com/orbcorp/orb-python/commit/25a4f49c670676bb82daf89deb18657bca7e2973))
+
+
+### Chores
+
+* **internal:** add missing files argument to base client ([770853a](https://github.com/orbcorp/orb-python/commit/770853af542db967e769efe1d371c51495fb0553))
+
 ## 4.46.2 (2025-12-09)
 
 Full Changelog: [v4.46.1...v4.46.2](https://github.com/orbcorp/orb-python/compare/v4.46.1...v4.46.2)
