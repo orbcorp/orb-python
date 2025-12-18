@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.46.4 (2025-12-18)
+
+Full Changelog: [v4.46.3...v4.46.4](https://github.com/orbcorp/orb-python/compare/v4.46.3...v4.46.4)
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([a63545c](https://github.com/orbcorp/orb-python/commit/a63545cbdd128e08ca89cdbb9050d28c56e4022f))
+
 ## 4.46.3 (2025-12-17)
 
 Full Changelog: [v4.46.2...v4.46.3](https://github.com/orbcorp/orb-python/compare/v4.46.2...v4.46.3)
