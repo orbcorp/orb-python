@@ -22,10 +22,8 @@ class TieredWithMinimumConfigTier(TypedDict, total=False):
     """Configuration for a single tier"""
 
     minimum_amount: Required[str]
-    """Minimum amount"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
     """Per unit amount"""

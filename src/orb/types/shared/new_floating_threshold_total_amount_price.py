@@ -24,7 +24,6 @@ class ThresholdTotalAmountConfigConsumptionTable(BaseModel):
     """Configuration for a single threshold"""
 
     threshold: str
-    """Quantity threshold"""
 
     total_amount: str
     """Total amount for this threshold"""

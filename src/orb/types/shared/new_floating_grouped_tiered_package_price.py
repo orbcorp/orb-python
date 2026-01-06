@@ -24,10 +24,9 @@ class GroupedTieredPackageConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     per_unit: str
-    """Price per package"""
+    """Per package"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
 
 class GroupedTieredPackageConfig(BaseModel):
@@ -37,7 +36,6 @@ class GroupedTieredPackageConfig(BaseModel):
     """The event property used to group before tiering"""
 
     package_size: str
-    """Package size"""
 
     tiers: List[GroupedTieredPackageConfigTier]
     """Apply tiered pricing after rounding up the quantity to the package size.

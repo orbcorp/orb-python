@@ -756,7 +756,6 @@ class ThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable(BaseMo
     """Configuration for a single threshold"""
 
     threshold: str
-    """Quantity threshold"""
 
     total_amount: str
     """Total amount for this threshold"""
@@ -872,14 +871,12 @@ class TieredPackagePriceTieredPackageConfigTier(BaseModel):
     """Price per package"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
 
 class TieredPackagePriceTieredPackageConfig(BaseModel):
     """Configuration for tiered_package pricing"""
 
     package_size: str
-    """Package size"""
 
     tiers: List[TieredPackagePriceTieredPackageConfigTier]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -984,10 +981,8 @@ class TieredWithMinimumPriceTieredWithMinimumConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     minimum_amount: str
-    """Minimum amount"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""
@@ -1103,7 +1098,6 @@ class GroupedTieredPriceGroupedTieredConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""
@@ -1216,20 +1210,16 @@ class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier(BaseModel)
     """Configuration for a single tier"""
 
     minimum_amount: str
-    """Minimum amount"""
 
     per_unit: str
-    """Price per package"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
 
 class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfig(BaseModel):
     """Configuration for tiered_package_with_minimum pricing"""
 
     package_size: float
-    """Package size"""
 
     tiers: List[TieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -1332,13 +1322,10 @@ class PackageWithAllocationPricePackageWithAllocationConfig(BaseModel):
     """Configuration for package_with_allocation pricing"""
 
     allocation: str
-    """Usage allocation"""
 
     package_amount: str
-    """Price per package"""
 
     package_size: str
-    """Package size"""
 
 
 class PackageWithAllocationPrice(BaseModel):
@@ -2145,17 +2132,14 @@ class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigScalingFactor
     """Configuration for a scaling factor"""
 
     scaling_factor: str
-    """Scaling factor"""
 
     scaling_value: str
-    """Scaling value"""
 
 
 class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount(BaseModel):
     """Configuration for a unit amount"""
 
     pricing_value: str
-    """Pricing value"""
 
     unit_amount: str
     """Per unit amount"""
@@ -2502,10 +2486,9 @@ class GroupedTieredPackagePriceGroupedTieredPackageConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     per_unit: str
-    """Price per package"""
+    """Per package"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
 
 class GroupedTieredPackagePriceGroupedTieredPackageConfig(BaseModel):
@@ -2515,7 +2498,6 @@ class GroupedTieredPackagePriceGroupedTieredPackageConfig(BaseModel):
     """The event property used to group before tiering"""
 
     package_size: str
-    """Package size"""
 
     tiers: List[GroupedTieredPackagePriceGroupedTieredPackageConfigTier]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -2618,7 +2600,6 @@ class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""
@@ -2633,7 +2614,6 @@ class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfig(BaseModel):
     """
 
     package_size: str
-    """Package size"""
 
     tiers: List[MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier]
     """Apply tiered pricing to the largest group after grouping with the provided key."""
@@ -2733,13 +2713,10 @@ class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfigMatri
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: str
-    """First dimension value"""
 
     scaling_factor: str
-    """Scaling factor"""
 
     second_dimension_value: Optional[str] = None
-    """Second dimension value (optional)"""
 
 
 class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(BaseModel):
@@ -2857,23 +2834,18 @@ class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigM
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: str
-    """First dimension value"""
 
     scaling_factor: str
-    """Scaling factor"""
 
     second_dimension_value: Optional[str] = None
-    """Second dimension value (optional)"""
 
 
 class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier(BaseModel):
     """Configuration for a single tier entry with business logic"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
-    """Per unit amount"""
 
 
 class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(BaseModel):
@@ -2888,7 +2860,6 @@ class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(
     """Apply a scaling factor to each dimension"""
 
     tiers: List[ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier]
-    """Tier pricing structure"""
 
     second_dimension: Optional[str] = None
     """Used for the scalable matrix second dimension (optional)"""
@@ -3006,7 +2977,6 @@ class CumulativeGroupedBulkPriceCumulativeGroupedBulkConfig(BaseModel):
     """Each tier lower bound must have the same group of values."""
 
     group: str
-    """Grouping key name"""
 
 
 class CumulativeGroupedBulkPrice(BaseModel):

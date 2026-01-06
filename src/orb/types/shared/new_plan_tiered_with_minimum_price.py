@@ -24,10 +24,8 @@ class TieredWithMinimumConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     minimum_amount: str
-    """Minimum amount"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""
