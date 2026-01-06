@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.47.0 (2026-01-06)
+
+Full Changelog: [v4.46.3...v4.47.0](https://github.com/orbcorp/orb-python/compare/v4.46.3...v4.47.0)
+
+### Features
+
+* **api:** api update ([3685f1a](https://github.com/orbcorp/orb-python/commit/3685f1a5eb5e9d43c96eb0b253c79be02ba32285))
+
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([a63545c](https://github.com/orbcorp/orb-python/commit/a63545cbdd128e08ca89cdbb9050d28c56e4022f))
+* **internal:** codegen related update ([e46bd76](https://github.com/orbcorp/orb-python/commit/e46bd7631ded1045eedc100118e5329600c3fd7e))
+
 ## 4.46.3 (2025-12-17)
 
 Full Changelog: [v4.46.2...v4.46.3](https://github.com/orbcorp/orb-python/compare/v4.46.2...v4.46.3)
