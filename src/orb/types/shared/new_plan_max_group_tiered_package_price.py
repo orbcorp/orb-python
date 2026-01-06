@@ -24,7 +24,6 @@ class MaxGroupTieredPackageConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""
@@ -39,7 +38,6 @@ class MaxGroupTieredPackageConfig(BaseModel):
     """
 
     package_size: str
-    """Package size"""
 
     tiers: List[MaxGroupTieredPackageConfigTier]
     """Apply tiered pricing to the largest group after grouping with the provided key."""

@@ -22,13 +22,10 @@ class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(TypedDict, total=Fa
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: Required[str]
-    """First dimension value"""
 
     scaling_factor: Required[str]
-    """Scaling factor"""
 
     second_dimension_value: Optional[str]
-    """Second dimension value (optional)"""
 
 
 class ScalableMatrixWithUnitPricingConfig(TypedDict, total=False):

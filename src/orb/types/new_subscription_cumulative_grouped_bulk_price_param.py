@@ -38,7 +38,6 @@ class CumulativeGroupedBulkConfig(TypedDict, total=False):
     """Each tier lower bound must have the same group of values."""
 
     group: Required[str]
-    """Grouping key name"""
 
 
 ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversionRateConfig]

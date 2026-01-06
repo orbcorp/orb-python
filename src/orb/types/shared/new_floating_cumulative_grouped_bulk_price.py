@@ -40,7 +40,6 @@ class CumulativeGroupedBulkConfig(BaseModel):
     """Each tier lower bound must have the same group of values."""
 
     group: str
-    """Grouping key name"""
 
 
 ConversionRateConfig: TypeAlias = Annotated[

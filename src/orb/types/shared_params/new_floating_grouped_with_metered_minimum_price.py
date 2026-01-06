@@ -23,17 +23,14 @@ class GroupedWithMeteredMinimumConfigScalingFactor(TypedDict, total=False):
     """Configuration for a scaling factor"""
 
     scaling_factor: Required[str]
-    """Scaling factor"""
 
     scaling_value: Required[str]
-    """Scaling value"""
 
 
 class GroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
     """Configuration for a unit amount"""
 
     pricing_value: Required[str]
-    """Pricing value"""
 
     unit_amount: Required[str]
     """Per unit amount"""
