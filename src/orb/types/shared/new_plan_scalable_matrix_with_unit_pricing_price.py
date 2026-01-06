@@ -24,13 +24,10 @@ class ScalableMatrixWithUnitPricingConfigMatrixScalingFactor(BaseModel):
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: str
-    """First dimension value"""
 
     scaling_factor: str
-    """Scaling factor"""
 
     second_dimension_value: Optional[str] = None
-    """Second dimension value (optional)"""
 
 
 class ScalableMatrixWithUnitPricingConfig(BaseModel):

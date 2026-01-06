@@ -22,7 +22,6 @@ class MaxGroupTieredPackageConfigTier(TypedDict, total=False):
     """Configuration for a single tier"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
     """Per unit amount"""
@@ -37,7 +36,6 @@ class MaxGroupTieredPackageConfig(TypedDict, total=False):
     """
 
     package_size: Required[str]
-    """Package size"""
 
     tiers: Required[Iterable[MaxGroupTieredPackageConfigTier]]
     """Apply tiered pricing to the largest group after grouping with the provided key."""

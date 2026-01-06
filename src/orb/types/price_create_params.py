@@ -684,7 +684,6 @@ class NewFloatingThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionT
     """Configuration for a single threshold"""
 
     threshold: Required[str]
-    """Quantity threshold"""
 
     total_amount: Required[str]
     """Total amount for this threshold"""
@@ -789,14 +788,12 @@ class NewFloatingTieredPackagePriceTieredPackageConfigTier(TypedDict, total=Fals
     """Price per package"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
 
 class NewFloatingTieredPackagePriceTieredPackageConfig(TypedDict, total=False):
     """Configuration for tiered_package pricing"""
 
     package_size: Required[str]
-    """Package size"""
 
     tiers: Required[Iterable[NewFloatingTieredPackagePriceTieredPackageConfigTier]]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -888,10 +885,8 @@ class NewFloatingTieredWithMinimumPriceTieredWithMinimumConfigTier(TypedDict, to
     """Configuration for a single tier"""
 
     minimum_amount: Required[str]
-    """Minimum amount"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
     """Per unit amount"""
@@ -994,7 +989,6 @@ class NewFloatingGroupedTieredPriceGroupedTieredConfigTier(TypedDict, total=Fals
     """Configuration for a single tier"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
     """Per unit amount"""
@@ -1094,20 +1088,16 @@ class NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier
     """Configuration for a single tier"""
 
     minimum_amount: Required[str]
-    """Minimum amount"""
 
     per_unit: Required[str]
-    """Price per package"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
 
 class NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfig(TypedDict, total=False):
     """Configuration for tiered_package_with_minimum pricing"""
 
     package_size: Required[float]
-    """Package size"""
 
     tiers: Required[Iterable[NewFloatingTieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier]]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -1197,13 +1187,10 @@ class NewFloatingPackageWithAllocationPricePackageWithAllocationConfig(TypedDict
     """Configuration for package_with_allocation pricing"""
 
     allocation: Required[str]
-    """Usage allocation"""
 
     package_amount: Required[str]
-    """Price per package"""
 
     package_size: Required[str]
-    """Package size"""
 
 
 NewFloatingPackageWithAllocationPriceConversionRateConfig: TypeAlias = Union[
@@ -1910,17 +1897,14 @@ class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigSc
     """Configuration for a scaling factor"""
 
     scaling_factor: Required[str]
-    """Scaling factor"""
 
     scaling_value: Required[str]
-    """Scaling value"""
 
 
 class NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount(TypedDict, total=False):
     """Configuration for a unit amount"""
 
     pricing_value: Required[str]
-    """Pricing value"""
 
     unit_amount: Required[str]
     """Per unit amount"""
@@ -2232,10 +2216,9 @@ class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfigTier(TypedDi
     """Configuration for a single tier"""
 
     per_unit: Required[str]
-    """Price per package"""
+    """Per package"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
 
 class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfig(TypedDict, total=False):
@@ -2245,7 +2228,6 @@ class NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfig(TypedDict, 
     """The event property used to group before tiering"""
 
     package_size: Required[str]
-    """Package size"""
 
     tiers: Required[Iterable[NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfigTier]]
     """Apply tiered pricing after rounding up the quantity to the package size.
@@ -2335,7 +2317,6 @@ class NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier(Typed
     """Configuration for a single tier"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
     """Per unit amount"""
@@ -2350,7 +2331,6 @@ class NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfig(TypedDict
     """
 
     package_size: Required[str]
-    """Package size"""
 
     tiers: Required[Iterable[NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier]]
     """Apply tiered pricing to the largest group after grouping with the provided key."""
@@ -2441,13 +2421,10 @@ class NewFloatingScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricing
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: Required[str]
-    """First dimension value"""
 
     scaling_factor: Required[str]
-    """Scaling factor"""
 
     second_dimension_value: Optional[str]
-    """Second dimension value (optional)"""
 
 
 class NewFloatingScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(TypedDict, total=False):
@@ -2556,23 +2533,18 @@ class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPri
     """Configuration for a single matrix scaling factor"""
 
     first_dimension_value: Required[str]
-    """First dimension value"""
 
     scaling_factor: Required[str]
-    """Scaling factor"""
 
     second_dimension_value: Optional[str]
-    """Second dimension value (optional)"""
 
 
 class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier(TypedDict, total=False):
     """Configuration for a single tier entry with business logic"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
     unit_amount: Required[str]
-    """Per unit amount"""
 
 
 class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(TypedDict, total=False):
@@ -2589,7 +2561,6 @@ class NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPri
     """Apply a scaling factor to each dimension"""
 
     tiers: Required[Iterable[NewFloatingScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier]]
-    """Tier pricing structure"""
 
     second_dimension: Optional[str]
     """Used for the scalable matrix second dimension (optional)"""
@@ -2692,7 +2663,6 @@ class NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfig(TypedDict
     """Each tier lower bound must have the same group of values."""
 
     group: Required[str]
-    """Grouping key name"""
 
 
 NewFloatingCumulativeGroupedBulkPriceConversionRateConfig: TypeAlias = Union[

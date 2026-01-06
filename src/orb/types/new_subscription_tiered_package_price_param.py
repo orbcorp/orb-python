@@ -25,14 +25,12 @@ class TieredPackageConfigTier(TypedDict, total=False):
     """Price per package"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
 
 class TieredPackageConfig(TypedDict, total=False):
     """Configuration for tiered_package pricing"""
 
     package_size: Required[str]
-    """Package size"""
 
     tiers: Required[Iterable[TieredPackageConfigTier]]
     """Apply tiered pricing after rounding up the quantity to the package size.

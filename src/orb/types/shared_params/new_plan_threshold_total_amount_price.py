@@ -22,7 +22,6 @@ class ThresholdTotalAmountConfigConsumptionTable(TypedDict, total=False):
     """Configuration for a single threshold"""
 
     threshold: Required[str]
-    """Quantity threshold"""
 
     total_amount: Required[str]
     """Total amount for this threshold"""

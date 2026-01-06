@@ -19,7 +19,6 @@ class GroupedTieredConfigTier(BaseModel):
     """Configuration for a single tier"""
 
     tier_lower_bound: str
-    """Tier lower bound"""
 
     unit_amount: str
     """Per unit amount"""

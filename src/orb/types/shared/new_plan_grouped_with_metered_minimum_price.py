@@ -25,17 +25,14 @@ class GroupedWithMeteredMinimumConfigScalingFactor(BaseModel):
     """Configuration for a scaling factor"""
 
     scaling_factor: str
-    """Scaling factor"""
 
     scaling_value: str
-    """Scaling value"""
 
 
 class GroupedWithMeteredMinimumConfigUnitAmount(BaseModel):
     """Configuration for a unit amount"""
 
     pricing_value: str
-    """Pricing value"""
 
     unit_amount: str
     """Per unit amount"""

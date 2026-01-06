@@ -22,20 +22,16 @@ class TieredPackageWithMinimumConfigTier(TypedDict, total=False):
     """Configuration for a single tier"""
 
     minimum_amount: Required[str]
-    """Minimum amount"""
 
     per_unit: Required[str]
-    """Price per package"""
 
     tier_lower_bound: Required[str]
-    """Tier lower bound"""
 
 
 class TieredPackageWithMinimumConfig(TypedDict, total=False):
     """Configuration for tiered_package_with_minimum pricing"""
 
     package_size: Required[float]
-    """Package size"""
 
     tiers: Required[Iterable[TieredPackageWithMinimumConfigTier]]
     """Apply tiered pricing after rounding up the quantity to the package size.
