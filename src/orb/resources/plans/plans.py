@@ -13,6 +13,14 @@ from ...types import plan_list_params, plan_create_params, plan_update_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
+from .migrations import (
+    Migrations,
+    AsyncMigrations,
+    MigrationsWithRawResponse,
+    AsyncMigrationsWithRawResponse,
+    MigrationsWithStreamingResponse,
+    AsyncMigrationsWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -34,6 +42,10 @@ class Plans(SyncAPIResource):
     @cached_property
     def external_plan_id(self) -> ExternalPlanID:
         return ExternalPlanID(self._client)
+
+    @cached_property
+    def migrations(self) -> Migrations:
+        return Migrations(self._client)
 
     @cached_property
     def with_raw_response(self) -> PlansWithRawResponse:
@@ -319,6 +331,10 @@ class AsyncPlans(AsyncAPIResource):
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanID:
         return AsyncExternalPlanID(self._client)
+
+    @cached_property
+    def migrations(self) -> AsyncMigrations:
+        return AsyncMigrations(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncPlansWithRawResponse:
@@ -621,6 +637,10 @@ class PlansWithRawResponse:
     def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
         return ExternalPlanIDWithRawResponse(self._plans.external_plan_id)
 
+    @cached_property
+    def migrations(self) -> MigrationsWithRawResponse:
+        return MigrationsWithRawResponse(self._plans.migrations)
+
 
 class AsyncPlansWithRawResponse:
     def __init__(self, plans: AsyncPlans) -> None:
@@ -642,6 +662,10 @@ class AsyncPlansWithRawResponse:
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
         return AsyncExternalPlanIDWithRawResponse(self._plans.external_plan_id)
+
+    @cached_property
+    def migrations(self) -> AsyncMigrationsWithRawResponse:
+        return AsyncMigrationsWithRawResponse(self._plans.migrations)
 
 
 class PlansWithStreamingResponse:
@@ -665,6 +689,10 @@ class PlansWithStreamingResponse:
     def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
         return ExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
 
+    @cached_property
+    def migrations(self) -> MigrationsWithStreamingResponse:
+        return MigrationsWithStreamingResponse(self._plans.migrations)
+
 
 class AsyncPlansWithStreamingResponse:
     def __init__(self, plans: AsyncPlans) -> None:
@@ -686,3 +714,7 @@ class AsyncPlansWithStreamingResponse:
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
         return AsyncExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
+
+    @cached_property
+    def migrations(self) -> AsyncMigrationsWithStreamingResponse:
+        return AsyncMigrationsWithStreamingResponse(self._plans.migrations)

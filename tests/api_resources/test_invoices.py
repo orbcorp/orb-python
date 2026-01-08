@@ -9,6 +9,7 @@ import pytest
 
 from orb import Orb, AsyncOrb
 from orb.types import (
+    InvoiceListSummaryResponse,
     InvoiceFetchUpcomingResponse,
 )
 from orb._utils import parse_date, parse_datetime
@@ -231,6 +232,54 @@ class TestInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_delete_line_item(self, client: Orb) -> None:
+        invoice = client.invoices.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        )
+        assert invoice is None
+
+    @parametrize
+    def test_raw_response_delete_line_item(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert invoice is None
+
+    @parametrize
+    def test_streaming_response_delete_line_item(self, client: Orb) -> None:
+        with client.invoices.with_streaming_response.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = response.parse()
+            assert invoice is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete_line_item(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.delete_line_item(
+                line_item_id="line_item_id",
+                invoice_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `line_item_id` but received ''"):
+            client.invoices.with_raw_response.delete_line_item(
+                line_item_id="",
+                invoice_id="invoice_id",
+            )
+
+    @parametrize
     def test_method_fetch(self, client: Orb) -> None:
         invoice = client.invoices.fetch(
             "invoice_id",
@@ -344,6 +393,56 @@ class TestInvoices:
             client.invoices.with_raw_response.issue(
                 invoice_id="",
             )
+
+    @parametrize
+    def test_method_list_summary(self, client: Orb) -> None:
+        invoice = client.invoices.list_summary()
+        assert_matches_type(SyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    def test_method_list_summary_with_all_params(self, client: Orb) -> None:
+        invoice = client.invoices.list_summary(
+            amount="amount",
+            amount_gt="amount[gt]",
+            amount_lt="amount[lt]",
+            cursor="cursor",
+            customer_id="customer_id",
+            date_type="due_date",
+            due_date=parse_date("2019-12-27"),
+            due_date_window="due_date_window",
+            due_date_gt=parse_date("2019-12-27"),
+            due_date_lt=parse_date("2019-12-27"),
+            external_customer_id="external_customer_id",
+            invoice_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            is_recurring=True,
+            limit=1,
+            status="draft",
+            subscription_id="subscription_id",
+        )
+        assert_matches_type(SyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_summary(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.list_summary()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(SyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list_summary(self, client: Orb) -> None:
+        with client.invoices.with_streaming_response.list_summary() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = response.parse()
+            assert_matches_type(SyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_mark_paid(self, client: Orb) -> None:
@@ -688,6 +787,54 @@ class TestAsyncInvoices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_method_delete_line_item(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        )
+        assert invoice is None
+
+    @parametrize
+    async def test_raw_response_delete_line_item(self, async_client: AsyncOrb) -> None:
+        response = await async_client.invoices.with_raw_response.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert invoice is None
+
+    @parametrize
+    async def test_streaming_response_delete_line_item(self, async_client: AsyncOrb) -> None:
+        async with async_client.invoices.with_streaming_response.delete_line_item(
+            line_item_id="line_item_id",
+            invoice_id="invoice_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = await response.parse()
+            assert invoice is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete_line_item(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await async_client.invoices.with_raw_response.delete_line_item(
+                line_item_id="line_item_id",
+                invoice_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `line_item_id` but received ''"):
+            await async_client.invoices.with_raw_response.delete_line_item(
+                line_item_id="",
+                invoice_id="invoice_id",
+            )
+
+    @parametrize
     async def test_method_fetch(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.fetch(
             "invoice_id",
@@ -801,6 +948,56 @@ class TestAsyncInvoices:
             await async_client.invoices.with_raw_response.issue(
                 invoice_id="",
             )
+
+    @parametrize
+    async def test_method_list_summary(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.list_summary()
+        assert_matches_type(AsyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    async def test_method_list_summary_with_all_params(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.list_summary(
+            amount="amount",
+            amount_gt="amount[gt]",
+            amount_lt="amount[lt]",
+            cursor="cursor",
+            customer_id="customer_id",
+            date_type="due_date",
+            due_date=parse_date("2019-12-27"),
+            due_date_window="due_date_window",
+            due_date_gt=parse_date("2019-12-27"),
+            due_date_lt=parse_date("2019-12-27"),
+            external_customer_id="external_customer_id",
+            invoice_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            is_recurring=True,
+            limit=1,
+            status="draft",
+            subscription_id="subscription_id",
+        )
+        assert_matches_type(AsyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_summary(self, async_client: AsyncOrb) -> None:
+        response = await async_client.invoices.with_raw_response.list_summary()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(AsyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list_summary(self, async_client: AsyncOrb) -> None:
+        async with async_client.invoices.with_streaming_response.list_summary() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = await response.parse()
+            assert_matches_type(AsyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_mark_paid(self, async_client: AsyncOrb) -> None:

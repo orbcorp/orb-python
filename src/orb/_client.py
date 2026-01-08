@@ -48,6 +48,7 @@ if TYPE_CHECKING:
         customers,
         top_level,
         credit_notes,
+        credit_blocks,
         subscriptions,
         invoice_line_items,
         subscription_changes,
@@ -61,6 +62,7 @@ if TYPE_CHECKING:
     from .resources.top_level import TopLevel, AsyncTopLevel
     from .resources.plans.plans import Plans, AsyncPlans
     from .resources.credit_notes import CreditNotes, AsyncCreditNotes
+    from .resources.credit_blocks import CreditBlocks, AsyncCreditBlocks
     from .resources.events.events import Events, AsyncEvents
     from .resources.prices.prices import Prices, AsyncPrices
     from .resources.subscriptions import Subscriptions, AsyncSubscriptions
@@ -236,6 +238,12 @@ class Orb(SyncAPIClient):
         from .resources.subscription_changes import SubscriptionChanges
 
         return SubscriptionChanges(self)
+
+    @cached_property
+    def credit_blocks(self) -> CreditBlocks:
+        from .resources.credit_blocks import CreditBlocks
+
+        return CreditBlocks(self)
 
     @cached_property
     def with_raw_response(self) -> OrbWithRawResponse:
@@ -562,6 +570,12 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncSubscriptionChanges(self)
 
     @cached_property
+    def credit_blocks(self) -> AsyncCreditBlocks:
+        from .resources.credit_blocks import AsyncCreditBlocks
+
+        return AsyncCreditBlocks(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOrbWithRawResponse:
         return AsyncOrbWithRawResponse(self)
 
@@ -826,6 +840,12 @@ class OrbWithRawResponse:
 
         return SubscriptionChangesWithRawResponse(self._client.subscription_changes)
 
+    @cached_property
+    def credit_blocks(self) -> credit_blocks.CreditBlocksWithRawResponse:
+        from .resources.credit_blocks import CreditBlocksWithRawResponse
+
+        return CreditBlocksWithRawResponse(self._client.credit_blocks)
+
 
 class AsyncOrbWithRawResponse:
     _client: AsyncOrb
@@ -928,6 +948,12 @@ class AsyncOrbWithRawResponse:
         from .resources.subscription_changes import AsyncSubscriptionChangesWithRawResponse
 
         return AsyncSubscriptionChangesWithRawResponse(self._client.subscription_changes)
+
+    @cached_property
+    def credit_blocks(self) -> credit_blocks.AsyncCreditBlocksWithRawResponse:
+        from .resources.credit_blocks import AsyncCreditBlocksWithRawResponse
+
+        return AsyncCreditBlocksWithRawResponse(self._client.credit_blocks)
 
 
 class OrbWithStreamedResponse:
@@ -1032,6 +1058,12 @@ class OrbWithStreamedResponse:
 
         return SubscriptionChangesWithStreamingResponse(self._client.subscription_changes)
 
+    @cached_property
+    def credit_blocks(self) -> credit_blocks.CreditBlocksWithStreamingResponse:
+        from .resources.credit_blocks import CreditBlocksWithStreamingResponse
+
+        return CreditBlocksWithStreamingResponse(self._client.credit_blocks)
+
 
 class AsyncOrbWithStreamedResponse:
     _client: AsyncOrb
@@ -1134,6 +1166,12 @@ class AsyncOrbWithStreamedResponse:
         from .resources.subscription_changes import AsyncSubscriptionChangesWithStreamingResponse
 
         return AsyncSubscriptionChangesWithStreamingResponse(self._client.subscription_changes)
+
+    @cached_property
+    def credit_blocks(self) -> credit_blocks.AsyncCreditBlocksWithStreamingResponse:
+        from .resources.credit_blocks import AsyncCreditBlocksWithStreamingResponse
+
+        return AsyncCreditBlocksWithStreamingResponse(self._client.credit_blocks)
 
 
 Client = Orb

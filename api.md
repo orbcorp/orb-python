@@ -389,7 +389,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import InvoiceFetchUpcomingResponse
+from orb.types import InvoiceFetchUpcomingResponse, InvoiceListSummaryResponse
 ```
 
 Methods:
@@ -397,9 +397,11 @@ Methods:
 - <code title="post /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">create</a>(\*\*<a href="src/orb/types/invoice_create_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="put /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">update</a>(invoice_id, \*\*<a href="src/orb/types/invoice_update_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="get /invoices">client.invoices.<a href="./src/orb/resources/invoices.py">list</a>(\*\*<a href="src/orb/types/invoice_list_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">SyncPage[Invoice]</a></code>
+- <code title="delete /invoices/{invoice_id}/invoice_line_items/{line_item_id}">client.invoices.<a href="./src/orb/resources/invoices.py">delete_line_item</a>(line_item_id, \*, invoice_id) -> None</code>
 - <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="get /invoices/upcoming">client.invoices.<a href="./src/orb/resources/invoices.py">fetch_upcoming</a>(\*\*<a href="src/orb/types/invoice_fetch_upcoming_params.py">params</a>) -> <a href="./src/orb/types/invoice_fetch_upcoming_response.py">InvoiceFetchUpcomingResponse</a></code>
 - <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="get /invoices/summary">client.invoices.<a href="./src/orb/resources/invoices.py">list_summary</a>(\*\*<a href="src/orb/types/invoice_list_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_list_summary_response.py">SyncPage[InvoiceListSummaryResponse]</a></code>
 - <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
@@ -456,6 +458,24 @@ Methods:
 
 - <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 - <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+
+## Migrations
+
+Types:
+
+```python
+from orb.types.plans import (
+    MigrationRetrieveResponse,
+    MigrationListResponse,
+    MigrationCancelResponse,
+)
+```
+
+Methods:
+
+- <code title="get /plans/{plan_id}/migrations/{migration_id}">client.plans.migrations.<a href="./src/orb/resources/plans/migrations.py">retrieve</a>(migration_id, \*, plan_id) -> <a href="./src/orb/types/plans/migration_retrieve_response.py">MigrationRetrieveResponse</a></code>
+- <code title="get /plans/{plan_id}/migrations">client.plans.migrations.<a href="./src/orb/resources/plans/migrations.py">list</a>(plan_id, \*\*<a href="src/orb/types/plans/migration_list_params.py">params</a>) -> <a href="./src/orb/types/plans/migration_list_response.py">SyncPage[MigrationListResponse]</a></code>
+- <code title="post /plans/{plan_id}/migrations/{migration_id}/cancel">client.plans.migrations.<a href="./src/orb/resources/plans/migrations.py">cancel</a>(migration_id, \*, plan_id) -> <a href="./src/orb/types/plans/migration_cancel_response.py">MigrationCancelResponse</a></code>
 
 # Prices
 
@@ -596,6 +616,7 @@ Types:
 from orb.types import (
     MutatedSubscription,
     SubscriptionChangeRetrieveResponse,
+    SubscriptionChangeListResponse,
     SubscriptionChangeApplyResponse,
     SubscriptionChangeCancelResponse,
 )
@@ -604,5 +625,19 @@ from orb.types import (
 Methods:
 
 - <code title="get /subscription_changes/{subscription_change_id}">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">retrieve</a>(subscription_change_id) -> <a href="./src/orb/types/subscription_change_retrieve_response.py">SubscriptionChangeRetrieveResponse</a></code>
+- <code title="get /subscription_changes">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">list</a>(\*\*<a href="src/orb/types/subscription_change_list_params.py">params</a>) -> <a href="./src/orb/types/subscription_change_list_response.py">SyncPage[SubscriptionChangeListResponse]</a></code>
 - <code title="post /subscription_changes/{subscription_change_id}/apply">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">apply</a>(subscription_change_id, \*\*<a href="src/orb/types/subscription_change_apply_params.py">params</a>) -> <a href="./src/orb/types/subscription_change_apply_response.py">SubscriptionChangeApplyResponse</a></code>
 - <code title="post /subscription_changes/{subscription_change_id}/cancel">client.subscription_changes.<a href="./src/orb/resources/subscription_changes.py">cancel</a>(subscription_change_id) -> <a href="./src/orb/types/subscription_change_cancel_response.py">SubscriptionChangeCancelResponse</a></code>
+
+# CreditBlocks
+
+Types:
+
+```python
+from orb.types import CreditBlockRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">retrieve</a>(block_id) -> <a href="./src/orb/types/credit_block_retrieve_response.py">CreditBlockRetrieveResponse</a></code>
+- <code title="delete /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">delete</a>(block_id) -> None</code>
