@@ -15,9 +15,10 @@ from ..types import (
     invoice_create_params,
     invoice_update_params,
     invoice_mark_paid_params,
+    invoice_list_summary_params,
     invoice_fetch_upcoming_params,
 )
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -26,6 +27,7 @@ from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.invoice import Invoice
 from ..types.shared_params.discount import Discount
+from ..types.invoice_list_summary_response import InvoiceListSummaryResponse
 from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
 __all__ = ["Invoices", "AsyncInvoices"]
@@ -322,6 +324,54 @@ class Invoices(SyncAPIResource):
             model=Invoice,
         )
 
+    def delete_line_item(
+        self,
+        line_item_id: str,
+        *,
+        invoice_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        This endpoint deletes an invoice line item from a draft invoice.
+
+        This endpoint only allows deletion of one-off line items (not subscription-based
+        line items). The invoice must be in a draft status for this operation to
+        succeed.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        if not line_item_id:
+            raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
     def fetch(
         self,
         invoice_id: str,
@@ -447,6 +497,108 @@ class Invoices(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Invoice,
+        )
+
+    def list_summary(
+        self,
+        *,
+        amount: Optional[str] | Omit = omit,
+        amount_gt: Optional[str] | Omit = omit,
+        amount_lt: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
+        due_date: Union[str, date, None] | Omit = omit,
+        due_date_window: Optional[str] | Omit = omit,
+        due_date_gt: Union[str, date, None] | Omit = omit,
+        due_date_lt: Union[str, date, None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        invoice_date_gt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_gte: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lte: Union[str, datetime, None] | Omit = omit,
+        is_recurring: Optional[bool] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Optional[Literal["draft", "issued", "paid", "synced", "void"]] | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[InvoiceListSummaryResponse]:
+        """
+        This is a lighter-weight endpoint that returns a list of all
+        [`Invoice`](/core-concepts#invoice) summaries for an account in a list format.
+
+        These invoice summaries do not include line item details, minimums, maximums,
+        and discounts, making this endpoint more efficient.
+
+        The list of invoices is ordered starting from the most recently issued invoice
+        date. The response also includes
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist.
+
+        By default, this only returns invoices that are `issued`, `paid`, or `synced`.
+
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          due_date_window: Filters invoices by their due dates within a specific time range in the past.
+              Specify the range as a number followed by 'd' (days) or 'm' (months). For
+              example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+              due in the last 2 months.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/invoices/summary",
+            page=SyncPage[InvoiceListSummaryResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "amount": amount,
+                        "amount_gt": amount_gt,
+                        "amount_lt": amount_lt,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "date_type": date_type,
+                        "due_date": due_date,
+                        "due_date_window": due_date_window,
+                        "due_date_gt": due_date_gt,
+                        "due_date_lt": due_date_lt,
+                        "external_customer_id": external_customer_id,
+                        "invoice_date_gt": invoice_date_gt,
+                        "invoice_date_gte": invoice_date_gte,
+                        "invoice_date_lt": invoice_date_lt,
+                        "invoice_date_lte": invoice_date_lte,
+                        "is_recurring": is_recurring,
+                        "limit": limit,
+                        "status": status,
+                        "subscription_id": subscription_id,
+                    },
+                    invoice_list_summary_params.InvoiceListSummaryParams,
+                ),
+            ),
+            model=InvoiceListSummaryResponse,
         )
 
     def mark_paid(
@@ -892,6 +1044,54 @@ class AsyncInvoices(AsyncAPIResource):
             model=Invoice,
         )
 
+    async def delete_line_item(
+        self,
+        line_item_id: str,
+        *,
+        invoice_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """
+        This endpoint deletes an invoice line item from a draft invoice.
+
+        This endpoint only allows deletion of one-off line items (not subscription-based
+        line items). The invoice must be in a draft status for this operation to
+        succeed.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        if not line_item_id:
+            raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
     async def fetch(
         self,
         invoice_id: str,
@@ -1017,6 +1217,108 @@ class AsyncInvoices(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Invoice,
+        )
+
+    def list_summary(
+        self,
+        *,
+        amount: Optional[str] | Omit = omit,
+        amount_gt: Optional[str] | Omit = omit,
+        amount_lt: Optional[str] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
+        due_date: Union[str, date, None] | Omit = omit,
+        due_date_window: Optional[str] | Omit = omit,
+        due_date_gt: Union[str, date, None] | Omit = omit,
+        due_date_lt: Union[str, date, None] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        invoice_date_gt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_gte: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lt: Union[str, datetime, None] | Omit = omit,
+        invoice_date_lte: Union[str, datetime, None] | Omit = omit,
+        is_recurring: Optional[bool] | Omit = omit,
+        limit: int | Omit = omit,
+        status: Optional[Literal["draft", "issued", "paid", "synced", "void"]] | Omit = omit,
+        subscription_id: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[InvoiceListSummaryResponse, AsyncPage[InvoiceListSummaryResponse]]:
+        """
+        This is a lighter-weight endpoint that returns a list of all
+        [`Invoice`](/core-concepts#invoice) summaries for an account in a list format.
+
+        These invoice summaries do not include line item details, minimums, maximums,
+        and discounts, making this endpoint more efficient.
+
+        The list of invoices is ordered starting from the most recently issued invoice
+        date. The response also includes
+        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        retrieve the next page of results if they exist.
+
+        By default, this only returns invoices that are `issued`, `paid`, or `synced`.
+
+        When fetching any `draft` invoices, this returns the last-computed invoice
+        values for each draft invoice, which may not always be up-to-date since Orb
+        regularly refreshes invoices asynchronously.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          due_date_window: Filters invoices by their due dates within a specific time range in the past.
+              Specify the range as a number followed by 'd' (days) or 'm' (months). For
+              example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+              due in the last 2 months.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/invoices/summary",
+            page=AsyncPage[InvoiceListSummaryResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "amount": amount,
+                        "amount_gt": amount_gt,
+                        "amount_lt": amount_lt,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "date_type": date_type,
+                        "due_date": due_date,
+                        "due_date_window": due_date_window,
+                        "due_date_gt": due_date_gt,
+                        "due_date_lt": due_date_lt,
+                        "external_customer_id": external_customer_id,
+                        "invoice_date_gt": invoice_date_gt,
+                        "invoice_date_gte": invoice_date_gte,
+                        "invoice_date_lt": invoice_date_lt,
+                        "invoice_date_lte": invoice_date_lte,
+                        "is_recurring": is_recurring,
+                        "limit": limit,
+                        "status": status,
+                        "subscription_id": subscription_id,
+                    },
+                    invoice_list_summary_params.InvoiceListSummaryParams,
+                ),
+            ),
+            model=InvoiceListSummaryResponse,
         )
 
     async def mark_paid(
@@ -1184,6 +1486,9 @@ class InvoicesWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             invoices.list,
         )
+        self.delete_line_item = _legacy_response.to_raw_response_wrapper(
+            invoices.delete_line_item,
+        )
         self.fetch = _legacy_response.to_raw_response_wrapper(
             invoices.fetch,
         )
@@ -1192,6 +1497,9 @@ class InvoicesWithRawResponse:
         )
         self.issue = _legacy_response.to_raw_response_wrapper(
             invoices.issue,
+        )
+        self.list_summary = _legacy_response.to_raw_response_wrapper(
+            invoices.list_summary,
         )
         self.mark_paid = _legacy_response.to_raw_response_wrapper(
             invoices.mark_paid,
@@ -1217,6 +1525,9 @@ class AsyncInvoicesWithRawResponse:
         self.list = _legacy_response.async_to_raw_response_wrapper(
             invoices.list,
         )
+        self.delete_line_item = _legacy_response.async_to_raw_response_wrapper(
+            invoices.delete_line_item,
+        )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             invoices.fetch,
         )
@@ -1225,6 +1536,9 @@ class AsyncInvoicesWithRawResponse:
         )
         self.issue = _legacy_response.async_to_raw_response_wrapper(
             invoices.issue,
+        )
+        self.list_summary = _legacy_response.async_to_raw_response_wrapper(
+            invoices.list_summary,
         )
         self.mark_paid = _legacy_response.async_to_raw_response_wrapper(
             invoices.mark_paid,
@@ -1250,6 +1564,9 @@ class InvoicesWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             invoices.list,
         )
+        self.delete_line_item = to_streamed_response_wrapper(
+            invoices.delete_line_item,
+        )
         self.fetch = to_streamed_response_wrapper(
             invoices.fetch,
         )
@@ -1258,6 +1575,9 @@ class InvoicesWithStreamingResponse:
         )
         self.issue = to_streamed_response_wrapper(
             invoices.issue,
+        )
+        self.list_summary = to_streamed_response_wrapper(
+            invoices.list_summary,
         )
         self.mark_paid = to_streamed_response_wrapper(
             invoices.mark_paid,
@@ -1283,6 +1603,9 @@ class AsyncInvoicesWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             invoices.list,
         )
+        self.delete_line_item = async_to_streamed_response_wrapper(
+            invoices.delete_line_item,
+        )
         self.fetch = async_to_streamed_response_wrapper(
             invoices.fetch,
         )
@@ -1291,6 +1614,9 @@ class AsyncInvoicesWithStreamingResponse:
         )
         self.issue = async_to_streamed_response_wrapper(
             invoices.issue,
+        )
+        self.list_summary = async_to_streamed_response_wrapper(
+            invoices.list_summary,
         )
         self.mark_paid = async_to_streamed_response_wrapper(
             invoices.mark_paid,

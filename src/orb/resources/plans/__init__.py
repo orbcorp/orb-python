@@ -8,6 +8,14 @@ from .plans import (
     PlansWithStreamingResponse,
     AsyncPlansWithStreamingResponse,
 )
+from .migrations import (
+    Migrations,
+    AsyncMigrations,
+    MigrationsWithRawResponse,
+    AsyncMigrationsWithRawResponse,
+    MigrationsWithStreamingResponse,
+    AsyncMigrationsWithStreamingResponse,
+)
 from .external_plan_id import (
     ExternalPlanID,
     AsyncExternalPlanID,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncExternalPlanIDWithRawResponse",
     "ExternalPlanIDWithStreamingResponse",
     "AsyncExternalPlanIDWithStreamingResponse",
+    "Migrations",
+    "AsyncMigrations",
+    "MigrationsWithRawResponse",
+    "AsyncMigrationsWithRawResponse",
+    "MigrationsWithStreamingResponse",
+    "AsyncMigrationsWithStreamingResponse",
     "Plans",
     "AsyncPlans",
     "PlansWithRawResponse",
