@@ -100,6 +100,14 @@ from .credit_notes import (
     CreditNotesWithStreamingResponse,
     AsyncCreditNotesWithStreamingResponse,
 )
+from .credit_blocks import (
+    CreditBlocks,
+    AsyncCreditBlocks,
+    CreditBlocksWithRawResponse,
+    AsyncCreditBlocksWithRawResponse,
+    CreditBlocksWithStreamingResponse,
+    AsyncCreditBlocksWithStreamingResponse,
+)
 from .subscriptions import (
     Subscriptions,
     AsyncSubscriptions,
@@ -232,4 +240,10 @@ __all__ = [
     "AsyncSubscriptionChangesWithRawResponse",
     "SubscriptionChangesWithStreamingResponse",
     "AsyncSubscriptionChangesWithStreamingResponse",
+    "CreditBlocks",
+    "AsyncCreditBlocks",
+    "CreditBlocksWithRawResponse",
+    "AsyncCreditBlocksWithRawResponse",
+    "CreditBlocksWithStreamingResponse",
+    "AsyncCreditBlocksWithStreamingResponse",
 ]
