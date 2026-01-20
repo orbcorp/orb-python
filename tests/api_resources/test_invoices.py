@@ -419,7 +419,7 @@ class TestInvoices:
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
             limit=1,
-            status="draft",
+            status=["draft"],
             subscription_id="subscription_id",
         )
         assert_matches_type(SyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
@@ -974,7 +974,7 @@ class TestAsyncInvoices:
             invoice_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             is_recurring=True,
             limit=1,
-            status="draft",
+            status=["draft"],
             subscription_id="subscription_id",
         )
         assert_matches_type(AsyncPage[InvoiceListSummaryResponse], invoice, path=["response"])
