@@ -3242,8 +3242,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3254,11 +3254,11 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={
+            minimum_composite_config={
                 "minimum_amount": "minimum_amount",
                 "prorated": True,
             },
-            model_type="minimum",
+            model_type="minimum_composite",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -3293,8 +3293,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         )
 
@@ -3309,8 +3309,8 @@ class TestPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
@@ -7072,8 +7072,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7084,11 +7084,11 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={
+            minimum_composite_config={
                 "minimum_amount": "minimum_amount",
                 "prorated": True,
             },
-            model_type="minimum",
+            model_type="minimum_composite",
             name="Annual fee",
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
@@ -7123,8 +7123,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         )
 
@@ -7139,8 +7139,8 @@ class TestAsyncPrices:
             cadence="annual",
             currency="currency",
             item_id="item_id",
-            minimum_config={"minimum_amount": "minimum_amount"},
-            model_type="minimum",
+            minimum_composite_config={"minimum_amount": "minimum_amount"},
+            model_type="minimum_composite",
             name="Annual fee",
         ) as response:
             assert not response.is_closed
