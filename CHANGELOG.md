@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.49.0 (2026-01-21)
+
+Full Changelog: [v4.48.0...v4.49.0](https://github.com/orbcorp/orb-python/compare/v4.48.0...v4.49.0)
+
+### Features
+
+* **api:** api update ([5b5c348](https://github.com/orbcorp/orb-python/commit/5b5c348e954f79937614e47481e3a91dc8692751))
+
+
+### Chores
+
+* **internal:** codegen related update ([9f74fa5](https://github.com/orbcorp/orb-python/commit/9f74fa57c3d4bfebf2d5b4765d100f0e663b4ed6))
+
 ## 4.48.0 (2026-01-08)
 
 Full Changelog: [v4.47.0...v4.48.0](https://github.com/orbcorp/orb-python/compare/v4.47.0...v4.48.0)
