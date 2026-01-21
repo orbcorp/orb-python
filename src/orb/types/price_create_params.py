@@ -115,7 +115,7 @@ __all__ = [
     "NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
     "NewFloatingCumulativeGroupedAllocationPriceConversionRateConfig",
     "NewFloatingMinimumCompositePrice",
-    "NewFloatingMinimumCompositePriceMinimumConfig",
+    "NewFloatingMinimumCompositePriceMinimumCompositeConfig",
     "NewFloatingMinimumCompositePriceConversionRateConfig",
     "NewFloatingPercentCompositePrice",
     "NewFloatingPercentCompositePricePercentConfig",
@@ -2775,10 +2775,10 @@ class NewFloatingMinimumCompositePrice(TypedDict, total=False):
     item_id: Required[str]
     """The id of the item the price will be associated with."""
 
-    minimum_config: Required[NewFloatingMinimumCompositePriceMinimumConfig]
-    """Configuration for minimum pricing"""
+    minimum_composite_config: Required[NewFloatingMinimumCompositePriceMinimumCompositeConfig]
+    """Configuration for minimum_composite pricing"""
 
-    model_type: Required[Literal["minimum"]]
+    model_type: Required[Literal["minimum_composite"]]
     """The pricing model type"""
 
     name: Required[str]
@@ -2837,8 +2837,8 @@ class NewFloatingMinimumCompositePrice(TypedDict, total=False):
     """
 
 
-class NewFloatingMinimumCompositePriceMinimumConfig(TypedDict, total=False):
-    """Configuration for minimum pricing"""
+class NewFloatingMinimumCompositePriceMinimumCompositeConfig(TypedDict, total=False):
+    """Configuration for minimum_composite pricing"""
 
     minimum_amount: Required[str]
     """The minimum amount to apply"""
