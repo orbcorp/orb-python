@@ -2776,8 +2776,8 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        minimum_config: price_create_params.NewFloatingMinimumCompositePriceMinimumConfig,
-        model_type: Literal["minimum"],
+        minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig,
+        model_type: Literal["minimum_composite"],
         name: str,
         billable_metric_id: Optional[str] | Omit = omit,
         billed_in_advance: Optional[bool] | Omit = omit,
@@ -2818,7 +2818,7 @@ class Prices(SyncAPIResource):
 
           item_id: The id of the item the price will be associated with.
 
-          minimum_config: Configuration for minimum pricing
+          minimum_composite_config: Configuration for minimum_composite pricing
 
           model_type: The pricing model type
 
@@ -3086,7 +3086,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "scalable_matrix_with_tiered_pricing_config"],
         ["cadence", "cumulative_grouped_bulk_config", "currency", "item_id", "model_type", "name"],
         ["cadence", "cumulative_grouped_allocation_config", "currency", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "minimum_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "minimum_composite_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "percent_config"],
         ["cadence", "currency", "event_output_config", "item_id", "model_type", "name"],
     )
@@ -3124,7 +3124,7 @@ class Prices(SyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"]
         | Literal["cumulative_grouped_allocation"]
-        | Literal["minimum"]
+        | Literal["minimum_composite"]
         | Literal["percent"]
         | Literal["event_output"],
         name: str,
@@ -3218,7 +3218,8 @@ class Prices(SyncAPIResource):
         | Omit = omit,
         cumulative_grouped_allocation_config: price_create_params.NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig
         | Omit = omit,
-        minimum_config: price_create_params.NewFloatingMinimumCompositePriceMinimumConfig | Omit = omit,
+        minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig
+        | Omit = omit,
         percent_config: price_create_params.NewFloatingPercentCompositePricePercentConfig | Omit = omit,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -3279,7 +3280,7 @@ class Prices(SyncAPIResource):
                         "scalable_matrix_with_tiered_pricing_config": scalable_matrix_with_tiered_pricing_config,
                         "cumulative_grouped_bulk_config": cumulative_grouped_bulk_config,
                         "cumulative_grouped_allocation_config": cumulative_grouped_allocation_config,
-                        "minimum_config": minimum_config,
+                        "minimum_composite_config": minimum_composite_config,
                         "percent_config": percent_config,
                         "event_output_config": event_output_config,
                     },
@@ -6432,8 +6433,8 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
-        minimum_config: price_create_params.NewFloatingMinimumCompositePriceMinimumConfig,
-        model_type: Literal["minimum"],
+        minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig,
+        model_type: Literal["minimum_composite"],
         name: str,
         billable_metric_id: Optional[str] | Omit = omit,
         billed_in_advance: Optional[bool] | Omit = omit,
@@ -6474,7 +6475,7 @@ class AsyncPrices(AsyncAPIResource):
 
           item_id: The id of the item the price will be associated with.
 
-          minimum_config: Configuration for minimum pricing
+          minimum_composite_config: Configuration for minimum_composite pricing
 
           model_type: The pricing model type
 
@@ -6742,7 +6743,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "scalable_matrix_with_tiered_pricing_config"],
         ["cadence", "cumulative_grouped_bulk_config", "currency", "item_id", "model_type", "name"],
         ["cadence", "cumulative_grouped_allocation_config", "currency", "item_id", "model_type", "name"],
-        ["cadence", "currency", "item_id", "minimum_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "minimum_composite_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "percent_config"],
         ["cadence", "currency", "event_output_config", "item_id", "model_type", "name"],
     )
@@ -6780,7 +6781,7 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["scalable_matrix_with_tiered_pricing"]
         | Literal["cumulative_grouped_bulk"]
         | Literal["cumulative_grouped_allocation"]
-        | Literal["minimum"]
+        | Literal["minimum_composite"]
         | Literal["percent"]
         | Literal["event_output"],
         name: str,
@@ -6874,7 +6875,8 @@ class AsyncPrices(AsyncAPIResource):
         | Omit = omit,
         cumulative_grouped_allocation_config: price_create_params.NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig
         | Omit = omit,
-        minimum_config: price_create_params.NewFloatingMinimumCompositePriceMinimumConfig | Omit = omit,
+        minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig
+        | Omit = omit,
         percent_config: price_create_params.NewFloatingPercentCompositePricePercentConfig | Omit = omit,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -6935,7 +6937,7 @@ class AsyncPrices(AsyncAPIResource):
                         "scalable_matrix_with_tiered_pricing_config": scalable_matrix_with_tiered_pricing_config,
                         "cumulative_grouped_bulk_config": cumulative_grouped_bulk_config,
                         "cumulative_grouped_allocation_config": cumulative_grouped_allocation_config,
-                        "minimum_config": minimum_config,
+                        "minimum_composite_config": minimum_composite_config,
                         "percent_config": percent_config,
                         "event_output_config": event_output_config,
                     },

@@ -154,7 +154,7 @@ __all__ = [
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
-    "MinimumCompositePriceMinimumConfig",
+    "MinimumCompositePriceMinimumCompositeConfig",
     "PercentCompositePrice",
     "PercentCompositePriceCompositePriceFilter",
     "PercentCompositePriceConversionRateConfig",
@@ -3175,8 +3175,8 @@ MinimumCompositePriceConversionRateConfig: TypeAlias = Annotated[
 ]
 
 
-class MinimumCompositePriceMinimumConfig(BaseModel):
-    """Configuration for minimum pricing"""
+class MinimumCompositePriceMinimumCompositeConfig(BaseModel):
+    """Configuration for minimum_composite pricing"""
 
     minimum_amount: str
     """The minimum amount to apply"""
@@ -3238,10 +3238,10 @@ class MinimumCompositePrice(BaseModel):
 
     minimum_amount: Optional[str] = None
 
-    minimum_config: MinimumCompositePriceMinimumConfig
-    """Configuration for minimum pricing"""
+    minimum_composite_config: MinimumCompositePriceMinimumCompositeConfig
+    """Configuration for minimum_composite pricing"""
 
-    price_model_type: Literal["minimum"] = FieldInfo(alias="model_type")
+    price_model_type: Literal["minimum_composite"] = FieldInfo(alias="model_type")
     """The pricing model type"""
 
     name: str
