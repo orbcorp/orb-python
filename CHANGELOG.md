@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.51.0 (2026-01-29)
+
+Full Changelog: [v4.50.0...v4.51.0](https://github.com/orbcorp/orb-python/compare/v4.50.0...v4.51.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([223e84e](https://github.com/orbcorp/orb-python/commit/223e84e59076bc26023a5c66121396bbdccf368f))
+
 ## 4.50.0 (2026-01-23)
 
 Full Changelog: [v4.49.0...v4.50.0](https://github.com/orbcorp/orb-python/compare/v4.49.0...v4.50.0)
