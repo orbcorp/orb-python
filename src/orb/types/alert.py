@@ -9,7 +9,7 @@ from .threshold import Threshold
 from .shared.customer_minified import CustomerMinified
 from .shared.subscription_minified import SubscriptionMinified
 
-__all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus"]
+__all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus", "LicenseType"]
 
 
 class Metric(BaseModel):
@@ -43,6 +43,12 @@ class BalanceAlertStatus(BaseModel):
 
     threshold_value: float
     """The value of the threshold that defines the alert status."""
+
+
+class LicenseType(BaseModel):
+    """Minified license type for alert serialization."""
+
+    id: str
 
 
 class Alert(BaseModel):
@@ -89,6 +95,7 @@ class Alert(BaseModel):
         "credit_balance_recovered",
         "usage_exceeded",
         "cost_exceeded",
+        "license_balance_threshold_reached",
     ]
     """The type of alert. This must be a valid alert type."""
 
@@ -97,3 +104,6 @@ class Alert(BaseModel):
 
     This field is only present for credit balance alerts.
     """
+
+    license_type: Optional[LicenseType] = None
+    """Minified license type for alert serialization."""
