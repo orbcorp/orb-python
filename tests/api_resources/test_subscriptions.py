@@ -76,6 +76,7 @@ class TestSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -124,6 +125,7 @@ class TestSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -208,6 +210,7 @@ class TestSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -255,6 +258,7 @@ class TestSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -662,6 +666,7 @@ class TestSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "can_defer_billing": True,
@@ -715,6 +720,7 @@ class TestSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "h74gfhdjvn7ujokd",
@@ -918,6 +924,7 @@ class TestSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -966,6 +973,7 @@ class TestSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -1043,6 +1051,7 @@ class TestSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1090,6 +1099,7 @@ class TestSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -1466,6 +1476,7 @@ class TestAsyncSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1514,6 +1525,7 @@ class TestAsyncSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -1598,6 +1610,7 @@ class TestAsyncSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1645,6 +1658,7 @@ class TestAsyncSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -2052,6 +2066,7 @@ class TestAsyncSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "can_defer_billing": True,
@@ -2105,6 +2120,7 @@ class TestAsyncSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "h74gfhdjvn7ujokd",
@@ -2308,6 +2324,7 @@ class TestAsyncSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -2356,6 +2373,7 @@ class TestAsyncSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -2433,6 +2451,7 @@ class TestAsyncSubscriptions:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -2480,6 +2499,7 @@ class TestAsyncSubscriptions:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },

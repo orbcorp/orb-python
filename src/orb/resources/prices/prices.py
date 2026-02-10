@@ -92,6 +92,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -151,6 +152,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -187,6 +190,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -246,6 +250,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -282,6 +288,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -341,6 +348,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -378,6 +387,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -437,6 +447,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -473,6 +485,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -532,6 +545,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -568,6 +583,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -627,6 +643,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -664,6 +682,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -723,6 +742,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -760,6 +781,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -819,6 +841,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -856,6 +880,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -915,6 +940,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -952,6 +979,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1011,6 +1039,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1050,6 +1080,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1109,6 +1140,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1146,6 +1179,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1205,6 +1239,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1242,6 +1278,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1301,6 +1338,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1338,6 +1377,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1397,6 +1437,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1434,6 +1476,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1493,6 +1536,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1530,6 +1575,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1589,6 +1635,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1626,6 +1674,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1685,6 +1734,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1722,6 +1773,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1781,6 +1833,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1820,6 +1874,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1879,6 +1934,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -1918,6 +1975,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1977,6 +2035,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2016,6 +2076,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2075,6 +2136,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2112,6 +2175,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2171,6 +2235,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2208,6 +2274,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2267,6 +2334,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2304,6 +2373,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2363,6 +2433,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2402,6 +2474,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2461,6 +2534,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2500,6 +2575,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2559,6 +2635,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2596,6 +2674,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2655,6 +2734,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2694,6 +2775,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2753,6 +2835,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2790,6 +2874,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2849,6 +2934,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2886,6 +2973,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -2945,6 +3033,8 @@ class Prices(SyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -2982,6 +3072,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3040,6 +3131,8 @@ class Prices(SyncAPIResource):
 
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3170,6 +3263,7 @@ class Prices(SyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         tiered_config: TieredConfig | Omit = omit,
         bulk_config: BulkConfig | Omit = omit,
@@ -3252,6 +3346,7 @@ class Prices(SyncAPIResource):
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
                         "invoicing_cycle_configuration": invoicing_cycle_configuration,
+                        "license_type_id": license_type_id,
                         "metadata": metadata,
                         "tiered_config": tiered_config,
                         "bulk_config": bulk_config,
@@ -3749,6 +3844,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3808,6 +3904,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -3844,6 +3942,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3903,6 +4002,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -3939,6 +4040,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -3998,6 +4100,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4035,6 +4139,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4094,6 +4199,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4130,6 +4237,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4189,6 +4297,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4225,6 +4335,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4284,6 +4395,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4321,6 +4434,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4380,6 +4494,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4417,6 +4533,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4476,6 +4593,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4513,6 +4632,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4572,6 +4692,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4609,6 +4731,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4668,6 +4791,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4707,6 +4832,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4766,6 +4892,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4803,6 +4931,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4862,6 +4991,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4899,6 +5030,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -4958,6 +5090,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -4995,6 +5129,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5054,6 +5189,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5091,6 +5228,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5150,6 +5288,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5187,6 +5327,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5246,6 +5387,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5283,6 +5426,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5342,6 +5486,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5379,6 +5525,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5438,6 +5585,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5477,6 +5626,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5536,6 +5686,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5575,6 +5727,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5634,6 +5787,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5673,6 +5828,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5732,6 +5888,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5769,6 +5927,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5828,6 +5987,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5865,6 +6026,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -5924,6 +6086,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -5961,6 +6125,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6020,6 +6185,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6059,6 +6226,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6118,6 +6286,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6157,6 +6327,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6216,6 +6387,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6253,6 +6426,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6312,6 +6486,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6351,6 +6527,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6410,6 +6587,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6447,6 +6626,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6506,6 +6686,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6543,6 +6725,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6602,6 +6785,8 @@ class AsyncPrices(AsyncAPIResource):
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
 
+          license_type_id: The ID of the license type to associate with this price.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
@@ -6639,6 +6824,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -6697,6 +6883,8 @@ class AsyncPrices(AsyncAPIResource):
 
           invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
               If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -6827,6 +7015,7 @@ class AsyncPrices(AsyncAPIResource):
         fixed_price_quantity: Optional[float] | Omit = omit,
         invoice_grouping_key: Optional[str] | Omit = omit,
         invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         tiered_config: TieredConfig | Omit = omit,
         bulk_config: BulkConfig | Omit = omit,
@@ -6909,6 +7098,7 @@ class AsyncPrices(AsyncAPIResource):
                         "fixed_price_quantity": fixed_price_quantity,
                         "invoice_grouping_key": invoice_grouping_key,
                         "invoicing_cycle_configuration": invoicing_cycle_configuration,
+                        "license_type_id": license_type_id,
                         "metadata": metadata,
                         "tiered_config": tiered_config,
                         "bulk_config": bulk_config,

@@ -71,6 +71,7 @@ class TestExternalPlanID:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
@@ -107,6 +108,7 @@ class TestExternalPlanID:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -167,6 +169,7 @@ class TestExternalPlanID:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
@@ -203,6 +206,7 @@ class TestExternalPlanID:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -396,6 +400,7 @@ class TestAsyncExternalPlanID:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
@@ -432,6 +437,7 @@ class TestAsyncExternalPlanID:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },
@@ -492,6 +498,7 @@ class TestAsyncExternalPlanID:
                             }
                         ],
                         "item_id": "item_id",
+                        "license_type_id": "license_type_id",
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "plan_phase_order": 0,
@@ -528,6 +535,7 @@ class TestAsyncExternalPlanID:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                         "reference_id": "reference_id",
                     },

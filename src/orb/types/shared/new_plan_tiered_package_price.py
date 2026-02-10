@@ -110,6 +110,9 @@ class NewPlanTieredPackagePrice(BaseModel):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str] = None
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]] = None
     """User-specified key/value pairs for the resource.
 

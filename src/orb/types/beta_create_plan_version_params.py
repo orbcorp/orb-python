@@ -241,6 +241,9 @@ class AddPricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -347,6 +350,9 @@ class AddPricePriceNewPlanTieredWithProrationPrice(TypedDict, total=False):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -450,6 +456,9 @@ class AddPricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=Fals
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -555,6 +564,9 @@ class AddPricePriceNewPlanCumulativeGroupedAllocationPrice(TypedDict, total=Fals
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -647,6 +659,9 @@ class AddPricePriceNewPlanPercentCompositePrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -753,6 +768,9 @@ class AddPricePriceNewPlanEventOutputPrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -948,6 +966,9 @@ class ReplacePricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -1054,6 +1075,9 @@ class ReplacePricePriceNewPlanTieredWithProrationPrice(TypedDict, total=False):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -1157,6 +1181,9 @@ class ReplacePricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1262,6 +1289,9 @@ class ReplacePricePriceNewPlanCumulativeGroupedAllocationPrice(TypedDict, total=
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -1354,6 +1384,9 @@ class ReplacePricePriceNewPlanPercentCompositePrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1460,6 +1493,9 @@ class ReplacePricePriceNewPlanEventOutputPrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.

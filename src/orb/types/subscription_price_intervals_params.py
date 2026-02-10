@@ -252,6 +252,9 @@ class AddPriceNewFloatingBulkWithFiltersPrice(TypedDict, total=False):
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -346,6 +349,9 @@ class AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -442,6 +448,9 @@ class AddPriceNewFloatingCumulativeGroupedAllocationPrice(TypedDict, total=False
     If unspecified, a single invoice is produced per billing cycle.
     """
 
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -525,6 +534,9 @@ class AddPriceNewFloatingPercentCompositePrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -622,6 +634,9 @@ class AddPriceNewFloatingEventOutputPrice(TypedDict, total=False):
 
     If unspecified, a single invoice is produced per billing cycle.
     """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
