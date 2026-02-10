@@ -54,6 +54,9 @@ class NewAllocationPrice(BaseModel):
     will be used (e.g. 'Included Allocation (USD)').
     """
 
+    license_type_id: Optional[str] = None
+    """The license type ID to associate the price with license allocation."""
+
     per_unit_cost_basis: Optional[str] = None
     """The (per-unit) cost basis of each created block.
 

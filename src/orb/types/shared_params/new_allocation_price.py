@@ -56,6 +56,9 @@ class NewAllocationPrice(TypedDict, total=False):
     will be used (e.g. 'Included Allocation (USD)').
     """
 
+    license_type_id: Optional[str]
+    """The license type ID to associate the price with license allocation."""
+
     per_unit_cost_basis: str
     """The (per-unit) cost basis of each created block.
 

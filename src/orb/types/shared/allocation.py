@@ -28,3 +28,5 @@ class Allocation(BaseModel):
     custom_expiration: Optional[CustomExpiration] = None
 
     filters: Optional[List[Filter]] = None
+
+    license_type_id: Optional[str] = None

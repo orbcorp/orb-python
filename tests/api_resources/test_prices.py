@@ -71,6 +71,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -169,6 +170,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -272,6 +274,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -379,6 +382,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -483,6 +487,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -589,6 +594,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -712,6 +718,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -840,6 +847,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -974,6 +982,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1106,6 +1115,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1240,6 +1250,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1358,6 +1369,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1454,6 +1466,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1562,6 +1575,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1678,6 +1692,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1774,6 +1789,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1864,6 +1880,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -1965,6 +1982,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2055,6 +2073,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2179,6 +2198,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2305,6 +2325,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2415,6 +2436,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2541,6 +2563,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2675,6 +2698,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2804,6 +2828,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -2942,6 +2967,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3078,6 +3104,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3188,6 +3215,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3283,6 +3311,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3365,6 +3394,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3451,6 +3481,7 @@ class TestPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3680,6 +3711,7 @@ class TestPrices:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "price_id",
@@ -3776,6 +3808,7 @@ class TestPrices:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "price_id",
@@ -3901,6 +3934,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -3999,6 +4033,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4102,6 +4137,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4209,6 +4245,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4313,6 +4350,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4419,6 +4457,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4542,6 +4581,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4670,6 +4710,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4804,6 +4845,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -4936,6 +4978,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5070,6 +5113,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5188,6 +5232,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5284,6 +5329,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5392,6 +5438,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5508,6 +5555,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5604,6 +5652,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5694,6 +5743,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5795,6 +5845,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -5885,6 +5936,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6009,6 +6061,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6135,6 +6188,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6245,6 +6299,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6371,6 +6426,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6505,6 +6561,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6634,6 +6691,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6772,6 +6830,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -6908,6 +6967,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7018,6 +7078,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7113,6 +7174,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7195,6 +7257,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7281,6 +7344,7 @@ class TestAsyncPrices:
                 "duration": 0,
                 "duration_unit": "day",
             },
+            license_type_id="license_type_id",
             metadata={"foo": "string"},
         )
         assert_matches_type(Price, price, path=["response"])
@@ -7510,6 +7574,7 @@ class TestAsyncPrices:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "price_id",
@@ -7606,6 +7671,7 @@ class TestAsyncPrices:
                             "duration": 0,
                             "duration_unit": "day",
                         },
+                        "license_type_id": "license_type_id",
                         "metadata": {"foo": "string"},
                     },
                     "price_id": "price_id",
