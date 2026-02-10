@@ -30,139 +30,170 @@ __all__ = [
     "UnitPrice",
     "UnitPriceCompositePriceFilter",
     "UnitPriceConversionRateConfig",
+    "UnitPriceLicenseType",
     "TieredPrice",
     "TieredPriceCompositePriceFilter",
     "TieredPriceConversionRateConfig",
+    "TieredPriceLicenseType",
     "BulkPrice",
     "BulkPriceCompositePriceFilter",
     "BulkPriceConversionRateConfig",
+    "BulkPriceLicenseType",
     "BulkWithFiltersPrice",
     "BulkWithFiltersPriceBulkWithFiltersConfig",
     "BulkWithFiltersPriceBulkWithFiltersConfigFilter",
     "BulkWithFiltersPriceBulkWithFiltersConfigTier",
     "BulkWithFiltersPriceCompositePriceFilter",
     "BulkWithFiltersPriceConversionRateConfig",
+    "BulkWithFiltersPriceLicenseType",
     "PackagePrice",
     "PackagePriceCompositePriceFilter",
     "PackagePriceConversionRateConfig",
+    "PackagePriceLicenseType",
     "MatrixPrice",
     "MatrixPriceCompositePriceFilter",
     "MatrixPriceConversionRateConfig",
+    "MatrixPriceLicenseType",
     "ThresholdTotalAmountPrice",
     "ThresholdTotalAmountPriceCompositePriceFilter",
     "ThresholdTotalAmountPriceConversionRateConfig",
     "ThresholdTotalAmountPriceThresholdTotalAmountConfig",
     "ThresholdTotalAmountPriceThresholdTotalAmountConfigConsumptionTable",
+    "ThresholdTotalAmountPriceLicenseType",
     "TieredPackagePrice",
     "TieredPackagePriceCompositePriceFilter",
     "TieredPackagePriceConversionRateConfig",
     "TieredPackagePriceTieredPackageConfig",
     "TieredPackagePriceTieredPackageConfigTier",
+    "TieredPackagePriceLicenseType",
     "TieredWithMinimumPrice",
     "TieredWithMinimumPriceCompositePriceFilter",
     "TieredWithMinimumPriceConversionRateConfig",
     "TieredWithMinimumPriceTieredWithMinimumConfig",
     "TieredWithMinimumPriceTieredWithMinimumConfigTier",
+    "TieredWithMinimumPriceLicenseType",
     "GroupedTieredPrice",
     "GroupedTieredPriceCompositePriceFilter",
     "GroupedTieredPriceConversionRateConfig",
     "GroupedTieredPriceGroupedTieredConfig",
     "GroupedTieredPriceGroupedTieredConfigTier",
+    "GroupedTieredPriceLicenseType",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceCompositePriceFilter",
     "TieredPackageWithMinimumPriceConversionRateConfig",
     "TieredPackageWithMinimumPriceTieredPackageWithMinimumConfig",
     "TieredPackageWithMinimumPriceTieredPackageWithMinimumConfigTier",
+    "TieredPackageWithMinimumPriceLicenseType",
     "PackageWithAllocationPrice",
     "PackageWithAllocationPriceCompositePriceFilter",
     "PackageWithAllocationPriceConversionRateConfig",
     "PackageWithAllocationPricePackageWithAllocationConfig",
+    "PackageWithAllocationPriceLicenseType",
     "UnitWithPercentPrice",
     "UnitWithPercentPriceCompositePriceFilter",
     "UnitWithPercentPriceConversionRateConfig",
     "UnitWithPercentPriceUnitWithPercentConfig",
+    "UnitWithPercentPriceLicenseType",
     "MatrixWithAllocationPrice",
     "MatrixWithAllocationPriceCompositePriceFilter",
     "MatrixWithAllocationPriceConversionRateConfig",
+    "MatrixWithAllocationPriceLicenseType",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceCompositePriceFilter",
     "TieredWithProrationPriceConversionRateConfig",
     "TieredWithProrationPriceTieredWithProrationConfig",
     "TieredWithProrationPriceTieredWithProrationConfigTier",
+    "TieredWithProrationPriceLicenseType",
     "UnitWithProrationPrice",
     "UnitWithProrationPriceCompositePriceFilter",
     "UnitWithProrationPriceConversionRateConfig",
     "UnitWithProrationPriceUnitWithProrationConfig",
+    "UnitWithProrationPriceLicenseType",
     "GroupedAllocationPrice",
     "GroupedAllocationPriceCompositePriceFilter",
     "GroupedAllocationPriceConversionRateConfig",
     "GroupedAllocationPriceGroupedAllocationConfig",
+    "GroupedAllocationPriceLicenseType",
     "BulkWithProrationPrice",
     "BulkWithProrationPriceBulkWithProrationConfig",
     "BulkWithProrationPriceBulkWithProrationConfigTier",
     "BulkWithProrationPriceCompositePriceFilter",
     "BulkWithProrationPriceConversionRateConfig",
+    "BulkWithProrationPriceLicenseType",
     "GroupedWithProratedMinimumPrice",
     "GroupedWithProratedMinimumPriceCompositePriceFilter",
     "GroupedWithProratedMinimumPriceConversionRateConfig",
     "GroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig",
+    "GroupedWithProratedMinimumPriceLicenseType",
     "GroupedWithMeteredMinimumPrice",
     "GroupedWithMeteredMinimumPriceCompositePriceFilter",
     "GroupedWithMeteredMinimumPriceConversionRateConfig",
     "GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig",
     "GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigScalingFactor",
     "GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfigUnitAmount",
+    "GroupedWithMeteredMinimumPriceLicenseType",
     "GroupedWithMinMaxThresholdsPrice",
     "GroupedWithMinMaxThresholdsPriceCompositePriceFilter",
     "GroupedWithMinMaxThresholdsPriceConversionRateConfig",
     "GroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig",
+    "GroupedWithMinMaxThresholdsPriceLicenseType",
     "MatrixWithDisplayNamePrice",
     "MatrixWithDisplayNamePriceCompositePriceFilter",
     "MatrixWithDisplayNamePriceConversionRateConfig",
     "MatrixWithDisplayNamePriceMatrixWithDisplayNameConfig",
     "MatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount",
+    "MatrixWithDisplayNamePriceLicenseType",
     "GroupedTieredPackagePrice",
     "GroupedTieredPackagePriceCompositePriceFilter",
     "GroupedTieredPackagePriceConversionRateConfig",
     "GroupedTieredPackagePriceGroupedTieredPackageConfig",
     "GroupedTieredPackagePriceGroupedTieredPackageConfigTier",
+    "GroupedTieredPackagePriceLicenseType",
     "MaxGroupTieredPackagePrice",
     "MaxGroupTieredPackagePriceCompositePriceFilter",
     "MaxGroupTieredPackagePriceConversionRateConfig",
     "MaxGroupTieredPackagePriceMaxGroupTieredPackageConfig",
     "MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier",
+    "MaxGroupTieredPackagePriceLicenseType",
     "ScalableMatrixWithUnitPricingPrice",
     "ScalableMatrixWithUnitPricingPriceCompositePriceFilter",
     "ScalableMatrixWithUnitPricingPriceConversionRateConfig",
     "ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig",
     "ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfigMatrixScalingFactor",
+    "ScalableMatrixWithUnitPricingPriceLicenseType",
     "ScalableMatrixWithTieredPricingPrice",
     "ScalableMatrixWithTieredPricingPriceCompositePriceFilter",
     "ScalableMatrixWithTieredPricingPriceConversionRateConfig",
     "ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig",
     "ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigMatrixScalingFactor",
     "ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfigTier",
+    "ScalableMatrixWithTieredPricingPriceLicenseType",
     "CumulativeGroupedBulkPrice",
     "CumulativeGroupedBulkPriceCompositePriceFilter",
     "CumulativeGroupedBulkPriceConversionRateConfig",
     "CumulativeGroupedBulkPriceCumulativeGroupedBulkConfig",
     "CumulativeGroupedBulkPriceCumulativeGroupedBulkConfigDimensionValue",
+    "CumulativeGroupedBulkPriceLicenseType",
     "CumulativeGroupedAllocationPrice",
     "CumulativeGroupedAllocationPriceCompositePriceFilter",
     "CumulativeGroupedAllocationPriceConversionRateConfig",
     "CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
+    "CumulativeGroupedAllocationPriceLicenseType",
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
     "MinimumCompositePriceMinimumCompositeConfig",
+    "MinimumCompositePriceLicenseType",
     "PercentCompositePrice",
     "PercentCompositePriceCompositePriceFilter",
     "PercentCompositePriceConversionRateConfig",
     "PercentCompositePricePercentConfig",
+    "PercentCompositePriceLicenseType",
     "EventOutputPrice",
     "EventOutputPriceCompositePriceFilter",
     "EventOutputPriceConversionRateConfig",
     "EventOutputPriceEventOutputConfig",
+    "EventOutputPriceLicenseType",
 ]
 
 
@@ -180,6 +211,25 @@ class UnitPriceCompositePriceFilter(BaseModel):
 UnitPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class UnitPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class UnitPrice(BaseModel):
@@ -255,6 +305,13 @@ class UnitPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[UnitPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class TieredPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -270,6 +327,25 @@ class TieredPriceCompositePriceFilter(BaseModel):
 TieredPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class TieredPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class TieredPrice(BaseModel):
@@ -345,6 +421,13 @@ class TieredPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[TieredPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class BulkPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -360,6 +443,25 @@ class BulkPriceCompositePriceFilter(BaseModel):
 BulkPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class BulkPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class BulkPrice(BaseModel):
@@ -435,6 +537,13 @@ class BulkPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[BulkPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class BulkWithFiltersPriceBulkWithFiltersConfigFilter(BaseModel):
     """Configuration for a single property filter"""
@@ -480,6 +589,25 @@ class BulkWithFiltersPriceCompositePriceFilter(BaseModel):
 BulkWithFiltersPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class BulkWithFiltersPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class BulkWithFiltersPrice(BaseModel):
@@ -555,6 +683,13 @@ class BulkWithFiltersPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[BulkWithFiltersPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class PackagePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -570,6 +705,25 @@ class PackagePriceCompositePriceFilter(BaseModel):
 PackagePriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class PackagePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class PackagePrice(BaseModel):
@@ -645,6 +799,13 @@ class PackagePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[PackagePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class MatrixPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -660,6 +821,25 @@ class MatrixPriceCompositePriceFilter(BaseModel):
 MatrixPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class MatrixPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class MatrixPrice(BaseModel):
@@ -735,6 +915,13 @@ class MatrixPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[MatrixPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class ThresholdTotalAmountPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -772,6 +959,25 @@ class ThresholdTotalAmountPriceThresholdTotalAmountConfig(BaseModel):
 
     prorate: Optional[bool] = None
     """If true, the unit price will be prorated to the billing period"""
+
+
+class ThresholdTotalAmountPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class ThresholdTotalAmountPrice(BaseModel):
@@ -847,6 +1053,13 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[ThresholdTotalAmountPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class TieredPackagePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -885,6 +1098,25 @@ class TieredPackagePriceTieredPackageConfig(BaseModel):
     based on the total quantity rather than the number of packages, so they must be
     multiples of the package size.
     """
+
+
+class TieredPackagePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class TieredPackagePrice(BaseModel):
@@ -960,6 +1192,13 @@ class TieredPackagePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[TieredPackagePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class TieredWithMinimumPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1002,6 +1241,25 @@ class TieredWithMinimumPriceTieredWithMinimumConfig(BaseModel):
 
     prorate: Optional[bool] = None
     """If true, the unit price will be prorated to the billing period"""
+
+
+class TieredWithMinimumPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class TieredWithMinimumPrice(BaseModel):
@@ -1077,6 +1335,13 @@ class TieredWithMinimumPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[TieredWithMinimumPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedTieredPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1114,6 +1379,25 @@ class GroupedTieredPriceGroupedTieredConfig(BaseModel):
     Apply tiered pricing to each segment generated after grouping with the provided
     key
     """
+
+
+class GroupedTieredPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedTieredPrice(BaseModel):
@@ -1189,6 +1473,13 @@ class GroupedTieredPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedTieredPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class TieredPackageWithMinimumPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1226,6 +1517,25 @@ class TieredPackageWithMinimumPriceTieredPackageWithMinimumConfig(BaseModel):
 
     Tiers are defined using exclusive lower bounds.
     """
+
+
+class TieredPackageWithMinimumPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class TieredPackageWithMinimumPrice(BaseModel):
@@ -1301,6 +1611,13 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[TieredPackageWithMinimumPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class PackageWithAllocationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1326,6 +1643,25 @@ class PackageWithAllocationPricePackageWithAllocationConfig(BaseModel):
     package_amount: str
 
     package_size: str
+
+
+class PackageWithAllocationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class PackageWithAllocationPrice(BaseModel):
@@ -1401,6 +1737,13 @@ class PackageWithAllocationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[PackageWithAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class UnitWithPercentPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1426,6 +1769,25 @@ class UnitWithPercentPriceUnitWithPercentConfig(BaseModel):
 
     unit_amount: str
     """Rate per unit of usage"""
+
+
+class UnitWithPercentPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class UnitWithPercentPrice(BaseModel):
@@ -1501,6 +1863,13 @@ class UnitWithPercentPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[UnitWithPercentPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class MatrixWithAllocationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1516,6 +1885,25 @@ class MatrixWithAllocationPriceCompositePriceFilter(BaseModel):
 MatrixWithAllocationPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class MatrixWithAllocationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class MatrixWithAllocationPrice(BaseModel):
@@ -1591,6 +1979,13 @@ class MatrixWithAllocationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[MatrixWithAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class TieredWithProrationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1626,6 +2021,25 @@ class TieredWithProrationPriceTieredWithProrationConfig(BaseModel):
     Tiers for rating based on total usage quantities into the specified tier with
     proration
     """
+
+
+class TieredWithProrationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class TieredWithProrationPrice(BaseModel):
@@ -1701,6 +2115,13 @@ class TieredWithProrationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[TieredWithProrationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class UnitWithProrationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1723,6 +2144,25 @@ class UnitWithProrationPriceUnitWithProrationConfig(BaseModel):
 
     unit_amount: str
     """Rate per unit of usage"""
+
+
+class UnitWithProrationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class UnitWithProrationPrice(BaseModel):
@@ -1798,6 +2238,13 @@ class UnitWithProrationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[UnitWithProrationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedAllocationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -1826,6 +2273,25 @@ class GroupedAllocationPriceGroupedAllocationConfig(BaseModel):
 
     overage_unit_rate: str
     """Unit rate for post-allocation"""
+
+
+class GroupedAllocationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedAllocationPrice(BaseModel):
@@ -1901,6 +2367,13 @@ class GroupedAllocationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class BulkWithProrationPriceBulkWithProrationConfigTier(BaseModel):
     """Configuration for a single bulk pricing tier with proration"""
@@ -1933,6 +2406,25 @@ class BulkWithProrationPriceCompositePriceFilter(BaseModel):
 BulkWithProrationPriceConversionRateConfig: TypeAlias = Annotated[
     Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
 ]
+
+
+class BulkWithProrationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class BulkWithProrationPrice(BaseModel):
@@ -2008,6 +2500,13 @@ class BulkWithProrationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[BulkWithProrationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedWithProratedMinimumPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2036,6 +2535,25 @@ class GroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig(BaseModel)
 
     unit_rate: str
     """The amount to charge per unit"""
+
+
+class GroupedWithProratedMinimumPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedWithProratedMinimumPrice(BaseModel):
@@ -2111,6 +2629,13 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedWithProratedMinimumPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedWithMeteredMinimumPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2171,6 +2696,25 @@ class GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig(BaseModel):
 
     The minimum amount is applied any unmatched usage.
     """
+
+
+class GroupedWithMeteredMinimumPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedWithMeteredMinimumPrice(BaseModel):
@@ -2246,6 +2790,13 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedWithMeteredMinimumPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedWithMinMaxThresholdsPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2277,6 +2828,25 @@ class GroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig(BaseMode
 
     per_unit_rate: str
     """The base price charged per group"""
+
+
+class GroupedWithMinMaxThresholdsPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedWithMinMaxThresholdsPrice(BaseModel):
@@ -2352,6 +2922,13 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedWithMinMaxThresholdsPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class MatrixWithDisplayNamePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2390,6 +2967,25 @@ class MatrixWithDisplayNamePriceMatrixWithDisplayNameConfig(BaseModel):
 
     unit_amounts: List[MatrixWithDisplayNamePriceMatrixWithDisplayNameConfigUnitAmount]
     """Apply per unit pricing to each dimension value"""
+
+
+class MatrixWithDisplayNamePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class MatrixWithDisplayNamePrice(BaseModel):
@@ -2465,6 +3061,13 @@ class MatrixWithDisplayNamePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[MatrixWithDisplayNamePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class GroupedTieredPackagePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2504,6 +3107,25 @@ class GroupedTieredPackagePriceGroupedTieredPackageConfig(BaseModel):
 
     Tiers are defined using exclusive lower bounds.
     """
+
+
+class GroupedTieredPackagePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class GroupedTieredPackagePrice(BaseModel):
@@ -2579,6 +3201,13 @@ class GroupedTieredPackagePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[GroupedTieredPackagePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class MaxGroupTieredPackagePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2617,6 +3246,25 @@ class MaxGroupTieredPackagePriceMaxGroupTieredPackageConfig(BaseModel):
 
     tiers: List[MaxGroupTieredPackagePriceMaxGroupTieredPackageConfigTier]
     """Apply tiered pricing to the largest group after grouping with the provided key."""
+
+
+class MaxGroupTieredPackagePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class MaxGroupTieredPackagePrice(BaseModel):
@@ -2692,6 +3340,13 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[MaxGroupTieredPackagePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class ScalableMatrixWithUnitPricingPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2738,6 +3393,25 @@ class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(Base
 
     second_dimension: Optional[str] = None
     """Used to determine the unit rate (optional)"""
+
+
+class ScalableMatrixWithUnitPricingPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class ScalableMatrixWithUnitPricingPrice(BaseModel):
@@ -2813,6 +3487,13 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[ScalableMatrixWithUnitPricingPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class ScalableMatrixWithTieredPricingPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2863,6 +3544,25 @@ class ScalableMatrixWithTieredPricingPriceScalableMatrixWithTieredPricingConfig(
 
     second_dimension: Optional[str] = None
     """Used for the scalable matrix second dimension (optional)"""
+
+
+class ScalableMatrixWithTieredPricingPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class ScalableMatrixWithTieredPricingPrice(BaseModel):
@@ -2940,6 +3640,13 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[ScalableMatrixWithTieredPricingPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class CumulativeGroupedBulkPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -2977,6 +3684,25 @@ class CumulativeGroupedBulkPriceCumulativeGroupedBulkConfig(BaseModel):
     """Each tier lower bound must have the same group of values."""
 
     group: str
+
+
+class CumulativeGroupedBulkPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class CumulativeGroupedBulkPrice(BaseModel):
@@ -3052,6 +3778,13 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[CumulativeGroupedBulkPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class CumulativeGroupedAllocationPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -3083,6 +3816,25 @@ class CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig(BaseMode
 
     unit_amount: str
     """The amount to charge for each unit outside of the allocation"""
+
+
+class CumulativeGroupedAllocationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class CumulativeGroupedAllocationPrice(BaseModel):
@@ -3158,6 +3910,13 @@ class CumulativeGroupedAllocationPrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[CumulativeGroupedAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class MinimumCompositePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -3183,6 +3942,25 @@ class MinimumCompositePriceMinimumCompositeConfig(BaseModel):
 
     prorated: Optional[bool] = None
     """If true, subtotals from this price are prorated based on the service period"""
+
+
+class MinimumCompositePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class MinimumCompositePrice(BaseModel):
@@ -3258,6 +4036,13 @@ class MinimumCompositePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[MinimumCompositePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class PercentCompositePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -3280,6 +4065,25 @@ class PercentCompositePricePercentConfig(BaseModel):
 
     percent: float
     """What percent of the component subtotals to charge"""
+
+
+class PercentCompositePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class PercentCompositePrice(BaseModel):
@@ -3355,6 +4159,13 @@ class PercentCompositePrice(BaseModel):
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
+    license_type: Optional[PercentCompositePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
 
 class EventOutputPriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
@@ -3390,6 +4201,25 @@ class EventOutputPriceEventOutputConfig(BaseModel):
 
     All events will also be grouped by their unit rate.
     """
+
+
+class EventOutputPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
 
 
 class EventOutputPrice(BaseModel):
@@ -3464,6 +4294,13 @@ class EventOutputPrice(BaseModel):
     """
 
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[EventOutputPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
 
 
 Price: TypeAlias = Annotated[
