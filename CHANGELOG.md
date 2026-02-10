@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.53.0 (2026-02-10)
+
+Full Changelog: [v4.52.0...v4.53.0](https://github.com/orbcorp/orb-python/compare/v4.52.0...v4.53.0)
+
+### Features
+
+* **api:** api update ([09030b5](https://github.com/orbcorp/orb-python/commit/09030b54fbd1787c8b53a66f1d1f82f34ff6ed7f))
+
+
+### Chores
+
+* **internal:** bump dependencies ([8408c34](https://github.com/orbcorp/orb-python/commit/8408c34ef4bc900ad843f945283c9ad3a7e39ebe))
+
 ## 4.52.0 (2026-02-03)
 
 Full Changelog: [v4.51.0...v4.52.0](https://github.com/orbcorp/orb-python/compare/v4.51.0...v4.52.0)
