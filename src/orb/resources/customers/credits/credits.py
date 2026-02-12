@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Union, Optional
+from datetime import datetime
 
 import httpx
 
@@ -71,6 +72,10 @@ class Credits(SyncAPIResource):
         *,
         currency: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        effective_date_gt: Union[str, datetime, None] | Omit = omit,
+        effective_date_gte: Union[str, datetime, None] | Omit = omit,
+        effective_date_lt: Union[str, datetime, None] | Omit = omit,
+        effective_date_lte: Union[str, datetime, None] | Omit = omit,
         include_all_blocks: bool | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -88,6 +93,11 @@ class Credits(SyncAPIResource):
 
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
+
+        Results can be filtered by the block's `effective_date` using the
+        `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        `effective_date[lte]` query parameters. This filters on when the credit block
+        becomes effective, which may differ from creation time for backdated credits.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
@@ -122,6 +132,10 @@ class Credits(SyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "effective_date_gt": effective_date_gt,
+                        "effective_date_gte": effective_date_gte,
+                        "effective_date_lt": effective_date_lt,
+                        "effective_date_lte": effective_date_lte,
                         "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
@@ -137,6 +151,10 @@ class Credits(SyncAPIResource):
         *,
         currency: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        effective_date_gt: Union[str, datetime, None] | Omit = omit,
+        effective_date_gte: Union[str, datetime, None] | Omit = omit,
+        effective_date_lt: Union[str, datetime, None] | Omit = omit,
+        effective_date_lte: Union[str, datetime, None] | Omit = omit,
         include_all_blocks: bool | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -154,6 +172,11 @@ class Credits(SyncAPIResource):
 
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
+
+        Results can be filtered by the block's `effective_date` using the
+        `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        `effective_date[lte]` query parameters. This filters on when the credit block
+        becomes effective, which may differ from creation time for backdated credits.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
@@ -190,6 +213,10 @@ class Credits(SyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "effective_date_gt": effective_date_gt,
+                        "effective_date_gte": effective_date_gte,
+                        "effective_date_lt": effective_date_lt,
+                        "effective_date_lte": effective_date_lte,
                         "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
@@ -234,6 +261,10 @@ class AsyncCredits(AsyncAPIResource):
         *,
         currency: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        effective_date_gt: Union[str, datetime, None] | Omit = omit,
+        effective_date_gte: Union[str, datetime, None] | Omit = omit,
+        effective_date_lt: Union[str, datetime, None] | Omit = omit,
+        effective_date_lte: Union[str, datetime, None] | Omit = omit,
         include_all_blocks: bool | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -251,6 +282,11 @@ class AsyncCredits(AsyncAPIResource):
 
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
+
+        Results can be filtered by the block's `effective_date` using the
+        `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        `effective_date[lte]` query parameters. This filters on when the credit block
+        becomes effective, which may differ from creation time for backdated credits.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
@@ -285,6 +321,10 @@ class AsyncCredits(AsyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "effective_date_gt": effective_date_gt,
+                        "effective_date_gte": effective_date_gte,
+                        "effective_date_lt": effective_date_lt,
+                        "effective_date_lte": effective_date_lte,
                         "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },
@@ -300,6 +340,10 @@ class AsyncCredits(AsyncAPIResource):
         *,
         currency: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        effective_date_gt: Union[str, datetime, None] | Omit = omit,
+        effective_date_gte: Union[str, datetime, None] | Omit = omit,
+        effective_date_lt: Union[str, datetime, None] | Omit = omit,
+        effective_date_lte: Union[str, datetime, None] | Omit = omit,
         include_all_blocks: bool | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -317,6 +361,11 @@ class AsyncCredits(AsyncAPIResource):
 
         Note that `currency` defaults to credits if not specified. To use a real world
         currency, set `currency` to an ISO 4217 string.
+
+        Results can be filtered by the block's `effective_date` using the
+        `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        `effective_date[lte]` query parameters. This filters on when the credit block
+        becomes effective, which may differ from creation time for backdated credits.
 
         Args:
           currency: The ledger currency or custom pricing unit to use.
@@ -353,6 +402,10 @@ class AsyncCredits(AsyncAPIResource):
                     {
                         "currency": currency,
                         "cursor": cursor,
+                        "effective_date_gt": effective_date_gt,
+                        "effective_date_gte": effective_date_gte,
+                        "effective_date_lt": effective_date_lt,
+                        "effective_date_lte": effective_date_lte,
                         "include_all_blocks": include_all_blocks,
                         "limit": limit,
                     },

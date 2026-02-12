@@ -8,6 +8,7 @@ from typing import Any, cast
 import pytest
 
 from orb import Orb, AsyncOrb
+from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
 from orb.pagination import SyncPage, AsyncPage
 from orb.types.customers import (
@@ -34,6 +35,10 @@ class TestCredits:
             customer_id="customer_id",
             currency="currency",
             cursor="cursor",
+            effective_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             include_all_blocks=True,
             limit=1,
         )
@@ -83,6 +88,10 @@ class TestCredits:
             external_customer_id="external_customer_id",
             currency="currency",
             cursor="cursor",
+            effective_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             include_all_blocks=True,
             limit=1,
         )
@@ -138,6 +147,10 @@ class TestAsyncCredits:
             customer_id="customer_id",
             currency="currency",
             cursor="cursor",
+            effective_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             include_all_blocks=True,
             limit=1,
         )
@@ -187,6 +200,10 @@ class TestAsyncCredits:
             external_customer_id="external_customer_id",
             currency="currency",
             cursor="cursor",
+            effective_date_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            effective_date_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             include_all_blocks=True,
             limit=1,
         )

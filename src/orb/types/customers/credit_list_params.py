@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import TypedDict
+from typing import Union, Optional
+from datetime import datetime
+from typing_extensions import Annotated, TypedDict
+
+from ..._utils import PropertyInfo
 
 __all__ = ["CreditListParams"]
 
@@ -18,6 +21,18 @@ class CreditListParams(TypedDict, total=False):
     This can be populated by the `next_cursor` value returned from the initial
     request.
     """
+
+    effective_date_gt: Annotated[Union[str, datetime, None], PropertyInfo(alias="effective_date[gt]", format="iso8601")]
+
+    effective_date_gte: Annotated[
+        Union[str, datetime, None], PropertyInfo(alias="effective_date[gte]", format="iso8601")
+    ]
+
+    effective_date_lt: Annotated[Union[str, datetime, None], PropertyInfo(alias="effective_date[lt]", format="iso8601")]
+
+    effective_date_lte: Annotated[
+        Union[str, datetime, None], PropertyInfo(alias="effective_date[lte]", format="iso8601")
+    ]
 
     include_all_blocks: bool
     """
