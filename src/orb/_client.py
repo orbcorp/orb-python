@@ -45,10 +45,12 @@ if TYPE_CHECKING:
         coupons,
         metrics,
         invoices,
+        licenses,
         customers,
         top_level,
         credit_notes,
         credit_blocks,
+        license_types,
         subscriptions,
         invoice_line_items,
         subscription_changes,
@@ -64,9 +66,11 @@ if TYPE_CHECKING:
     from .resources.credit_notes import CreditNotes, AsyncCreditNotes
     from .resources.credit_blocks import CreditBlocks, AsyncCreditBlocks
     from .resources.events.events import Events, AsyncEvents
+    from .resources.license_types import LicenseTypes, AsyncLicenseTypes
     from .resources.prices.prices import Prices, AsyncPrices
     from .resources.subscriptions import Subscriptions, AsyncSubscriptions
     from .resources.coupons.coupons import Coupons, AsyncCoupons
+    from .resources.licenses.licenses import Licenses, AsyncLicenses
     from .resources.invoice_line_items import InvoiceLineItems, AsyncInvoiceLineItems
     from .resources.customers.customers import Customers, AsyncCustomers
     from .resources.subscription_changes import SubscriptionChanges, AsyncSubscriptionChanges
@@ -244,6 +248,18 @@ class Orb(SyncAPIClient):
         from .resources.credit_blocks import CreditBlocks
 
         return CreditBlocks(self)
+
+    @cached_property
+    def license_types(self) -> LicenseTypes:
+        from .resources.license_types import LicenseTypes
+
+        return LicenseTypes(self)
+
+    @cached_property
+    def licenses(self) -> Licenses:
+        from .resources.licenses import Licenses
+
+        return Licenses(self)
 
     @cached_property
     def with_raw_response(self) -> OrbWithRawResponse:
@@ -576,6 +592,18 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncCreditBlocks(self)
 
     @cached_property
+    def license_types(self) -> AsyncLicenseTypes:
+        from .resources.license_types import AsyncLicenseTypes
+
+        return AsyncLicenseTypes(self)
+
+    @cached_property
+    def licenses(self) -> AsyncLicenses:
+        from .resources.licenses import AsyncLicenses
+
+        return AsyncLicenses(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOrbWithRawResponse:
         return AsyncOrbWithRawResponse(self)
 
@@ -846,6 +874,18 @@ class OrbWithRawResponse:
 
         return CreditBlocksWithRawResponse(self._client.credit_blocks)
 
+    @cached_property
+    def license_types(self) -> license_types.LicenseTypesWithRawResponse:
+        from .resources.license_types import LicenseTypesWithRawResponse
+
+        return LicenseTypesWithRawResponse(self._client.license_types)
+
+    @cached_property
+    def licenses(self) -> licenses.LicensesWithRawResponse:
+        from .resources.licenses import LicensesWithRawResponse
+
+        return LicensesWithRawResponse(self._client.licenses)
+
 
 class AsyncOrbWithRawResponse:
     _client: AsyncOrb
@@ -954,6 +994,18 @@ class AsyncOrbWithRawResponse:
         from .resources.credit_blocks import AsyncCreditBlocksWithRawResponse
 
         return AsyncCreditBlocksWithRawResponse(self._client.credit_blocks)
+
+    @cached_property
+    def license_types(self) -> license_types.AsyncLicenseTypesWithRawResponse:
+        from .resources.license_types import AsyncLicenseTypesWithRawResponse
+
+        return AsyncLicenseTypesWithRawResponse(self._client.license_types)
+
+    @cached_property
+    def licenses(self) -> licenses.AsyncLicensesWithRawResponse:
+        from .resources.licenses import AsyncLicensesWithRawResponse
+
+        return AsyncLicensesWithRawResponse(self._client.licenses)
 
 
 class OrbWithStreamedResponse:
@@ -1064,6 +1116,18 @@ class OrbWithStreamedResponse:
 
         return CreditBlocksWithStreamingResponse(self._client.credit_blocks)
 
+    @cached_property
+    def license_types(self) -> license_types.LicenseTypesWithStreamingResponse:
+        from .resources.license_types import LicenseTypesWithStreamingResponse
+
+        return LicenseTypesWithStreamingResponse(self._client.license_types)
+
+    @cached_property
+    def licenses(self) -> licenses.LicensesWithStreamingResponse:
+        from .resources.licenses import LicensesWithStreamingResponse
+
+        return LicensesWithStreamingResponse(self._client.licenses)
+
 
 class AsyncOrbWithStreamedResponse:
     _client: AsyncOrb
@@ -1172,6 +1236,18 @@ class AsyncOrbWithStreamedResponse:
         from .resources.credit_blocks import AsyncCreditBlocksWithStreamingResponse
 
         return AsyncCreditBlocksWithStreamingResponse(self._client.credit_blocks)
+
+    @cached_property
+    def license_types(self) -> license_types.AsyncLicenseTypesWithStreamingResponse:
+        from .resources.license_types import AsyncLicenseTypesWithStreamingResponse
+
+        return AsyncLicenseTypesWithStreamingResponse(self._client.license_types)
+
+    @cached_property
+    def licenses(self) -> licenses.AsyncLicensesWithStreamingResponse:
+        from .resources.licenses import AsyncLicensesWithStreamingResponse
+
+        return AsyncLicensesWithStreamingResponse(self._client.licenses)
 
 
 Client = Orb

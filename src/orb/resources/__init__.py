@@ -72,6 +72,14 @@ from .invoices import (
     InvoicesWithStreamingResponse,
     AsyncInvoicesWithStreamingResponse,
 )
+from .licenses import (
+    Licenses,
+    AsyncLicenses,
+    LicensesWithRawResponse,
+    AsyncLicensesWithRawResponse,
+    LicensesWithStreamingResponse,
+    AsyncLicensesWithStreamingResponse,
+)
 from .customers import (
     Customers,
     AsyncCustomers,
@@ -103,6 +111,14 @@ from .credit_blocks import (
     AsyncCreditBlocksWithRawResponse,
     CreditBlocksWithStreamingResponse,
     AsyncCreditBlocksWithStreamingResponse,
+)
+from .license_types import (
+    LicenseTypes,
+    AsyncLicenseTypes,
+    LicenseTypesWithRawResponse,
+    AsyncLicenseTypesWithRawResponse,
+    LicenseTypesWithStreamingResponse,
+    AsyncLicenseTypesWithStreamingResponse,
 )
 from .subscriptions import (
     Subscriptions,
@@ -240,4 +256,16 @@ __all__ = [
     "AsyncCreditBlocksWithRawResponse",
     "CreditBlocksWithStreamingResponse",
     "AsyncCreditBlocksWithStreamingResponse",
+    "LicenseTypes",
+    "AsyncLicenseTypes",
+    "LicenseTypesWithRawResponse",
+    "AsyncLicenseTypesWithRawResponse",
+    "LicenseTypesWithStreamingResponse",
+    "AsyncLicenseTypesWithStreamingResponse",
+    "Licenses",
+    "AsyncLicenses",
+    "LicensesWithRawResponse",
+    "AsyncLicensesWithRawResponse",
+    "LicensesWithStreamingResponse",
+    "AsyncLicensesWithStreamingResponse",
 ]

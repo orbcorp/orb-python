@@ -10,6 +10,7 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import (
     InvoiceListSummaryResponse,
+    InvoiceIssueSummaryResponse,
     InvoiceFetchUpcomingResponse,
 )
 from orb._utils import parse_date, parse_datetime
@@ -391,6 +392,52 @@ class TestInvoices:
     def test_path_params_issue(self, client: Orb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.invoices.with_raw_response.issue(
+                invoice_id="",
+            )
+
+    @parametrize
+    def test_method_issue_summary(self, client: Orb) -> None:
+        invoice = client.invoices.issue_summary(
+            invoice_id="invoice_id",
+        )
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    def test_method_issue_summary_with_all_params(self, client: Orb) -> None:
+        invoice = client.invoices.issue_summary(
+            invoice_id="invoice_id",
+            synchronous=True,
+        )
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    def test_raw_response_issue_summary(self, client: Orb) -> None:
+        response = client.invoices.with_raw_response.issue_summary(
+            invoice_id="invoice_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    def test_streaming_response_issue_summary(self, client: Orb) -> None:
+        with client.invoices.with_streaming_response.issue_summary(
+            invoice_id="invoice_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = response.parse()
+            assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_issue_summary(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            client.invoices.with_raw_response.issue_summary(
                 invoice_id="",
             )
 
@@ -946,6 +993,52 @@ class TestAsyncInvoices:
     async def test_path_params_issue(self, async_client: AsyncOrb) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.invoices.with_raw_response.issue(
+                invoice_id="",
+            )
+
+    @parametrize
+    async def test_method_issue_summary(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.issue_summary(
+            invoice_id="invoice_id",
+        )
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    async def test_method_issue_summary_with_all_params(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.issue_summary(
+            invoice_id="invoice_id",
+            synchronous=True,
+        )
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    async def test_raw_response_issue_summary(self, async_client: AsyncOrb) -> None:
+        response = await async_client.invoices.with_raw_response.issue_summary(
+            invoice_id="invoice_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        invoice = response.parse()
+        assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_issue_summary(self, async_client: AsyncOrb) -> None:
+        async with async_client.invoices.with_streaming_response.issue_summary(
+            invoice_id="invoice_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            invoice = await response.parse()
+            assert_matches_type(InvoiceIssueSummaryResponse, invoice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_issue_summary(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
+            await async_client.invoices.with_raw_response.issue_summary(
                 invoice_id="",
             )
 
