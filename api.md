@@ -389,7 +389,11 @@ Methods:
 Types:
 
 ```python
-from orb.types import InvoiceFetchUpcomingResponse, InvoiceListSummaryResponse
+from orb.types import (
+    InvoiceFetchUpcomingResponse,
+    InvoiceIssueSummaryResponse,
+    InvoiceListSummaryResponse,
+)
 ```
 
 Methods:
@@ -401,6 +405,7 @@ Methods:
 - <code title="get /invoices/{invoice_id}">client.invoices.<a href="./src/orb/resources/invoices.py">fetch</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="get /invoices/upcoming">client.invoices.<a href="./src/orb/resources/invoices.py">fetch_upcoming</a>(\*\*<a href="src/orb/types/invoice_fetch_upcoming_params.py">params</a>) -> <a href="./src/orb/types/invoice_fetch_upcoming_response.py">InvoiceFetchUpcomingResponse</a></code>
 - <code title="post /invoices/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/summary/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue_summary</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_issue_summary_response.py">InvoiceIssueSummaryResponse</a></code>
 - <code title="get /invoices/summary">client.invoices.<a href="./src/orb/resources/invoices.py">list_summary</a>(\*\*<a href="src/orb/types/invoice_list_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_list_summary_response.py">SyncPage[InvoiceListSummaryResponse]</a></code>
 - <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
@@ -641,10 +646,76 @@ Methods:
 Types:
 
 ```python
-from orb.types import CreditBlockRetrieveResponse
+from orb.types import CreditBlockRetrieveResponse, CreditBlockListInvoicesResponse
 ```
 
 Methods:
 
 - <code title="get /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">retrieve</a>(block_id) -> <a href="./src/orb/types/credit_block_retrieve_response.py">CreditBlockRetrieveResponse</a></code>
 - <code title="delete /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">delete</a>(block_id) -> None</code>
+- <code title="get /credit_blocks/{block_id}/invoices">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">list_invoices</a>(block_id) -> <a href="./src/orb/types/credit_block_list_invoices_response.py">CreditBlockListInvoicesResponse</a></code>
+
+# LicenseTypes
+
+Types:
+
+```python
+from orb.types import (
+    LicenseTypeCreateResponse,
+    LicenseTypeRetrieveResponse,
+    LicenseTypeListResponse,
+)
+```
+
+Methods:
+
+- <code title="post /license_types">client.license_types.<a href="./src/orb/resources/license_types.py">create</a>(\*\*<a href="src/orb/types/license_type_create_params.py">params</a>) -> <a href="./src/orb/types/license_type_create_response.py">LicenseTypeCreateResponse</a></code>
+- <code title="get /license_types/{license_type_id}">client.license_types.<a href="./src/orb/resources/license_types.py">retrieve</a>(license_type_id) -> <a href="./src/orb/types/license_type_retrieve_response.py">LicenseTypeRetrieveResponse</a></code>
+- <code title="get /license_types">client.license_types.<a href="./src/orb/resources/license_types.py">list</a>(\*\*<a href="src/orb/types/license_type_list_params.py">params</a>) -> <a href="./src/orb/types/license_type_list_response.py">SyncPage[LicenseTypeListResponse]</a></code>
+
+# Licenses
+
+Types:
+
+```python
+from orb.types import (
+    LicenseCreateResponse,
+    LicenseRetrieveResponse,
+    LicenseListResponse,
+    LicenseDeactivateResponse,
+    LicenseRetrieveByExternalIDResponse,
+)
+```
+
+Methods:
+
+- <code title="post /licenses">client.licenses.<a href="./src/orb/resources/licenses/licenses.py">create</a>(\*\*<a href="src/orb/types/license_create_params.py">params</a>) -> <a href="./src/orb/types/license_create_response.py">LicenseCreateResponse</a></code>
+- <code title="get /licenses/{license_id}">client.licenses.<a href="./src/orb/resources/licenses/licenses.py">retrieve</a>(license_id) -> <a href="./src/orb/types/license_retrieve_response.py">LicenseRetrieveResponse</a></code>
+- <code title="get /licenses">client.licenses.<a href="./src/orb/resources/licenses/licenses.py">list</a>(\*\*<a href="src/orb/types/license_list_params.py">params</a>) -> <a href="./src/orb/types/license_list_response.py">SyncPage[LicenseListResponse]</a></code>
+- <code title="post /licenses/{license_id}/deactivate">client.licenses.<a href="./src/orb/resources/licenses/licenses.py">deactivate</a>(license_id, \*\*<a href="src/orb/types/license_deactivate_params.py">params</a>) -> <a href="./src/orb/types/license_deactivate_response.py">LicenseDeactivateResponse</a></code>
+- <code title="get /licenses/external_license_id/{external_license_id}">client.licenses.<a href="./src/orb/resources/licenses/licenses.py">retrieve_by_external_id</a>(external_license_id, \*\*<a href="src/orb/types/license_retrieve_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/license_retrieve_by_external_id_response.py">LicenseRetrieveByExternalIDResponse</a></code>
+
+## ExternalLicenses
+
+Types:
+
+```python
+from orb.types.licenses import ExternalLicenseGetUsageResponse
+```
+
+Methods:
+
+- <code title="get /licenses/external_licenses/{external_license_id}/usage">client.licenses.external_licenses.<a href="./src/orb/resources/licenses/external_licenses.py">get_usage</a>(external_license_id, \*\*<a href="src/orb/types/licenses/external_license_get_usage_params.py">params</a>) -> <a href="./src/orb/types/licenses/external_license_get_usage_response.py">ExternalLicenseGetUsageResponse</a></code>
+
+## Usage
+
+Types:
+
+```python
+from orb.types.licenses import UsageGetAllUsageResponse, UsageGetUsageResponse
+```
+
+Methods:
+
+- <code title="get /licenses/usage">client.licenses.usage.<a href="./src/orb/resources/licenses/usage.py">get_all_usage</a>(\*\*<a href="src/orb/types/licenses/usage_get_all_usage_params.py">params</a>) -> <a href="./src/orb/types/licenses/usage_get_all_usage_response.py">UsageGetAllUsageResponse</a></code>
+- <code title="get /licenses/{license_id}/usage">client.licenses.usage.<a href="./src/orb/resources/licenses/usage.py">get_usage</a>(license_id, \*\*<a href="src/orb/types/licenses/usage_get_usage_params.py">params</a>) -> <a href="./src/orb/types/licenses/usage_get_usage_response.py">UsageGetUsageResponse</a></code>

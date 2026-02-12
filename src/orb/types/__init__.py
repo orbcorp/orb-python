@@ -164,6 +164,7 @@ from .event_ingest_params import EventIngestParams as EventIngestParams
 from .event_search_params import EventSearchParams as EventSearchParams
 from .event_update_params import EventUpdateParams as EventUpdateParams
 from .invoice_list_params import InvoiceListParams as InvoiceListParams
+from .license_list_params import LicenseListParams as LicenseListParams
 from .price_create_params import PriceCreateParams as PriceCreateParams
 from .price_update_params import PriceUpdateParams as PriceUpdateParams
 from .alert_disable_params import AlertDisableParams as AlertDisableParams
@@ -179,26 +180,39 @@ from .event_search_response import EventSearchResponse as EventSearchResponse
 from .event_update_response import EventUpdateResponse as EventUpdateResponse
 from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
+from .license_create_params import LicenseCreateParams as LicenseCreateParams
+from .license_list_response import LicenseListResponse as LicenseListResponse
 from .price_evaluate_params import PriceEvaluateParams as PriceEvaluateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
 from .credit_note_list_params import CreditNoteListParams as CreditNoteListParams
 from .dimensional_price_group import DimensionalPriceGroup as DimensionalPriceGroup
 from .discount_override_param import DiscountOverrideParam as DiscountOverrideParam
+from .license_create_response import LicenseCreateResponse as LicenseCreateResponse
 from .price_evaluate_response import PriceEvaluateResponse as PriceEvaluateResponse
 from .top_level_ping_response import TopLevelPingResponse as TopLevelPingResponse
 from .dimensional_price_groups import DimensionalPriceGroups as DimensionalPriceGroups
 from .event_deprecate_response import EventDeprecateResponse as EventDeprecateResponse
 from .invoice_mark_paid_params import InvoiceMarkPaidParams as InvoiceMarkPaidParams
+from .license_type_list_params import LicenseTypeListParams as LicenseTypeListParams
 from .subscription_list_params import SubscriptionListParams as SubscriptionListParams
 from .credit_note_create_params import CreditNoteCreateParams as CreditNoteCreateParams
+from .license_deactivate_params import LicenseDeactivateParams as LicenseDeactivateParams
+from .license_retrieve_response import LicenseRetrieveResponse as LicenseRetrieveResponse
+from .license_type_create_params import LicenseTypeCreateParams as LicenseTypeCreateParams
+from .license_type_list_response import LicenseTypeListResponse as LicenseTypeListResponse
 from .subscription_cancel_params import SubscriptionCancelParams as SubscriptionCancelParams
 from .subscription_create_params import SubscriptionCreateParams as SubscriptionCreateParams
 from .subscription_update_params import SubscriptionUpdateParams as SubscriptionUpdateParams
 from .invoice_list_summary_params import InvoiceListSummaryParams as InvoiceListSummaryParams
+from .license_deactivate_response import LicenseDeactivateResponse as LicenseDeactivateResponse
+from .invoice_issue_summary_params import InvoiceIssueSummaryParams as InvoiceIssueSummaryParams
+from .license_type_create_response import LicenseTypeCreateResponse as LicenseTypeCreateResponse
 from .invoice_fetch_upcoming_params import InvoiceFetchUpcomingParams as InvoiceFetchUpcomingParams
 from .invoice_list_summary_response import InvoiceListSummaryResponse as InvoiceListSummaryResponse
 from .credit_block_retrieve_response import CreditBlockRetrieveResponse as CreditBlockRetrieveResponse
+from .invoice_issue_summary_response import InvoiceIssueSummaryResponse as InvoiceIssueSummaryResponse
+from .license_type_retrieve_response import LicenseTypeRetrieveResponse as LicenseTypeRetrieveResponse
 from .new_sphere_configuration_param import NewSphereConfigurationParam as NewSphereConfigurationParam
 from .price_evaluate_multiple_params import PriceEvaluateMultipleParams as PriceEvaluateMultipleParams
 from .beta_create_plan_version_params import BetaCreatePlanVersionParams as BetaCreatePlanVersionParams
@@ -224,6 +238,7 @@ from .subscription_redeem_coupon_params import SubscriptionRedeemCouponParams as
 from .subscription_trigger_phase_params import SubscriptionTriggerPhaseParams as SubscriptionTriggerPhaseParams
 from .subscription_change_apply_response import SubscriptionChangeApplyResponse as SubscriptionChangeApplyResponse
 from .subscription_fetch_schedule_params import SubscriptionFetchScheduleParams as SubscriptionFetchScheduleParams
+from .credit_block_list_invoices_response import CreditBlockListInvoicesResponse as CreditBlockListInvoicesResponse
 from .dimensional_price_group_list_params import DimensionalPriceGroupListParams as DimensionalPriceGroupListParams
 from .new_avalara_tax_configuration_param import NewAvalaraTaxConfigurationParam as NewAvalaraTaxConfigurationParam
 from .new_subscription_matrix_price_param import NewSubscriptionMatrixPriceParam as NewSubscriptionMatrixPriceParam
@@ -245,11 +260,17 @@ from .dimensional_price_group_update_params import (
 from .subscription_change_retrieve_response import (
     SubscriptionChangeRetrieveResponse as SubscriptionChangeRetrieveResponse,
 )
+from .license_retrieve_by_external_id_params import (
+    LicenseRetrieveByExternalIDParams as LicenseRetrieveByExternalIDParams,
+)
 from .price_evaluate_preview_events_response import (
     PriceEvaluatePreviewEventsResponse as PriceEvaluatePreviewEventsResponse,
 )
 from .new_accounting_sync_configuration_param import (
     NewAccountingSyncConfigurationParam as NewAccountingSyncConfigurationParam,
+)
+from .license_retrieve_by_external_id_response import (
+    LicenseRetrieveByExternalIDResponse as LicenseRetrieveByExternalIDResponse,
 )
 from .subscription_schedule_plan_change_params import (
     SubscriptionSchedulePlanChangeParams as SubscriptionSchedulePlanChangeParams,

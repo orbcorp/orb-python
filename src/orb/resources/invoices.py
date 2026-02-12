@@ -16,6 +16,7 @@ from ..types import (
     invoice_update_params,
     invoice_mark_paid_params,
     invoice_list_summary_params,
+    invoice_issue_summary_params,
     invoice_fetch_upcoming_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
@@ -28,6 +29,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.invoice import Invoice
 from ..types.shared_params.discount import Discount
 from ..types.invoice_list_summary_response import InvoiceListSummaryResponse
+from ..types.invoice_issue_summary_response import InvoiceIssueSummaryResponse
 from ..types.invoice_fetch_upcoming_response import InvoiceFetchUpcomingResponse
 
 __all__ = ["Invoices", "AsyncInvoices"]
@@ -497,6 +499,63 @@ class Invoices(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Invoice,
+        )
+
+    def issue_summary(
+        self,
+        invoice_id: str,
+        *,
+        synchronous: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InvoiceIssueSummaryResponse:
+        """This endpoint allows an eligible invoice to be issued manually.
+
+        This is only
+        possible with invoices where status is `draft`, `will_auto_issue` is false, and
+        an `eligible_to_issue_at` is a time in the past. Issuing an invoice could
+        possibly trigger side effects, some of which could be customer-visible (e.g.
+        sending emails, auto-collecting payment, syncing the invoice to external
+        providers, etc).
+
+        This is a lighter-weight alternative to the issue invoice endpoint, returning an
+        invoice summary without any line item details.
+
+        Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously. The synchronous option is only available for invoices
+              that have no usage fees. If the invoice is configured to sync to an external
+              provider, a successful response from this endpoint guarantees the invoice is
+              present in the provider.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return self._post(
+            f"/invoices/summary/{invoice_id}/issue",
+            body=maybe_transform({"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InvoiceIssueSummaryResponse,
         )
 
     def list_summary(
@@ -1219,6 +1278,65 @@ class AsyncInvoices(AsyncAPIResource):
             cast_to=Invoice,
         )
 
+    async def issue_summary(
+        self,
+        invoice_id: str,
+        *,
+        synchronous: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InvoiceIssueSummaryResponse:
+        """This endpoint allows an eligible invoice to be issued manually.
+
+        This is only
+        possible with invoices where status is `draft`, `will_auto_issue` is false, and
+        an `eligible_to_issue_at` is a time in the past. Issuing an invoice could
+        possibly trigger side effects, some of which could be customer-visible (e.g.
+        sending emails, auto-collecting payment, syncing the invoice to external
+        providers, etc).
+
+        This is a lighter-weight alternative to the issue invoice endpoint, returning an
+        invoice summary without any line item details.
+
+        Args:
+          synchronous: If true, the invoice will be issued synchronously. If false, the invoice will be
+              issued asynchronously. The synchronous option is only available for invoices
+              that have no usage fees. If the invoice is configured to sync to an external
+              provider, a successful response from this endpoint guarantees the invoice is
+              present in the provider.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return await self._post(
+            f"/invoices/summary/{invoice_id}/issue",
+            body=await async_maybe_transform(
+                {"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InvoiceIssueSummaryResponse,
+        )
+
     def list_summary(
         self,
         *,
@@ -1498,6 +1616,9 @@ class InvoicesWithRawResponse:
         self.issue = _legacy_response.to_raw_response_wrapper(
             invoices.issue,
         )
+        self.issue_summary = _legacy_response.to_raw_response_wrapper(
+            invoices.issue_summary,
+        )
         self.list_summary = _legacy_response.to_raw_response_wrapper(
             invoices.list_summary,
         )
@@ -1536,6 +1657,9 @@ class AsyncInvoicesWithRawResponse:
         )
         self.issue = _legacy_response.async_to_raw_response_wrapper(
             invoices.issue,
+        )
+        self.issue_summary = _legacy_response.async_to_raw_response_wrapper(
+            invoices.issue_summary,
         )
         self.list_summary = _legacy_response.async_to_raw_response_wrapper(
             invoices.list_summary,
@@ -1576,6 +1700,9 @@ class InvoicesWithStreamingResponse:
         self.issue = to_streamed_response_wrapper(
             invoices.issue,
         )
+        self.issue_summary = to_streamed_response_wrapper(
+            invoices.issue_summary,
+        )
         self.list_summary = to_streamed_response_wrapper(
             invoices.list_summary,
         )
@@ -1614,6 +1741,9 @@ class AsyncInvoicesWithStreamingResponse:
         )
         self.issue = async_to_streamed_response_wrapper(
             invoices.issue,
+        )
+        self.issue_summary = async_to_streamed_response_wrapper(
+            invoices.issue_summary,
         )
         self.list_summary = async_to_streamed_response_wrapper(
             invoices.list_summary,
