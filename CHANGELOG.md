@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.54.0 (2026-02-12)
+
+Full Changelog: [v4.53.0...v4.54.0](https://github.com/orbcorp/orb-python/compare/v4.53.0...v4.54.0)
+
+### Features
+
+* **api:** api update ([e19d0dd](https://github.com/orbcorp/orb-python/commit/e19d0dd64cbdd35e4df9a865863f27f4dbbaa947))
+
+
+### Chores
+
+* format all `api.md` files ([814eda2](https://github.com/orbcorp/orb-python/commit/814eda22555fe97fe641823f61389c2a673e913d))
+* **internal:** codegen related update ([98c5208](https://github.com/orbcorp/orb-python/commit/98c5208b72deeb740f0e548fb89c61239f4b7492))
+* **internal:** fix lint error on Python 3.14 ([ca05c35](https://github.com/orbcorp/orb-python/commit/ca05c357163d78a443aadc1648bf848ab7e6b9f0))
+
 ## 4.53.0 (2026-02-10)
 
 Full Changelog: [v4.52.0...v4.53.0](https://github.com/orbcorp/orb-python/compare/v4.52.0...v4.53.0)
