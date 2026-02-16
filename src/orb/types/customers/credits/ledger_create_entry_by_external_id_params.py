@@ -125,6 +125,9 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     If not provided, a default 'Credits' item will be used.
     """
 
+    mark_as_paid: bool
+    """If true, the new credits purchase invoice will be marked as paid."""
+
     memo: Optional[str]
     """An optional memo to display on the invoice."""
 
