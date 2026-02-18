@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -37,4 +37,11 @@ class PriceEvaluateParams(TypedDict, total=False):
     Properties (or
     [computed properties](/extensibility/advanced-metrics#computed-properties)) used
     to group the underlying billable metric
+    """
+
+    metric_parameter_overrides: Optional[Dict[str, object]]
+    """Optional overrides for parameterized billable metric parameters.
+
+    If the metric has parameter definitions and no overrides are provided, defaults
+    will be used.
     """

@@ -729,6 +729,12 @@ class Add(TypedDict, total=False):
     billing period.
     """
 
+    metric_parameter_overrides: Optional[Dict[str, object]]
+    """Override values for parameterized billable metric variables.
+
+    Keys are parameter names, values are the override values (number or string).
+    """
+
     minimum_amount: Optional[float]
     """
     The minimum amount that will be billed for this price interval for a given
@@ -834,6 +840,12 @@ class Edit(TypedDict, total=False):
 
     Note that this list will overwrite all existing fixed fee quantity transitions
     on the price interval.
+    """
+
+    metric_parameter_overrides: Optional[Dict[str, object]]
+    """Override values for parameterized billable metric variables.
+
+    Keys are parameter names, values are the override values (number or string).
     """
 
     start_date: Annotated[Union[Union[str, datetime], BillingCycleRelativeDate], PropertyInfo(format="iso8601")]
