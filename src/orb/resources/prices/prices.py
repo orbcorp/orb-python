@@ -3503,6 +3503,7 @@ class Prices(SyncAPIResource):
         external_customer_id: Optional[str] | Omit = omit,
         filter: Optional[str] | Omit = omit,
         grouping_keys: SequenceNotStr[str] | Omit = omit,
+        metric_parameter_overrides: Optional[Dict[str, object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3555,6 +3556,9 @@ class Prices(SyncAPIResource):
               [computed properties](/extensibility/advanced-metrics#computed-properties)) used
               to group the underlying billable metric
 
+          metric_parameter_overrides: Optional overrides for parameterized billable metric parameters. If the metric
+              has parameter definitions and no overrides are provided, defaults will be used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3577,6 +3581,7 @@ class Prices(SyncAPIResource):
                     "external_customer_id": external_customer_id,
                     "filter": filter,
                     "grouping_keys": grouping_keys,
+                    "metric_parameter_overrides": metric_parameter_overrides,
                 },
                 price_evaluate_params.PriceEvaluateParams,
             ),
@@ -7255,6 +7260,7 @@ class AsyncPrices(AsyncAPIResource):
         external_customer_id: Optional[str] | Omit = omit,
         filter: Optional[str] | Omit = omit,
         grouping_keys: SequenceNotStr[str] | Omit = omit,
+        metric_parameter_overrides: Optional[Dict[str, object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -7307,6 +7313,9 @@ class AsyncPrices(AsyncAPIResource):
               [computed properties](/extensibility/advanced-metrics#computed-properties)) used
               to group the underlying billable metric
 
+          metric_parameter_overrides: Optional overrides for parameterized billable metric parameters. If the metric
+              has parameter definitions and no overrides are provided, defaults will be used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -7329,6 +7338,7 @@ class AsyncPrices(AsyncAPIResource):
                     "external_customer_id": external_customer_id,
                     "filter": filter,
                     "grouping_keys": grouping_keys,
+                    "metric_parameter_overrides": metric_parameter_overrides,
                 },
                 price_evaluate_params.PriceEvaluateParams,
             ),

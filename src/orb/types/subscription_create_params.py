@@ -1022,6 +1022,12 @@ class AddPrice(TypedDict, total=False):
     The subscription's maximum amount for this price.
     """
 
+    metric_parameter_overrides: Optional[Dict[str, object]]
+    """Override values for parameterized billable metric variables.
+
+    Keys are parameter names, values are the override values.
+    """
+
     minimum_amount: Optional[str]
     """[DEPRECATED] Use add_adjustments instead.
 
@@ -1786,6 +1792,12 @@ class ReplacePrice(TypedDict, total=False):
     """[DEPRECATED] Use add_adjustments instead.
 
     The subscription's maximum amount for the replacement price.
+    """
+
+    metric_parameter_overrides: Optional[Dict[str, object]]
+    """Override values for parameterized billable metric variables.
+
+    Keys are parameter names, values are the override values.
     """
 
     minimum_amount: Optional[str]

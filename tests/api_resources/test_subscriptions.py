@@ -90,6 +90,7 @@ class TestSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -224,6 +225,7 @@ class TestSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -686,6 +688,7 @@ class TestSubscriptions:
                         }
                     ],
                     "maximum_amount": 0,
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
                         "cadence": "annual",
@@ -766,6 +769,7 @@ class TestSubscriptions:
                             "quantity": 5,
                         }
                     ],
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "usage_customer_ids": ["string"],
                 }
@@ -938,6 +942,7 @@ class TestSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -1065,6 +1070,7 @@ class TestSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -1490,6 +1496,7 @@ class TestAsyncSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -1624,6 +1631,7 @@ class TestAsyncSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -2086,6 +2094,7 @@ class TestAsyncSubscriptions:
                         }
                     ],
                     "maximum_amount": 0,
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
                         "cadence": "annual",
@@ -2166,6 +2175,7 @@ class TestAsyncSubscriptions:
                             "quantity": 5,
                         }
                     ],
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "usage_customer_ids": ["string"],
                 }
@@ -2338,6 +2348,7 @@ class TestAsyncSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -2465,6 +2476,7 @@ class TestAsyncSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
