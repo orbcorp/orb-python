@@ -137,8 +137,8 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     Due date is calculated based on the invoice or issuance date, depending on the
     account's configured due date calculation method. A value of '0' here represents
     that the invoice is due on issue, whereas a value of '30' represents that the
-    customer has 30 days to pay the invoice. Do not set this field if you want to
-    set a custom due date.
+    customer has 30 days to pay the invoice. You must set either `net_terms` or
+    `custom_due_date`, but not both.
     """
 
     require_successful_payment: bool
