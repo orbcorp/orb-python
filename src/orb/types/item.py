@@ -15,7 +15,7 @@ class ExternalConnection(BaseModel):
     """
 
     external_connection_name: Literal[
-        "stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"
+        "stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral", "stripe_tax"
     ]
     """The name of the external system this item is connected to."""
 

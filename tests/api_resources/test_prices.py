@@ -2802,6 +2802,7 @@ class TestPrices:
                     }
                 ],
                 "unit_price": "unit_price",
+                "grouping_key": "x",
                 "prorate": True,
                 "second_dimension": "second_dimension",
             },
@@ -6668,6 +6669,7 @@ class TestAsyncPrices:
                     }
                 ],
                 "unit_price": "unit_price",
+                "grouping_key": "x",
                 "prorate": True,
                 "second_dimension": "second_dimension",
             },

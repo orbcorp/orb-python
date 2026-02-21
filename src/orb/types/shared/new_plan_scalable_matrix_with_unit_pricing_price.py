@@ -42,6 +42,9 @@ class ScalableMatrixWithUnitPricingConfig(BaseModel):
     unit_price: str
     """The final unit price to rate against the output of the matrix"""
 
+    grouping_key: Optional[str] = None
+    """The property used to group this price"""
+
     prorate: Optional[bool] = None
     """If true, the unit price will be prorated to the billing period"""
 
