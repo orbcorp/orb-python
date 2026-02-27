@@ -12,6 +12,13 @@ __all__ = ["InvoiceUpdateParams"]
 
 
 class InvoiceUpdateParams(TypedDict, total=False):
+    auto_collection: Optional[bool]
+    """
+    Determines whether this invoice will automatically attempt to charge a saved
+    payment method, if any. Can only be modified on draft invoices. If not
+    specified, the invoice's existing setting is unchanged.
+    """
+
     due_date: Annotated[Union[Union[str, date], Union[str, datetime], None], PropertyInfo(format="iso8601")]
     """An optional custom due date for the invoice.
 

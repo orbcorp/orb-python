@@ -62,6 +62,7 @@ class TestInvoices:
                     },
                 }
             ],
+            auto_collection=True,
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -144,6 +145,7 @@ class TestInvoices:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         invoice = client.invoices.update(
             invoice_id="invoice_id",
+            auto_collection=True,
             due_date=parse_date("2023-09-22"),
             invoice_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
@@ -663,6 +665,7 @@ class TestAsyncInvoices:
                     },
                 }
             ],
+            auto_collection=True,
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -745,6 +748,7 @@ class TestAsyncInvoices:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.update(
             invoice_id="invoice_id",
+            auto_collection=True,
             due_date=parse_date("2023-09-22"),
             invoice_date=parse_date("2023-09-22"),
             metadata={"foo": "string"},
