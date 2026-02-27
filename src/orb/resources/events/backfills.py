@@ -26,6 +26,12 @@ __all__ = ["Backfills", "AsyncBackfills"]
 
 
 class Backfills(SyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> BackfillsWithRawResponse:
         """
@@ -345,6 +351,12 @@ class Backfills(SyncAPIResource):
 
 
 class AsyncBackfills(AsyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
         """

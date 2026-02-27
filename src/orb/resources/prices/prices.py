@@ -49,8 +49,27 @@ __all__ = ["Prices", "AsyncPrices"]
 
 
 class Prices(SyncAPIResource):
+    """
+    The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+    the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+    Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+    given Price object. The model_type field determines the key for the configuration object that is present.
+
+    For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+    """
+
     @cached_property
     def external_price_id(self) -> ExternalPriceID:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return ExternalPriceID(self._client)
 
     @cached_property
@@ -3806,8 +3825,27 @@ class Prices(SyncAPIResource):
 
 
 class AsyncPrices(AsyncAPIResource):
+    """
+    The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+    the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+    Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+    given Price object. The model_type field determines the key for the configuration object that is present.
+
+    For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+    """
+
     @cached_property
     def external_price_id(self) -> AsyncExternalPriceID:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return AsyncExternalPriceID(self._client)
 
     @cached_property
@@ -7590,6 +7628,15 @@ class PricesWithRawResponse:
 
     @cached_property
     def external_price_id(self) -> ExternalPriceIDWithRawResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return ExternalPriceIDWithRawResponse(self._prices.external_price_id)
 
 
@@ -7621,6 +7668,15 @@ class AsyncPricesWithRawResponse:
 
     @cached_property
     def external_price_id(self) -> AsyncExternalPriceIDWithRawResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return AsyncExternalPriceIDWithRawResponse(self._prices.external_price_id)
 
 
@@ -7652,6 +7708,15 @@ class PricesWithStreamingResponse:
 
     @cached_property
     def external_price_id(self) -> ExternalPriceIDWithStreamingResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return ExternalPriceIDWithStreamingResponse(self._prices.external_price_id)
 
 
@@ -7683,4 +7748,13 @@ class AsyncPricesWithStreamingResponse:
 
     @cached_property
     def external_price_id(self) -> AsyncExternalPriceIDWithStreamingResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         return AsyncExternalPriceIDWithStreamingResponse(self._prices.external_price_id)

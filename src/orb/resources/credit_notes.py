@@ -23,6 +23,11 @@ __all__ = ["CreditNotes", "AsyncCreditNotes"]
 
 
 class CreditNotes(SyncAPIResource):
+    """
+    The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+    particular invoice.
+    """
+
     @cached_property
     def with_raw_response(self) -> CreditNotesWithRawResponse:
         """
@@ -229,6 +234,11 @@ class CreditNotes(SyncAPIResource):
 
 
 class AsyncCreditNotes(AsyncAPIResource):
+    """
+    The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+    particular invoice.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCreditNotesWithRawResponse:
         """

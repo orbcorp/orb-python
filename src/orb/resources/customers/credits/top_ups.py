@@ -31,6 +31,10 @@ __all__ = ["TopUps", "AsyncTopUps"]
 
 
 class TopUps(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> TopUpsWithRawResponse:
         """
@@ -426,6 +430,10 @@ class TopUps(SyncAPIResource):
 
 
 class AsyncTopUps(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncTopUpsWithRawResponse:
         """

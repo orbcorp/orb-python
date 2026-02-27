@@ -40,12 +40,28 @@ __all__ = ["Events", "AsyncEvents"]
 
 
 class Events(SyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def backfills(self) -> Backfills:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return Backfills(self._client)
 
     @cached_property
     def volume(self) -> Volume:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return Volume(self._client)
 
     @cached_property
@@ -591,12 +607,28 @@ class Events(SyncAPIResource):
 
 
 class AsyncEvents(AsyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def backfills(self) -> AsyncBackfills:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfills(self._client)
 
     @cached_property
     def volume(self) -> AsyncVolume:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolume(self._client)
 
     @cached_property
@@ -1160,10 +1192,20 @@ class EventsWithRawResponse:
 
     @cached_property
     def backfills(self) -> BackfillsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return BackfillsWithRawResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> VolumeWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return VolumeWithRawResponse(self._events.volume)
 
 
@@ -1186,10 +1228,20 @@ class AsyncEventsWithRawResponse:
 
     @cached_property
     def backfills(self) -> AsyncBackfillsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfillsWithRawResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> AsyncVolumeWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolumeWithRawResponse(self._events.volume)
 
 
@@ -1212,10 +1264,20 @@ class EventsWithStreamingResponse:
 
     @cached_property
     def backfills(self) -> BackfillsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return BackfillsWithStreamingResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> VolumeWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return VolumeWithStreamingResponse(self._events.volume)
 
 
@@ -1238,8 +1300,18 @@ class AsyncEventsWithStreamingResponse:
 
     @cached_property
     def backfills(self) -> AsyncBackfillsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfillsWithStreamingResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> AsyncVolumeWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolumeWithStreamingResponse(self._events.volume)

@@ -23,6 +23,11 @@ __all__ = ["LicenseTypes", "AsyncLicenseTypes"]
 
 
 class LicenseTypes(SyncAPIResource):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
     @cached_property
     def with_raw_response(self) -> LicenseTypesWithRawResponse:
         """
@@ -188,6 +193,11 @@ class LicenseTypes(SyncAPIResource):
 
 
 class AsyncLicenseTypes(AsyncAPIResource):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncLicenseTypesWithRawResponse:
         """
