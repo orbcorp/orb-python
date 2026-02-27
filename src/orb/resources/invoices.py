@@ -68,6 +68,7 @@ class Invoices(SyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
+        auto_collection: Optional[bool] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
@@ -93,6 +94,10 @@ class Invoices(SyncAPIResource):
 
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
+
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. If not specified, the invoice inherits the customer's
+              auto_collection setting.
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
@@ -139,6 +144,7 @@ class Invoices(SyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
+                    "auto_collection": auto_collection,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
@@ -164,6 +170,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        auto_collection: Optional[bool] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -177,15 +184,20 @@ class Invoices(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
-        `invoice_date` properties on an invoice. If you pass null for the metadata
-        value, it will clear any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`,
+        `invoice_date`, and `auto_collection` properties on an invoice. If you pass null
+        for the metadata value, it will clear any existing metadata for that invoice.
 
         `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
-        and `invoice_date` can only be modified if the invoice is in a `draft` state.
-        `invoice_date` can only be modified for non-subscription invoices.
+        `invoice_date`, and `auto_collection` can only be modified if the invoice is in
+        a `draft` state. `invoice_date` can only be modified for non-subscription
+        invoices.
 
         Args:
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. Can only be modified on draft invoices. If not
+              specified, the invoice's existing setting is unchanged.
+
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
 
@@ -217,6 +229,7 @@ class Invoices(SyncAPIResource):
             f"/invoices/{invoice_id}",
             body=maybe_transform(
                 {
+                    "auto_collection": auto_collection,
                     "due_date": due_date,
                     "invoice_date": invoice_date,
                     "metadata": metadata,
@@ -852,6 +865,7 @@ class AsyncInvoices(AsyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
+        auto_collection: Optional[bool] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
@@ -877,6 +891,10 @@ class AsyncInvoices(AsyncAPIResource):
 
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
+
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. If not specified, the invoice inherits the customer's
+              auto_collection setting.
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
@@ -923,6 +941,7 @@ class AsyncInvoices(AsyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
+                    "auto_collection": auto_collection,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
@@ -948,6 +967,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        auto_collection: Optional[bool] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -961,15 +981,20 @@ class AsyncInvoices(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
-        `invoice_date` properties on an invoice. If you pass null for the metadata
-        value, it will clear any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`,
+        `invoice_date`, and `auto_collection` properties on an invoice. If you pass null
+        for the metadata value, it will clear any existing metadata for that invoice.
 
         `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
-        and `invoice_date` can only be modified if the invoice is in a `draft` state.
-        `invoice_date` can only be modified for non-subscription invoices.
+        `invoice_date`, and `auto_collection` can only be modified if the invoice is in
+        a `draft` state. `invoice_date` can only be modified for non-subscription
+        invoices.
 
         Args:
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. Can only be modified on draft invoices. If not
+              specified, the invoice's existing setting is unchanged.
+
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
 
@@ -1001,6 +1026,7 @@ class AsyncInvoices(AsyncAPIResource):
             f"/invoices/{invoice_id}",
             body=await async_maybe_transform(
                 {
+                    "auto_collection": auto_collection,
                     "due_date": due_date,
                     "invoice_date": invoice_date,
                     "metadata": metadata,

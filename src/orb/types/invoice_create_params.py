@@ -29,6 +29,13 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     line_items: Required[Iterable[LineItem]]
 
+    auto_collection: Optional[bool]
+    """
+    Determines whether this invoice will automatically attempt to charge a saved
+    payment method, if any. If not specified, the invoice inherits the customer's
+    auto_collection setting.
+    """
+
     customer_id: Optional[str]
     """The id of the `Customer` to create this invoice for.
 
