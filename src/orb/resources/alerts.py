@@ -32,6 +32,13 @@ __all__ = ["Alerts", "AsyncAlerts"]
 
 
 class Alerts(SyncAPIResource):
+    """
+    [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+    Alerts created through the API can be scoped to either customers or subscriptions.
+    """
+
     @cached_property
     def with_raw_response(self) -> AlertsWithRawResponse:
         """
@@ -507,6 +514,13 @@ class Alerts(SyncAPIResource):
 
 
 class AsyncAlerts(AsyncAPIResource):
+    """
+    [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+    Alerts created through the API can be scoped to either customers or subscriptions.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAlertsWithRawResponse:
         """

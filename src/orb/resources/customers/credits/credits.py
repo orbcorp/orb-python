@@ -39,12 +39,22 @@ __all__ = ["Credits", "AsyncCredits"]
 
 
 class Credits(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def ledger(self) -> Ledger:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return Ledger(self._client)
 
     @cached_property
     def top_ups(self) -> TopUps:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUps(self._client)
 
     @cached_property
@@ -228,12 +238,22 @@ class Credits(SyncAPIResource):
 
 
 class AsyncCredits(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def ledger(self) -> AsyncLedger:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedger(self._client)
 
     @cached_property
     def top_ups(self) -> AsyncTopUps:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUps(self._client)
 
     @cached_property
@@ -429,10 +449,16 @@ class CreditsWithRawResponse:
 
     @cached_property
     def ledger(self) -> LedgerWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return LedgerWithRawResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> TopUpsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUpsWithRawResponse(self._credits.top_ups)
 
 
@@ -449,10 +475,16 @@ class AsyncCreditsWithRawResponse:
 
     @cached_property
     def ledger(self) -> AsyncLedgerWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedgerWithRawResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> AsyncTopUpsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUpsWithRawResponse(self._credits.top_ups)
 
 
@@ -469,10 +501,16 @@ class CreditsWithStreamingResponse:
 
     @cached_property
     def ledger(self) -> LedgerWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return LedgerWithStreamingResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> TopUpsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUpsWithStreamingResponse(self._credits.top_ups)
 
 
@@ -489,8 +527,14 @@ class AsyncCreditsWithStreamingResponse:
 
     @cached_property
     def ledger(self) -> AsyncLedgerWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedgerWithStreamingResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> AsyncTopUpsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUpsWithStreamingResponse(self._credits.top_ups)

@@ -33,6 +33,10 @@ __all__ = ["Ledger", "AsyncLedger"]
 
 
 class Ledger(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> LedgerWithRawResponse:
         """
@@ -2230,6 +2234,10 @@ class Ledger(SyncAPIResource):
 
 
 class AsyncLedger(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncLedgerWithRawResponse:
         """

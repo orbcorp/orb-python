@@ -17,6 +17,10 @@ __all__ = ["CreditBlocks", "AsyncCreditBlocks"]
 
 
 class CreditBlocks(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> CreditBlocksWithRawResponse:
         """
@@ -172,6 +176,10 @@ class CreditBlocks(SyncAPIResource):
 
 
 class AsyncCreditBlocks(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCreditBlocksWithRawResponse:
         """

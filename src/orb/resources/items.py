@@ -21,6 +21,12 @@ __all__ = ["Items", "AsyncItems"]
 
 
 class Items(SyncAPIResource):
+    """The Item resource represents a sellable product or good.
+
+    Items are associated with all line items, billable metrics,
+    and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+    """
+
     @cached_property
     def with_raw_response(self) -> ItemsWithRawResponse:
         """
@@ -271,6 +277,12 @@ class Items(SyncAPIResource):
 
 
 class AsyncItems(AsyncAPIResource):
+    """The Item resource represents a sellable product or good.
+
+    Items are associated with all line items, billable metrics,
+    and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncItemsWithRawResponse:
         """

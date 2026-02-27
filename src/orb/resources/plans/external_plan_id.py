@@ -20,6 +20,12 @@ __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
 
 class ExternalPlanID(SyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
         """
@@ -151,6 +157,12 @@ class ExternalPlanID(SyncAPIResource):
 
 
 class AsyncExternalPlanID(AsyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
         """

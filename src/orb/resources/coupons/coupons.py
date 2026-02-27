@@ -29,8 +29,15 @@ __all__ = ["Coupons", "AsyncCoupons"]
 
 
 class Coupons(SyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def subscriptions(self) -> Subscriptions:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return Subscriptions(self._client)
 
     @cached_property
@@ -254,8 +261,15 @@ class Coupons(SyncAPIResource):
 
 
 class AsyncCoupons(AsyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def subscriptions(self) -> AsyncSubscriptions:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptions(self._client)
 
     @cached_property
@@ -497,6 +511,9 @@ class CouponsWithRawResponse:
 
     @cached_property
     def subscriptions(self) -> SubscriptionsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return SubscriptionsWithRawResponse(self._coupons.subscriptions)
 
 
@@ -519,6 +536,9 @@ class AsyncCouponsWithRawResponse:
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptionsWithRawResponse(self._coupons.subscriptions)
 
 
@@ -541,6 +561,9 @@ class CouponsWithStreamingResponse:
 
     @cached_property
     def subscriptions(self) -> SubscriptionsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return SubscriptionsWithStreamingResponse(self._coupons.subscriptions)
 
 
@@ -563,4 +586,7 @@ class AsyncCouponsWithStreamingResponse:
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptionsWithStreamingResponse(self._coupons.subscriptions)

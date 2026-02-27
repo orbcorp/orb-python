@@ -22,6 +22,11 @@ __all__ = ["Metrics", "AsyncMetrics"]
 
 
 class Metrics(SyncAPIResource):
+    """
+    The Metric resource represents a calculation of a quantity based on events.
+    Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+    """
+
     @cached_property
     def with_raw_response(self) -> MetricsWithRawResponse:
         """
@@ -251,6 +256,11 @@ class Metrics(SyncAPIResource):
 
 
 class AsyncMetrics(AsyncAPIResource):
+    """
+    The Metric resource represents a calculation of a quantity based on events.
+    Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncMetricsWithRawResponse:
         """

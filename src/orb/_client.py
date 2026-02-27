@@ -156,66 +156,134 @@ class Orb(SyncAPIClient):
 
     @cached_property
     def beta(self) -> Beta:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import Beta
 
         return Beta(self)
 
     @cached_property
     def coupons(self) -> Coupons:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import Coupons
 
         return Coupons(self)
 
     @cached_property
     def credit_notes(self) -> CreditNotes:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import CreditNotes
 
         return CreditNotes(self)
 
     @cached_property
     def customers(self) -> Customers:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import Customers
 
         return Customers(self)
 
     @cached_property
     def events(self) -> Events:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import Events
 
         return Events(self)
 
     @cached_property
     def invoice_line_items(self) -> InvoiceLineItems:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import InvoiceLineItems
 
         return InvoiceLineItems(self)
 
     @cached_property
     def invoices(self) -> Invoices:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import Invoices
 
         return Invoices(self)
 
     @cached_property
     def items(self) -> Items:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import Items
 
         return Items(self)
 
     @cached_property
     def metrics(self) -> Metrics:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import Metrics
 
         return Metrics(self)
 
     @cached_property
     def plans(self) -> Plans:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import Plans
 
         return Plans(self)
 
     @cached_property
     def prices(self) -> Prices:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import Prices
 
         return Prices(self)
@@ -228,6 +296,12 @@ class Orb(SyncAPIClient):
 
     @cached_property
     def alerts(self) -> Alerts:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import Alerts
 
         return Alerts(self)
@@ -252,12 +326,19 @@ class Orb(SyncAPIClient):
 
     @cached_property
     def credit_blocks(self) -> CreditBlocks:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import CreditBlocks
 
         return CreditBlocks(self)
 
     @cached_property
     def license_types(self) -> LicenseTypes:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import LicenseTypes
 
         return LicenseTypes(self)
@@ -504,66 +585,134 @@ class AsyncOrb(AsyncAPIClient):
 
     @cached_property
     def beta(self) -> AsyncBeta:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import AsyncBeta
 
         return AsyncBeta(self)
 
     @cached_property
     def coupons(self) -> AsyncCoupons:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import AsyncCoupons
 
         return AsyncCoupons(self)
 
     @cached_property
     def credit_notes(self) -> AsyncCreditNotes:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import AsyncCreditNotes
 
         return AsyncCreditNotes(self)
 
     @cached_property
     def customers(self) -> AsyncCustomers:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import AsyncCustomers
 
         return AsyncCustomers(self)
 
     @cached_property
     def events(self) -> AsyncEvents:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import AsyncEvents
 
         return AsyncEvents(self)
 
     @cached_property
     def invoice_line_items(self) -> AsyncInvoiceLineItems:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import AsyncInvoiceLineItems
 
         return AsyncInvoiceLineItems(self)
 
     @cached_property
     def invoices(self) -> AsyncInvoices:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import AsyncInvoices
 
         return AsyncInvoices(self)
 
     @cached_property
     def items(self) -> AsyncItems:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import AsyncItems
 
         return AsyncItems(self)
 
     @cached_property
     def metrics(self) -> AsyncMetrics:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import AsyncMetrics
 
         return AsyncMetrics(self)
 
     @cached_property
     def plans(self) -> AsyncPlans:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import AsyncPlans
 
         return AsyncPlans(self)
 
     @cached_property
     def prices(self) -> AsyncPrices:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import AsyncPrices
 
         return AsyncPrices(self)
@@ -576,6 +725,12 @@ class AsyncOrb(AsyncAPIClient):
 
     @cached_property
     def alerts(self) -> AsyncAlerts:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import AsyncAlerts
 
         return AsyncAlerts(self)
@@ -600,12 +755,19 @@ class AsyncOrb(AsyncAPIClient):
 
     @cached_property
     def credit_blocks(self) -> AsyncCreditBlocks:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import AsyncCreditBlocks
 
         return AsyncCreditBlocks(self)
 
     @cached_property
     def license_types(self) -> AsyncLicenseTypes:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import AsyncLicenseTypes
 
         return AsyncLicenseTypes(self)
@@ -793,66 +955,134 @@ class OrbWithRawResponse:
 
     @cached_property
     def beta(self) -> beta.BetaWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import BetaWithRawResponse
 
         return BetaWithRawResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.CouponsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import CouponsWithRawResponse
 
         return CouponsWithRawResponse(self._client.coupons)
 
     @cached_property
     def credit_notes(self) -> credit_notes.CreditNotesWithRawResponse:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import CreditNotesWithRawResponse
 
         return CreditNotesWithRawResponse(self._client.credit_notes)
 
     @cached_property
     def customers(self) -> customers.CustomersWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import CustomersWithRawResponse
 
         return CustomersWithRawResponse(self._client.customers)
 
     @cached_property
     def events(self) -> events.EventsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import EventsWithRawResponse
 
         return EventsWithRawResponse(self._client.events)
 
     @cached_property
     def invoice_line_items(self) -> invoice_line_items.InvoiceLineItemsWithRawResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import InvoiceLineItemsWithRawResponse
 
         return InvoiceLineItemsWithRawResponse(self._client.invoice_line_items)
 
     @cached_property
     def invoices(self) -> invoices.InvoicesWithRawResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import InvoicesWithRawResponse
 
         return InvoicesWithRawResponse(self._client.invoices)
 
     @cached_property
     def items(self) -> items.ItemsWithRawResponse:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import ItemsWithRawResponse
 
         return ItemsWithRawResponse(self._client.items)
 
     @cached_property
     def metrics(self) -> metrics.MetricsWithRawResponse:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import MetricsWithRawResponse
 
         return MetricsWithRawResponse(self._client.metrics)
 
     @cached_property
     def plans(self) -> plans.PlansWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import PlansWithRawResponse
 
         return PlansWithRawResponse(self._client.plans)
 
     @cached_property
     def prices(self) -> prices.PricesWithRawResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import PricesWithRawResponse
 
         return PricesWithRawResponse(self._client.prices)
@@ -865,6 +1095,12 @@ class OrbWithRawResponse:
 
     @cached_property
     def alerts(self) -> alerts.AlertsWithRawResponse:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import AlertsWithRawResponse
 
         return AlertsWithRawResponse(self._client.alerts)
@@ -883,12 +1119,19 @@ class OrbWithRawResponse:
 
     @cached_property
     def credit_blocks(self) -> credit_blocks.CreditBlocksWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import CreditBlocksWithRawResponse
 
         return CreditBlocksWithRawResponse(self._client.credit_blocks)
 
     @cached_property
     def license_types(self) -> license_types.LicenseTypesWithRawResponse:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import LicenseTypesWithRawResponse
 
         return LicenseTypesWithRawResponse(self._client.license_types)
@@ -914,66 +1157,134 @@ class AsyncOrbWithRawResponse:
 
     @cached_property
     def beta(self) -> beta.AsyncBetaWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import AsyncBetaWithRawResponse
 
         return AsyncBetaWithRawResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import AsyncCouponsWithRawResponse
 
         return AsyncCouponsWithRawResponse(self._client.coupons)
 
     @cached_property
     def credit_notes(self) -> credit_notes.AsyncCreditNotesWithRawResponse:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import AsyncCreditNotesWithRawResponse
 
         return AsyncCreditNotesWithRawResponse(self._client.credit_notes)
 
     @cached_property
     def customers(self) -> customers.AsyncCustomersWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import AsyncCustomersWithRawResponse
 
         return AsyncCustomersWithRawResponse(self._client.customers)
 
     @cached_property
     def events(self) -> events.AsyncEventsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import AsyncEventsWithRawResponse
 
         return AsyncEventsWithRawResponse(self._client.events)
 
     @cached_property
     def invoice_line_items(self) -> invoice_line_items.AsyncInvoiceLineItemsWithRawResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import AsyncInvoiceLineItemsWithRawResponse
 
         return AsyncInvoiceLineItemsWithRawResponse(self._client.invoice_line_items)
 
     @cached_property
     def invoices(self) -> invoices.AsyncInvoicesWithRawResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import AsyncInvoicesWithRawResponse
 
         return AsyncInvoicesWithRawResponse(self._client.invoices)
 
     @cached_property
     def items(self) -> items.AsyncItemsWithRawResponse:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import AsyncItemsWithRawResponse
 
         return AsyncItemsWithRawResponse(self._client.items)
 
     @cached_property
     def metrics(self) -> metrics.AsyncMetricsWithRawResponse:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import AsyncMetricsWithRawResponse
 
         return AsyncMetricsWithRawResponse(self._client.metrics)
 
     @cached_property
     def plans(self) -> plans.AsyncPlansWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import AsyncPlansWithRawResponse
 
         return AsyncPlansWithRawResponse(self._client.plans)
 
     @cached_property
     def prices(self) -> prices.AsyncPricesWithRawResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import AsyncPricesWithRawResponse
 
         return AsyncPricesWithRawResponse(self._client.prices)
@@ -986,6 +1297,12 @@ class AsyncOrbWithRawResponse:
 
     @cached_property
     def alerts(self) -> alerts.AsyncAlertsWithRawResponse:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import AsyncAlertsWithRawResponse
 
         return AsyncAlertsWithRawResponse(self._client.alerts)
@@ -1004,12 +1321,19 @@ class AsyncOrbWithRawResponse:
 
     @cached_property
     def credit_blocks(self) -> credit_blocks.AsyncCreditBlocksWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import AsyncCreditBlocksWithRawResponse
 
         return AsyncCreditBlocksWithRawResponse(self._client.credit_blocks)
 
     @cached_property
     def license_types(self) -> license_types.AsyncLicenseTypesWithRawResponse:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import AsyncLicenseTypesWithRawResponse
 
         return AsyncLicenseTypesWithRawResponse(self._client.license_types)
@@ -1035,66 +1359,134 @@ class OrbWithStreamedResponse:
 
     @cached_property
     def beta(self) -> beta.BetaWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import BetaWithStreamingResponse
 
         return BetaWithStreamingResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.CouponsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import CouponsWithStreamingResponse
 
         return CouponsWithStreamingResponse(self._client.coupons)
 
     @cached_property
     def credit_notes(self) -> credit_notes.CreditNotesWithStreamingResponse:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import CreditNotesWithStreamingResponse
 
         return CreditNotesWithStreamingResponse(self._client.credit_notes)
 
     @cached_property
     def customers(self) -> customers.CustomersWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import CustomersWithStreamingResponse
 
         return CustomersWithStreamingResponse(self._client.customers)
 
     @cached_property
     def events(self) -> events.EventsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import EventsWithStreamingResponse
 
         return EventsWithStreamingResponse(self._client.events)
 
     @cached_property
     def invoice_line_items(self) -> invoice_line_items.InvoiceLineItemsWithStreamingResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import InvoiceLineItemsWithStreamingResponse
 
         return InvoiceLineItemsWithStreamingResponse(self._client.invoice_line_items)
 
     @cached_property
     def invoices(self) -> invoices.InvoicesWithStreamingResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import InvoicesWithStreamingResponse
 
         return InvoicesWithStreamingResponse(self._client.invoices)
 
     @cached_property
     def items(self) -> items.ItemsWithStreamingResponse:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import ItemsWithStreamingResponse
 
         return ItemsWithStreamingResponse(self._client.items)
 
     @cached_property
     def metrics(self) -> metrics.MetricsWithStreamingResponse:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import MetricsWithStreamingResponse
 
         return MetricsWithStreamingResponse(self._client.metrics)
 
     @cached_property
     def plans(self) -> plans.PlansWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import PlansWithStreamingResponse
 
         return PlansWithStreamingResponse(self._client.plans)
 
     @cached_property
     def prices(self) -> prices.PricesWithStreamingResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import PricesWithStreamingResponse
 
         return PricesWithStreamingResponse(self._client.prices)
@@ -1107,6 +1499,12 @@ class OrbWithStreamedResponse:
 
     @cached_property
     def alerts(self) -> alerts.AlertsWithStreamingResponse:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import AlertsWithStreamingResponse
 
         return AlertsWithStreamingResponse(self._client.alerts)
@@ -1125,12 +1523,19 @@ class OrbWithStreamedResponse:
 
     @cached_property
     def credit_blocks(self) -> credit_blocks.CreditBlocksWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import CreditBlocksWithStreamingResponse
 
         return CreditBlocksWithStreamingResponse(self._client.credit_blocks)
 
     @cached_property
     def license_types(self) -> license_types.LicenseTypesWithStreamingResponse:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import LicenseTypesWithStreamingResponse
 
         return LicenseTypesWithStreamingResponse(self._client.license_types)
@@ -1156,66 +1561,134 @@ class AsyncOrbWithStreamedResponse:
 
     @cached_property
     def beta(self) -> beta.AsyncBetaWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.beta import AsyncBetaWithStreamingResponse
 
         return AsyncBetaWithStreamingResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         from .resources.coupons import AsyncCouponsWithStreamingResponse
 
         return AsyncCouponsWithStreamingResponse(self._client.coupons)
 
     @cached_property
     def credit_notes(self) -> credit_notes.AsyncCreditNotesWithStreamingResponse:
+        """
+        The [Credit Note](/invoicing/credit-notes) resource represents a credit that has been applied to a
+        particular invoice.
+        """
         from .resources.credit_notes import AsyncCreditNotesWithStreamingResponse
 
         return AsyncCreditNotesWithStreamingResponse(self._client.credit_notes)
 
     @cached_property
     def customers(self) -> customers.AsyncCustomersWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         from .resources.customers import AsyncCustomersWithStreamingResponse
 
         return AsyncCustomersWithStreamingResponse(self._client.customers)
 
     @cached_property
     def events(self) -> events.AsyncEventsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         from .resources.events import AsyncEventsWithStreamingResponse
 
         return AsyncEventsWithStreamingResponse(self._client.events)
 
     @cached_property
     def invoice_line_items(self) -> invoice_line_items.AsyncInvoiceLineItemsWithStreamingResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoice_line_items import AsyncInvoiceLineItemsWithStreamingResponse
 
         return AsyncInvoiceLineItemsWithStreamingResponse(self._client.invoice_line_items)
 
     @cached_property
     def invoices(self) -> invoices.AsyncInvoicesWithStreamingResponse:
+        """
+        An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+        a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+        can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+        the result of an action, such as a cancellation.
+        """
         from .resources.invoices import AsyncInvoicesWithStreamingResponse
 
         return AsyncInvoicesWithStreamingResponse(self._client.invoices)
 
     @cached_property
     def items(self) -> items.AsyncItemsWithStreamingResponse:
+        """The Item resource represents a sellable product or good.
+
+        Items are associated with all line items, billable metrics,
+        and prices and are used for defining external sync behavior for invoices and tax calculation purposes.
+        """
         from .resources.items import AsyncItemsWithStreamingResponse
 
         return AsyncItemsWithStreamingResponse(self._client.items)
 
     @cached_property
     def metrics(self) -> metrics.AsyncMetricsWithStreamingResponse:
+        """
+        The Metric resource represents a calculation of a quantity based on events.
+        Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+        """
         from .resources.metrics import AsyncMetricsWithStreamingResponse
 
         return AsyncMetricsWithStreamingResponse(self._client.metrics)
 
     @cached_property
     def plans(self) -> plans.AsyncPlansWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         from .resources.plans import AsyncPlansWithStreamingResponse
 
         return AsyncPlansWithStreamingResponse(self._client.plans)
 
     @cached_property
     def prices(self) -> prices.AsyncPricesWithStreamingResponse:
+        """
+        The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+        the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+        Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+        given Price object. The model_type field determines the key for the configuration object that is present.
+
+        For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+        """
         from .resources.prices import AsyncPricesWithStreamingResponse
 
         return AsyncPricesWithStreamingResponse(self._client.prices)
@@ -1228,6 +1701,12 @@ class AsyncOrbWithStreamedResponse:
 
     @cached_property
     def alerts(self) -> alerts.AsyncAlertsWithStreamingResponse:
+        """
+        [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+        usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+        Alerts created through the API can be scoped to either customers or subscriptions.
+        """
         from .resources.alerts import AsyncAlertsWithStreamingResponse
 
         return AsyncAlertsWithStreamingResponse(self._client.alerts)
@@ -1246,12 +1725,19 @@ class AsyncOrbWithStreamedResponse:
 
     @cached_property
     def credit_blocks(self) -> credit_blocks.AsyncCreditBlocksWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         from .resources.credit_blocks import AsyncCreditBlocksWithStreamingResponse
 
         return AsyncCreditBlocksWithStreamingResponse(self._client.credit_blocks)
 
     @cached_property
     def license_types(self) -> license_types.AsyncLicenseTypesWithStreamingResponse:
+        """
+        The LicenseType resource represents a type of license that can be assigned to users.
+        License types are used during billing by grouping metrics on the configured grouping key.
+        """
         from .resources.license_types import AsyncLicenseTypesWithStreamingResponse
 
         return AsyncLicenseTypesWithStreamingResponse(self._client.license_types)

@@ -29,8 +29,19 @@ __all__ = ["Beta", "AsyncBeta"]
 
 
 class Beta(SyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def external_plan_id(self) -> ExternalPlanID:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanID(self._client)
 
     @cached_property
@@ -215,8 +226,19 @@ class Beta(SyncAPIResource):
 
 
 class AsyncBeta(AsyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanID:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanID(self._client)
 
     @cached_property
@@ -416,6 +438,11 @@ class BetaWithRawResponse:
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanIDWithRawResponse(self._beta.external_plan_id)
 
 
@@ -435,6 +462,11 @@ class AsyncBetaWithRawResponse:
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanIDWithRawResponse(self._beta.external_plan_id)
 
 
@@ -454,6 +486,11 @@ class BetaWithStreamingResponse:
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanIDWithStreamingResponse(self._beta.external_plan_id)
 
 
@@ -473,4 +510,9 @@ class AsyncBetaWithStreamingResponse:
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanIDWithStreamingResponse(self._beta.external_plan_id)
