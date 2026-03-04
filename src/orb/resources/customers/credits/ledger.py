@@ -290,7 +290,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -468,7 +470,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -633,7 +637,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -806,7 +812,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -973,7 +981,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -1217,7 +1227,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -1395,7 +1407,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -1560,7 +1574,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -1733,7 +1749,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -1900,7 +1918,9 @@ class Ledger(SyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -2491,7 +2511,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -2669,7 +2691,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -2834,7 +2858,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3007,7 +3033,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3174,7 +3202,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3418,7 +3448,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3596,7 +3628,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3761,7 +3795,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -3934,7 +3970,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
@@ -4101,7 +4139,9 @@ class AsyncLedger(AsyncAPIResource):
         also generate a one-off invoice for the customer for the credits pre-purchase.
         Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
         on the invoice are calculated by multiplying the cost basis with the number of
-        credit units added.
+        credit units added. If you invoice or handle payment of credits outside of Orb
+        (i.e. marketplace customers), set `mark_as_paid` in the `invoice_settings` to
+        `true` to prevent duplicate invoicing effects.
 
         - if `per_unit_cost_basis` is greater than zero, an invoice will be generated
           and `invoice_settings` must be included
