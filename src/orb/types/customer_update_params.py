@@ -57,7 +57,9 @@ class CustomerUpdateParams(TypedDict, total=False):
     currency: Optional[str]
     """An ISO 4217 currency string used for the customer's invoices and balance.
 
-    If not set at creation time, will be set at subscription creation time.
+    This can only be set if the customer does not already have a currency
+    configured. If not set at creation or update time, it will be set at
+    subscription creation time.
     """
 
     email: Optional[str]
