@@ -274,7 +274,9 @@ class TestAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            grouping_keys=["string"],
             metric_id="metric_id",
+            pricing_unit_id="pricing_unit_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -670,7 +672,9 @@ class TestAsyncAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            grouping_keys=["string"],
             metric_id="metric_id",
+            pricing_unit_id="pricing_unit_id",
         )
         assert_matches_type(Alert, alert, path=["response"])
 

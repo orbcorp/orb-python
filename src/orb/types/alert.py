@@ -105,5 +105,11 @@ class Alert(BaseModel):
     This field is only present for credit balance alerts.
     """
 
+    grouping_keys: Optional[List[str]] = None
+    """The property keys to group cost alerts by.
+
+    Only present for cost alerts with grouping enabled.
+    """
+
     license_type: Optional[LicenseType] = None
     """Minified license type for alert serialization."""

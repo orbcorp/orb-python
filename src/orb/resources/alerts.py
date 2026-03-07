@@ -18,7 +18,7 @@ from ..types import (
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
 )
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -353,7 +353,9 @@ class Alerts(SyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        pricing_unit_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -380,7 +382,13 @@ class Alerts(SyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
           metric_id: The metric to track usage for.
+
+          pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
+              set.
 
           extra_headers: Send extra headers
 
@@ -400,7 +408,9 @@ class Alerts(SyncAPIResource):
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "pricing_unit_id": pricing_unit_id,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
@@ -835,7 +845,9 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        pricing_unit_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -862,7 +874,13 @@ class AsyncAlerts(AsyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
           metric_id: The metric to track usage for.
+
+          pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
+              set.
 
           extra_headers: Send extra headers
 
@@ -882,7 +900,9 @@ class AsyncAlerts(AsyncAPIResource):
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "pricing_unit_id": pricing_unit_id,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
