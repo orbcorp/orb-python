@@ -31,7 +31,7 @@ class Hierarchy(BaseModel):
 class AccountingSyncConfigurationAccountingProvider(BaseModel):
     external_provider_id: Optional[str] = None
 
-    provider_type: Literal["quickbooks", "netsuite"]
+    provider_type: Literal["quickbooks", "netsuite", "netsuite_ampersand"]
 
 
 class AccountingSyncConfiguration(BaseModel):
@@ -139,7 +139,9 @@ class Customer(BaseModel):
     name: str
     """The full name of the customer"""
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]] = None
+    payment_provider: Optional[
+        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
+    ] = None
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
