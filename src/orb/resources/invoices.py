@@ -10,6 +10,7 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
+    invoice_pay_params,
     invoice_list_params,
     invoice_issue_params,
     invoice_create_params,
@@ -743,6 +744,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        shared_payment_token_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -751,11 +753,16 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """
-        This endpoint collects payment for an invoice using the customer's default
-        payment method. This action can only be taken on invoices with status "issued".
+        """This endpoint collects payment for an invoice.
+
+        By default, it uses the
+        customer's default payment method. Optionally, a shared payment token (SPT) can
+        be provided to pay using agent-granted credentials instead. This action can only
+        be taken on invoices with status "issued".
 
         Args:
+          shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -770,6 +777,9 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
             f"/invoices/{invoice_id}/pay",
+            body=maybe_transform(
+                {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1542,6 +1552,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        shared_payment_token_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1550,11 +1561,16 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """
-        This endpoint collects payment for an invoice using the customer's default
-        payment method. This action can only be taken on invoices with status "issued".
+        """This endpoint collects payment for an invoice.
+
+        By default, it uses the
+        customer's default payment method. Optionally, a shared payment token (SPT) can
+        be provided to pay using agent-granted credentials instead. This action can only
+        be taken on invoices with status "issued".
 
         Args:
+          shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1569,6 +1585,9 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
             f"/invoices/{invoice_id}/pay",
+            body=await async_maybe_transform(
+                {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

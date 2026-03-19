@@ -66,6 +66,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -167,6 +168,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -499,6 +501,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -610,6 +613,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -711,6 +715,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -1055,6 +1060,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
