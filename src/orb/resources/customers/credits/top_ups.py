@@ -10,7 +10,7 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -117,7 +117,7 @@ class TopUps(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._post(
-            f"/customers/{customer_id}/credits/top_ups",
+            path_template("/customers/{customer_id}/credits/top_ups", customer_id=customer_id),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -175,7 +175,7 @@ class TopUps(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits/top_ups",
+            path_template("/customers/{customer_id}/credits/top_ups", customer_id=customer_id),
             page=SyncPage[TopUpListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -227,7 +227,9 @@ class TopUps(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `top_up_id` but received {top_up_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/customers/{customer_id}/credits/top_ups/{top_up_id}",
+            path_template(
+                "/customers/{customer_id}/credits/top_ups/{top_up_id}", customer_id=customer_id, top_up_id=top_up_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -303,7 +305,10 @@ class TopUps(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._post(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+                external_customer_id=external_customer_id,
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -363,7 +368,11 @@ class TopUps(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `top_up_id` but received {top_up_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups/{top_up_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups/{top_up_id}",
+                external_customer_id=external_customer_id,
+                top_up_id=top_up_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -410,7 +419,10 @@ class TopUps(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+                external_customer_id=external_customer_id,
+            ),
             page=SyncPage[TopUpListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -516,7 +528,7 @@ class AsyncTopUps(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._post(
-            f"/customers/{customer_id}/credits/top_ups",
+            path_template("/customers/{customer_id}/credits/top_ups", customer_id=customer_id),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -574,7 +586,7 @@ class AsyncTopUps(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits/top_ups",
+            path_template("/customers/{customer_id}/credits/top_ups", customer_id=customer_id),
             page=AsyncPage[TopUpListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -626,7 +638,9 @@ class AsyncTopUps(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `top_up_id` but received {top_up_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/customers/{customer_id}/credits/top_ups/{top_up_id}",
+            path_template(
+                "/customers/{customer_id}/credits/top_ups/{top_up_id}", customer_id=customer_id, top_up_id=top_up_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -702,7 +716,10 @@ class AsyncTopUps(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return await self._post(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+                external_customer_id=external_customer_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -762,7 +779,11 @@ class AsyncTopUps(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `top_up_id` but received {top_up_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups/{top_up_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups/{top_up_id}",
+                external_customer_id=external_customer_id,
+                top_up_id=top_up_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -809,7 +830,10 @@ class AsyncTopUps(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/top_ups",
+                external_customer_id=external_customer_id,
+            ),
             page=AsyncPage[TopUpListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

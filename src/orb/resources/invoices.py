@@ -21,7 +21,7 @@ from ..types import (
     invoice_fetch_upcoming_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -227,7 +227,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._put(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             body=maybe_transform(
                 {
                     "auto_collection": auto_collection,
@@ -384,7 +384,11 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            path_template(
+                "/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+                invoice_id=invoice_id,
+                line_item_id=line_item_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -422,7 +426,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._get(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -510,7 +514,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/issue",
+            path_template("/invoices/{invoice_id}/issue", invoice_id=invoice_id),
             body=maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -567,7 +571,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/summary/{invoice_id}/issue",
+            path_template("/invoices/summary/{invoice_id}/issue", invoice_id=invoice_id),
             body=maybe_transform({"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -721,7 +725,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/mark_paid",
+            path_template("/invoices/{invoice_id}/mark_paid", invoice_id=invoice_id),
             body=maybe_transform(
                 {
                     "payment_received_date": payment_received_date,
@@ -776,7 +780,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/pay",
+            path_template("/invoices/{invoice_id}/pay", invoice_id=invoice_id),
             body=maybe_transform(
                 {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
             ),
@@ -830,7 +834,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/void",
+            path_template("/invoices/{invoice_id}/void", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1033,7 +1037,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._put(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {
                     "auto_collection": auto_collection,
@@ -1190,7 +1194,11 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            path_template(
+                "/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+                invoice_id=invoice_id,
+                line_item_id=line_item_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1228,7 +1236,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._get(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1316,7 +1324,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/issue",
+            path_template("/invoices/{invoice_id}/issue", invoice_id=invoice_id),
             body=await async_maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1373,7 +1381,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/summary/{invoice_id}/issue",
+            path_template("/invoices/summary/{invoice_id}/issue", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams
             ),
@@ -1529,7 +1537,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/mark_paid",
+            path_template("/invoices/{invoice_id}/mark_paid", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {
                     "payment_received_date": payment_received_date,
@@ -1584,7 +1592,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/pay",
+            path_template("/invoices/{invoice_id}/pay", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
             ),
@@ -1638,7 +1646,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/void",
+            path_template("/invoices/{invoice_id}/void", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

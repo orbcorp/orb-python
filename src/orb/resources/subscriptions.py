@@ -26,7 +26,7 @@ from ..types import (
     subscription_unschedule_fixed_fee_quantity_updates_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -563,7 +563,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._put(
-            f"/subscriptions/{subscription_id}",
+            path_template("/subscriptions/{subscription_id}", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "auto_collection": auto_collection,
@@ -760,7 +760,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/cancel",
+            path_template("/subscriptions/{subscription_id}/cancel", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "cancel_option": cancel_option,
@@ -806,7 +806,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
-            f"/subscriptions/{subscription_id}",
+            path_template("/subscriptions/{subscription_id}", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -863,7 +863,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get(
-            f"/subscriptions/{subscription_id}/costs",
+            path_template("/subscriptions/{subscription_id}/costs", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -922,7 +922,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
-            f"/subscriptions/{subscription_id}/schedule",
+            path_template("/subscriptions/{subscription_id}/schedule", subscription_id=subscription_id),
             page=SyncPage[SubscriptionFetchScheduleResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1193,7 +1193,7 @@ class Subscriptions(SyncAPIResource):
         return cast(
             SubscriptionUsage,
             self._get(
-                f"/subscriptions/{subscription_id}/usage",
+                path_template("/subscriptions/{subscription_id}/usage", subscription_id=subscription_id),
                 options=make_request_options(
                     extra_headers=extra_headers,
                     extra_query=extra_query,
@@ -1340,7 +1340,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/price_intervals",
+            path_template("/subscriptions/{subscription_id}/price_intervals", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "add": add,
@@ -1407,7 +1407,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/redeem_coupon",
+            path_template("/subscriptions/{subscription_id}/redeem_coupon", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "change_option": change_option,
@@ -1745,7 +1745,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/schedule_plan_change",
+            path_template("/subscriptions/{subscription_id}/schedule_plan_change", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "change_option": change_option,
@@ -1826,7 +1826,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/trigger_phase",
+            path_template("/subscriptions/{subscription_id}/trigger_phase", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
@@ -1878,7 +1878,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/unschedule_cancellation",
+            path_template("/subscriptions/{subscription_id}/unschedule_cancellation", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1925,7 +1925,10 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
+            path_template(
+                "/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
+                subscription_id=subscription_id,
+            ),
             body=maybe_transform(
                 {"price_id": price_id},
                 subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
@@ -1970,7 +1973,9 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
+            path_template(
+                "/subscriptions/{subscription_id}/unschedule_pending_plan_changes", subscription_id=subscription_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2042,7 +2047,9 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
+            path_template(
+                "/subscriptions/{subscription_id}/update_fixed_fee_quantity", subscription_id=subscription_id
+            ),
             body=maybe_transform(
                 {
                     "price_id": price_id,
@@ -2118,7 +2125,7 @@ class Subscriptions(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/subscriptions/{subscription_id}/update_trial",
+            path_template("/subscriptions/{subscription_id}/update_trial", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "trial_end_date": trial_end_date,
@@ -2658,7 +2665,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._put(
-            f"/subscriptions/{subscription_id}",
+            path_template("/subscriptions/{subscription_id}", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "auto_collection": auto_collection,
@@ -2855,7 +2862,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/cancel",
+            path_template("/subscriptions/{subscription_id}/cancel", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "cancel_option": cancel_option,
@@ -2901,7 +2908,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
-            f"/subscriptions/{subscription_id}",
+            path_template("/subscriptions/{subscription_id}", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2958,7 +2965,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._get(
-            f"/subscriptions/{subscription_id}/costs",
+            path_template("/subscriptions/{subscription_id}/costs", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -3017,7 +3024,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._get_api_list(
-            f"/subscriptions/{subscription_id}/schedule",
+            path_template("/subscriptions/{subscription_id}/schedule", subscription_id=subscription_id),
             page=AsyncPage[SubscriptionFetchScheduleResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -3288,7 +3295,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         return cast(
             SubscriptionUsage,
             await self._get(
-                f"/subscriptions/{subscription_id}/usage",
+                path_template("/subscriptions/{subscription_id}/usage", subscription_id=subscription_id),
                 options=make_request_options(
                     extra_headers=extra_headers,
                     extra_query=extra_query,
@@ -3435,7 +3442,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/price_intervals",
+            path_template("/subscriptions/{subscription_id}/price_intervals", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "add": add,
@@ -3502,7 +3509,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/redeem_coupon",
+            path_template("/subscriptions/{subscription_id}/redeem_coupon", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "change_option": change_option,
@@ -3840,7 +3847,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/schedule_plan_change",
+            path_template("/subscriptions/{subscription_id}/schedule_plan_change", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "change_option": change_option,
@@ -3921,7 +3928,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/trigger_phase",
+            path_template("/subscriptions/{subscription_id}/trigger_phase", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "allow_invoice_credit_or_void": allow_invoice_credit_or_void,
@@ -3973,7 +3980,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/unschedule_cancellation",
+            path_template("/subscriptions/{subscription_id}/unschedule_cancellation", subscription_id=subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -4020,7 +4027,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
+            path_template(
+                "/subscriptions/{subscription_id}/unschedule_fixed_fee_quantity_updates",
+                subscription_id=subscription_id,
+            ),
             body=await async_maybe_transform(
                 {"price_id": price_id},
                 subscription_unschedule_fixed_fee_quantity_updates_params.SubscriptionUnscheduleFixedFeeQuantityUpdatesParams,
@@ -4065,7 +4075,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/unschedule_pending_plan_changes",
+            path_template(
+                "/subscriptions/{subscription_id}/unschedule_pending_plan_changes", subscription_id=subscription_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -4137,7 +4149,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/update_fixed_fee_quantity",
+            path_template(
+                "/subscriptions/{subscription_id}/update_fixed_fee_quantity", subscription_id=subscription_id
+            ),
             body=await async_maybe_transform(
                 {
                     "price_id": price_id,
@@ -4213,7 +4227,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/subscriptions/{subscription_id}/update_trial",
+            path_template("/subscriptions/{subscription_id}/update_trial", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "trial_end_date": trial_end_date,

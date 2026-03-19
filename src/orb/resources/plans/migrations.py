@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform
+from ..._utils import path_template, maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -77,7 +77,7 @@ class Migrations(SyncAPIResource):
         if not migration_id:
             raise ValueError(f"Expected a non-empty value for `migration_id` but received {migration_id!r}")
         return self._get(
-            f"/plans/{plan_id}/migrations/{migration_id}",
+            path_template("/plans/{plan_id}/migrations/{migration_id}", plan_id=plan_id, migration_id=migration_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -121,7 +121,7 @@ class Migrations(SyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._get_api_list(
-            f"/plans/{plan_id}/migrations",
+            path_template("/plans/{plan_id}/migrations", plan_id=plan_id),
             page=SyncPage[MigrationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -171,7 +171,9 @@ class Migrations(SyncAPIResource):
         if not migration_id:
             raise ValueError(f"Expected a non-empty value for `migration_id` but received {migration_id!r}")
         return self._post(
-            f"/plans/{plan_id}/migrations/{migration_id}/cancel",
+            path_template(
+                "/plans/{plan_id}/migrations/{migration_id}/cancel", plan_id=plan_id, migration_id=migration_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -238,7 +240,7 @@ class AsyncMigrations(AsyncAPIResource):
         if not migration_id:
             raise ValueError(f"Expected a non-empty value for `migration_id` but received {migration_id!r}")
         return await self._get(
-            f"/plans/{plan_id}/migrations/{migration_id}",
+            path_template("/plans/{plan_id}/migrations/{migration_id}", plan_id=plan_id, migration_id=migration_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -282,7 +284,7 @@ class AsyncMigrations(AsyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._get_api_list(
-            f"/plans/{plan_id}/migrations",
+            path_template("/plans/{plan_id}/migrations", plan_id=plan_id),
             page=AsyncPage[MigrationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -332,7 +334,9 @@ class AsyncMigrations(AsyncAPIResource):
         if not migration_id:
             raise ValueError(f"Expected a non-empty value for `migration_id` but received {migration_id!r}")
         return await self._post(
-            f"/plans/{plan_id}/migrations/{migration_id}/cancel",
+            path_template(
+                "/plans/{plan_id}/migrations/{migration_id}/cancel", plan_id=plan_id, migration_id=migration_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

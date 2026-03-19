@@ -18,7 +18,7 @@ from ...types import (
     price_evaluate_preview_events_params,
 )
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import required_args, maybe_transform, async_maybe_transform
+from ..._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -3450,7 +3450,7 @@ class Prices(SyncAPIResource):
         return cast(
             Price,
             self._put(
-                f"/prices/{price_id}",
+                path_template("/prices/{price_id}", price_id=price_id),
                 body=maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
                 options=make_request_options(
                     extra_headers=extra_headers,
@@ -3591,7 +3591,7 @@ class Prices(SyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return self._post(
-            f"/prices/{price_id}/evaluate",
+            path_template("/prices/{price_id}/evaluate", price_id=price_id),
             body=maybe_transform(
                 {
                     "timeframe_end": timeframe_end,
@@ -3815,7 +3815,7 @@ class Prices(SyncAPIResource):
         return cast(
             Price,
             self._get(
-                f"/prices/{price_id}",
+                path_template("/prices/{price_id}", price_id=price_id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -7226,7 +7226,7 @@ class AsyncPrices(AsyncAPIResource):
         return cast(
             Price,
             await self._put(
-                f"/prices/{price_id}",
+                path_template("/prices/{price_id}", price_id=price_id),
                 body=await async_maybe_transform({"metadata": metadata}, price_update_params.PriceUpdateParams),
                 options=make_request_options(
                     extra_headers=extra_headers,
@@ -7367,7 +7367,7 @@ class AsyncPrices(AsyncAPIResource):
         if not price_id:
             raise ValueError(f"Expected a non-empty value for `price_id` but received {price_id!r}")
         return await self._post(
-            f"/prices/{price_id}/evaluate",
+            path_template("/prices/{price_id}/evaluate", price_id=price_id),
             body=await async_maybe_transform(
                 {
                     "timeframe_end": timeframe_end,
@@ -7591,7 +7591,7 @@ class AsyncPrices(AsyncAPIResource):
         return cast(
             Price,
             await self._get(
-                f"/prices/{price_id}",
+                path_template("/prices/{price_id}", price_id=price_id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),

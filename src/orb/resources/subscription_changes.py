@@ -11,7 +11,7 @@ import httpx
 from .. import _legacy_response
 from ..types import subscription_change_list_params, subscription_change_apply_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -81,7 +81,9 @@ class SubscriptionChanges(SyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return self._get(
-            f"/subscription_changes/{subscription_change_id}",
+            path_template(
+                "/subscription_changes/{subscription_change_id}", subscription_change_id=subscription_change_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -201,7 +203,9 @@ class SubscriptionChanges(SyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return self._post(
-            f"/subscription_changes/{subscription_change_id}/apply",
+            path_template(
+                "/subscription_changes/{subscription_change_id}/apply", subscription_change_id=subscription_change_id
+            ),
             body=maybe_transform(
                 {
                     "description": description,
@@ -257,7 +261,9 @@ class SubscriptionChanges(SyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return self._post(
-            f"/subscription_changes/{subscription_change_id}/cancel",
+            path_template(
+                "/subscription_changes/{subscription_change_id}/cancel", subscription_change_id=subscription_change_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -325,7 +331,9 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return await self._get(
-            f"/subscription_changes/{subscription_change_id}",
+            path_template(
+                "/subscription_changes/{subscription_change_id}", subscription_change_id=subscription_change_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -445,7 +453,9 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return await self._post(
-            f"/subscription_changes/{subscription_change_id}/apply",
+            path_template(
+                "/subscription_changes/{subscription_change_id}/apply", subscription_change_id=subscription_change_id
+            ),
             body=await async_maybe_transform(
                 {
                     "description": description,
@@ -501,7 +511,9 @@ class AsyncSubscriptionChanges(AsyncAPIResource):
                 f"Expected a non-empty value for `subscription_change_id` but received {subscription_change_id!r}"
             )
         return await self._post(
-            f"/subscription_changes/{subscription_change_id}/cancel",
+            path_template(
+                "/subscription_changes/{subscription_change_id}/cancel", subscription_change_id=subscription_change_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

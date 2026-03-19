@@ -9,7 +9,7 @@ import httpx
 from ... import _legacy_response
 from ...types import beta_create_plan_version_params, beta_set_default_plan_version_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -116,7 +116,7 @@ class Beta(SyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._post(
-            f"/plans/{plan_id}/versions",
+            path_template("/plans/{plan_id}/versions", plan_id=plan_id),
             body=maybe_transform(
                 {
                     "version": version,
@@ -171,7 +171,7 @@ class Beta(SyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return self._get(
-            f"/plans/{plan_id}/versions/{version}",
+            path_template("/plans/{plan_id}/versions/{version}", plan_id=plan_id, version=version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -210,7 +210,7 @@ class Beta(SyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._post(
-            f"/plans/{plan_id}/set_default_version",
+            path_template("/plans/{plan_id}/set_default_version", plan_id=plan_id),
             body=maybe_transform(
                 {"version": version}, beta_set_default_plan_version_params.BetaSetDefaultPlanVersionParams
             ),
@@ -313,7 +313,7 @@ class AsyncBeta(AsyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._post(
-            f"/plans/{plan_id}/versions",
+            path_template("/plans/{plan_id}/versions", plan_id=plan_id),
             body=await async_maybe_transform(
                 {
                     "version": version,
@@ -368,7 +368,7 @@ class AsyncBeta(AsyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return await self._get(
-            f"/plans/{plan_id}/versions/{version}",
+            path_template("/plans/{plan_id}/versions/{version}", plan_id=plan_id, version=version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -407,7 +407,7 @@ class AsyncBeta(AsyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._post(
-            f"/plans/{plan_id}/set_default_version",
+            path_template("/plans/{plan_id}/set_default_version", plan_id=plan_id),
             body=await async_maybe_transform(
                 {"version": version}, beta_set_default_plan_version_params.BetaSetDefaultPlanVersionParams
             ),
