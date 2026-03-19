@@ -25,7 +25,7 @@ from .top_ups import (
     AsyncTopUpsWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform
+from ...._utils import path_template, maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -131,7 +131,7 @@ class Credits(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits",
+            path_template("/customers/{customer_id}/credits", customer_id=customer_id),
             page=SyncPage[CreditListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -212,7 +212,10 @@ class Credits(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits",
+                external_customer_id=external_customer_id,
+            ),
             page=SyncPage[CreditListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -330,7 +333,7 @@ class AsyncCredits(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits",
+            path_template("/customers/{customer_id}/credits", customer_id=customer_id),
             page=AsyncPage[CreditListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -411,7 +414,10 @@ class AsyncCredits(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits",
+                external_customer_id=external_customer_id,
+            ),
             page=AsyncPage[CreditListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

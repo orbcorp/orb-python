@@ -24,7 +24,7 @@ from ...types import (
     customer_update_by_external_id_params,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -678,7 +678,7 @@ class Customers(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._put(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             body=maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -816,7 +816,7 @@ class Customers(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -859,7 +859,7 @@ class Customers(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -898,7 +898,9 @@ class Customers(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get(
-            f"/customers/external_customer_id/{external_customer_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -940,7 +942,7 @@ class Customers(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            path_template("/customers/{customer_id}/sync_payment_methods_from_gateway", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -988,7 +990,10 @@ class Customers(SyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+                external_customer_id=external_customer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1247,7 +1252,7 @@ class Customers(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/customers/external_customer_id/{id}",
+            path_template("/customers/external_customer_id/{id}", id=id),
             body=maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -1905,7 +1910,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._put(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             body=await async_maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -2043,7 +2048,7 @@ class AsyncCustomers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2086,7 +2091,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._get(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2125,7 +2130,9 @@ class AsyncCustomers(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return await self._get(
-            f"/customers/external_customer_id/{external_customer_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2167,7 +2174,7 @@ class AsyncCustomers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            path_template("/customers/{customer_id}/sync_payment_methods_from_gateway", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2215,7 +2222,10 @@ class AsyncCustomers(AsyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+                external_customer_id=external_customer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2474,7 +2484,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/customers/external_customer_id/{id}",
+            path_template("/customers/external_customer_id/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,

@@ -6,6 +6,7 @@ import httpx
 
 from .. import _legacy_response
 from .._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from .._utils import path_template
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -66,7 +67,7 @@ class CreditBlocks(SyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return self._get(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -117,7 +118,7 @@ class CreditBlocks(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -167,7 +168,7 @@ class CreditBlocks(SyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return self._get(
-            f"/credit_blocks/{block_id}/invoices",
+            path_template("/credit_blocks/{block_id}/invoices", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -225,7 +226,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return await self._get(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -276,7 +277,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -326,7 +327,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return await self._get(
-            f"/credit_blocks/{block_id}/invoices",
+            path_template("/credit_blocks/{block_id}/invoices", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

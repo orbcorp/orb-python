@@ -10,7 +10,7 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import required_args, maybe_transform, async_maybe_transform
+from ...._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -188,7 +188,7 @@ class Ledger(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits/ledger",
+            path_template("/customers/{customer_id}/credits/ledger", customer_id=customer_id),
             page=SyncPage[LedgerListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1115,7 +1115,7 @@ class Ledger(SyncAPIResource):
         return cast(
             LedgerCreateEntryResponse,
             self._post(
-                f"/customers/{customer_id}/credits/ledger_entry",
+                path_template("/customers/{customer_id}/credits/ledger_entry", customer_id=customer_id),
                 body=maybe_transform(
                     {
                         "amount": amount,
@@ -2058,7 +2058,10 @@ class Ledger(SyncAPIResource):
         return cast(
             LedgerCreateEntryByExternalIDResponse,
             self._post(
-                f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
+                path_template(
+                    "/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
+                    external_customer_id=external_customer_id,
+                ),
                 body=maybe_transform(
                     {
                         "amount": amount,
@@ -2224,7 +2227,10 @@ class Ledger(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/ledger",
+                external_customer_id=external_customer_id,
+            ),
             page=SyncPage[LedgerListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -2409,7 +2415,7 @@ class AsyncLedger(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits/ledger",
+            path_template("/customers/{customer_id}/credits/ledger", customer_id=customer_id),
             page=AsyncPage[LedgerListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -3336,7 +3342,7 @@ class AsyncLedger(AsyncAPIResource):
         return cast(
             LedgerCreateEntryResponse,
             await self._post(
-                f"/customers/{customer_id}/credits/ledger_entry",
+                path_template("/customers/{customer_id}/credits/ledger_entry", customer_id=customer_id),
                 body=await async_maybe_transform(
                     {
                         "amount": amount,
@@ -4279,7 +4285,10 @@ class AsyncLedger(AsyncAPIResource):
         return cast(
             LedgerCreateEntryByExternalIDResponse,
             await self._post(
-                f"/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
+                path_template(
+                    "/customers/external_customer_id/{external_customer_id}/credits/ledger_entry",
+                    external_customer_id=external_customer_id,
+                ),
                 body=await async_maybe_transform(
                     {
                         "amount": amount,
@@ -4445,7 +4454,10 @@ class AsyncLedger(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits/ledger",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/ledger",
+                external_customer_id=external_customer_id,
+            ),
             page=AsyncPage[LedgerListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

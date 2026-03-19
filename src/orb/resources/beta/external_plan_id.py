@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -101,7 +101,7 @@ class ExternalPlanID(SyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return self._post(
-            f"/plans/external_plan_id/{external_plan_id}/versions",
+            path_template("/plans/external_plan_id/{external_plan_id}/versions", external_plan_id=external_plan_id),
             body=maybe_transform(
                 {
                     "version": version,
@@ -156,7 +156,11 @@ class ExternalPlanID(SyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return self._get(
-            f"/plans/external_plan_id/{external_plan_id}/versions/{version}",
+            path_template(
+                "/plans/external_plan_id/{external_plan_id}/versions/{version}",
+                external_plan_id=external_plan_id,
+                version=version,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -195,7 +199,9 @@ class ExternalPlanID(SyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return self._post(
-            f"/plans/external_plan_id/{external_plan_id}/set_default_version",
+            path_template(
+                "/plans/external_plan_id/{external_plan_id}/set_default_version", external_plan_id=external_plan_id
+            ),
             body=maybe_transform(
                 {"version": version},
                 external_plan_id_set_default_plan_version_params.ExternalPlanIDSetDefaultPlanVersionParams,
@@ -292,7 +298,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return await self._post(
-            f"/plans/external_plan_id/{external_plan_id}/versions",
+            path_template("/plans/external_plan_id/{external_plan_id}/versions", external_plan_id=external_plan_id),
             body=await async_maybe_transform(
                 {
                     "version": version,
@@ -347,7 +353,11 @@ class AsyncExternalPlanID(AsyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return await self._get(
-            f"/plans/external_plan_id/{external_plan_id}/versions/{version}",
+            path_template(
+                "/plans/external_plan_id/{external_plan_id}/versions/{version}",
+                external_plan_id=external_plan_id,
+                version=version,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -386,7 +396,9 @@ class AsyncExternalPlanID(AsyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return await self._post(
-            f"/plans/external_plan_id/{external_plan_id}/set_default_version",
+            path_template(
+                "/plans/external_plan_id/{external_plan_id}/set_default_version", external_plan_id=external_plan_id
+            ),
             body=await async_maybe_transform(
                 {"version": version},
                 external_plan_id_set_default_plan_version_params.ExternalPlanIDSetDefaultPlanVersionParams,
