@@ -408,7 +408,7 @@ Methods:
 - <code title="post /invoices/summary/{invoice_id}/issue">client.invoices.<a href="./src/orb/resources/invoices.py">issue_summary</a>(invoice_id, \*\*<a href="src/orb/types/invoice_issue_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_issue_summary_response.py">InvoiceIssueSummaryResponse</a></code>
 - <code title="get /invoices/summary">client.invoices.<a href="./src/orb/resources/invoices.py">list_summary</a>(\*\*<a href="src/orb/types/invoice_list_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_list_summary_response.py">SyncPage[InvoiceListSummaryResponse]</a></code>
 - <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
-- <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id, \*\*<a href="src/orb/types/invoice_pay_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 
 # Items

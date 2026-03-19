@@ -44,6 +44,13 @@ class PaymentConfigurationPaymentProvider(BaseModel):
     provider_type: Literal["stripe"]
     """The payment provider to configure."""
 
+    default_shared_payment_token: Optional[str] = None
+    """
+    The ID of a shared payment token granted by an agent to use as the default
+    payment instrument for this customer. When set, auto-collection will use this
+    token instead of the customer's default payment method.
+    """
+
     excluded_payment_method_types: Optional[List[str]] = None
     """List of Stripe payment method types to exclude for this customer.
 
