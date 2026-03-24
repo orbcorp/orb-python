@@ -45,6 +45,10 @@ class DecrementLedgerEntry(BaseModel):
     starting_balance: float
 
     event_id: Optional[str] = None
+    """This field is deprecated and will always be null.
+
+    Decrements are not associated with individual events.
+    """
 
     invoice_id: Optional[str] = None
 
