@@ -835,10 +835,10 @@ class Subscriptions(SyncAPIResource):
         metric, in usage units rather than a currency).
 
         The semantics of this endpoint exactly mirror those of
-        [fetching a customer's costs](fetch-customer-costs). Use this endpoint to limit
-        your analysis of costs to a specific subscription for the customer (e.g. to
-        de-aggregate costs when a customer's subscription has started and stopped on the
-        same day).
+        [fetching a customer's costs](/api-reference/customer/fetch-customer-costs). Use
+        this endpoint to limit your analysis of costs to a specific subscription for the
+        customer (e.g. to de-aggregate costs when a customer's subscription has started
+        and stopped on the same day).
 
         Args:
           currency: The currency or custom pricing unit to use.
@@ -2937,10 +2937,10 @@ class AsyncSubscriptions(AsyncAPIResource):
         metric, in usage units rather than a currency).
 
         The semantics of this endpoint exactly mirror those of
-        [fetching a customer's costs](fetch-customer-costs). Use this endpoint to limit
-        your analysis of costs to a specific subscription for the customer (e.g. to
-        de-aggregate costs when a customer's subscription has started and stopped on the
-        same day).
+        [fetching a customer's costs](/api-reference/customer/fetch-customer-costs). Use
+        this endpoint to limit your analysis of costs to a specific subscription for the
+        customer (e.g. to de-aggregate costs when a customer's subscription has started
+        and stopped on the same day).
 
         Args:
           currency: The currency or custom pricing unit to use.
