@@ -650,7 +650,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             add=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "allocation_price": {
                         "amount": "10.00",
                         "cadence": "monthly",
@@ -678,7 +678,7 @@ class TestSubscriptions:
                             "discount_type": "amount",
                         }
                     ],
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "external_price_id": "external_price_id",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
@@ -732,7 +732,7 @@ class TestSubscriptions:
             ],
             add_adjustments=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -751,7 +751,7 @@ class TestSubscriptions:
                         "price_type": "usage",
                     },
                     "adjustment_id": "h74gfhdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                 }
             ],
             allow_invoice_credit_or_void=True,
@@ -761,7 +761,7 @@ class TestSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "can_defer_billing": True,
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
@@ -770,15 +770,15 @@ class TestSubscriptions:
                         }
                     ],
                     "metric_parameter_overrides": {"foo": "bar"},
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[
                 {
                     "adjustment_interval_id": "sdfs6wdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
+                    "start_date": "start_of_term",
                 }
             ],
         )
@@ -2056,7 +2056,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             add=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "allocation_price": {
                         "amount": "10.00",
                         "cadence": "monthly",
@@ -2084,7 +2084,7 @@ class TestAsyncSubscriptions:
                             "discount_type": "amount",
                         }
                     ],
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "external_price_id": "external_price_id",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
@@ -2138,7 +2138,7 @@ class TestAsyncSubscriptions:
             ],
             add_adjustments=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -2157,7 +2157,7 @@ class TestAsyncSubscriptions:
                         "price_type": "usage",
                     },
                     "adjustment_id": "h74gfhdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                 }
             ],
             allow_invoice_credit_or_void=True,
@@ -2167,7 +2167,7 @@ class TestAsyncSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "can_defer_billing": True,
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
@@ -2176,15 +2176,15 @@ class TestAsyncSubscriptions:
                         }
                     ],
                     "metric_parameter_overrides": {"foo": "bar"},
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[
                 {
                     "adjustment_interval_id": "sdfs6wdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
+                    "start_date": "start_of_term",
                 }
             ],
         )
