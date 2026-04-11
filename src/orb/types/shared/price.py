@@ -261,6 +261,8 @@ class UnitPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -376,6 +378,8 @@ class TieredPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -495,6 +499,8 @@ class BulkPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -642,6 +648,8 @@ class BulkWithFiltersPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -754,6 +762,8 @@ class PackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -870,6 +880,8 @@ class MatrixPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1009,6 +1021,8 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1147,6 +1161,8 @@ class TieredPackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1291,6 +1307,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1432,6 +1450,8 @@ class GroupedTieredPrice(BaseModel):
     grouped_tiered_config: GroupedTieredPriceGroupedTieredConfig
     """Configuration for grouped_tiered pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1567,6 +1587,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1692,6 +1714,8 @@ class PackageWithAllocationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1819,6 +1843,8 @@ class UnitWithPercentPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1934,6 +1960,8 @@ class MatrixWithAllocationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2071,6 +2099,8 @@ class TieredWithProrationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -2193,6 +2223,8 @@ class UnitWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2325,6 +2357,8 @@ class GroupedAllocationPrice(BaseModel):
 
     grouped_allocation_config: GroupedAllocationPriceGroupedAllocationConfig
     """Configuration for grouped_allocation pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2459,6 +2493,8 @@ class BulkWithProrationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -2587,6 +2623,8 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     grouped_with_prorated_minimum_config: GroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig
     """Configuration for grouped_with_prorated_minimum pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2749,6 +2787,8 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
     grouped_with_metered_minimum_config: GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig
     """Configuration for grouped_with_metered_minimum pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -2880,6 +2920,8 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     grouped_with_min_max_thresholds_config: GroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig
     """Configuration for grouped_with_min_max_thresholds pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3016,6 +3058,8 @@ class MatrixWithDisplayNamePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3160,6 +3204,8 @@ class GroupedTieredPackagePrice(BaseModel):
     grouped_tiered_package_config: GroupedTieredPackagePriceGroupedTieredPackageConfig
     """Configuration for grouped_tiered_package pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3295,6 +3341,8 @@ class MaxGroupTieredPackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3445,6 +3493,8 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3597,6 +3647,8 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3740,6 +3792,8 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3872,6 +3926,8 @@ class CumulativeGroupedAllocationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3995,6 +4051,8 @@ class MinimumCompositePrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -4117,6 +4175,8 @@ class PercentCompositePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -4256,6 +4316,8 @@ class EventOutputPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
