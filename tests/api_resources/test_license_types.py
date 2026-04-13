@@ -25,16 +25,16 @@ class TestLicenseTypes:
     @parametrize
     def test_method_create(self, client: Orb) -> None:
         license_type = client.license_types.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         )
         assert_matches_type(LicenseTypeCreateResponse, license_type, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Orb) -> None:
         response = client.license_types.with_raw_response.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         )
 
         assert response.is_closed is True
@@ -45,8 +45,8 @@ class TestLicenseTypes:
     @parametrize
     def test_streaming_response_create(self, client: Orb) -> None:
         with client.license_types.with_streaming_response.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -136,16 +136,16 @@ class TestAsyncLicenseTypes:
     @parametrize
     async def test_method_create(self, async_client: AsyncOrb) -> None:
         license_type = await async_client.license_types.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         )
         assert_matches_type(LicenseTypeCreateResponse, license_type, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOrb) -> None:
         response = await async_client.license_types.with_raw_response.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         )
 
         assert response.is_closed is True
@@ -156,8 +156,8 @@ class TestAsyncLicenseTypes:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOrb) -> None:
         async with async_client.license_types.with_streaming_response.create(
-            grouping_key="grouping_key",
-            name="name",
+            grouping_key="x",
+            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
