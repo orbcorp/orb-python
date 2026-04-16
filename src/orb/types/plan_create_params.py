@@ -243,6 +243,9 @@ class PlanCreateParams(TypedDict, total=False):
     Free-form text which is available on the invoice PDF and the Orb invoice portal.
     """
 
+    description: Optional[str]
+    """An optional user-defined description of the plan."""
+
     external_plan_id: Optional[str]
 
     metadata: Optional[Dict[str, Optional[str]]]

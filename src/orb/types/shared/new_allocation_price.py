@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
@@ -56,6 +56,13 @@ class NewAllocationPrice(BaseModel):
 
     license_type_id: Optional[str] = None
     """The license type ID to associate the price with license allocation."""
+
+    metadata: Optional[Dict[str, Optional[str]]] = None
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
     per_unit_cost_basis: Optional[str] = None
     """The (per-unit) cost basis of each created block.

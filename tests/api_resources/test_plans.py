@@ -53,6 +53,7 @@ class TestPlans:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
@@ -162,6 +163,7 @@ class TestPlans:
                 }
             ],
             default_invoice_memo="default_invoice_memo",
+            description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
             net_terms=0,
@@ -216,6 +218,7 @@ class TestPlans:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         plan = client.plans.update(
             plan_id="plan_id",
+            description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
@@ -368,6 +371,7 @@ class TestAsyncPlans:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
@@ -477,6 +481,7 @@ class TestAsyncPlans:
                 }
             ],
             default_invoice_memo="default_invoice_memo",
+            description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
             net_terms=0,
@@ -531,6 +536,7 @@ class TestAsyncPlans:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.update(
             plan_id="plan_id",
+            description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
         )
