@@ -9,6 +9,9 @@ __all__ = ["ExternalPlanIDUpdateParams"]
 
 
 class ExternalPlanIDUpdateParams(TypedDict, total=False):
+    description: Optional[str]
+    """An optional user-defined description of the plan."""
+
     external_plan_id: Optional[str]
     """
     An optional user-defined ID for this plan resource, used throughout the system

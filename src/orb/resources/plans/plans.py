@@ -90,6 +90,7 @@ class Plans(SyncAPIResource):
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
@@ -117,6 +118,8 @@ class Plans(SyncAPIResource):
               across all phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          description: An optional user-defined description of the plan.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -151,6 +154,7 @@ class Plans(SyncAPIResource):
                     "prices": prices,
                     "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
@@ -173,6 +177,7 @@ class Plans(SyncAPIResource):
         self,
         plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -184,12 +189,14 @@ class Plans(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -214,6 +221,7 @@ class Plans(SyncAPIResource):
             path_template("/plans/{plan_id}", plan_id=plan_id),
             body=maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -395,6 +403,7 @@ class AsyncPlans(AsyncAPIResource):
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
@@ -422,6 +431,8 @@ class AsyncPlans(AsyncAPIResource):
               across all phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          description: An optional user-defined description of the plan.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -456,6 +467,7 @@ class AsyncPlans(AsyncAPIResource):
                     "prices": prices,
                     "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
@@ -478,6 +490,7 @@ class AsyncPlans(AsyncAPIResource):
         self,
         plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -489,12 +502,14 @@ class AsyncPlans(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -519,6 +534,7 @@ class AsyncPlans(AsyncAPIResource):
             path_template("/plans/{plan_id}", plan_id=plan_id),
             body=await async_maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },

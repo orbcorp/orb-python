@@ -49,6 +49,7 @@ class ExternalPlanID(SyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -60,12 +61,14 @@ class ExternalPlanID(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -94,6 +97,7 @@ class ExternalPlanID(SyncAPIResource):
             ),
             body=maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -188,6 +192,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -199,12 +204,14 @@ class AsyncExternalPlanID(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -233,6 +240,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
             ),
             body=await async_maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },

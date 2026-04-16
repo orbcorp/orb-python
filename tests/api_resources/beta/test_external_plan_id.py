@@ -72,6 +72,7 @@ class TestExternalPlanID:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
@@ -214,6 +215,7 @@ class TestExternalPlanID:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
@@ -489,6 +491,7 @@ class TestAsyncExternalPlanID:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
@@ -631,6 +634,7 @@ class TestAsyncExternalPlanID:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "license_allocation_price": {
