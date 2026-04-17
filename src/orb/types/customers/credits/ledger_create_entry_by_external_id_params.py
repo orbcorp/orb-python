@@ -184,9 +184,9 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
 
     target_expiry_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
-    A future date (specified in YYYY-MM-DD format) used for expiration change,
-    denoting when credits transferred (as part of a partial block expiration) should
-    expire.
+    A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+    when credits transferred (as part of a partial block expiration) should expire.
+    This date must be on or after the effective date of the credit block.
     """
 
     amount: Optional[float]

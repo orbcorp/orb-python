@@ -706,9 +706,9 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
-              denoting when credits transferred (as part of a partial block expiration) should
-              expire.
+          target_expiry_date: A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              when credits transferred (as part of a partial block expiration) should expire.
+              This date must be on or after the effective date of the credit block.
 
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
@@ -1643,9 +1643,9 @@ class Ledger(SyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
-              denoting when credits transferred (as part of a partial block expiration) should
-              expire.
+          target_expiry_date: A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              when credits transferred (as part of a partial block expiration) should expire.
+              This date must be on or after the effective date of the credit block.
 
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
@@ -2933,9 +2933,9 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
-              denoting when credits transferred (as part of a partial block expiration) should
-              expire.
+          target_expiry_date: A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              when credits transferred (as part of a partial block expiration) should expire.
+              This date must be on or after the effective date of the credit block.
 
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
@@ -3870,9 +3870,9 @@ class AsyncLedger(AsyncAPIResource):
         return to the customer, up to the block's initial balance.
 
         Args:
-          target_expiry_date: A future date (specified in YYYY-MM-DD format) used for expiration change,
-              denoting when credits transferred (as part of a partial block expiration) should
-              expire.
+          target_expiry_date: A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              when credits transferred (as part of a partial block expiration) should expire.
+              This date must be on or after the effective date of the credit block.
 
           amount: The number of credits to effect. Note that this is required for increment,
               decrement, void, or undo operations.
