@@ -179,6 +179,12 @@ __all__ = [
     "CumulativeGroupedAllocationPriceConversionRateConfig",
     "CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
     "CumulativeGroupedAllocationPriceLicenseType",
+    "DailyCreditAllowancePrice",
+    "DailyCreditAllowancePriceCompositePriceFilter",
+    "DailyCreditAllowancePriceConversionRateConfig",
+    "DailyCreditAllowancePriceDailyCreditAllowanceConfig",
+    "DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue",
+    "DailyCreditAllowancePriceLicenseType",
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
@@ -3977,6 +3983,164 @@ class CumulativeGroupedAllocationPrice(BaseModel):
     """
 
 
+class DailyCreditAllowancePriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+DailyCreditAllowancePriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue(BaseModel):
+    """Per-dimension credit price for the daily credit allowance model."""
+
+    dimension_values: List[Optional[str]]
+    """One or two matrix keys to filter usage to this value by.
+
+    For example, ["model"] could be used to apply a different credit rate to each AI
+    model.
+    """
+
+    unit_amount: str
+    """Credits charged per unit of usage matching the specified dimension_values"""
+
+
+class DailyCreditAllowancePriceDailyCreditAllowanceConfig(BaseModel):
+    """Configuration for daily_credit_allowance pricing"""
+
+    daily_allowance: str
+    """Credits granted per day. Lose-it-or-use-it; does not roll over."""
+
+    default_unit_amount: str
+    """
+    Default per-unit credit rate for any usage not bucketed into a specified
+    matrix_value
+    """
+
+    dimensions: List[Optional[str]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    event_day_property: str
+    """Event property whose value identifies the day bucket the event belongs to (e.g.
+
+    'event_day' set to an ISO date string in the customer's timezone). The allowance
+    resets per distinct value of this property.
+    """
+
+    matrix_values: List[DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue]
+    """Per-dimension credit rates"""
+
+
+class DailyCreditAllowancePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class DailyCreditAllowancePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[DailyCreditAllowancePriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[DailyCreditAllowancePriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    daily_credit_allowance_config: DailyCreditAllowancePriceDailyCreditAllowanceConfig
+    """Configuration for daily_credit_allowance pricing"""
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["daily_credit_allowance"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[DailyCreditAllowancePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
 class MinimumCompositePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
     """The property of the price to filter on."""
@@ -4398,6 +4562,7 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
         CumulativeGroupedAllocationPrice,
+        DailyCreditAllowancePrice,
         MinimumCompositePrice,
         PercentCompositePrice,
         EventOutputPrice,
