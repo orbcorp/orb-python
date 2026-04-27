@@ -59,6 +59,10 @@ __all__ = [
     "PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPrice",
     "PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
     "PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPriceConversionRateConfig",
+    "PriceEvaluationPriceNewFloatingDailyCreditAllowancePrice",
+    "PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfig",
+    "PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue",
+    "PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceConversionRateConfig",
     "PriceEvaluationPriceNewFloatingPercentCompositePrice",
     "PriceEvaluationPriceNewFloatingPercentCompositePricePercentConfig",
     "PriceEvaluationPriceNewFloatingPercentCompositePriceConversionRateConfig",
@@ -430,6 +434,132 @@ class PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPrice(TypedDict,
     """
 
 
+class PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue(
+    TypedDict, total=False
+):
+    """Per-dimension credit price for the daily credit allowance model."""
+
+    dimension_values: Required[SequenceNotStr[Optional[str]]]
+    """One or two matrix keys to filter usage to this value by.
+
+    For example, ["model"] could be used to apply a different credit rate to each AI
+    model.
+    """
+
+    unit_amount: Required[str]
+    """Credits charged per unit of usage matching the specified dimension_values"""
+
+
+class PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfig(TypedDict, total=False):
+    """Configuration for daily_credit_allowance pricing"""
+
+    daily_allowance: Required[str]
+    """Credits granted per day. Lose-it-or-use-it; does not roll over."""
+
+    default_unit_amount: Required[str]
+    """
+    Default per-unit credit rate for any usage not bucketed into a specified
+    matrix_value
+    """
+
+    dimensions: Required[SequenceNotStr[Optional[str]]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    event_day_property: Required[str]
+    """Event property whose value identifies the day bucket the event belongs to (e.g.
+
+    'event_day' set to an ISO date string in the customer's timezone). The allowance
+    resets per distinct value of this property.
+    """
+
+    matrix_values: Required[
+        Iterable[PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue]
+    ]
+    """Per-dimension credit rates"""
+
+
+PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class PriceEvaluationPriceNewFloatingDailyCreditAllowancePrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    daily_credit_allowance_config: Required[
+        PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfig
+    ]
+    """Configuration for daily_credit_allowance pricing"""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["daily_credit_allowance"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
 class PriceEvaluationPriceNewFloatingPercentCompositePricePercentConfig(TypedDict, total=False):
     """Configuration for percent pricing"""
 
@@ -646,6 +776,7 @@ PriceEvaluationPrice: TypeAlias = Union[
     NewFloatingScalableMatrixWithTieredPricingPrice,
     NewFloatingCumulativeGroupedBulkPrice,
     PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPrice,
+    PriceEvaluationPriceNewFloatingDailyCreditAllowancePrice,
     NewFloatingMinimumCompositePrice,
     PriceEvaluationPriceNewFloatingPercentCompositePrice,
     PriceEvaluationPriceNewFloatingEventOutputPrice,
