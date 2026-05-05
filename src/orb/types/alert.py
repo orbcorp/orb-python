@@ -9,7 +9,7 @@ from .threshold import Threshold
 from .shared.customer_minified import CustomerMinified
 from .shared.subscription_minified import SubscriptionMinified
 
-__all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus", "LicenseType"]
+__all__ = ["Alert", "Metric", "Plan", "BalanceAlertStatus", "LicenseType", "PriceFilter", "ThresholdOverride"]
 
 
 class Metric(BaseModel):
@@ -49,6 +49,37 @@ class LicenseType(BaseModel):
     """Minified license type for alert serialization."""
 
     id: str
+
+
+class PriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class ThresholdOverride(BaseModel):
+    """A per-group threshold override on a grouped cost alert.
+
+    An empty `thresholds` list means the group is silenced (never fires).
+    A non-empty list fully replaces the default thresholds for that group.
+    """
+
+    group_values: List[str]
+    """The values of the grouping keys that identify this group.
+
+    The list length matches the alert's grouping_keys.
+    """
+
+    thresholds: List[Threshold]
+    """The thresholds applied to this group.
+
+    An empty list means the group is silenced.
+    """
 
 
 class Alert(BaseModel):
@@ -113,3 +144,14 @@ class Alert(BaseModel):
 
     license_type: Optional[LicenseType] = None
     """Minified license type for alert serialization."""
+
+    price_filters: Optional[List[PriceFilter]] = None
+    """Filters scoping which prices are included in grouped cost alert evaluation."""
+
+    threshold_overrides: Optional[List[ThresholdOverride]] = None
+    """Per-group threshold overrides.
+
+    Each override maps a specific combination of grouping_keys values to a
+    replacement threshold list. Only present for grouped cost alerts that have at
+    least one override.
+    """
