@@ -357,7 +357,9 @@ class Alerts(SyncAPIResource):
         type: Literal["usage_exceeded", "cost_exceeded"],
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
         pricing_unit_id: Optional[str] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -389,8 +391,18 @@ class Alerts(SyncAPIResource):
 
           metric_id: The metric to track usage for.
 
+          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
+              Supports filtering by price_id, item_id, or price_type with includes/excludes
+              operators. Only applicable when grouping_keys is set.
+
           pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
               set.
+
+          threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
+              grouping_keys values to a list of thresholds that fully replaces the default
+              thresholds for that group. An empty thresholds list silences the group. Groups
+              without an override use the default thresholds. Only applicable when
+              grouping_keys is set.
 
           extra_headers: Send extra headers
 
@@ -412,7 +424,9 @@ class Alerts(SyncAPIResource):
                     "type": type,
                     "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "price_filters": price_filters,
                     "pricing_unit_id": pricing_unit_id,
+                    "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
@@ -851,7 +865,9 @@ class AsyncAlerts(AsyncAPIResource):
         type: Literal["usage_exceeded", "cost_exceeded"],
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
         pricing_unit_id: Optional[str] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -883,8 +899,18 @@ class AsyncAlerts(AsyncAPIResource):
 
           metric_id: The metric to track usage for.
 
+          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
+              Supports filtering by price_id, item_id, or price_type with includes/excludes
+              operators. Only applicable when grouping_keys is set.
+
           pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
               set.
+
+          threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
+              grouping_keys values to a list of thresholds that fully replaces the default
+              thresholds for that group. An empty thresholds list silences the group. Groups
+              without an override use the default thresholds. Only applicable when
+              grouping_keys is set.
 
           extra_headers: Send extra headers
 
@@ -906,7 +932,9 @@ class AsyncAlerts(AsyncAPIResource):
                     "type": type,
                     "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "price_filters": price_filters,
                     "pricing_unit_id": pricing_unit_id,
+                    "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
