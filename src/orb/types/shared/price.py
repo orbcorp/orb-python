@@ -185,6 +185,11 @@ __all__ = [
     "DailyCreditAllowancePriceDailyCreditAllowanceConfig",
     "DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue",
     "DailyCreditAllowancePriceLicenseType",
+    "MeteredAllowancePrice",
+    "MeteredAllowancePriceCompositePriceFilter",
+    "MeteredAllowancePriceConversionRateConfig",
+    "MeteredAllowancePriceMeteredAllowanceConfig",
+    "MeteredAllowancePriceLicenseType",
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
@@ -4141,6 +4146,157 @@ class DailyCreditAllowancePrice(BaseModel):
     """
 
 
+class MeteredAllowancePriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+MeteredAllowancePriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class MeteredAllowancePriceMeteredAllowanceConfig(BaseModel):
+    """Configuration for metered_allowance pricing"""
+
+    allowance_grouping_value: str
+    """
+    The grouping_key value whose summed quantity represents the allowance for this
+    period (e.g. 'storage_snapshot' emitting 3 × avg storage). Capped at consumption
+    — credit can never exceed actual usage.
+    """
+
+    consumption_grouping_value: str
+    """The grouping_key value whose summed quantity represents consumption (e.g.
+
+    'download'). Charged at unit_amount.
+    """
+
+    grouping_key: str
+    """
+    Event property used to partition the metric into consumption and allowance
+    quantities (e.g. 'event_name'). The metric is queried with this key and the two
+    values below select which partition is which.
+    """
+
+    unit_amount: str
+    """Per-unit price applied to gross consumption and to the allowance credit."""
+
+    allowance_display_name: Optional[str] = None
+    """Sub-line label for the credit row (e.g. 'Up to 3x free egress')."""
+
+    consumption_display_name: Optional[str] = None
+    """Sub-line label for the gross consumption row (e.g. 'bytes gotten')."""
+
+
+class MeteredAllowancePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class MeteredAllowancePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[MeteredAllowancePriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[MeteredAllowancePriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    metered_allowance_config: MeteredAllowancePriceMeteredAllowanceConfig
+    """Configuration for metered_allowance pricing"""
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["metered_allowance"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[MeteredAllowancePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
 class MinimumCompositePriceCompositePriceFilter(BaseModel):
     field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
     """The property of the price to filter on."""
@@ -4563,6 +4719,7 @@ Price: TypeAlias = Annotated[
         CumulativeGroupedBulkPrice,
         CumulativeGroupedAllocationPrice,
         DailyCreditAllowancePrice,
+        MeteredAllowancePrice,
         MinimumCompositePrice,
         PercentCompositePrice,
         EventOutputPrice,
