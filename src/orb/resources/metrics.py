@@ -177,10 +177,10 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[BillableMetric]:
-        """
-        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-        metric identifier. It returns information about the metrics including its name,
-        description, and item.
+        """This endpoint is used to list [metrics](/core-concepts#metric).
+
+        It returns
+        information about the metrics including its name, description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -230,10 +230,10 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](/core-concepts#metric).
-
-        It returns
-        information about the metrics including its name, description, and item.
+        """
+        This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           extra_headers: Send extra headers
@@ -411,10 +411,10 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BillableMetric, AsyncPage[BillableMetric]]:
-        """
-        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-        metric identifier. It returns information about the metrics including its name,
-        description, and item.
+        """This endpoint is used to list [metrics](/core-concepts#metric).
+
+        It returns
+        information about the metrics including its name, description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -464,10 +464,10 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](/core-concepts#metric).
-
-        It returns
-        information about the metrics including its name, description, and item.
+        """
+        This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           extra_headers: Send extra headers
