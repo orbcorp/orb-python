@@ -31,7 +31,7 @@ class Hierarchy(BaseModel):
 class AccountingSyncConfigurationAccountingProvider(BaseModel):
     external_provider_id: Optional[str] = None
 
-    provider_type: Literal["quickbooks", "netsuite", "netsuite_ampersand"]
+    provider_type: Literal["quickbooks", "netsuite"]
 
 
 class AccountingSyncConfiguration(BaseModel):

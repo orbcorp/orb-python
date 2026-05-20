@@ -38,7 +38,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -138,7 +138,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -471,7 +471,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -585,7 +585,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -685,7 +685,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -1030,7 +1030,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
