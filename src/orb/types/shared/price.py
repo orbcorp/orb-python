@@ -98,6 +98,13 @@ __all__ = [
     "MatrixWithAllocationPriceCompositePriceFilter",
     "MatrixWithAllocationPriceConversionRateConfig",
     "MatrixWithAllocationPriceLicenseType",
+    "MatrixWithThresholdDiscountsPrice",
+    "MatrixWithThresholdDiscountsPriceCompositePriceFilter",
+    "MatrixWithThresholdDiscountsPriceConversionRateConfig",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup",
+    "MatrixWithThresholdDiscountsPriceLicenseType",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceCompositePriceFilter",
     "TieredWithProrationPriceConversionRateConfig",
@@ -2019,6 +2026,174 @@ class MatrixWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
     license_type: Optional[MatrixWithAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class MatrixWithThresholdDiscountsPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+MatrixWithThresholdDiscountsPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue(BaseModel):
+    first_dimension_value: str
+
+    unit_amount: str
+
+    second_dimension_value: Optional[str] = None
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup(BaseModel):
+    above_threshold_discount_percentage: str
+    """Discount rate applied to spend above the threshold."""
+
+    below_threshold_discount_percentage: str
+    """Discount rate applied to spend at or below the threshold.
+
+    Set to 0 for no baseline discount.
+    """
+
+    cell_coordinates: str
+    """Semicolon-separated list of matrix cell coordinates targeted by this group.
+
+    Each coordinate is `first,second` when the matrix has two dimensions, or just
+    `first` for a single-dimension matrix. Example: `blue,circle;green,triangle`.
+    """
+
+    threshold_amount: str
+
+    description: Optional[str] = None
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig(BaseModel):
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    default_unit_amount: str
+    """Unit price used for usage that does not match any defined matrix cell."""
+
+    first_dimension: str
+    """First matrix dimension key."""
+
+    matrix_values: List[MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue]
+    """Per-cell unit prices."""
+
+    second_dimension: Optional[str] = None
+    """Optional second matrix dimension key."""
+
+    threshold_discount_groups: Optional[
+        List[MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup]
+    ] = None
+
+
+class MatrixWithThresholdDiscountsPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class MatrixWithThresholdDiscountsPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[MatrixWithThresholdDiscountsPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[MatrixWithThresholdDiscountsPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    matrix_with_threshold_discounts_config: MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["matrix_with_threshold_discounts"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[MatrixWithThresholdDiscountsPriceLicenseType] = None
     """
     The LicenseType resource represents a type of license that can be assigned to
     users. License types are used during billing by grouping metrics on the
@@ -4704,6 +4879,7 @@ Price: TypeAlias = Annotated[
         PackageWithAllocationPrice,
         UnitWithPercentPrice,
         MatrixWithAllocationPrice,
+        MatrixWithThresholdDiscountsPrice,
         TieredWithProrationPrice,
         UnitWithProrationPrice,
         GroupedAllocationPrice,

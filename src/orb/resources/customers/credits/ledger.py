@@ -302,11 +302,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -482,11 +488,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -649,11 +661,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -824,11 +842,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -993,11 +1017,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -1239,11 +1269,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -1419,11 +1455,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -1586,11 +1628,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -1761,11 +1809,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -1930,11 +1984,17 @@ class Ledger(SyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -2529,11 +2589,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -2709,11 +2775,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -2876,11 +2948,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3051,11 +3129,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3220,11 +3304,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3466,11 +3556,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3646,11 +3742,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3813,11 +3915,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -3988,11 +4096,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
@@ -4157,11 +4271,17 @@ class AsyncLedger(AsyncAPIResource):
         ## Deducting Credits
 
         Orb allows you to deduct credits from a customer by creating an entry of type
-        `decrement`. Orb matches the algorithm for automatic deductions for determining
-        which credit blocks to decrement from. In the case that the deduction leads to
-        multiple ledger entries, the response from this endpoint will be the final
-        deduction. Orb also optionally allows specifying a description to assist with
-        auditing.
+        `decrement`. A `decrement` entry records credits as usage and immediately
+        recognizes revenue at the block's `per_unit_cost_basis`.
+
+        For most credit removals, use `void` (no revenue impact) or `expiration_change`
+        (revenue recognized on expiration) instead. Only use `decrement` when credits
+        were genuinely consumed outside of normal event ingestion.
+
+        Orb matches the algorithm for automatic deductions for determining which credit
+        blocks to decrement from. In the case that the deduction leads to multiple
+        ledger entries, the response from this endpoint will be the final deduction. Orb
+        also optionally allows specifying a description to assist with auditing.
 
         The following snippet illustrates a sample request body to decrement credits.
 
