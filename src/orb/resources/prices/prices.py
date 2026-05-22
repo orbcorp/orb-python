@@ -1481,6 +1481,107 @@ class Prices(SyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
+        matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig,
+        model_type: Literal["matrix_with_threshold_discounts"],
+        name: str,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[
+            price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig
+        ]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          matrix_with_threshold_discounts_config: Configuration for matrix_with_threshold_discounts pricing
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    def create(
+        self,
+        *,
+        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        currency: str,
+        item_id: str,
         model_type: Literal["tiered_with_proration"],
         name: str,
         tiered_with_proration_config: price_create_params.NewFloatingTieredWithProrationPriceTieredWithProrationConfig,
@@ -3382,6 +3483,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "unit_with_percent_config"],
         ["cadence", "currency", "item_id", "matrix_with_allocation_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "matrix_with_threshold_discounts_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_proration_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "unit_with_proration_config"],
         ["cadence", "currency", "grouped_allocation_config", "item_id", "model_type", "name"],
@@ -3422,6 +3524,7 @@ class Prices(SyncAPIResource):
         | Literal["package_with_allocation"]
         | Literal["unit_with_percent"]
         | Literal["matrix_with_allocation"]
+        | Literal["matrix_with_threshold_discounts"]
         | Literal["tiered_with_proration"]
         | Literal["unit_with_proration"]
         | Literal["grouped_allocation"]
@@ -3461,6 +3564,7 @@ class Prices(SyncAPIResource):
         | Optional[price_create_params.NewFloatingPackageWithAllocationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingUnitWithPercentPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingMatrixWithAllocationPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingTieredWithProrationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingUnitWithProrationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingGroupedAllocationPriceConversionRateConfig]
@@ -3507,6 +3611,8 @@ class Prices(SyncAPIResource):
         unit_with_percent_config: price_create_params.NewFloatingUnitWithPercentPriceUnitWithPercentConfig
         | Omit = omit,
         matrix_with_allocation_config: MatrixWithAllocationConfig | Omit = omit,
+        matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig
+        | Omit = omit,
         tiered_with_proration_config: price_create_params.NewFloatingTieredWithProrationPriceTieredWithProrationConfig
         | Omit = omit,
         unit_with_proration_config: price_create_params.NewFloatingUnitWithProrationPriceUnitWithProrationConfig
@@ -3588,6 +3694,7 @@ class Prices(SyncAPIResource):
                         "package_with_allocation_config": package_with_allocation_config,
                         "unit_with_percent_config": unit_with_percent_config,
                         "matrix_with_allocation_config": matrix_with_allocation_config,
+                        "matrix_with_threshold_discounts_config": matrix_with_threshold_discounts_config,
                         "tiered_with_proration_config": tiered_with_proration_config,
                         "unit_with_proration_config": unit_with_proration_config,
                         "grouped_allocation_config": grouped_allocation_config,
@@ -5467,6 +5574,107 @@ class AsyncPrices(AsyncAPIResource):
         cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
         currency: str,
         item_id: str,
+        matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig,
+        model_type: Literal["matrix_with_threshold_discounts"],
+        name: str,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[
+            price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig
+        ]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          matrix_with_threshold_discounts_config: Configuration for matrix_with_threshold_discounts pricing
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
+    @overload
+    async def create(
+        self,
+        *,
+        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        currency: str,
+        item_id: str,
         model_type: Literal["tiered_with_proration"],
         name: str,
         tiered_with_proration_config: price_create_params.NewFloatingTieredWithProrationPriceTieredWithProrationConfig,
@@ -7368,6 +7576,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "model_type", "name", "package_with_allocation_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "unit_with_percent_config"],
         ["cadence", "currency", "item_id", "matrix_with_allocation_config", "model_type", "name"],
+        ["cadence", "currency", "item_id", "matrix_with_threshold_discounts_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_with_proration_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "unit_with_proration_config"],
         ["cadence", "currency", "grouped_allocation_config", "item_id", "model_type", "name"],
@@ -7408,6 +7617,7 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["package_with_allocation"]
         | Literal["unit_with_percent"]
         | Literal["matrix_with_allocation"]
+        | Literal["matrix_with_threshold_discounts"]
         | Literal["tiered_with_proration"]
         | Literal["unit_with_proration"]
         | Literal["grouped_allocation"]
@@ -7447,6 +7657,7 @@ class AsyncPrices(AsyncAPIResource):
         | Optional[price_create_params.NewFloatingPackageWithAllocationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingUnitWithPercentPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingMatrixWithAllocationPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingTieredWithProrationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingUnitWithProrationPriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingGroupedAllocationPriceConversionRateConfig]
@@ -7493,6 +7704,8 @@ class AsyncPrices(AsyncAPIResource):
         unit_with_percent_config: price_create_params.NewFloatingUnitWithPercentPriceUnitWithPercentConfig
         | Omit = omit,
         matrix_with_allocation_config: MatrixWithAllocationConfig | Omit = omit,
+        matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig
+        | Omit = omit,
         tiered_with_proration_config: price_create_params.NewFloatingTieredWithProrationPriceTieredWithProrationConfig
         | Omit = omit,
         unit_with_proration_config: price_create_params.NewFloatingUnitWithProrationPriceUnitWithProrationConfig
@@ -7574,6 +7787,7 @@ class AsyncPrices(AsyncAPIResource):
                         "package_with_allocation_config": package_with_allocation_config,
                         "unit_with_percent_config": unit_with_percent_config,
                         "matrix_with_allocation_config": matrix_with_allocation_config,
+                        "matrix_with_threshold_discounts_config": matrix_with_threshold_discounts_config,
                         "tiered_with_proration_config": tiered_with_proration_config,
                         "unit_with_proration_config": unit_with_proration_config,
                         "grouped_allocation_config": grouped_allocation_config,

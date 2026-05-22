@@ -64,6 +64,11 @@ __all__ = [
     "AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigFilter",
     "AddPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfigTier",
     "AddPriceNewFloatingBulkWithFiltersPriceConversionRateConfig",
+    "AddPriceNewFloatingMatrixWithThresholdDiscountsPrice",
+    "AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig",
+    "AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue",
+    "AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup",
+    "AddPriceNewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPrice",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig",
     "AddPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateConfig",
@@ -236,6 +241,144 @@ class AddPriceNewFloatingBulkWithFiltersPrice(TypedDict, total=False):
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[AddPriceNewFloatingBulkWithFiltersPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+
+class AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue(
+    TypedDict, total=False
+):
+    first_dimension_value: Required[str]
+
+    unit_amount: Required[str]
+
+    second_dimension_value: Optional[str]
+
+
+class AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup(
+    TypedDict, total=False
+):
+    above_threshold_discount_percentage: Required[str]
+    """Discount rate applied to spend above the threshold."""
+
+    below_threshold_discount_percentage: Required[str]
+    """Discount rate applied to spend at or below the threshold.
+
+    Set to 0 for no baseline discount.
+    """
+
+    cell_coordinates: Required[str]
+    """Semicolon-separated list of matrix cell coordinates targeted by this group.
+
+    Each coordinate is `first,second` when the matrix has two dimensions, or just
+    `first` for a single-dimension matrix. Example: `blue,circle;green,triangle`.
+    """
+
+    threshold_amount: Required[str]
+
+    description: Optional[str]
+
+
+class AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig(TypedDict, total=False):
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    default_unit_amount: Required[str]
+    """Unit price used for usage that does not match any defined matrix cell."""
+
+    first_dimension: Required[str]
+    """First matrix dimension key."""
+
+    matrix_values: Required[
+        Iterable[AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue]
+    ]
+    """Per-cell unit prices."""
+
+    second_dimension: Optional[str]
+    """Optional second matrix dimension key."""
+
+    threshold_discount_groups: Iterable[
+        AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup
+    ]
+
+
+AddPriceNewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPriceNewFloatingMatrixWithThresholdDiscountsPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    currency: Required[str]
+    """An ISO 4217 currency string for which this price is billed in."""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    matrix_with_threshold_discounts_config: Required[
+        AddPriceNewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig
+    ]
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    model_type: Required[Literal["matrix_with_threshold_discounts"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPriceNewFloatingMatrixWithThresholdDiscountsPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
@@ -901,6 +1044,7 @@ AddPrice: TypeAlias = Union[
     NewFloatingPackageWithAllocationPrice,
     NewFloatingUnitWithPercentPrice,
     NewFloatingMatrixWithAllocationPrice,
+    AddPriceNewFloatingMatrixWithThresholdDiscountsPrice,
     NewFloatingTieredWithProrationPrice,
     NewFloatingUnitWithProrationPrice,
     NewFloatingGroupedAllocationPrice,
