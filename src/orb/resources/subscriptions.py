@@ -616,6 +616,11 @@ class Subscriptions(SyncAPIResource):
         for multiple customers, use the customer_id[] or external_customer_id[] query
         parameters.
 
+        Subscriptions can be filtered by status using the status query parameter (one of
+        `active`, `ended`, or `upcoming`). To filter for multiple statuses in a single
+        request, use the status[] query parameter, e.g.
+        `status[]=active&status[]=ended`.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
@@ -2723,6 +2728,11 @@ class AsyncSubscriptions(AsyncAPIResource):
         customer_id or external_customer_id query parameters. To filter subscriptions
         for multiple customers, use the customer_id[] or external_customer_id[] query
         parameters.
+
+        Subscriptions can be filtered by status using the status query parameter (one of
+        `active`, `ended`, or `upcoming`). To filter for multiple statuses in a single
+        request, use the status[] query parameter, e.g.
+        `status[]=active&status[]=ended`.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
