@@ -162,6 +162,13 @@ class Customer(BaseModel):
     """
 
     portal_url: Optional[str] = None
+    """Deprecated.
+
+    Returns the URL of the most recent non-expired portal link, or null. When the
+    account has opted into customer portal sessions, this field always returns null.
+    Use POST /v1/customers/{id}/portal_sessions to mint short-lived portal session
+    URLs.
+    """
 
     shipping_address: Optional[Address] = None
 
