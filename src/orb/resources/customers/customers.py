@@ -156,9 +156,7 @@ class Customers(SyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -450,9 +448,7 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1031,9 +1027,7 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1403,9 +1397,7 @@ class AsyncCustomers(AsyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1697,9 +1689,7 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -2278,9 +2268,7 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[
-            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-        ]
+        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,

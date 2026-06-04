@@ -146,9 +146,7 @@ class Customer(BaseModel):
     name: str
     """The full name of the customer"""
 
-    payment_provider: Optional[
-        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-    ] = None
+    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]] = None
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
