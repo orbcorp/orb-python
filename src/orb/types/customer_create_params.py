@@ -95,9 +95,7 @@ class CustomerCreateParams(TypedDict, total=False):
     a supported payment provider such as Stripe.
     """
 
-    payment_provider: Optional[
-        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "netsuite_ampersand"]
-    ]
+    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
