@@ -4620,7 +4620,20 @@ class PercentCompositePricePercentConfig(BaseModel):
     """Configuration for percent pricing"""
 
     percent: float
-    """What percent of the component subtotals to charge"""
+    """Fraction of the component subtotals to charge (0 < percent <= 1)."""
+
+    maximum_amount: Optional[str] = None
+    """Maximum amount to charge. If unset, the fee has no upper bound."""
+
+    minimum_amount: Optional[str] = None
+    """Minimum amount to charge. If unset, the fee is bounded below by 0."""
+
+    prorated: Optional[bool] = None
+    """If true, the minimum_amount is prorated based on the service period.
+
+    The maximum_amount is an absolute cap (never prorated), and the percent applied
+    to upstream subtotals is never prorated either.
+    """
 
 
 class PercentCompositePriceLicenseType(BaseModel):

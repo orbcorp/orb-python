@@ -156,7 +156,9 @@ class Customers(SyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -441,6 +443,7 @@ class Customers(SyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -448,7 +451,9 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -489,6 +494,9 @@ class Customers(SyncAPIResource):
               can only be set if the customer does not already have a currency configured. If
               not set at creation or update time, it will be set at subscription creation
               time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -693,6 +701,7 @@ class Customers(SyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -1020,6 +1029,7 @@ class Customers(SyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -1027,7 +1037,9 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1066,6 +1078,9 @@ class Customers(SyncAPIResource):
               can only be set if the customer does not already have a currency configured. If
               not set at creation or update time, it will be set at subscription creation
               time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -1270,6 +1285,7 @@ class Customers(SyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -1397,7 +1413,9 @@ class AsyncCustomers(AsyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1682,6 +1700,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -1689,7 +1708,9 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1730,6 +1751,9 @@ class AsyncCustomers(AsyncAPIResource):
               can only be set if the customer does not already have a currency configured. If
               not set at creation or update time, it will be set at subscription creation
               time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -1934,6 +1958,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -2261,6 +2286,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -2268,7 +2294,9 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -2307,6 +2335,9 @@ class AsyncCustomers(AsyncAPIResource):
               can only be set if the customer does not already have a currency configured. If
               not set at creation or update time, it will be set at subscription creation
               time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -2511,6 +2542,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,

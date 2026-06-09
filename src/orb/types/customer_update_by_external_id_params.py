@@ -62,6 +62,12 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
     subscription creation time.
     """
 
+    default_payment_method_id: Optional[str]
+    """The Orb ID of the payment method to set as this customer's default.
+
+    Pass `null` to clear the customer's default payment method.
+    """
+
     email: Optional[str]
     """A valid customer email, to be used for invoicing and notifications."""
 
@@ -95,7 +101,9 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
     a supported payment provider such as Stripe.
     """
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+    payment_provider: Optional[
+        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+    ]
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode:

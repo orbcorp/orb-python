@@ -3721,7 +3721,7 @@ class TestPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -3733,7 +3733,12 @@ class TestPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={
+                "percent": 1,
+                "maximum_amount": "maximum_amount",
+                "minimum_amount": "minimum_amount",
+                "prorated": True,
+            },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -3770,7 +3775,7 @@ class TestPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         )
 
         assert response.is_closed is True
@@ -3786,7 +3791,7 @@ class TestPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -7950,7 +7955,7 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         )
         assert_matches_type(Price, price, path=["response"])
 
@@ -7962,7 +7967,12 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={
+                "percent": 1,
+                "maximum_amount": "maximum_amount",
+                "minimum_amount": "minimum_amount",
+                "prorated": True,
+            },
             billable_metric_id="billable_metric_id",
             billed_in_advance=True,
             billing_cycle_configuration={
@@ -7999,7 +8009,7 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         )
 
         assert response.is_closed is True
@@ -8015,7 +8025,7 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="percent",
             name="Annual fee",
-            percent_config={"percent": 0},
+            percent_config={"percent": 1},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
