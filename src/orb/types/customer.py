@@ -14,6 +14,7 @@ __all__ = [
     "Hierarchy",
     "AccountingSyncConfiguration",
     "AccountingSyncConfigurationAccountingProvider",
+    "DefaultPaymentMethod",
     "PaymentConfiguration",
     "PaymentConfigurationPaymentProvider",
     "ReportingConfiguration",
@@ -38,6 +39,44 @@ class AccountingSyncConfiguration(BaseModel):
     accounting_providers: List[AccountingSyncConfigurationAccountingProvider]
 
     excluded: bool
+
+
+class DefaultPaymentMethod(BaseModel):
+    """
+    A payment method represents a customer's stored payment instrument held with an external payment
+    provider (such as Adyen or Stripe).
+
+    The serialization is intentionally minimal for now; provider-pulled details (e.g. card display
+    metadata) will be added over time.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the payment method."""
+
+    created_at: datetime
+    """The time at which the payment method was created."""
+
+    customer_id: str
+    """The ID of the Orb customer this payment method is attached to."""
+
+    default: bool
+    """Whether this is the customer's default payment method."""
+
+    external_payment_method_id: str
+    """The identifier of this payment method in the external payment provider."""
+
+    payment_method_type: Literal["card", "us_bank_account", "link", "amazon_pay", "crypto"]
+    """The type of the underlying payment instrument, e.g.
+
+    `card` or `us_bank_account`.
+    """
+
+    provider_type: Optional[str] = None
+    """
+    The external payment provider this method belongs to, derived from the linked
+    payment gateway connection (e.g. `adyen` or `stripe`). Null if the connection
+    has been removed.
+    """
 
 
 class PaymentConfigurationPaymentProvider(BaseModel):
@@ -146,7 +185,9 @@ class Customer(BaseModel):
     name: str
     """The full name of the customer"""
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]] = None
+    payment_provider: Optional[
+        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+    ] = None
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
@@ -338,6 +379,15 @@ class Customer(BaseModel):
 
     This field is nullable for backwards compatibility but will always return a
     boolean value.
+    """
+
+    default_payment_method: Optional[DefaultPaymentMethod] = None
+    """
+    A payment method represents a customer's stored payment instrument held with an
+    external payment provider (such as Adyen or Stripe).
+
+    The serialization is intentionally minimal for now; provider-pulled details
+    (e.g. card display metadata) will be added over time.
     """
 
     payment_configuration: Optional[PaymentConfiguration] = None

@@ -274,6 +274,7 @@ class TestAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            currency="currency",
             grouping_keys=["string"],
             metric_id="metric_id",
             price_filters=[
@@ -283,7 +284,6 @@ class TestAlerts:
                     "values": ["string"],
                 }
             ],
-            pricing_unit_id="pricing_unit_id",
             threshold_overrides=[
                 {
                     "group_values": ["string"],
@@ -685,6 +685,7 @@ class TestAsyncAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            currency="currency",
             grouping_keys=["string"],
             metric_id="metric_id",
             price_filters=[
@@ -694,7 +695,6 @@ class TestAsyncAlerts:
                     "values": ["string"],
                 }
             ],
-            pricing_unit_id="pricing_unit_id",
             threshold_overrides=[
                 {
                     "group_values": ["string"],

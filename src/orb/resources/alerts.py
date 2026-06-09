@@ -355,10 +355,10 @@ class Alerts(SyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        currency: Optional[str] | Omit = omit,
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
         price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
-        pricing_unit_id: Optional[str] | Omit = omit,
         threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -386,6 +386,9 @@ class Alerts(SyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          currency: The case sensitive currency or custom pricing unit to use for grouped cost
+              alerts. Required when grouping_keys is set.
+
           grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
               alerts.
 
@@ -394,9 +397,6 @@ class Alerts(SyncAPIResource):
           price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
               Supports filtering by price_id, item_id, or price_type with includes/excludes
               operators. Only applicable when grouping_keys is set.
-
-          pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
-              set.
 
           threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
               grouping_keys values to a list of thresholds that fully replaces the default
@@ -422,10 +422,10 @@ class Alerts(SyncAPIResource):
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "currency": currency,
                     "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
                     "price_filters": price_filters,
-                    "pricing_unit_id": pricing_unit_id,
                     "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
@@ -863,10 +863,10 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        currency: Optional[str] | Omit = omit,
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
         price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
-        pricing_unit_id: Optional[str] | Omit = omit,
         threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -894,6 +894,9 @@ class AsyncAlerts(AsyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          currency: The case sensitive currency or custom pricing unit to use for grouped cost
+              alerts. Required when grouping_keys is set.
+
           grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
               alerts.
 
@@ -902,9 +905,6 @@ class AsyncAlerts(AsyncAPIResource):
           price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
               Supports filtering by price_id, item_id, or price_type with includes/excludes
               operators. Only applicable when grouping_keys is set.
-
-          pricing_unit_id: The pricing unit to use for grouped cost alerts. Required when grouping_keys is
-              set.
 
           threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
               grouping_keys values to a list of thresholds that fully replaces the default
@@ -930,10 +930,10 @@ class AsyncAlerts(AsyncAPIResource):
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "currency": currency,
                     "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
                     "price_filters": price_filters,
-                    "pricing_unit_id": pricing_unit_id,
                     "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,

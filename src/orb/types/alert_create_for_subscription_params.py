@@ -18,6 +18,12 @@ class AlertCreateForSubscriptionParams(TypedDict, total=False):
     type: Required[Literal["usage_exceeded", "cost_exceeded"]]
     """The type of alert to create. This must be a valid alert type."""
 
+    currency: Optional[str]
+    """
+    The case sensitive currency or custom pricing unit to use for grouped cost
+    alerts. Required when grouping_keys is set.
+    """
+
     grouping_keys: Optional[SequenceNotStr[str]]
     """The property keys to group cost alerts by.
 
@@ -32,12 +38,6 @@ class AlertCreateForSubscriptionParams(TypedDict, total=False):
 
     Supports filtering by price_id, item_id, or price_type with includes/excludes
     operators. Only applicable when grouping_keys is set.
-    """
-
-    pricing_unit_id: Optional[str]
-    """The pricing unit to use for grouped cost alerts.
-
-    Required when grouping_keys is set.
     """
 
     threshold_overrides: Optional[Iterable[ThresholdOverride]]

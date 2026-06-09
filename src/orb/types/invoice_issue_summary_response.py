@@ -122,7 +122,7 @@ class PaymentAttempt(BaseModel):
     created_at: datetime
     """The time at which the payment attempt was created."""
 
-    payment_provider: Optional[Literal["stripe"]] = None
+    payment_provider: Optional[Literal["stripe", "adyen"]] = None
     """The payment provider that attempted to collect the payment."""
 
     payment_provider_id: Optional[str] = None
