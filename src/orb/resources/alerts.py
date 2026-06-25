@@ -96,6 +96,8 @@ class Alerts(SyncAPIResource):
         alert_configuration_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
+        price_filters: Optional[Iterable[alert_update_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_update_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,6 +111,13 @@ class Alerts(SyncAPIResource):
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          price_filters: Replaces the price filters on a grouped cost alert; an empty list clears them.
+              Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+
+          threshold_overrides: Replaces the per-group threshold overrides on a grouped cost alert; an empty
+              list clears them. Only applicable to cost alerts with grouping_keys. Omit to
+              leave unchanged.
 
           extra_headers: Send extra headers
 
@@ -126,7 +135,14 @@ class Alerts(SyncAPIResource):
             )
         return self._put(
             path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
-            body=maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            body=maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
+                },
+                alert_update_params.AlertUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -604,6 +620,8 @@ class AsyncAlerts(AsyncAPIResource):
         alert_configuration_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
+        price_filters: Optional[Iterable[alert_update_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_update_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -617,6 +635,13 @@ class AsyncAlerts(AsyncAPIResource):
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          price_filters: Replaces the price filters on a grouped cost alert; an empty list clears them.
+              Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+
+          threshold_overrides: Replaces the per-group threshold overrides on a grouped cost alert; an empty
+              list clears them. Only applicable to cost alerts with grouping_keys. Omit to
+              leave unchanged.
 
           extra_headers: Send extra headers
 
@@ -634,7 +659,14 @@ class AsyncAlerts(AsyncAPIResource):
             )
         return await self._put(
             path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
-            body=await async_maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
+                },
+                alert_update_params.AlertUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
