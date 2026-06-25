@@ -87,6 +87,9 @@ __all__ = [
     "PricePriceNewPlanEventOutputPriceConversionRateConfig",
     "Adjustment",
     "AdjustmentAdjustment",
+    "AdjustmentAdjustmentNewTieredPercentageDiscount",
+    "AdjustmentAdjustmentNewTieredPercentageDiscountTier",
+    "AdjustmentAdjustmentNewTieredPercentageDiscountFilter",
     "PlanPhase",
 ]
 
@@ -1366,8 +1369,65 @@ class Price(TypedDict, total=False):
     """New plan price request body params."""
 
 
+class AdjustmentAdjustmentNewTieredPercentageDiscountTier(TypedDict, total=False):
+    lower_bound: Required[float]
+    """Exclusive lower bound of cumulative spend for this tier."""
+
+    percentage: Required[float]
+    """The percentage (0-1) discounted from spend in this tier."""
+
+    upper_bound: Optional[float]
+    """Inclusive upper bound of cumulative spend; null for the final open-ended tier."""
+
+
+class AdjustmentAdjustmentNewTieredPercentageDiscountFilter(TypedDict, total=False):
+    field: Required[Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]]
+    """The property of the price to filter on."""
+
+    operator: Required[Literal["includes", "excludes"]]
+    """Should prices that match the filter be included or excluded."""
+
+    values: Required[SequenceNotStr[str]]
+    """The IDs or values that match this filter."""
+
+
+class AdjustmentAdjustmentNewTieredPercentageDiscount(TypedDict, total=False):
+    adjustment_type: Required[Literal["tiered_percentage_discount"]]
+
+    tiers: Required[Iterable[AdjustmentAdjustmentNewTieredPercentageDiscountTier]]
+
+    applies_to_all: Optional[Literal[True]]
+    """If set, the adjustment will apply to every price on the subscription."""
+
+    applies_to_item_ids: Optional[SequenceNotStr[str]]
+    """The set of item IDs to which this adjustment applies."""
+
+    applies_to_price_ids: Optional[SequenceNotStr[str]]
+    """The set of price IDs to which this adjustment applies."""
+
+    currency: Optional[str]
+    """If set, only prices in the specified currency will have the adjustment applied."""
+
+    filters: Optional[Iterable[AdjustmentAdjustmentNewTieredPercentageDiscountFilter]]
+    """A list of filters that determine which prices this adjustment will apply to."""
+
+    is_invoice_level: bool
+    """When false, this adjustment will be applied to a single price.
+
+    Otherwise, it will be applied at the invoice level, possibly to multiple prices.
+    """
+
+    price_type: Optional[Literal["usage", "fixed_in_advance", "fixed_in_arrears", "fixed", "in_arrears"]]
+    """If set, only prices of the specified type will have the adjustment applied."""
+
+
 AdjustmentAdjustment: TypeAlias = Union[
-    NewPercentageDiscount, NewUsageDiscount, NewAmountDiscount, NewMinimum, NewMaximum
+    NewPercentageDiscount,
+    NewUsageDiscount,
+    NewAmountDiscount,
+    NewMinimum,
+    NewMaximum,
+    AdjustmentAdjustmentNewTieredPercentageDiscount,
 ]
 
 
