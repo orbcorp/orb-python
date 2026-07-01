@@ -122,6 +122,14 @@ class MutatedSubscription(BaseModel):
     the plan's behavior. If null, defaults to the customer's setting.
     """
 
+    auto_issuance: Optional[bool] = None
+    """Determines whether invoices for this subscription will be automatically issued.
+
+    This resolves the effective setting for the subscription: a subscription-level
+    override if set, otherwise the customer-level setting, otherwise the
+    account-level default.
+    """
+
     billing_cycle_anchor_configuration: BillingCycleAnchorConfiguration
 
     billing_cycle_day: int

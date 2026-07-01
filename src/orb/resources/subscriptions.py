@@ -69,6 +69,7 @@ class Subscriptions(SyncAPIResource):
         add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | Omit = omit,
         align_billing_with_subscription_start_date: bool | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         aws_region: Optional[str] | Omit = omit,
         billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration] | Omit = omit,
         coupon_redemption_code: Optional[str] | Omit = omit,
@@ -380,6 +381,11 @@ class Subscriptions(SyncAPIResource):
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
 
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
+
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
               returned and the subscription creation or plan change will not be scheduled.
@@ -465,6 +471,7 @@ class Subscriptions(SyncAPIResource):
                     "add_prices": add_prices,
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "aws_region": aws_region,
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
@@ -512,6 +519,7 @@ class Subscriptions(SyncAPIResource):
         subscription_id: str,
         *,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
         invoicing_threshold: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -533,6 +541,11 @@ class Subscriptions(SyncAPIResource):
           auto_collection: Determines whether issued invoices for this subscription will automatically be
               charged with the saved payment method on the due date. This property defaults to
               the plan's behavior.
+
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
 
           default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
               is not provided, it is determined by the plan configuration.
@@ -567,6 +580,7 @@ class Subscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "default_invoice_memo": default_invoice_memo,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
@@ -1442,6 +1456,7 @@ class Subscriptions(SyncAPIResource):
         add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | Omit = omit,
         align_billing_with_plan_change_date: Optional[bool] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]] | Omit = omit,
         billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration] | Omit = omit,
         change_date: Union[str, datetime, None] | Omit = omit,
@@ -1672,6 +1687,11 @@ class Subscriptions(SyncAPIResource):
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
 
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
+
           billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
@@ -1758,6 +1778,7 @@ class Subscriptions(SyncAPIResource):
                     "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_cycle_alignment": billing_cycle_alignment,
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "change_date": change_date,
@@ -2182,6 +2203,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         add_prices: Optional[Iterable[subscription_create_params.AddPrice]] | Omit = omit,
         align_billing_with_subscription_start_date: bool | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         aws_region: Optional[str] | Omit = omit,
         billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration] | Omit = omit,
         coupon_redemption_code: Optional[str] | Omit = omit,
@@ -2493,6 +2515,11 @@ class AsyncSubscriptions(AsyncAPIResource):
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
 
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
+
           coupon_redemption_code: Redemption code to be used for this subscription. If the coupon cannot be found
               by its redemption code, or cannot be redeemed, an error response will be
               returned and the subscription creation or plan change will not be scheduled.
@@ -2578,6 +2605,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "add_prices": add_prices,
                     "align_billing_with_subscription_start_date": align_billing_with_subscription_start_date,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "aws_region": aws_region,
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "coupon_redemption_code": coupon_redemption_code,
@@ -2625,6 +2653,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         subscription_id: str,
         *,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
         invoicing_threshold: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -2646,6 +2675,11 @@ class AsyncSubscriptions(AsyncAPIResource):
           auto_collection: Determines whether issued invoices for this subscription will automatically be
               charged with the saved payment method on the due date. This property defaults to
               the plan's behavior.
+
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
 
           default_invoice_memo: Determines the default memo on this subscription's invoices. Note that if this
               is not provided, it is determined by the plan configuration.
@@ -2680,6 +2714,7 @@ class AsyncSubscriptions(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "default_invoice_memo": default_invoice_memo,
                     "invoicing_threshold": invoicing_threshold,
                     "metadata": metadata,
@@ -3555,6 +3590,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         add_prices: Optional[Iterable[subscription_schedule_plan_change_params.AddPrice]] | Omit = omit,
         align_billing_with_plan_change_date: Optional[bool] | Omit = omit,
         auto_collection: Optional[bool] | Omit = omit,
+        auto_issuance: Optional[bool] | Omit = omit,
         billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]] | Omit = omit,
         billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration] | Omit = omit,
         change_date: Union[str, datetime, None] | Omit = omit,
@@ -3785,6 +3821,11 @@ class AsyncSubscriptions(AsyncAPIResource):
               charged with the saved payment method on the due date. If not specified, this
               defaults to the behavior configured for this customer.
 
+          auto_issuance: Used to determine if invoices for this subscription will be automatically
+              issued. If true, invoices will be automatically issued. If false, invoices will
+              require manual approval. If `null` is specified, this defaults to the behavior
+              configured for this customer.
+
           billing_cycle_alignment: Reset billing periods to be aligned with the plan change's effective date or
               start of the month. Defaults to `unchanged` which keeps subscription's existing
               billing cycle alignment.
@@ -3871,6 +3912,7 @@ class AsyncSubscriptions(AsyncAPIResource):
                     "add_prices": add_prices,
                     "align_billing_with_plan_change_date": align_billing_with_plan_change_date,
                     "auto_collection": auto_collection,
+                    "auto_issuance": auto_issuance,
                     "billing_cycle_alignment": billing_cycle_alignment,
                     "billing_cycle_anchor_configuration": billing_cycle_anchor_configuration,
                     "change_date": change_date,
