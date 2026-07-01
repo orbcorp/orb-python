@@ -137,6 +137,7 @@ class TestSubscriptions:
             ],
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
+            auto_issuance=True,
             aws_region="aws_region",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -307,6 +308,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.update(
             subscription_id="subscription_id",
             auto_collection=True,
+            auto_issuance=True,
             default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
@@ -992,6 +994,7 @@ class TestSubscriptions:
             ],
             align_billing_with_plan_change_date=True,
             auto_collection=True,
+            auto_issuance=True,
             billing_cycle_alignment="unchanged",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -1548,6 +1551,7 @@ class TestAsyncSubscriptions:
             ],
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
+            auto_issuance=True,
             aws_region="aws_region",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -1718,6 +1722,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.update(
             subscription_id="subscription_id",
             auto_collection=True,
+            auto_issuance=True,
             default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
@@ -2403,6 +2408,7 @@ class TestAsyncSubscriptions:
             ],
             align_billing_with_plan_change_date=True,
             auto_collection=True,
+            auto_issuance=True,
             billing_cycle_alignment="unchanged",
             billing_cycle_anchor_configuration={
                 "day": 1,

@@ -171,6 +171,15 @@ class SubscriptionSchedulePlanChangeParams(TypedDict, total=False):
     defaults to the behavior configured for this customer.
     """
 
+    auto_issuance: Optional[bool]
+    """Used to determine if invoices for this subscription will be automatically
+    issued.
+
+    If true, invoices will be automatically issued. If false, invoices will require
+    manual approval. If `null` is specified, this defaults to the behavior
+    configured for this customer.
+    """
+
     billing_cycle_alignment: Optional[Literal["unchanged", "plan_change_date", "start_of_month"]]
     """
     Reset billing periods to be aligned with the plan change's effective date or

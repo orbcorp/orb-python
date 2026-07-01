@@ -5,8 +5,9 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .shared.custom_expiration import CustomExpiration
 
-__all__ = ["CreditBlockRetrieveResponse", "Filter"]
+__all__ = ["CreditBlockRetrieveResponse", "Filter", "CreditAllocation", "CreditAllocationFilter"]
 
 
 class Filter(BaseModel):
@@ -20,12 +21,55 @@ class Filter(BaseModel):
     """The IDs or values that match this filter."""
 
 
+class CreditAllocationFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class CreditAllocation(BaseModel):
+    """The credit allocation that funded a block.
+
+    Extends the allocation resource
+    serialized on prices with the catalog-item attribution of the funding price.
+    """
+
+    allows_rollover: bool
+
+    currency: str
+
+    custom_expiration: Optional[CustomExpiration] = None
+
+    item_id: str
+    """
+    The ID of the catalog item this block was allocated from, derived from the
+    allocation's price.
+    """
+
+    filters: Optional[List[CreditAllocationFilter]] = None
+
+    license_type_id: Optional[str] = None
+
+
 class CreditBlockRetrieveResponse(BaseModel):
     """The Credit Block resource models prepaid credits within Orb."""
 
     id: str
 
     balance: float
+
+    credit_block_source: Literal["allocation", "top_up", "manual"]
+    """
+    How this credit block was created: `allocation` (a subscription's recurring
+    credit allocation), `top_up` (an automatic balance-threshold top-up), or
+    `manual` (a manual credit ledger increment, including credits voided or expired
+    off another block).
+    """
 
     effective_date: Optional[datetime] = None
 
@@ -46,3 +90,10 @@ class CreditBlockRetrieveResponse(BaseModel):
     per_unit_cost_basis: Optional[str] = None
 
     status: Literal["active", "pending_payment"]
+
+    credit_allocation: Optional[CreditAllocation] = None
+    """The credit allocation that funded a block.
+
+    Extends the allocation resource serialized on prices with the catalog-item
+    attribution of the funding price.
+    """
