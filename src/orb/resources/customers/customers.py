@@ -24,7 +24,7 @@ from ...types import (
     customer_update_by_external_id_params,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -57,16 +57,68 @@ __all__ = ["Customers", "AsyncCustomers"]
 
 
 class Customers(SyncAPIResource):
+    """
+    A customer is a buyer of your products, and the other party to the billing relationship.
+
+    In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+    match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+    `external_customer_id` with your own identifier. See
+    [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+    aliases work in Orb.
+
+    In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+    Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+    A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+    defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+    information on what this timezone parameter influences within Orb.
+    """
+
     @cached_property
     def costs(self) -> Costs:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return Costs(self._client)
 
     @cached_property
     def credits(self) -> Credits:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return Credits(self._client)
 
     @cached_property
     def balance_transactions(self) -> BalanceTransactions:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return BalanceTransactions(self._client)
 
     @cached_property
@@ -104,7 +156,9 @@ class Customers(SyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -234,11 +288,13 @@ class Customers(SyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -250,6 +306,7 @@ class Customers(SyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -280,6 +337,7 @@ class Customers(SyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -301,6 +359,7 @@ class Customers(SyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -384,6 +443,7 @@ class Customers(SyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -391,7 +451,9 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -409,9 +471,10 @@ class Customers(SyncAPIResource):
         """
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
-        `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-        `additional_emails` of an existing customer. Other fields on a customer are
-        currently immutable.
+        `auto_collection`, `metadata`, `shipping_address`, `billing_address`,
+        `additional_emails`, and `currency` of an existing customer. `currency` can only
+        be set if it has not already been set on the customer. Other fields on a
+        customer are currently immutable.
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
@@ -427,8 +490,13 @@ class Customers(SyncAPIResource):
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
 
-          currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
-              set at creation time, will be set at subscription creation time.
+          currency: An ISO 4217 currency string used for the customer's invoices and balance. This
+              can only be set if the customer does not already have a currency configured. If
+              not set at creation or update time, it will be set at subscription creation
+              time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -517,11 +585,13 @@ class Customers(SyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -533,6 +603,7 @@ class Customers(SyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -563,6 +634,7 @@ class Customers(SyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -584,6 +656,7 @@ class Customers(SyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -619,7 +692,7 @@ class Customers(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._put(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             body=maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -628,6 +701,7 @@ class Customers(SyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -757,7 +831,7 @@ class Customers(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -800,7 +874,7 @@ class Customers(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -839,7 +913,9 @@ class Customers(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get(
-            f"/customers/external_customer_id/{external_customer_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -881,7 +957,7 @@ class Customers(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            path_template("/customers/{customer_id}/sync_payment_methods_from_gateway", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -929,7 +1005,10 @@ class Customers(SyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+                external_customer_id=external_customer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -950,6 +1029,7 @@ class Customers(SyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -957,7 +1037,9 @@ class Customers(SyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -992,8 +1074,13 @@ class Customers(SyncAPIResource):
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
 
-          currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
-              set at creation time, will be set at subscription creation time.
+          currency: An ISO 4217 currency string used for the customer's invoices and balance. This
+              can only be set if the customer does not already have a currency configured. If
+              not set at creation or update time, it will be set at subscription creation
+              time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -1082,11 +1169,13 @@ class Customers(SyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -1098,6 +1187,7 @@ class Customers(SyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -1128,6 +1218,7 @@ class Customers(SyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -1149,6 +1240,7 @@ class Customers(SyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -1184,7 +1276,7 @@ class Customers(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/customers/external_customer_id/{id}",
+            path_template("/customers/external_customer_id/{id}", id=id),
             body=maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -1193,6 +1285,7 @@ class Customers(SyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -1221,16 +1314,68 @@ class Customers(SyncAPIResource):
 
 
 class AsyncCustomers(AsyncAPIResource):
+    """
+    A customer is a buyer of your products, and the other party to the billing relationship.
+
+    In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+    match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+    `external_customer_id` with your own identifier. See
+    [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+    aliases work in Orb.
+
+    In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+    Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+    A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+    defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+    information on what this timezone parameter influences within Orb.
+    """
+
     @cached_property
     def costs(self) -> AsyncCosts:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncCosts(self._client)
 
     @cached_property
     def credits(self) -> AsyncCredits:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncCredits(self._client)
 
     @cached_property
     def balance_transactions(self) -> AsyncBalanceTransactions:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncBalanceTransactions(self._client)
 
     @cached_property
@@ -1268,7 +1413,9 @@ class AsyncCustomers(AsyncAPIResource):
         hierarchy: Optional[CustomerHierarchyConfigParam] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         payment_configuration: Optional[customer_create_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1398,11 +1545,13 @@ class AsyncCustomers(AsyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -1414,6 +1563,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -1444,6 +1594,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -1465,6 +1616,7 @@ class AsyncCustomers(AsyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -1548,6 +1700,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -1555,7 +1708,9 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -1573,9 +1728,10 @@ class AsyncCustomers(AsyncAPIResource):
         """
         This endpoint can be used to update the `payment_provider`,
         `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
-        `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-        `additional_emails` of an existing customer. Other fields on a customer are
-        currently immutable.
+        `auto_collection`, `metadata`, `shipping_address`, `billing_address`,
+        `additional_emails`, and `currency` of an existing customer. `currency` can only
+        be set if it has not already been set on the customer. Other fields on a
+        customer are currently immutable.
 
         Args:
           additional_emails: Additional email addresses for this customer. If populated, these email
@@ -1591,8 +1747,13 @@ class AsyncCustomers(AsyncAPIResource):
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
 
-          currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
-              set at creation time, will be set at subscription creation time.
+          currency: An ISO 4217 currency string used for the customer's invoices and balance. This
+              can only be set if the customer does not already have a currency configured. If
+              not set at creation or update time, it will be set at subscription creation
+              time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -1681,11 +1842,13 @@ class AsyncCustomers(AsyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -1697,6 +1860,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -1727,6 +1891,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -1748,6 +1913,7 @@ class AsyncCustomers(AsyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -1783,7 +1949,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._put(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             body=await async_maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -1792,6 +1958,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -1921,7 +2088,7 @@ class AsyncCustomers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1964,7 +2131,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._get(
-            f"/customers/{customer_id}",
+            path_template("/customers/{customer_id}", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2003,7 +2170,9 @@ class AsyncCustomers(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return await self._get(
-            f"/customers/external_customer_id/{external_customer_id}",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2045,7 +2214,7 @@ class AsyncCustomers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/customers/{customer_id}/sync_payment_methods_from_gateway",
+            path_template("/customers/{customer_id}/sync_payment_methods_from_gateway", customer_id=customer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2093,7 +2262,10 @@ class AsyncCustomers(AsyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/sync_payment_methods_from_gateway",
+                external_customer_id=external_customer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2114,6 +2286,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
         currency: Optional[str] | Omit = omit,
+        default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -2121,7 +2294,9 @@ class AsyncCustomers(AsyncAPIResource):
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
         payment_configuration: Optional[customer_update_by_external_id_params.PaymentConfiguration] | Omit = omit,
-        payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+        payment_provider: Optional[
+            Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+        ]
         | Omit = omit,
         payment_provider_id: Optional[str] | Omit = omit,
         reporting_configuration: Optional[NewReportingConfigurationParam] | Omit = omit,
@@ -2156,8 +2331,13 @@ class AsyncCustomers(AsyncAPIResource):
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
 
-          currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
-              set at creation time, will be set at subscription creation time.
+          currency: An ISO 4217 currency string used for the customer's invoices and balance. This
+              can only be set if the customer does not already have a currency configured. If
+              not set at creation or update time, it will be set at subscription creation
+              time.
+
+          default_payment_method_id: The Orb ID of the payment method to set as this customer's default. Pass `null`
+              to clear the customer's default payment method.
 
           email: A valid customer email, to be used for invoicing and notifications.
 
@@ -2246,11 +2426,13 @@ class AsyncCustomers(AsyncAPIResource):
               | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
               | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
               | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+              | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
               | Finland                | `eu_vat`     | European VAT Number                                                                                     |
               | France                 | `eu_vat`     | European VAT Number                                                                                     |
               | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
               | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
               | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+              | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
               | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
               | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
               | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -2262,6 +2444,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
               | Israel                 | `il_vat`     | Israel VAT                                                                                              |
               | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
               | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
               | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
               | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -2292,6 +2475,7 @@ class AsyncCustomers(AsyncAPIResource):
               | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
               | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
               | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+              | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
               | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
               | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
               | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -2313,6 +2497,7 @@ class AsyncCustomers(AsyncAPIResource):
               | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
               | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
               | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+              | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
               | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
               | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
               | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -2348,7 +2533,7 @@ class AsyncCustomers(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/customers/external_customer_id/{id}",
+            path_template("/customers/external_customer_id/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "accounting_sync_configuration": accounting_sync_configuration,
@@ -2357,6 +2542,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
                     "currency": currency,
+                    "default_payment_method_id": default_payment_method_id,
                     "email": email,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -2418,14 +2604,49 @@ class CustomersWithRawResponse:
 
     @cached_property
     def costs(self) -> CostsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return CostsWithRawResponse(self._customers.costs)
 
     @cached_property
     def credits(self) -> CreditsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return CreditsWithRawResponse(self._customers.credits)
 
     @cached_property
     def balance_transactions(self) -> BalanceTransactionsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return BalanceTransactionsWithRawResponse(self._customers.balance_transactions)
 
 
@@ -2463,14 +2684,49 @@ class AsyncCustomersWithRawResponse:
 
     @cached_property
     def costs(self) -> AsyncCostsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncCostsWithRawResponse(self._customers.costs)
 
     @cached_property
     def credits(self) -> AsyncCreditsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncCreditsWithRawResponse(self._customers.credits)
 
     @cached_property
     def balance_transactions(self) -> AsyncBalanceTransactionsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncBalanceTransactionsWithRawResponse(self._customers.balance_transactions)
 
 
@@ -2508,14 +2764,49 @@ class CustomersWithStreamingResponse:
 
     @cached_property
     def costs(self) -> CostsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return CostsWithStreamingResponse(self._customers.costs)
 
     @cached_property
     def credits(self) -> CreditsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return CreditsWithStreamingResponse(self._customers.credits)
 
     @cached_property
     def balance_transactions(self) -> BalanceTransactionsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return BalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)
 
 
@@ -2553,12 +2844,47 @@ class AsyncCustomersWithStreamingResponse:
 
     @cached_property
     def costs(self) -> AsyncCostsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncCostsWithStreamingResponse(self._customers.costs)
 
     @cached_property
     def credits(self) -> AsyncCreditsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncCreditsWithStreamingResponse(self._customers.credits)
 
     @cached_property
     def balance_transactions(self) -> AsyncBalanceTransactionsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
         return AsyncBalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)

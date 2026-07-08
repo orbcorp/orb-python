@@ -36,6 +36,9 @@ __all__ = [
     "CreatedInvoiceCustomerBalanceTransaction",
     "CreatedInvoiceLineItem",
     "CreatedInvoiceLineItemAdjustment",
+    "CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustment",
+    "CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentFilter",
+    "CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentTier",
     "CreatedInvoiceLineItemSubLineItem",
     "CreatedInvoicePaymentAttempt",
 ]
@@ -132,11 +135,85 @@ class CreatedInvoiceCustomerBalanceTransaction(BaseModel):
     type: Literal["increment", "decrement"]
 
 
+class CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentTier(BaseModel):
+    """One band of a tiered percentage discount.
+
+    Bounds are denominated in the discount's currency.
+    `lower_bound` is the exclusive start of the band and `upper_bound` is the inclusive end;
+    `upper_bound` is null only for the open-ended final tier.
+    """
+
+    lower_bound: float
+    """Exclusive lower bound of cumulative spend for this tier."""
+
+    percentage: float
+    """
+    The percentage (between 0 and 1) discounted from spend that falls within this
+    tier.
+    """
+
+    upper_bound: Optional[float] = None
+    """
+    Inclusive upper bound of cumulative spend for this tier; null for the final
+    open-ended tier.
+    """
+
+
+class CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustment(BaseModel):
+    id: str
+
+    adjustment_type: Literal["tiered_percentage_discount"]
+
+    amount: str
+    """The value applied by an adjustment."""
+
+    applies_to_price_ids: List[str]
+    """The price IDs that this adjustment applies to."""
+
+    filters: List[CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentFilter]
+    """The filters that determine which prices to apply this adjustment to."""
+
+    is_invoice_level: bool
+    """
+    True for adjustments that apply to an entire invoice, false for adjustments that
+    apply to only one price.
+    """
+
+    reason: Optional[str] = None
+    """The reason for the adjustment."""
+
+    replaces_adjustment_id: Optional[str] = None
+    """The adjustment id this adjustment replaces.
+
+    This adjustment will take the place of the replaced adjustment in plan version
+    migrations.
+    """
+
+    tiers: List[CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustmentTier]
+    """
+    The ordered, contiguous bands of cumulative eligible spend, each discounted at
+    its own percentage (progressive fill-a-tier), applied to the prices this
+    adjustment covers in a given billing period.
+    """
+
+
 CreatedInvoiceLineItemAdjustment: TypeAlias = Annotated[
     Union[
         MonetaryUsageDiscountAdjustment,
         MonetaryAmountDiscountAdjustment,
         MonetaryPercentageDiscountAdjustment,
+        CreatedInvoiceLineItemAdjustmentMonetaryTieredPercentageDiscountAdjustment,
         MonetaryMinimumAdjustment,
         MonetaryMaximumAdjustment,
     ],
@@ -244,7 +321,7 @@ class CreatedInvoicePaymentAttempt(BaseModel):
     created_at: datetime
     """The time at which the payment attempt was created."""
 
-    payment_provider: Optional[Literal["stripe"]] = None
+    payment_provider: Optional[Literal["stripe", "adyen"]] = None
     """The payment provider that attempted to collect the payment."""
 
     payment_provider_id: Optional[str] = None
@@ -345,11 +422,13 @@ class CreatedInvoice(BaseModel):
     | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
     | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
     | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+    | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
     | Finland                | `eu_vat`     | European VAT Number                                                                                     |
     | France                 | `eu_vat`     | European VAT Number                                                                                     |
     | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
     | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
     | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+    | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
     | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
     | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
     | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -361,6 +440,7 @@ class CreatedInvoice(BaseModel):
     | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
     | Israel                 | `il_vat`     | Israel VAT                                                                                              |
     | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
     | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
     | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
     | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -391,6 +471,7 @@ class CreatedInvoice(BaseModel):
     | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
     | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
     | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+    | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
     | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
     | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
     | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -412,6 +493,7 @@ class CreatedInvoice(BaseModel):
     | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
     | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
     | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
     | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
     | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
     | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -460,8 +542,8 @@ class CreatedInvoice(BaseModel):
     hosted_invoice_url: Optional[str] = None
     """A URL for the customer-facing invoice portal.
 
-    This URL expires 30 days after the invoice's due date, or 60 days after being
-    re-generated through the UI.
+    This URL expires 60 days after the link is generated, or 30 days after the
+    invoice's due date — whichever is later.
     """
 
     invoice_date: datetime

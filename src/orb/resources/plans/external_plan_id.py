@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -20,6 +20,12 @@ __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
 
 class ExternalPlanID(SyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
         """
@@ -43,6 +49,7 @@ class ExternalPlanID(SyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -54,12 +61,14 @@ class ExternalPlanID(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -83,9 +92,12 @@ class ExternalPlanID(SyncAPIResource):
                 f"Expected a non-empty value for `other_external_plan_id` but received {other_external_plan_id!r}"
             )
         return self._put(
-            f"/plans/external_plan_id/{other_external_plan_id}",
+            path_template(
+                "/plans/external_plan_id/{other_external_plan_id}", other_external_plan_id=other_external_plan_id
+            ),
             body=maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -142,7 +154,7 @@ class ExternalPlanID(SyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return self._get(
-            f"/plans/external_plan_id/{external_plan_id}",
+            path_template("/plans/external_plan_id/{external_plan_id}", external_plan_id=external_plan_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -151,6 +163,12 @@ class ExternalPlanID(SyncAPIResource):
 
 
 class AsyncExternalPlanID(AsyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
         """
@@ -174,6 +192,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -185,12 +204,14 @@ class AsyncExternalPlanID(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -214,9 +235,12 @@ class AsyncExternalPlanID(AsyncAPIResource):
                 f"Expected a non-empty value for `other_external_plan_id` but received {other_external_plan_id!r}"
             )
         return await self._put(
-            f"/plans/external_plan_id/{other_external_plan_id}",
+            path_template(
+                "/plans/external_plan_id/{other_external_plan_id}", other_external_plan_id=other_external_plan_id
+            ),
             body=await async_maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -273,7 +297,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         if not external_plan_id:
             raise ValueError(f"Expected a non-empty value for `external_plan_id` but received {external_plan_id!r}")
         return await self._get(
-            f"/plans/external_plan_id/{external_plan_id}",
+            path_template("/plans/external_plan_id/{external_plan_id}", external_plan_id=external_plan_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

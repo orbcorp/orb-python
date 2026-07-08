@@ -77,6 +77,7 @@ class TestSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -90,6 +91,7 @@ class TestSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -135,6 +137,7 @@ class TestSubscriptions:
             ],
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
+            auto_issuance=True,
             aws_region="aws_region",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -211,6 +214,7 @@ class TestSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -224,6 +228,7 @@ class TestSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -303,6 +308,7 @@ class TestSubscriptions:
         subscription = client.subscriptions.update(
             subscription_id="subscription_id",
             auto_collection=True,
+            auto_issuance=True,
             default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
@@ -648,7 +654,7 @@ class TestSubscriptions:
             subscription_id="subscription_id",
             add=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "allocation_price": {
                         "amount": "10.00",
                         "cadence": "monthly",
@@ -667,6 +673,7 @@ class TestSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "can_defer_billing": True,
@@ -676,7 +683,7 @@ class TestSubscriptions:
                             "discount_type": "amount",
                         }
                     ],
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "external_price_id": "external_price_id",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
@@ -686,6 +693,7 @@ class TestSubscriptions:
                         }
                     ],
                     "maximum_amount": 0,
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
                         "cadence": "annual",
@@ -729,7 +737,7 @@ class TestSubscriptions:
             ],
             add_adjustments=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -748,7 +756,7 @@ class TestSubscriptions:
                         "price_type": "usage",
                     },
                     "adjustment_id": "h74gfhdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                 }
             ],
             allow_invoice_credit_or_void=True,
@@ -758,7 +766,7 @@ class TestSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "can_defer_billing": True,
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
@@ -766,15 +774,16 @@ class TestSubscriptions:
                             "quantity": 5,
                         }
                     ],
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "metric_parameter_overrides": {"foo": "bar"},
+                    "start_date": "start_of_term",
                     "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[
                 {
                     "adjustment_interval_id": "sdfs6wdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
+                    "start_date": "start_of_term",
                 }
             ],
         )
@@ -925,6 +934,7 @@ class TestSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -938,6 +948,7 @@ class TestSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -983,6 +994,7 @@ class TestSubscriptions:
             ],
             align_billing_with_plan_change_date=True,
             auto_collection=True,
+            auto_issuance=True,
             billing_cycle_alignment="unchanged",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -1052,6 +1064,7 @@ class TestSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1065,6 +1078,7 @@ class TestSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -1477,6 +1491,7 @@ class TestAsyncSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1490,6 +1505,7 @@ class TestAsyncSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -1535,6 +1551,7 @@ class TestAsyncSubscriptions:
             ],
             align_billing_with_subscription_start_date=True,
             auto_collection=True,
+            auto_issuance=True,
             aws_region="aws_region",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -1611,6 +1628,7 @@ class TestAsyncSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -1624,6 +1642,7 @@ class TestAsyncSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",
@@ -1703,6 +1722,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.subscriptions.update(
             subscription_id="subscription_id",
             auto_collection=True,
+            auto_issuance=True,
             default_invoice_memo="default_invoice_memo",
             invoicing_threshold="10.00",
             metadata={"foo": "string"},
@@ -2048,7 +2068,7 @@ class TestAsyncSubscriptions:
             subscription_id="subscription_id",
             add=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "allocation_price": {
                         "amount": "10.00",
                         "cadence": "monthly",
@@ -2067,6 +2087,7 @@ class TestAsyncSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "can_defer_billing": True,
@@ -2076,7 +2097,7 @@ class TestAsyncSubscriptions:
                             "discount_type": "amount",
                         }
                     ],
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "external_price_id": "external_price_id",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
@@ -2086,6 +2107,7 @@ class TestAsyncSubscriptions:
                         }
                     ],
                     "maximum_amount": 0,
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
                         "cadence": "annual",
@@ -2129,7 +2151,7 @@ class TestAsyncSubscriptions:
             ],
             add_adjustments=[
                 {
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "start_date": "start_of_term",
                     "adjustment": {
                         "adjustment_type": "percentage_discount",
                         "percentage_discount": 0,
@@ -2148,7 +2170,7 @@ class TestAsyncSubscriptions:
                         "price_type": "usage",
                     },
                     "adjustment_id": "h74gfhdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                 }
             ],
             allow_invoice_credit_or_void=True,
@@ -2158,7 +2180,7 @@ class TestAsyncSubscriptions:
                     "price_interval_id": "sdfs6wdjvn7ujokd",
                     "billing_cycle_day": 0,
                     "can_defer_billing": True,
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
                     "filter": "my_property > 100 AND my_other_property = 'bar'",
                     "fixed_fee_quantity_transitions": [
                         {
@@ -2166,15 +2188,16 @@ class TestAsyncSubscriptions:
                             "quantity": 5,
                         }
                     ],
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "metric_parameter_overrides": {"foo": "bar"},
+                    "start_date": "start_of_term",
                     "usage_customer_ids": ["string"],
                 }
             ],
             edit_adjustments=[
                 {
                     "adjustment_interval_id": "sdfs6wdjvn7ujokd",
-                    "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "start_date": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "end_date": "start_of_term",
+                    "start_date": "start_of_term",
                 }
             ],
         )
@@ -2325,6 +2348,7 @@ class TestAsyncSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -2338,6 +2362,7 @@ class TestAsyncSubscriptions:
                     "end_date": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "external_price_id": "external_price_id",
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
@@ -2383,6 +2408,7 @@ class TestAsyncSubscriptions:
             ],
             align_billing_with_plan_change_date=True,
             auto_collection=True,
+            auto_issuance=True,
             billing_cycle_alignment="unchanged",
             billing_cycle_anchor_configuration={
                 "day": 1,
@@ -2452,6 +2478,7 @@ class TestAsyncSubscriptions:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
                     },
                     "discounts": [
@@ -2465,6 +2492,7 @@ class TestAsyncSubscriptions:
                     "external_price_id": "external_price_id",
                     "fixed_price_quantity": 2,
                     "maximum_amount": "1.23",
+                    "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
                         "cadence": "annual",

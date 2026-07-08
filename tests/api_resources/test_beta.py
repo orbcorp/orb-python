@@ -72,7 +72,52 @@ class TestBeta:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
+                    },
+                    "license_allocation_price": {
+                        "cadence": "annual",
+                        "item_id": "item_id",
+                        "license_allocations": [
+                            {
+                                "amount": "amount",
+                                "currency": "currency",
+                                "write_off_overage": True,
+                            }
+                        ],
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -170,7 +215,52 @@ class TestBeta:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
+                    },
+                    "license_allocation_price": {
+                        "cadence": "annual",
+                        "item_id": "item_id",
+                        "license_allocations": [
+                            {
+                                "amount": "amount",
+                                "currency": "currency",
+                                "write_off_overage": True,
+                            }
+                        ],
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -401,7 +491,52 @@ class TestAsyncBeta:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
+                    },
+                    "license_allocation_price": {
+                        "cadence": "annual",
+                        "item_id": "item_id",
+                        "license_allocations": [
+                            {
+                                "amount": "amount",
+                                "currency": "currency",
+                                "write_off_overage": True,
+                            }
+                        ],
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                     "plan_phase_order": 0,
                     "price": {
@@ -499,7 +634,52 @@ class TestAsyncBeta:
                         ],
                         "item_id": "item_id",
                         "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
                         "per_unit_cost_basis": "per_unit_cost_basis",
+                    },
+                    "license_allocation_price": {
+                        "cadence": "annual",
+                        "item_id": "item_id",
+                        "license_allocations": [
+                            {
+                                "amount": "amount",
+                                "currency": "currency",
+                                "write_off_overage": True,
+                            }
+                        ],
+                        "model_type": "unit",
+                        "name": "Annual fee",
+                        "unit_config": {
+                            "unit_amount": "unit_amount",
+                            "prorated": True,
+                        },
+                        "billable_metric_id": "billable_metric_id",
+                        "billed_in_advance": True,
+                        "billing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "conversion_rate": 0,
+                        "conversion_rate_config": {
+                            "conversion_rate_type": "unit",
+                            "unit_config": {"unit_amount": "unit_amount"},
+                        },
+                        "currency": "currency",
+                        "dimensional_price_configuration": {
+                            "dimension_values": ["string"],
+                            "dimensional_price_group_id": "dimensional_price_group_id",
+                            "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+                        },
+                        "external_price_id": "external_price_id",
+                        "fixed_price_quantity": 0,
+                        "invoice_grouping_key": "x",
+                        "invoicing_cycle_configuration": {
+                            "duration": 0,
+                            "duration_unit": "day",
+                        },
+                        "license_type_id": "license_type_id",
+                        "metadata": {"foo": "string"},
+                        "reference_id": "reference_id",
                     },
                     "plan_phase_order": 0,
                     "price": {

@@ -6,6 +6,7 @@ import httpx
 
 from .. import _legacy_response
 from .._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from .._utils import path_template
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -17,6 +18,10 @@ __all__ = ["CreditBlocks", "AsyncCreditBlocks"]
 
 
 class CreditBlocks(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> CreditBlocksWithRawResponse:
         """
@@ -62,7 +67,7 @@ class CreditBlocks(SyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return self._get(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -113,7 +118,7 @@ class CreditBlocks(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -138,14 +143,17 @@ class CreditBlocks(SyncAPIResource):
         """
         This endpoint returns the credit block and its associated purchasing invoices.
 
-        If a credit block was purchased (as opposed to being manually added or allocated
-        from a subscription), this endpoint returns the invoices that were created to
-        charge the customer for the credit block. For credit blocks with payment
-        schedules spanning multiple periods (e.g., monthly payments over 12 months),
-        multiple invoices will be returned.
+        If a credit block was purchased (as opposed to being manually added), this
+        endpoint returns the invoices that were created to charge the customer for the
+        credit block. For credit blocks with payment schedules spanning multiple periods
+        (e.g., monthly payments over 12 months), multiple invoices will be returned.
 
-        If the credit block was not purchased (e.g., manual increment, allocation), an
-        empty invoices list is returned.
+        For credit blocks created by subscription allocation prices, this endpoint
+        returns the subscription invoice containing the allocation line item that
+        created the block.
+
+        If the credit block was not purchased (e.g., manual increment), an empty
+        invoices list is returned.
 
         **Note: This endpoint is currently experimental and its interface may change in
         future releases. Please contact support before building production integrations
@@ -163,7 +171,7 @@ class CreditBlocks(SyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return self._get(
-            f"/credit_blocks/{block_id}/invoices",
+            path_template("/credit_blocks/{block_id}/invoices", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -172,6 +180,10 @@ class CreditBlocks(SyncAPIResource):
 
 
 class AsyncCreditBlocks(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCreditBlocksWithRawResponse:
         """
@@ -217,7 +229,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return await self._get(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -268,7 +280,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/credit_blocks/{block_id}",
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -293,14 +305,17 @@ class AsyncCreditBlocks(AsyncAPIResource):
         """
         This endpoint returns the credit block and its associated purchasing invoices.
 
-        If a credit block was purchased (as opposed to being manually added or allocated
-        from a subscription), this endpoint returns the invoices that were created to
-        charge the customer for the credit block. For credit blocks with payment
-        schedules spanning multiple periods (e.g., monthly payments over 12 months),
-        multiple invoices will be returned.
+        If a credit block was purchased (as opposed to being manually added), this
+        endpoint returns the invoices that were created to charge the customer for the
+        credit block. For credit blocks with payment schedules spanning multiple periods
+        (e.g., monthly payments over 12 months), multiple invoices will be returned.
 
-        If the credit block was not purchased (e.g., manual increment, allocation), an
-        empty invoices list is returned.
+        For credit blocks created by subscription allocation prices, this endpoint
+        returns the subscription invoice containing the allocation line item that
+        created the block.
+
+        If the credit block was not purchased (e.g., manual increment), an empty
+        invoices list is returned.
 
         **Note: This endpoint is currently experimental and its interface may change in
         future releases. Please contact support before building production integrations
@@ -318,7 +333,7 @@ class AsyncCreditBlocks(AsyncAPIResource):
         if not block_id:
             raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return await self._get(
-            f"/credit_blocks/{block_id}/invoices",
+            path_template("/credit_blocks/{block_id}/invoices", block_id=block_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

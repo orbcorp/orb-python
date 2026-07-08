@@ -10,7 +10,7 @@ import httpx
 from .. import _legacy_response
 from ..types import metric_list_params, metric_create_params, metric_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -22,6 +22,11 @@ __all__ = ["Metrics", "AsyncMetrics"]
 
 
 class Metrics(SyncAPIResource):
+    """
+    The Metric resource represents a calculation of a quantity based on events.
+    Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+    """
+
     @cached_property
     def with_raw_response(self) -> MetricsWithRawResponse:
         """
@@ -144,7 +149,7 @@ class Metrics(SyncAPIResource):
         if not metric_id:
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return self._put(
-            f"/metrics/{metric_id}",
+            path_template("/metrics/{metric_id}", metric_id=metric_id),
             body=maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -172,10 +177,10 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[BillableMetric]:
-        """
-        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-        metric identifier. It returns information about the metrics including its name,
-        description, and item.
+        """This endpoint is used to list [metrics](/core-concepts#metric).
+
+        It returns
+        information about the metrics including its name, description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -225,10 +230,10 @@ class Metrics(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](/core-concepts#metric).
-
-        It returns
-        information about the metrics including its name, description, and item.
+        """
+        This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           extra_headers: Send extra headers
@@ -242,7 +247,7 @@ class Metrics(SyncAPIResource):
         if not metric_id:
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return self._get(
-            f"/metrics/{metric_id}",
+            path_template("/metrics/{metric_id}", metric_id=metric_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -251,6 +256,11 @@ class Metrics(SyncAPIResource):
 
 
 class AsyncMetrics(AsyncAPIResource):
+    """
+    The Metric resource represents a calculation of a quantity based on events.
+    Metrics are defined by the query that transforms raw usage events into meaningful values for your customers.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncMetricsWithRawResponse:
         """
@@ -373,7 +383,7 @@ class AsyncMetrics(AsyncAPIResource):
         if not metric_id:
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return await self._put(
-            f"/metrics/{metric_id}",
+            path_template("/metrics/{metric_id}", metric_id=metric_id),
             body=await async_maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -401,10 +411,10 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BillableMetric, AsyncPage[BillableMetric]]:
-        """
-        This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-        metric identifier. It returns information about the metrics including its name,
-        description, and item.
+        """This endpoint is used to list [metrics](/core-concepts#metric).
+
+        It returns
+        information about the metrics including its name, description, and item.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -454,10 +464,10 @@ class AsyncMetrics(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillableMetric:
-        """This endpoint is used to list [metrics](/core-concepts#metric).
-
-        It returns
-        information about the metrics including its name, description, and item.
+        """
+        This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+        metric identifier. It returns information about the metrics including its name,
+        description, and item.
 
         Args:
           extra_headers: Send extra headers
@@ -471,7 +481,7 @@ class AsyncMetrics(AsyncAPIResource):
         if not metric_id:
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return await self._get(
-            f"/metrics/{metric_id}",
+            path_template("/metrics/{metric_id}", metric_id=metric_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

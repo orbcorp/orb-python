@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from datetime import datetime
 
 from .price import Price
@@ -82,4 +82,10 @@ class PriceInterval(BaseModel):
     """
     A list of customer IDs whose usage events will be aggregated and billed under
     this price interval.
+    """
+
+    metric_parameter_overrides: Optional[Dict[str, object]] = None
+    """Override values for parameterized billable metric variables.
+
+    Keys are parameter names, values are the override values.
     """

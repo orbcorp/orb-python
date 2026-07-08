@@ -98,6 +98,13 @@ __all__ = [
     "MatrixWithAllocationPriceCompositePriceFilter",
     "MatrixWithAllocationPriceConversionRateConfig",
     "MatrixWithAllocationPriceLicenseType",
+    "MatrixWithThresholdDiscountsPrice",
+    "MatrixWithThresholdDiscountsPriceCompositePriceFilter",
+    "MatrixWithThresholdDiscountsPriceConversionRateConfig",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue",
+    "MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup",
+    "MatrixWithThresholdDiscountsPriceLicenseType",
     "TieredWithProrationPrice",
     "TieredWithProrationPriceCompositePriceFilter",
     "TieredWithProrationPriceConversionRateConfig",
@@ -179,6 +186,17 @@ __all__ = [
     "CumulativeGroupedAllocationPriceConversionRateConfig",
     "CumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig",
     "CumulativeGroupedAllocationPriceLicenseType",
+    "DailyCreditAllowancePrice",
+    "DailyCreditAllowancePriceCompositePriceFilter",
+    "DailyCreditAllowancePriceConversionRateConfig",
+    "DailyCreditAllowancePriceDailyCreditAllowanceConfig",
+    "DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue",
+    "DailyCreditAllowancePriceLicenseType",
+    "MeteredAllowancePrice",
+    "MeteredAllowancePriceCompositePriceFilter",
+    "MeteredAllowancePriceConversionRateConfig",
+    "MeteredAllowancePriceMeteredAllowanceConfig",
+    "MeteredAllowancePriceLicenseType",
     "MinimumCompositePrice",
     "MinimumCompositePriceCompositePriceFilter",
     "MinimumCompositePriceConversionRateConfig",
@@ -260,6 +278,8 @@ class UnitPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -376,6 +396,8 @@ class TieredPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -495,6 +517,8 @@ class BulkPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -642,6 +666,8 @@ class BulkWithFiltersPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -754,6 +780,8 @@ class PackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -870,6 +898,8 @@ class MatrixPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1009,6 +1039,8 @@ class ThresholdTotalAmountPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1147,6 +1179,8 @@ class TieredPackagePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1291,6 +1325,8 @@ class TieredWithMinimumPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1432,6 +1468,8 @@ class GroupedTieredPrice(BaseModel):
     grouped_tiered_config: GroupedTieredPriceGroupedTieredConfig
     """Configuration for grouped_tiered pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1567,6 +1605,8 @@ class TieredPackageWithMinimumPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1692,6 +1732,8 @@ class PackageWithAllocationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -1819,6 +1861,8 @@ class UnitWithPercentPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1935,6 +1979,8 @@ class MatrixWithAllocationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -1980,6 +2026,174 @@ class MatrixWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
     license_type: Optional[MatrixWithAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class MatrixWithThresholdDiscountsPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+MatrixWithThresholdDiscountsPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue(BaseModel):
+    first_dimension_value: str
+
+    unit_amount: str
+
+    second_dimension_value: Optional[str] = None
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup(BaseModel):
+    above_threshold_discount_percentage: str
+    """Discount rate applied to spend above the threshold."""
+
+    below_threshold_discount_percentage: str
+    """Discount rate applied to spend at or below the threshold.
+
+    Set to 0 for no baseline discount.
+    """
+
+    cell_coordinates: str
+    """Semicolon-separated list of matrix cell coordinates targeted by this group.
+
+    Each coordinate is `first,second` when the matrix has two dimensions, or just
+    `first` for a single-dimension matrix. Example: `blue,circle;green,triangle`.
+    """
+
+    threshold_amount: str
+
+    description: Optional[str] = None
+
+
+class MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig(BaseModel):
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    default_unit_amount: str
+    """Unit price used for usage that does not match any defined matrix cell."""
+
+    first_dimension: str
+    """First matrix dimension key."""
+
+    matrix_values: List[MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue]
+    """Per-cell unit prices."""
+
+    second_dimension: Optional[str] = None
+    """Optional second matrix dimension key."""
+
+    threshold_discount_groups: Optional[
+        List[MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigThresholdDiscountGroup]
+    ] = None
+
+
+class MatrixWithThresholdDiscountsPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class MatrixWithThresholdDiscountsPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[MatrixWithThresholdDiscountsPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[MatrixWithThresholdDiscountsPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    matrix_with_threshold_discounts_config: MatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig
+    """Configuration for matrix_with_threshold_discounts pricing"""
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["matrix_with_threshold_discounts"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[MatrixWithThresholdDiscountsPriceLicenseType] = None
     """
     The LicenseType resource represents a type of license that can be assigned to
     users. License types are used during billing by grouping metrics on the
@@ -2070,6 +2284,8 @@ class TieredWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2193,6 +2409,8 @@ class UnitWithProrationPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2325,6 +2543,8 @@ class GroupedAllocationPrice(BaseModel):
 
     grouped_allocation_config: GroupedAllocationPriceGroupedAllocationConfig
     """Configuration for grouped_allocation pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2459,6 +2679,8 @@ class BulkWithProrationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -2587,6 +2809,8 @@ class GroupedWithProratedMinimumPrice(BaseModel):
 
     grouped_with_prorated_minimum_config: GroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig
     """Configuration for grouped_with_prorated_minimum pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -2749,6 +2973,8 @@ class GroupedWithMeteredMinimumPrice(BaseModel):
     grouped_with_metered_minimum_config: GroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig
     """Configuration for grouped_with_metered_minimum pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -2880,6 +3106,8 @@ class GroupedWithMinMaxThresholdsPrice(BaseModel):
 
     grouped_with_min_max_thresholds_config: GroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig
     """Configuration for grouped_with_min_max_thresholds pricing"""
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3016,6 +3244,8 @@ class MatrixWithDisplayNamePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3160,6 +3390,8 @@ class GroupedTieredPackagePrice(BaseModel):
     grouped_tiered_package_config: GroupedTieredPackagePriceGroupedTieredPackageConfig
     """Configuration for grouped_tiered_package pricing"""
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3296,6 +3528,8 @@ class MaxGroupTieredPackagePrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3388,6 +3622,9 @@ class ScalableMatrixWithUnitPricingPriceScalableMatrixWithUnitPricingConfig(Base
     unit_price: str
     """The final unit price to rate against the output of the matrix"""
 
+    grouping_key: Optional[str] = None
+    """The property used to group this price"""
+
     prorate: Optional[bool] = None
     """If true, the unit price will be prorated to the billing period"""
 
@@ -3442,6 +3679,8 @@ class ScalableMatrixWithUnitPricingPrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -3594,6 +3833,8 @@ class ScalableMatrixWithTieredPricingPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3737,6 +3978,8 @@ class CumulativeGroupedBulkPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3869,6 +4112,8 @@ class CumulativeGroupedAllocationPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -3911,6 +4156,315 @@ class CumulativeGroupedAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
     license_type: Optional[CumulativeGroupedAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class DailyCreditAllowancePriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+DailyCreditAllowancePriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue(BaseModel):
+    """Per-dimension credit price for the daily credit allowance model."""
+
+    dimension_values: List[Optional[str]]
+    """One or two matrix keys to filter usage to this value by.
+
+    For example, ["model"] could be used to apply a different credit rate to each AI
+    model.
+    """
+
+    unit_amount: str
+    """Credits charged per unit of usage matching the specified dimension_values"""
+
+
+class DailyCreditAllowancePriceDailyCreditAllowanceConfig(BaseModel):
+    """Configuration for daily_credit_allowance pricing"""
+
+    daily_allowance: str
+    """Credits granted per day. Lose-it-or-use-it; does not roll over."""
+
+    default_unit_amount: str
+    """
+    Default per-unit credit rate for any usage not bucketed into a specified
+    matrix_value
+    """
+
+    dimensions: List[Optional[str]]
+    """One or two event property values to evaluate matrix groups by"""
+
+    event_day_property: str
+    """Event property whose value identifies the day bucket the event belongs to (e.g.
+
+    'event_day' set to an ISO date string in the customer's timezone). The allowance
+    resets per distinct value of this property.
+    """
+
+    matrix_values: List[DailyCreditAllowancePriceDailyCreditAllowanceConfigMatrixValue]
+    """Per-dimension credit rates"""
+
+
+class DailyCreditAllowancePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class DailyCreditAllowancePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[DailyCreditAllowancePriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[DailyCreditAllowancePriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    daily_credit_allowance_config: DailyCreditAllowancePriceDailyCreditAllowanceConfig
+    """Configuration for daily_credit_allowance pricing"""
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["daily_credit_allowance"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[DailyCreditAllowancePriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class MeteredAllowancePriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+MeteredAllowancePriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class MeteredAllowancePriceMeteredAllowanceConfig(BaseModel):
+    """Configuration for metered_allowance pricing"""
+
+    allowance_grouping_value: str
+    """
+    The grouping_key value whose summed quantity represents the allowance for this
+    period (e.g. 'storage_snapshot' emitting 3 × avg storage). Capped at consumption
+    — credit can never exceed actual usage.
+    """
+
+    consumption_grouping_value: str
+    """The grouping_key value whose summed quantity represents consumption (e.g.
+
+    'download'). Charged at unit_amount.
+    """
+
+    grouping_key: str
+    """
+    Event property used to partition the metric into consumption and allowance
+    quantities (e.g. 'event_name'). The metric is queried with this key and the two
+    values below select which partition is which.
+    """
+
+    unit_amount: str
+    """Per-unit price applied to gross consumption and to the allowance credit."""
+
+    allowance_display_name: Optional[str] = None
+    """Sub-line label for the credit row (e.g. 'Up to 3x free egress')."""
+
+    consumption_display_name: Optional[str] = None
+    """Sub-line label for the gross consumption row (e.g. 'bytes gotten')."""
+
+
+class MeteredAllowancePriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class MeteredAllowancePrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[MeteredAllowancePriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[MeteredAllowancePriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    metered_allowance_config: MeteredAllowancePriceMeteredAllowanceConfig
+    """Configuration for metered_allowance pricing"""
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["metered_allowance"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[MeteredAllowancePriceLicenseType] = None
     """
     The LicenseType resource represents a type of license that can be assigned to
     users. License types are used during billing by grouping metrics on the
@@ -3992,6 +4546,8 @@ class MinimumCompositePrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -4064,7 +4620,20 @@ class PercentCompositePricePercentConfig(BaseModel):
     """Configuration for percent pricing"""
 
     percent: float
-    """What percent of the component subtotals to charge"""
+    """Fraction of the component subtotals to charge (0 < percent <= 1)."""
+
+    maximum_amount: Optional[str] = None
+    """Maximum amount to charge. If unset, the fee has no upper bound."""
+
+    minimum_amount: Optional[str] = None
+    """Minimum amount to charge. If unset, the fee is bounded below by 0."""
+
+    prorated: Optional[bool] = None
+    """If true, the minimum_amount is prorated based on the service period.
+
+    The maximum_amount is an absolute cap (never prorated), and the percent applied
+    to upstream subtotals is never prorated either.
+    """
 
 
 class PercentCompositePriceLicenseType(BaseModel):
@@ -4114,6 +4683,8 @@ class PercentCompositePrice(BaseModel):
     external_price_id: Optional[str] = None
 
     fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
 
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
@@ -4254,6 +4825,8 @@ class EventOutputPrice(BaseModel):
 
     fixed_price_quantity: Optional[float] = None
 
+    invoice_grouping_key: Optional[str] = None
+
     invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
 
     item: ItemSlim
@@ -4319,6 +4892,7 @@ Price: TypeAlias = Annotated[
         PackageWithAllocationPrice,
         UnitWithPercentPrice,
         MatrixWithAllocationPrice,
+        MatrixWithThresholdDiscountsPrice,
         TieredWithProrationPrice,
         UnitWithProrationPrice,
         GroupedAllocationPrice,
@@ -4333,6 +4907,8 @@ Price: TypeAlias = Annotated[
         ScalableMatrixWithTieredPricingPrice,
         CumulativeGroupedBulkPrice,
         CumulativeGroupedAllocationPrice,
+        DailyCreditAllowancePrice,
+        MeteredAllowancePrice,
         MinimumCompositePrice,
         PercentCompositePrice,
         EventOutputPrice,

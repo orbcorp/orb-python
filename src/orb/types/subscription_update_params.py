@@ -16,6 +16,15 @@ class SubscriptionUpdateParams(TypedDict, total=False):
     the plan's behavior.
     """
 
+    auto_issuance: Optional[bool]
+    """Used to determine if invoices for this subscription will be automatically
+    issued.
+
+    If true, invoices will be automatically issued. If false, invoices will require
+    manual approval. If `null` is specified, this defaults to the behavior
+    configured for this customer.
+    """
+
     default_invoice_memo: Optional[str]
     """Determines the default memo on this subscription's invoices.
 

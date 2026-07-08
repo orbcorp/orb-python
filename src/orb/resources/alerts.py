@@ -18,8 +18,8 @@ from ..types import (
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
 )
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -32,6 +32,13 @@ __all__ = ["Alerts", "AsyncAlerts"]
 
 
 class Alerts(SyncAPIResource):
+    """
+    [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+    Alerts created through the API can be scoped to either customers or subscriptions.
+    """
+
     @cached_property
     def with_raw_response(self) -> AlertsWithRawResponse:
         """
@@ -77,7 +84,7 @@ class Alerts(SyncAPIResource):
         if not alert_id:
             raise ValueError(f"Expected a non-empty value for `alert_id` but received {alert_id!r}")
         return self._get(
-            f"/alerts/{alert_id}",
+            path_template("/alerts/{alert_id}", alert_id=alert_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -89,6 +96,8 @@ class Alerts(SyncAPIResource):
         alert_configuration_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
+        price_filters: Optional[Iterable[alert_update_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_update_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -102,6 +111,13 @@ class Alerts(SyncAPIResource):
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          price_filters: Replaces the price filters on a grouped cost alert; an empty list clears them.
+              Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+
+          threshold_overrides: Replaces the per-group threshold overrides on a grouped cost alert; an empty
+              list clears them. Only applicable to cost alerts with grouping_keys. Omit to
+              leave unchanged.
 
           extra_headers: Send extra headers
 
@@ -118,8 +134,15 @@ class Alerts(SyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return self._put(
-            f"/alerts/{alert_configuration_id}",
-            body=maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
+            body=maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
+                },
+                alert_update_params.AlertUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -254,7 +277,7 @@ class Alerts(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._post(
-            f"/alerts/customer_id/{customer_id}",
+            path_template("/alerts/customer_id/{customer_id}", customer_id=customer_id),
             body=maybe_transform(
                 {
                     "currency": currency,
@@ -321,7 +344,9 @@ class Alerts(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._post(
-            f"/alerts/external_customer_id/{external_customer_id}",
+            path_template(
+                "/alerts/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             body=maybe_transform(
                 {
                     "currency": currency,
@@ -346,7 +371,11 @@ class Alerts(SyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        currency: Optional[str] | Omit = omit,
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -373,7 +402,23 @@ class Alerts(SyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          currency: The case sensitive currency or custom pricing unit to use for grouped cost
+              alerts. Required when grouping_keys is set.
+
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
           metric_id: The metric to track usage for.
+
+          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
+              Supports filtering by price_id, item_id, or price_type with includes/excludes
+              operators. Only applicable when grouping_keys is set.
+
+          threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
+              grouping_keys values to a list of thresholds that fully replaces the default
+              thresholds for that group. An empty thresholds list silences the group. Groups
+              without an override use the default thresholds. Only applicable when
+              grouping_keys is set.
 
           extra_headers: Send extra headers
 
@@ -388,12 +433,16 @@ class Alerts(SyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return self._post(
-            f"/alerts/subscription_id/{subscription_id}",
+            path_template("/alerts/subscription_id/{subscription_id}", subscription_id=subscription_id),
             body=maybe_transform(
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "currency": currency,
+                    "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
@@ -444,7 +493,7 @@ class Alerts(SyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return self._post(
-            f"/alerts/{alert_configuration_id}/disable",
+            path_template("/alerts/{alert_configuration_id}/disable", alert_configuration_id=alert_configuration_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -493,7 +542,7 @@ class Alerts(SyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return self._post(
-            f"/alerts/{alert_configuration_id}/enable",
+            path_template("/alerts/{alert_configuration_id}/enable", alert_configuration_id=alert_configuration_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -507,6 +556,13 @@ class Alerts(SyncAPIResource):
 
 
 class AsyncAlerts(AsyncAPIResource):
+    """
+    [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    usage, or credit balance and trigger webhooks when a threshold is exceeded.
+
+    Alerts created through the API can be scoped to either customers or subscriptions.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAlertsWithRawResponse:
         """
@@ -552,7 +608,7 @@ class AsyncAlerts(AsyncAPIResource):
         if not alert_id:
             raise ValueError(f"Expected a non-empty value for `alert_id` but received {alert_id!r}")
         return await self._get(
-            f"/alerts/{alert_id}",
+            path_template("/alerts/{alert_id}", alert_id=alert_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -564,6 +620,8 @@ class AsyncAlerts(AsyncAPIResource):
         alert_configuration_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
+        price_filters: Optional[Iterable[alert_update_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_update_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -577,6 +635,13 @@ class AsyncAlerts(AsyncAPIResource):
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          price_filters: Replaces the price filters on a grouped cost alert; an empty list clears them.
+              Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+
+          threshold_overrides: Replaces the per-group threshold overrides on a grouped cost alert; an empty
+              list clears them. Only applicable to cost alerts with grouping_keys. Omit to
+              leave unchanged.
 
           extra_headers: Send extra headers
 
@@ -593,8 +658,15 @@ class AsyncAlerts(AsyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return await self._put(
-            f"/alerts/{alert_configuration_id}",
-            body=await async_maybe_transform({"thresholds": thresholds}, alert_update_params.AlertUpdateParams),
+            path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
+            body=await async_maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
+                },
+                alert_update_params.AlertUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -729,7 +801,7 @@ class AsyncAlerts(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._post(
-            f"/alerts/customer_id/{customer_id}",
+            path_template("/alerts/customer_id/{customer_id}", customer_id=customer_id),
             body=await async_maybe_transform(
                 {
                     "currency": currency,
@@ -796,7 +868,9 @@ class AsyncAlerts(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return await self._post(
-            f"/alerts/external_customer_id/{external_customer_id}",
+            path_template(
+                "/alerts/external_customer_id/{external_customer_id}", external_customer_id=external_customer_id
+            ),
             body=await async_maybe_transform(
                 {
                     "currency": currency,
@@ -821,7 +895,11 @@ class AsyncAlerts(AsyncAPIResource):
         *,
         thresholds: Iterable[ThresholdParam],
         type: Literal["usage_exceeded", "cost_exceeded"],
+        currency: Optional[str] | Omit = omit,
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_subscription_params.PriceFilter]] | Omit = omit,
+        threshold_overrides: Optional[Iterable[alert_create_for_subscription_params.ThresholdOverride]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -848,7 +926,23 @@ class AsyncAlerts(AsyncAPIResource):
 
           type: The type of alert to create. This must be a valid alert type.
 
+          currency: The case sensitive currency or custom pricing unit to use for grouped cost
+              alerts. Required when grouping_keys is set.
+
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
           metric_id: The metric to track usage for.
+
+          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
+              Supports filtering by price_id, item_id, or price_type with includes/excludes
+              operators. Only applicable when grouping_keys is set.
+
+          threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
+              grouping_keys values to a list of thresholds that fully replaces the default
+              thresholds for that group. An empty thresholds list silences the group. Groups
+              without an override use the default thresholds. Only applicable when
+              grouping_keys is set.
 
           extra_headers: Send extra headers
 
@@ -863,12 +957,16 @@ class AsyncAlerts(AsyncAPIResource):
         if not subscription_id:
             raise ValueError(f"Expected a non-empty value for `subscription_id` but received {subscription_id!r}")
         return await self._post(
-            f"/alerts/subscription_id/{subscription_id}",
+            path_template("/alerts/subscription_id/{subscription_id}", subscription_id=subscription_id),
             body=await async_maybe_transform(
                 {
                     "thresholds": thresholds,
                     "type": type,
+                    "currency": currency,
+                    "grouping_keys": grouping_keys,
                     "metric_id": metric_id,
+                    "price_filters": price_filters,
+                    "threshold_overrides": threshold_overrides,
                 },
                 alert_create_for_subscription_params.AlertCreateForSubscriptionParams,
             ),
@@ -919,7 +1017,7 @@ class AsyncAlerts(AsyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return await self._post(
-            f"/alerts/{alert_configuration_id}/disable",
+            path_template("/alerts/{alert_configuration_id}/disable", alert_configuration_id=alert_configuration_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -970,7 +1068,7 @@ class AsyncAlerts(AsyncAPIResource):
                 f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
             )
         return await self._post(
-            f"/alerts/{alert_configuration_id}/enable",
+            path_template("/alerts/{alert_configuration_id}/enable", alert_configuration_id=alert_configuration_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

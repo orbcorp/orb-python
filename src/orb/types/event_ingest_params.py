@@ -21,7 +21,10 @@ class EventIngestParams(TypedDict, total=False):
     """
 
     debug: bool
-    """Flag to enable additional debug information in the endpoint response"""
+    """
+    Pending Deprecation: Flag to enable additional debug information in the endpoint
+    response
+    """
 
 
 class Event(TypedDict, total=False):

@@ -57,7 +57,15 @@ class CustomerUpdateParams(TypedDict, total=False):
     currency: Optional[str]
     """An ISO 4217 currency string used for the customer's invoices and balance.
 
-    If not set at creation time, will be set at subscription creation time.
+    This can only be set if the customer does not already have a currency
+    configured. If not set at creation or update time, it will be set at
+    subscription creation time.
+    """
+
+    default_payment_method_id: Optional[str]
+    """The Orb ID of the payment method to set as this customer's default.
+
+    Pass `null` to clear the customer's default payment method.
     """
 
     email: Optional[str]
@@ -93,7 +101,9 @@ class CustomerUpdateParams(TypedDict, total=False):
     a supported payment provider such as Stripe.
     """
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]]
+    payment_provider: Optional[
+        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+    ]
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode:
@@ -175,11 +185,13 @@ class CustomerUpdateParams(TypedDict, total=False):
     | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
     | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
     | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+    | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
     | Finland                | `eu_vat`     | European VAT Number                                                                                     |
     | France                 | `eu_vat`     | European VAT Number                                                                                     |
     | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
     | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
     | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+    | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
     | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
     | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
     | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -191,6 +203,7 @@ class CustomerUpdateParams(TypedDict, total=False):
     | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
     | Israel                 | `il_vat`     | Israel VAT                                                                                              |
     | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
     | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
     | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
     | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -221,6 +234,7 @@ class CustomerUpdateParams(TypedDict, total=False):
     | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
     | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
     | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+    | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
     | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
     | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
     | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -242,6 +256,7 @@ class CustomerUpdateParams(TypedDict, total=False):
     | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
     | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
     | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
     | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
     | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
     | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -269,6 +284,13 @@ class CustomerUpdateParams(TypedDict, total=False):
 class PaymentConfigurationPaymentProvider(TypedDict, total=False):
     provider_type: Required[Literal["stripe"]]
     """The payment provider to configure."""
+
+    default_shared_payment_token: Optional[str]
+    """
+    The ID of a shared payment token granted by an agent to use as the default
+    payment instrument for this customer. When set, auto-collection will use this
+    token instead of the customer's default payment method.
+    """
 
     excluded_payment_method_types: SequenceNotStr[str]
     """List of Stripe payment method types to exclude for this customer.

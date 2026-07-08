@@ -38,7 +38,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -66,6 +66,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -137,7 +138,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -154,6 +155,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
+            default_payment_method_id="default_payment_method_id",
             email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
@@ -167,6 +169,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -469,7 +472,7 @@ class TestCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -486,6 +489,7 @@ class TestCustomers:
                 "state": "state",
             },
             currency="currency",
+            default_payment_method_id="default_payment_method_id",
             email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
@@ -499,6 +503,7 @@ class TestCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -582,7 +587,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -610,6 +615,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -681,7 +687,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -698,6 +704,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
+            default_payment_method_id="default_payment_method_id",
             email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
@@ -711,6 +718,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]
@@ -1025,7 +1033,7 @@ class TestAsyncCustomers:
                 "accounting_providers": [
                     {
                         "external_provider_id": "external_provider_id",
-                        "provider_type": "provider_type",
+                        "provider_type": "quickbooks",
                     }
                 ],
                 "excluded": True,
@@ -1042,6 +1050,7 @@ class TestAsyncCustomers:
                 "state": "state",
             },
             currency="currency",
+            default_payment_method_id="default_payment_method_id",
             email="dev@stainless.com",
             email_delivery=True,
             external_customer_id="external_customer_id",
@@ -1055,6 +1064,7 @@ class TestAsyncCustomers:
                 "payment_providers": [
                     {
                         "provider_type": "stripe",
+                        "default_shared_payment_token": "default_shared_payment_token",
                         "excluded_payment_method_types": ["string"],
                     }
                 ]

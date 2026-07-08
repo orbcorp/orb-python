@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform
+from ..._utils import path_template, maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -21,6 +21,10 @@ __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
 
 class Subscriptions(SyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def with_raw_response(self) -> SubscriptionsWithRawResponse:
         """
@@ -76,7 +80,7 @@ class Subscriptions(SyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
-            f"/coupons/{coupon_id}/subscriptions",
+            path_template("/coupons/{coupon_id}/subscriptions", coupon_id=coupon_id),
             page=SyncPage[Subscription],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -96,6 +100,10 @@ class Subscriptions(SyncAPIResource):
 
 
 class AsyncSubscriptions(AsyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSubscriptionsWithRawResponse:
         """
@@ -151,7 +159,7 @@ class AsyncSubscriptions(AsyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get_api_list(
-            f"/coupons/{coupon_id}/subscriptions",
+            path_template("/coupons/{coupon_id}/subscriptions", coupon_id=coupon_id),
             page=AsyncPage[Subscription],
             options=make_request_options(
                 extra_headers=extra_headers,

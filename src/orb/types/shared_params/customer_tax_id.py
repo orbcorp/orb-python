@@ -67,11 +67,13 @@ class CustomerTaxID(TypedDict, total=False):
     | Estonia | `eu_vat` | European VAT Number |
     | Ethiopia | `et_tin` | Ethiopia Tax Identification Number |
     | European Union | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme |
+    | Faroe Islands | `fo_vat` | Faroe Islands VAT Number |
     | Finland | `eu_vat` | European VAT Number |
     | France | `eu_vat` | European VAT Number |
     | Georgia | `ge_vat` | Georgian VAT |
     | Germany | `de_stn` | German Tax Number (Steuernummer) |
     | Germany | `eu_vat` | European VAT Number |
+    | Gibraltar | `gi_tin` | Gibraltar Tax Identification Number |
     | Greece | `eu_vat` | European VAT Number |
     | Guinea | `gn_nif` | Guinea Tax Identification Number (Número de Identificação Fiscal) |
     | Hong Kong | `hk_br` | Hong Kong BR Number |
@@ -83,6 +85,7 @@ class CustomerTaxID(TypedDict, total=False):
     | Ireland | `eu_vat` | European VAT Number |
     | Israel | `il_vat` | Israel VAT |
     | Italy | `eu_vat` | European VAT Number |
+    | Italy | `it_cf` | Italian Codice Fiscale Number |
     | Japan | `jp_cn` | Japanese Corporate Number (*Hōjin Bangō*) |
     | Japan | `jp_rn` | Japanese Registered Foreign Businesses' Registration Number (*Tōroku Kokugai Jigyōsha no Tōroku Bangō*) |
     | Japan | `jp_trn` | Japanese Tax Registration Number (*Tōroku Bangō*) |
@@ -113,6 +116,7 @@ class CustomerTaxID(TypedDict, total=False):
     | Norway | `no_vat` | Norwegian VAT Number |
     | Norway | `no_voec` | Norwegian VAT on e-commerce Number |
     | Oman | `om_vat` | Omani VAT Number |
+    | Paraguay | `py_ruc` | Paraguayan RUC Number |
     | Peru | `pe_ruc` | Peruvian RUC Number |
     | Philippines | `ph_tin` | Philippines Tax Identification Number |
     | Poland | `eu_vat` | European VAT Number |
@@ -134,6 +138,7 @@ class CustomerTaxID(TypedDict, total=False):
     | South Korea | `kr_brn` | Korean BRN |
     | Spain | `es_cif` | Spanish NIF Number (previously Spanish CIF Number) |
     | Spain | `eu_vat` | European VAT Number |
+    | Sri Lanka | `lk_vat` | Sri Lanka VAT Number |
     | Suriname | `sr_fin` | Suriname FIN Number |
     | Sweden | `eu_vat` | European VAT Number |
     | Switzerland | `ch_uid` | Switzerland UID Number |
@@ -190,9 +195,9 @@ class CustomerTaxID(TypedDict, total=False):
             "CO",
             "CR",
             "CV",
-            "DE",
             "CY",
             "CZ",
+            "DE",
             "DK",
             "DO",
             "EC",
@@ -202,9 +207,11 @@ class CustomerTaxID(TypedDict, total=False):
             "ET",
             "EU",
             "FI",
+            "FO",
             "FR",
             "GB",
             "GE",
+            "GI",
             "GN",
             "GR",
             "HK",
@@ -224,6 +231,7 @@ class CustomerTaxID(TypedDict, total=False):
             "KZ",
             "LA",
             "LI",
+            "LK",
             "LT",
             "LU",
             "LV",
@@ -245,6 +253,7 @@ class CustomerTaxID(TypedDict, total=False):
             "PH",
             "PL",
             "PT",
+            "PY",
             "RO",
             "RS",
             "RU",
@@ -321,8 +330,10 @@ class CustomerTaxID(TypedDict, total=False):
             "es_cif",
             "et_tin",
             "eu_oss_vat",
+            "fo_vat",
             "gb_vat",
             "ge_vat",
+            "gi_tin",
             "gn_nif",
             "hk_br",
             "hr_oib",
@@ -331,6 +342,7 @@ class CustomerTaxID(TypedDict, total=False):
             "il_vat",
             "in_gst",
             "is_vat",
+            "it_cf",
             "jp_cn",
             "jp_rn",
             "jp_trn",
@@ -342,6 +354,7 @@ class CustomerTaxID(TypedDict, total=False):
             "la_tin",
             "li_uid",
             "li_vat",
+            "lk_vat",
             "ma_vat",
             "md_vat",
             "me_pib",
@@ -360,6 +373,7 @@ class CustomerTaxID(TypedDict, total=False):
             "pe_ruc",
             "ph_tin",
             "pl_nip",
+            "py_ruc",
             "ro_tin",
             "rs_pib",
             "ru_inn",

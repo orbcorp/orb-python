@@ -10,6 +10,7 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
+    invoice_pay_params,
     invoice_list_params,
     invoice_issue_params,
     invoice_create_params,
@@ -20,7 +21,7 @@ from ..types import (
     invoice_fetch_upcoming_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -36,6 +37,13 @@ __all__ = ["Invoices", "AsyncInvoices"]
 
 
 class Invoices(SyncAPIResource):
+    """
+    An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+    a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+    can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+    the result of an action, such as a cancellation.
+    """
+
     @cached_property
     def with_raw_response(self) -> InvoicesWithRawResponse:
         """
@@ -61,6 +69,7 @@ class Invoices(SyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
+        auto_collection: Optional[bool] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
@@ -86,6 +95,10 @@ class Invoices(SyncAPIResource):
 
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
+
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. If not specified, the invoice inherits the customer's
+              auto_collection setting.
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
@@ -132,6 +145,7 @@ class Invoices(SyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
+                    "auto_collection": auto_collection,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
@@ -157,6 +171,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        auto_collection: Optional[bool] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -170,15 +185,20 @@ class Invoices(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
-        `invoice_date` properties on an invoice. If you pass null for the metadata
-        value, it will clear any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`,
+        `invoice_date`, and `auto_collection` properties on an invoice. If you pass null
+        for the metadata value, it will clear any existing metadata for that invoice.
 
         `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
-        and `invoice_date` can only be modified if the invoice is in a `draft` state.
-        `invoice_date` can only be modified for non-subscription invoices.
+        `invoice_date`, and `auto_collection` can only be modified if the invoice is in
+        a `draft` state. `invoice_date` can only be modified for non-subscription
+        invoices.
 
         Args:
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. Can only be modified on draft invoices. If not
+              specified, the invoice's existing setting is unchanged.
+
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
 
@@ -207,9 +227,10 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._put(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             body=maybe_transform(
                 {
+                    "auto_collection": auto_collection,
                     "due_date": due_date,
                     "invoice_date": invoice_date,
                     "metadata": metadata,
@@ -270,6 +291,10 @@ class Invoices(SyncAPIResource):
         When fetching any `draft` invoices, this returns the last-computed invoice
         values for each draft invoice, which may not always be up-to-date since Orb
         regularly refreshes invoices asynchronously.
+
+        If you don't need line item details, minimums, maximums, or discounts, prefer
+        the [list invoices summary](/api-reference/invoice/list-invoices-summary)
+        endpoint for better performance.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -363,7 +388,11 @@ class Invoices(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            path_template(
+                "/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+                invoice_id=invoice_id,
+                line_item_id=line_item_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -401,7 +430,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._get(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -489,7 +518,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/issue",
+            path_template("/invoices/{invoice_id}/issue", invoice_id=invoice_id),
             body=maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -546,7 +575,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/summary/{invoice_id}/issue",
+            path_template("/invoices/summary/{invoice_id}/issue", invoice_id=invoice_id),
             body=maybe_transform({"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -700,7 +729,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/mark_paid",
+            path_template("/invoices/{invoice_id}/mark_paid", invoice_id=invoice_id),
             body=maybe_transform(
                 {
                     "payment_received_date": payment_received_date,
@@ -723,6 +752,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        shared_payment_token_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -731,11 +761,16 @@ class Invoices(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """
-        This endpoint collects payment for an invoice using the customer's default
-        payment method. This action can only be taken on invoices with status "issued".
+        """This endpoint collects payment for an invoice.
+
+        By default, it uses the
+        customer's default payment method. Optionally, a shared payment token (SPT) can
+        be provided to pay using agent-granted credentials instead. This action can only
+        be taken on invoices with status "issued".
 
         Args:
+          shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -749,7 +784,10 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/pay",
+            path_template("/invoices/{invoice_id}/pay", invoice_id=invoice_id),
+            body=maybe_transform(
+                {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -800,7 +838,7 @@ class Invoices(SyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return self._post(
-            f"/invoices/{invoice_id}/void",
+            path_template("/invoices/{invoice_id}/void", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -813,6 +851,13 @@ class Invoices(SyncAPIResource):
 
 
 class AsyncInvoices(AsyncAPIResource):
+    """
+    An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+    a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+    can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+    the result of an action, such as a cancellation.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncInvoicesWithRawResponse:
         """
@@ -838,6 +883,7 @@ class AsyncInvoices(AsyncAPIResource):
         currency: str,
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
+        auto_collection: Optional[bool] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
@@ -863,6 +909,10 @@ class AsyncInvoices(AsyncAPIResource):
 
           invoice_date: Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
               set to the current time in the customer's timezone.
+
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. If not specified, the invoice inherits the customer's
+              auto_collection setting.
 
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
@@ -909,6 +959,7 @@ class AsyncInvoices(AsyncAPIResource):
                     "currency": currency,
                     "invoice_date": invoice_date,
                     "line_items": line_items,
+                    "auto_collection": auto_collection,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
@@ -934,6 +985,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        auto_collection: Optional[bool] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         invoice_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -947,15 +999,20 @@ class AsyncInvoices(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Invoice:
         """
-        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
-        `invoice_date` properties on an invoice. If you pass null for the metadata
-        value, it will clear any existing metadata for that invoice.
+        This endpoint allows you to update the `metadata`, `net_terms`, `due_date`,
+        `invoice_date`, and `auto_collection` properties on an invoice. If you pass null
+        for the metadata value, it will clear any existing metadata for that invoice.
 
         `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
-        and `invoice_date` can only be modified if the invoice is in a `draft` state.
-        `invoice_date` can only be modified for non-subscription invoices.
+        `invoice_date`, and `auto_collection` can only be modified if the invoice is in
+        a `draft` state. `invoice_date` can only be modified for non-subscription
+        invoices.
 
         Args:
+          auto_collection: Determines whether this invoice will automatically attempt to charge a saved
+              payment method, if any. Can only be modified on draft invoices. If not
+              specified, the invoice's existing setting is unchanged.
+
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
 
@@ -984,9 +1041,10 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._put(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {
+                    "auto_collection": auto_collection,
                     "due_date": due_date,
                     "invoice_date": invoice_date,
                     "metadata": metadata,
@@ -1047,6 +1105,10 @@ class AsyncInvoices(AsyncAPIResource):
         When fetching any `draft` invoices, this returns the last-computed invoice
         values for each draft invoice, which may not always be up-to-date since Orb
         regularly refreshes invoices asynchronously.
+
+        If you don't need line item details, minimums, maximums, or discounts, prefer
+        the [list invoices summary](/api-reference/invoice/list-invoices-summary)
+        endpoint for better performance.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -1140,7 +1202,11 @@ class AsyncInvoices(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `line_item_id` but received {line_item_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+            path_template(
+                "/invoices/{invoice_id}/invoice_line_items/{line_item_id}",
+                invoice_id=invoice_id,
+                line_item_id=line_item_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1178,7 +1244,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._get(
-            f"/invoices/{invoice_id}",
+            path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1266,7 +1332,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/issue",
+            path_template("/invoices/{invoice_id}/issue", invoice_id=invoice_id),
             body=await async_maybe_transform({"synchronous": synchronous}, invoice_issue_params.InvoiceIssueParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1323,7 +1389,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/summary/{invoice_id}/issue",
+            path_template("/invoices/summary/{invoice_id}/issue", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {"synchronous": synchronous}, invoice_issue_summary_params.InvoiceIssueSummaryParams
             ),
@@ -1479,7 +1545,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/mark_paid",
+            path_template("/invoices/{invoice_id}/mark_paid", invoice_id=invoice_id),
             body=await async_maybe_transform(
                 {
                     "payment_received_date": payment_received_date,
@@ -1502,6 +1568,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        shared_payment_token_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1510,11 +1577,16 @@ class AsyncInvoices(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Invoice:
-        """
-        This endpoint collects payment for an invoice using the customer's default
-        payment method. This action can only be taken on invoices with status "issued".
+        """This endpoint collects payment for an invoice.
+
+        By default, it uses the
+        customer's default payment method. Optionally, a shared payment token (SPT) can
+        be provided to pay using agent-granted credentials instead. This action can only
+        be taken on invoices with status "issued".
 
         Args:
+          shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1528,7 +1600,10 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/pay",
+            path_template("/invoices/{invoice_id}/pay", invoice_id=invoice_id),
+            body=await async_maybe_transform(
+                {"shared_payment_token_id": shared_payment_token_id}, invoice_pay_params.InvoicePayParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1579,7 +1654,7 @@ class AsyncInvoices(AsyncAPIResource):
         if not invoice_id:
             raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
         return await self._post(
-            f"/invoices/{invoice_id}/void",
+            path_template("/invoices/{invoice_id}/void", invoice_id=invoice_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

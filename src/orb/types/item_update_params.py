@@ -27,7 +27,7 @@ class ExternalConnection(TypedDict, total=False):
     """
 
     external_connection_name: Required[
-        Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral"]
+        Literal["stripe", "quickbooks", "bill.com", "netsuite", "taxjar", "avalara", "anrok", "numeral", "stripe_tax"]
     ]
     """The name of the external system this item is connected to."""
 

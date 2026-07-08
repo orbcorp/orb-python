@@ -21,10 +21,80 @@ from .shared.subscription_change_minified import SubscriptionChangeMinified
 from .shared.fixed_fee_quantity_schedule_entry import FixedFeeQuantityScheduleEntry
 from .shared.billing_cycle_anchor_configuration import BillingCycleAnchorConfiguration
 
-__all__ = ["Subscription", "DiscountInterval"]
+__all__ = [
+    "Subscription",
+    "DiscountInterval",
+    "DiscountIntervalTieredPercentageDiscountInterval",
+    "DiscountIntervalTieredPercentageDiscountIntervalFilter",
+    "DiscountIntervalTieredPercentageDiscountIntervalTier",
+]
+
+
+class DiscountIntervalTieredPercentageDiscountIntervalFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+class DiscountIntervalTieredPercentageDiscountIntervalTier(BaseModel):
+    """One band of a tiered percentage discount.
+
+    Bounds are denominated in the discount's currency.
+    `lower_bound` is the exclusive start of the band and `upper_bound` is the inclusive end;
+    `upper_bound` is null only for the open-ended final tier.
+    """
+
+    lower_bound: float
+    """Exclusive lower bound of cumulative spend for this tier."""
+
+    percentage: float
+    """
+    The percentage (between 0 and 1) discounted from spend that falls within this
+    tier.
+    """
+
+    upper_bound: Optional[float] = None
+    """
+    Inclusive upper bound of cumulative spend for this tier; null for the final
+    open-ended tier.
+    """
+
+
+class DiscountIntervalTieredPercentageDiscountInterval(BaseModel):
+    applies_to_price_interval_ids: List[str]
+    """The price interval ids that this discount interval applies to."""
+
+    discount_type: Literal["tiered_percentage"]
+
+    end_date: Optional[datetime] = None
+    """The end date of the discount interval."""
+
+    filters: List[DiscountIntervalTieredPercentageDiscountIntervalFilter]
+    """The filters that determine which prices this discount interval applies to."""
+
+    start_date: datetime
+    """The start date of the discount interval."""
+
+    tiers: List[DiscountIntervalTieredPercentageDiscountIntervalTier]
+    """Only available if discount_type is `tiered_percentage`.
+
+    The ordered, contiguous bands of cumulative eligible spend, each discounted at
+    its own percentage.
+    """
+
 
 DiscountInterval: TypeAlias = Annotated[
-    Union[AmountDiscountInterval, PercentageDiscountInterval, UsageDiscountInterval],
+    Union[
+        AmountDiscountInterval,
+        PercentageDiscountInterval,
+        UsageDiscountInterval,
+        DiscountIntervalTieredPercentageDiscountInterval,
+    ],
     PropertyInfo(discriminator="discount_type"),
 ]
 
@@ -65,6 +135,14 @@ class Subscription(BaseModel):
     Determines whether issued invoices for this subscription will automatically be
     charged with the saved payment method on the due date. This property defaults to
     the plan's behavior. If null, defaults to the customer's setting.
+    """
+
+    auto_issuance: Optional[bool] = None
+    """Determines whether invoices for this subscription will be automatically issued.
+
+    This resolves the effective setting for the subscription: a subscription-level
+    override if set, otherwise the customer-level setting, otherwise the
+    account-level default.
     """
 
     billing_cycle_anchor_configuration: BillingCycleAnchorConfiguration

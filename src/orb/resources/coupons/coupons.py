@@ -9,7 +9,7 @@ import httpx
 from ... import _legacy_response
 from ...types import coupon_list_params, coupon_create_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -29,8 +29,15 @@ __all__ = ["Coupons", "AsyncCoupons"]
 
 
 class Coupons(SyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def subscriptions(self) -> Subscriptions:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return Subscriptions(self._client)
 
     @cached_property
@@ -130,8 +137,7 @@ class Coupons(SyncAPIResource):
 
         The list of coupons is ordered starting from the most recently created coupon.
         The response also includes `pagination_metadata`, which lets the caller retrieve
-        the next page of results if they exist. More information about pagination can be
-        found in the Pagination-metadata schema.
+        the next page of results if they exist.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -205,7 +211,7 @@ class Coupons(SyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._post(
-            f"/coupons/{coupon_id}/archive",
+            path_template("/coupons/{coupon_id}/archive", coupon_id=coupon_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -245,7 +251,7 @@ class Coupons(SyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return self._get(
-            f"/coupons/{coupon_id}",
+            path_template("/coupons/{coupon_id}", coupon_id=coupon_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -254,8 +260,15 @@ class Coupons(SyncAPIResource):
 
 
 class AsyncCoupons(AsyncAPIResource):
+    """
+    A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+    """
+
     @cached_property
     def subscriptions(self) -> AsyncSubscriptions:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptions(self._client)
 
     @cached_property
@@ -355,8 +368,7 @@ class AsyncCoupons(AsyncAPIResource):
 
         The list of coupons is ordered starting from the most recently created coupon.
         The response also includes `pagination_metadata`, which lets the caller retrieve
-        the next page of results if they exist. More information about pagination can be
-        found in the Pagination-metadata schema.
+        the next page of results if they exist.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -430,7 +442,7 @@ class AsyncCoupons(AsyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return await self._post(
-            f"/coupons/{coupon_id}/archive",
+            path_template("/coupons/{coupon_id}/archive", coupon_id=coupon_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -470,7 +482,7 @@ class AsyncCoupons(AsyncAPIResource):
         if not coupon_id:
             raise ValueError(f"Expected a non-empty value for `coupon_id` but received {coupon_id!r}")
         return await self._get(
-            f"/coupons/{coupon_id}",
+            path_template("/coupons/{coupon_id}", coupon_id=coupon_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -497,6 +509,9 @@ class CouponsWithRawResponse:
 
     @cached_property
     def subscriptions(self) -> SubscriptionsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return SubscriptionsWithRawResponse(self._coupons.subscriptions)
 
 
@@ -519,6 +534,9 @@ class AsyncCouponsWithRawResponse:
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsWithRawResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptionsWithRawResponse(self._coupons.subscriptions)
 
 
@@ -541,6 +559,9 @@ class CouponsWithStreamingResponse:
 
     @cached_property
     def subscriptions(self) -> SubscriptionsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return SubscriptionsWithStreamingResponse(self._coupons.subscriptions)
 
 
@@ -563,4 +584,7 @@ class AsyncCouponsWithStreamingResponse:
 
     @cached_property
     def subscriptions(self) -> AsyncSubscriptionsWithStreamingResponse:
+        """
+        A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
+        """
         return AsyncSubscriptionsWithStreamingResponse(self._coupons.subscriptions)

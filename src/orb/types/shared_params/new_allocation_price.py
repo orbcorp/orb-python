@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Dict, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from ..._types import SequenceNotStr
@@ -58,6 +58,13 @@ class NewAllocationPrice(TypedDict, total=False):
 
     license_type_id: Optional[str]
     """The license type ID to associate the price with license allocation."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
 
     per_unit_cost_basis: str
     """The (per-unit) cost basis of each created block.

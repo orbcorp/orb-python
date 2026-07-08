@@ -24,7 +24,7 @@ from ...types import (
     license_retrieve_by_external_id_params,
 )
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -165,7 +165,7 @@ class Licenses(SyncAPIResource):
         if not license_id:
             raise ValueError(f"Expected a non-empty value for `license_id` but received {license_id!r}")
         return self._get(
-            f"/licenses/{license_id}",
+            path_template("/licenses/{license_id}", license_id=license_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -265,7 +265,7 @@ class Licenses(SyncAPIResource):
         if not license_id:
             raise ValueError(f"Expected a non-empty value for `license_id` but received {license_id!r}")
         return self._post(
-            f"/licenses/{license_id}/deactivate",
+            path_template("/licenses/{license_id}/deactivate", license_id=license_id),
             body=maybe_transform({"end_date": end_date}, license_deactivate_params.LicenseDeactivateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -311,7 +311,9 @@ class Licenses(SyncAPIResource):
                 f"Expected a non-empty value for `external_license_id` but received {external_license_id!r}"
             )
         return self._get(
-            f"/licenses/external_license_id/{external_license_id}",
+            path_template(
+                "/licenses/external_license_id/{external_license_id}", external_license_id=external_license_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -447,7 +449,7 @@ class AsyncLicenses(AsyncAPIResource):
         if not license_id:
             raise ValueError(f"Expected a non-empty value for `license_id` but received {license_id!r}")
         return await self._get(
-            f"/licenses/{license_id}",
+            path_template("/licenses/{license_id}", license_id=license_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -547,7 +549,7 @@ class AsyncLicenses(AsyncAPIResource):
         if not license_id:
             raise ValueError(f"Expected a non-empty value for `license_id` but received {license_id!r}")
         return await self._post(
-            f"/licenses/{license_id}/deactivate",
+            path_template("/licenses/{license_id}/deactivate", license_id=license_id),
             body=await async_maybe_transform({"end_date": end_date}, license_deactivate_params.LicenseDeactivateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -593,7 +595,9 @@ class AsyncLicenses(AsyncAPIResource):
                 f"Expected a non-empty value for `external_license_id` but received {external_license_id!r}"
             )
         return await self._get(
-            f"/licenses/external_license_id/{external_license_id}",
+            path_template(
+                "/licenses/external_license_id/{external_license_id}", external_license_id=external_license_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

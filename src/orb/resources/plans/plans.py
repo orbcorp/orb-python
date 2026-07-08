@@ -11,7 +11,7 @@ import httpx
 from ... import _legacy_response
 from ...types import plan_list_params, plan_create_params, plan_update_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .migrations import (
     Migrations,
@@ -39,12 +39,28 @@ __all__ = ["Plans", "AsyncPlans"]
 
 
 class Plans(SyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def external_plan_id(self) -> ExternalPlanID:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanID(self._client)
 
     @cached_property
     def migrations(self) -> Migrations:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return Migrations(self._client)
 
     @cached_property
@@ -74,6 +90,7 @@ class Plans(SyncAPIResource):
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
@@ -101,6 +118,8 @@ class Plans(SyncAPIResource):
               across all phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          description: An optional user-defined description of the plan.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -135,6 +154,7 @@ class Plans(SyncAPIResource):
                     "prices": prices,
                     "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
@@ -157,6 +177,7 @@ class Plans(SyncAPIResource):
         self,
         plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -168,12 +189,14 @@ class Plans(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -195,9 +218,10 @@ class Plans(SyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._put(
-            f"/plans/{plan_id}",
+            path_template("/plans/{plan_id}", plan_id=plan_id),
             body=maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -234,7 +258,7 @@ class Plans(SyncAPIResource):
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
         an account in a list format. The list of plans is ordered starting from the most
         recently created plan. The response also includes
-        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        [`pagination_metadata`](/api-reference/pagination) which lets the caller
         retrieve the next page of results if they exist.
 
         Args:
@@ -319,7 +343,7 @@ class Plans(SyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return self._get(
-            f"/plans/{plan_id}",
+            path_template("/plans/{plan_id}", plan_id=plan_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -328,12 +352,28 @@ class Plans(SyncAPIResource):
 
 
 class AsyncPlans(AsyncAPIResource):
+    """
+    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+    in the [Price resource](/reference/price).
+    """
+
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanID:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanID(self._client)
 
     @cached_property
     def migrations(self) -> AsyncMigrations:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncMigrations(self._client)
 
     @cached_property
@@ -363,6 +403,7 @@ class AsyncPlans(AsyncAPIResource):
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         net_terms: Optional[int] | Omit = omit,
@@ -390,6 +431,8 @@ class AsyncPlans(AsyncAPIResource):
               across all phases of the plan.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
+
+          description: An optional user-defined description of the plan.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -424,6 +467,7 @@ class AsyncPlans(AsyncAPIResource):
                     "prices": prices,
                     "adjustments": adjustments,
                     "default_invoice_memo": default_invoice_memo,
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                     "net_terms": net_terms,
@@ -446,6 +490,7 @@ class AsyncPlans(AsyncAPIResource):
         self,
         plan_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -457,12 +502,14 @@ class AsyncPlans(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        existing plan.
+        This endpoint can be used to update the `external_plan_id`, `description`, and
+        `metadata` of an existing plan.
 
         Other fields on a plan are currently immutable.
 
         Args:
+          description: An optional user-defined description of the plan.
+
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
               as an alias for this Plan. Use this field to identify a plan by an existing
               identifier in your system.
@@ -484,9 +531,10 @@ class AsyncPlans(AsyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._put(
-            f"/plans/{plan_id}",
+            path_template("/plans/{plan_id}", plan_id=plan_id),
             body=await async_maybe_transform(
                 {
+                    "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
                 },
@@ -523,7 +571,7 @@ class AsyncPlans(AsyncAPIResource):
         This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
         an account in a list format. The list of plans is ordered starting from the most
         recently created plan. The response also includes
-        [`pagination_metadata`](/api-reference/pagination), which lets the caller
+        [`pagination_metadata`](/api-reference/pagination) which lets the caller
         retrieve the next page of results if they exist.
 
         Args:
@@ -608,7 +656,7 @@ class AsyncPlans(AsyncAPIResource):
         if not plan_id:
             raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
         return await self._get(
-            f"/plans/{plan_id}",
+            path_template("/plans/{plan_id}", plan_id=plan_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -635,10 +683,20 @@ class PlansWithRawResponse:
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanIDWithRawResponse(self._plans.external_plan_id)
 
     @cached_property
     def migrations(self) -> MigrationsWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return MigrationsWithRawResponse(self._plans.migrations)
 
 
@@ -661,10 +719,20 @@ class AsyncPlansWithRawResponse:
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanIDWithRawResponse(self._plans.external_plan_id)
 
     @cached_property
     def migrations(self) -> AsyncMigrationsWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncMigrationsWithRawResponse(self._plans.migrations)
 
 
@@ -687,10 +755,20 @@ class PlansWithStreamingResponse:
 
     @cached_property
     def external_plan_id(self) -> ExternalPlanIDWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return ExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
 
     @cached_property
     def migrations(self) -> MigrationsWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return MigrationsWithStreamingResponse(self._plans.migrations)
 
 
@@ -713,8 +791,18 @@ class AsyncPlansWithStreamingResponse:
 
     @cached_property
     def external_plan_id(self) -> AsyncExternalPlanIDWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncExternalPlanIDWithStreamingResponse(self._plans.external_plan_id)
 
     @cached_property
     def migrations(self) -> AsyncMigrationsWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
         return AsyncMigrationsWithStreamingResponse(self._plans.migrations)

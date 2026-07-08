@@ -21,6 +21,13 @@ __all__ = ["InvoiceLineItems", "AsyncInvoiceLineItems"]
 
 
 class InvoiceLineItems(SyncAPIResource):
+    """
+    An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+    a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+    can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+    the result of an action, such as a cancellation.
+    """
+
     @cached_property
     def with_raw_response(self) -> InvoiceLineItemsWithRawResponse:
         """
@@ -133,6 +140,13 @@ class InvoiceLineItems(SyncAPIResource):
 
 
 class AsyncInvoiceLineItems(AsyncAPIResource):
+    """
+    An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, representing the request for payment for
+    a single subscription. This includes a set of line items, which correspond to prices in the subscription's plan and
+    can represent fixed recurring fees or usage-based fees. They are generated at the end of a billing period, or as
+    the result of an action, such as a cancellation.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncInvoiceLineItemsWithRawResponse:
         """

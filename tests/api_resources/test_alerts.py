@@ -68,6 +68,27 @@ class TestAlerts:
         assert_matches_type(Alert, alert, path=["response"])
 
     @parametrize
+    def test_method_update_with_all_params(self, client: Orb) -> None:
+        alert = client.alerts.update(
+            alert_configuration_id="alert_configuration_id",
+            thresholds=[{"value": 0}],
+            price_filters=[
+                {
+                    "field": "price_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
+            threshold_overrides=[
+                {
+                    "group_values": ["string"],
+                    "thresholds": [{"value": 0}],
+                }
+            ],
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
     def test_raw_response_update(self, client: Orb) -> None:
         response = client.alerts.with_raw_response.update(
             alert_configuration_id="alert_configuration_id",
@@ -274,7 +295,22 @@ class TestAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            currency="currency",
+            grouping_keys=["string"],
             metric_id="metric_id",
+            price_filters=[
+                {
+                    "field": "price_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
+            threshold_overrides=[
+                {
+                    "group_values": ["string"],
+                    "thresholds": [{"value": 0}],
+                }
+            ],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -460,6 +496,27 @@ class TestAsyncAlerts:
         alert = await async_client.alerts.update(
             alert_configuration_id="alert_configuration_id",
             thresholds=[{"value": 0}],
+        )
+        assert_matches_type(Alert, alert, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
+        alert = await async_client.alerts.update(
+            alert_configuration_id="alert_configuration_id",
+            thresholds=[{"value": 0}],
+            price_filters=[
+                {
+                    "field": "price_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
+            threshold_overrides=[
+                {
+                    "group_values": ["string"],
+                    "thresholds": [{"value": 0}],
+                }
+            ],
         )
         assert_matches_type(Alert, alert, path=["response"])
 
@@ -670,7 +727,22 @@ class TestAsyncAlerts:
             subscription_id="subscription_id",
             thresholds=[{"value": 0}],
             type="usage_exceeded",
+            currency="currency",
+            grouping_keys=["string"],
             metric_id="metric_id",
+            price_filters=[
+                {
+                    "field": "price_id",
+                    "operator": "includes",
+                    "values": ["string"],
+                }
+            ],
+            threshold_overrides=[
+                {
+                    "group_values": ["string"],
+                    "thresholds": [{"value": 0}],
+                }
+            ],
         )
         assert_matches_type(Alert, alert, path=["response"])
 

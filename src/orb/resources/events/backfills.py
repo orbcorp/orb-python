@@ -9,7 +9,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -26,6 +26,12 @@ __all__ = ["Backfills", "AsyncBackfills"]
 
 
 class Backfills(SyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> BackfillsWithRawResponse:
         """
@@ -69,8 +75,8 @@ class Backfills(SyncAPIResource):
         3 steps:
 
         1. Create the backfill, specifying its parameters.
-        2. [Ingest](ingest) usage events, referencing the backfill (query parameter
-           `backfill_id`).
+        2. [Ingest](/api-reference/event/ingest-events) usage events, referencing the
+           backfill (query parameter `backfill_id`).
         3. [Close](close-backfill) the backfill, propagating the update in past usage
            throughout Orb.
 
@@ -183,8 +189,7 @@ class Backfills(SyncAPIResource):
         The list of backfills is ordered starting from the most recently created
         backfill. The response also includes
         [`pagination_metadata`](/api-reference/pagination), which lets the caller
-        retrieve the next page of results if they exist. More information about
-        pagination can be found in the [Pagination-metadata schema](pagination).
+        retrieve the next page of results if they exist.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -252,7 +257,7 @@ class Backfills(SyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._post(
-            f"/events/backfills/{backfill_id}/close",
+            path_template("/events/backfills/{backfill_id}/close", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -289,7 +294,7 @@ class Backfills(SyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._get(
-            f"/events/backfills/{backfill_id}",
+            path_template("/events/backfills/{backfill_id}", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -332,7 +337,7 @@ class Backfills(SyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return self._post(
-            f"/events/backfills/{backfill_id}/revert",
+            path_template("/events/backfills/{backfill_id}/revert", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -345,6 +350,12 @@ class Backfills(SyncAPIResource):
 
 
 class AsyncBackfills(AsyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBackfillsWithRawResponse:
         """
@@ -388,8 +399,8 @@ class AsyncBackfills(AsyncAPIResource):
         3 steps:
 
         1. Create the backfill, specifying its parameters.
-        2. [Ingest](ingest) usage events, referencing the backfill (query parameter
-           `backfill_id`).
+        2. [Ingest](/api-reference/event/ingest-events) usage events, referencing the
+           backfill (query parameter `backfill_id`).
         3. [Close](close-backfill) the backfill, propagating the update in past usage
            throughout Orb.
 
@@ -502,8 +513,7 @@ class AsyncBackfills(AsyncAPIResource):
         The list of backfills is ordered starting from the most recently created
         backfill. The response also includes
         [`pagination_metadata`](/api-reference/pagination), which lets the caller
-        retrieve the next page of results if they exist. More information about
-        pagination can be found in the [Pagination-metadata schema](pagination).
+        retrieve the next page of results if they exist.
 
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -571,7 +581,7 @@ class AsyncBackfills(AsyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._post(
-            f"/events/backfills/{backfill_id}/close",
+            path_template("/events/backfills/{backfill_id}/close", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -608,7 +618,7 @@ class AsyncBackfills(AsyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._get(
-            f"/events/backfills/{backfill_id}",
+            path_template("/events/backfills/{backfill_id}", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -651,7 +661,7 @@ class AsyncBackfills(AsyncAPIResource):
         if not backfill_id:
             raise ValueError(f"Expected a non-empty value for `backfill_id` but received {backfill_id!r}")
         return await self._post(
-            f"/events/backfills/{backfill_id}/revert",
+            path_template("/events/backfills/{backfill_id}/revert", backfill_id=backfill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

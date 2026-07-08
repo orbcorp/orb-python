@@ -18,7 +18,7 @@ from .volume import (
 )
 from ...types import event_ingest_params, event_search_params, event_update_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .backfills import (
     Backfills,
@@ -40,12 +40,28 @@ __all__ = ["Events", "AsyncEvents"]
 
 
 class Events(SyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def backfills(self) -> Backfills:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return Backfills(self._client)
 
     @cached_property
     def volume(self) -> Volume:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return Volume(self._client)
 
     @cached_property
@@ -159,7 +175,7 @@ class Events(SyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._put(
-            f"/events/{event_id}",
+            path_template("/events/{event_id}", event_id=event_id),
             body=maybe_transform(
                 {
                     "event_name": event_name,
@@ -248,7 +264,7 @@ class Events(SyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._put(
-            f"/events/{event_id}/deprecate",
+            path_template("/events/{event_id}/deprecate", event_id=event_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -390,8 +406,8 @@ class Events(SyncAPIResource):
         billed for in the corresponding billing period.
 
         In general, Orb does not expect events with future dated timestamps. In cases
-        where the timestamp is at least 24 hours ahead of the current time, the event
-        will not be accepted as a valid event, and will throw validation errors.
+        where the timestamp is 5 minutes ahead of the current time, the event will not
+        be accepted as a valid event, and will throw validation errors.
 
         ## Event validation
 
@@ -406,9 +422,9 @@ class Events(SyncAPIResource):
         - If the `external_customer_id` is specified, the customer in Orb does not need
           to exist. Events will be attributed to any future customers with the
           `external_customer_id` on subscription creation.
-        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 1 hour
-          in the future. This timestamp should be sent in UTC timezone (no timezone
-          offset).
+        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 5
+          minutes in the future. This timestamp should be sent in UTC timezone (no
+          timezone offset).
 
         ## Idempotency and retry semantics
 
@@ -445,34 +461,7 @@ class Events(SyncAPIResource):
         request payload size, but please give us a heads up if you’re changing either of
         these factors by an order of magnitude from initial setup.
 
-        ## Testing in debug mode
-
-        The ingestion API supports a debug mode, which returns additional verbose output
-        to indicate which event idempotency keys were newly ingested or duplicates from
-        previous requests. To enable this mode, mark `debug=true` as a query parameter.
-
-        If `debug=true` is not specified, the response will only contain
-        `validation_failed`. Orb will still honor the idempotency guarantees set
-        [here](/events-and-metrics/event-ingestion#event-volume-and-concurrency) in all
-        cases.
-
-        We strongly recommend that you only use debug mode as part of testing your
-        initial Orb integration. Once you're ready to switch to production, disable
-        debug mode to take advantage of improved performance and maximal throughput.
-
-        #### Example: ingestion response with `debug=true`
-
-        ```json
-        {
-          "debug": {
-            "duplicate": [],
-            "ingested": ["B7E83HDMfJPAunXW", "SJs5DQJ3TnwSqEZE", "8SivfDsNKwCeAXim"]
-          },
-          "validation_failed": []
-        }
-        ```
-
-        #### Example: ingestion response with `debug=false`
+        #### Example: ingestion response
 
         ```json
         {
@@ -484,7 +473,8 @@ class Events(SyncAPIResource):
           backfill_id: If this ingestion request is part of a backfill, this parameter ties the
               ingested events to the backfill
 
-          debug: Flag to enable additional debug information in the endpoint response
+          debug: Pending Deprecation: Flag to enable additional debug information in the endpoint
+              response
 
           extra_headers: Send extra headers
 
@@ -591,12 +581,28 @@ class Events(SyncAPIResource):
 
 
 class AsyncEvents(AsyncAPIResource):
+    """
+    The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+    customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+    a given billing period.
+    """
+
     @cached_property
     def backfills(self) -> AsyncBackfills:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfills(self._client)
 
     @cached_property
     def volume(self) -> AsyncVolume:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolume(self._client)
 
     @cached_property
@@ -710,7 +716,7 @@ class AsyncEvents(AsyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._put(
-            f"/events/{event_id}",
+            path_template("/events/{event_id}", event_id=event_id),
             body=await async_maybe_transform(
                 {
                     "event_name": event_name,
@@ -799,7 +805,7 @@ class AsyncEvents(AsyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._put(
-            f"/events/{event_id}/deprecate",
+            path_template("/events/{event_id}/deprecate", event_id=event_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -941,8 +947,8 @@ class AsyncEvents(AsyncAPIResource):
         billed for in the corresponding billing period.
 
         In general, Orb does not expect events with future dated timestamps. In cases
-        where the timestamp is at least 24 hours ahead of the current time, the event
-        will not be accepted as a valid event, and will throw validation errors.
+        where the timestamp is 5 minutes ahead of the current time, the event will not
+        be accepted as a valid event, and will throw validation errors.
 
         ## Event validation
 
@@ -957,9 +963,9 @@ class AsyncEvents(AsyncAPIResource):
         - If the `external_customer_id` is specified, the customer in Orb does not need
           to exist. Events will be attributed to any future customers with the
           `external_customer_id` on subscription creation.
-        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 1 hour
-          in the future. This timestamp should be sent in UTC timezone (no timezone
-          offset).
+        - `timestamp` must conform to ISO 8601 and represent a timestamp at most 5
+          minutes in the future. This timestamp should be sent in UTC timezone (no
+          timezone offset).
 
         ## Idempotency and retry semantics
 
@@ -996,34 +1002,7 @@ class AsyncEvents(AsyncAPIResource):
         request payload size, but please give us a heads up if you’re changing either of
         these factors by an order of magnitude from initial setup.
 
-        ## Testing in debug mode
-
-        The ingestion API supports a debug mode, which returns additional verbose output
-        to indicate which event idempotency keys were newly ingested or duplicates from
-        previous requests. To enable this mode, mark `debug=true` as a query parameter.
-
-        If `debug=true` is not specified, the response will only contain
-        `validation_failed`. Orb will still honor the idempotency guarantees set
-        [here](/events-and-metrics/event-ingestion#event-volume-and-concurrency) in all
-        cases.
-
-        We strongly recommend that you only use debug mode as part of testing your
-        initial Orb integration. Once you're ready to switch to production, disable
-        debug mode to take advantage of improved performance and maximal throughput.
-
-        #### Example: ingestion response with `debug=true`
-
-        ```json
-        {
-          "debug": {
-            "duplicate": [],
-            "ingested": ["B7E83HDMfJPAunXW", "SJs5DQJ3TnwSqEZE", "8SivfDsNKwCeAXim"]
-          },
-          "validation_failed": []
-        }
-        ```
-
-        #### Example: ingestion response with `debug=false`
+        #### Example: ingestion response
 
         ```json
         {
@@ -1035,7 +1014,8 @@ class AsyncEvents(AsyncAPIResource):
           backfill_id: If this ingestion request is part of a backfill, this parameter ties the
               ingested events to the backfill
 
-          debug: Flag to enable additional debug information in the endpoint response
+          debug: Pending Deprecation: Flag to enable additional debug information in the endpoint
+              response
 
           extra_headers: Send extra headers
 
@@ -1160,10 +1140,20 @@ class EventsWithRawResponse:
 
     @cached_property
     def backfills(self) -> BackfillsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return BackfillsWithRawResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> VolumeWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return VolumeWithRawResponse(self._events.volume)
 
 
@@ -1186,10 +1176,20 @@ class AsyncEventsWithRawResponse:
 
     @cached_property
     def backfills(self) -> AsyncBackfillsWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfillsWithRawResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> AsyncVolumeWithRawResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolumeWithRawResponse(self._events.volume)
 
 
@@ -1212,10 +1212,20 @@ class EventsWithStreamingResponse:
 
     @cached_property
     def backfills(self) -> BackfillsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return BackfillsWithStreamingResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> VolumeWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return VolumeWithStreamingResponse(self._events.volume)
 
 
@@ -1238,8 +1248,18 @@ class AsyncEventsWithStreamingResponse:
 
     @cached_property
     def backfills(self) -> AsyncBackfillsWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncBackfillsWithStreamingResponse(self._events.backfills)
 
     @cached_property
     def volume(self) -> AsyncVolumeWithStreamingResponse:
+        """
+        The [Event](/core-concepts#event) resource represents a usage event that has been created for a
+        customer. Events are the core of Orb's usage-based billing model, and are used to calculate the usage charges for
+        a given billing period.
+        """
         return AsyncVolumeWithStreamingResponse(self._events.volume)

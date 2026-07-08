@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["AccountingProviderConfigParam"]
 
@@ -10,4 +10,4 @@ __all__ = ["AccountingProviderConfigParam"]
 class AccountingProviderConfigParam(TypedDict, total=False):
     external_provider_id: Required[str]
 
-    provider_type: Required[str]
+    provider_type: Required[Literal["quickbooks", "netsuite"]]

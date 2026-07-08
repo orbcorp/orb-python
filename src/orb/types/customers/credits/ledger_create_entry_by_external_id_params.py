@@ -125,6 +125,9 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     If not provided, a default 'Credits' item will be used.
     """
 
+    mark_as_paid: bool
+    """If true, the new credits purchase invoice will be marked as paid."""
+
     memo: Optional[str]
     """An optional memo to display on the invoice."""
 
@@ -134,8 +137,8 @@ class AddIncrementCreditLedgerEntryRequestParamsInvoiceSettings(TypedDict, total
     Due date is calculated based on the invoice or issuance date, depending on the
     account's configured due date calculation method. A value of '0' here represents
     that the invoice is due on issue, whereas a value of '30' represents that the
-    customer has 30 days to pay the invoice. Do not set this field if you want to
-    set a custom due date.
+    customer has 30 days to pay the invoice. You must set either `net_terms` or
+    `custom_due_date`, but not both.
     """
 
     require_successful_payment: bool
@@ -181,9 +184,9 @@ class AddExpirationChangeCreditLedgerEntryRequestParams(TypedDict, total=False):
 
     target_expiry_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
-    A future date (specified in YYYY-MM-DD format) used for expiration change,
-    denoting when credits transferred (as part of a partial block expiration) should
-    expire.
+    A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+    when credits transferred (as part of a partial block expiration) should expire.
+    This date must be on or after the effective date of the credit block.
     """
 
     amount: Optional[float]

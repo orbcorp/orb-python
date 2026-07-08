@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from .item import Item
@@ -38,3 +38,5 @@ class BillableMetric(BaseModel):
     name: str
 
     status: Literal["active", "draft", "archived"]
+
+    parameter_definitions: Optional[List[Dict[str, object]]] = None

@@ -25,7 +25,7 @@ from .top_ups import (
     AsyncTopUpsWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform
+from ...._utils import path_template, maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -39,12 +39,22 @@ __all__ = ["Credits", "AsyncCredits"]
 
 
 class Credits(SyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def ledger(self) -> Ledger:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return Ledger(self._client)
 
     @cached_property
     def top_ups(self) -> TopUps:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUps(self._client)
 
     @cached_property
@@ -121,7 +131,7 @@ class Credits(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits",
+            path_template("/customers/{customer_id}/credits", customer_id=customer_id),
             page=SyncPage[CreditListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -202,7 +212,10 @@ class Credits(SyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits",
+                external_customer_id=external_customer_id,
+            ),
             page=SyncPage[CreditListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -228,12 +241,22 @@ class Credits(SyncAPIResource):
 
 
 class AsyncCredits(AsyncAPIResource):
+    """
+    The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+    """
+
     @cached_property
     def ledger(self) -> AsyncLedger:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedger(self._client)
 
     @cached_property
     def top_ups(self) -> AsyncTopUps:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUps(self._client)
 
     @cached_property
@@ -310,7 +333,7 @@ class AsyncCredits(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/credits",
+            path_template("/customers/{customer_id}/credits", customer_id=customer_id),
             page=AsyncPage[CreditListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -391,7 +414,10 @@ class AsyncCredits(AsyncAPIResource):
                 f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
             )
         return self._get_api_list(
-            f"/customers/external_customer_id/{external_customer_id}/credits",
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits",
+                external_customer_id=external_customer_id,
+            ),
             page=AsyncPage[CreditListByExternalIDResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -429,10 +455,16 @@ class CreditsWithRawResponse:
 
     @cached_property
     def ledger(self) -> LedgerWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return LedgerWithRawResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> TopUpsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUpsWithRawResponse(self._credits.top_ups)
 
 
@@ -449,10 +481,16 @@ class AsyncCreditsWithRawResponse:
 
     @cached_property
     def ledger(self) -> AsyncLedgerWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedgerWithRawResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> AsyncTopUpsWithRawResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUpsWithRawResponse(self._credits.top_ups)
 
 
@@ -469,10 +507,16 @@ class CreditsWithStreamingResponse:
 
     @cached_property
     def ledger(self) -> LedgerWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return LedgerWithStreamingResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> TopUpsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return TopUpsWithStreamingResponse(self._credits.top_ups)
 
 
@@ -489,8 +533,14 @@ class AsyncCreditsWithStreamingResponse:
 
     @cached_property
     def ledger(self) -> AsyncLedgerWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncLedgerWithStreamingResponse(self._credits.ledger)
 
     @cached_property
     def top_ups(self) -> AsyncTopUpsWithStreamingResponse:
+        """
+        The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid credits within Orb.
+        """
         return AsyncTopUpsWithStreamingResponse(self._credits.top_ups)

@@ -8,7 +8,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -20,6 +20,16 @@ __all__ = ["ExternalPriceID", "AsyncExternalPriceID"]
 
 
 class ExternalPriceID(SyncAPIResource):
+    """
+    The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+    the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+    Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+    given Price object. The model_type field determines the key for the configuration object that is present.
+
+    For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+    """
+
     @cached_property
     def with_raw_response(self) -> ExternalPriceIDWithRawResponse:
         """
@@ -78,7 +88,7 @@ class ExternalPriceID(SyncAPIResource):
         return cast(
             Price,
             self._put(
-                f"/prices/external_price_id/{external_price_id}",
+                path_template("/prices/external_price_id/{external_price_id}", external_price_id=external_price_id),
                 body=maybe_transform(
                     {"metadata": metadata}, external_price_id_update_params.ExternalPriceIDUpdateParams
                 ),
@@ -124,7 +134,7 @@ class ExternalPriceID(SyncAPIResource):
         return cast(
             Price,
             self._get(
-                f"/prices/external_price_id/{external_price_id}",
+                path_template("/prices/external_price_id/{external_price_id}", external_price_id=external_price_id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -134,6 +144,16 @@ class ExternalPriceID(SyncAPIResource):
 
 
 class AsyncExternalPriceID(AsyncAPIResource):
+    """
+    The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
+    the form of an invoice line item. Prices take a quantity and determine an amount to bill.
+
+    Orb supports a few different pricing models out of the box. Each of these models is serialized differently in a
+    given Price object. The model_type field determines the key for the configuration object that is present.
+
+    For more on the types of prices, see [the core concepts documentation](/core-concepts#plan-and-price)
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncExternalPriceIDWithRawResponse:
         """
@@ -192,7 +212,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         return cast(
             Price,
             await self._put(
-                f"/prices/external_price_id/{external_price_id}",
+                path_template("/prices/external_price_id/{external_price_id}", external_price_id=external_price_id),
                 body=await async_maybe_transform(
                     {"metadata": metadata}, external_price_id_update_params.ExternalPriceIDUpdateParams
                 ),
@@ -238,7 +258,7 @@ class AsyncExternalPriceID(AsyncAPIResource):
         return cast(
             Price,
             await self._get(
-                f"/prices/external_price_id/{external_price_id}",
+                path_template("/prices/external_price_id/{external_price_id}", external_price_id=external_price_id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),

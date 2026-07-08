@@ -10,7 +10,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -24,6 +24,23 @@ __all__ = ["BalanceTransactions", "AsyncBalanceTransactions"]
 
 
 class BalanceTransactions(SyncAPIResource):
+    """
+    A customer is a buyer of your products, and the other party to the billing relationship.
+
+    In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+    match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+    `external_customer_id` with your own identifier. See
+    [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+    aliases work in Orb.
+
+    In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+    Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+    A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+    defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+    information on what this timezone parameter influences within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> BalanceTransactionsWithRawResponse:
         """
@@ -78,7 +95,7 @@ class BalanceTransactions(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._post(
-            f"/customers/{customer_id}/balance_transactions",
+            path_template("/customers/{customer_id}/balance_transactions", customer_id=customer_id),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -154,7 +171,7 @@ class BalanceTransactions(SyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/balance_transactions",
+            path_template("/customers/{customer_id}/balance_transactions", customer_id=customer_id),
             page=SyncPage[BalanceTransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -178,6 +195,23 @@ class BalanceTransactions(SyncAPIResource):
 
 
 class AsyncBalanceTransactions(AsyncAPIResource):
+    """
+    A customer is a buyer of your products, and the other party to the billing relationship.
+
+    In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+    match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+    `external_customer_id` with your own identifier. See
+    [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+    aliases work in Orb.
+
+    In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+    Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+    A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+    defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+    information on what this timezone parameter influences within Orb.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBalanceTransactionsWithRawResponse:
         """
@@ -232,7 +266,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return await self._post(
-            f"/customers/{customer_id}/balance_transactions",
+            path_template("/customers/{customer_id}/balance_transactions", customer_id=customer_id),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -308,7 +342,7 @@ class AsyncBalanceTransactions(AsyncAPIResource):
         if not customer_id:
             raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
         return self._get_api_list(
-            f"/customers/{customer_id}/balance_transactions",
+            path_template("/customers/{customer_id}/balance_transactions", customer_id=customer_id),
             page=AsyncPage[BalanceTransactionListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

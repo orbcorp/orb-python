@@ -14,6 +14,7 @@ __all__ = [
     "Hierarchy",
     "AccountingSyncConfiguration",
     "AccountingSyncConfigurationAccountingProvider",
+    "DefaultPaymentMethod",
     "PaymentConfiguration",
     "PaymentConfigurationPaymentProvider",
     "ReportingConfiguration",
@@ -40,9 +41,54 @@ class AccountingSyncConfiguration(BaseModel):
     excluded: bool
 
 
+class DefaultPaymentMethod(BaseModel):
+    """
+    A payment method represents a customer's stored payment instrument held with an external payment
+    provider (such as Adyen or Stripe).
+
+    The serialization is intentionally minimal for now; provider-pulled details (e.g. card display
+    metadata) will be added over time.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the payment method."""
+
+    created_at: datetime
+    """The time at which the payment method was created."""
+
+    customer_id: str
+    """The ID of the Orb customer this payment method is attached to."""
+
+    default: bool
+    """Whether this is the customer's default payment method."""
+
+    external_payment_method_id: str
+    """The identifier of this payment method in the external payment provider."""
+
+    payment_method_type: Literal["card", "us_bank_account", "link", "amazon_pay", "crypto"]
+    """The type of the underlying payment instrument, e.g.
+
+    `card` or `us_bank_account`.
+    """
+
+    provider_type: Optional[str] = None
+    """
+    The external payment provider this method belongs to, derived from the linked
+    payment gateway connection (e.g. `adyen` or `stripe`). Null if the connection
+    has been removed.
+    """
+
+
 class PaymentConfigurationPaymentProvider(BaseModel):
     provider_type: Literal["stripe"]
     """The payment provider to configure."""
+
+    default_shared_payment_token: Optional[str] = None
+    """
+    The ID of a shared payment token granted by an agent to use as the default
+    payment instrument for this customer. When set, auto-collection will use this
+    token instead of the customer's default payment method.
+    """
 
     excluded_payment_method_types: Optional[List[str]] = None
     """List of Stripe payment method types to exclude for this customer.
@@ -139,7 +185,9 @@ class Customer(BaseModel):
     name: str
     """The full name of the customer"""
 
-    payment_provider: Optional[Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite"]] = None
+    payment_provider: Optional[
+        Literal["quickbooks", "bill.com", "stripe_charge", "stripe_invoice", "netsuite", "adyen"]
+    ] = None
     """This is used for creating charges or invoices in an external system via Orb.
 
     When not in test mode, the connection must first be configured in the Orb
@@ -153,6 +201,13 @@ class Customer(BaseModel):
     """
 
     portal_url: Optional[str] = None
+    """Deprecated.
+
+    Returns the URL of the most recent non-expired portal link, or null. When the
+    account has opted into customer portal sessions, this field always returns null.
+    Use POST /v1/customers/{id}/portal_sessions to mint short-lived portal session
+    URLs.
+    """
 
     shipping_address: Optional[Address] = None
 
@@ -215,11 +270,13 @@ class Customer(BaseModel):
     | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
     | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
     | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+    | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
     | Finland                | `eu_vat`     | European VAT Number                                                                                     |
     | France                 | `eu_vat`     | European VAT Number                                                                                     |
     | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
     | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
     | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+    | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
     | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
     | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
     | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -231,6 +288,7 @@ class Customer(BaseModel):
     | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
     | Israel                 | `il_vat`     | Israel VAT                                                                                              |
     | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
     | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
     | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
     | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -261,6 +319,7 @@ class Customer(BaseModel):
     | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
     | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
     | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+    | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
     | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
     | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
     | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -282,6 +341,7 @@ class Customer(BaseModel):
     | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
     | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
     | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+    | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
     | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
     | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
     | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -319,6 +379,15 @@ class Customer(BaseModel):
 
     This field is nullable for backwards compatibility but will always return a
     boolean value.
+    """
+
+    default_payment_method: Optional[DefaultPaymentMethod] = None
+    """
+    A payment method represents a customer's stored payment instrument held with an
+    external payment provider (such as Adyen or Stripe).
+
+    The serialization is intentionally minimal for now; provider-pulled details
+    (e.g. card display metadata) will be added over time.
     """
 
     payment_configuration: Optional[PaymentConfiguration] = None
