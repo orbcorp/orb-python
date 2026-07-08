@@ -72,10 +72,6 @@ from .invoices import (
     InvoicesWithStreamingResponse,
     AsyncInvoicesWithStreamingResponse,
 )
-from .webhooks import (
-    Webhooks,
-    AsyncWebhooks,
-)
 from .licenses import (
     Licenses,
     AsyncLicenses,
@@ -83,6 +79,10 @@ from .licenses import (
     AsyncLicensesWithRawResponse,
     LicensesWithStreamingResponse,
     AsyncLicensesWithStreamingResponse,
+)
+from .webhooks import (
+    Webhooks,
+    AsyncWebhooks,
 )
 from .customers import (
     Customers,
