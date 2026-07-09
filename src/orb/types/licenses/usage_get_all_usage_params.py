@@ -6,7 +6,6 @@ from typing import Union, Optional
 from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
-from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["UsageGetAllUsageParams"]
@@ -28,7 +27,7 @@ class UsageGetAllUsageParams(TypedDict, total=False):
     Defaults to end of current billing period.
     """
 
-    group_by: Optional[SequenceNotStr[str]]
+    group_by: Optional[str]
     """How to group the results.
 
     Valid values: 'license', 'day'. Can be combined (e.g., 'license,day').

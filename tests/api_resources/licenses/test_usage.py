@@ -36,7 +36,7 @@ class TestUsage:
             subscription_id="subscription_id",
             cursor="cursor",
             end_date=parse_date("2019-12-27"),
-            group_by=["string"],
+            group_by="group_by",
             limit=1,
             start_date=parse_date("2019-12-27"),
         )
@@ -81,7 +81,7 @@ class TestUsage:
             license_id="license_id",
             cursor="cursor",
             end_date=parse_date("2019-12-27"),
-            group_by=["string"],
+            group_by="group_by",
             limit=1,
             start_date=parse_date("2019-12-27"),
         )
@@ -139,7 +139,7 @@ class TestAsyncUsage:
             subscription_id="subscription_id",
             cursor="cursor",
             end_date=parse_date("2019-12-27"),
-            group_by=["string"],
+            group_by="group_by",
             limit=1,
             start_date=parse_date("2019-12-27"),
         )
@@ -184,7 +184,7 @@ class TestAsyncUsage:
             license_id="license_id",
             cursor="cursor",
             end_date=parse_date("2019-12-27"),
-            group_by=["string"],
+            group_by="group_by",
             limit=1,
             start_date=parse_date("2019-12-27"),
         )
