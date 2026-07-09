@@ -1,5 +1,99 @@
 # Changelog
 
+## 4.56.0 (2026-07-09)
+
+Full Changelog: [v4.55.0...v4.56.0](https://github.com/orbcorp/orb-python/compare/v4.55.0...v4.56.0)
+
+### Features
+
+* **api:** api update ([4eea58b](https://github.com/orbcorp/orb-python/commit/4eea58b99df4ae604f56412eaf1bb93ad785cf9a))
+* **api:** api update ([e3b6b69](https://github.com/orbcorp/orb-python/commit/e3b6b69dc00d37709482a53d7820826c278fff9b))
+* **api:** api update ([c4b060f](https://github.com/orbcorp/orb-python/commit/c4b060f863e486aa67e030c43a5cca4152f31483))
+* **api:** api update ([fb63799](https://github.com/orbcorp/orb-python/commit/fb63799754718965b542daddc7ca68a0cb4a108c))
+* **api:** api update ([7c5bf83](https://github.com/orbcorp/orb-python/commit/7c5bf837fea6adb9ac11b65b95af218a7a647eb7))
+* **api:** api update ([45b8581](https://github.com/orbcorp/orb-python/commit/45b8581d1f3f9dfa04584116d1128128becd7228))
+* **api:** api update ([55b575c](https://github.com/orbcorp/orb-python/commit/55b575c4b20e9cbc23faf2f0e672ef6091527b24))
+* **api:** api update ([8ad53cf](https://github.com/orbcorp/orb-python/commit/8ad53cf4df3ef8dee1a6da6b68c6abce37075618))
+* **api:** api update ([cf62de0](https://github.com/orbcorp/orb-python/commit/cf62de0de5fabbe50466e241a3d167cfcdeef486))
+* **api:** api update ([b436687](https://github.com/orbcorp/orb-python/commit/b436687886e5d7f053a7ada55ccd32bb62d034f1))
+* **api:** api update ([7ee105a](https://github.com/orbcorp/orb-python/commit/7ee105a6e9db66630f12853066f2c21eec7d0bff))
+* **api:** api update ([45d8293](https://github.com/orbcorp/orb-python/commit/45d8293d905d498bf83042ed7fe9d59849005aa9))
+* **api:** api update ([31d110d](https://github.com/orbcorp/orb-python/commit/31d110d0129771bbbf229727372dadec052e869a))
+* **api:** api update ([4115a6b](https://github.com/orbcorp/orb-python/commit/4115a6bb1eea94d1ad2e2f76486499cafd70b01a))
+* **api:** api update ([2b32784](https://github.com/orbcorp/orb-python/commit/2b32784f0b69cfcc94151100cd088154b000c9a5))
+* **api:** api update ([55a4a61](https://github.com/orbcorp/orb-python/commit/55a4a615ad0c7185e5d16f6146910eb6e158043e))
+* **api:** api update ([3ec0091](https://github.com/orbcorp/orb-python/commit/3ec0091fee15ff15dc93de493ea3b05d90dccfb5))
+* **api:** api update ([0c1bfa8](https://github.com/orbcorp/orb-python/commit/0c1bfa895db1d04bf467ad8c21e1a770f991997a))
+* **api:** api update ([067ed2e](https://github.com/orbcorp/orb-python/commit/067ed2e75c2f3a75b995ff6f15631605a5a669a2))
+* **api:** api update ([420a0ee](https://github.com/orbcorp/orb-python/commit/420a0ee33bf090fbbab838ce83f0a84f9c043407))
+* **api:** api update ([71340f6](https://github.com/orbcorp/orb-python/commit/71340f6025d41322701c9aa59ae9ff52d783428e))
+* **api:** api update ([6450ca8](https://github.com/orbcorp/orb-python/commit/6450ca894f18893714bde57ed1b2841deef556ab))
+* **api:** api update ([d11987d](https://github.com/orbcorp/orb-python/commit/d11987d6a51e91b50bbd1a5b551fed1747bd42b6))
+* **api:** api update ([f5bfd3c](https://github.com/orbcorp/orb-python/commit/f5bfd3c2c346af87b457b62726d8e117ba3e0f23))
+* **api:** api update ([3b0e75f](https://github.com/orbcorp/orb-python/commit/3b0e75fcfff160299f9229116ed1a267f2d0b44c))
+* **api:** api update ([de414ba](https://github.com/orbcorp/orb-python/commit/de414ba5ad025dd149eb8fde15767aca928b289d))
+* **api:** api update ([5a1e185](https://github.com/orbcorp/orb-python/commit/5a1e185f488ee90547d11f4178d25e6382447823))
+* **api:** api update ([3c67098](https://github.com/orbcorp/orb-python/commit/3c67098dbbfb806a14bfe65f83930b1f594d873a))
+* **api:** api update ([4e3652d](https://github.com/orbcorp/orb-python/commit/4e3652dfaec77221b4907179784aaf88e1ff2d67))
+* **api:** api update ([931c0f4](https://github.com/orbcorp/orb-python/commit/931c0f421c553981b7c0326a0c721e7cc5fa53f3))
+* **api:** api update ([8c1ffda](https://github.com/orbcorp/orb-python/commit/8c1ffda41e28f9f3dad2b64363dc3e6d8b8e57b2))
+* **api:** api update ([deda5e1](https://github.com/orbcorp/orb-python/commit/deda5e1a4c4412e91ad61f038b5c9e17d3072a22))
+* **api:** api update ([425bac4](https://github.com/orbcorp/orb-python/commit/425bac4cc3a9df0085fad215bf5c66d108008d67))
+* **api:** api update ([cd1cd23](https://github.com/orbcorp/orb-python/commit/cd1cd2396264bbc01c71c6ba7e2dc937ee1b5928))
+* **api:** api update ([6b4583e](https://github.com/orbcorp/orb-python/commit/6b4583ede27c6245a828b670301e1bf37cf708a7))
+* **api:** api update ([b676980](https://github.com/orbcorp/orb-python/commit/b6769806d684451bd19d037fd80132e4a0de5930))
+* **api:** api update ([19af3f7](https://github.com/orbcorp/orb-python/commit/19af3f7d6238fb95b66cf2229e5095a0f2bb0df1))
+* **api:** api update ([3686dc6](https://github.com/orbcorp/orb-python/commit/3686dc6ec326e564578f5ab13c7d258d41de8def))
+* **api:** api update ([2fbc2b1](https://github.com/orbcorp/orb-python/commit/2fbc2b14d46648f4ef4ea57ead9cd08b444211b1))
+* **internal/types:** support eagerly validating pydantic iterators ([cafd0dd](https://github.com/orbcorp/orb-python/commit/cafd0dda82028e3ccec9f3f421b27602517f4956))
+* **internal:** implement indices array format for query and form serialization ([b78355c](https://github.com/orbcorp/orb-python/commit/b78355cef870adb25c8c6995362c1bef24ca78d1))
+* support setting headers via env ([2366135](https://github.com/orbcorp/orb-python/commit/2366135b23351d39f2da94f68e2649436ab6c4b7))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([67ca8a4](https://github.com/orbcorp/orb-python/commit/67ca8a4ce63933b112cd3188b720bfa13cf177b5))
+* **client:** preserve hardcoded query params when merging with user params ([a87a1f8](https://github.com/orbcorp/orb-python/commit/a87a1f812952e2aaf62d34539abe40d3fe3b8778))
+* **deps:** bump minimum typing-extensions version ([93f9afe](https://github.com/orbcorp/orb-python/commit/93f9afed7c1b6c5aa432e78bac43107a4b7f2df1))
+* ensure file data are only sent as 1 parameter ([e478a4e](https://github.com/orbcorp/orb-python/commit/e478a4e612a3cf3f4ac6162cb0f965938fe06856))
+* **pydantic:** do not pass `by_alias` unless set ([06cedae](https://github.com/orbcorp/orb-python/commit/06cedaebd513685daa42d203346112a8ac4c792a))
+* sanitize endpoint path params ([a7e8834](https://github.com/orbcorp/orb-python/commit/a7e88347c865c3daa237efaedbb824cf04a5d3b2))
+* use correct field name format for multipart file arrays ([62c31ad](https://github.com/orbcorp/orb-python/commit/62c31ad3426daf3df4ac7c1af8813f6ac4b30103))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([b9feeba](https://github.com/orbcorp/orb-python/commit/b9feeba9110ee8bc347368a1f277b2f2c75f5955))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([16d7746](https://github.com/orbcorp/orb-python/commit/16d77465cdd71d193002e3d977f926a856b8a693))
+* **ci:** skip uploading artifacts on stainless-internal branches ([a2813c8](https://github.com/orbcorp/orb-python/commit/a2813c8575727ecbd2582b251095ed70a9b75613))
+* **docs:** add missing descriptions ([1bb4db8](https://github.com/orbcorp/orb-python/commit/1bb4db815a18a056aa19366c6622a66935d59577))
+* **internal:** add request options to SSE classes ([9110978](https://github.com/orbcorp/orb-python/commit/9110978adab2229b2eff3f3dfeb3ce6df2f5305e))
+* **internal:** make `test_proxy_environment_variables` more resilient ([e567054](https://github.com/orbcorp/orb-python/commit/e56705443f6920ad4b6eb750a5cd0488d8a119f3))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([a2da977](https://github.com/orbcorp/orb-python/commit/a2da97718dd34551d38475738e3fd701cc8e2fbe))
+* **internal:** more robust bootstrap script ([eaaf738](https://github.com/orbcorp/orb-python/commit/eaaf7380236110ea5ddacd9bc49eaaff895b3fab))
+* **internal:** reformat pyproject.toml ([e022f45](https://github.com/orbcorp/orb-python/commit/e022f4563ac868f55d5f7a3baa66773295446a97))
+* **internal:** tweak CI branches ([c5ab3b4](https://github.com/orbcorp/orb-python/commit/c5ab3b47348d6b75866c9e3e3ff6cc185e3cd1c8))
+* **internal:** update gitignore ([e2316ae](https://github.com/orbcorp/orb-python/commit/e2316aee6077ef333f4ae35fd759e3ef0a8d4343))
+* **test:** do not count install time for mock server timeout ([888e2ca](https://github.com/orbcorp/orb-python/commit/888e2ca02a4fd7cb2294bf0ce1af4b8cee014809))
+* **tests:** bump steady to v0.19.4 ([dba860e](https://github.com/orbcorp/orb-python/commit/dba860e1955d0964daee83d2f4eae6030df1e802))
+* **tests:** bump steady to v0.19.5 ([0918804](https://github.com/orbcorp/orb-python/commit/09188043849d27914198fd370b525ab9353cb174))
+* **tests:** bump steady to v0.19.6 ([f37e5be](https://github.com/orbcorp/orb-python/commit/f37e5be1bdad7d3f627f2a5f1a7e97fa590dc3c3))
+* **tests:** bump steady to v0.19.7 ([403afe2](https://github.com/orbcorp/orb-python/commit/403afe25fbed8a923ec2bbcf5b7ab4deb16bfaef))
+* **tests:** bump steady to v0.20.1 ([a15890c](https://github.com/orbcorp/orb-python/commit/a15890cea8a677e9f3fa1d63cb13411ec39896d4))
+* **tests:** bump steady to v0.20.2 ([1b0c906](https://github.com/orbcorp/orb-python/commit/1b0c906c63dd56858f8c45293e6089abcb6f0060))
+* **tests:** bump steady to v0.22.1 ([cbbf427](https://github.com/orbcorp/orb-python/commit/cbbf42715e0f53d2e9fd5f720b11c0333738ae3e))
+* **tests:** update mock server to steady ([97a3d8f](https://github.com/orbcorp/orb-python/commit/97a3d8ff2b9ffe7810864b7146fbe9dab0909aa5))
+* update mock server docs ([0f016de](https://github.com/orbcorp/orb-python/commit/0f016de052ebb429752c7ffdc4ca061c19562469))
+
+
+### Documentation
+
+* improve examples ([de8f18b](https://github.com/orbcorp/orb-python/commit/de8f18b0efd5c11bb5a62078ada084dc8b81bd46))
+
 ## 4.55.0 (2026-02-12)
 
 Full Changelog: [v4.54.0...v4.55.0](https://github.com/orbcorp/orb-python/compare/v4.54.0...v4.55.0)
