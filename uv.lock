@@ -779,7 +779,7 @@ wheels = [
 
 [[package]]
 name = "orb-billing"
-version = "4.55.1"
+version = "4.55.2"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },

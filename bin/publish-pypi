@@ -4,4 +4,6 @@ set -eux
 rm -rf dist
 mkdir -p dist
 uv build
-uv publish --token=$PYPI_TOKEN
+# No token: uv detects PyPI Trusted Publishing (GitHub Actions OIDC) when the
+# workflow has id-token: write and the publisher is registered on the project.
+uv publish --trusted-publishing always

@@ -8,6 +8,12 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+  # Trusted Publishing: PyPI authenticates via the Actions OIDC token instead
+  # of a stored PYPI_TOKEN secret.
+  id-token: write
+
 jobs:
   publish:
     name: publish
@@ -24,5 +30,4 @@ jobs:
       - name: Publish to PyPI
         run: |
           bash ./bin/publish-pypi
-        env:
-          PYPI_TOKEN: ${{ secrets.ORB_PYPI_TOKEN || secrets.PYPI_TOKEN }}
+
