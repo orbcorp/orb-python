@@ -21,13 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
+      # The dev scripts are uv-based (use_uv); rye's bootstrap has bit-rotted.
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install dependencies
         run: rye sync --all-features
@@ -46,13 +42,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
+      # The dev scripts are uv-based (use_uv); rye's bootstrap has bit-rotted.
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install dependencies
         run: rye sync --all-features
@@ -83,13 +75,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
+      # The dev scripts are uv-based (use_uv); rye's bootstrap has bit-rotted.
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Bootstrap
         run: ./scripts/bootstrap
