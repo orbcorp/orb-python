@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.55.2 (2026-07-10)
+
+Full Changelog: [v4.55.1...v4.55.2](https://github.com/orbcorp/orb-python/compare/v4.55.1...v4.55.2)
+
 ## [4.55.1](https://github.com/orbcorp/orb-python/compare/v4.55.0...v4.55.1) (2026-07-10)
 
 
