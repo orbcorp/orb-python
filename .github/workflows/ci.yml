@@ -16,7 +16,7 @@ jobs:
   lint:
     timeout-minutes: 10
     name: lint
-    runs-on: ${{ github.repository == 'stainless-sdks/orb-python' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: runs-on=${{ github.run_id }}/image=ubuntu24-full-x64/runner=4cpu-linux-x64/spot=false/tag=sdk-ci
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
       - uses: actions/checkout@v6
@@ -38,7 +38,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    runs-on: ${{ github.repository == 'stainless-sdks/orb-python' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: runs-on=${{ github.run_id }}/image=ubuntu24-full-x64/runner=4cpu-linux-x64/spot=false/tag=sdk-ci
     steps:
       - uses: actions/checkout@v6
 
@@ -70,7 +70,7 @@ jobs:
   test:
     timeout-minutes: 10
     name: test
-    runs-on: ${{ github.repository == 'stainless-sdks/orb-python' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: runs-on=${{ github.run_id }}/image=ubuntu24-full-x64/runner=4cpu-linux-x64/spot=false/tag=sdk-ci
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
       - uses: actions/checkout@v6
