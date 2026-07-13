@@ -37,6 +37,13 @@ class BillableMetric(BaseModel):
 
     name: str
 
+    sql: str
+    """The SQL definition of the metric.
+
+    For metrics defined via configuration rather than SQL, this is a derived SQL
+    representation.
+    """
+
     status: Literal["active", "draft", "archived"]
 
     parameter_definitions: Optional[List[Dict[str, object]]] = None
