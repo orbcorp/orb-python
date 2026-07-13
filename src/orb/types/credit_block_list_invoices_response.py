@@ -15,6 +15,7 @@ __all__ = [
     "BlockFilter",
     "BlockCreditAllocation",
     "BlockCreditAllocationFilter",
+    "BlockCreditCommitment",
     "Invoice",
 ]
 
@@ -65,6 +66,19 @@ class BlockCreditAllocation(BaseModel):
     license_type_id: Optional[str] = None
 
 
+class BlockCreditCommitment(BaseModel):
+    """
+    The subscription commitment whose true-up rolled forward into this credit block.
+    Present only when `credit_block_source` is `commitment`.
+    """
+
+    id: str
+    """The ID of the subscription commitment this block was rolled forward from."""
+
+    subscription_id: Optional[str] = None
+    """The subscription the commitment belongs to."""
+
+
 class Block(BaseModel):
     """The Credit Block resource models prepaid credits within Orb."""
 
@@ -72,10 +86,11 @@ class Block(BaseModel):
 
     balance: float
 
-    credit_block_source: Literal["allocation", "top_up", "manual"]
+    credit_block_source: Literal["allocation", "top_up", "commitment", "manual"]
     """
     How this credit block was created: `allocation` (a subscription's recurring
-    credit allocation), `top_up` (an automatic balance-threshold top-up), or
+    credit allocation), `top_up` (an automatic balance-threshold top-up),
+    `commitment` (a subscription commitment true-up rolled forward as credit), or
     `manual` (a manual credit ledger increment, including credits voided or expired
     off another block).
     """
@@ -105,6 +120,12 @@ class Block(BaseModel):
 
     Extends the allocation resource serialized on prices with the catalog-item
     attribution of the funding price.
+    """
+
+    credit_commitment: Optional[BlockCreditCommitment] = None
+    """
+    The subscription commitment whose true-up rolled forward into this credit block.
+    Present only when `credit_block_source` is `commitment`.
     """
 
 
