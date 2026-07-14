@@ -19,10 +19,6 @@ class ValidationFailed(BaseModel):
 
 
 class Debug(BaseModel):
-    """
-    Optional debug information (only present when debug=true is passed to the endpoint). Contains ingested and duplicate event idempotency keys.
-    """
-
     duplicate: List[str]
 
     ingested: List[str]
@@ -37,7 +33,3 @@ class EventIngestResponse(BaseModel):
     """
 
     debug: Optional[Debug] = None
-    """
-    Optional debug information (only present when debug=true is passed to the
-    endpoint). Contains ingested and duplicate event idempotency keys.
-    """
