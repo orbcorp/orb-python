@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.56.0](https://github.com/orbcorp/orb-python/compare/v4.55.2...v4.56.0) (2026-07-14)
+
+
+### Features
+
+* **api:** add `commitment` credit block source and `credit_commitment` field ([a438b80](https://github.com/orbcorp/orb-python/commit/a438b804292f8bb227d2d65a5e896100d0c9ce9a))
+* **api:** api update ([3f00a8f](https://github.com/orbcorp/orb-python/commit/3f00a8f95312ba543f2b280720b467113faecdaf))
+
 ## 4.55.2 (2026-07-10)
 
 Full Changelog: [v4.55.1...v4.55.2](https://github.com/orbcorp/orb-python/compare/v4.55.1...v4.55.2)
