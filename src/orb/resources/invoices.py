@@ -799,6 +799,130 @@ class Invoices(SyncAPIResource):
             cast_to=Invoice,
         )
 
+    def regenerate_invoice_pdf(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint triggers a regeneration of the PDF for a finalized invoice.
+
+        The invoice must be finalized (`issued`, `paid`, `synced`, or `void`) and must
+        already have an existing PDF. The original PDF is archived (not permanently
+        deleted) to maintain an audit trail.
+
+        **Important Legal Considerations:**
+
+        Regenerating invoice PDFs may not be permitted in all jurisdictions. Many tax
+        authorities require that issued invoices remain unmodified. Before using this
+        endpoint, ensure that:
+
+        - Your local tax regulations permit modification of issued billing documents
+        - You have a legitimate business reason (e.g., fixing template errors, updating
+          branding)
+        - You maintain proper records of the original PDF (archived automatically by
+          Orb)
+
+        Recommended use cases:
+
+        - Correcting template rendering issues
+        - Applying updated company branding
+        - Updating customer data that was incorrect at issuance
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return self._post(
+            path_template("/invoices/{invoice_id}/regenerate_invoice_pdf", invoice_id=invoice_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
+    def regenerate_receipt_pdf(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint triggers a regeneration of the receipt PDF for a paid invoice.
+
+        The invoice must be in `paid` status and must already have an existing receipt
+        PDF. The original PDF is archived (not permanently deleted) to maintain an audit
+        trail.
+
+        **Important Legal Considerations:**
+
+        Regenerating receipt PDFs may not be permitted in all jurisdictions. Many tax
+        authorities require that issued receipts remain unmodified. Before using this
+        endpoint, ensure that:
+
+        - Your local tax regulations permit modification of issued billing documents
+        - You have a legitimate business reason (e.g., fixing template errors, updating
+          branding)
+        - You maintain proper records of the original PDF (archived automatically by
+          Orb)
+
+        Recommended use cases:
+
+        - Correcting template rendering issues
+        - Applying updated company branding
+        - Updating customer data that was incorrect at issuance
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return self._post(
+            path_template("/invoices/{invoice_id}/regenerate_receipt_pdf", invoice_id=invoice_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
     def void(
         self,
         invoice_id: str,
@@ -1616,6 +1740,130 @@ class AsyncInvoices(AsyncAPIResource):
             cast_to=Invoice,
         )
 
+    async def regenerate_invoice_pdf(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint triggers a regeneration of the PDF for a finalized invoice.
+
+        The invoice must be finalized (`issued`, `paid`, `synced`, or `void`) and must
+        already have an existing PDF. The original PDF is archived (not permanently
+        deleted) to maintain an audit trail.
+
+        **Important Legal Considerations:**
+
+        Regenerating invoice PDFs may not be permitted in all jurisdictions. Many tax
+        authorities require that issued invoices remain unmodified. Before using this
+        endpoint, ensure that:
+
+        - Your local tax regulations permit modification of issued billing documents
+        - You have a legitimate business reason (e.g., fixing template errors, updating
+          branding)
+        - You maintain proper records of the original PDF (archived automatically by
+          Orb)
+
+        Recommended use cases:
+
+        - Correcting template rendering issues
+        - Applying updated company branding
+        - Updating customer data that was incorrect at issuance
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return await self._post(
+            path_template("/invoices/{invoice_id}/regenerate_invoice_pdf", invoice_id=invoice_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
+    async def regenerate_receipt_pdf(
+        self,
+        invoice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Invoice:
+        """
+        This endpoint triggers a regeneration of the receipt PDF for a paid invoice.
+
+        The invoice must be in `paid` status and must already have an existing receipt
+        PDF. The original PDF is archived (not permanently deleted) to maintain an audit
+        trail.
+
+        **Important Legal Considerations:**
+
+        Regenerating receipt PDFs may not be permitted in all jurisdictions. Many tax
+        authorities require that issued receipts remain unmodified. Before using this
+        endpoint, ensure that:
+
+        - Your local tax regulations permit modification of issued billing documents
+        - You have a legitimate business reason (e.g., fixing template errors, updating
+          branding)
+        - You maintain proper records of the original PDF (archived automatically by
+          Orb)
+
+        Recommended use cases:
+
+        - Correcting template rendering issues
+        - Applying updated company branding
+        - Updating customer data that was incorrect at issuance
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not invoice_id:
+            raise ValueError(f"Expected a non-empty value for `invoice_id` but received {invoice_id!r}")
+        return await self._post(
+            path_template("/invoices/{invoice_id}/regenerate_receipt_pdf", invoice_id=invoice_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Invoice,
+        )
+
     async def void(
         self,
         invoice_id: str,
@@ -1705,6 +1953,12 @@ class InvoicesWithRawResponse:
         self.pay = _legacy_response.to_raw_response_wrapper(
             invoices.pay,
         )
+        self.regenerate_invoice_pdf = _legacy_response.to_raw_response_wrapper(
+            invoices.regenerate_invoice_pdf,
+        )
+        self.regenerate_receipt_pdf = _legacy_response.to_raw_response_wrapper(
+            invoices.regenerate_receipt_pdf,
+        )
         self.void = _legacy_response.to_raw_response_wrapper(
             invoices.void,
         )
@@ -1746,6 +2000,12 @@ class AsyncInvoicesWithRawResponse:
         )
         self.pay = _legacy_response.async_to_raw_response_wrapper(
             invoices.pay,
+        )
+        self.regenerate_invoice_pdf = _legacy_response.async_to_raw_response_wrapper(
+            invoices.regenerate_invoice_pdf,
+        )
+        self.regenerate_receipt_pdf = _legacy_response.async_to_raw_response_wrapper(
+            invoices.regenerate_receipt_pdf,
         )
         self.void = _legacy_response.async_to_raw_response_wrapper(
             invoices.void,
@@ -1789,6 +2049,12 @@ class InvoicesWithStreamingResponse:
         self.pay = to_streamed_response_wrapper(
             invoices.pay,
         )
+        self.regenerate_invoice_pdf = to_streamed_response_wrapper(
+            invoices.regenerate_invoice_pdf,
+        )
+        self.regenerate_receipt_pdf = to_streamed_response_wrapper(
+            invoices.regenerate_receipt_pdf,
+        )
         self.void = to_streamed_response_wrapper(
             invoices.void,
         )
@@ -1830,6 +2096,12 @@ class AsyncInvoicesWithStreamingResponse:
         )
         self.pay = async_to_streamed_response_wrapper(
             invoices.pay,
+        )
+        self.regenerate_invoice_pdf = async_to_streamed_response_wrapper(
+            invoices.regenerate_invoice_pdf,
+        )
+        self.regenerate_receipt_pdf = async_to_streamed_response_wrapper(
+            invoices.regenerate_receipt_pdf,
         )
         self.void = async_to_streamed_response_wrapper(
             invoices.void,

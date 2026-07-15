@@ -21,7 +21,9 @@ from ...types import (
     customer_list_params,
     customer_create_params,
     customer_update_params,
+    customer_create_portal_session_params,
     customer_update_by_external_id_params,
+    customer_create_portal_session_by_external_id_params,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
@@ -51,7 +53,11 @@ from ...types.address_input_param import AddressInputParam
 from ...types.shared_params.customer_tax_id import CustomerTaxID
 from ...types.customer_hierarchy_config_param import CustomerHierarchyConfigParam
 from ...types.new_reporting_configuration_param import NewReportingConfigurationParam
+from ...types.customer_create_portal_session_response import CustomerCreatePortalSessionResponse
 from ...types.new_accounting_sync_configuration_param import NewAccountingSyncConfigurationParam
+from ...types.customer_create_portal_session_by_external_id_response import (
+    CustomerCreatePortalSessionByExternalIDResponse,
+)
 
 __all__ = ["Customers", "AsyncCustomers"]
 
@@ -840,6 +846,133 @@ class Customers(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=NoneType,
+        )
+
+    def create_portal_session(
+        self,
+        customer_id: str,
+        *,
+        expires_in_minutes: int | Omit = omit,
+        invalidate_existing: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CustomerCreatePortalSessionResponse:
+        """
+        Creates a portal session for the customer, returning a short-lived URL that
+        provides authenticated access to the customer's billing portal. The session
+        expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+        new session invalidates any other active portal sessions for the customer; pass
+        `invalidate_existing=false` to allow concurrent sessions.
+
+        Args:
+          expires_in_minutes: Duration in minutes until the portal session expires. Defaults to 60.
+              Maximum 180.
+
+          invalidate_existing: When true (default), creating this session soft-deletes any other active portal
+              sessions for the customer. Set to false to allow concurrent sessions — useful
+              when minting portal links for multiple authenticated end-users at once. The
+              customer's permanent portal link (if any) is never invalidated by this.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        return self._post(
+            path_template("/customers/{customer_id}/portal_sessions", customer_id=customer_id),
+            body=maybe_transform(
+                {
+                    "expires_in_minutes": expires_in_minutes,
+                    "invalidate_existing": invalidate_existing,
+                },
+                customer_create_portal_session_params.CustomerCreatePortalSessionParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CustomerCreatePortalSessionResponse,
+        )
+
+    def create_portal_session_by_external_id(
+        self,
+        external_customer_id: str,
+        *,
+        expires_in_minutes: int | Omit = omit,
+        invalidate_existing: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CustomerCreatePortalSessionByExternalIDResponse:
+        """
+        Creates a portal session for the customer, returning a short-lived URL that
+        provides authenticated access to the customer's billing portal. The session
+        expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+        new session invalidates any other active portal sessions for the customer; pass
+        `invalidate_existing=false` to allow concurrent sessions.
+
+        Args:
+          expires_in_minutes: Duration in minutes until the portal session expires. Defaults to 60.
+              Maximum 180.
+
+          invalidate_existing: When true (default), creating this session soft-deletes any other active portal
+              sessions for the customer. Set to false to allow concurrent sessions — useful
+              when minting portal links for multiple authenticated end-users at once. The
+              customer's permanent portal link (if any) is never invalidated by this.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        return self._post(
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/portal_sessions",
+                external_customer_id=external_customer_id,
+            ),
+            body=maybe_transform(
+                {
+                    "expires_in_minutes": expires_in_minutes,
+                    "invalidate_existing": invalidate_existing,
+                },
+                customer_create_portal_session_by_external_id_params.CustomerCreatePortalSessionByExternalIDParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CustomerCreatePortalSessionByExternalIDResponse,
         )
 
     def fetch(
@@ -2099,6 +2232,133 @@ class AsyncCustomers(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def create_portal_session(
+        self,
+        customer_id: str,
+        *,
+        expires_in_minutes: int | Omit = omit,
+        invalidate_existing: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CustomerCreatePortalSessionResponse:
+        """
+        Creates a portal session for the customer, returning a short-lived URL that
+        provides authenticated access to the customer's billing portal. The session
+        expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+        new session invalidates any other active portal sessions for the customer; pass
+        `invalidate_existing=false` to allow concurrent sessions.
+
+        Args:
+          expires_in_minutes: Duration in minutes until the portal session expires. Defaults to 60.
+              Maximum 180.
+
+          invalidate_existing: When true (default), creating this session soft-deletes any other active portal
+              sessions for the customer. Set to false to allow concurrent sessions — useful
+              when minting portal links for multiple authenticated end-users at once. The
+              customer's permanent portal link (if any) is never invalidated by this.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        return await self._post(
+            path_template("/customers/{customer_id}/portal_sessions", customer_id=customer_id),
+            body=await async_maybe_transform(
+                {
+                    "expires_in_minutes": expires_in_minutes,
+                    "invalidate_existing": invalidate_existing,
+                },
+                customer_create_portal_session_params.CustomerCreatePortalSessionParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CustomerCreatePortalSessionResponse,
+        )
+
+    async def create_portal_session_by_external_id(
+        self,
+        external_customer_id: str,
+        *,
+        expires_in_minutes: int | Omit = omit,
+        invalidate_existing: bool | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CustomerCreatePortalSessionByExternalIDResponse:
+        """
+        Creates a portal session for the customer, returning a short-lived URL that
+        provides authenticated access to the customer's billing portal. The session
+        expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+        new session invalidates any other active portal sessions for the customer; pass
+        `invalidate_existing=false` to allow concurrent sessions.
+
+        Args:
+          expires_in_minutes: Duration in minutes until the portal session expires. Defaults to 60.
+              Maximum 180.
+
+          invalidate_existing: When true (default), creating this session soft-deletes any other active portal
+              sessions for the customer. Set to false to allow concurrent sessions — useful
+              when minting portal links for multiple authenticated end-users at once. The
+              customer's permanent portal link (if any) is never invalidated by this.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        return await self._post(
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/portal_sessions",
+                external_customer_id=external_customer_id,
+            ),
+            body=await async_maybe_transform(
+                {
+                    "expires_in_minutes": expires_in_minutes,
+                    "invalidate_existing": invalidate_existing,
+                },
+                customer_create_portal_session_by_external_id_params.CustomerCreatePortalSessionByExternalIDParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CustomerCreatePortalSessionByExternalIDResponse,
+        )
+
     async def fetch(
         self,
         customer_id: str,
@@ -2586,6 +2846,12 @@ class CustomersWithRawResponse:
         self.delete = _legacy_response.to_raw_response_wrapper(
             customers.delete,
         )
+        self.create_portal_session = _legacy_response.to_raw_response_wrapper(
+            customers.create_portal_session,
+        )
+        self.create_portal_session_by_external_id = _legacy_response.to_raw_response_wrapper(
+            customers.create_portal_session_by_external_id,
+        )
         self.fetch = _legacy_response.to_raw_response_wrapper(
             customers.fetch,
         )
@@ -2665,6 +2931,12 @@ class AsyncCustomersWithRawResponse:
         )
         self.delete = _legacy_response.async_to_raw_response_wrapper(
             customers.delete,
+        )
+        self.create_portal_session = _legacy_response.async_to_raw_response_wrapper(
+            customers.create_portal_session,
+        )
+        self.create_portal_session_by_external_id = _legacy_response.async_to_raw_response_wrapper(
+            customers.create_portal_session_by_external_id,
         )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             customers.fetch,
@@ -2746,6 +3018,12 @@ class CustomersWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             customers.delete,
         )
+        self.create_portal_session = to_streamed_response_wrapper(
+            customers.create_portal_session,
+        )
+        self.create_portal_session_by_external_id = to_streamed_response_wrapper(
+            customers.create_portal_session_by_external_id,
+        )
         self.fetch = to_streamed_response_wrapper(
             customers.fetch,
         )
@@ -2825,6 +3103,12 @@ class AsyncCustomersWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             customers.delete,
+        )
+        self.create_portal_session = async_to_streamed_response_wrapper(
+            customers.create_portal_session,
+        )
+        self.create_portal_session_by_external_id = async_to_streamed_response_wrapper(
+            customers.create_portal_session_by_external_id,
         )
         self.fetch = async_to_streamed_response_wrapper(
             customers.fetch,

@@ -169,6 +169,46 @@ class TestAlerts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_delete(self, client: Orb) -> None:
+        alert = client.alerts.delete(
+            "alert_configuration_id",
+        )
+        assert alert is None
+
+    @parametrize
+    def test_raw_response_delete(self, client: Orb) -> None:
+        response = client.alerts.with_raw_response.delete(
+            "alert_configuration_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        alert = response.parse()
+        assert alert is None
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Orb) -> None:
+        with client.alerts.with_streaming_response.delete(
+            "alert_configuration_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            alert = response.parse()
+            assert alert is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Orb) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
+        ):
+            client.alerts.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
     def test_method_create_for_customer(self, client: Orb) -> None:
         alert = client.alerts.create_for_customer(
             customer_id="customer_id",
@@ -599,6 +639,46 @@ class TestAsyncAlerts:
             assert_matches_type(AsyncPage[Alert], alert, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncOrb) -> None:
+        alert = await async_client.alerts.delete(
+            "alert_configuration_id",
+        )
+        assert alert is None
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncOrb) -> None:
+        response = await async_client.alerts.with_raw_response.delete(
+            "alert_configuration_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        alert = response.parse()
+        assert alert is None
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncOrb) -> None:
+        async with async_client.alerts.with_streaming_response.delete(
+            "alert_configuration_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            alert = await response.parse()
+            assert alert is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `alert_configuration_id` but received ''"
+        ):
+            await async_client.alerts.with_raw_response.delete(
+                "",
+            )
 
     @parametrize
     async def test_method_create_for_customer(self, async_client: AsyncOrb) -> None:

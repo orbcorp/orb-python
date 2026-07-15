@@ -18,7 +18,7 @@ from ..types import (
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
 )
-from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -229,6 +229,57 @@ class Alerts(SyncAPIResource):
                 ),
             ),
             model=Alert,
+        )
+
+    def delete(
+        self,
+        alert_configuration_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """This endpoint trashes a subscription- or customer-scoped alert.
+
+        The alert is
+        soft-deleted: it stops firing immediately and no longer appears in fetch or list
+        responses, while the underlying record is retained internally for audit.
+
+        Plan-level alerts cannot be trashed via the API — disable them instead
+        (`POST /v1/alerts/{alert_configuration_id}/disable`). Their removal would need
+        to be unwound from every subscription the alert was propagated to, which isn't
+        supported yet.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not alert_configuration_id:
+            raise ValueError(
+                f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
         )
 
     def create_for_customer(
@@ -755,6 +806,57 @@ class AsyncAlerts(AsyncAPIResource):
             model=Alert,
         )
 
+    async def delete(
+        self,
+        alert_configuration_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> None:
+        """This endpoint trashes a subscription- or customer-scoped alert.
+
+        The alert is
+        soft-deleted: it stops firing immediately and no longer appears in fetch or list
+        responses, while the underlying record is retained internally for audit.
+
+        Plan-level alerts cannot be trashed via the API — disable them instead
+        (`POST /v1/alerts/{alert_configuration_id}/disable`). Their removal would need
+        to be unwound from every subscription the alert was propagated to, which isn't
+        supported yet.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not alert_configuration_id:
+            raise ValueError(
+                f"Expected a non-empty value for `alert_configuration_id` but received {alert_configuration_id!r}"
+            )
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/alerts/{alert_configuration_id}", alert_configuration_id=alert_configuration_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=NoneType,
+        )
+
     async def create_for_customer(
         self,
         customer_id: str,
@@ -1096,6 +1198,9 @@ class AlertsWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             alerts.list,
         )
+        self.delete = _legacy_response.to_raw_response_wrapper(
+            alerts.delete,
+        )
         self.create_for_customer = _legacy_response.to_raw_response_wrapper(
             alerts.create_for_customer,
         )
@@ -1125,6 +1230,9 @@ class AsyncAlertsWithRawResponse:
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
             alerts.list,
+        )
+        self.delete = _legacy_response.async_to_raw_response_wrapper(
+            alerts.delete,
         )
         self.create_for_customer = _legacy_response.async_to_raw_response_wrapper(
             alerts.create_for_customer,
@@ -1156,6 +1264,9 @@ class AlertsWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             alerts.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            alerts.delete,
+        )
         self.create_for_customer = to_streamed_response_wrapper(
             alerts.create_for_customer,
         )
@@ -1185,6 +1296,9 @@ class AsyncAlertsWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             alerts.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            alerts.delete,
         )
         self.create_for_customer = async_to_streamed_response_wrapper(
             alerts.create_for_customer,

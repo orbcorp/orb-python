@@ -251,6 +251,9 @@ from .beta_set_default_plan_version_params import BetaSetDefaultPlanVersionParam
 from .new_subscription_package_price_param import NewSubscriptionPackagePriceParam as NewSubscriptionPackagePriceParam
 from .price_evaluate_preview_events_params import PriceEvaluatePreviewEventsParams as PriceEvaluatePreviewEventsParams
 from .subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse as SubscriptionFetchScheduleResponse
+from .customer_create_portal_session_params import (
+    CustomerCreatePortalSessionParams as CustomerCreatePortalSessionParams,
+)
 from .customer_update_by_external_id_params import CustomerUpdateByExternalIDParams as CustomerUpdateByExternalIDParams
 from .dimensional_price_group_create_params import (
     DimensionalPriceGroupCreateParams as DimensionalPriceGroupCreateParams,
@@ -266,6 +269,9 @@ from .license_retrieve_by_external_id_params import (
 )
 from .price_evaluate_preview_events_response import (
     PriceEvaluatePreviewEventsResponse as PriceEvaluatePreviewEventsResponse,
+)
+from .customer_create_portal_session_response import (
+    CustomerCreatePortalSessionResponse as CustomerCreatePortalSessionResponse,
 )
 from .new_accounting_sync_configuration_param import (
     NewAccountingSyncConfigurationParam as NewAccountingSyncConfigurationParam,
@@ -315,6 +321,9 @@ from .new_subscription_matrix_with_allocation_price_param import (
 from .new_subscription_threshold_total_amount_price_param import (
     NewSubscriptionThresholdTotalAmountPriceParam as NewSubscriptionThresholdTotalAmountPriceParam,
 )
+from .customer_create_portal_session_by_external_id_params import (
+    CustomerCreatePortalSessionByExternalIDParams as CustomerCreatePortalSessionByExternalIDParams,
+)
 from .new_subscription_cumulative_grouped_bulk_price_param import (
     NewSubscriptionCumulativeGroupedBulkPriceParam as NewSubscriptionCumulativeGroupedBulkPriceParam,
 )
@@ -326,6 +335,9 @@ from .new_subscription_matrix_with_display_name_price_param import (
 )
 from .new_subscription_max_group_tiered_package_price_param import (
     NewSubscriptionMaxGroupTieredPackagePriceParam as NewSubscriptionMaxGroupTieredPackagePriceParam,
+)
+from .customer_create_portal_session_by_external_id_response import (
+    CustomerCreatePortalSessionByExternalIDResponse as CustomerCreatePortalSessionByExternalIDResponse,
 )
 from .new_subscription_tiered_package_with_minimum_price_param import (
     NewSubscriptionTieredPackageWithMinimumPriceParam as NewSubscriptionTieredPackageWithMinimumPriceParam,

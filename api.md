@@ -213,6 +213,8 @@ from orb.types import (
     NewReportingConfiguration,
     NewSphereConfiguration,
     NewTaxJarConfiguration,
+    CustomerCreatePortalSessionResponse,
+    CustomerCreatePortalSessionByExternalIDResponse,
 )
 ```
 
@@ -222,6 +224,8 @@ Methods:
 - <code title="put /customers/{customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">update</a>(customer_id, \*\*<a href="src/orb/types/customer_update_params.py">params</a>) -> <a href="./src/orb/types/customer.py">Customer</a></code>
 - <code title="get /customers">client.customers.<a href="./src/orb/resources/customers/customers.py">list</a>(\*\*<a href="src/orb/types/customer_list_params.py">params</a>) -> <a href="./src/orb/types/customer.py">SyncPage[Customer]</a></code>
 - <code title="delete /customers/{customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">delete</a>(customer_id) -> None</code>
+- <code title="post /customers/{customer_id}/portal_sessions">client.customers.<a href="./src/orb/resources/customers/customers.py">create_portal_session</a>(customer_id, \*\*<a href="src/orb/types/customer_create_portal_session_params.py">params</a>) -> <a href="./src/orb/types/customer_create_portal_session_response.py">CustomerCreatePortalSessionResponse</a></code>
+- <code title="post /customers/external_customer_id/{external_customer_id}/portal_sessions">client.customers.<a href="./src/orb/resources/customers/customers.py">create_portal_session_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customer_create_portal_session_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customer_create_portal_session_by_external_id_response.py">CustomerCreatePortalSessionByExternalIDResponse</a></code>
 - <code title="get /customers/{customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">fetch</a>(customer_id) -> <a href="./src/orb/types/customer.py">Customer</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}">client.customers.<a href="./src/orb/resources/customers/customers.py">fetch_by_external_id</a>(external_customer_id) -> <a href="./src/orb/types/customer.py">Customer</a></code>
 - <code title="post /customers/{customer_id}/sync_payment_methods_from_gateway">client.customers.<a href="./src/orb/resources/customers/customers.py">sync_payment_methods_from_gateway</a>(customer_id) -> None</code>
@@ -409,6 +413,8 @@ Methods:
 - <code title="get /invoices/summary">client.invoices.<a href="./src/orb/resources/invoices.py">list_summary</a>(\*\*<a href="src/orb/types/invoice_list_summary_params.py">params</a>) -> <a href="./src/orb/types/invoice_list_summary_response.py">SyncPage[InvoiceListSummaryResponse]</a></code>
 - <code title="post /invoices/{invoice_id}/mark_paid">client.invoices.<a href="./src/orb/resources/invoices.py">mark_paid</a>(invoice_id, \*\*<a href="src/orb/types/invoice_mark_paid_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/pay">client.invoices.<a href="./src/orb/resources/invoices.py">pay</a>(invoice_id, \*\*<a href="src/orb/types/invoice_pay_params.py">params</a>) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/regenerate_invoice_pdf">client.invoices.<a href="./src/orb/resources/invoices.py">regenerate_invoice_pdf</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
+- <code title="post /invoices/{invoice_id}/regenerate_receipt_pdf">client.invoices.<a href="./src/orb/resources/invoices.py">regenerate_receipt_pdf</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 - <code title="post /invoices/{invoice_id}/void">client.invoices.<a href="./src/orb/resources/invoices.py">void</a>(invoice_id) -> <a href="./src/orb/types/shared/invoice.py">Invoice</a></code>
 
 # Items
@@ -592,6 +598,7 @@ Methods:
 - <code title="get /alerts/{alert_id}">client.alerts.<a href="./src/orb/resources/alerts.py">retrieve</a>(alert_id) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="put /alerts/{alert_configuration_id}">client.alerts.<a href="./src/orb/resources/alerts.py">update</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_update_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="get /alerts">client.alerts.<a href="./src/orb/resources/alerts.py">list</a>(\*\*<a href="src/orb/types/alert_list_params.py">params</a>) -> <a href="./src/orb/types/alert.py">SyncPage[Alert]</a></code>
+- <code title="delete /alerts/{alert_configuration_id}">client.alerts.<a href="./src/orb/resources/alerts.py">delete</a>(alert_configuration_id) -> None</code>
 - <code title="post /alerts/customer_id/{customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_customer</a>(customer_id, \*\*<a href="src/orb/types/alert_create_for_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/external_customer_id/{external_customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_external_customer</a>(external_customer_id, \*\*<a href="src/orb/types/alert_create_for_external_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/subscription_id/{subscription_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_subscription</a>(subscription_id, \*\*<a href="src/orb/types/alert_create_for_subscription_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>

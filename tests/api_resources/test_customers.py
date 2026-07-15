@@ -10,6 +10,8 @@ import pytest
 from orb import Orb, AsyncOrb
 from orb.types import (
     Customer,
+    CustomerCreatePortalSessionResponse,
+    CustomerCreatePortalSessionByExternalIDResponse,
 )
 from orb._utils import parse_datetime
 from tests.utils import assert_matches_type
@@ -303,6 +305,100 @@ class TestCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.with_raw_response.delete(
                 "",
+            )
+
+    @parametrize
+    def test_method_create_portal_session(self, client: Orb) -> None:
+        customer = client.customers.create_portal_session(
+            customer_id="customer_id",
+        )
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    def test_method_create_portal_session_with_all_params(self, client: Orb) -> None:
+        customer = client.customers.create_portal_session(
+            customer_id="customer_id",
+            expires_in_minutes=1,
+            invalidate_existing=True,
+        )
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_portal_session(self, client: Orb) -> None:
+        response = client.customers.with_raw_response.create_portal_session(
+            customer_id="customer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = response.parse()
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_portal_session(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.create_portal_session(
+            customer_id="customer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_create_portal_session(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            client.customers.with_raw_response.create_portal_session(
+                customer_id="",
+            )
+
+    @parametrize
+    def test_method_create_portal_session_by_external_id(self, client: Orb) -> None:
+        customer = client.customers.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        )
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    def test_method_create_portal_session_by_external_id_with_all_params(self, client: Orb) -> None:
+        customer = client.customers.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+            expires_in_minutes=1,
+            invalidate_existing=True,
+        )
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_portal_session_by_external_id(self, client: Orb) -> None:
+        response = client.customers.with_raw_response.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = response.parse()
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_portal_session_by_external_id(self, client: Orb) -> None:
+        with client.customers.with_streaming_response.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = response.parse()
+            assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_create_portal_session_by_external_id(self, client: Orb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            client.customers.with_raw_response.create_portal_session_by_external_id(
+                external_customer_id="",
             )
 
     @parametrize
@@ -852,6 +948,100 @@ class TestAsyncCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.with_raw_response.delete(
                 "",
+            )
+
+    @parametrize
+    async def test_method_create_portal_session(self, async_client: AsyncOrb) -> None:
+        customer = await async_client.customers.create_portal_session(
+            customer_id="customer_id",
+        )
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_method_create_portal_session_with_all_params(self, async_client: AsyncOrb) -> None:
+        customer = await async_client.customers.create_portal_session(
+            customer_id="customer_id",
+            expires_in_minutes=1,
+            invalidate_existing=True,
+        )
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_portal_session(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.with_raw_response.create_portal_session(
+            customer_id="customer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = response.parse()
+        assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_portal_session(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.with_streaming_response.create_portal_session(
+            customer_id="customer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(CustomerCreatePortalSessionResponse, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_create_portal_session(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
+            await async_client.customers.with_raw_response.create_portal_session(
+                customer_id="",
+            )
+
+    @parametrize
+    async def test_method_create_portal_session_by_external_id(self, async_client: AsyncOrb) -> None:
+        customer = await async_client.customers.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        )
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_method_create_portal_session_by_external_id_with_all_params(self, async_client: AsyncOrb) -> None:
+        customer = await async_client.customers.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+            expires_in_minutes=1,
+            invalidate_existing=True,
+        )
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_portal_session_by_external_id(self, async_client: AsyncOrb) -> None:
+        response = await async_client.customers.with_raw_response.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        customer = response.parse()
+        assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_portal_session_by_external_id(self, async_client: AsyncOrb) -> None:
+        async with async_client.customers.with_streaming_response.create_portal_session_by_external_id(
+            external_customer_id="external_customer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            customer = await response.parse()
+            assert_matches_type(CustomerCreatePortalSessionByExternalIDResponse, customer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_create_portal_session_by_external_id(self, async_client: AsyncOrb) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_customer_id` but received ''"):
+            await async_client.customers.with_raw_response.create_portal_session_by_external_id(
+                external_customer_id="",
             )
 
     @parametrize
