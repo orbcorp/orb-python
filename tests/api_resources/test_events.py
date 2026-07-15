@@ -151,7 +151,6 @@ class TestEvents:
                 }
             ],
             backfill_id="backfill_id",
-            debug=True,
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
 
@@ -367,7 +366,6 @@ class TestAsyncEvents:
                 }
             ],
             backfill_id="backfill_id",
-            debug=True,
         )
         assert_matches_type(EventIngestResponse, event, path=["response"])
 

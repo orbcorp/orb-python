@@ -1,10 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List
 
 from .._models import BaseModel
 
-__all__ = ["EventIngestResponse", "ValidationFailed", "Debug"]
+__all__ = ["EventIngestResponse", "ValidationFailed"]
 
 
 class ValidationFailed(BaseModel):
@@ -18,12 +18,6 @@ class ValidationFailed(BaseModel):
     """
 
 
-class Debug(BaseModel):
-    duplicate: List[str]
-
-    ingested: List[str]
-
-
 class EventIngestResponse(BaseModel):
     validation_failed: List[ValidationFailed]
     """Contains all failing validation events.
@@ -31,5 +25,3 @@ class EventIngestResponse(BaseModel):
     In the case of a 200, this array will always be empty. This field will always be
     present.
     """
-
-    debug: Optional[Debug] = None

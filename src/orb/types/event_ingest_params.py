@@ -20,12 +20,6 @@ class EventIngestParams(TypedDict, total=False):
     ingested events to the backfill
     """
 
-    debug: bool
-    """
-    Pending Deprecation: Flag to enable additional debug information in the endpoint
-    response
-    """
-
 
 class Event(TypedDict, total=False):
     event_name: Required[str]

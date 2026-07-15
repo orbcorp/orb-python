@@ -280,7 +280,6 @@ class Events(SyncAPIResource):
         *,
         events: Iterable[event_ingest_params.Event],
         backfill_id: Optional[str] | Omit = omit,
-        debug: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -473,9 +472,6 @@ class Events(SyncAPIResource):
           backfill_id: If this ingestion request is part of a backfill, this parameter ties the
               ingested events to the backfill
 
-          debug: Pending Deprecation: Flag to enable additional debug information in the endpoint
-              response
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -495,13 +491,7 @@ class Events(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=maybe_transform(
-                    {
-                        "backfill_id": backfill_id,
-                        "debug": debug,
-                    },
-                    event_ingest_params.EventIngestParams,
-                ),
+                query=maybe_transform({"backfill_id": backfill_id}, event_ingest_params.EventIngestParams),
             ),
             cast_to=EventIngestResponse,
         )
@@ -821,7 +811,6 @@ class AsyncEvents(AsyncAPIResource):
         *,
         events: Iterable[event_ingest_params.Event],
         backfill_id: Optional[str] | Omit = omit,
-        debug: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1014,9 +1003,6 @@ class AsyncEvents(AsyncAPIResource):
           backfill_id: If this ingestion request is part of a backfill, this parameter ties the
               ingested events to the backfill
 
-          debug: Pending Deprecation: Flag to enable additional debug information in the endpoint
-              response
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1036,13 +1022,7 @@ class AsyncEvents(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 idempotency_key=idempotency_key,
-                query=await async_maybe_transform(
-                    {
-                        "backfill_id": backfill_id,
-                        "debug": debug,
-                    },
-                    event_ingest_params.EventIngestParams,
-                ),
+                query=await async_maybe_transform({"backfill_id": backfill_id}, event_ingest_params.EventIngestParams),
             ),
             cast_to=EventIngestResponse,
         )
