@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.57.0](https://github.com/orbcorp/orb-python/compare/v4.56.0...v4.57.0) (2026-07-15)
+
+
+### Features
+
+* **api:** deprecate debug mode ingestion response field ([fb8748d](https://github.com/orbcorp/orb-python/commit/fb8748df3f00f9272523db693c64850336d7c3d2))
+
 ## [4.56.0](https://github.com/orbcorp/orb-python/compare/v4.55.2...v4.56.0) (2026-07-14)
 
 
