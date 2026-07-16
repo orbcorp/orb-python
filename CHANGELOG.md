@@ -1,5 +1,15 @@
 # Changelog
 
+## [4.58.0](https://github.com/orbcorp/orb-python/compare/v4.57.0...v4.58.0) (2026-07-16)
+
+
+### Features
+
+* **api:** add alert deletion, customer portal session, and invoice PDF regeneration endpoints ([b393eb5](https://github.com/orbcorp/orb-python/commit/b393eb50c4fb023a8e1763473ad124e429eda6b9))
+* **api:** remove deprecated debug field from events backfill endpoints ([e6a877d](https://github.com/orbcorp/orb-python/commit/e6a877d34f30d55034fc691c0787b2188d09fb3e))
+* **api:** remove deprecated debug parameter and field from backfill endpoints ([e6a877d](https://github.com/orbcorp/orb-python/commit/e6a877d34f30d55034fc691c0787b2188d09fb3e))
+* **api:** remove deprecated debug query parameter and field from events API ([e6a877d](https://github.com/orbcorp/orb-python/commit/e6a877d34f30d55034fc691c0787b2188d09fb3e))
+
 ## [4.57.0](https://github.com/orbcorp/orb-python/compare/v4.56.0...v4.57.0) (2026-07-15)
 
 
