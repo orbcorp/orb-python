@@ -23,8 +23,9 @@ class InvoiceCreateParams(TypedDict, total=False):
     invoice_date: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """An ISO 8601 date or timestamp, interpreted in the customer's timezone.
 
-    Must be in the past. If a date is set without a time, `invoice_date` is set to
-    midnight on the chosen date in the customer's timezone.
+    If a date is set without a time, `invoice_date` is set to midnight on the chosen
+    date in the customer's timezone. `invoice_date` cannot be more than one year in
+    the future.
     """
 
     line_items: Required[Iterable[LineItem]]
@@ -81,10 +82,11 @@ class InvoiceCreateParams(TypedDict, total=False):
     """
 
     will_auto_issue: bool
-    """When true, this invoice will be submitted for issuance upon creation.
+    """When true, auto-issues the invoice on the invoice date.
 
-    When false, the resulting invoice will require manual review to issue. Defaulted
-    to false.
+    If the invoice date is today's date or earlier, the invoice will be issued upon
+    creation. When false, the resulting invoice will require manual review to issue.
+    Defaults to false.
     """
 
 
