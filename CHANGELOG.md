@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.59.0](https://github.com/orbcorp/orb-python/compare/v4.58.0...v4.59.0) (2026-07-17)
+
+
+### Features
+
+* **api:** allow future invoice dates (up to one year) for one-off invoice creation ([7c6a9d3](https://github.com/orbcorp/orb-python/commit/7c6a9d3c2b9c59829fd1e116ee251a95c9409f72))
+
 ## [4.58.0](https://github.com/orbcorp/orb-python/compare/v4.57.0...v4.58.0) (2026-07-16)
 
 
