@@ -13,11 +13,12 @@ class MigrationCancelResponse(BaseModel):
     id: str
     """Unique identifier for this plan version change."""
 
-    effective_time: Union[date, datetime, Literal["end_of_term"], None] = None
+    effective_time: Union[date, datetime, Literal["end_of_term", "end_of_invoice"], None] = None
     """When the migration takes effect.
 
-    Can be a specific date/time, or 'end_of_term' when scheduled to be at the end of
-    the current billing period.
+    Can be a specific date/time, 'end_of_term' when scheduled to be at the end of
+    the current billing period, or 'end_of_invoice' when scheduled to be at the
+    start of the next invoice.
     """
 
     plan_id: str
