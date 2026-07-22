@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.60.0](https://github.com/orbcorp/orb-python/compare/v4.59.0...v4.60.0) (2026-07-22)
+
+
+### Features
+
+* **api:** support `end_of_invoice` effective time for plan version migrations ([997ffe7](https://github.com/orbcorp/orb-python/commit/997ffe7da3cd03e7199c71291cb04486a2eb9974))
+
 ## [4.59.0](https://github.com/orbcorp/orb-python/compare/v4.58.0...v4.59.0) (2026-07-17)
 
 
