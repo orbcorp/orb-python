@@ -164,7 +164,7 @@ class AddFixedFeeQuantityTransition(TypedDict, total=False):
     effective_date: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The date that the fixed fee quantity transition should take effect."""
 
-    quantity: Required[int]
+    quantity: Required[float]
     """The quantity of the fixed fee quantity transition."""
 
 
@@ -1258,7 +1258,7 @@ class EditFixedFeeQuantityTransition(TypedDict, total=False):
     effective_date: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """The date that the fixed fee quantity transition should take effect."""
 
-    quantity: Required[int]
+    quantity: Required[float]
     """The quantity of the fixed fee quantity transition."""
 
 

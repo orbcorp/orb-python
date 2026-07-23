@@ -12,4 +12,4 @@ class FixedFeeQuantityTransition(BaseModel):
 
     price_id: str
 
-    quantity: int
+    quantity: float
