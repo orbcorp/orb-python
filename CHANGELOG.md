@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.61.0](https://github.com/orbcorp/orb-python/compare/v4.60.0...v4.61.0) (2026-07-24)
+
+
+### Features
+
+* **api:** increase max page limit for credit ledger endpoints from 500 to 1000 ([f4d07c0](https://github.com/orbcorp/orb-python/commit/f4d07c0d1c99667da0f54346e26581fbee00ce1d))
+* **api:** support decimal quantities for fixed fee quantity transitions ([f4df44e](https://github.com/orbcorp/orb-python/commit/f4df44e4115f56830b3e8134bb5738b74fc8ffd3))
+
 ## [4.60.0](https://github.com/orbcorp/orb-python/compare/v4.59.0...v4.60.0) (2026-07-22)
 
 
