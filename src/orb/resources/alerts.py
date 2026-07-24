@@ -243,13 +243,13 @@ class Alerts(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
-        """This endpoint trashes a subscription- or customer-scoped alert.
+        """This endpoint deletes a subscription or customer-scoped alert.
 
         The alert is
         soft-deleted: it stops firing immediately and no longer appears in fetch or list
         responses, while the underlying record is retained internally for audit.
 
-        Plan-level alerts cannot be trashed via the API — disable them instead
+        Plan-level alerts cannot be deleted via the API — disable them instead
         (`POST /v1/alerts/{alert_configuration_id}/disable`). Their removal would need
         to be unwound from every subscription the alert was propagated to, which isn't
         supported yet.
@@ -818,13 +818,13 @@ class AsyncAlerts(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> None:
-        """This endpoint trashes a subscription- or customer-scoped alert.
+        """This endpoint deletes a subscription or customer-scoped alert.
 
         The alert is
         soft-deleted: it stops firing immediately and no longer appears in fetch or list
         responses, while the underlying record is retained internally for audit.
 
-        Plan-level alerts cannot be trashed via the API — disable them instead
+        Plan-level alerts cannot be deleted via the API — disable them instead
         (`POST /v1/alerts/{alert_configuration_id}/disable`). Their removal would need
         to be unwound from every subscription the alert was propagated to, which isn't
         supported yet.
