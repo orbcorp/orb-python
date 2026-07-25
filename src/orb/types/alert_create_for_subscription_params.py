@@ -15,13 +15,13 @@ class AlertCreateForSubscriptionParams(TypedDict, total=False):
     thresholds: Required[Iterable[ThresholdParam]]
     """The thresholds that define the values at which the alert will be triggered."""
 
-    type: Required[Literal["usage_exceeded", "cost_exceeded"]]
+    type: Required[Literal["usage_exceeded", "cost_exceeded", "spend_exceeded"]]
     """The type of alert to create. This must be a valid alert type."""
 
     currency: Optional[str]
-    """
-    The case sensitive currency or custom pricing unit to use for grouped cost
-    alerts. Required when grouping_keys is set.
+    """The case sensitive currency or custom pricing unit the alert is denominated in.
+
+    Required for spend_exceeded alerts and when grouping_keys is set.
     """
 
     grouping_keys: Optional[SequenceNotStr[str]]
@@ -34,10 +34,11 @@ class AlertCreateForSubscriptionParams(TypedDict, total=False):
     """The metric to track usage for."""
 
     price_filters: Optional[Iterable[PriceFilter]]
-    """Filters to scope which prices are included in grouped cost alert evaluation.
+    """Filters to scope which prices are included in alert evaluation.
 
     Supports filtering by price_id, item_id, or price_type with includes/excludes
-    operators. Only applicable when grouping_keys is set.
+    operators. Only applicable to spend_exceeded alerts and to cost_exceeded alerts
+    with grouping_keys set.
     """
 
     threshold_overrides: Optional[Iterable[ThresholdOverride]]

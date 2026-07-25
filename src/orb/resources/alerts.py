@@ -421,7 +421,7 @@ class Alerts(SyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
-        type: Literal["usage_exceeded", "cost_exceeded"],
+        type: Literal["usage_exceeded", "cost_exceeded", "spend_exceeded"],
         currency: Optional[str] | Omit = omit,
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
@@ -438,32 +438,36 @@ class Alerts(SyncAPIResource):
         """
         This endpoint is used to create alerts at the subscription level.
 
-        Subscription level alerts can be one of two types: `usage_exceeded` or
-        `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-        is triggered when the usage of that metric exceeds predefined thresholds during
-        the current billing cycle. A `cost_exceeded` alert is triggered when the total
-        amount due during the current billing cycle surpasses predefined thresholds.
-        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        Subscription level alerts can be one of three types: `usage_exceeded`,
+        `cost_exceeded`, or `spend_exceeded`. A `usage_exceeded` alert is scoped to a
+        particular metric and is triggered when the usage of that metric exceeds
+        predefined thresholds during the current billing cycle. A `cost_exceeded` alert
+        is triggered when the total amount due during the current billing cycle
+        surpasses predefined thresholds. `cost_exceeded` alerts do not include burndown
+        of pre-purchase credits. A `spend_exceeded` alert is triggered when the rated
+        spend (the pricing subtotal, before invoice-level adjustments and credits)
+        denominated in the alert's currency exceeds predefined thresholds during the
+        current billing cycle; `price_filters` can scope which prices contribute. Each
         subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
-        per metric that is a part of the subscription. Alerts are triggered based on
-        usage or cost conditions met during the current billing cycle.
+        per metric that is a part of the subscription.
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
 
           type: The type of alert to create. This must be a valid alert type.
 
-          currency: The case sensitive currency or custom pricing unit to use for grouped cost
-              alerts. Required when grouping_keys is set.
+          currency: The case sensitive currency or custom pricing unit the alert is denominated in.
+              Required for spend_exceeded alerts and when grouping_keys is set.
 
           grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
               alerts.
 
           metric_id: The metric to track usage for.
 
-          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
-              Supports filtering by price_id, item_id, or price_type with includes/excludes
-              operators. Only applicable when grouping_keys is set.
+          price_filters: Filters to scope which prices are included in alert evaluation. Supports
+              filtering by price_id, item_id, or price_type with includes/excludes operators.
+              Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+              grouping_keys set.
 
           threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
               grouping_keys values to a list of thresholds that fully replaces the default
@@ -996,7 +1000,7 @@ class AsyncAlerts(AsyncAPIResource):
         subscription_id: str,
         *,
         thresholds: Iterable[ThresholdParam],
-        type: Literal["usage_exceeded", "cost_exceeded"],
+        type: Literal["usage_exceeded", "cost_exceeded", "spend_exceeded"],
         currency: Optional[str] | Omit = omit,
         grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
         metric_id: Optional[str] | Omit = omit,
@@ -1013,32 +1017,36 @@ class AsyncAlerts(AsyncAPIResource):
         """
         This endpoint is used to create alerts at the subscription level.
 
-        Subscription level alerts can be one of two types: `usage_exceeded` or
-        `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-        is triggered when the usage of that metric exceeds predefined thresholds during
-        the current billing cycle. A `cost_exceeded` alert is triggered when the total
-        amount due during the current billing cycle surpasses predefined thresholds.
-        `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+        Subscription level alerts can be one of three types: `usage_exceeded`,
+        `cost_exceeded`, or `spend_exceeded`. A `usage_exceeded` alert is scoped to a
+        particular metric and is triggered when the usage of that metric exceeds
+        predefined thresholds during the current billing cycle. A `cost_exceeded` alert
+        is triggered when the total amount due during the current billing cycle
+        surpasses predefined thresholds. `cost_exceeded` alerts do not include burndown
+        of pre-purchase credits. A `spend_exceeded` alert is triggered when the rated
+        spend (the pricing subtotal, before invoice-level adjustments and credits)
+        denominated in the alert's currency exceeds predefined thresholds during the
+        current billing cycle; `price_filters` can scope which prices contribute. Each
         subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
-        per metric that is a part of the subscription. Alerts are triggered based on
-        usage or cost conditions met during the current billing cycle.
+        per metric that is a part of the subscription.
 
         Args:
           thresholds: The thresholds that define the values at which the alert will be triggered.
 
           type: The type of alert to create. This must be a valid alert type.
 
-          currency: The case sensitive currency or custom pricing unit to use for grouped cost
-              alerts. Required when grouping_keys is set.
+          currency: The case sensitive currency or custom pricing unit the alert is denominated in.
+              Required for spend_exceeded alerts and when grouping_keys is set.
 
           grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
               alerts.
 
           metric_id: The metric to track usage for.
 
-          price_filters: Filters to scope which prices are included in grouped cost alert evaluation.
-              Supports filtering by price_id, item_id, or price_type with includes/excludes
-              operators. Only applicable when grouping_keys is set.
+          price_filters: Filters to scope which prices are included in alert evaluation. Supports
+              filtering by price_id, item_id, or price_type with includes/excludes operators.
+              Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+              grouping_keys set.
 
           threshold_overrides: Per-group threshold overrides. Each override maps a specific combination of
               grouping_keys values to a list of thresholds that fully replaces the default

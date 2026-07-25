@@ -126,6 +126,7 @@ class Alert(BaseModel):
         "credit_balance_recovered",
         "usage_exceeded",
         "cost_exceeded",
+        "spend_exceeded",
         "license_balance_threshold_reached",
     ]
     """The type of alert. This must be a valid alert type."""
