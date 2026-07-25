@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.62.0](https://github.com/orbcorp/orb-python/compare/v4.61.0...v4.62.0) (2026-07-25)
+
+
+### Features
+
+* **api:** rename "trash alert" endpoint to "delete alert" ([75f9bd2](https://github.com/orbcorp/orb-python/commit/75f9bd29e48f6e38dd8580d28975102cabae4838))
+
+
+### Bug Fixes
+
+* **api:** rename "trash alert" endpoint to "delete alert" ([75f9bd2](https://github.com/orbcorp/orb-python/commit/75f9bd29e48f6e38dd8580d28975102cabae4838))
+
 ## [4.61.0](https://github.com/orbcorp/orb-python/compare/v4.60.0...v4.61.0) (2026-07-24)
 
 
