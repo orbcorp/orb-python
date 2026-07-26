@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.63.0](https://github.com/orbcorp/orb-python/compare/v4.62.0...v4.63.0) (2026-07-26)
+
+
+### Features
+
+* **api:** add `spend_exceeded` alert type for subscription-level alerts ([6feb67f](https://github.com/orbcorp/orb-python/commit/6feb67f68fc55be6b56d14b7fc0552dff53b573c))
+
 ## [4.62.0](https://github.com/orbcorp/orb-python/compare/v4.61.0...v4.62.0) (2026-07-25)
 
 
