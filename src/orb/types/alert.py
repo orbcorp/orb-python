@@ -147,7 +147,11 @@ class Alert(BaseModel):
     """Minified license type for alert serialization."""
 
     price_filters: Optional[List[PriceFilter]] = None
-    """Filters scoping which prices are included in grouped cost alert evaluation."""
+    """
+    Filters scoping which prices are included in spend and grouped cost alert
+    evaluation. Alerts use the price_id, item_id, and price_type fields only; the
+    alert's pricing unit is reported by currency.
+    """
 
     threshold_overrides: Optional[List[ThresholdOverride]] = None
     """Per-group threshold overrides.

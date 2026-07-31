@@ -16,9 +16,11 @@ class AlertUpdateParams(TypedDict, total=False):
     """The thresholds that define the values at which the alert will be triggered."""
 
     price_filters: Optional[Iterable[PriceFilter]]
-    """Replaces the price filters on a grouped cost alert; an empty list clears them.
+    """Replaces the price filters on the alert; an empty list clears them.
 
-    Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+    Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+    grouping_keys set. Alerts accept the price_id, item_id, and price_type fields
+    only. Omit to leave unchanged.
     """
 
     threshold_overrides: Optional[Iterable[ThresholdOverride]]
