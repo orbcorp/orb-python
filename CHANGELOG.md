@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.64.0](https://github.com/orbcorp/orb-python/compare/v4.63.0...v4.64.0) (2026-07-31)
+
+
+### Features
+
+* **api:** add endpoint to create plan-level alerts ([3e0f2eb](https://github.com/orbcorp/orb-python/commit/3e0f2eb626f5f242988806e5570e3cc8067ec797))
+* **api:** add endpoint to create plan-level alerts and allow PUT updates for plan usage alert thresholds ([3e0f2eb](https://github.com/orbcorp/orb-python/commit/3e0f2eb626f5f242988806e5570e3cc8067ec797))
+
 ## [4.63.0](https://github.com/orbcorp/orb-python/compare/v4.62.0...v4.63.0) (2026-07-26)
 
 
