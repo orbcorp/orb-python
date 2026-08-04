@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.66.0](https://github.com/orbcorp/orb-python/compare/v4.65.0...v4.66.0) (2026-08-04)
+
+
+### Features
+
+* **api:** api update ([e776a3e](https://github.com/orbcorp/orb-python/commit/e776a3e820f9b8e343b8d3a84873c5958cde2e46))
+* **api:** api update ([e776a3e](https://github.com/orbcorp/orb-python/commit/e776a3e820f9b8e343b8d3a84873c5958cde2e46))
+* **api:** api update ([e776a3e](https://github.com/orbcorp/orb-python/commit/e776a3e820f9b8e343b8d3a84873c5958cde2e46))
+
+
+### Bug Fixes
+
+* **api:** correct next_attempt_at accuracy in invoice auto-collection response ([e776a3e](https://github.com/orbcorp/orb-python/commit/e776a3e820f9b8e343b8d3a84873c5958cde2e46))
+
 ## [4.65.0](https://github.com/orbcorp/orb-python/compare/v4.64.0...v4.65.0) (2026-08-01)
 
 
