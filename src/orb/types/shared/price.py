@@ -78,6 +78,12 @@ __all__ = [
     "GroupedTieredPriceGroupedTieredConfig",
     "GroupedTieredPriceGroupedTieredConfigTier",
     "GroupedTieredPriceLicenseType",
+    "GroupedTieredMatrixPrice",
+    "GroupedTieredMatrixPriceCompositePriceFilter",
+    "GroupedTieredMatrixPriceConversionRateConfig",
+    "GroupedTieredMatrixPriceGroupedTieredMatrixConfig",
+    "GroupedTieredMatrixPriceGroupedTieredMatrixConfigTier",
+    "GroupedTieredMatrixPriceLicenseType",
     "TieredPackageWithMinimumPrice",
     "TieredPackageWithMinimumPriceCompositePriceFilter",
     "TieredPackageWithMinimumPriceConversionRateConfig",
@@ -1512,6 +1518,152 @@ class GroupedTieredPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
     license_type: Optional[GroupedTieredPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class GroupedTieredMatrixPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+GroupedTieredMatrixPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class GroupedTieredMatrixPriceGroupedTieredMatrixConfigTier(BaseModel):
+    """Configuration for a single tier scoped to a dimension value"""
+
+    dimension_value: str
+    """The dimension value this tier applies to"""
+
+    tier_lower_bound: str
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class GroupedTieredMatrixPriceGroupedTieredMatrixConfig(BaseModel):
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    default_unit_amount: str
+    """Per unit rate for usage whose dimension value has no configured tiers"""
+
+    dimension: str
+    """The billable metric property used to group usage before tiering"""
+
+    tiers: List[GroupedTieredMatrixPriceGroupedTieredMatrixConfigTier]
+    """
+    Graduated tiers keyed by dimension value; usage for a value is tiered only
+    against its own rows
+    """
+
+
+class GroupedTieredMatrixPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class GroupedTieredMatrixPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[GroupedTieredMatrixPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[GroupedTieredMatrixPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    grouped_tiered_matrix_config: GroupedTieredMatrixPriceGroupedTieredMatrixConfig
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["grouped_tiered_matrix"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[GroupedTieredMatrixPriceLicenseType] = None
     """
     The LicenseType resource represents a type of license that can be assigned to
     users. License types are used during billing by grouping metrics on the
@@ -4888,6 +5040,7 @@ Price: TypeAlias = Annotated[
         TieredPackagePrice,
         TieredWithMinimumPrice,
         GroupedTieredPrice,
+        GroupedTieredMatrixPrice,
         TieredPackageWithMinimumPrice,
         PackageWithAllocationPrice,
         UnitWithPercentPrice,

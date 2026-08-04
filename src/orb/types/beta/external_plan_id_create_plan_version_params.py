@@ -62,6 +62,10 @@ __all__ = [
     "AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter",
     "AddPricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier",
     "AddPricePriceNewPlanBulkWithFiltersPriceConversionRateConfig",
+    "AddPricePriceNewPlanGroupedTieredMatrixPrice",
+    "AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig",
+    "AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier",
+    "AddPricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig",
     "AddPricePriceNewPlanMatrixWithThresholdDiscountsPrice",
     "AddPricePriceNewPlanMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig",
     "AddPricePriceNewPlanMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue",
@@ -107,6 +111,10 @@ __all__ = [
     "ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigFilter",
     "ReplacePricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfigTier",
     "ReplacePricePriceNewPlanBulkWithFiltersPriceConversionRateConfig",
+    "ReplacePricePriceNewPlanGroupedTieredMatrixPrice",
+    "ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig",
+    "ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier",
+    "ReplacePricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig",
     "ReplacePricePriceNewPlanMatrixWithThresholdDiscountsPrice",
     "ReplacePricePriceNewPlanMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig",
     "ReplacePricePriceNewPlanMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfigMatrixValue",
@@ -416,6 +424,123 @@ class AddPricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[AddPricePriceNewPlanBulkWithFiltersPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier(TypedDict, total=False):
+    """Configuration for a single tier scoped to a dimension value"""
+
+    dimension_value: Required[str]
+    """The dimension value this tier applies to"""
+
+    tier_lower_bound: Required[str]
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    default_unit_amount: Required[str]
+    """Per unit rate for usage whose dimension value has no configured tiers"""
+
+    dimension: Required[str]
+    """The billable metric property used to group usage before tiering"""
+
+    tiers: Required[Iterable[AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier]]
+    """
+    Graduated tiers keyed by dimension value; usage for a value is tiered only
+    against its own rows
+    """
+
+
+AddPricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class AddPricePriceNewPlanGroupedTieredMatrixPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_tiered_matrix_config: Required[AddPricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig]
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_tiered_matrix"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[AddPricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -1414,6 +1539,7 @@ AddPricePrice: TypeAlias = Union[
     NewPlanTieredPackagePrice,
     NewPlanTieredWithMinimumPrice,
     NewPlanGroupedTieredPrice,
+    AddPricePriceNewPlanGroupedTieredMatrixPrice,
     NewPlanTieredPackageWithMinimumPrice,
     NewPlanPackageWithAllocationPrice,
     NewPlanUnitWithPercentPrice,
@@ -1726,6 +1852,123 @@ class ReplacePricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
     """The per unit conversion rate of the price currency to the invoicing currency."""
 
     conversion_rate_config: Optional[ReplacePricePriceNewPlanBulkWithFiltersPriceConversionRateConfig]
+    """The configuration for the rate of the price currency to the invoicing currency."""
+
+    currency: Optional[str]
+    """
+    An ISO 4217 currency string, or custom pricing unit identifier, in which this
+    price is billed.
+    """
+
+    dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration]
+    """For dimensional price: specifies a price group and dimension values"""
+
+    external_price_id: Optional[str]
+    """An alias for the price."""
+
+    fixed_price_quantity: Optional[float]
+    """
+    If the Price represents a fixed cost, this represents the quantity of units
+    applied.
+    """
+
+    invoice_grouping_key: Optional[str]
+    """The property used to group this price on an invoice"""
+
+    invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """Within each billing cycle, specifies the cadence at which invoices are produced.
+
+    If unspecified, a single invoice is produced per billing cycle.
+    """
+
+    license_type_id: Optional[str]
+    """The ID of the license type to associate with this price."""
+
+    metadata: Optional[Dict[str, Optional[str]]]
+    """User-specified key/value pairs for the resource.
+
+    Individual keys can be removed by setting the value to `null`, and the entire
+    metadata mapping can be cleared by setting `metadata` to `null`.
+    """
+
+    reference_id: Optional[str]
+    """
+    A transient ID that can be used to reference this price when adding adjustments
+    in the same API call.
+    """
+
+
+class ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier(TypedDict, total=False):
+    """Configuration for a single tier scoped to a dimension value"""
+
+    dimension_value: Required[str]
+    """The dimension value this tier applies to"""
+
+    tier_lower_bound: Required[str]
+
+    unit_amount: Required[str]
+    """Per unit amount"""
+
+
+class ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig(TypedDict, total=False):
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    default_unit_amount: Required[str]
+    """Per unit rate for usage whose dimension value has no configured tiers"""
+
+    dimension: Required[str]
+    """The billable metric property used to group usage before tiering"""
+
+    tiers: Required[Iterable[ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfigTier]]
+    """
+    Graduated tiers keyed by dimension value; usage for a value is tiered only
+    against its own rows
+    """
+
+
+ReplacePricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig: TypeAlias = Union[
+    UnitConversionRateConfig, TieredConversionRateConfig
+]
+
+
+class ReplacePricePriceNewPlanGroupedTieredMatrixPrice(TypedDict, total=False):
+    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    """The cadence to bill for this price on."""
+
+    grouped_tiered_matrix_config: Required[ReplacePricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig]
+    """Configuration for grouped_tiered_matrix pricing"""
+
+    item_id: Required[str]
+    """The id of the item the price will be associated with."""
+
+    model_type: Required[Literal["grouped_tiered_matrix"]]
+    """The pricing model type"""
+
+    name: Required[str]
+    """The name of the price."""
+
+    billable_metric_id: Optional[str]
+    """The id of the billable metric for the price.
+
+    Only needed if the price is usage-based.
+    """
+
+    billed_in_advance: Optional[bool]
+    """
+    If the Price represents a fixed cost, the price will be billed in-advance if
+    this is true, and in-arrears if this is false.
+    """
+
+    billing_cycle_configuration: Optional[NewBillingCycleConfiguration]
+    """
+    For custom cadence: specifies the duration of the billing period in days or
+    months.
+    """
+
+    conversion_rate: Optional[float]
+    """The per unit conversion rate of the price currency to the invoicing currency."""
+
+    conversion_rate_config: Optional[ReplacePricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig]
     """The configuration for the rate of the price currency to the invoicing currency."""
 
     currency: Optional[str]
@@ -2726,6 +2969,7 @@ ReplacePricePrice: TypeAlias = Union[
     NewPlanTieredPackagePrice,
     NewPlanTieredWithMinimumPrice,
     NewPlanGroupedTieredPrice,
+    ReplacePricePriceNewPlanGroupedTieredMatrixPrice,
     NewPlanTieredPackageWithMinimumPrice,
     NewPlanPackageWithAllocationPrice,
     NewPlanUnitWithPercentPrice,
