@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.67.0](https://github.com/orbcorp/orb-python/compare/v4.66.0...v4.67.0) (2026-08-05)
+
+
+### Features
+
+* **api:** add `grouped_tiered_matrix` price model for per-dimension tiered rates ([ac4f5cc](https://github.com/orbcorp/orb-python/commit/ac4f5cced8db65a9390839334a9cdee45b3446d0))
+
 ## [4.66.0](https://github.com/orbcorp/orb-python/compare/v4.65.0...v4.66.0) (2026-08-04)
 
 
