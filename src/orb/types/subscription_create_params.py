@@ -515,7 +515,13 @@ class AddPricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=False):
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -634,7 +640,13 @@ class AddPricePriceNewSubscriptionGroupedTieredMatrixPrice(TypedDict, total=Fals
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -785,7 +797,13 @@ class AddPricePriceNewSubscriptionMatrixWithThresholdDiscountsPrice(TypedDict, t
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -896,7 +914,13 @@ class AddPricePriceNewSubscriptionTieredWithProrationPrice(TypedDict, total=Fals
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1005,7 +1029,13 @@ class AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, to
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1114,7 +1144,13 @@ class AddPricePriceNewSubscriptionCumulativeGroupedAllocationPrice(TypedDict, to
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1249,7 +1285,13 @@ class AddPricePriceNewSubscriptionDailyCreditAllowancePrice(TypedDict, total=Fal
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1371,7 +1413,13 @@ class AddPricePriceNewSubscriptionMeteredAllowancePrice(TypedDict, total=False):
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1480,7 +1528,13 @@ class AddPricePriceNewSubscriptionPercentCompositePrice(TypedDict, total=False):
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1589,7 +1643,13 @@ class AddPricePriceNewSubscriptionEventOutputPrice(TypedDict, total=False):
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -1885,7 +1945,13 @@ class ReplacePricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=Fals
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2004,7 +2070,13 @@ class ReplacePricePriceNewSubscriptionGroupedTieredMatrixPrice(TypedDict, total=
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2157,7 +2229,13 @@ class ReplacePricePriceNewSubscriptionMatrixWithThresholdDiscountsPrice(TypedDic
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2268,7 +2346,13 @@ class ReplacePricePriceNewSubscriptionTieredWithProrationPrice(TypedDict, total=
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2379,7 +2463,13 @@ class ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2490,7 +2580,13 @@ class ReplacePricePriceNewSubscriptionCumulativeGroupedAllocationPrice(TypedDict
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2625,7 +2721,13 @@ class ReplacePricePriceNewSubscriptionDailyCreditAllowancePrice(TypedDict, total
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2747,7 +2849,13 @@ class ReplacePricePriceNewSubscriptionMeteredAllowancePrice(TypedDict, total=Fal
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2856,7 +2964,13 @@ class ReplacePricePriceNewSubscriptionPercentCompositePrice(TypedDict, total=Fal
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
@@ -2965,7 +3079,13 @@ class ReplacePricePriceNewSubscriptionEventOutputPrice(TypedDict, total=False):
     """
 
     license_type_id: Optional[str]
-    """The ID of the license type to associate with this price."""
+    """The ID of the license type to associate with this price.
+
+    On a usage price this also marks the price as eligible to draw down from that
+    license type's allocation; a usage price created without it is billed normally.
+    Usage prices with a license type must use the `unit` model, and only draw down
+    when their currency matches the allocation's.
+    """
 
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
