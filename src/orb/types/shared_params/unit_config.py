@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["UnitConfig"]
@@ -15,3 +16,6 @@ class UnitConfig(TypedDict, total=False):
 
     prorated: bool
     """If true, subtotals from this price are prorated based on the service period"""
+
+    scaling_factor: Optional[float]
+    """Optional multiplier applied to rated quantity before unit_amount."""

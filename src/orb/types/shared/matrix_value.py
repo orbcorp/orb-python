@@ -15,3 +15,6 @@ class MatrixValue(BaseModel):
 
     unit_amount: str
     """Unit price for the specified dimension_values"""
+
+    scaling_factor: Optional[float] = None
+    """Optional multiplier applied to rated quantity before unit_amount."""

@@ -22,3 +22,9 @@ class MatrixConfig(TypedDict, total=False):
 
     matrix_values: Required[Iterable[MatrixValue]]
     """Matrix values configuration"""
+
+    scaling_factor: Optional[float]
+    """
+    Optional multiplier applied to default-bucket quantity before
+    default_unit_amount.
+    """

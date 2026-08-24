@@ -18,3 +18,6 @@ class MatrixValue(TypedDict, total=False):
 
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
+
+    scaling_factor: Optional[float]
+    """Optional multiplier applied to rated quantity before unit_amount."""

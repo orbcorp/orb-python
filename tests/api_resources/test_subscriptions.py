@@ -102,6 +102,7 @@ class TestSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -116,7 +117,7 @@ class TestSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -238,6 +239,7 @@ class TestSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -252,7 +254,7 @@ class TestSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -704,6 +706,7 @@ class TestSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -717,7 +720,7 @@ class TestSubscriptions:
                             "unit_config": {"unit_amount": "unit_amount"},
                         },
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -959,6 +962,7 @@ class TestSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -973,7 +977,7 @@ class TestSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -1088,6 +1092,7 @@ class TestSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -1102,7 +1107,7 @@ class TestSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -1516,6 +1521,7 @@ class TestAsyncSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -1530,7 +1536,7 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -1652,6 +1658,7 @@ class TestAsyncSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -1666,7 +1673,7 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -2118,6 +2125,7 @@ class TestAsyncSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -2131,7 +2139,7 @@ class TestAsyncSubscriptions:
                             "unit_config": {"unit_amount": "unit_amount"},
                         },
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -2373,6 +2381,7 @@ class TestAsyncSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -2387,7 +2396,7 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },
@@ -2502,6 +2511,7 @@ class TestAsyncSubscriptions:
                         "unit_config": {
                             "unit_amount": "unit_amount",
                             "prorated": True,
+                            "scaling_factor": 0,
                         },
                         "billable_metric_id": "billable_metric_id",
                         "billed_in_advance": True,
@@ -2516,7 +2526,7 @@ class TestAsyncSubscriptions:
                         },
                         "currency": "currency",
                         "dimensional_price_configuration": {
-                            "dimension_values": ["string"],
+                            "dimension_values": ["x"],
                             "dimensional_price_group_id": "dimensional_price_group_id",
                             "external_dimensional_price_group_id": "external_dimensional_price_group_id",
                         },

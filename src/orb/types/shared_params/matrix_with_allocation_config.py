@@ -23,6 +23,9 @@ class MatrixValue(TypedDict, total=False):
     unit_amount: Required[str]
     """Unit price for the specified dimension_values"""
 
+    scaling_factor: Optional[str]
+    """Optional multiplier applied to rated quantity before unit_amount."""
+
 
 class MatrixWithAllocationConfig(TypedDict, total=False):
     """Configuration for matrix pricing with usage allocation"""
@@ -38,3 +41,9 @@ class MatrixWithAllocationConfig(TypedDict, total=False):
 
     matrix_values: Required[Iterable[MatrixValue]]
     """Matrix values configuration"""
+
+    scaling_factor: Optional[str]
+    """
+    Optional multiplier applied to default-bucket quantity before
+    default_unit_amount.
+    """

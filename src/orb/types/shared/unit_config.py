@@ -15,3 +15,6 @@ class UnitConfig(BaseModel):
 
     prorated: Optional[bool] = None
     """If true, subtotals from this price are prorated based on the service period"""
+
+    scaling_factor: Optional[float] = None
+    """Optional multiplier applied to rated quantity before unit_amount."""

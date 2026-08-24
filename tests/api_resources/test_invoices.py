@@ -59,6 +59,7 @@ class TestInvoices:
                     "unit_config": {
                         "unit_amount": "unit_amount",
                         "prorated": True,
+                        "scaling_factor": 0,
                     },
                 }
             ],
@@ -742,6 +743,7 @@ class TestAsyncInvoices:
                     "unit_config": {
                         "unit_amount": "unit_amount",
                         "prorated": True,
+                        "scaling_factor": 0,
                     },
                 }
             ],

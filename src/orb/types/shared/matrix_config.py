@@ -19,3 +19,9 @@ class MatrixConfig(BaseModel):
 
     matrix_values: List[MatrixValue]
     """Matrix values configuration"""
+
+    scaling_factor: Optional[float] = None
+    """
+    Optional multiplier applied to default-bucket quantity before
+    default_unit_amount.
+    """

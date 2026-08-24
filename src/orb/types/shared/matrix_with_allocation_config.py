@@ -20,6 +20,9 @@ class MatrixValue(BaseModel):
     unit_amount: str
     """Unit price for the specified dimension_values"""
 
+    scaling_factor: Optional[str] = None
+    """Optional multiplier applied to rated quantity before unit_amount."""
+
 
 class MatrixWithAllocationConfig(BaseModel):
     """Configuration for matrix pricing with usage allocation"""
@@ -35,3 +38,9 @@ class MatrixWithAllocationConfig(BaseModel):
 
     matrix_values: List[MatrixValue]
     """Matrix values configuration"""
+
+    scaling_factor: Optional[str] = None
+    """
+    Optional multiplier applied to default-bucket quantity before
+    default_unit_amount.
+    """
