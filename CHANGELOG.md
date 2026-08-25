@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.70.0](https://github.com/orbcorp/orb-python/compare/v4.69.0...v4.70.0) (2026-08-25)
+
+
+### Features
+
+* **api:** restore deprecated `scaling_factor` field on unit and matrix price configs ([f994b1c](https://github.com/orbcorp/orb-python/commit/f994b1c536e5c2f8dc8a4e928202b03b3cc2ba98))
+
+
+### Bug Fixes
+
+* **api:** reject empty or missing dimension values in dimensional price configuration ([f994b1c](https://github.com/orbcorp/orb-python/commit/f994b1c536e5c2f8dc8a4e928202b03b3cc2ba98))
+
 ## [4.69.0](https://github.com/orbcorp/orb-python/compare/v4.68.0...v4.69.0) (2026-08-19)
 
 
