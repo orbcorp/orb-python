@@ -49,8 +49,8 @@ class TestCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -77,8 +77,8 @@ class TestCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -149,8 +149,8 @@ class TestCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -180,8 +180,8 @@ class TestCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -577,8 +577,8 @@ class TestCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -608,8 +608,8 @@ class TestCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -692,8 +692,8 @@ class TestAsyncCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -720,8 +720,8 @@ class TestAsyncCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -792,8 +792,8 @@ class TestAsyncCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -823,8 +823,8 @@ class TestAsyncCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -1232,8 +1232,8 @@ class TestAsyncCustomers:
             auto_collection=True,
             auto_issuance=True,
             billing_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",
@@ -1263,8 +1263,8 @@ class TestAsyncCustomers:
             payment_provider_id="payment_provider_id",
             reporting_configuration={"exempt": True},
             shipping_address={
+                "country": "x",
                 "city": "city",
-                "country": "country",
                 "line1": "line1",
                 "line2": "line2",
                 "postal_code": "postal_code",

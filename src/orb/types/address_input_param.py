@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["AddressInputParam"]
 
 
 class AddressInputParam(TypedDict, total=False):
-    city: Optional[str]
+    country: Required[str]
 
-    country: Optional[str]
+    city: Optional[str]
 
     line1: Optional[str]
 
