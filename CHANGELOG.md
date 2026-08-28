@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.70.1](https://github.com/orbcorp/orb-python/compare/v4.70.0...v4.70.1) (2026-08-28)
+
+
+### Bug Fixes
+
+* **api:** require non-empty `country` in customer address input ([e04a00c](https://github.com/orbcorp/orb-python/commit/e04a00c0a195e8da500fb5e9ce43d80d5ca51fdc))
+
 ## [4.70.0](https://github.com/orbcorp/orb-python/compare/v4.69.0...v4.70.0) (2026-08-25)
 
 
