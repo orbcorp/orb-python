@@ -52,8 +52,8 @@ class ThresholdOverride(TypedDict, total=False):
     group_values: Required[SequenceNotStr[str]]
     """The values of the grouping keys that identify this group.
 
-    The list length must match the alert's grouping_keys, and values appear in the
-    same order as grouping_keys.
+    The list length must match group_keys when it is set, and the alert's
+    grouping_keys otherwise, with values in the same order as whichever applies.
     """
 
     thresholds: Required[Iterable[ThresholdParam]]
@@ -61,4 +61,12 @@ class ThresholdOverride(TypedDict, total=False):
 
     An empty list silences alerts for this group. A non-empty list fully replaces
     the default thresholds for this group.
+    """
+
+    group_keys: Optional[SequenceNotStr[str]]
+    """The subset of the alert's grouping_keys that this override binds.
+
+    Any grouping key not named is unconstrained, so the override applies to every
+    group matching the named values. When omitted, group_values must cover every
+    grouping key in order.
     """

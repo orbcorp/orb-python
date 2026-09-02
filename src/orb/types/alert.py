@@ -70,15 +70,21 @@ class ThresholdOverride(BaseModel):
     """
 
     group_values: List[str]
-    """The values of the grouping keys that identify this group.
-
-    The list length matches the alert's grouping_keys.
+    """
+    The values identifying this group, ordered to match group_keys when set and the
+    alert's grouping_keys otherwise.
     """
 
     thresholds: List[Threshold]
     """The thresholds applied to this group.
 
     An empty list means the group is silenced.
+    """
+
+    group_keys: Optional[List[str]] = None
+    """The subset of the alert's grouping_keys this override binds.
+
+    Null when the override targets one exact group across every grouping key.
     """
 
 

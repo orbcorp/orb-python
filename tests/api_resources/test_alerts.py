@@ -83,6 +83,7 @@ class TestAlerts:
                 {
                     "group_values": ["string"],
                     "thresholds": [{"value": 0}],
+                    "group_keys": ["string"],
                 }
             ],
         )
@@ -349,6 +350,7 @@ class TestAlerts:
                 {
                     "group_values": ["string"],
                     "thresholds": [{"value": 0}],
+                    "group_keys": ["string"],
                 }
             ],
         )
@@ -555,6 +557,7 @@ class TestAsyncAlerts:
                 {
                     "group_values": ["string"],
                     "thresholds": [{"value": 0}],
+                    "group_keys": ["string"],
                 }
             ],
         )
@@ -821,6 +824,7 @@ class TestAsyncAlerts:
                 {
                     "group_values": ["string"],
                     "thresholds": [{"value": 0}],
+                    "group_keys": ["string"],
                 }
             ],
         )
