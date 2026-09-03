@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.71.0](https://github.com/orbcorp/orb-python/compare/v4.70.1...v4.71.0) (2026-09-03)
+
+
+### Features
+
+* **api:** support partial grouping key targeting in alert threshold overrides ([4a09627](https://github.com/orbcorp/orb-python/commit/4a096275154aece52dcd9b30b559280ba24d8009))
+
 ## [4.70.1](https://github.com/orbcorp/orb-python/compare/v4.70.0...v4.70.1) (2026-08-28)
 
 
