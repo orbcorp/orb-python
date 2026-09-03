@@ -60,8 +60,11 @@ class Migrations(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MigrationRetrieveResponse:
-        """
-        Fetch migration
+        """This endpoint returns a migration for a plan, identified by its ID.
+
+        A migration
+        moves a plan's subscriptions onto a new version of that plan; the response
+        reports the effective time it is scheduled for and its current status.
 
         Args:
           extra_headers: Send extra headers
@@ -223,8 +226,11 @@ class AsyncMigrations(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MigrationRetrieveResponse:
-        """
-        Fetch migration
+        """This endpoint returns a migration for a plan, identified by its ID.
+
+        A migration
+        moves a plan's subscriptions onto a new version of that plan; the response
+        reports the effective time it is scheduled for and its current status.
 
         Args:
           extra_headers: Send extra headers

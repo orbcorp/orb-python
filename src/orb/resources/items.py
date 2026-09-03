@@ -215,7 +215,9 @@ class Items(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        Archive item
+        This endpoint archives an item, and cascades to archive every price for that
+        item that is still active. An item that is already archived cannot be archived
+        again.
 
         Args:
           extra_headers: Send extra headers
@@ -471,7 +473,9 @@ class AsyncItems(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Item:
         """
-        Archive item
+        This endpoint archives an item, and cascades to archive every price for that
+        item that is still active. An item that is already archived cannot be archived
+        again.
 
         Args:
           extra_headers: Send extra headers

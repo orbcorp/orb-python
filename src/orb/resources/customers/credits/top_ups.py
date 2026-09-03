@@ -154,12 +154,17 @@ class TopUps(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[TopUpListResponse]:
-        """List top-ups
+        """
+        This endpoint returns a list of a customer's active top-ups; a top-up that has
+        been deactivated is not included. While a top-up is active, the customer's
+        balance is increased by the top-up amount whenever it falls to the top-up's
+        threshold.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
@@ -396,12 +401,17 @@ class TopUps(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[TopUpListByExternalIDResponse]:
-        """List top-ups by external ID
+        """
+        This endpoint returns a list of a customer's active top-ups; a top-up that has
+        been deactivated is not included. While a top-up is active, the customer's
+        balance is increased by the top-up amount whenever it falls to the top-up's
+        threshold.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
@@ -565,12 +575,17 @@ class AsyncTopUps(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TopUpListResponse, AsyncPage[TopUpListResponse]]:
-        """List top-ups
+        """
+        This endpoint returns a list of a customer's active top-ups; a top-up that has
+        been deactivated is not included. While a top-up is active, the customer's
+        balance is increased by the top-up amount whenever it falls to the top-up's
+        threshold.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
@@ -807,12 +822,17 @@ class AsyncTopUps(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TopUpListByExternalIDResponse, AsyncPage[TopUpListByExternalIDResponse]]:
-        """List top-ups by external ID
+        """
+        This endpoint returns a list of a customer's active top-ups; a top-up that has
+        been deactivated is not included. While a top-up is active, the customer's
+        balance is increased by the top-up amount whenever it falls to the top-up's
+        threshold.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.

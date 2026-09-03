@@ -132,8 +132,12 @@ class DimensionalPriceGroups(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DimensionalPriceGroup:
-        """
-        Fetch dimensional price group
+        """This endpoint returns a dimensional price group identified by its ID.
+
+        A
+        dimensional price group partitions the result of a billable metric by a set of
+        dimensions, and the prices in the group specify which partition their usage is
+        derived from.
 
         Args:
           extra_headers: Send extra headers
@@ -236,12 +240,18 @@ class DimensionalPriceGroups(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[DimensionalPriceGroup]:
-        """List dimensional price groups
+        """This endpoint returns a list of all dimensional price groups for an account.
+
+        A
+        dimensional price group partitions the result of a billable metric by a set of
+        dimensions, and the prices in the group specify which partition their usage is
+        derived from.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
@@ -374,8 +384,12 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DimensionalPriceGroup:
-        """
-        Fetch dimensional price group
+        """This endpoint returns a dimensional price group identified by its ID.
+
+        A
+        dimensional price group partitions the result of a billable metric by a set of
+        dimensions, and the prices in the group specify which partition their usage is
+        derived from.
 
         Args:
           extra_headers: Send extra headers
@@ -478,12 +492,18 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DimensionalPriceGroup, AsyncPage[DimensionalPriceGroup]]:
-        """List dimensional price groups
+        """This endpoint returns a list of all dimensional price groups for an account.
+
+        A
+        dimensional price group partitions the result of a billable metric by a set of
+        dimensions, and the prices in the group specify which partition their usage is
+        derived from.
+
+        The response also includes pagination_metadata, which lets the caller retrieve
+        the next page of results if they exist.
 
         Args:
-          cursor: Cursor for pagination.
-
-        This can be populated by the `next_cursor` value returned
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
