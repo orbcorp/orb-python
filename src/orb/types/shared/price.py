@@ -104,6 +104,12 @@ __all__ = [
     "MatrixWithAllocationPriceCompositePriceFilter",
     "MatrixWithAllocationPriceConversionRateConfig",
     "MatrixWithAllocationPriceLicenseType",
+    "TieredMatrixWithAllocationPrice",
+    "TieredMatrixWithAllocationPriceCompositePriceFilter",
+    "TieredMatrixWithAllocationPriceConversionRateConfig",
+    "TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfig",
+    "TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfigTier",
+    "TieredMatrixWithAllocationPriceLicenseType",
     "MatrixWithThresholdDiscountsPrice",
     "MatrixWithThresholdDiscountsPriceCompositePriceFilter",
     "MatrixWithThresholdDiscountsPriceConversionRateConfig",
@@ -2178,6 +2184,160 @@ class MatrixWithAllocationPrice(BaseModel):
     dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
 
     license_type: Optional[MatrixWithAllocationPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
+class TieredMatrixWithAllocationPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+TieredMatrixWithAllocationPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfigTier(BaseModel):
+    """Configuration for a single tier scoped to one matrix cell"""
+
+    dimension_values: List[str]
+    """The matrix cell this tier applies to, as one or two dimension values"""
+
+    tier_lower_bound: str
+    """Exclusive tier starting value.
+
+    The tier runs up to and including the next bound configured for the same matrix
+    cell.
+    """
+
+    unit_amount: str
+    """Per unit amount"""
+
+
+class TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfig(BaseModel):
+    """Configuration for tiered_matrix_with_allocation pricing"""
+
+    allocation: str
+    """Usage allocation, pooled across all matrix cells"""
+
+    default_unit_amount: str
+    """Per unit rate for usage whose matrix cell has no configured tiers"""
+
+    dimensions: List[str]
+    """One or two event property values to evaluate matrix cells by"""
+
+    tiers: List[TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfigTier]
+    """
+    Graduated tiers keyed by matrix cell; usage in a cell is tiered only against its
+    own rows
+    """
+
+
+class TieredMatrixWithAllocationPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class TieredMatrixWithAllocationPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[TieredMatrixWithAllocationPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[TieredMatrixWithAllocationPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["tiered_matrix_with_allocation"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    tiered_matrix_with_allocation_config: TieredMatrixWithAllocationPriceTieredMatrixWithAllocationConfig
+    """Configuration for tiered_matrix_with_allocation pricing"""
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[TieredMatrixWithAllocationPriceLicenseType] = None
     """
     The LicenseType resource represents a type of license that can be assigned to
     users. License types are used during billing by grouping metrics on the
@@ -5045,6 +5205,7 @@ Price: TypeAlias = Annotated[
         PackageWithAllocationPrice,
         UnitWithPercentPrice,
         MatrixWithAllocationPrice,
+        TieredMatrixWithAllocationPrice,
         MatrixWithThresholdDiscountsPrice,
         TieredWithProrationPrice,
         UnitWithProrationPrice,
