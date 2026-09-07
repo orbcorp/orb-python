@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.73.0](https://github.com/orbcorp/orb-python/compare/v4.72.0...v4.73.0) (2026-09-07)
+
+
+### Features
+
+* **api:** add `tiered_matrix_with_allocation` price model ([04bcca9](https://github.com/orbcorp/orb-python/commit/04bcca9cedb6f2bfc69800b027c95e03b7f4f955))
+
 ## [4.72.0](https://github.com/orbcorp/orb-python/compare/v4.71.0...v4.72.0) (2026-09-04)
 
 
