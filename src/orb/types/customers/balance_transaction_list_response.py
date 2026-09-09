@@ -26,6 +26,7 @@ class BalanceTransactionListResponse(BaseModel):
         "overpayment_refund",
         "external_payment",
         "small_invoice_carryover",
+        "prepaid_commit_cancel",
     ]
 
     amount: str
