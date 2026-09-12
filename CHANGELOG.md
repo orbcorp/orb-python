@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.75.0](https://github.com/orbcorp/orb-python/compare/v4.74.0...v4.75.0) (2026-09-12)
+
+
+### Features
+
+* **api:** remove deprecated debug parameter and response details from ingestion ([94aad33](https://github.com/orbcorp/orb-python/commit/94aad3378776b5ea4939b7a9ff366ad7775cea0f))
+
 ## [4.74.0](https://github.com/orbcorp/orb-python/compare/v4.73.0...v4.74.0) (2026-09-10)
 
 
