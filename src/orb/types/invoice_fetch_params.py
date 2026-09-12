@@ -3,14 +3,12 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
-__all__ = ["InvoiceFetchUpcomingParams"]
+__all__ = ["InvoiceFetchParams"]
 
 
-class InvoiceFetchUpcomingParams(TypedDict, total=False):
-    subscription_id: Required[str]
-
+class InvoiceFetchParams(TypedDict, total=False):
     include_zero_quantity_line_items: Optional[bool]
     """Whether to return line items with a quantity of zero.
 

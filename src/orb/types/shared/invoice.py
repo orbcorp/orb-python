@@ -544,6 +544,14 @@ class Invoice(BaseModel):
     true, the invoice will automatically begin issuing at this time.
     """
 
+    hidden_line_item_count: int
+    """
+    The number of line items omitted from `line_items` because they have zero
+    quantity. Amounts such as `subtotal` and `total` are computed over every line
+    item on the invoice, including the omitted ones. In rare circumstances, hidden
+    line items may still contribute to these amounts.
+    """
+
     hosted_invoice_url: Optional[str] = None
     """A URL for the customer-facing invoice portal.
 

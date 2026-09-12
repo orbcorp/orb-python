@@ -12,6 +12,7 @@ from .. import _legacy_response
 from ..types import (
     invoice_pay_params,
     invoice_list_params,
+    invoice_fetch_params,
     invoice_issue_params,
     invoice_create_params,
     invoice_update_params,
@@ -264,6 +265,7 @@ class Invoices(SyncAPIResource):
         due_date_gt: Union[str, date, None] | Omit = omit,
         due_date_lt: Union[str, date, None] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         invoice_date_gt: Union[str, datetime, None] | Omit = omit,
         invoice_date_gte: Union[str, datetime, None] | Omit = omit,
         invoice_date_lt: Union[str, datetime, None] | Omit = omit,
@@ -307,6 +309,10 @@ class Invoices(SyncAPIResource):
               example, '7d' filters invoices due in the last 7 days, and '2m' filters those
               due in the last 2 months.
 
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           limit: The number of items to fetch. Defaults to 20.
 
           extra_headers: Send extra headers
@@ -338,6 +344,7 @@ class Invoices(SyncAPIResource):
                         "due_date_gt": due_date_gt,
                         "due_date_lt": due_date_lt,
                         "external_customer_id": external_customer_id,
+                        "include_zero_quantity_line_items": include_zero_quantity_line_items,
                         "invoice_date_gt": invoice_date_gt,
                         "invoice_date_gte": invoice_date_gte,
                         "invoice_date_lt": invoice_date_lt,
@@ -409,6 +416,7 @@ class Invoices(SyncAPIResource):
         self,
         invoice_id: str,
         *,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,6 +429,10 @@ class Invoices(SyncAPIResource):
         identifier.
 
         Args:
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -434,7 +446,14 @@ class Invoices(SyncAPIResource):
         return self._get(
             path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"include_zero_quantity_line_items": include_zero_quantity_line_items},
+                    invoice_fetch_params.InvoiceFetchParams,
+                ),
             ),
             cast_to=Invoice,
         )
@@ -443,6 +462,7 @@ class Invoices(SyncAPIResource):
         self,
         *,
         subscription_id: str,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -456,6 +476,10 @@ class Invoices(SyncAPIResource):
         subscription.
 
         Args:
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -472,7 +496,11 @@ class Invoices(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"subscription_id": subscription_id}, invoice_fetch_upcoming_params.InvoiceFetchUpcomingParams
+                    {
+                        "subscription_id": subscription_id,
+                        "include_zero_quantity_line_items": include_zero_quantity_line_items,
+                    },
+                    invoice_fetch_upcoming_params.InvoiceFetchUpcomingParams,
                 ),
             ),
             cast_to=InvoiceFetchUpcomingResponse,
@@ -1204,6 +1232,7 @@ class AsyncInvoices(AsyncAPIResource):
         due_date_gt: Union[str, date, None] | Omit = omit,
         due_date_lt: Union[str, date, None] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         invoice_date_gt: Union[str, datetime, None] | Omit = omit,
         invoice_date_gte: Union[str, datetime, None] | Omit = omit,
         invoice_date_lt: Union[str, datetime, None] | Omit = omit,
@@ -1247,6 +1276,10 @@ class AsyncInvoices(AsyncAPIResource):
               example, '7d' filters invoices due in the last 7 days, and '2m' filters those
               due in the last 2 months.
 
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           limit: The number of items to fetch. Defaults to 20.
 
           extra_headers: Send extra headers
@@ -1278,6 +1311,7 @@ class AsyncInvoices(AsyncAPIResource):
                         "due_date_gt": due_date_gt,
                         "due_date_lt": due_date_lt,
                         "external_customer_id": external_customer_id,
+                        "include_zero_quantity_line_items": include_zero_quantity_line_items,
                         "invoice_date_gt": invoice_date_gt,
                         "invoice_date_gte": invoice_date_gte,
                         "invoice_date_lt": invoice_date_lt,
@@ -1349,6 +1383,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         invoice_id: str,
         *,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1361,6 +1396,10 @@ class AsyncInvoices(AsyncAPIResource):
         identifier.
 
         Args:
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1374,7 +1413,14 @@ class AsyncInvoices(AsyncAPIResource):
         return await self._get(
             path_template("/invoices/{invoice_id}", invoice_id=invoice_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"include_zero_quantity_line_items": include_zero_quantity_line_items},
+                    invoice_fetch_params.InvoiceFetchParams,
+                ),
             ),
             cast_to=Invoice,
         )
@@ -1383,6 +1429,7 @@ class AsyncInvoices(AsyncAPIResource):
         self,
         *,
         subscription_id: str,
+        include_zero_quantity_line_items: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1396,6 +1443,10 @@ class AsyncInvoices(AsyncAPIResource):
         subscription.
 
         Args:
+          include_zero_quantity_line_items: Whether to return line items with a quantity of zero. When omitted, Orb returns
+              every line item. A line item that is grouped as part of a line item minimum is
+              always returned; an invoice-level minimum does not exempt it.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1412,7 +1463,11 @@ class AsyncInvoices(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"subscription_id": subscription_id}, invoice_fetch_upcoming_params.InvoiceFetchUpcomingParams
+                    {
+                        "subscription_id": subscription_id,
+                        "include_zero_quantity_line_items": include_zero_quantity_line_items,
+                    },
+                    invoice_fetch_upcoming_params.InvoiceFetchUpcomingParams,
                 ),
             ),
             cast_to=InvoiceFetchUpcomingResponse,

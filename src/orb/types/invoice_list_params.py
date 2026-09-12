@@ -45,6 +45,14 @@ class InvoiceListParams(TypedDict, total=False):
 
     external_customer_id: Optional[str]
 
+    include_zero_quantity_line_items: Optional[bool]
+    """Whether to return line items with a quantity of zero.
+
+    When omitted, Orb returns every line item. A line item that is grouped as part
+    of a line item minimum is always returned; an invoice-level minimum does not
+    exempt it.
+    """
+
     invoice_date_gt: Annotated[Union[str, datetime, None], PropertyInfo(alias="invoice_date[gt]", format="iso8601")]
 
     invoice_date_gte: Annotated[Union[str, datetime, None], PropertyInfo(alias="invoice_date[gte]", format="iso8601")]

@@ -172,6 +172,7 @@ from .alert_disable_params import AlertDisableParams as AlertDisableParams
 from .coupon_create_params import CouponCreateParams as CouponCreateParams
 from .customer_list_params import CustomerListParams as CustomerListParams
 from .evaluate_price_group import EvaluatePriceGroup as EvaluatePriceGroup
+from .invoice_fetch_params import InvoiceFetchParams as InvoiceFetchParams
 from .invoice_issue_params import InvoiceIssueParams as InvoiceIssueParams
 from .metric_create_params import MetricCreateParams as MetricCreateParams
 from .metric_update_params import MetricUpdateParams as MetricUpdateParams
