@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.76.0](https://github.com/orbcorp/orb-python/compare/v4.75.0...v4.76.0) (2026-09-13)
+
+
+### Features
+
+* **api:** add `include_zero_quantity_line_items` param and `hidden_line_item_count` to invoice endpoints ([c33396c](https://github.com/orbcorp/orb-python/commit/c33396c6058994256f89461d3f330d73bb3844ad))
+
 ## [4.75.0](https://github.com/orbcorp/orb-python/compare/v4.74.0...v4.75.0) (2026-09-12)
 
 
