@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import hmac
 import json
 import hashlib
 from datetime import datetime, timezone, timedelta
+from typing import cast
 
 from .._types import (
     HeadersLike,
@@ -13,7 +14,9 @@ from .._types import (
 from .._utils import (
     get_required_header,
 )
+from .._models import construct_type
 from .._resource import SyncAPIResource, AsyncAPIResource
+from ..types.unwrap_webhook_event import UnwrapWebhookEvent
 
 __all__ = ["Webhooks", "AsyncWebhooks"]
 
@@ -25,10 +28,16 @@ class Webhooks(SyncAPIResource):
         headers: HeadersLike,
         *,
         secret: str | None = None,
-    ) -> object:
+    ) -> UnwrapWebhookEvent:
         """Validates that the given payload was sent by Orb and parses the payload."""
         self.verify_signature(payload=payload, headers=headers, secret=secret)
-        return json.loads(payload)
+        return cast(
+            UnwrapWebhookEvent,
+            construct_type(
+                type_=UnwrapWebhookEvent,
+                value=json.loads(payload),
+            ),
+        )
 
     def verify_signature(
         self,
@@ -113,10 +122,16 @@ class AsyncWebhooks(AsyncAPIResource):
         headers: HeadersLike,
         *,
         secret: str | None = None,
-    ) -> object:
+    ) -> UnwrapWebhookEvent:
         """Validates that the given payload was sent by Orb and parses the payload."""
         self.verify_signature(payload=payload, headers=headers, secret=secret)
-        return json.loads(payload)
+        return cast(
+            UnwrapWebhookEvent,
+            construct_type(
+                type_=UnwrapWebhookEvent,
+                value=json.loads(payload),
+            ),
+        )
 
     def verify_signature(
         self,

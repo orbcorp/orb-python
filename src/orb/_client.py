@@ -62,6 +62,7 @@ if TYPE_CHECKING:
     from .resources.alerts import Alerts, AsyncAlerts
     from .resources.metrics import Metrics, AsyncMetrics
     from .resources.invoices import Invoices, AsyncInvoices
+    from .resources.webhooks import Webhooks, AsyncWebhooks
     from .resources.beta.beta import Beta, AsyncBeta
     from .resources.top_level import TopLevel, AsyncTopLevel
     from .resources.plans.plans import Plans, AsyncPlans
@@ -157,6 +158,12 @@ class Orb(SyncAPIClient):
         )
 
         self._idempotency_header = "Idempotency-Key"
+
+    @cached_property
+    def webhooks(self) -> Webhooks:
+        from .resources.webhooks import Webhooks
+
+        return Webhooks(self)
 
     @cached_property
     def top_level(self) -> TopLevel:
@@ -595,6 +602,12 @@ class AsyncOrb(AsyncAPIClient):
         )
 
         self._idempotency_header = "Idempotency-Key"
+
+    @cached_property
+    def webhooks(self) -> AsyncWebhooks:
+        from .resources.webhooks import AsyncWebhooks
+
+        return AsyncWebhooks(self)
 
     @cached_property
     def top_level(self) -> AsyncTopLevel:

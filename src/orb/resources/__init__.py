@@ -80,10 +80,7 @@ from .licenses import (
     LicensesWithStreamingResponse,
     AsyncLicensesWithStreamingResponse,
 )
-from .webhooks import (
-    Webhooks,
-    AsyncWebhooks,
-)
+from .webhooks import Webhooks, AsyncWebhooks
 from .customers import (
     Customers,
     AsyncCustomers,
@@ -158,6 +155,8 @@ from .dimensional_price_groups import (
 )
 
 __all__ = [
+    "Webhooks",
+    "AsyncWebhooks",
     "TopLevel",
     "AsyncTopLevel",
     "TopLevelWithRawResponse",

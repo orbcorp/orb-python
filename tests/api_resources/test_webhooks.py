@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -38,7 +38,10 @@ class TestWebhooks:
         headers = self.headers
         secret = self.secret
 
-        client.webhooks.unwrap(payload, headers, secret=secret)
+        event = client.webhooks.unwrap(payload, headers, secret=secret)
+
+        assert event.type == "resource_event.test"
+        assert event.properties.message == "A test webhook from Orb. Happy testing!"
 
     @time_machine.travel(fake_now)
     def test_verify_signature(self, client: Orb) -> None:
@@ -217,7 +220,10 @@ class TestAsyncWebhooks:
         headers = self.headers
         secret = self.secret
 
-        async_client.webhooks.unwrap(payload, headers, secret=secret)
+        event = async_client.webhooks.unwrap(payload, headers, secret=secret)
+
+        assert event.type == "resource_event.test"
+        assert event.properties.message == "A test webhook from Orb. Happy testing!"
 
     @time_machine.travel(fake_now)
     def test_verify_signature(self, async_client: Orb) -> None:
