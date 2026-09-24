@@ -1,5 +1,30 @@
 # Changelog
 
+## [4.78.0](https://github.com/orbcorp/orb-python/compare/v4.77.0...v4.78.0) (2026-09-24)
+
+
+### Features
+
+* **api:** api update ([f7c9fb6](https://github.com/orbcorp/orb-python/commit/f7c9fb6fad46e4f4b730dba87e67065ba035d3ef))
+* **api:** api update ([f7c9fb6](https://github.com/orbcorp/orb-python/commit/f7c9fb6fad46e4f4b730dba87e67065ba035d3ef))
+* **api:** api update ([f7c9fb6](https://github.com/orbcorp/orb-python/commit/f7c9fb6fad46e4f4b730dba87e67065ba035d3ef))
+* **api:** api update ([d3fb2ca](https://github.com/orbcorp/orb-python/commit/d3fb2ca058edd7048f36b77b2971725df6dd4702))
+* **api:** api update ([d3fb2ca](https://github.com/orbcorp/orb-python/commit/d3fb2ca058edd7048f36b77b2971725df6dd4702))
+* **api:** api update ([d3fb2ca](https://github.com/orbcorp/orb-python/commit/d3fb2ca058edd7048f36b77b2971725df6dd4702))
+* **api:** api update ([5acfbff](https://github.com/orbcorp/orb-python/commit/5acfbff138711c5ab929e62d3ade418c81a15ebc))
+* **api:** api update ([5acfbff](https://github.com/orbcorp/orb-python/commit/5acfbff138711c5ab929e62d3ade418c81a15ebc))
+* **api:** api update ([5acfbff](https://github.com/orbcorp/orb-python/commit/5acfbff138711c5ab929e62d3ade418c81a15ebc))
+* **api:** api update ([5acfbff](https://github.com/orbcorp/orb-python/commit/5acfbff138711c5ab929e62d3ade418c81a15ebc))
+* **api:** hide internal webapp-api endpoints from public API reference ([985685f](https://github.com/orbcorp/orb-python/commit/985685f536a530222a30bec8de3f21cdec85c7b4))
+
+
+### Bug Fixes
+
+* **api:** allow exact one-year timeframes for subscription usage/costs endpoints ([985685f](https://github.com/orbcorp/orb-python/commit/985685f536a530222a30bec8de3f21cdec85c7b4))
+* **api:** correctly apply plan name when updating a draft plan ([d3fb2ca](https://github.com/orbcorp/orb-python/commit/d3fb2ca058edd7048f36b77b2971725df6dd4702))
+* **api:** fix Java SDK build error caused by empty webhook event properties marker ([985685f](https://github.com/orbcorp/orb-python/commit/985685f536a530222a30bec8de3f21cdec85c7b4))
+* **api:** no functional change, only schema ordering reshuffled ([985685f](https://github.com/orbcorp/orb-python/commit/985685f536a530222a30bec8de3f21cdec85c7b4))
+
 ## [4.77.0](https://github.com/orbcorp/orb-python/compare/v4.76.0...v4.77.0) (2026-09-21)
 
 
