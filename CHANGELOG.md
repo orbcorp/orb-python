@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.79.0](https://github.com/orbcorp/orb-python/compare/v4.78.0...v4.79.0) (2026-09-25)
+
+
+### Features
+
+* **api:** api update ([b7e7040](https://github.com/orbcorp/orb-python/commit/b7e7040fbcedba38e350743a1862c41d160720c8))
+* **api:** label webhook event operations by event name and category tag ([b7e7040](https://github.com/orbcorp/orb-python/commit/b7e7040fbcedba38e350743a1862c41d160720c8))
+
 ## [4.78.0](https://github.com/orbcorp/orb-python/compare/v4.77.0...v4.78.0) (2026-09-24)
 
 
