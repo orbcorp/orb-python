@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -106,7 +107,10 @@ class Backfills(SyncAPIResource):
         enables filtering using
         [computed properties](/extensibility/advanced-metrics#computed-properties). The
         expressiveness of computed properties allows you to deprecate existing events
-        based on both a period of time and specific property values.
+        based on both a period of time and specific property values. When
+        `deprecation_filter` is provided, the timeframe may extend to `now` rather than
+        the event reporting grace boundary. Matching events that arrive later with
+        timestamps inside the timeframe will also be deprecated.
 
         You may not have multiple backfills in a pending or pending_revert state with
         overlapping timeframes.
@@ -175,7 +179,9 @@ class Backfills(SyncAPIResource):
         self,
         *,
         cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        status: Optional[Literal["pending", "reflected", "pending_revert", "reverted"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -191,11 +197,15 @@ class Backfills(SyncAPIResource):
         [`pagination_metadata`](/api-reference/pagination), which lets the caller
         retrieve the next page of results if they exist.
 
+        Use `customer_id` and `status` to filter the results.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
+
+          status: The status of the backfill.
 
           extra_headers: Send extra headers
 
@@ -216,7 +226,9 @@ class Backfills(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "customer_id": customer_id,
                         "limit": limit,
+                        "status": status,
                     },
                     backfill_list_params.BackfillListParams,
                 ),
@@ -430,7 +442,10 @@ class AsyncBackfills(AsyncAPIResource):
         enables filtering using
         [computed properties](/extensibility/advanced-metrics#computed-properties). The
         expressiveness of computed properties allows you to deprecate existing events
-        based on both a period of time and specific property values.
+        based on both a period of time and specific property values. When
+        `deprecation_filter` is provided, the timeframe may extend to `now` rather than
+        the event reporting grace boundary. Matching events that arrive later with
+        timestamps inside the timeframe will also be deprecated.
 
         You may not have multiple backfills in a pending or pending_revert state with
         overlapping timeframes.
@@ -499,7 +514,9 @@ class AsyncBackfills(AsyncAPIResource):
         self,
         *,
         cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        status: Optional[Literal["pending", "reflected", "pending_revert", "reverted"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -515,11 +532,15 @@ class AsyncBackfills(AsyncAPIResource):
         [`pagination_metadata`](/api-reference/pagination), which lets the caller
         retrieve the next page of results if they exist.
 
+        Use `customer_id` and `status` to filter the results.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
+
+          status: The status of the backfill.
 
           extra_headers: Send extra headers
 
@@ -540,7 +561,9 @@ class AsyncBackfills(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "customer_id": customer_id,
                         "limit": limit,
+                        "status": status,
                     },
                     backfill_list_params.BackfillListParams,
                 ),

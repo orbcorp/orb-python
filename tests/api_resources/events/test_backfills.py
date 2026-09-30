@@ -81,7 +81,9 @@ class TestBackfills:
     def test_method_list_with_all_params(self, client: Orb) -> None:
         backfill = client.events.backfills.list(
             cursor="cursor",
+            customer_id="customer_id",
             limit=1,
+            status="pending",
         )
         assert_matches_type(SyncPage[BackfillListResponse], backfill, path=["response"])
 
@@ -281,7 +283,9 @@ class TestAsyncBackfills:
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         backfill = await async_client.events.backfills.list(
             cursor="cursor",
+            customer_id="customer_id",
             limit=1,
+            status="pending",
         )
         assert_matches_type(AsyncPage[BackfillListResponse], backfill, path=["response"])
 

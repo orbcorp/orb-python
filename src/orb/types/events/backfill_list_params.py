@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["BackfillListParams"]
 
@@ -16,5 +16,10 @@ class BackfillListParams(TypedDict, total=False):
     request.
     """
 
+    customer_id: Optional[str]
+
     limit: int
     """The number of items to fetch. Defaults to 20."""
+
+    status: Optional[Literal["pending", "reflected", "pending_revert", "reverted"]]
+    """The status of the backfill."""
