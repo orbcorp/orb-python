@@ -398,6 +398,17 @@ class Invoice(BaseModel):
     the most recent attempt.
     """
 
+    payment_received_at: Optional[datetime] = None
+    """When payment for this invoice was received.
+
+    For an invoice manually marked as paid, this is the `payment_received_date` that
+    was supplied. For an invoice paid through a payment provider, this is the
+    settlement time reported by that provider. It is `null` for an invoice that
+    became `paid` without a payment, such as a $0 invoice or one fully covered by
+    credit notes. By contrast, `paid_at` is when the invoice reached the `paid`
+    status in Orb.
+    """
+
     payment_started_at: Optional[datetime] = None
     """
     If payment was attempted on this invoice, this will be the start time of the
