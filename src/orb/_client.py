@@ -47,7 +47,6 @@ if TYPE_CHECKING:
         metrics,
         invoices,
         licenses,
-        webhooks,
         customers,
         top_level,
         credit_notes,
@@ -334,12 +333,6 @@ class Orb(SyncAPIClient):
         from .resources.subscription_changes import SubscriptionChanges
 
         return SubscriptionChanges(self)
-
-    @cached_property
-    def webhooks(self) -> webhooks.Webhooks:
-        from .resources.webhooks import Webhooks
-
-        return Webhooks(self)
 
     @cached_property
     def credit_blocks(self) -> CreditBlocks:
@@ -778,12 +771,6 @@ class AsyncOrb(AsyncAPIClient):
         from .resources.subscription_changes import AsyncSubscriptionChanges
 
         return AsyncSubscriptionChanges(self)
-
-    @cached_property
-    def webhooks(self) -> webhooks.AsyncWebhooks:
-        from .resources.webhooks import AsyncWebhooks
-
-        return AsyncWebhooks(self)
 
     @cached_property
     def credit_blocks(self) -> AsyncCreditBlocks:

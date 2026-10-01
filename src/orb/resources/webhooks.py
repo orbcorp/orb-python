@@ -5,8 +5,8 @@ from __future__ import annotations
 import hmac
 import json
 import hashlib
-from datetime import datetime, timezone, timedelta
 from typing import cast
+from datetime import datetime, timezone, timedelta
 
 from .._types import (
     HeadersLike,
