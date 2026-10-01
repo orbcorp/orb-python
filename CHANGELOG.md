@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.80.0](https://github.com/orbcorp/orb-python/compare/v4.79.0...v4.80.0) (2026-10-01)
+
+
+### Features
+
+* **api:** add `customer_id` and `status` filters to list backfills endpoint ([2d00f8f](https://github.com/orbcorp/orb-python/commit/2d00f8fed6ea4a03a743a7f0d0bb93878ff0fae5))
+* **api:** add `payment_received_at` field to invoice responses ([2f62942](https://github.com/orbcorp/orb-python/commit/2f62942aefd00235b7f41709b679aab62c5aa2bc))
+
+
+### Bug Fixes
+
+* **api:** correct webhook doc page titles and remove inapplicable auth section ([2f62942](https://github.com/orbcorp/orb-python/commit/2f62942aefd00235b7f41709b679aab62c5aa2bc))
+
 ## [4.79.0](https://github.com/orbcorp/orb-python/compare/v4.78.0...v4.79.0) (2026-09-25)
 
 
