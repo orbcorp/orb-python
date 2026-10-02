@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.80.1](https://github.com/orbcorp/orb-python/compare/v4.80.0...v4.80.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* **client:** drop duplicate webhooks properties ([90bc3d1](https://github.com/orbcorp/orb-python/commit/90bc3d1b5b32584557b72ec63258dfeb50c254ed))
+* repair lint after typed webhook events ([845e0ea](https://github.com/orbcorp/orb-python/commit/845e0ea2d8de1f639eea10bc79b79b271a5ccad3))
+* **webhooks:** sort imports in webhooks resource ([380c33e](https://github.com/orbcorp/orb-python/commit/380c33eeed17f41752e97aa55f826bceb861d681))
+
 ## [4.80.0](https://github.com/orbcorp/orb-python/compare/v4.79.0...v4.80.0) (2026-10-01)
 
 
