@@ -231,6 +231,7 @@ class DimensionalPriceGroups(SyncAPIResource):
     def list(
         self,
         *,
+        billable_metric_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -247,10 +248,15 @@ class DimensionalPriceGroups(SyncAPIResource):
         dimensions, and the prices in the group specify which partition their usage is
         derived from.
 
+        Filter with `billable_metric_id`. Each group includes `price_count`:
+        non-archived prices in the group. Subscription overrides are not counted.
+
         The response also includes pagination_metadata, which lets the caller retrieve
         the next page of results if they exist.
 
         Args:
+          billable_metric_id: Filter to groups that use this billable metric.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -274,6 +280,7 @@ class DimensionalPriceGroups(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "billable_metric_id": billable_metric_id,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -483,6 +490,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
     def list(
         self,
         *,
+        billable_metric_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -499,10 +507,15 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
         dimensions, and the prices in the group specify which partition their usage is
         derived from.
 
+        Filter with `billable_metric_id`. Each group includes `price_count`:
+        non-archived prices in the group. Subscription overrides are not counted.
+
         The response also includes pagination_metadata, which lets the caller retrieve
         the next page of results if they exist.
 
         Args:
+          billable_metric_id: Filter to groups that use this billable metric.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -526,6 +539,7 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "billable_metric_id": billable_metric_id,
                         "cursor": cursor,
                         "limit": limit,
                     },

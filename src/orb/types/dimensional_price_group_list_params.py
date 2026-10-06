@@ -9,6 +9,9 @@ __all__ = ["DimensionalPriceGroupListParams"]
 
 
 class DimensionalPriceGroupListParams(TypedDict, total=False):
+    billable_metric_id: Optional[str]
+    """Filter to groups that use this billable metric."""
+
     cursor: Optional[str]
     """Cursor for pagination.
 

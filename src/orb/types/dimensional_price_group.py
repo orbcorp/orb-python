@@ -38,3 +38,9 @@ class DimensionalPriceGroup(BaseModel):
 
     name: str
     """The name of the dimensional price group"""
+
+    price_count: int
+    """The number of prices in this group.
+
+    Archived prices and subscription overrides are excluded.
+    """

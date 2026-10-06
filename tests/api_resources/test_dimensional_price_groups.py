@@ -165,6 +165,7 @@ class TestDimensionalPriceGroups:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         dimensional_price_group = client.dimensional_price_groups.list(
+            billable_metric_id="billable_metric_id",
             cursor="cursor",
             limit=1,
         )
@@ -341,6 +342,7 @@ class TestAsyncDimensionalPriceGroups:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         dimensional_price_group = await async_client.dimensional_price_groups.list(
+            billable_metric_id="billable_metric_id",
             cursor="cursor",
             limit=1,
         )
