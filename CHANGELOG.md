@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.81.0](https://github.com/orbcorp/orb-python/compare/v4.80.1...v4.81.0) (2026-10-07)
+
+
+### Features
+
+* **api:** add billable_metric_id filter, price_count, and prices list endpoint for dimensional price groups ([00791a1](https://github.com/orbcorp/orb-python/commit/00791a13e20ea897392e801db30d3ca5d471bc03))
+
 ## [4.80.1](https://github.com/orbcorp/orb-python/compare/v4.80.0...v4.80.1) (2026-10-02)
 
 
