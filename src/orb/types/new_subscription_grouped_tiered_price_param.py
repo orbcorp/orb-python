@@ -44,7 +44,7 @@ ConversionRateConfig: TypeAlias = Union[UnitConversionRateConfig, TieredConversi
 
 
 class NewSubscriptionGroupedTieredPriceParam(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_tiered_config: Required[GroupedTieredConfig]

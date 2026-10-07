@@ -95,7 +95,7 @@ class TestSubscriptions:
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -232,7 +232,7 @@ class TestSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -698,7 +698,7 @@ class TestSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",
@@ -955,7 +955,7 @@ class TestSubscriptions:
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -1085,7 +1085,7 @@ class TestSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -1514,7 +1514,7 @@ class TestAsyncSubscriptions:
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -1651,7 +1651,7 @@ class TestAsyncSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -2117,7 +2117,7 @@ class TestAsyncSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",
@@ -2374,7 +2374,7 @@ class TestAsyncSubscriptions:
                     "minimum_amount": "1.23",
                     "plan_phase_order": 0,
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",
@@ -2504,7 +2504,7 @@ class TestAsyncSubscriptions:
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "item_id": "item_id",
                         "model_type": "unit",
                         "name": "Annual fee",

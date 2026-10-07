@@ -459,7 +459,7 @@ class AddPricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=False):
     bulk_with_filters_config: Required[AddPricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig]
     """Configuration for bulk_with_filters pricing"""
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -579,7 +579,7 @@ AddPricePriceNewSubscriptionGroupedTieredMatrixPriceConversionRateConfig: TypeAl
 
 
 class AddPricePriceNewSubscriptionGroupedTieredMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_tiered_matrix_config: Required[
@@ -718,7 +718,7 @@ AddPricePriceNewSubscriptionTieredMatrixWithAllocationPriceConversionRateConfig:
 
 
 class AddPricePriceNewSubscriptionTieredMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -875,7 +875,7 @@ AddPricePriceNewSubscriptionMatrixWithThresholdDiscountsPriceConversionRateConfi
 
 
 class AddPricePriceNewSubscriptionMatrixWithThresholdDiscountsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -992,7 +992,7 @@ AddPricePriceNewSubscriptionTieredWithProrationPriceConversionRateConfig: TypeAl
 
 
 class AddPricePriceNewSubscriptionTieredWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -1107,7 +1107,7 @@ AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateConfig
 
 
 class AddPricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_with_min_max_thresholds_config: Required[
@@ -1222,7 +1222,7 @@ AddPricePriceNewSubscriptionCumulativeGroupedAllocationPriceConversionRateConfig
 
 
 class AddPricePriceNewSubscriptionCumulativeGroupedAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     cumulative_grouped_allocation_config: Required[
@@ -1363,7 +1363,7 @@ AddPricePriceNewSubscriptionDailyCreditAllowancePriceConversionRateConfig: TypeA
 
 
 class AddPricePriceNewSubscriptionDailyCreditAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     daily_credit_allowance_config: Required[
@@ -1493,7 +1493,7 @@ AddPricePriceNewSubscriptionMeteredAllowancePriceConversionRateConfig: TypeAlias
 
 
 class AddPricePriceNewSubscriptionMeteredAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -1608,7 +1608,7 @@ AddPricePriceNewSubscriptionPercentCompositePriceConversionRateConfig: TypeAlias
 
 
 class AddPricePriceNewSubscriptionPercentCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -1723,7 +1723,7 @@ AddPricePriceNewSubscriptionEventOutputPriceConversionRateConfig: TypeAlias = Un
 
 
 class AddPricePriceNewSubscriptionEventOutputPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     event_output_config: Required[AddPricePriceNewSubscriptionEventOutputPriceEventOutputConfig]
@@ -2029,7 +2029,7 @@ class ReplacePricePriceNewSubscriptionBulkWithFiltersPrice(TypedDict, total=Fals
     bulk_with_filters_config: Required[ReplacePricePriceNewSubscriptionBulkWithFiltersPriceBulkWithFiltersConfig]
     """Configuration for bulk_with_filters pricing"""
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -2149,7 +2149,7 @@ ReplacePricePriceNewSubscriptionGroupedTieredMatrixPriceConversionRateConfig: Ty
 
 
 class ReplacePricePriceNewSubscriptionGroupedTieredMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_tiered_matrix_config: Required[
@@ -2288,7 +2288,7 @@ ReplacePricePriceNewSubscriptionTieredMatrixWithAllocationPriceConversionRateCon
 
 
 class ReplacePricePriceNewSubscriptionTieredMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -2447,7 +2447,7 @@ ReplacePricePriceNewSubscriptionMatrixWithThresholdDiscountsPriceConversionRateC
 
 
 class ReplacePricePriceNewSubscriptionMatrixWithThresholdDiscountsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -2566,7 +2566,7 @@ ReplacePricePriceNewSubscriptionTieredWithProrationPriceConversionRateConfig: Ty
 
 
 class ReplacePricePriceNewSubscriptionTieredWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -2681,7 +2681,7 @@ ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPriceConversionRateCo
 
 
 class ReplacePricePriceNewSubscriptionGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_with_min_max_thresholds_config: Required[
@@ -2798,7 +2798,7 @@ ReplacePricePriceNewSubscriptionCumulativeGroupedAllocationPriceConversionRateCo
 
 
 class ReplacePricePriceNewSubscriptionCumulativeGroupedAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     cumulative_grouped_allocation_config: Required[
@@ -2941,7 +2941,7 @@ ReplacePricePriceNewSubscriptionDailyCreditAllowancePriceConversionRateConfig: T
 
 
 class ReplacePricePriceNewSubscriptionDailyCreditAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     daily_credit_allowance_config: Required[
@@ -3071,7 +3071,7 @@ ReplacePricePriceNewSubscriptionMeteredAllowancePriceConversionRateConfig: TypeA
 
 
 class ReplacePricePriceNewSubscriptionMeteredAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -3186,7 +3186,7 @@ ReplacePricePriceNewSubscriptionPercentCompositePriceConversionRateConfig: TypeA
 
 
 class ReplacePricePriceNewSubscriptionPercentCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -3301,7 +3301,7 @@ ReplacePricePriceNewSubscriptionEventOutputPriceConversionRateConfig: TypeAlias 
 
 
 class ReplacePricePriceNewSubscriptionEventOutputPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     event_output_config: Required[ReplacePricePriceNewSubscriptionEventOutputPriceEventOutputConfig]

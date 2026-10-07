@@ -1047,9 +1047,9 @@ class Subscriptions(SyncAPIResource):
         but do not have the key set). Currently, it is only possible to view usage
         grouped by a single attribute at a time.
 
-        When viewing grouped usage, Orb uses pagination to limit the response size to
-        1000 groups by default. If there are more groups for a given subscription,
-        pagination metadata in the response can be used to fetch all of the data.
+        When viewing grouped usage, all groups are returned in a single response. For
+        metrics with a large number of groups, Orb recommends using a shorter timeframe
+        to keep response size and latency manageable.
 
         The following example shows usage for an "API Requests" billable metric grouped
         by `region`. Note the extra `metric_group` dictionary in the response, which
@@ -3227,9 +3227,9 @@ class AsyncSubscriptions(AsyncAPIResource):
         but do not have the key set). Currently, it is only possible to view usage
         grouped by a single attribute at a time.
 
-        When viewing grouped usage, Orb uses pagination to limit the response size to
-        1000 groups by default. If there are more groups for a given subscription,
-        pagination metadata in the response can be used to fetch all of the data.
+        When viewing grouped usage, all groups are returned in a single response. For
+        metrics with a large number of groups, Orb recommends using a shorter timeframe
+        to keep response size and latency manageable.
 
         The following example shows usage for an "API Requests" billable metric grouped
         by `region`. Note the extra `metric_group` dictionary in the response, which

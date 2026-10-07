@@ -95,7 +95,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit"],
@@ -197,7 +197,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered"],
@@ -300,7 +300,7 @@ class Prices(SyncAPIResource):
         self,
         *,
         bulk_config: BulkConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk"],
@@ -402,7 +402,7 @@ class Prices(SyncAPIResource):
         self,
         *,
         bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk_with_filters"],
@@ -504,7 +504,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["package"],
@@ -606,7 +606,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_config: MatrixConfig,
@@ -708,7 +708,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["threshold_total_amount"],
@@ -811,7 +811,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_package"],
@@ -914,7 +914,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_with_minimum"],
@@ -1017,7 +1017,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_config: price_create_params.NewFloatingGroupedTieredPriceGroupedTieredConfig,
         item_id: str,
@@ -1120,7 +1120,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_matrix_config: price_create_params.NewFloatingGroupedTieredMatrixPriceGroupedTieredMatrixConfig,
         item_id: str,
@@ -1223,7 +1223,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_package_with_minimum"],
@@ -1328,7 +1328,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["package_with_allocation"],
@@ -1431,7 +1431,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit_with_percent"],
@@ -1534,7 +1534,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_allocation_config: MatrixWithAllocationConfig,
@@ -1637,7 +1637,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_matrix_with_allocation"],
@@ -1742,7 +1742,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig,
@@ -1847,7 +1847,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_with_proration"],
@@ -1950,7 +1950,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit_with_proration"],
@@ -2053,7 +2053,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_allocation_config: price_create_params.NewFloatingGroupedAllocationPriceGroupedAllocationConfig,
         item_id: str,
@@ -2157,7 +2157,7 @@ class Prices(SyncAPIResource):
         self,
         *,
         bulk_with_proration_config: price_create_params.NewFloatingBulkWithProrationPriceBulkWithProrationConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk_with_proration"],
@@ -2259,7 +2259,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_prorated_minimum_config: price_create_params.NewFloatingGroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig,
         item_id: str,
@@ -2364,7 +2364,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_metered_minimum_config: price_create_params.NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig,
         item_id: str,
@@ -2469,7 +2469,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_min_max_thresholds_config: price_create_params.NewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig,
         item_id: str,
@@ -2574,7 +2574,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_display_name_config: price_create_params.NewFloatingMatrixWithDisplayNamePriceMatrixWithDisplayNameConfig,
@@ -2677,7 +2677,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_package_config: price_create_params.NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfig,
         item_id: str,
@@ -2780,7 +2780,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         max_group_tiered_package_config: price_create_params.NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfig,
@@ -2883,7 +2883,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["scalable_matrix_with_unit_pricing"],
@@ -2988,7 +2988,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["scalable_matrix_with_tiered_pricing"],
@@ -3093,7 +3093,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         cumulative_grouped_bulk_config: price_create_params.NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfig,
         currency: str,
         item_id: str,
@@ -3196,7 +3196,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         cumulative_grouped_allocation_config: price_create_params.NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig,
         currency: str,
         item_id: str,
@@ -3301,7 +3301,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         daily_credit_allowance_config: price_create_params.NewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfig,
         item_id: str,
@@ -3404,7 +3404,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         metered_allowance_config: price_create_params.NewFloatingMeteredAllowancePriceMeteredAllowanceConfig,
@@ -3507,7 +3507,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig,
@@ -3610,7 +3610,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["percent"],
@@ -3713,7 +3713,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig,
         item_id: str,
@@ -3853,7 +3853,7 @@ class Prices(SyncAPIResource):
     def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit"]
@@ -4544,7 +4544,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit"],
@@ -4646,7 +4646,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered"],
@@ -4749,7 +4749,7 @@ class AsyncPrices(AsyncAPIResource):
         self,
         *,
         bulk_config: BulkConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk"],
@@ -4851,7 +4851,7 @@ class AsyncPrices(AsyncAPIResource):
         self,
         *,
         bulk_with_filters_config: price_create_params.NewFloatingBulkWithFiltersPriceBulkWithFiltersConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk_with_filters"],
@@ -4953,7 +4953,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["package"],
@@ -5055,7 +5055,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_config: MatrixConfig,
@@ -5157,7 +5157,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["threshold_total_amount"],
@@ -5260,7 +5260,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_package"],
@@ -5363,7 +5363,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_with_minimum"],
@@ -5466,7 +5466,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_config: price_create_params.NewFloatingGroupedTieredPriceGroupedTieredConfig,
         item_id: str,
@@ -5569,7 +5569,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_matrix_config: price_create_params.NewFloatingGroupedTieredMatrixPriceGroupedTieredMatrixConfig,
         item_id: str,
@@ -5672,7 +5672,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_package_with_minimum"],
@@ -5777,7 +5777,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["package_with_allocation"],
@@ -5880,7 +5880,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit_with_percent"],
@@ -5983,7 +5983,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_allocation_config: MatrixWithAllocationConfig,
@@ -6086,7 +6086,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_matrix_with_allocation"],
@@ -6191,7 +6191,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_threshold_discounts_config: price_create_params.NewFloatingMatrixWithThresholdDiscountsPriceMatrixWithThresholdDiscountsConfig,
@@ -6296,7 +6296,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["tiered_with_proration"],
@@ -6399,7 +6399,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit_with_proration"],
@@ -6502,7 +6502,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_allocation_config: price_create_params.NewFloatingGroupedAllocationPriceGroupedAllocationConfig,
         item_id: str,
@@ -6606,7 +6606,7 @@ class AsyncPrices(AsyncAPIResource):
         self,
         *,
         bulk_with_proration_config: price_create_params.NewFloatingBulkWithProrationPriceBulkWithProrationConfig,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["bulk_with_proration"],
@@ -6708,7 +6708,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_prorated_minimum_config: price_create_params.NewFloatingGroupedWithProratedMinimumPriceGroupedWithProratedMinimumConfig,
         item_id: str,
@@ -6813,7 +6813,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_metered_minimum_config: price_create_params.NewFloatingGroupedWithMeteredMinimumPriceGroupedWithMeteredMinimumConfig,
         item_id: str,
@@ -6918,7 +6918,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_with_min_max_thresholds_config: price_create_params.NewFloatingGroupedWithMinMaxThresholdsPriceGroupedWithMinMaxThresholdsConfig,
         item_id: str,
@@ -7023,7 +7023,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         matrix_with_display_name_config: price_create_params.NewFloatingMatrixWithDisplayNamePriceMatrixWithDisplayNameConfig,
@@ -7126,7 +7126,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         grouped_tiered_package_config: price_create_params.NewFloatingGroupedTieredPackagePriceGroupedTieredPackageConfig,
         item_id: str,
@@ -7229,7 +7229,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         max_group_tiered_package_config: price_create_params.NewFloatingMaxGroupTieredPackagePriceMaxGroupTieredPackageConfig,
@@ -7332,7 +7332,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["scalable_matrix_with_unit_pricing"],
@@ -7437,7 +7437,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["scalable_matrix_with_tiered_pricing"],
@@ -7542,7 +7542,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         cumulative_grouped_bulk_config: price_create_params.NewFloatingCumulativeGroupedBulkPriceCumulativeGroupedBulkConfig,
         currency: str,
         item_id: str,
@@ -7645,7 +7645,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         cumulative_grouped_allocation_config: price_create_params.NewFloatingCumulativeGroupedAllocationPriceCumulativeGroupedAllocationConfig,
         currency: str,
         item_id: str,
@@ -7750,7 +7750,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         daily_credit_allowance_config: price_create_params.NewFloatingDailyCreditAllowancePriceDailyCreditAllowanceConfig,
         item_id: str,
@@ -7853,7 +7853,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         metered_allowance_config: price_create_params.NewFloatingMeteredAllowancePriceMeteredAllowanceConfig,
@@ -7956,7 +7956,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         minimum_composite_config: price_create_params.NewFloatingMinimumCompositePriceMinimumCompositeConfig,
@@ -8059,7 +8059,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["percent"],
@@ -8162,7 +8162,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig,
         item_id: str,
@@ -8302,7 +8302,7 @@ class AsyncPrices(AsyncAPIResource):
     async def create(
         self,
         *,
-        cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"],
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
         currency: str,
         item_id: str,
         model_type: Literal["unit"]

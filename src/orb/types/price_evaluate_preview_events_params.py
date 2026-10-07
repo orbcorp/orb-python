@@ -175,7 +175,7 @@ class PriceEvaluationPriceNewFloatingBulkWithFiltersPrice(TypedDict, total=False
     bulk_with_filters_config: Required[PriceEvaluationPriceNewFloatingBulkWithFiltersPriceBulkWithFiltersConfig]
     """Configuration for bulk_with_filters pricing"""
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -286,7 +286,7 @@ PriceEvaluationPriceNewFloatingGroupedTieredMatrixPriceConversionRateConfig: Typ
 
 
 class PriceEvaluationPriceNewFloatingGroupedTieredMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -416,7 +416,7 @@ PriceEvaluationPriceNewFloatingTieredMatrixWithAllocationPriceConversionRateConf
 
 
 class PriceEvaluationPriceNewFloatingTieredMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -564,7 +564,7 @@ PriceEvaluationPriceNewFloatingMatrixWithThresholdDiscountsPriceConversionRateCo
 
 
 class PriceEvaluationPriceNewFloatingMatrixWithThresholdDiscountsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -672,7 +672,7 @@ PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPriceConversionRateCon
 
 
 class PriceEvaluationPriceNewFloatingGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -780,7 +780,7 @@ PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPriceConversionRateCon
 
 
 class PriceEvaluationPriceNewFloatingCumulativeGroupedAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     cumulative_grouped_allocation_config: Required[
@@ -914,7 +914,7 @@ PriceEvaluationPriceNewFloatingDailyCreditAllowancePriceConversionRateConfig: Ty
 
 
 class PriceEvaluationPriceNewFloatingDailyCreditAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1035,7 +1035,7 @@ PriceEvaluationPriceNewFloatingMeteredAllowancePriceConversionRateConfig: TypeAl
 
 
 class PriceEvaluationPriceNewFloatingMeteredAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1141,7 +1141,7 @@ PriceEvaluationPriceNewFloatingPercentCompositePriceConversionRateConfig: TypeAl
 
 
 class PriceEvaluationPriceNewFloatingPercentCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]
@@ -1247,7 +1247,7 @@ PriceEvaluationPriceNewFloatingEventOutputPriceConversionRateConfig: TypeAlias =
 
 
 class PriceEvaluationPriceNewFloatingEventOutputPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     currency: Required[str]

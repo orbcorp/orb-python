@@ -46,7 +46,7 @@ class NewFloatingBulkWithProrationPrice(BaseModel):
     bulk_with_proration_config: BulkWithProrationConfig
     """Configuration for bulk_with_proration pricing"""
 
-    cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
     """The cadence to bill for this price on."""
 
     currency: str

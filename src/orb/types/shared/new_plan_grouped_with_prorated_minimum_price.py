@@ -34,7 +34,7 @@ ConversionRateConfig: TypeAlias = Annotated[
 
 
 class NewPlanGroupedWithProratedMinimumPrice(BaseModel):
-    cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
     """The cadence to bill for this price on."""
 
     grouped_with_prorated_minimum_config: GroupedWithProratedMinimumConfig

@@ -27,7 +27,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_1(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -39,7 +39,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_1(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -80,7 +80,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_1(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -96,7 +96,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_1(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -114,7 +114,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_2(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -133,7 +133,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_2(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -179,7 +179,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_2(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -202,7 +202,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_2(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -228,7 +228,7 @@ class TestPrices:
     def test_method_create_overload_3(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -247,7 +247,7 @@ class TestPrices:
                     }
                 ]
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -284,7 +284,7 @@ class TestPrices:
     def test_raw_response_create_overload_3(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -300,7 +300,7 @@ class TestPrices:
     def test_streaming_response_create_overload_3(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -326,7 +326,7 @@ class TestPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -355,7 +355,7 @@ class TestPrices:
                     },
                 ],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -400,7 +400,7 @@ class TestPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -424,7 +424,7 @@ class TestPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -441,7 +441,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_5(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -456,7 +456,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_5(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -496,7 +496,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_5(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -515,7 +515,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_5(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -536,7 +536,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_6(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -557,7 +557,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_6(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -605,7 +605,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_6(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -630,7 +630,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_6(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -657,7 +657,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -680,7 +680,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_7(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -729,7 +729,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_7(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -756,7 +756,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_7(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -785,7 +785,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_8(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -809,7 +809,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_8(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -858,7 +858,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_8(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -886,7 +886,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_8(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -916,7 +916,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_9(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -941,7 +941,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_9(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -993,7 +993,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_9(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -1022,7 +1022,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_9(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -1053,7 +1053,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_10(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -1077,7 +1077,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_10(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -1126,7 +1126,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_10(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -1154,7 +1154,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_10(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -1184,7 +1184,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_11(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -1206,7 +1206,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_11(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -1253,7 +1253,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_11(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -1279,7 +1279,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_11(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -1307,7 +1307,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_12(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -1333,7 +1333,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_12(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -1384,7 +1384,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_12(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -1414,7 +1414,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_12(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -1446,7 +1446,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_13(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -1462,7 +1462,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_13(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -1503,7 +1503,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_13(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -1523,7 +1523,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_13(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -1545,7 +1545,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_14(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -1560,7 +1560,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_14(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -1600,7 +1600,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_14(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -1619,7 +1619,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_14(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -1640,7 +1640,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_15(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -1662,7 +1662,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_15(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -1711,7 +1711,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_15(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -1737,7 +1737,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_15(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -1765,7 +1765,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_16(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -1788,7 +1788,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_16(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -1836,7 +1836,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_16(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -1863,7 +1863,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_16(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -1892,7 +1892,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_17(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -1913,7 +1913,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_17(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -1970,7 +1970,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_17(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -1995,7 +1995,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_17(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -2022,7 +2022,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_18(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -2041,7 +2041,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_18(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -2085,7 +2085,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_18(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -2108,7 +2108,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_18(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -2133,7 +2133,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_19(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -2145,7 +2145,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_19(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -2182,7 +2182,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_19(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -2198,7 +2198,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_19(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -2216,7 +2216,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_20(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -2232,7 +2232,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_20(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -2273,7 +2273,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_20(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -2293,7 +2293,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_20(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -2316,7 +2316,7 @@ class TestPrices:
     def test_method_create_overload_21(self, client: Orb) -> None:
         price = client.prices.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -2339,7 +2339,7 @@ class TestPrices:
                     },
                 ]
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -2376,7 +2376,7 @@ class TestPrices:
     def test_raw_response_create_overload_21(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -2392,7 +2392,7 @@ class TestPrices:
     def test_streaming_response_create_overload_21(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -2409,7 +2409,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_22(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -2425,7 +2425,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_22(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -2466,7 +2466,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_22(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -2486,7 +2486,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_22(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -2508,7 +2508,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_23(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -2537,7 +2537,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_23(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -2591,7 +2591,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_23(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -2624,7 +2624,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_23(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -2659,7 +2659,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_24(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -2676,7 +2676,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_24(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -2718,7 +2718,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_24(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -2739,7 +2739,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_24(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -2762,7 +2762,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_25(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -2783,7 +2783,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_25(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -2829,7 +2829,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_25(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -2854,7 +2854,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_25(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -2881,7 +2881,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_26(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -2906,7 +2906,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_26(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -2956,7 +2956,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_26(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -2985,7 +2985,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_26(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -3016,7 +3016,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_27(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -3041,7 +3041,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_27(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -3091,7 +3091,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_27(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -3120,7 +3120,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_27(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -3151,7 +3151,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_28(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -3172,7 +3172,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_28(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -3222,7 +3222,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_28(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -3247,7 +3247,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_28(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -3274,7 +3274,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_29(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -3304,7 +3304,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_29(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -3361,7 +3361,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_29(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -3395,7 +3395,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_29(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -3431,7 +3431,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_30(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -3452,7 +3452,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_30(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -3498,7 +3498,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_30(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -3523,7 +3523,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_30(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -3550,7 +3550,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_31(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -3567,7 +3567,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_31(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -3609,7 +3609,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_31(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -3630,7 +3630,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_31(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -3653,7 +3653,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_32(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -3676,7 +3676,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_32(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -3724,7 +3724,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_32(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -3751,7 +3751,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_32(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -3780,7 +3780,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_33(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -3797,7 +3797,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_33(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -3841,7 +3841,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_33(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -3862,7 +3862,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_33(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -3885,7 +3885,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_34(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -3897,7 +3897,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_34(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={
@@ -3937,7 +3937,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_34(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -3953,7 +3953,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_34(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -3971,7 +3971,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_35(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -3983,7 +3983,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_35(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -4025,7 +4025,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_35(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -4041,7 +4041,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_35(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -4059,7 +4059,7 @@ class TestPrices:
     @parametrize
     def test_method_create_overload_36(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -4071,7 +4071,7 @@ class TestPrices:
     @parametrize
     def test_method_create_with_all_params_overload_36(self, client: Orb) -> None:
         price = client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={
                 "unit_rating_key": "x",
@@ -4112,7 +4112,7 @@ class TestPrices:
     @parametrize
     def test_raw_response_create_overload_36(self, client: Orb) -> None:
         response = client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -4128,7 +4128,7 @@ class TestPrices:
     @parametrize
     def test_streaming_response_create_overload_36(self, client: Orb) -> None:
         with client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -4304,7 +4304,7 @@ class TestPrices:
                     "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
                     "metric_parameter_overrides": {"foo": "bar"},
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",
@@ -4403,7 +4403,7 @@ class TestPrices:
                     "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
                     "metric_parameter_overrides": {"foo": "bar"},
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",
@@ -4518,7 +4518,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_1(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -4530,7 +4530,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_1(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -4571,7 +4571,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_1(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -4587,7 +4587,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_1(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit",
@@ -4605,7 +4605,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_2(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -4624,7 +4624,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_2(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -4670,7 +4670,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_2(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -4693,7 +4693,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_2(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered",
@@ -4719,7 +4719,7 @@ class TestAsyncPrices:
     async def test_method_create_overload_3(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -4738,7 +4738,7 @@ class TestAsyncPrices:
                     }
                 ]
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -4775,7 +4775,7 @@ class TestAsyncPrices:
     async def test_raw_response_create_overload_3(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -4791,7 +4791,7 @@ class TestAsyncPrices:
     async def test_streaming_response_create_overload_3(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bulk_config={"tiers": [{"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk",
@@ -4817,7 +4817,7 @@ class TestAsyncPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -4846,7 +4846,7 @@ class TestAsyncPrices:
                     },
                 ],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -4891,7 +4891,7 @@ class TestAsyncPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -4915,7 +4915,7 @@ class TestAsyncPrices:
                 ],
                 "tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}],
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_filters",
@@ -4932,7 +4932,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_5(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -4947,7 +4947,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_5(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -4987,7 +4987,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_5(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -5006,7 +5006,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_5(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package",
@@ -5027,7 +5027,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_6(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -5048,7 +5048,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_6(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -5096,7 +5096,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_6(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -5121,7 +5121,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_6(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_config={
@@ -5148,7 +5148,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -5171,7 +5171,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_7(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -5220,7 +5220,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_7(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -5247,7 +5247,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_7(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="threshold_total_amount",
@@ -5276,7 +5276,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_8(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -5300,7 +5300,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_8(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -5349,7 +5349,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_8(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -5377,7 +5377,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_8(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package",
@@ -5407,7 +5407,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_9(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -5432,7 +5432,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_9(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -5484,7 +5484,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_9(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -5513,7 +5513,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_9(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_minimum",
@@ -5544,7 +5544,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_10(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -5568,7 +5568,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_10(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -5617,7 +5617,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_10(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -5645,7 +5645,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_10(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_config={
                 "grouping_key": "x",
@@ -5675,7 +5675,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_11(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -5697,7 +5697,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_11(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -5744,7 +5744,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_11(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -5770,7 +5770,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_11(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_matrix_config={
                 "default_unit_amount": "default_unit_amount",
@@ -5798,7 +5798,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_12(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -5824,7 +5824,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_12(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -5875,7 +5875,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_12(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -5905,7 +5905,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_12(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_package_with_minimum",
@@ -5937,7 +5937,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_13(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -5953,7 +5953,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_13(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -5994,7 +5994,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_13(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -6014,7 +6014,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_13(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="package_with_allocation",
@@ -6036,7 +6036,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_14(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -6051,7 +6051,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_14(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -6091,7 +6091,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_14(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -6110,7 +6110,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_14(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_percent",
@@ -6131,7 +6131,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_15(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -6153,7 +6153,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_15(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -6202,7 +6202,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_15(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -6228,7 +6228,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_15(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_allocation_config={
@@ -6256,7 +6256,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_16(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -6279,7 +6279,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_16(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -6327,7 +6327,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_16(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -6354,7 +6354,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_16(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_matrix_with_allocation",
@@ -6383,7 +6383,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_17(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -6404,7 +6404,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_17(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -6461,7 +6461,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_17(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -6486,7 +6486,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_17(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_threshold_discounts_config={
@@ -6513,7 +6513,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_18(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -6532,7 +6532,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_18(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -6576,7 +6576,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_18(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -6599,7 +6599,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_18(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="tiered_with_proration",
@@ -6624,7 +6624,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_19(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -6636,7 +6636,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_19(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -6673,7 +6673,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_19(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -6689,7 +6689,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_19(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="unit_with_proration",
@@ -6707,7 +6707,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_20(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -6723,7 +6723,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_20(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -6764,7 +6764,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_20(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -6784,7 +6784,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_20(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_allocation_config={
                 "allocation": "allocation",
@@ -6807,7 +6807,7 @@ class TestAsyncPrices:
     async def test_method_create_overload_21(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -6830,7 +6830,7 @@ class TestAsyncPrices:
                     },
                 ]
             },
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -6867,7 +6867,7 @@ class TestAsyncPrices:
     async def test_raw_response_create_overload_21(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -6883,7 +6883,7 @@ class TestAsyncPrices:
     async def test_streaming_response_create_overload_21(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
             bulk_with_proration_config={"tiers": [{"unit_amount": "unit_amount"}, {"unit_amount": "unit_amount"}]},
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="bulk_with_proration",
@@ -6900,7 +6900,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_22(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -6916,7 +6916,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_22(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -6957,7 +6957,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_22(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -6977,7 +6977,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_22(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_prorated_minimum_config={
                 "grouping_key": "x",
@@ -6999,7 +6999,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_23(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -7028,7 +7028,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_23(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -7082,7 +7082,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_23(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -7115,7 +7115,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_23(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_metered_minimum_config={
                 "grouping_key": "x",
@@ -7150,7 +7150,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_24(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -7167,7 +7167,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_24(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -7209,7 +7209,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_24(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -7230,7 +7230,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_24(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_with_min_max_thresholds_config={
                 "grouping_key": "x",
@@ -7253,7 +7253,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_25(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -7274,7 +7274,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_25(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -7320,7 +7320,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_25(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -7345,7 +7345,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_25(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             matrix_with_display_name_config={
@@ -7372,7 +7372,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_26(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -7397,7 +7397,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_26(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -7447,7 +7447,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_26(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -7476,7 +7476,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_26(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             grouped_tiered_package_config={
                 "grouping_key": "x",
@@ -7507,7 +7507,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_27(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -7532,7 +7532,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_27(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -7582,7 +7582,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_27(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -7611,7 +7611,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_27(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             max_group_tiered_package_config={
@@ -7642,7 +7642,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_28(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -7663,7 +7663,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_28(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -7713,7 +7713,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_28(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -7738,7 +7738,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_28(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_unit_pricing",
@@ -7765,7 +7765,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_29(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -7795,7 +7795,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_29(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -7852,7 +7852,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_29(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -7886,7 +7886,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_29(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="scalable_matrix_with_tiered_pricing",
@@ -7922,7 +7922,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_30(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -7943,7 +7943,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_30(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -7989,7 +7989,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_30(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -8014,7 +8014,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_30(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_bulk_config={
                 "dimension_values": [
                     {
@@ -8041,7 +8041,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_31(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -8058,7 +8058,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_31(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -8100,7 +8100,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_31(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -8121,7 +8121,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_31(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             cumulative_grouped_allocation_config={
                 "cumulative_allocation": "cumulative_allocation",
                 "group_allocation": "group_allocation",
@@ -8144,7 +8144,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_32(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -8167,7 +8167,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_32(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -8215,7 +8215,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_32(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -8242,7 +8242,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_32(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             daily_credit_allowance_config={
                 "daily_allowance": "daily_allowance",
@@ -8271,7 +8271,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_33(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -8288,7 +8288,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_33(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -8332,7 +8332,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_33(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -8353,7 +8353,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_33(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             metered_allowance_config={
@@ -8376,7 +8376,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_34(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -8388,7 +8388,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_34(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={
@@ -8428,7 +8428,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_34(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -8444,7 +8444,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_34(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             minimum_composite_config={"minimum_amount": "minimum_amount"},
@@ -8462,7 +8462,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_35(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -8474,7 +8474,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_35(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -8516,7 +8516,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_35(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -8532,7 +8532,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_35(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             item_id="item_id",
             model_type="percent",
@@ -8550,7 +8550,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_overload_36(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -8562,7 +8562,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_method_create_with_all_params_overload_36(self, async_client: AsyncOrb) -> None:
         price = await async_client.prices.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={
                 "unit_rating_key": "x",
@@ -8603,7 +8603,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_raw_response_create_overload_36(self, async_client: AsyncOrb) -> None:
         response = await async_client.prices.with_raw_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -8619,7 +8619,7 @@ class TestAsyncPrices:
     @parametrize
     async def test_streaming_response_create_overload_36(self, async_client: AsyncOrb) -> None:
         async with async_client.prices.with_streaming_response.create(
-            cadence="annual",
+            cadence="one_time",
             currency="currency",
             event_output_config={"unit_rating_key": "x"},
             item_id="item_id",
@@ -8795,7 +8795,7 @@ class TestAsyncPrices:
                     "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
                     "metric_parameter_overrides": {"foo": "bar"},
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",
@@ -8894,7 +8894,7 @@ class TestAsyncPrices:
                     "grouping_keys": ["case when my_event_type = 'foo' then true else false end"],
                     "metric_parameter_overrides": {"foo": "bar"},
                     "price": {
-                        "cadence": "annual",
+                        "cadence": "one_time",
                         "currency": "currency",
                         "item_id": "item_id",
                         "model_type": "unit",

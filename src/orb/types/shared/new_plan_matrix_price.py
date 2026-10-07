@@ -21,7 +21,7 @@ ConversionRateConfig: TypeAlias = Annotated[
 
 
 class NewPlanMatrixPrice(BaseModel):
-    cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
     """The cadence to bill for this price on."""
 
     item_id: str

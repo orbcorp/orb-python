@@ -177,7 +177,7 @@ PriceLicenseAllocationPriceConversionRateConfig: TypeAlias = Union[UnitConversio
 class PriceLicenseAllocationPrice(TypedDict, total=False):
     """The license allocation price to add to the plan."""
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -313,7 +313,7 @@ class PricePriceNewPlanBulkWithFiltersPrice(TypedDict, total=False):
     bulk_with_filters_config: Required[PricePriceNewPlanBulkWithFiltersPriceBulkWithFiltersConfig]
     """Configuration for bulk_with_filters pricing"""
 
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -433,7 +433,7 @@ PricePriceNewPlanGroupedTieredMatrixPriceConversionRateConfig: TypeAlias = Union
 
 
 class PricePriceNewPlanGroupedTieredMatrixPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_tiered_matrix_config: Required[PricePriceNewPlanGroupedTieredMatrixPriceGroupedTieredMatrixConfig]
@@ -564,7 +564,7 @@ PricePriceNewPlanTieredMatrixWithAllocationPriceConversionRateConfig: TypeAlias 
 
 
 class PricePriceNewPlanTieredMatrixWithAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -717,7 +717,7 @@ PricePriceNewPlanMatrixWithThresholdDiscountsPriceConversionRateConfig: TypeAlia
 
 
 class PricePriceNewPlanMatrixWithThresholdDiscountsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -834,7 +834,7 @@ PricePriceNewPlanTieredWithProrationPriceConversionRateConfig: TypeAlias = Union
 
 
 class PricePriceNewPlanTieredWithProrationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -945,7 +945,7 @@ PricePriceNewPlanGroupedWithMinMaxThresholdsPriceConversionRateConfig: TypeAlias
 
 
 class PricePriceNewPlanGroupedWithMinMaxThresholdsPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     grouped_with_min_max_thresholds_config: Required[
@@ -1058,7 +1058,7 @@ PricePriceNewPlanCumulativeGroupedAllocationPriceConversionRateConfig: TypeAlias
 
 
 class PricePriceNewPlanCumulativeGroupedAllocationPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     cumulative_grouped_allocation_config: Required[
@@ -1195,7 +1195,7 @@ PricePriceNewPlanDailyCreditAllowancePriceConversionRateConfig: TypeAlias = Unio
 
 
 class PricePriceNewPlanDailyCreditAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     daily_credit_allowance_config: Required[PricePriceNewPlanDailyCreditAllowancePriceDailyCreditAllowanceConfig]
@@ -1323,7 +1323,7 @@ PricePriceNewPlanMeteredAllowancePriceConversionRateConfig: TypeAlias = Union[
 
 
 class PricePriceNewPlanMeteredAllowancePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -1438,7 +1438,7 @@ PricePriceNewPlanPercentCompositePriceConversionRateConfig: TypeAlias = Union[
 
 
 class PricePriceNewPlanPercentCompositePrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     item_id: Required[str]
@@ -1553,7 +1553,7 @@ PricePriceNewPlanEventOutputPriceConversionRateConfig: TypeAlias = Union[
 
 
 class PricePriceNewPlanEventOutputPrice(TypedDict, total=False):
-    cadence: Required[Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]]
+    cadence: Required[Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]]
     """The cadence to bill for this price on."""
 
     event_output_config: Required[PricePriceNewPlanEventOutputPriceEventOutputConfig]

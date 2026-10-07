@@ -50,7 +50,7 @@ ConversionRateConfig: TypeAlias = Annotated[
 
 
 class NewPlanGroupedTieredPackagePrice(BaseModel):
-    cadence: Literal["annual", "semi_annual", "monthly", "quarterly", "one_time", "custom"]
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
     """The cadence to bill for this price on."""
 
     grouped_tiered_package_config: GroupedTieredPackageConfig
