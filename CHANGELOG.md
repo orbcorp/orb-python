@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.82.0](https://github.com/orbcorp/orb-python/compare/v4.81.0...v4.82.0) (2026-10-08)
+
+
+### Features
+
+* **api:** add endpoint to bulk create dimensional price group prices ([864b12e](https://github.com/orbcorp/orb-python/commit/864b12ef36e86b5ac4bcc5b574e507e02e215246))
+
+
+### Bug Fixes
+
+* **api:** clarify grouped subscription usage returns all groups in one response, no pagination ([864b12e](https://github.com/orbcorp/orb-python/commit/864b12ef36e86b5ac4bcc5b574e507e02e215246))
+
 ## [4.81.0](https://github.com/orbcorp/orb-python/compare/v4.80.1...v4.81.0) (2026-10-07)
 
 
