@@ -567,6 +567,13 @@ class TestInvoices:
     def test_method_pay(self, client: Orb) -> None:
         invoice = client.invoices.pay(
             invoice_id="invoice_id",
+        )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    def test_method_pay_with_all_params(self, client: Orb) -> None:
+        invoice = client.invoices.pay(
+            invoice_id="invoice_id",
             shared_payment_token_id="shared_payment_token_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -575,7 +582,6 @@ class TestInvoices:
     def test_raw_response_pay(self, client: Orb) -> None:
         response = client.invoices.with_raw_response.pay(
             invoice_id="invoice_id",
-            shared_payment_token_id="shared_payment_token_id",
         )
 
         assert response.is_closed is True
@@ -587,7 +593,6 @@ class TestInvoices:
     def test_streaming_response_pay(self, client: Orb) -> None:
         with client.invoices.with_streaming_response.pay(
             invoice_id="invoice_id",
-            shared_payment_token_id="shared_payment_token_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -602,7 +607,6 @@ class TestInvoices:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             client.invoices.with_raw_response.pay(
                 invoice_id="",
-                shared_payment_token_id="shared_payment_token_id",
             )
 
     @parametrize
@@ -1268,6 +1272,13 @@ class TestAsyncInvoices:
     async def test_method_pay(self, async_client: AsyncOrb) -> None:
         invoice = await async_client.invoices.pay(
             invoice_id="invoice_id",
+        )
+        assert_matches_type(Invoice, invoice, path=["response"])
+
+    @parametrize
+    async def test_method_pay_with_all_params(self, async_client: AsyncOrb) -> None:
+        invoice = await async_client.invoices.pay(
+            invoice_id="invoice_id",
             shared_payment_token_id="shared_payment_token_id",
         )
         assert_matches_type(Invoice, invoice, path=["response"])
@@ -1276,7 +1287,6 @@ class TestAsyncInvoices:
     async def test_raw_response_pay(self, async_client: AsyncOrb) -> None:
         response = await async_client.invoices.with_raw_response.pay(
             invoice_id="invoice_id",
-            shared_payment_token_id="shared_payment_token_id",
         )
 
         assert response.is_closed is True
@@ -1288,7 +1298,6 @@ class TestAsyncInvoices:
     async def test_streaming_response_pay(self, async_client: AsyncOrb) -> None:
         async with async_client.invoices.with_streaming_response.pay(
             invoice_id="invoice_id",
-            shared_payment_token_id="shared_payment_token_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1303,7 +1312,6 @@ class TestAsyncInvoices:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invoice_id` but received ''"):
             await async_client.invoices.with_raw_response.pay(
                 invoice_id="",
-                shared_payment_token_id="shared_payment_token_id",
             )
 
     @parametrize

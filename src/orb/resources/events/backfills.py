@@ -112,7 +112,9 @@ class Backfills(SyncAPIResource):
         the event reporting grace boundary. Matching events that arrive later with
         timestamps inside the timeframe will also be deprecated.
 
-        You may not have multiple backfills in a pending or pending_revert state with
+        A backfill may not overlap in timeframe with another backfill in a pending or
+        pending_revert state for the same customer, or with any account-wide backfill in
+        one of those states. Backfills scoped to different customers may have
         overlapping timeframes.
 
         Args:
@@ -447,7 +449,9 @@ class AsyncBackfills(AsyncAPIResource):
         the event reporting grace boundary. Matching events that arrive later with
         timestamps inside the timeframe will also be deprecated.
 
-        You may not have multiple backfills in a pending or pending_revert state with
+        A backfill may not overlap in timeframe with another backfill in a pending or
+        pending_revert state for the same customer, or with any account-wide backfill in
+        one of those states. Backfills scoped to different customers may have
         overlapping timeframes.
 
         Args:

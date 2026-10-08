@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Optional
+from typing_extensions import TypedDict
 
 __all__ = ["InvoicePayParams"]
 
 
 class InvoicePayParams(TypedDict, total=False):
-    shared_payment_token_id: Required[str]
+    shared_payment_token_id: Optional[str]
     """The ID of a shared payment token granted by an agent to use for this payment."""
