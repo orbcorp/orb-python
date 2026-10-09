@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.83.0](https://github.com/orbcorp/orb-python/compare/v4.82.0...v4.83.0) (2026-10-09)
+
+
+### Features
+
+* **api:** api update ([54a0237](https://github.com/orbcorp/orb-python/commit/54a0237c8dbfb3c688cfcab560b69f5729d24fa2))
+* **api:** support listing pricebook prices and filtering by product_id in GET /v1/prices ([54a0237](https://github.com/orbcorp/orb-python/commit/54a0237c8dbfb3c688cfcab560b69f5729d24fa2))
+
+
+### Bug Fixes
+
+* **api:** make shared_payment_token_id optional when paying an invoice ([54a0237](https://github.com/orbcorp/orb-python/commit/54a0237c8dbfb3c688cfcab560b69f5729d24fa2))
+
 ## [4.82.0](https://github.com/orbcorp/orb-python/compare/v4.81.0...v4.82.0) (2026-10-08)
 
 
