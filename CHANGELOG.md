@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.84.0](https://github.com/orbcorp/orb-python/compare/v4.83.0...v4.84.0) (2026-10-16)
+
+
+### Features
+
+* **api:** api update ([55e9c25](https://github.com/orbcorp/orb-python/commit/55e9c259e55d3337ada8c7364cc414a590fad818))
+
+
+### Bug Fixes
+
+* **tests:** cap max test Python below 3.15 ([6d33eb0](https://github.com/orbcorp/orb-python/commit/6d33eb0c9204675cf84a306b098c4ca6d15bbd73))
+* **tests:** cap max test Python below 3.15 ([0717890](https://github.com/orbcorp/orb-python/commit/07178906d2a4cec37f37aae3a675de3c7f795f12))
+
 ## [4.83.0](https://github.com/orbcorp/orb-python/compare/v4.82.0...v4.83.0) (2026-10-09)
 
 
