@@ -129,6 +129,14 @@ from .subscriptions import (
     SubscriptionsWithStreamingResponse,
     AsyncSubscriptionsWithStreamingResponse,
 )
+from .webhook_endpoints import (
+    WebhookEndpoints,
+    AsyncWebhookEndpoints,
+    WebhookEndpointsWithRawResponse,
+    AsyncWebhookEndpointsWithRawResponse,
+    WebhookEndpointsWithStreamingResponse,
+    AsyncWebhookEndpointsWithStreamingResponse,
+)
 from .invoice_line_items import (
     InvoiceLineItems,
     AsyncInvoiceLineItems,
@@ -211,6 +219,12 @@ __all__ = [
     "AsyncItemsWithRawResponse",
     "ItemsWithStreamingResponse",
     "AsyncItemsWithStreamingResponse",
+    "WebhookEndpoints",
+    "AsyncWebhookEndpoints",
+    "WebhookEndpointsWithRawResponse",
+    "AsyncWebhookEndpointsWithRawResponse",
+    "WebhookEndpointsWithStreamingResponse",
+    "AsyncWebhookEndpointsWithStreamingResponse",
     "Metrics",
     "AsyncMetrics",
     "MetricsWithRawResponse",

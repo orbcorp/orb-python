@@ -7,6 +7,14 @@ from typing import Dict, Optional
 import httpx
 
 from ... import _legacy_response
+from .prices import (
+    Prices,
+    AsyncPrices,
+    PricesWithRawResponse,
+    AsyncPricesWithRawResponse,
+    PricesWithStreamingResponse,
+    AsyncPricesWithStreamingResponse,
+)
 from ...types import (
     dimensional_price_group_list_params,
     dimensional_price_group_create_params,
@@ -36,6 +44,10 @@ class DimensionalPriceGroups(SyncAPIResource):
     @cached_property
     def external_dimensional_price_group_id(self) -> ExternalDimensionalPriceGroupID:
         return ExternalDimensionalPriceGroupID(self._client)
+
+    @cached_property
+    def prices(self) -> Prices:
+        return Prices(self._client)
 
     @cached_property
     def with_raw_response(self) -> DimensionalPriceGroupsWithRawResponse:
@@ -295,6 +307,10 @@ class AsyncDimensionalPriceGroups(AsyncAPIResource):
     @cached_property
     def external_dimensional_price_group_id(self) -> AsyncExternalDimensionalPriceGroupID:
         return AsyncExternalDimensionalPriceGroupID(self._client)
+
+    @cached_property
+    def prices(self) -> AsyncPrices:
+        return AsyncPrices(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncDimensionalPriceGroupsWithRawResponse:
@@ -573,6 +589,10 @@ class DimensionalPriceGroupsWithRawResponse:
             self._dimensional_price_groups.external_dimensional_price_group_id
         )
 
+    @cached_property
+    def prices(self) -> PricesWithRawResponse:
+        return PricesWithRawResponse(self._dimensional_price_groups.prices)
+
 
 class AsyncDimensionalPriceGroupsWithRawResponse:
     def __init__(self, dimensional_price_groups: AsyncDimensionalPriceGroups) -> None:
@@ -596,6 +616,10 @@ class AsyncDimensionalPriceGroupsWithRawResponse:
         return AsyncExternalDimensionalPriceGroupIDWithRawResponse(
             self._dimensional_price_groups.external_dimensional_price_group_id
         )
+
+    @cached_property
+    def prices(self) -> AsyncPricesWithRawResponse:
+        return AsyncPricesWithRawResponse(self._dimensional_price_groups.prices)
 
 
 class DimensionalPriceGroupsWithStreamingResponse:
@@ -621,6 +645,10 @@ class DimensionalPriceGroupsWithStreamingResponse:
             self._dimensional_price_groups.external_dimensional_price_group_id
         )
 
+    @cached_property
+    def prices(self) -> PricesWithStreamingResponse:
+        return PricesWithStreamingResponse(self._dimensional_price_groups.prices)
+
 
 class AsyncDimensionalPriceGroupsWithStreamingResponse:
     def __init__(self, dimensional_price_groups: AsyncDimensionalPriceGroups) -> None:
@@ -644,3 +672,7 @@ class AsyncDimensionalPriceGroupsWithStreamingResponse:
         return AsyncExternalDimensionalPriceGroupIDWithStreamingResponse(
             self._dimensional_price_groups.external_dimensional_price_group_id
         )
+
+    @cached_property
+    def prices(self) -> AsyncPricesWithStreamingResponse:
+        return AsyncPricesWithStreamingResponse(self._dimensional_price_groups.prices)

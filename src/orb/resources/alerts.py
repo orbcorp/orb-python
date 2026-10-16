@@ -14,6 +14,7 @@ from ..types import (
     alert_enable_params,
     alert_update_params,
     alert_disable_params,
+    alert_create_for_plan_params,
     alert_create_for_customer_params,
     alert_create_for_subscription_params,
     alert_create_for_external_customer_params,
@@ -411,6 +412,102 @@ class Alerts(SyncAPIResource):
                     "thresholds": thresholds,
                 },
                 alert_create_for_external_customer_params.AlertCreateForExternalCustomerParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Alert,
+        )
+
+    def create_for_plan(
+        self,
+        plan_id: str,
+        *,
+        thresholds: Iterable[ThresholdParam],
+        type: Literal["usage_exceeded", "cost_exceeded", "spend_exceeded"],
+        currency: Optional[str] | Omit = omit,
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
+        metric_id: Optional[str] | Omit = omit,
+        plan_version: Optional[int] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_plan_params.PriceFilter]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Alert:
+        """This endpoint is used to create alerts at the plan level.
+
+        Plan level alerts are
+        automatically propagated to all subscriptions associated with the plan. These
+        alerts are scoped to a specific plan version; if no version is specified, the
+        active plan version is used.
+
+        Plan level alerts can be of three types: `usage_exceeded`, `cost_exceeded`, or
+        `spend_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
+        is triggered when the usage of that metric exceeds predefined thresholds during
+        the current billing cycle. A `cost_exceeded` alert is triggered when the total
+        amount due during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. A
+        `spend_exceeded` alert is triggered when the rated spend (the pricing subtotal,
+        before invoice-level adjustments and credits) denominated in the alert's
+        currency exceeds predefined thresholds during the current billing cycle;
+        `price_filters` can scope which prices contribute. Each plan can have one
+        `cost_exceeded` alert and one `usage_exceeded` alert per metric that is a part
+        of the plan.
+
+        Args:
+          thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          type: The type of alert to create. This must be a valid alert type.
+
+          currency: The case sensitive currency or custom pricing unit the alert is denominated in.
+              Required for spend_exceeded alerts and when grouping_keys is set.
+
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
+          metric_id: The metric to track usage for.
+
+          plan_version: The plan version to create alerts for. If not specified, the default will be the
+              plan's active plan version.
+
+          price_filters: Filters to scope which prices are included in alert evaluation. Supports
+              filtering by price_id, item_id, or price_type with includes/excludes operators.
+              Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+              grouping_keys set.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return self._post(
+            path_template("/alerts/plan_id/{plan_id}", plan_id=plan_id),
+            body=maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "type": type,
+                    "currency": currency,
+                    "grouping_keys": grouping_keys,
+                    "metric_id": metric_id,
+                    "plan_version": plan_version,
+                    "price_filters": price_filters,
+                },
+                alert_create_for_plan_params.AlertCreateForPlanParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1007,6 +1104,102 @@ class AsyncAlerts(AsyncAPIResource):
             cast_to=Alert,
         )
 
+    async def create_for_plan(
+        self,
+        plan_id: str,
+        *,
+        thresholds: Iterable[ThresholdParam],
+        type: Literal["usage_exceeded", "cost_exceeded", "spend_exceeded"],
+        currency: Optional[str] | Omit = omit,
+        grouping_keys: Optional[SequenceNotStr[str]] | Omit = omit,
+        metric_id: Optional[str] | Omit = omit,
+        plan_version: Optional[int] | Omit = omit,
+        price_filters: Optional[Iterable[alert_create_for_plan_params.PriceFilter]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Alert:
+        """This endpoint is used to create alerts at the plan level.
+
+        Plan level alerts are
+        automatically propagated to all subscriptions associated with the plan. These
+        alerts are scoped to a specific plan version; if no version is specified, the
+        active plan version is used.
+
+        Plan level alerts can be of three types: `usage_exceeded`, `cost_exceeded`, or
+        `spend_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
+        is triggered when the usage of that metric exceeds predefined thresholds during
+        the current billing cycle. A `cost_exceeded` alert is triggered when the total
+        amount due during the current billing cycle surpasses predefined thresholds.
+        `cost_exceeded` alerts do not include burndown of pre-purchase credits. A
+        `spend_exceeded` alert is triggered when the rated spend (the pricing subtotal,
+        before invoice-level adjustments and credits) denominated in the alert's
+        currency exceeds predefined thresholds during the current billing cycle;
+        `price_filters` can scope which prices contribute. Each plan can have one
+        `cost_exceeded` alert and one `usage_exceeded` alert per metric that is a part
+        of the plan.
+
+        Args:
+          thresholds: The thresholds that define the values at which the alert will be triggered.
+
+          type: The type of alert to create. This must be a valid alert type.
+
+          currency: The case sensitive currency or custom pricing unit the alert is denominated in.
+              Required for spend_exceeded alerts and when grouping_keys is set.
+
+          grouping_keys: The property keys to group cost alerts by. Only applicable for cost_exceeded
+              alerts.
+
+          metric_id: The metric to track usage for.
+
+          plan_version: The plan version to create alerts for. If not specified, the default will be the
+              plan's active plan version.
+
+          price_filters: Filters to scope which prices are included in alert evaluation. Supports
+              filtering by price_id, item_id, or price_type with includes/excludes operators.
+              Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+              grouping_keys set.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return await self._post(
+            path_template("/alerts/plan_id/{plan_id}", plan_id=plan_id),
+            body=await async_maybe_transform(
+                {
+                    "thresholds": thresholds,
+                    "type": type,
+                    "currency": currency,
+                    "grouping_keys": grouping_keys,
+                    "metric_id": metric_id,
+                    "plan_version": plan_version,
+                    "price_filters": price_filters,
+                },
+                alert_create_for_plan_params.AlertCreateForPlanParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Alert,
+        )
+
     async def create_for_subscription(
         self,
         subscription_id: str,
@@ -1227,6 +1420,9 @@ class AlertsWithRawResponse:
         self.create_for_external_customer = _legacy_response.to_raw_response_wrapper(
             alerts.create_for_external_customer,
         )
+        self.create_for_plan = _legacy_response.to_raw_response_wrapper(
+            alerts.create_for_plan,
+        )
         self.create_for_subscription = _legacy_response.to_raw_response_wrapper(
             alerts.create_for_subscription,
         )
@@ -1259,6 +1455,9 @@ class AsyncAlertsWithRawResponse:
         )
         self.create_for_external_customer = _legacy_response.async_to_raw_response_wrapper(
             alerts.create_for_external_customer,
+        )
+        self.create_for_plan = _legacy_response.async_to_raw_response_wrapper(
+            alerts.create_for_plan,
         )
         self.create_for_subscription = _legacy_response.async_to_raw_response_wrapper(
             alerts.create_for_subscription,
@@ -1293,6 +1492,9 @@ class AlertsWithStreamingResponse:
         self.create_for_external_customer = to_streamed_response_wrapper(
             alerts.create_for_external_customer,
         )
+        self.create_for_plan = to_streamed_response_wrapper(
+            alerts.create_for_plan,
+        )
         self.create_for_subscription = to_streamed_response_wrapper(
             alerts.create_for_subscription,
         )
@@ -1325,6 +1527,9 @@ class AsyncAlertsWithStreamingResponse:
         )
         self.create_for_external_customer = async_to_streamed_response_wrapper(
             alerts.create_for_external_customer,
+        )
+        self.create_for_plan = async_to_streamed_response_wrapper(
+            alerts.create_for_plan,
         )
         self.create_for_subscription = async_to_streamed_response_wrapper(
             alerts.create_for_subscription,

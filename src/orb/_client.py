@@ -53,6 +53,7 @@ if TYPE_CHECKING:
         credit_blocks,
         license_types,
         subscriptions,
+        webhook_endpoints,
         invoice_line_items,
         subscription_changes,
         dimensional_price_groups,
@@ -73,6 +74,7 @@ if TYPE_CHECKING:
     from .resources.subscriptions import Subscriptions, AsyncSubscriptions
     from .resources.coupons.coupons import Coupons, AsyncCoupons
     from .resources.licenses.licenses import Licenses, AsyncLicenses
+    from .resources.webhook_endpoints import WebhookEndpoints, AsyncWebhookEndpoints
     from .resources.invoice_line_items import InvoiceLineItems, AsyncInvoiceLineItems
     from .resources.customers.customers import Customers, AsyncCustomers
     from .resources.subscription_changes import SubscriptionChanges, AsyncSubscriptionChanges
@@ -267,6 +269,15 @@ class Orb(SyncAPIClient):
         from .resources.items import Items
 
         return Items(self)
+
+    @cached_property
+    def webhook_endpoints(self) -> WebhookEndpoints:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import WebhookEndpoints
+
+        return WebhookEndpoints(self)
 
     @cached_property
     def metrics(self) -> Metrics:
@@ -707,6 +718,15 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncItems(self)
 
     @cached_property
+    def webhook_endpoints(self) -> AsyncWebhookEndpoints:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import AsyncWebhookEndpoints
+
+        return AsyncWebhookEndpoints(self)
+
+    @cached_property
     def metrics(self) -> AsyncMetrics:
         """
         The Metric resource represents a calculation of a quantity based on events.
@@ -1071,6 +1091,15 @@ class OrbWithRawResponse:
         return ItemsWithRawResponse(self._client.items)
 
     @cached_property
+    def webhook_endpoints(self) -> webhook_endpoints.WebhookEndpointsWithRawResponse:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import WebhookEndpointsWithRawResponse
+
+        return WebhookEndpointsWithRawResponse(self._client.webhook_endpoints)
+
+    @cached_property
     def metrics(self) -> metrics.MetricsWithRawResponse:
         """
         The Metric resource represents a calculation of a quantity based on events.
@@ -1271,6 +1300,15 @@ class AsyncOrbWithRawResponse:
         from .resources.items import AsyncItemsWithRawResponse
 
         return AsyncItemsWithRawResponse(self._client.items)
+
+    @cached_property
+    def webhook_endpoints(self) -> webhook_endpoints.AsyncWebhookEndpointsWithRawResponse:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import AsyncWebhookEndpointsWithRawResponse
+
+        return AsyncWebhookEndpointsWithRawResponse(self._client.webhook_endpoints)
 
     @cached_property
     def metrics(self) -> metrics.AsyncMetricsWithRawResponse:
@@ -1475,6 +1513,15 @@ class OrbWithStreamedResponse:
         return ItemsWithStreamingResponse(self._client.items)
 
     @cached_property
+    def webhook_endpoints(self) -> webhook_endpoints.WebhookEndpointsWithStreamingResponse:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import WebhookEndpointsWithStreamingResponse
+
+        return WebhookEndpointsWithStreamingResponse(self._client.webhook_endpoints)
+
+    @cached_property
     def metrics(self) -> metrics.MetricsWithStreamingResponse:
         """
         The Metric resource represents a calculation of a quantity based on events.
@@ -1675,6 +1722,15 @@ class AsyncOrbWithStreamedResponse:
         from .resources.items import AsyncItemsWithStreamingResponse
 
         return AsyncItemsWithStreamingResponse(self._client.items)
+
+    @cached_property
+    def webhook_endpoints(self) -> webhook_endpoints.AsyncWebhookEndpointsWithStreamingResponse:
+        """
+        A webhook endpoint is an HTTPS URL that Orb sends [webhook events](/integrations-and-exports/webhooks) to.
+        """
+        from .resources.webhook_endpoints import AsyncWebhookEndpointsWithStreamingResponse
+
+        return AsyncWebhookEndpointsWithStreamingResponse(self._client.webhook_endpoints)
 
     @cached_property
     def metrics(self) -> metrics.AsyncMetricsWithStreamingResponse:

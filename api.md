@@ -522,6 +522,24 @@ Methods:
 - <code title="post /items/{item_id}/archive">client.items.<a href="./src/orb/resources/items.py">archive</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 - <code title="get /items/{item_id}">client.items.<a href="./src/orb/resources/items.py">fetch</a>(item_id) -> <a href="./src/orb/types/item.py">Item</a></code>
 
+# WebhookEndpoints
+
+Types:
+
+```python
+from orb.types import WebhookEndpoint, WebhookEndpointWithSecret
+```
+
+Methods:
+
+- <code title="post /webhook_endpoints">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">create</a>(\*\*<a href="src/orb/types/webhook_endpoint_create_params.py">params</a>) -> <a href="./src/orb/types/webhook_endpoint_with_secret.py">WebhookEndpointWithSecret</a></code>
+- <code title="get /webhook_endpoints/{webhook_endpoint_id}">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">retrieve</a>(webhook_endpoint_id) -> <a href="./src/orb/types/webhook_endpoint.py">WebhookEndpoint</a></code>
+- <code title="put /webhook_endpoints/{webhook_endpoint_id}">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">update</a>(webhook_endpoint_id, \*\*<a href="src/orb/types/webhook_endpoint_update_params.py">params</a>) -> <a href="./src/orb/types/webhook_endpoint.py">WebhookEndpoint</a></code>
+- <code title="get /webhook_endpoints">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">list</a>(\*\*<a href="src/orb/types/webhook_endpoint_list_params.py">params</a>) -> <a href="./src/orb/types/webhook_endpoint.py">SyncPage[WebhookEndpoint]</a></code>
+- <code title="delete /webhook_endpoints/{webhook_endpoint_id}">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">delete</a>(webhook_endpoint_id) -> None</code>
+- <code title="post /webhook_endpoints/{webhook_endpoint_id}/disable">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">disable</a>(webhook_endpoint_id) -> <a href="./src/orb/types/webhook_endpoint.py">WebhookEndpoint</a></code>
+- <code title="post /webhook_endpoints/{webhook_endpoint_id}/enable">client.webhook_endpoints.<a href="./src/orb/resources/webhook_endpoints.py">enable</a>(webhook_endpoint_id) -> <a href="./src/orb/types/webhook_endpoint.py">WebhookEndpoint</a></code>
+
 # Metrics
 
 Types:
@@ -690,6 +708,7 @@ Methods:
 - <code title="delete /alerts/{alert_configuration_id}">client.alerts.<a href="./src/orb/resources/alerts.py">delete</a>(alert_configuration_id) -> None</code>
 - <code title="post /alerts/customer_id/{customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_customer</a>(customer_id, \*\*<a href="src/orb/types/alert_create_for_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/external_customer_id/{external_customer_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_external_customer</a>(external_customer_id, \*\*<a href="src/orb/types/alert_create_for_external_customer_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
+- <code title="post /alerts/plan_id/{plan_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_plan</a>(plan_id, \*\*<a href="src/orb/types/alert_create_for_plan_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/subscription_id/{subscription_id}">client.alerts.<a href="./src/orb/resources/alerts.py">create_for_subscription</a>(subscription_id, \*\*<a href="src/orb/types/alert_create_for_subscription_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/{alert_configuration_id}/disable">client.alerts.<a href="./src/orb/resources/alerts.py">disable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_disable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
 - <code title="post /alerts/{alert_configuration_id}/enable">client.alerts.<a href="./src/orb/resources/alerts.py">enable</a>(alert_configuration_id, \*\*<a href="src/orb/types/alert_enable_params.py">params</a>) -> <a href="./src/orb/types/alert.py">Alert</a></code>
@@ -715,6 +734,19 @@ Methods:
 
 - <code title="get /dimensional_price_groups/external_dimensional_price_group_id/{external_dimensional_price_group_id}">client.dimensional_price_groups.external_dimensional_price_group_id.<a href="./src/orb/resources/dimensional_price_groups/external_dimensional_price_group_id.py">retrieve</a>(external_dimensional_price_group_id) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
 - <code title="put /dimensional_price_groups/external_dimensional_price_group_id/{external_dimensional_price_group_id}">client.dimensional_price_groups.external_dimensional_price_group_id.<a href="./src/orb/resources/dimensional_price_groups/external_dimensional_price_group_id.py">update</a>(path_external_dimensional_price_group_id, \*\*<a href="src/orb/types/dimensional_price_groups/external_dimensional_price_group_id_update_params.py">params</a>) -> <a href="./src/orb/types/dimensional_price_group.py">DimensionalPriceGroup</a></code>
+
+## Prices
+
+Types:
+
+```python
+from orb.types.dimensional_price_groups import PriceCreateResponse
+```
+
+Methods:
+
+- <code title="post /dimensional_price_groups/{dimensional_price_group_id}/prices">client.dimensional_price_groups.prices.<a href="./src/orb/resources/dimensional_price_groups/prices.py">create</a>(dimensional_price_group_id, \*\*<a href="src/orb/types/dimensional_price_groups/price_create_params.py">params</a>) -> <a href="./src/orb/types/dimensional_price_groups/price_create_response.py">PriceCreateResponse</a></code>
+- <code title="get /dimensional_price_groups/{dimensional_price_group_id}/prices">client.dimensional_price_groups.prices.<a href="./src/orb/resources/dimensional_price_groups/prices.py">list</a>(dimensional_price_group_id, \*\*<a href="src/orb/types/dimensional_price_groups/price_list_params.py">params</a>) -> <a href="./src/orb/types/shared/price.py">SyncPage[Price]</a></code>
 
 # SubscriptionChanges
 

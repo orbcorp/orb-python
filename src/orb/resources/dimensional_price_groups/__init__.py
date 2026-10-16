@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .prices import (
+    Prices,
+    AsyncPrices,
+    PricesWithRawResponse,
+    AsyncPricesWithRawResponse,
+    PricesWithStreamingResponse,
+    AsyncPricesWithStreamingResponse,
+)
 from .dimensional_price_groups import (
     DimensionalPriceGroups,
     AsyncDimensionalPriceGroups,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncExternalDimensionalPriceGroupIDWithRawResponse",
     "ExternalDimensionalPriceGroupIDWithStreamingResponse",
     "AsyncExternalDimensionalPriceGroupIDWithStreamingResponse",
+    "Prices",
+    "AsyncPrices",
+    "PricesWithRawResponse",
+    "AsyncPricesWithRawResponse",
+    "PricesWithStreamingResponse",
+    "AsyncPricesWithStreamingResponse",
     "DimensionalPriceGroups",
     "AsyncDimensionalPriceGroups",
     "DimensionalPriceGroupsWithRawResponse",
