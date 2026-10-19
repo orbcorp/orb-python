@@ -3,6 +3,8 @@
 from typing import Union
 from typing_extensions import TypeAlias
 
+from .plan_edited_webhook_event import PlanEditedWebhookEvent
+from .plan_created_webhook_event import PlanCreatedWebhookEvent
 from .price_edited_webhook_event import PriceEditedWebhookEvent
 from .invoice_edited_webhook_event import InvoiceEditedWebhookEvent
 from .invoice_issued_webhook_event import InvoiceIssuedWebhookEvent
@@ -137,7 +139,9 @@ UnwrapWebhookEvent: TypeAlias = Union[
     MetricEventsDroppedByWatermarkWebhookEvent,
     PaymentMethodCreatedWebhookEvent,
     PaymentMethodDeletedWebhookEvent,
+    PlanCreatedWebhookEvent,
     PlanDefaultVersionSetWebhookEvent,
+    PlanEditedWebhookEvent,
     PlanVersionCreatedWebhookEvent,
     PriceEditedWebhookEvent,
     ResourceEventTestWebhookEvent,
