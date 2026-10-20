@@ -57,7 +57,10 @@ async def test_async_base_url_components(prefix: str, suffix: str) -> None:
             "/customers/customer-id?view=full",
             "https://gateway.example/gateway%2Ftenant/customers/customer-id?workspace=demo&view=full",
         ),
-        ("https://other.example/customers/customer-id?view=full", "https://other.example/customers/customer-id?view=full"),
+        (
+            "https://other.example/customers/customer-id?view=full",
+            "https://other.example/customers/customer-id?view=full",
+        ),
     ],
 )
 def test_sync_request_query_and_absolute_url(endpoint: str, expected: str) -> None:
@@ -84,7 +87,10 @@ def test_sync_request_query_and_absolute_url(endpoint: str, expected: str) -> No
             "/customers/customer-id?view=full",
             "https://gateway.example/gateway%2Ftenant/customers/customer-id?workspace=demo&view=full",
         ),
-        ("https://other.example/customers/customer-id?view=full", "https://other.example/customers/customer-id?view=full"),
+        (
+            "https://other.example/customers/customer-id?view=full",
+            "https://other.example/customers/customer-id?view=full",
+        ),
     ],
 )
 async def test_async_request_query_and_absolute_url(endpoint: str, expected: str) -> None:
