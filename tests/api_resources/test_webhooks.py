@@ -24,8 +24,8 @@ class TestWebhooks:
         fake_now_dt = fake_now_dt.replace(tzinfo=timezone.utc)
     fake_now = fake_now_dt.astimezone()
 
-    payload = """{"id": "o4mmewpfNNTnjfZc", "created_at": "2024-03-27T15:42:29+00:00", "type": "resource_event.test", "properties": {"message": "A test webhook from Orb. Happy testing!"}}"""
-    signature = "9d25de966891ab0bc18754faf8d83d0980b44ae330fcc130b41a6cf3daf1f391"
+    payload = """{"id": "o4mmewpfNNTnjfZc", "created_at": "2024-03-27T15:42:29+00:00", "type": "resource_event.test", "payload_style": "expanded", "properties": {"message": "A test webhook from Orb. Happy testing!"}}"""
+    signature = "34c51e7436aca75f9c6799d3e1e5a0066265d8e5512df552aaa7e8464f2b8454"
     headers = {
         "X-Orb-Timestamp": timestamp,
         "X-Orb-Signature": f"v1={signature}",
@@ -206,8 +206,8 @@ class TestAsyncWebhooks:
         fake_now_dt = fake_now_dt.replace(tzinfo=timezone.utc)
     fake_now = fake_now_dt.astimezone()
 
-    payload = """{"id": "o4mmewpfNNTnjfZc", "created_at": "2024-03-27T15:42:29+00:00", "type": "resource_event.test", "properties": {"message": "A test webhook from Orb. Happy testing!"}}"""
-    signature = "9d25de966891ab0bc18754faf8d83d0980b44ae330fcc130b41a6cf3daf1f391"
+    payload = """{"id": "o4mmewpfNNTnjfZc", "created_at": "2024-03-27T15:42:29+00:00", "type": "resource_event.test", "payload_style": "expanded", "properties": {"message": "A test webhook from Orb. Happy testing!"}}"""
+    signature = "34c51e7436aca75f9c6799d3e1e5a0066265d8e5512df552aaa7e8464f2b8454"
     headers = {
         "X-Orb-Timestamp": timestamp,
         "X-Orb-Signature": f"v1={signature}",
