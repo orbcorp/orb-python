@@ -61,6 +61,12 @@ class InvoiceAccountingSyncSucceededWebhookEvent(BaseModel):
     end of a billing period, or as the result of an action, such as a cancellation.
     """
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
 
     type: Literal["invoice.accounting_sync_succeeded"]

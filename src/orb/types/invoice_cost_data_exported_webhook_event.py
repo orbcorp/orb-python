@@ -27,6 +27,12 @@ class InvoiceCostDataExportedWebhookEvent(BaseModel):
 
     invoice: str
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
 
     type: Literal["invoice.cost_data_exported"]

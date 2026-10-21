@@ -27,6 +27,12 @@ class InvoiceManuallyMarkedAsVoidWebhookEvent(BaseModel):
     end of a billing period, or as the result of an action, such as a cancellation.
     """
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: object
 
     type: Literal["invoice.manually_marked_as_void"]

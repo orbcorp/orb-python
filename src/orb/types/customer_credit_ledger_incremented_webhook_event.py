@@ -180,6 +180,12 @@ class CustomerCreditLedgerIncrementedWebhookEvent(BaseModel):
     information on what this timezone parameter influences within Orb.
     """
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
 
     type: Literal["customer.credit_ledger_incremented"]

@@ -22,6 +22,12 @@ class SubscriptionCancellationUnscheduledWebhookEvent(BaseModel):
     created_at: datetime
     """The time at which this event was created, to the second."""
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
 
     subscription: Subscription

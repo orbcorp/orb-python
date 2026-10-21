@@ -38,6 +38,12 @@ class InvoiceInvoiceDateElapsedWebhookEvent(BaseModel):
 
     invoice: Invoice
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
 
     type: Literal["invoice.invoice_date_elapsed"]

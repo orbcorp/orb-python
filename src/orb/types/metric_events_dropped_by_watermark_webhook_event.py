@@ -35,6 +35,12 @@ class MetricEventsDroppedByWatermarkWebhookEvent(BaseModel):
     created_at: datetime
     """The time at which this event was created, to the second."""
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: Properties
     """
     `window_start` and `window_end` are ISO-8601 strings rather than datetimes: the

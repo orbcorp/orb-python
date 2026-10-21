@@ -24,6 +24,12 @@ class CreditNoteIssuedWebhookEvent(BaseModel):
     been applied to a particular invoice.
     """
 
+    payload_style: Literal["expanded", "standard"]
+    """
+    The serialization style this payload was rendered in, as configured on the
+    endpoint.
+    """
+
     properties: object
 
     type: Literal["credit_note.issued"]
