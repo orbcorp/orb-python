@@ -62,7 +62,6 @@ if TYPE_CHECKING:
     from .resources.alerts import Alerts, AsyncAlerts
     from .resources.metrics import Metrics, AsyncMetrics
     from .resources.invoices import Invoices, AsyncInvoices
-    from .resources.webhooks import Webhooks, AsyncWebhooks
     from .resources.beta.beta import Beta, AsyncBeta
     from .resources.top_level import TopLevel, AsyncTopLevel
     from .resources.plans.plans import Plans, AsyncPlans
@@ -75,6 +74,7 @@ if TYPE_CHECKING:
     from .resources.coupons.coupons import Coupons, AsyncCoupons
     from .resources.licenses.licenses import Licenses, AsyncLicenses
     from .resources.webhook_endpoints import WebhookEndpoints, AsyncWebhookEndpoints
+    from .resources.webhooks.webhooks import Webhooks, AsyncWebhooks
     from .resources.invoice_line_items import InvoiceLineItems, AsyncInvoiceLineItems
     from .resources.customers.customers import Customers, AsyncCustomers
     from .resources.subscription_changes import SubscriptionChanges, AsyncSubscriptionChanges

@@ -8,20 +8,28 @@ import hashlib
 from typing import cast
 from datetime import datetime, timezone, timedelta
 
-from .._types import (
+from ..._types import (
     HeadersLike,
 )
-from .._utils import (
+from ..._utils import (
     get_required_header,
 )
-from .._models import construct_type
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types.unwrap_webhook_event import UnwrapWebhookEvent
+from .standard import Standard, AsyncStandard
+from ..._compat import cached_property
+from ..._models import construct_type
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ._payload_style import check_payload_style
+from ...types.unwrap_webhook_event import UnwrapWebhookEvent
+from ...types.webhooks.unwrap_standard_webhook_event import UnwrapStandardWebhookEvent
 
 __all__ = ["Webhooks", "AsyncWebhooks"]
 
 
 class Webhooks(SyncAPIResource):
+    @cached_property
+    def standard(self) -> Standard:
+        return Standard(self._client)
+
     def unwrap(
         self,
         payload: str | bytes,
@@ -29,15 +37,32 @@ class Webhooks(SyncAPIResource):
         *,
         secret: str | None = None,
     ) -> UnwrapWebhookEvent:
-        """Validates that the given payload was sent by Orb and parses the payload."""
+        """Validates that the given payload was sent by Orb and parses the payload.
+
+        For an endpoint configured for expanded payloads, the default. An endpoint configured for
+        standard payloads is parsed with `standard.unwrap_standard`.
+        """
         self.verify_signature(payload=payload, headers=headers, secret=secret)
+        body = json.loads(payload)
+        check_payload_style(body, expected="expanded")
         return cast(
             UnwrapWebhookEvent,
             construct_type(
                 type_=UnwrapWebhookEvent,
-                value=json.loads(payload),
+                value=body,
             ),
         )
+
+    def unwrap_standard(
+        self,
+        payload: str | bytes,
+        headers: HeadersLike,
+        *,
+        secret: str | None = None,
+    ) -> UnwrapStandardWebhookEvent:
+        """Validates that the given payload was sent by Orb and parses the payload, for an endpoint
+        configured for standard payloads. The same as `standard.unwrap_standard`."""
+        return self.standard.unwrap_standard(payload, headers, secret=secret)
 
     def verify_signature(
         self,
@@ -116,6 +141,10 @@ class Webhooks(SyncAPIResource):
 
 
 class AsyncWebhooks(AsyncAPIResource):
+    @cached_property
+    def standard(self) -> AsyncStandard:
+        return AsyncStandard(self._client)
+
     def unwrap(
         self,
         payload: str | bytes,
@@ -123,15 +152,32 @@ class AsyncWebhooks(AsyncAPIResource):
         *,
         secret: str | None = None,
     ) -> UnwrapWebhookEvent:
-        """Validates that the given payload was sent by Orb and parses the payload."""
+        """Validates that the given payload was sent by Orb and parses the payload.
+
+        For an endpoint configured for expanded payloads, the default. An endpoint configured for
+        standard payloads is parsed with `standard.unwrap_standard`.
+        """
         self.verify_signature(payload=payload, headers=headers, secret=secret)
+        body = json.loads(payload)
+        check_payload_style(body, expected="expanded")
         return cast(
             UnwrapWebhookEvent,
             construct_type(
                 type_=UnwrapWebhookEvent,
-                value=json.loads(payload),
+                value=body,
             ),
         )
+
+    def unwrap_standard(
+        self,
+        payload: str | bytes,
+        headers: HeadersLike,
+        *,
+        secret: str | None = None,
+    ) -> UnwrapStandardWebhookEvent:
+        """Validates that the given payload was sent by Orb and parses the payload, for an endpoint
+        configured for standard payloads. The same as `standard.unwrap_standard`."""
+        return self.standard.unwrap_standard(payload, headers, secret=secret)
 
     def verify_signature(
         self,

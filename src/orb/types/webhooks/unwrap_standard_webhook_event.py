@@ -1,0 +1,228 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from typing import Union
+from typing_extensions import TypeAlias
+
+from .plan_edited_standard_webhook_event import PlanEditedStandardWebhookEvent
+from .plan_created_standard_webhook_event import PlanCreatedStandardWebhookEvent
+from .price_edited_standard_webhook_event import PriceEditedStandardWebhookEvent
+from .invoice_edited_standard_webhook_event import InvoiceEditedStandardWebhookEvent
+from .invoice_issued_standard_webhook_event import InvoiceIssuedStandardWebhookEvent
+from .customer_edited_standard_webhook_event import CustomerEditedStandardWebhookEvent
+from .customer_created_standard_webhook_event import CustomerCreatedStandardWebhookEvent
+from .backfill_reverted_standard_webhook_event import BackfillRevertedStandardWebhookEvent
+from .backfill_reflected_standard_webhook_event import BackfillReflectedStandardWebhookEvent
+from .credit_note_issued_standard_webhook_event import CreditNoteIssuedStandardWebhookEvent
+from .subscription_ended_standard_webhook_event import SubscriptionEndedStandardWebhookEvent
+from .invoice_sync_failed_standard_webhook_event import InvoiceSyncFailedStandardWebhookEvent
+from .resource_event_test_standard_webhook_event import ResourceEventTestStandardWebhookEvent
+from .subscription_edited_standard_webhook_event import SubscriptionEditedStandardWebhookEvent
+from .invoice_issue_failed_standard_webhook_event import InvoiceIssueFailedStandardWebhookEvent
+from .plan_version_created_standard_webhook_event import PlanVersionCreatedStandardWebhookEvent
+from .subscription_created_standard_webhook_event import SubscriptionCreatedStandardWebhookEvent
+from .subscription_started_standard_webhook_event import SubscriptionStartedStandardWebhookEvent
+from .event_unmatched_event_standard_webhook_event import EventUnmatchedEventStandardWebhookEvent
+from .billable_metric_edited_standard_webhook_event import BillableMetricEditedStandardWebhookEvent
+from .invoice_issued_summary_standard_webhook_event import InvoiceIssuedSummaryStandardWebhookEvent
+from .invoice_payment_failed_standard_webhook_event import InvoicePaymentFailedStandardWebhookEvent
+from .invoice_sync_succeeded_standard_webhook_event import InvoiceSyncSucceededStandardWebhookEvent
+from .payment_method_created_standard_webhook_event import PaymentMethodCreatedStandardWebhookEvent
+from .payment_method_deleted_standard_webhook_event import PaymentMethodDeletedStandardWebhookEvent
+from .plan_default_version_set_standard_webhook_event import PlanDefaultVersionSetStandardWebhookEvent
+from .subscription_trial_ended_standard_webhook_event import SubscriptionTrialEndedStandardWebhookEvent
+from .invoice_payment_succeeded_standard_webhook_event import InvoicePaymentSucceededStandardWebhookEvent
+from .invoice_undo_mark_as_paid_standard_webhook_event import InvoiceUndoMarkAsPaidStandardWebhookEvent
+from .subscription_plan_changed_standard_webhook_event import SubscriptionPlanChangedStandardWebhookEvent
+from .credit_note_marked_as_void_standard_webhook_event import CreditNoteMarkedAsVoidStandardWebhookEvent
+from .invoice_cost_data_exported_standard_webhook_event import InvoiceCostDataExportedStandardWebhookEvent
+from .invoice_payment_processing_standard_webhook_event import InvoicePaymentProcessingStandardWebhookEvent
+from .subscription_cost_exceeded_standard_webhook_event import SubscriptionCostExceededStandardWebhookEvent
+from .data_exports_transfer_error_standard_webhook_event import DataExportsTransferErrorStandardWebhookEvent
+from .subscription_alert_disabled_standard_webhook_event import SubscriptionAlertDisabledStandardWebhookEvent
+from .subscription_spend_exceeded_standard_webhook_event import SubscriptionSpendExceededStandardWebhookEvent
+from .subscription_usage_exceeded_standard_webhook_event import SubscriptionUsageExceededStandardWebhookEvent
+from .invoice_invoice_date_elapsed_standard_webhook_event import InvoiceInvoiceDateElapsedStandardWebhookEvent
+from .data_exports_transfer_success_standard_webhook_event import DataExportsTransferSuccessStandardWebhookEvent
+from .invoice_accounting_sync_failed_standard_webhook_event import InvoiceAccountingSyncFailedStandardWebhookEvent
+from .invoice_dunning_schedule_ended_standard_webhook_event import InvoiceDunningScheduleEndedStandardWebhookEvent
+from .invoice_dunning_schedule_reset_standard_webhook_event import InvoiceDunningScheduleResetStandardWebhookEvent
+from .customer_accounting_sync_failed_standard_webhook_event import CustomerAccountingSyncFailedStandardWebhookEvent
+from .customer_credit_balance_dropped_standard_webhook_event import CustomerCreditBalanceDroppedStandardWebhookEvent
+from .invoice_manually_marked_as_paid_standard_webhook_event import InvoiceManuallyMarkedAsPaidStandardWebhookEvent
+from .invoice_manually_marked_as_void_standard_webhook_event import InvoiceManuallyMarkedAsVoidStandardWebhookEvent
+from .customer_credit_balance_depleted_standard_webhook_event import CustomerCreditBalanceDepletedStandardWebhookEvent
+from .ingestion_unmatched_customer_ids_standard_webhook_event import IngestionUnmatchedCustomerIDsStandardWebhookEvent
+from .invoice_dunning_schedule_created_standard_webhook_event import InvoiceDunningScheduleCreatedStandardWebhookEvent
+from .customer_credit_balance_recovered_standard_webhook_event import CustomerCreditBalanceRecoveredStandardWebhookEvent
+from .invoice_accounting_sync_succeeded_standard_webhook_event import InvoiceAccountingSyncSucceededStandardWebhookEvent
+from .subscription_plan_version_changed_standard_webhook_event import SubscriptionPlanVersionChangedStandardWebhookEvent
+from .credit_note_accounting_sync_failed_standard_webhook_event import (
+    CreditNoteAccountingSyncFailedStandardWebhookEvent,
+)
+from .customer_accounting_sync_succeeded_standard_webhook_event import (
+    CustomerAccountingSyncSucceededStandardWebhookEvent,
+)
+from .customer_credit_ledger_incremented_standard_webhook_event import (
+    CustomerCreditLedgerIncrementedStandardWebhookEvent,
+)
+from .metric_events_dropped_by_watermark_standard_webhook_event import (
+    MetricEventsDroppedByWatermarkStandardWebhookEvent,
+)
+from .sales_order_accounting_sync_failed_standard_webhook_event import (
+    SalesOrderAccountingSyncFailedStandardWebhookEvent,
+)
+from .subscription_grouped_cost_exceeded_standard_webhook_event import (
+    SubscriptionGroupedCostExceededStandardWebhookEvent,
+)
+from .subscription_plan_change_scheduled_standard_webhook_event import (
+    SubscriptionPlanChangeScheduledStandardWebhookEvent,
+)
+from .transaction_accounting_sync_failed_standard_webhook_event import (
+    TransactionAccountingSyncFailedStandardWebhookEvent,
+)
+from .credit_block_accounting_sync_failed_standard_webhook_event import (
+    CreditBlockAccountingSyncFailedStandardWebhookEvent,
+)
+from .subscription_accounting_sync_failed_standard_webhook_event import (
+    SubscriptionAccountingSyncFailedStandardWebhookEvent,
+)
+from .subscription_cancellation_scheduled_standard_webhook_event import (
+    SubscriptionCancellationScheduledStandardWebhookEvent,
+)
+from .customer_balance_transaction_created_standard_webhook_event import (
+    CustomerBalanceTransactionCreatedStandardWebhookEvent,
+)
+from .credit_note_accounting_sync_succeeded_standard_webhook_event import (
+    CreditNoteAccountingSyncSucceededStandardWebhookEvent,
+)
+from .sales_order_accounting_sync_succeeded_standard_webhook_event import (
+    SalesOrderAccountingSyncSucceededStandardWebhookEvent,
+)
+from .subscription_cancellation_unscheduled_standard_webhook_event import (
+    SubscriptionCancellationUnscheduledStandardWebhookEvent,
+)
+from .subscription_license_allocation_reset_standard_webhook_event import (
+    SubscriptionLicenseAllocationResetStandardWebhookEvent,
+)
+from .transaction_accounting_sync_succeeded_standard_webhook_event import (
+    TransactionAccountingSyncSucceededStandardWebhookEvent,
+)
+from .credit_block_accounting_sync_succeeded_standard_webhook_event import (
+    CreditBlockAccountingSyncSucceededStandardWebhookEvent,
+)
+from .invoice_due_date_recalculation_started_standard_webhook_event import (
+    InvoiceDueDateRecalculationStartedStandardWebhookEvent,
+)
+from .invoice_dunning_schedule_step_executed_standard_webhook_event import (
+    InvoiceDunningScheduleStepExecutedStandardWebhookEvent,
+)
+from .subscription_accounting_sync_succeeded_standard_webhook_event import (
+    SubscriptionAccountingSyncSucceededStandardWebhookEvent,
+)
+from .invoice_due_date_recalculation_canceled_standard_webhook_event import (
+    InvoiceDueDateRecalculationCanceledStandardWebhookEvent,
+)
+from .subscription_fixed_fee_quantity_updated_standard_webhook_event import (
+    SubscriptionFixedFeeQuantityUpdatedStandardWebhookEvent,
+)
+from .invoice_due_date_recalculation_completed_standard_webhook_event import (
+    InvoiceDueDateRecalculationCompletedStandardWebhookEvent,
+)
+from .invoice_automation_schedule_step_executed_standard_webhook_event import (
+    InvoiceAutomationScheduleStepExecutedStandardWebhookEvent,
+)
+from .subscription_invoicing_threshold_exceeded_standard_webhook_event import (
+    SubscriptionInvoicingThresholdExceededStandardWebhookEvent,
+)
+from .subscription_plan_version_change_scheduled_standard_webhook_event import (
+    SubscriptionPlanVersionChangeScheduledStandardWebhookEvent,
+)
+from .subscription_license_balance_threshold_reached_standard_webhook_event import (
+    SubscriptionLicenseBalanceThresholdReachedStandardWebhookEvent,
+)
+
+__all__ = ["UnwrapStandardWebhookEvent"]
+
+UnwrapStandardWebhookEvent: TypeAlias = Union[
+    BackfillReflectedStandardWebhookEvent,
+    BackfillRevertedStandardWebhookEvent,
+    BillableMetricEditedStandardWebhookEvent,
+    CreditBlockAccountingSyncFailedStandardWebhookEvent,
+    CreditBlockAccountingSyncSucceededStandardWebhookEvent,
+    CreditNoteAccountingSyncFailedStandardWebhookEvent,
+    CreditNoteAccountingSyncSucceededStandardWebhookEvent,
+    CreditNoteIssuedStandardWebhookEvent,
+    CreditNoteMarkedAsVoidStandardWebhookEvent,
+    CustomerAccountingSyncFailedStandardWebhookEvent,
+    CustomerAccountingSyncSucceededStandardWebhookEvent,
+    CustomerBalanceTransactionCreatedStandardWebhookEvent,
+    CustomerCreatedStandardWebhookEvent,
+    CustomerCreditBalanceDepletedStandardWebhookEvent,
+    CustomerCreditBalanceDroppedStandardWebhookEvent,
+    CustomerCreditBalanceRecoveredStandardWebhookEvent,
+    CustomerCreditLedgerIncrementedStandardWebhookEvent,
+    CustomerEditedStandardWebhookEvent,
+    DataExportsTransferErrorStandardWebhookEvent,
+    DataExportsTransferSuccessStandardWebhookEvent,
+    EventUnmatchedEventStandardWebhookEvent,
+    IngestionUnmatchedCustomerIDsStandardWebhookEvent,
+    InvoiceAccountingSyncFailedStandardWebhookEvent,
+    InvoiceAccountingSyncSucceededStandardWebhookEvent,
+    InvoiceAutomationScheduleStepExecutedStandardWebhookEvent,
+    InvoiceCostDataExportedStandardWebhookEvent,
+    InvoiceDunningScheduleCreatedStandardWebhookEvent,
+    InvoiceDunningScheduleEndedStandardWebhookEvent,
+    InvoiceDunningScheduleResetStandardWebhookEvent,
+    InvoiceDunningScheduleStepExecutedStandardWebhookEvent,
+    InvoiceEditedStandardWebhookEvent,
+    InvoiceInvoiceDateElapsedStandardWebhookEvent,
+    InvoiceIssueFailedStandardWebhookEvent,
+    InvoiceIssuedStandardWebhookEvent,
+    InvoiceIssuedSummaryStandardWebhookEvent,
+    InvoiceManuallyMarkedAsPaidStandardWebhookEvent,
+    InvoiceManuallyMarkedAsVoidStandardWebhookEvent,
+    InvoicePaymentFailedStandardWebhookEvent,
+    InvoicePaymentProcessingStandardWebhookEvent,
+    InvoicePaymentSucceededStandardWebhookEvent,
+    InvoiceSyncFailedStandardWebhookEvent,
+    InvoiceSyncSucceededStandardWebhookEvent,
+    InvoiceUndoMarkAsPaidStandardWebhookEvent,
+    InvoiceDueDateRecalculationCanceledStandardWebhookEvent,
+    InvoiceDueDateRecalculationCompletedStandardWebhookEvent,
+    InvoiceDueDateRecalculationStartedStandardWebhookEvent,
+    MetricEventsDroppedByWatermarkStandardWebhookEvent,
+    PaymentMethodCreatedStandardWebhookEvent,
+    PaymentMethodDeletedStandardWebhookEvent,
+    PlanCreatedStandardWebhookEvent,
+    PlanDefaultVersionSetStandardWebhookEvent,
+    PlanEditedStandardWebhookEvent,
+    PlanVersionCreatedStandardWebhookEvent,
+    PriceEditedStandardWebhookEvent,
+    ResourceEventTestStandardWebhookEvent,
+    SalesOrderAccountingSyncFailedStandardWebhookEvent,
+    SalesOrderAccountingSyncSucceededStandardWebhookEvent,
+    SubscriptionAccountingSyncFailedStandardWebhookEvent,
+    SubscriptionAccountingSyncSucceededStandardWebhookEvent,
+    SubscriptionAlertDisabledStandardWebhookEvent,
+    SubscriptionCancellationScheduledStandardWebhookEvent,
+    SubscriptionCancellationUnscheduledStandardWebhookEvent,
+    SubscriptionCostExceededStandardWebhookEvent,
+    SubscriptionCreatedStandardWebhookEvent,
+    SubscriptionEditedStandardWebhookEvent,
+    SubscriptionEndedStandardWebhookEvent,
+    SubscriptionFixedFeeQuantityUpdatedStandardWebhookEvent,
+    SubscriptionGroupedCostExceededStandardWebhookEvent,
+    SubscriptionInvoicingThresholdExceededStandardWebhookEvent,
+    SubscriptionLicenseAllocationResetStandardWebhookEvent,
+    SubscriptionLicenseBalanceThresholdReachedStandardWebhookEvent,
+    SubscriptionPlanChangeScheduledStandardWebhookEvent,
+    SubscriptionPlanChangedStandardWebhookEvent,
+    SubscriptionPlanVersionChangeScheduledStandardWebhookEvent,
+    SubscriptionPlanVersionChangedStandardWebhookEvent,
+    SubscriptionSpendExceededStandardWebhookEvent,
+    SubscriptionStartedStandardWebhookEvent,
+    SubscriptionTrialEndedStandardWebhookEvent,
+    SubscriptionUsageExceededStandardWebhookEvent,
+    TransactionAccountingSyncFailedStandardWebhookEvent,
+    TransactionAccountingSyncSucceededStandardWebhookEvent,
+]
