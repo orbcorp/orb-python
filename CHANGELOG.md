@@ -5,7 +5,7 @@
 
 ### Features
 
-* **api:** api update ([04f3ecc](https://github.com/orbcorp/orb-python/commit/04f3eccafeba7f35dd2194801a29ce000188da14))
+* **api:** add `webhooks.standard.unwrap_standard`, aliased as `webhooks.unwrap_standard`, which verifies and parses standard webhook payloads; `webhooks.unwrap` raises on a standard payload ([04f3ecc](https://github.com/orbcorp/orb-python/commit/04f3eccafeba7f35dd2194801a29ce000188da14))
 
 
 ### Bug Fixes
