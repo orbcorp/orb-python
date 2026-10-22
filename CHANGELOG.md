@@ -1,5 +1,23 @@
 # Changelog
 
+## [4.87.0](https://github.com/orbcorp/orb-python/compare/v4.86.0...v4.87.0) (2026-10-22)
+
+
+### Features
+
+* **api:** api update ([04f3ecc](https://github.com/orbcorp/orb-python/commit/04f3eccafeba7f35dd2194801a29ce000188da14))
+
+
+### Bug Fixes
+
+* **tests:** add payload_style to webhook test fixture ([ff4a045](https://github.com/orbcorp/orb-python/commit/ff4a0455f2a28e9328dba5142ebed9675f6b4080))
+* **tests:** add payload_style to webhook test fixture and recompute signature ([b81e7b6](https://github.com/orbcorp/orb-python/commit/b81e7b642c8c72ba9afdcb0ccbda942a53fbe149))
+
+
+### Chores
+
+* correct the payload styles changelog entry ([#4](https://github.com/orbcorp/orb-python/issues/4)) ([abc3f88](https://github.com/orbcorp/orb-python/commit/abc3f8895629a9a12c8cb36f8feec239bf5f58ba))
+
 ## [4.86.0](https://github.com/orbcorp/orb-python/compare/v4.85.0...v4.86.0) (2026-10-21)
 
 
