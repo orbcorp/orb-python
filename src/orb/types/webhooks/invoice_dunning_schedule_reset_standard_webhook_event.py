@@ -144,7 +144,10 @@ class InvoicePaymentAttempt(BaseModel):
 
 
 class Invoice(BaseModel):
-    """#InvoiceApiResourceWithoutLineItems"""
+    """An invoice without its line items, subtotal, discounts, minimums or maximums.
+
+    Fetch the invoice for those.
+    """
 
     id: str
 
@@ -515,7 +518,10 @@ class InvoiceDunningScheduleResetStandardWebhookEvent(BaseModel):
     """The time at which this event was created, to the second."""
 
     invoice: Invoice
-    """#InvoiceApiResourceWithoutLineItems"""
+    """An invoice without its line items, subtotal, discounts, minimums or maximums.
+
+    Fetch the invoice for those.
+    """
 
     payload_style: Literal["expanded", "standard"]
     """

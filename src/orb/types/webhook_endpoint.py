@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
@@ -26,6 +27,14 @@ class WebhookEndpoint(BaseModel):
     """The webhook event types sent to this endpoint.
 
     If null, all event types are sent.
+    """
+
+    payload_style: Literal["expanded", "standard"]
+    """The payload style of the webhook events sent to this endpoint.
+
+    `standard` payloads include each object's own fields and references to related
+    objects, without invoice line items or subscription price intervals. `expanded`
+    payloads include every object fully expanded.
     """
 
     url: str

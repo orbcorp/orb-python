@@ -252,9 +252,8 @@ class SubscriptionPlan(BaseModel):
 
 
 class Subscription(BaseModel):
-    """A lightweight subscription representation for webhook payloads.
-
-    This avoids the expensive to_subscription_params() call required for full serialization.
+    """
+    The subscription in a license or grouped cost webhook payload: its status, dates, plan and customer.
     """
 
     id: str
@@ -292,10 +291,9 @@ class SubscriptionLicenseBalanceThresholdReachedWebhookEvent(BaseModel):
     """
 
     subscription: Subscription
-    """A lightweight subscription representation for webhook payloads.
-
-    This avoids the expensive to_subscription_params() call required for full
-    serialization.
+    """
+    The subscription in a license or grouped cost webhook payload: its status,
+    dates, plan and customer.
     """
 
     type: Literal["subscription.license_balance_threshold_reached"]

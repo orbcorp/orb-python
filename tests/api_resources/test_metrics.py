@@ -81,7 +81,9 @@ class TestMetrics:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         metric = client.metrics.update(
             metric_id="metric_id",
+            description="Sum of bytes downloaded in fast mode",
             metadata={"foo": "string"},
+            name="Bytes downloaded",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 
@@ -130,6 +132,7 @@ class TestMetrics:
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             limit=1,
+            status="active",
         )
         assert_matches_type(SyncPage[BillableMetric], metric, path=["response"])
 
@@ -259,7 +262,9 @@ class TestAsyncMetrics:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         metric = await async_client.metrics.update(
             metric_id="metric_id",
+            description="Sum of bytes downloaded in fast mode",
             metadata={"foo": "string"},
+            name="Bytes downloaded",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 
@@ -308,6 +313,7 @@ class TestAsyncMetrics:
             created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
             cursor="cursor",
             limit=1,
+            status="active",
         )
         assert_matches_type(AsyncPage[BillableMetric], metric, path=["response"])
 

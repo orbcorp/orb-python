@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
 
@@ -18,4 +18,10 @@ class WebhookEndpointCreateParams(TypedDict, total=False):
     """The webhook event types to send to this endpoint.
 
     If omitted or null, all event types are sent.
+    """
+
+    payload_style: Optional[Literal["expanded", "standard"]]
+    """The payload style of the webhook events sent to this endpoint.
+
+    If omitted or null, the account's default style is used.
     """

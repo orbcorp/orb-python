@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -50,6 +51,7 @@ class WebhookEndpoints(SyncAPIResource):
         *,
         url: str,
         enabled_event_types: Optional[SequenceNotStr[str]] | Omit = omit,
+        payload_style: Optional[Literal["expanded", "standard"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,6 +71,9 @@ class WebhookEndpoints(SyncAPIResource):
           enabled_event_types: The webhook event types to send to this endpoint. If omitted or null, all event
               types are sent.
 
+          payload_style: The payload style of the webhook events sent to this endpoint. If omitted or
+              null, the account's default style is used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -85,6 +90,7 @@ class WebhookEndpoints(SyncAPIResource):
                 {
                     "url": url,
                     "enabled_event_types": enabled_event_types,
+                    "payload_style": payload_style,
                 },
                 webhook_endpoint_create_params.WebhookEndpointCreateParams,
             ),
@@ -138,6 +144,7 @@ class WebhookEndpoints(SyncAPIResource):
         webhook_endpoint_id: str,
         *,
         enabled_event_types: Optional[SequenceNotStr[str]] | Omit = omit,
+        payload_style: Optional[Literal["expanded", "standard"]] | Omit = omit,
         url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -153,6 +160,9 @@ class WebhookEndpoints(SyncAPIResource):
         Args:
           enabled_event_types: The webhook event types to send to this endpoint. Null sends all event types;
               omit to leave them unchanged.
+
+          payload_style: The payload style of the webhook events sent to this endpoint. Applies to events
+              created after the change; omit to leave it unchanged.
 
           url: The HTTPS URL that Orb sends webhook events to.
 
@@ -175,6 +185,7 @@ class WebhookEndpoints(SyncAPIResource):
             body=maybe_transform(
                 {
                     "enabled_event_types": enabled_event_types,
+                    "payload_style": payload_style,
                     "url": url,
                 },
                 webhook_endpoint_update_params.WebhookEndpointUpdateParams,
@@ -399,6 +410,7 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
         *,
         url: str,
         enabled_event_types: Optional[SequenceNotStr[str]] | Omit = omit,
+        payload_style: Optional[Literal["expanded", "standard"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -418,6 +430,9 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
           enabled_event_types: The webhook event types to send to this endpoint. If omitted or null, all event
               types are sent.
 
+          payload_style: The payload style of the webhook events sent to this endpoint. If omitted or
+              null, the account's default style is used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -434,6 +449,7 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
                 {
                     "url": url,
                     "enabled_event_types": enabled_event_types,
+                    "payload_style": payload_style,
                 },
                 webhook_endpoint_create_params.WebhookEndpointCreateParams,
             ),
@@ -487,6 +503,7 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
         webhook_endpoint_id: str,
         *,
         enabled_event_types: Optional[SequenceNotStr[str]] | Omit = omit,
+        payload_style: Optional[Literal["expanded", "standard"]] | Omit = omit,
         url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -502,6 +519,9 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
         Args:
           enabled_event_types: The webhook event types to send to this endpoint. Null sends all event types;
               omit to leave them unchanged.
+
+          payload_style: The payload style of the webhook events sent to this endpoint. Applies to events
+              created after the change; omit to leave it unchanged.
 
           url: The HTTPS URL that Orb sends webhook events to.
 
@@ -524,6 +544,7 @@ class AsyncWebhookEndpoints(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "enabled_event_types": enabled_event_types,
+                    "payload_style": payload_style,
                     "url": url,
                 },
                 webhook_endpoint_update_params.WebhookEndpointUpdateParams,

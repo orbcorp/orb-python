@@ -33,6 +33,7 @@ class TestWebhookEndpoints:
         webhook_endpoint = client.webhook_endpoints.create(
             url="url",
             enabled_event_types=["string"],
+            payload_style="expanded",
         )
         assert_matches_type(WebhookEndpointWithSecret, webhook_endpoint, path=["response"])
 
@@ -110,6 +111,7 @@ class TestWebhookEndpoints:
         webhook_endpoint = client.webhook_endpoints.update(
             webhook_endpoint_id="webhook_endpoint_id",
             enabled_event_types=["string"],
+            payload_style="expanded",
             url="url",
         )
         assert_matches_type(WebhookEndpoint, webhook_endpoint, path=["response"])
@@ -310,6 +312,7 @@ class TestAsyncWebhookEndpoints:
         webhook_endpoint = await async_client.webhook_endpoints.create(
             url="url",
             enabled_event_types=["string"],
+            payload_style="expanded",
         )
         assert_matches_type(WebhookEndpointWithSecret, webhook_endpoint, path=["response"])
 
@@ -387,6 +390,7 @@ class TestAsyncWebhookEndpoints:
         webhook_endpoint = await async_client.webhook_endpoints.update(
             webhook_endpoint_id="webhook_endpoint_id",
             enabled_event_types=["string"],
+            payload_style="expanded",
             url="url",
         )
         assert_matches_type(WebhookEndpoint, webhook_endpoint, path=["response"])

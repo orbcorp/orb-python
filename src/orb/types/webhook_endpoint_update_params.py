@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Literal, TypedDict
 
 from .._types import SequenceNotStr
 
@@ -15,6 +15,12 @@ class WebhookEndpointUpdateParams(TypedDict, total=False):
     """The webhook event types to send to this endpoint.
 
     Null sends all event types; omit to leave them unchanged.
+    """
+
+    payload_style: Optional[Literal["expanded", "standard"]]
+    """The payload style of the webhook events sent to this endpoint.
+
+    Applies to events created after the change; omit to leave it unchanged.
     """
 
     url: Optional[str]

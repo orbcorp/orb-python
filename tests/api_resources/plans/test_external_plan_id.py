@@ -31,6 +31,7 @@ class TestExternalPlanID:
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
+            name="name",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 
@@ -125,6 +126,7 @@ class TestAsyncExternalPlanID:
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
+            name="name",
         )
         assert_matches_type(Plan, external_plan_id, path=["response"])
 

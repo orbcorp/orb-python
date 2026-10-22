@@ -64,8 +64,8 @@ class SubscriptionPlan(BaseModel):
 
 class Subscription(BaseModel):
     """
-    The subscription in a standard webhook payload: the fields readable without
-    to_subscription_params(), which every interval, billing period and plan phase depends on.
+    The subscription in a standard webhook payload: its own fields, with its plan and customer as references.
+    Fetch the subscription for its price intervals, billing periods, plan phases and other derived fields.
     """
 
     id: str
@@ -117,9 +117,9 @@ class SubscriptionAccountingSyncFailedStandardWebhookEvent(BaseModel):
 
     subscription: Subscription
     """
-    The subscription in a standard webhook payload: the fields readable without
-    to_subscription_params(), which every interval, billing period and plan phase
-    depends on.
+    The subscription in a standard webhook payload: its own fields, with its plan
+    and customer as references. Fetch the subscription for its price intervals,
+    billing periods, plan phases and other derived fields.
     """
 
     type: Literal["subscription.accounting_sync_failed"]

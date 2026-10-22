@@ -140,7 +140,10 @@ class PaymentAttempt(BaseModel):
 
 
 class InvoiceIssueSummaryResponse(BaseModel):
-    """#InvoiceApiResourceWithoutLineItems"""
+    """An invoice without its line items, subtotal, discounts, minimums or maximums.
+
+    Fetch the invoice for those.
+    """
 
     id: str
 

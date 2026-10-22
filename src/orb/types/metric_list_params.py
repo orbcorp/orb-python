@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Optional
 from datetime import datetime
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -29,3 +29,6 @@ class MetricListParams(TypedDict, total=False):
 
     limit: int
     """The number of items to fetch. Defaults to 20."""
+
+    status: Optional[Literal["active", "archived", "draft"]]
+    """The metric status to filter to ('active', 'archived', or 'draft')."""

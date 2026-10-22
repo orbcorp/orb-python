@@ -180,6 +180,7 @@ class Plans(SyncAPIResource):
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -189,8 +190,9 @@ class Plans(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, `description`, and
-        `metadata` of an existing plan.
+        This endpoint can be used to update the `name`, `external_plan_id`,
+        `description`, and `metadata` of an existing plan. A plan's `name` cannot be
+        empty.
 
         Other fields on a plan are currently immutable.
 
@@ -204,6 +206,8 @@ class Plans(SyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name of the plan.
 
           extra_headers: Send extra headers
 
@@ -224,6 +228,7 @@ class Plans(SyncAPIResource):
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
+                    "name": name,
                 },
                 plan_update_params.PlanUpdateParams,
             ),
@@ -493,6 +498,7 @@ class AsyncPlans(AsyncAPIResource):
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -502,8 +508,9 @@ class AsyncPlans(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Plan:
         """
-        This endpoint can be used to update the `external_plan_id`, `description`, and
-        `metadata` of an existing plan.
+        This endpoint can be used to update the `name`, `external_plan_id`,
+        `description`, and `metadata` of an existing plan. A plan's `name` cannot be
+        empty.
 
         Other fields on a plan are currently immutable.
 
@@ -517,6 +524,8 @@ class AsyncPlans(AsyncAPIResource):
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name of the plan.
 
           extra_headers: Send extra headers
 
@@ -537,6 +546,7 @@ class AsyncPlans(AsyncAPIResource):
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
+                    "name": name,
                 },
                 plan_update_params.PlanUpdateParams,
             ),

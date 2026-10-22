@@ -25,3 +25,6 @@ class ExternalPlanIDUpdateParams(TypedDict, total=False):
     Individual keys can be removed by setting the value to `null`, and the entire
     metadata mapping can be cleared by setting `metadata` to `null`.
     """
+
+    name: Optional[str]
+    """The name of the plan."""

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, Union, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -116,7 +117,9 @@ class Metrics(SyncAPIResource):
         self,
         metric_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -125,16 +128,20 @@ class Metrics(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BillableMetric:
-        """This endpoint allows you to update the `metadata` property on a metric.
-
-        If you
-        pass `null` for the metadata value, it will clear any existing metadata for that
-        invoice.
+        """
+        This endpoint allows you to update the `name`, `description`, and `metadata`
+        properties on a metric. Fields left out of the request are not changed, and
+        `name` cannot be empty. If you pass `null` for the metadata value, it will clear
+        any existing metadata for that metric.
 
         Args:
+          description: A description of the metric.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name of the metric.
 
           extra_headers: Send extra headers
 
@@ -150,7 +157,14 @@ class Metrics(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return self._put(
             path_template("/metrics/{metric_id}", metric_id=metric_id),
-            body=maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "metadata": metadata,
+                    "name": name,
+                },
+                metric_update_params.MetricUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -170,6 +184,7 @@ class Metrics(SyncAPIResource):
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        status: Optional[Literal["active", "archived", "draft"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -182,11 +197,16 @@ class Metrics(SyncAPIResource):
         It returns
         information about the metrics including its name, description, and item.
 
+        Pass `status` to only return metrics with that status, e.g. `status=active` to
+        leave out archived metrics.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
+
+          status: The metric status to filter to ('active', 'archived', or 'draft').
 
           extra_headers: Send extra headers
 
@@ -212,6 +232,7 @@ class Metrics(SyncAPIResource):
                         "created_at_lte": created_at_lte,
                         "cursor": cursor,
                         "limit": limit,
+                        "status": status,
                     },
                     metric_list_params.MetricListParams,
                 ),
@@ -350,7 +371,9 @@ class AsyncMetrics(AsyncAPIResource):
         self,
         metric_id: str,
         *,
+        description: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -359,16 +382,20 @@ class AsyncMetrics(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BillableMetric:
-        """This endpoint allows you to update the `metadata` property on a metric.
-
-        If you
-        pass `null` for the metadata value, it will clear any existing metadata for that
-        invoice.
+        """
+        This endpoint allows you to update the `name`, `description`, and `metadata`
+        properties on a metric. Fields left out of the request are not changed, and
+        `name` cannot be empty. If you pass `null` for the metadata value, it will clear
+        any existing metadata for that metric.
 
         Args:
+          description: A description of the metric.
+
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
+
+          name: The name of the metric.
 
           extra_headers: Send extra headers
 
@@ -384,7 +411,14 @@ class AsyncMetrics(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
         return await self._put(
             path_template("/metrics/{metric_id}", metric_id=metric_id),
-            body=await async_maybe_transform({"metadata": metadata}, metric_update_params.MetricUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "description": description,
+                    "metadata": metadata,
+                    "name": name,
+                },
+                metric_update_params.MetricUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -404,6 +438,7 @@ class AsyncMetrics(AsyncAPIResource):
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
+        status: Optional[Literal["active", "archived", "draft"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -416,11 +451,16 @@ class AsyncMetrics(AsyncAPIResource):
         It returns
         information about the metrics including its name, description, and item.
 
+        Pass `status` to only return metrics with that status, e.g. `status=active` to
+        leave out archived metrics.
+
         Args:
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
           limit: The number of items to fetch. Defaults to 20.
+
+          status: The metric status to filter to ('active', 'archived', or 'draft').
 
           extra_headers: Send extra headers
 
@@ -446,6 +486,7 @@ class AsyncMetrics(AsyncAPIResource):
                         "created_at_lte": created_at_lte,
                         "cursor": cursor,
                         "limit": limit,
+                        "status": status,
                     },
                     metric_list_params.MetricListParams,
                 ),
