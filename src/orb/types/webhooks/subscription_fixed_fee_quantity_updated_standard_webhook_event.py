@@ -35,8 +35,9 @@ class SubscriptionPlan(BaseModel):
 
 class Subscription(BaseModel):
     """
-    The subscription in a standard webhook payload: its own fields, with its plan and customer as references.
-    Fetch the subscription for its price intervals, billing periods, plan phases and other derived fields.
+    A subscription's own fields, with its plan and customer as references, as listed by List subscription summaries
+    and carried in standard webhook payloads. Fetch the subscription for its price intervals, billing periods, plan
+    phases and other derived fields.
     """
 
     id: str
@@ -86,9 +87,10 @@ class SubscriptionFixedFeeQuantityUpdatedStandardWebhookEvent(BaseModel):
 
     subscription: Subscription
     """
-    The subscription in a standard webhook payload: its own fields, with its plan
-    and customer as references. Fetch the subscription for its price intervals,
-    billing periods, plan phases and other derived fields.
+    A subscription's own fields, with its plan and customer as references, as listed
+    by List subscription summaries and carried in standard webhook payloads. Fetch
+    the subscription for its price intervals, billing periods, plan phases and other
+    derived fields.
     """
 
     type: Literal["subscription.fixed_fee_quantity_updated"]
