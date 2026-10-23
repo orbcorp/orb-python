@@ -2,15 +2,19 @@
 
 from __future__ import annotations
 
+from typing import Dict, Optional
+
 import httpx
 
 from .. import _legacy_response
-from .._types import Body, Query, Headers, NoneType, NotGiven, not_given
-from .._utils import path_template
+from ..types import credit_block_update_params
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import make_request_options
+from ..types.credit_block_update_response import CreditBlockUpdateResponse
 from ..types.credit_block_retrieve_response import CreditBlockRetrieveResponse
 from ..types.credit_block_list_invoices_response import CreditBlockListInvoicesResponse
 
@@ -72,6 +76,61 @@ class CreditBlocks(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CreditBlockRetrieveResponse,
+        )
+
+    def update(
+        self,
+        block_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CreditBlockUpdateResponse:
+        """This endpoint updates the `metadata` of a credit block.
+
+        Keys you pass are added
+        to the block's existing metadata or overwrite the value already stored for that
+        key, and setting a key to `null` removes it. Passing `null` for `metadata`
+        clears all of the block's metadata. The block's `increment` entry in the
+        [credits ledger](fetch-customer-credits-ledger) reports the block's metadata, so
+        it shows the update too.
+
+        Other fields on a credit block cannot be changed through this endpoint. Deleted
+        credit blocks return a 404.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not block_id:
+            raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
+        return self._put(
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
+            body=maybe_transform({"metadata": metadata}, credit_block_update_params.CreditBlockUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CreditBlockUpdateResponse,
         )
 
     def delete(
@@ -236,6 +295,63 @@ class AsyncCreditBlocks(AsyncAPIResource):
             cast_to=CreditBlockRetrieveResponse,
         )
 
+    async def update(
+        self,
+        block_id: str,
+        *,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CreditBlockUpdateResponse:
+        """This endpoint updates the `metadata` of a credit block.
+
+        Keys you pass are added
+        to the block's existing metadata or overwrite the value already stored for that
+        key, and setting a key to `null` removes it. Passing `null` for `metadata`
+        clears all of the block's metadata. The block's `increment` entry in the
+        [credits ledger](fetch-customer-credits-ledger) reports the block's metadata, so
+        it shows the update too.
+
+        Other fields on a credit block cannot be changed through this endpoint. Deleted
+        credit blocks return a 404.
+
+        Args:
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not block_id:
+            raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
+        return await self._put(
+            path_template("/credit_blocks/{block_id}", block_id=block_id),
+            body=await async_maybe_transform(
+                {"metadata": metadata}, credit_block_update_params.CreditBlockUpdateParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CreditBlockUpdateResponse,
+        )
+
     async def delete(
         self,
         block_id: str,
@@ -348,6 +464,9 @@ class CreditBlocksWithRawResponse:
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             credit_blocks.retrieve,
         )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            credit_blocks.update,
+        )
         self.delete = _legacy_response.to_raw_response_wrapper(
             credit_blocks.delete,
         )
@@ -362,6 +481,9 @@ class AsyncCreditBlocksWithRawResponse:
 
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             credit_blocks.retrieve,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            credit_blocks.update,
         )
         self.delete = _legacy_response.async_to_raw_response_wrapper(
             credit_blocks.delete,
@@ -378,6 +500,9 @@ class CreditBlocksWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             credit_blocks.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            credit_blocks.update,
+        )
         self.delete = to_streamed_response_wrapper(
             credit_blocks.delete,
         )
@@ -392,6 +517,9 @@ class AsyncCreditBlocksWithStreamingResponse:
 
         self.retrieve = async_to_streamed_response_wrapper(
             credit_blocks.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            credit_blocks.update,
         )
         self.delete = async_to_streamed_response_wrapper(
             credit_blocks.delete,

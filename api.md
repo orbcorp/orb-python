@@ -646,7 +646,9 @@ Methods:
 - <code title="post /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">create</a>(\*\*<a href="src/orb/types/metric_create_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 - <code title="put /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">update</a>(metric_id, \*\*<a href="src/orb/types/metric_update_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 - <code title="get /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">list</a>(\*\*<a href="src/orb/types/metric_list_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">SyncPage[BillableMetric]</a></code>
+- <code title="post /metrics/{metric_id}/archive">client.metrics.<a href="./src/orb/resources/metrics.py">archive</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 - <code title="get /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">fetch</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
+- <code title="post /metrics/{metric_id}/unarchive">client.metrics.<a href="./src/orb/resources/metrics.py">unarchive</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 
 # Plans
 
@@ -867,12 +869,17 @@ Methods:
 Types:
 
 ```python
-from orb.types import CreditBlockRetrieveResponse, CreditBlockListInvoicesResponse
+from orb.types import (
+    CreditBlockRetrieveResponse,
+    CreditBlockUpdateResponse,
+    CreditBlockListInvoicesResponse,
+)
 ```
 
 Methods:
 
 - <code title="get /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">retrieve</a>(block_id) -> <a href="./src/orb/types/credit_block_retrieve_response.py">CreditBlockRetrieveResponse</a></code>
+- <code title="put /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">update</a>(block_id, \*\*<a href="src/orb/types/credit_block_update_params.py">params</a>) -> <a href="./src/orb/types/credit_block_update_response.py">CreditBlockUpdateResponse</a></code>
 - <code title="delete /credit_blocks/{block_id}">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">delete</a>(block_id) -> None</code>
 - <code title="get /credit_blocks/{block_id}/invoices">client.credit_blocks.<a href="./src/orb/resources/credit_blocks.py">list_invoices</a>(block_id) -> <a href="./src/orb/types/credit_block_list_invoices_response.py">CreditBlockListInvoicesResponse</a></code>
 

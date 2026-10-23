@@ -240,6 +240,53 @@ class Metrics(SyncAPIResource):
             model=BillableMetric,
         )
 
+    def archive(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """This endpoint archives a [metric](/core-concepts#metric).
+
+        Archived metrics are
+        left out of `GET /v1/metrics` when filtering with `status=active`, and can't be
+        chosen when creating new plans in the Orb dashboard.
+
+        Archiving does not change existing prices, plans, or subscriptions that use the
+        metric, and usage on those prices continues to be billed. A metric that is
+        already archived cannot be archived again.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return self._post(
+            path_template("/metrics/{metric_id}/archive", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
+        )
+
     def fetch(
         self,
         metric_id: str,
@@ -271,6 +318,48 @@ class Metrics(SyncAPIResource):
             path_template("/metrics/{metric_id}", metric_id=metric_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BillableMetric,
+        )
+
+    def unarchive(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """
+        This endpoint restores an archived [metric](/core-concepts#metric) to `active`,
+        so it can be chosen for new plans again. Only archived metrics can be
+        unarchived.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return self._post(
+            path_template("/metrics/{metric_id}/unarchive", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=BillableMetric,
         )
@@ -494,6 +583,53 @@ class AsyncMetrics(AsyncAPIResource):
             model=BillableMetric,
         )
 
+    async def archive(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """This endpoint archives a [metric](/core-concepts#metric).
+
+        Archived metrics are
+        left out of `GET /v1/metrics` when filtering with `status=active`, and can't be
+        chosen when creating new plans in the Orb dashboard.
+
+        Archiving does not change existing prices, plans, or subscriptions that use the
+        metric, and usage on those prices continues to be billed. A metric that is
+        already archived cannot be archived again.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return await self._post(
+            path_template("/metrics/{metric_id}/archive", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
+        )
+
     async def fetch(
         self,
         metric_id: str,
@@ -529,6 +665,48 @@ class AsyncMetrics(AsyncAPIResource):
             cast_to=BillableMetric,
         )
 
+    async def unarchive(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """
+        This endpoint restores an archived [metric](/core-concepts#metric) to `active`,
+        so it can be chosen for new plans again. Only archived metrics can be
+        unarchived.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return await self._post(
+            path_template("/metrics/{metric_id}/unarchive", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
+        )
+
 
 class MetricsWithRawResponse:
     def __init__(self, metrics: Metrics) -> None:
@@ -543,8 +721,14 @@ class MetricsWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             metrics.list,
         )
+        self.archive = _legacy_response.to_raw_response_wrapper(
+            metrics.archive,
+        )
         self.fetch = _legacy_response.to_raw_response_wrapper(
             metrics.fetch,
+        )
+        self.unarchive = _legacy_response.to_raw_response_wrapper(
+            metrics.unarchive,
         )
 
 
@@ -561,8 +745,14 @@ class AsyncMetricsWithRawResponse:
         self.list = _legacy_response.async_to_raw_response_wrapper(
             metrics.list,
         )
+        self.archive = _legacy_response.async_to_raw_response_wrapper(
+            metrics.archive,
+        )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             metrics.fetch,
+        )
+        self.unarchive = _legacy_response.async_to_raw_response_wrapper(
+            metrics.unarchive,
         )
 
 
@@ -579,8 +769,14 @@ class MetricsWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             metrics.list,
         )
+        self.archive = to_streamed_response_wrapper(
+            metrics.archive,
+        )
         self.fetch = to_streamed_response_wrapper(
             metrics.fetch,
+        )
+        self.unarchive = to_streamed_response_wrapper(
+            metrics.unarchive,
         )
 
 
@@ -597,6 +793,12 @@ class AsyncMetricsWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             metrics.list,
         )
+        self.archive = async_to_streamed_response_wrapper(
+            metrics.archive,
+        )
         self.fetch = async_to_streamed_response_wrapper(
             metrics.fetch,
+        )
+        self.unarchive = async_to_streamed_response_wrapper(
+            metrics.unarchive,
         )
