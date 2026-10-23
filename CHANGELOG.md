@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.88.0](https://github.com/orbcorp/orb-python/compare/v4.87.0...v4.88.0) (2026-10-23)
+
+
+### Features
+
+* **api:** Add customer credit balance summary endpoints ([2c0c4ba](https://github.com/orbcorp/orb-python/commit/2c0c4baf8f772cbc7dd999cf3b5d38c46652ca57))
+* **api:** Add endpoint to update credit block metadata ([6de7be5](https://github.com/orbcorp/orb-python/commit/6de7be5ef7fefd5bac3a726604f133bc467cfc9f))
+* **api:** api update ([6de7be5](https://github.com/orbcorp/orb-python/commit/6de7be5ef7fefd5bac3a726604f133bc467cfc9f))
+* **api:** api update ([6de7be5](https://github.com/orbcorp/orb-python/commit/6de7be5ef7fefd5bac3a726604f133bc467cfc9f))
+* **api:** api update ([6de7be5](https://github.com/orbcorp/orb-python/commit/6de7be5ef7fefd5bac3a726604f133bc467cfc9f))
+
+
+### Chores
+
+* correct the standard webhook unwrap changelog entry ([#5](https://github.com/orbcorp/orb-python/issues/5)) ([cea6b4c](https://github.com/orbcorp/orb-python/commit/cea6b4c38a8422f9657443e94df4754627703747))
+
 ## [4.87.0](https://github.com/orbcorp/orb-python/compare/v4.86.0...v4.87.0) (2026-10-22)
 
 
