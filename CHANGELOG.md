@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.89.0](https://github.com/orbcorp/orb-python/compare/v4.88.0...v4.89.0) (2026-10-24)
+
+
+### Features
+
+* **api:** add list endpoint for lightweight subscription summaries ([b17522c](https://github.com/orbcorp/orb-python/commit/b17522c8f879e89fc7123b58676cb63b496772eb))
+
 ## [4.88.0](https://github.com/orbcorp/orb-python/compare/v4.87.0...v4.88.0) (2026-10-23)
 
 
