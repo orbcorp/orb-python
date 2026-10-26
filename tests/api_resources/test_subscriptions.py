@@ -13,6 +13,7 @@ from orb.types import (
     SubscriptionUsage,
     MutatedSubscription,
     SubscriptionFetchCostsResponse,
+    SubscriptionListSummaryResponse,
     SubscriptionFetchScheduleResponse,
 )
 from orb._utils import parse_date, parse_datetime
@@ -640,6 +641,48 @@ class TestSubscriptions:
             client.subscriptions.with_raw_response.fetch_usage(
                 subscription_id="",
             )
+
+    @parametrize
+    def test_method_list_summary(self, client: Orb) -> None:
+        subscription = client.subscriptions.list_summary()
+        assert_matches_type(SyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    def test_method_list_summary_with_all_params(self, client: Orb) -> None:
+        subscription = client.subscriptions.list_summary(
+            created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
+            external_plan_id="external_plan_id",
+            limit=1,
+            plan_id="plan_id",
+            status="active",
+        )
+        assert_matches_type(SyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_summary(self, client: Orb) -> None:
+        response = client.subscriptions.with_raw_response.list_summary()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(SyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list_summary(self, client: Orb) -> None:
+        with client.subscriptions.with_streaming_response.list_summary() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = response.parse()
+            assert_matches_type(SyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize
@@ -2059,6 +2102,48 @@ class TestAsyncSubscriptions:
             await async_client.subscriptions.with_raw_response.fetch_usage(
                 subscription_id="",
             )
+
+    @parametrize
+    async def test_method_list_summary(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.list_summary()
+        assert_matches_type(AsyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    async def test_method_list_summary_with_all_params(self, async_client: AsyncOrb) -> None:
+        subscription = await async_client.subscriptions.list_summary(
+            created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            cursor="cursor",
+            customer_id="customer_id",
+            external_customer_id="external_customer_id",
+            external_plan_id="external_plan_id",
+            limit=1,
+            plan_id="plan_id",
+            status="active",
+        )
+        assert_matches_type(AsyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_summary(self, async_client: AsyncOrb) -> None:
+        response = await async_client.subscriptions.with_raw_response.list_summary()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        subscription = response.parse()
+        assert_matches_type(AsyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list_summary(self, async_client: AsyncOrb) -> None:
+        async with async_client.subscriptions.with_streaming_response.list_summary() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            subscription = await response.parse()
+            assert_matches_type(AsyncPage[SubscriptionListSummaryResponse], subscription, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Incorrect example breaks Prism")
     @parametrize

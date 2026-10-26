@@ -16,6 +16,7 @@ from ..types import (
     subscription_update_params,
     subscription_fetch_costs_params,
     subscription_fetch_usage_params,
+    subscription_list_summary_params,
     subscription_update_trial_params,
     subscription_redeem_coupon_params,
     subscription_trigger_phase_params,
@@ -36,6 +37,7 @@ from ..types.subscription import Subscription
 from ..types.subscription_usage import SubscriptionUsage
 from ..types.mutated_subscription import MutatedSubscription
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
+from ..types.subscription_list_summary_response import SubscriptionListSummaryResponse
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
 from ..types.shared_params.billing_cycle_anchor_configuration import BillingCycleAnchorConfiguration
 
@@ -1236,6 +1238,80 @@ class Subscriptions(SyncAPIResource):
                 ),
                 cast_to=cast(Any, SubscriptionUsage),  # Union types cannot be passed in as arguments in the type system
             ),
+        )
+
+    def list_summary(
+        self,
+        *,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        plan_id: Optional[str] | Omit = omit,
+        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncPage[SubscriptionListSummaryResponse]:
+        """
+        This is a lighter-weight version of
+        [List subscriptions](/api-reference/subscription/list-subscriptions), with the
+        same filters, pagination and order. It returns each subscription's own fields,
+        with its plan and customer as references, and leaves out price intervals,
+        billing periods, plan phases and other derived fields, making it faster to
+        respond. Fetch a subscription for those.
+
+        This is the same summary of a subscription that standard
+        [webhook payloads](/integrations-and-exports/webhook-payload-styles) carry.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/subscriptions/summary",
+            page=SyncPage[SubscriptionListSummaryResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "external_customer_id": external_customer_id,
+                        "external_plan_id": external_plan_id,
+                        "limit": limit,
+                        "plan_id": plan_id,
+                        "status": status,
+                    },
+                    subscription_list_summary_params.SubscriptionListSummaryParams,
+                ),
+            ),
+            model=SubscriptionListSummaryResponse,
         )
 
     def price_intervals(
@@ -3418,6 +3494,80 @@ class AsyncSubscriptions(AsyncAPIResource):
             ),
         )
 
+    def list_summary(
+        self,
+        *,
+        created_at_gt: Union[str, datetime, None] | Omit = omit,
+        created_at_gte: Union[str, datetime, None] | Omit = omit,
+        created_at_lt: Union[str, datetime, None] | Omit = omit,
+        created_at_lte: Union[str, datetime, None] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        customer_id: Optional[str] | Omit = omit,
+        external_customer_id: Optional[str] | Omit = omit,
+        external_plan_id: Optional[str] | Omit = omit,
+        limit: int | Omit = omit,
+        plan_id: Optional[str] | Omit = omit,
+        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[SubscriptionListSummaryResponse, AsyncPage[SubscriptionListSummaryResponse]]:
+        """
+        This is a lighter-weight version of
+        [List subscriptions](/api-reference/subscription/list-subscriptions), with the
+        same filters, pagination and order. It returns each subscription's own fields,
+        with its plan and customer as references, and leaves out price intervals,
+        billing periods, plan phases and other derived fields, making it faster to
+        respond. Fetch a subscription for those.
+
+        This is the same summary of a subscription that standard
+        [webhook payloads](/integrations-and-exports/webhook-payload-styles) carry.
+
+        Args:
+          cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
+              from the initial request.
+
+          limit: The number of items to fetch. Defaults to 20.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/subscriptions/summary",
+            page=AsyncPage[SubscriptionListSummaryResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "created_at_gt": created_at_gt,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lt": created_at_lt,
+                        "created_at_lte": created_at_lte,
+                        "cursor": cursor,
+                        "customer_id": customer_id,
+                        "external_customer_id": external_customer_id,
+                        "external_plan_id": external_plan_id,
+                        "limit": limit,
+                        "plan_id": plan_id,
+                        "status": status,
+                    },
+                    subscription_list_summary_params.SubscriptionListSummaryParams,
+                ),
+            ),
+            model=SubscriptionListSummaryResponse,
+        )
+
     async def price_intervals(
         self,
         subscription_id: str,
@@ -4430,6 +4580,9 @@ class SubscriptionsWithRawResponse:
         self.fetch_usage = _legacy_response.to_raw_response_wrapper(
             subscriptions.fetch_usage,
         )
+        self.list_summary = _legacy_response.to_raw_response_wrapper(
+            subscriptions.list_summary,
+        )
         self.price_intervals = _legacy_response.to_raw_response_wrapper(
             subscriptions.price_intervals,
         )
@@ -4486,6 +4639,9 @@ class AsyncSubscriptionsWithRawResponse:
         )
         self.fetch_usage = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.fetch_usage,
+        )
+        self.list_summary = _legacy_response.async_to_raw_response_wrapper(
+            subscriptions.list_summary,
         )
         self.price_intervals = _legacy_response.async_to_raw_response_wrapper(
             subscriptions.price_intervals,
@@ -4544,6 +4700,9 @@ class SubscriptionsWithStreamingResponse:
         self.fetch_usage = to_streamed_response_wrapper(
             subscriptions.fetch_usage,
         )
+        self.list_summary = to_streamed_response_wrapper(
+            subscriptions.list_summary,
+        )
         self.price_intervals = to_streamed_response_wrapper(
             subscriptions.price_intervals,
         )
@@ -4600,6 +4759,9 @@ class AsyncSubscriptionsWithStreamingResponse:
         )
         self.fetch_usage = async_to_streamed_response_wrapper(
             subscriptions.fetch_usage,
+        )
+        self.list_summary = async_to_streamed_response_wrapper(
+            subscriptions.list_summary,
         )
         self.price_intervals = async_to_streamed_response_wrapper(
             subscriptions.price_intervals,

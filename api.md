@@ -757,6 +757,7 @@ from orb.types import (
     Subscriptions,
     SubscriptionFetchCostsResponse,
     SubscriptionFetchScheduleResponse,
+    SubscriptionListSummaryResponse,
 )
 ```
 
@@ -770,6 +771,7 @@ Methods:
 - <code title="get /subscriptions/{subscription_id}/costs">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_costs</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_costs_params.py">params</a>) -> <a href="./src/orb/types/subscription_fetch_costs_response.py">SubscriptionFetchCostsResponse</a></code>
 - <code title="get /subscriptions/{subscription_id}/schedule">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_schedule</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_schedule_params.py">params</a>) -> <a href="./src/orb/types/subscription_fetch_schedule_response.py">SyncPage[SubscriptionFetchScheduleResponse]</a></code>
 - <code title="get /subscriptions/{subscription_id}/usage">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">fetch_usage</a>(subscription_id, \*\*<a href="src/orb/types/subscription_fetch_usage_params.py">params</a>) -> <a href="./src/orb/types/subscription_usage.py">SubscriptionUsage</a></code>
+- <code title="get /subscriptions/summary">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">list_summary</a>(\*\*<a href="src/orb/types/subscription_list_summary_params.py">params</a>) -> <a href="./src/orb/types/subscription_list_summary_response.py">SyncPage[SubscriptionListSummaryResponse]</a></code>
 - <code title="post /subscriptions/{subscription_id}/price_intervals">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">price_intervals</a>(subscription_id, \*\*<a href="src/orb/types/subscription_price_intervals_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
 - <code title="post /subscriptions/{subscription_id}/redeem_coupon">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">redeem_coupon</a>(subscription_id, \*\*<a href="src/orb/types/subscription_redeem_coupon_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
 - <code title="post /subscriptions/{subscription_id}/schedule_plan_change">client.subscriptions.<a href="./src/orb/resources/subscriptions.py">schedule_plan_change</a>(subscription_id, \*\*<a href="src/orb/types/subscription_schedule_plan_change_params.py">params</a>) -> <a href="./src/orb/types/mutated_subscription.py">MutatedSubscription</a></code>
