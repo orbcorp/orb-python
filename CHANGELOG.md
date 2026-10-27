@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.90.0](https://github.com/orbcorp/orb-python/compare/v4.89.0...v4.90.0) (2026-10-27)
+
+
+### Features
+
+* **api:** allow up to 50 spend_exceeded alerts per plan or subscription ([488cf2a](https://github.com/orbcorp/orb-python/commit/488cf2a8bf70ff0c9e6328bc78297beef07c0438))
+
 ## [4.89.0](https://github.com/orbcorp/orb-python/compare/v4.88.0...v4.89.0) (2026-10-24)
 
 
