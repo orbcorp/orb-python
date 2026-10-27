@@ -25,15 +25,22 @@ from .top_ups import (
     AsyncTopUpsWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import path_template, maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncPage, AsyncPage
 from ...._base_client import AsyncPaginator, make_request_options
-from ....types.customers import credit_list_params, credit_list_by_external_id_params
+from ....types.customers import (
+    credit_list_params,
+    credit_fetch_balance_params,
+    credit_list_by_external_id_params,
+    credit_fetch_balance_by_external_id_params,
+)
 from ....types.customers.credit_list_response import CreditListResponse
+from ....types.customers.credit_fetch_balance_response import CreditFetchBalanceResponse
 from ....types.customers.credit_list_by_external_id_response import CreditListByExternalIDResponse
+from ....types.customers.credit_fetch_balance_by_external_id_response import CreditFetchBalanceByExternalIDResponse
 
 __all__ = ["Credits", "AsyncCredits"]
 
@@ -153,6 +160,120 @@ class Credits(SyncAPIResource):
                 ),
             ),
             model=CreditListResponse,
+        )
+
+    def fetch_balance(
+        self,
+        customer_id: str,
+        *,
+        currency: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CreditFetchBalanceResponse:
+        """
+        This endpoint returns a customer's credit balance in a single currency or custom
+        pricing unit: the total available balance, the balance waiting on payment, and
+        the next upcoming expiration.
+
+        `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        as listed by
+        [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        Expired, depleted, and voided blocks are not included. Blocks in
+        `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        become available once their invoice is paid.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        that currency returns a balance of `0`.
+
+        Args:
+          currency: The ledger currency or custom pricing unit to use.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        return self._get(
+            path_template("/customers/{customer_id}/credits/balance", customer_id=customer_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"currency": currency}, credit_fetch_balance_params.CreditFetchBalanceParams),
+            ),
+            cast_to=CreditFetchBalanceResponse,
+        )
+
+    def fetch_balance_by_external_id(
+        self,
+        external_customer_id: str,
+        *,
+        currency: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CreditFetchBalanceByExternalIDResponse:
+        """
+        This endpoint returns a customer's credit balance in a single currency or custom
+        pricing unit: the total available balance, the balance waiting on payment, and
+        the next upcoming expiration.
+
+        `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        as listed by
+        [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        Expired, depleted, and voided blocks are not included. Blocks in
+        `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        become available once their invoice is paid.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        that currency returns a balance of `0`.
+
+        Args:
+          currency: The ledger currency or custom pricing unit to use.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        return self._get(
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/balance",
+                external_customer_id=external_customer_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"currency": currency},
+                    credit_fetch_balance_by_external_id_params.CreditFetchBalanceByExternalIDParams,
+                ),
+            ),
+            cast_to=CreditFetchBalanceByExternalIDResponse,
         )
 
     def list_by_external_id(
@@ -357,6 +478,122 @@ class AsyncCredits(AsyncAPIResource):
             model=CreditListResponse,
         )
 
+    async def fetch_balance(
+        self,
+        customer_id: str,
+        *,
+        currency: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CreditFetchBalanceResponse:
+        """
+        This endpoint returns a customer's credit balance in a single currency or custom
+        pricing unit: the total available balance, the balance waiting on payment, and
+        the next upcoming expiration.
+
+        `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        as listed by
+        [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        Expired, depleted, and voided blocks are not included. Blocks in
+        `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        become available once their invoice is paid.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        that currency returns a balance of `0`.
+
+        Args:
+          currency: The ledger currency or custom pricing unit to use.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not customer_id:
+            raise ValueError(f"Expected a non-empty value for `customer_id` but received {customer_id!r}")
+        return await self._get(
+            path_template("/customers/{customer_id}/credits/balance", customer_id=customer_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"currency": currency}, credit_fetch_balance_params.CreditFetchBalanceParams
+                ),
+            ),
+            cast_to=CreditFetchBalanceResponse,
+        )
+
+    async def fetch_balance_by_external_id(
+        self,
+        external_customer_id: str,
+        *,
+        currency: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CreditFetchBalanceByExternalIDResponse:
+        """
+        This endpoint returns a customer's credit balance in a single currency or custom
+        pricing unit: the total available balance, the balance waiting on payment, and
+        the next upcoming expiration.
+
+        `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        as listed by
+        [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        Expired, depleted, and voided blocks are not included. Blocks in
+        `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        become available once their invoice is paid.
+
+        Note that `currency` defaults to credits if not specified. To use a real world
+        currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        that currency returns a balance of `0`.
+
+        Args:
+          currency: The ledger currency or custom pricing unit to use.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not external_customer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_customer_id` but received {external_customer_id!r}"
+            )
+        return await self._get(
+            path_template(
+                "/customers/external_customer_id/{external_customer_id}/credits/balance",
+                external_customer_id=external_customer_id,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"currency": currency},
+                    credit_fetch_balance_by_external_id_params.CreditFetchBalanceByExternalIDParams,
+                ),
+            ),
+            cast_to=CreditFetchBalanceByExternalIDResponse,
+        )
+
     def list_by_external_id(
         self,
         external_customer_id: str,
@@ -449,6 +686,12 @@ class CreditsWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             credits.list,
         )
+        self.fetch_balance = _legacy_response.to_raw_response_wrapper(
+            credits.fetch_balance,
+        )
+        self.fetch_balance_by_external_id = _legacy_response.to_raw_response_wrapper(
+            credits.fetch_balance_by_external_id,
+        )
         self.list_by_external_id = _legacy_response.to_raw_response_wrapper(
             credits.list_by_external_id,
         )
@@ -474,6 +717,12 @@ class AsyncCreditsWithRawResponse:
 
         self.list = _legacy_response.async_to_raw_response_wrapper(
             credits.list,
+        )
+        self.fetch_balance = _legacy_response.async_to_raw_response_wrapper(
+            credits.fetch_balance,
+        )
+        self.fetch_balance_by_external_id = _legacy_response.async_to_raw_response_wrapper(
+            credits.fetch_balance_by_external_id,
         )
         self.list_by_external_id = _legacy_response.async_to_raw_response_wrapper(
             credits.list_by_external_id,
@@ -501,6 +750,12 @@ class CreditsWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             credits.list,
         )
+        self.fetch_balance = to_streamed_response_wrapper(
+            credits.fetch_balance,
+        )
+        self.fetch_balance_by_external_id = to_streamed_response_wrapper(
+            credits.fetch_balance_by_external_id,
+        )
         self.list_by_external_id = to_streamed_response_wrapper(
             credits.list_by_external_id,
         )
@@ -526,6 +781,12 @@ class AsyncCreditsWithStreamingResponse:
 
         self.list = async_to_streamed_response_wrapper(
             credits.list,
+        )
+        self.fetch_balance = async_to_streamed_response_wrapper(
+            credits.fetch_balance,
+        )
+        self.fetch_balance_by_external_id = async_to_streamed_response_wrapper(
+            credits.fetch_balance_by_external_id,
         )
         self.list_by_external_id = async_to_streamed_response_wrapper(
             credits.list_by_external_id,

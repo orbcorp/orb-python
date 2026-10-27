@@ -432,12 +432,19 @@ Methods:
 Types:
 
 ```python
-from orb.types.customers import CreditListResponse, CreditListByExternalIDResponse
+from orb.types.customers import (
+    CreditListResponse,
+    CreditFetchBalanceResponse,
+    CreditFetchBalanceByExternalIDResponse,
+    CreditListByExternalIDResponse,
+)
 ```
 
 Methods:
 
 - <code title="get /customers/{customer_id}/credits">client.customers.credits.<a href="./src/orb/resources/customers/credits/credits.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/credit_list_params.py">params</a>) -> <a href="./src/orb/types/customers/credit_list_response.py">SyncPage[CreditListResponse]</a></code>
+- <code title="get /customers/{customer_id}/credits/balance">client.customers.credits.<a href="./src/orb/resources/customers/credits/credits.py">fetch_balance</a>(customer_id, \*\*<a href="src/orb/types/customers/credit_fetch_balance_params.py">params</a>) -> <a href="./src/orb/types/customers/credit_fetch_balance_response.py">CreditFetchBalanceResponse</a></code>
+- <code title="get /customers/external_customer_id/{external_customer_id}/credits/balance">client.customers.credits.<a href="./src/orb/resources/customers/credits/credits.py">fetch_balance_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credit_fetch_balance_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credit_fetch_balance_by_external_id_response.py">CreditFetchBalanceByExternalIDResponse</a></code>
 - <code title="get /customers/external_customer_id/{external_customer_id}/credits">client.customers.credits.<a href="./src/orb/resources/customers/credits/credits.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/credit_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/credit_list_by_external_id_response.py">SyncPage[CreditListByExternalIDResponse]</a></code>
 
 ### Ledger

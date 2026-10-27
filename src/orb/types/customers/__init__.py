@@ -6,6 +6,8 @@ from .cost_list_params import CostListParams as CostListParams
 from .cost_list_response import CostListResponse as CostListResponse
 from .credit_list_params import CreditListParams as CreditListParams
 from .credit_list_response import CreditListResponse as CreditListResponse
+from .credit_fetch_balance_params import CreditFetchBalanceParams as CreditFetchBalanceParams
+from .credit_fetch_balance_response import CreditFetchBalanceResponse as CreditFetchBalanceResponse
 from .balance_transaction_list_params import BalanceTransactionListParams as BalanceTransactionListParams
 from .cost_list_by_external_id_params import CostListByExternalIDParams as CostListByExternalIDParams
 from .balance_transaction_create_params import BalanceTransactionCreateParams as BalanceTransactionCreateParams
@@ -14,3 +16,9 @@ from .cost_list_by_external_id_response import CostListByExternalIDResponse as C
 from .credit_list_by_external_id_params import CreditListByExternalIDParams as CreditListByExternalIDParams
 from .balance_transaction_create_response import BalanceTransactionCreateResponse as BalanceTransactionCreateResponse
 from .credit_list_by_external_id_response import CreditListByExternalIDResponse as CreditListByExternalIDResponse
+from .credit_fetch_balance_by_external_id_params import (
+    CreditFetchBalanceByExternalIDParams as CreditFetchBalanceByExternalIDParams,
+)
+from .credit_fetch_balance_by_external_id_response import (
+    CreditFetchBalanceByExternalIDResponse as CreditFetchBalanceByExternalIDResponse,
+)
