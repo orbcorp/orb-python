@@ -427,6 +427,20 @@ class Invoice(BaseModel):
     scheduled to be issued.
     """
 
+    service_period_end: Optional[datetime] = None
+    """
+    The latest `end_date` of the invoice's line items, including any line items
+    hidden because they have zero quantity. This is `null` when the invoice has no
+    line items.
+    """
+
+    service_period_start: Optional[datetime] = None
+    """
+    The earliest `start_date` of the invoice's line items, including any line items
+    hidden because they have zero quantity. This is `null` when the invoice has no
+    line items.
+    """
+
     shipping_address: Optional[Address] = None
 
     status: Literal["issued", "paid", "synced", "void", "draft"]
