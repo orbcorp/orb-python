@@ -30,7 +30,7 @@ class TestPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         )
@@ -47,7 +47,7 @@ class TestPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                     "name": "name",
                 }
             ],
@@ -71,7 +71,7 @@ class TestPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         )
@@ -92,7 +92,7 @@ class TestPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         ) as response:
@@ -118,7 +118,7 @@ class TestPrices:
                 prices=[
                     {
                         "amounts": [0],
-                        "dimension_values": ["string"],
+                        "dimension_values": ["x"],
                     }
                 ],
             )
@@ -190,7 +190,7 @@ class TestAsyncPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         )
@@ -207,7 +207,7 @@ class TestAsyncPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                     "name": "name",
                 }
             ],
@@ -231,7 +231,7 @@ class TestAsyncPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         )
@@ -252,7 +252,7 @@ class TestAsyncPrices:
             prices=[
                 {
                     "amounts": [0],
-                    "dimension_values": ["string"],
+                    "dimension_values": ["x"],
                 }
             ],
         ) as response:
@@ -278,7 +278,7 @@ class TestAsyncPrices:
                 prices=[
                     {
                         "amounts": [0],
-                        "dimension_values": ["string"],
+                        "dimension_values": ["x"],
                     }
                 ],
             )
