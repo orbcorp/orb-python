@@ -141,7 +141,11 @@ class Block(BaseModel):
 
     per_unit_cost_basis: Optional[str] = None
 
-    status: Literal["active", "pending_payment"]
+    status: Literal["active", "pending_payment", "void"]
+    """`void` means the credit block was deleted.
+
+    A voided block's `balance` is always 0.
+    """
 
     credit_allocation: Optional[BlockCreditAllocation] = None
     """The credit allocation that funded a block.

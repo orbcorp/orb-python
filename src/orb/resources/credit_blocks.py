@@ -56,8 +56,10 @@ class CreditBlocks(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditBlockRetrieveResponse:
-        """
-        This endpoint returns a credit block identified by its block_id.
+        """This endpoint returns a credit block identified by its block_id.
+
+        A deleted
+        credit block is returned with a `status` of `void` and a `balance` of 0.
 
         Args:
           extra_headers: Send extra headers
@@ -273,8 +275,10 @@ class AsyncCreditBlocks(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditBlockRetrieveResponse:
-        """
-        This endpoint returns a credit block identified by its block_id.
+        """This endpoint returns a credit block identified by its block_id.
+
+        A deleted
+        credit block is returned with a `status` of `void` and a `balance` of 0.
 
         Args:
           extra_headers: Send extra headers
