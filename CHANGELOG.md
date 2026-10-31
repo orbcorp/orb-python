@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.93.0](https://github.com/orbcorp/orb-python/compare/v4.92.0...v4.93.0) (2026-10-31)
+
+
+### Features
+
+* **api:** add void status for deleted credit blocks in CreditBlock schema ([8cfb9d3](https://github.com/orbcorp/orb-python/commit/8cfb9d381bfa2afe920b3b0ce29a88d8b1b846d4))
+
 ## [4.92.0](https://github.com/orbcorp/orb-python/compare/v4.91.0...v4.92.0) (2026-10-30)
 
 
