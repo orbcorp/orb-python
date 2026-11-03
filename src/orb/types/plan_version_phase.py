@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -25,3 +25,6 @@ class PlanVersionPhase(BaseModel):
 
     order: int
     """Determines the ordering of the phase in a plan's lifecycle. 1 = first phase."""
+
+    price_ids: List[str]
+    """The IDs of the prices active in this phase."""
