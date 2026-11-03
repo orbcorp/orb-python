@@ -37,6 +37,7 @@ class TestMetrics:
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
+            status="active",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 
@@ -82,8 +83,10 @@ class TestMetrics:
         metric = client.metrics.update(
             metric_id="metric_id",
             description="Sum of bytes downloaded in fast mode",
+            item_id="item_id",
             metadata={"foo": "string"},
             name="Bytes downloaded",
+            sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 
@@ -294,6 +297,7 @@ class TestAsyncMetrics:
             name="Bytes downloaded",
             sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
             metadata={"foo": "string"},
+            status="active",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 
@@ -339,8 +343,10 @@ class TestAsyncMetrics:
         metric = await async_client.metrics.update(
             metric_id="metric_id",
             description="Sum of bytes downloaded in fast mode",
+            item_id="item_id",
             metadata={"foo": "string"},
             name="Bytes downloaded",
+            sql="SELECT sum(bytes_downloaded) FROM events WHERE download_speed = 'fast'",
         )
         assert_matches_type(BillableMetric, metric, path=["response"])
 

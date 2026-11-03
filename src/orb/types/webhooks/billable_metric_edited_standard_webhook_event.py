@@ -15,9 +15,15 @@ class PropertiesPreviousAttributes(BaseModel):
 
     description: Optional[str] = None
 
+    item_id: Optional[str] = None
+
     metadata: Optional[Dict[str, str]] = None
 
     name: Optional[str] = None
+
+    sql: Optional[str] = None
+
+    status: Optional[Literal["active", "archived", "draft"]] = None
 
 
 class Properties(BaseModel):

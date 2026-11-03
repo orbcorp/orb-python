@@ -55,6 +55,7 @@ class Metrics(SyncAPIResource):
         name: str,
         sql: str,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        status: Literal["active", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,6 +82,10 @@ class Metrics(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
+          status: The status of the metric to create (either active or draft). If not specified,
+              this defaults to active. A draft metric's `sql` and `item_id` can be changed
+              until it's published.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -100,6 +105,7 @@ class Metrics(SyncAPIResource):
                     "name": name,
                     "sql": sql,
                     "metadata": metadata,
+                    "status": status,
                 },
                 metric_create_params.MetricCreateParams,
             ),
@@ -118,8 +124,10 @@ class Metrics(SyncAPIResource):
         metric_id: str,
         *,
         description: Optional[str] | Omit = omit,
+        item_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        sql: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -134,14 +142,25 @@ class Metrics(SyncAPIResource):
         `name` cannot be empty. If you pass `null` for the metadata value, it will clear
         any existing metadata for that metric.
 
+        While a metric is in `draft` status, its `sql` and `item_id` can also be
+        changed. Use [publish metric](/api-reference/metric/publish-metric) to make a
+        draft metric active.
+
         Args:
           description: A description of the metric.
+
+          item_id: The id of the item to associate the metric with. Can only be changed while the
+              metric is in `draft` status.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
           name: The name of the metric.
+
+          sql: A new sql string defining the metric. Can only be changed while the metric is in
+              `draft` status and no price uses it. If the metric has parameters, the new sql
+              must use the same ones.
 
           extra_headers: Send extra headers
 
@@ -160,8 +179,10 @@ class Metrics(SyncAPIResource):
             body=maybe_transform(
                 {
                     "description": description,
+                    "item_id": item_id,
                     "metadata": metadata,
                     "name": name,
+                    "sql": sql,
                 },
                 metric_update_params.MetricUpdateParams,
             ),
@@ -184,7 +205,7 @@ class Metrics(SyncAPIResource):
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[Literal["active", "archived", "draft"]] | Omit = omit,
+        status: Optional[Literal["active", "draft", "archived"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -398,6 +419,7 @@ class AsyncMetrics(AsyncAPIResource):
         name: str,
         sql: str,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        status: Literal["active", "draft"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -424,6 +446,10 @@ class AsyncMetrics(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
+          status: The status of the metric to create (either active or draft). If not specified,
+              this defaults to active. A draft metric's `sql` and `item_id` can be changed
+              until it's published.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -443,6 +469,7 @@ class AsyncMetrics(AsyncAPIResource):
                     "name": name,
                     "sql": sql,
                     "metadata": metadata,
+                    "status": status,
                 },
                 metric_create_params.MetricCreateParams,
             ),
@@ -461,8 +488,10 @@ class AsyncMetrics(AsyncAPIResource):
         metric_id: str,
         *,
         description: Optional[str] | Omit = omit,
+        item_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
         name: Optional[str] | Omit = omit,
+        sql: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -477,14 +506,25 @@ class AsyncMetrics(AsyncAPIResource):
         `name` cannot be empty. If you pass `null` for the metadata value, it will clear
         any existing metadata for that metric.
 
+        While a metric is in `draft` status, its `sql` and `item_id` can also be
+        changed. Use [publish metric](/api-reference/metric/publish-metric) to make a
+        draft metric active.
+
         Args:
           description: A description of the metric.
+
+          item_id: The id of the item to associate the metric with. Can only be changed while the
+              metric is in `draft` status.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
           name: The name of the metric.
+
+          sql: A new sql string defining the metric. Can only be changed while the metric is in
+              `draft` status and no price uses it. If the metric has parameters, the new sql
+              must use the same ones.
 
           extra_headers: Send extra headers
 
@@ -503,8 +543,10 @@ class AsyncMetrics(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "description": description,
+                    "item_id": item_id,
                     "metadata": metadata,
                     "name": name,
+                    "sql": sql,
                 },
                 metric_update_params.MetricUpdateParams,
             ),
@@ -527,7 +569,7 @@ class AsyncMetrics(AsyncAPIResource):
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[Literal["active", "archived", "draft"]] | Omit = omit,
+        status: Optional[Literal["active", "draft", "archived"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

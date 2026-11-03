@@ -12,6 +12,12 @@ class MetricUpdateParams(TypedDict, total=False):
     description: Optional[str]
     """A description of the metric."""
 
+    item_id: Optional[str]
+    """The id of the item to associate the metric with.
+
+    Can only be changed while the metric is in `draft` status.
+    """
+
     metadata: Optional[Dict[str, Optional[str]]]
     """User-specified key/value pairs for the resource.
 
@@ -21,3 +27,10 @@ class MetricUpdateParams(TypedDict, total=False):
 
     name: Optional[str]
     """The name of the metric."""
+
+    sql: Optional[str]
+    """A new sql string defining the metric.
+
+    Can only be changed while the metric is in `draft` status and no price uses it.
+    If the metric has parameters, the new sql must use the same ones.
+    """

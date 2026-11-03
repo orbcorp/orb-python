@@ -30,5 +30,5 @@ class MetricListParams(TypedDict, total=False):
     limit: int
     """The number of items to fetch. Defaults to 20."""
 
-    status: Optional[Literal["active", "archived", "draft"]]
+    status: Optional[Literal["active", "draft", "archived"]]
     """The metric status to filter to ('active', 'archived', or 'draft')."""
