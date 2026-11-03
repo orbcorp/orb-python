@@ -343,6 +343,49 @@ class Metrics(SyncAPIResource):
             cast_to=BillableMetric,
         )
 
+    def publish(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """
+        This endpoint publishes a [metric](/core-concepts#metric) in `draft` status,
+        making it `active`. Only draft metrics can be published, and an active metric
+        can't be moved back into `draft`, so its `sql` and `item_id` can no longer be
+        changed.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return self._post(
+            path_template("/metrics/{metric_id}/publish", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
+        )
+
     def unarchive(
         self,
         metric_id: str,
@@ -707,6 +750,49 @@ class AsyncMetrics(AsyncAPIResource):
             cast_to=BillableMetric,
         )
 
+    async def publish(
+        self,
+        metric_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> BillableMetric:
+        """
+        This endpoint publishes a [metric](/core-concepts#metric) in `draft` status,
+        making it `active`. Only draft metrics can be published, and an active metric
+        can't be moved back into `draft`, so its `sql` and `item_id` can no longer be
+        changed.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not metric_id:
+            raise ValueError(f"Expected a non-empty value for `metric_id` but received {metric_id!r}")
+        return await self._post(
+            path_template("/metrics/{metric_id}/publish", metric_id=metric_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=BillableMetric,
+        )
+
     async def unarchive(
         self,
         metric_id: str,
@@ -769,6 +855,9 @@ class MetricsWithRawResponse:
         self.fetch = _legacy_response.to_raw_response_wrapper(
             metrics.fetch,
         )
+        self.publish = _legacy_response.to_raw_response_wrapper(
+            metrics.publish,
+        )
         self.unarchive = _legacy_response.to_raw_response_wrapper(
             metrics.unarchive,
         )
@@ -792,6 +881,9 @@ class AsyncMetricsWithRawResponse:
         )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             metrics.fetch,
+        )
+        self.publish = _legacy_response.async_to_raw_response_wrapper(
+            metrics.publish,
         )
         self.unarchive = _legacy_response.async_to_raw_response_wrapper(
             metrics.unarchive,
@@ -817,6 +909,9 @@ class MetricsWithStreamingResponse:
         self.fetch = to_streamed_response_wrapper(
             metrics.fetch,
         )
+        self.publish = to_streamed_response_wrapper(
+            metrics.publish,
+        )
         self.unarchive = to_streamed_response_wrapper(
             metrics.unarchive,
         )
@@ -840,6 +935,9 @@ class AsyncMetricsWithStreamingResponse:
         )
         self.fetch = async_to_streamed_response_wrapper(
             metrics.fetch,
+        )
+        self.publish = async_to_streamed_response_wrapper(
+            metrics.publish,
         )
         self.unarchive = async_to_streamed_response_wrapper(
             metrics.unarchive,

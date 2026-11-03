@@ -655,6 +655,7 @@ Methods:
 - <code title="get /metrics">client.metrics.<a href="./src/orb/resources/metrics.py">list</a>(\*\*<a href="src/orb/types/metric_list_params.py">params</a>) -> <a href="./src/orb/types/billable_metric.py">SyncPage[BillableMetric]</a></code>
 - <code title="post /metrics/{metric_id}/archive">client.metrics.<a href="./src/orb/resources/metrics.py">archive</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 - <code title="get /metrics/{metric_id}">client.metrics.<a href="./src/orb/resources/metrics.py">fetch</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
+- <code title="post /metrics/{metric_id}/publish">client.metrics.<a href="./src/orb/resources/metrics.py">publish</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 - <code title="post /metrics/{metric_id}/unarchive">client.metrics.<a href="./src/orb/resources/metrics.py">unarchive</a>(metric_id) -> <a href="./src/orb/types/billable_metric.py">BillableMetric</a></code>
 
 # Plans
