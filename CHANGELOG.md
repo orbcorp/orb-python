@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.94.0](https://github.com/orbcorp/orb-python/compare/v4.93.0...v4.94.0) (2026-11-04)
+
+
+### Features
+
+* **api:** add price_ids to plan phases in plan responses ([8d7f015](https://github.com/orbcorp/orb-python/commit/8d7f0152f3925f92e5346766aa1e8bc882f1fc63))
+* **api:** support draft billable metrics with SQL/item edits and publish ([db3b4e6](https://github.com/orbcorp/orb-python/commit/db3b4e6212274541335bea29342800c30485ebee))
+
+
+### Chores
+
+* sync Mintlify edits from prod-docs ([4050926](https://github.com/orbcorp/orb-python/commit/40509260f4420180a88400ab616a87111e309676))
+
 ## [4.93.0](https://github.com/orbcorp/orb-python/compare/v4.92.0...v4.93.0) (2026-10-31)
 
 
