@@ -1916,6 +1916,9 @@ class RemovePrice(TypedDict, total=False):
     external_price_id: Optional[str]
     """The external price id of the price to remove on the subscription."""
 
+    plan_phase_order: Optional[int]
+    """The phase to remove this price from."""
+
     price_id: Optional[str]
     """The id of the price to remove on the subscription."""
 
@@ -3466,6 +3469,9 @@ class ReplacePrice(TypedDict, total=False):
 
     The subscription's minimum amount for the replacement price.
     """
+
+    plan_phase_order: Optional[int]
+    """The phase to replace this price in."""
 
     price: Optional[ReplacePricePrice]
     """New subscription price request body params."""

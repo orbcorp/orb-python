@@ -170,6 +170,7 @@ class TestSubscriptions:
             remove_prices=[
                 {
                     "external_price_id": "external_price_id",
+                    "plan_phase_order": 0,
                     "price_id": "h74gfhdjvn7ujokd",
                 }
             ],
@@ -232,6 +233,7 @@ class TestSubscriptions:
                     "maximum_amount": "1.23",
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
+                    "plan_phase_order": 0,
                     "price": {
                         "cadence": "one_time",
                         "item_id": "item_id",
@@ -1065,6 +1067,7 @@ class TestSubscriptions:
             remove_prices=[
                 {
                     "external_price_id": "external_price_id",
+                    "plan_phase_order": 0,
                     "price_id": "h74gfhdjvn7ujokd",
                 }
             ],
@@ -1127,6 +1130,7 @@ class TestSubscriptions:
                     "maximum_amount": "1.23",
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
+                    "plan_phase_order": 0,
                     "price": {
                         "cadence": "one_time",
                         "item_id": "item_id",
@@ -1631,6 +1635,7 @@ class TestAsyncSubscriptions:
             remove_prices=[
                 {
                     "external_price_id": "external_price_id",
+                    "plan_phase_order": 0,
                     "price_id": "h74gfhdjvn7ujokd",
                 }
             ],
@@ -1693,6 +1698,7 @@ class TestAsyncSubscriptions:
                     "maximum_amount": "1.23",
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
+                    "plan_phase_order": 0,
                     "price": {
                         "cadence": "one_time",
                         "item_id": "item_id",
@@ -2526,6 +2532,7 @@ class TestAsyncSubscriptions:
             remove_prices=[
                 {
                     "external_price_id": "external_price_id",
+                    "plan_phase_order": 0,
                     "price_id": "h74gfhdjvn7ujokd",
                 }
             ],
@@ -2588,6 +2595,7 @@ class TestAsyncSubscriptions:
                     "maximum_amount": "1.23",
                     "metric_parameter_overrides": {"foo": "bar"},
                     "minimum_amount": "1.23",
+                    "plan_phase_order": 0,
                     "price": {
                         "cadence": "one_time",
                         "item_id": "item_id",

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Union
+from typing import Union, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -21,8 +21,20 @@ class MigrationListResponse(BaseModel):
     start of the next invoice.
     """
 
+    ended_at: Optional[datetime] = None
+    """
+    When the migration completed or was canceled, or null if it is still in
+    progress.
+    """
+
     plan_id: str
     """The ID of the plan being migrated."""
+
+    started_at: Optional[datetime] = None
+    """When Orb began migrating the plan's subscriptions.
+
+    Null if the migration has not begun, or was canceled before it began.
+    """
 
     status: Literal["not_started", "in_progress", "completed", "action_needed", "canceled"]
     """
