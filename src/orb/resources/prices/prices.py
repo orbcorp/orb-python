@@ -3812,6 +3812,109 @@ class Prices(SyncAPIResource):
         """
         ...
 
+    @overload
+    def create(
+        self,
+        *,
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
+        currency: str,
+        item_id: str,
+        model_type: Literal["unit_with_multiplier"],
+        name: str,
+        unit_with_multiplier_config: price_create_params.NewFloatingUnitWithMultiplierPriceUnitWithMultiplierConfig,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithMultiplierPriceConversionRateConfig]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          unit_with_multiplier_config: Configuration for unit_with_multiplier pricing
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price. On a usage price this
+              also marks the price as eligible to draw down from that license type's
+              allocation; a usage price created without it is billed normally. Usage prices
+              with a license type must use the `unit` model, and only draw down when their
+              currency matches the allocation's.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
     @required_args(
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
@@ -3849,6 +3952,7 @@ class Prices(SyncAPIResource):
         ["cadence", "currency", "item_id", "minimum_composite_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "percent_config"],
         ["cadence", "currency", "event_output_config", "item_id", "model_type", "name"],
+        ["cadence", "currency", "item_id", "model_type", "name", "unit_with_multiplier_config"],
     )
     def create(
         self,
@@ -3891,7 +3995,8 @@ class Prices(SyncAPIResource):
         | Literal["metered_allowance"]
         | Literal["minimum_composite"]
         | Literal["percent"]
-        | Literal["event_output"],
+        | Literal["event_output"]
+        | Literal["unit_with_multiplier"],
         name: str,
         unit_config: UnitConfig | Omit = omit,
         billable_metric_id: Optional[str] | Omit = omit,
@@ -3934,6 +4039,7 @@ class Prices(SyncAPIResource):
         | Optional[price_create_params.NewFloatingMinimumCompositePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingPercentCompositePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingEventOutputPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingUnitWithMultiplierPriceConversionRateConfig]
         | Omit = omit,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
         external_price_id: Optional[str] | Omit = omit,
@@ -4003,6 +4109,8 @@ class Prices(SyncAPIResource):
         | Omit = omit,
         percent_config: price_create_params.NewFloatingPercentCompositePricePercentConfig | Omit = omit,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig | Omit = omit,
+        unit_with_multiplier_config: price_create_params.NewFloatingUnitWithMultiplierPriceUnitWithMultiplierConfig
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -4070,6 +4178,7 @@ class Prices(SyncAPIResource):
                         "minimum_composite_config": minimum_composite_config,
                         "percent_config": percent_config,
                         "event_output_config": event_output_config,
+                        "unit_with_multiplier_config": unit_with_multiplier_config,
                     },
                     price_create_params.PriceCreateParams,
                 ),
@@ -8261,6 +8370,109 @@ class AsyncPrices(AsyncAPIResource):
         """
         ...
 
+    @overload
+    async def create(
+        self,
+        *,
+        cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"],
+        currency: str,
+        item_id: str,
+        model_type: Literal["unit_with_multiplier"],
+        name: str,
+        unit_with_multiplier_config: price_create_params.NewFloatingUnitWithMultiplierPriceUnitWithMultiplierConfig,
+        billable_metric_id: Optional[str] | Omit = omit,
+        billed_in_advance: Optional[bool] | Omit = omit,
+        billing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        conversion_rate: Optional[float] | Omit = omit,
+        conversion_rate_config: Optional[price_create_params.NewFloatingUnitWithMultiplierPriceConversionRateConfig]
+        | Omit = omit,
+        dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
+        external_price_id: Optional[str] | Omit = omit,
+        fixed_price_quantity: Optional[float] | Omit = omit,
+        invoice_grouping_key: Optional[str] | Omit = omit,
+        invoicing_cycle_configuration: Optional[NewBillingCycleConfiguration] | Omit = omit,
+        license_type_id: Optional[str] | Omit = omit,
+        metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Price:
+        """
+        This endpoint is used to create a [price](/product-catalog/price-configuration).
+        A price created using this endpoint is always an add-on, meaning that it's not
+        associated with a specific plan and can instead be individually added to
+        subscriptions, including subscriptions on different plans.
+
+        An `external_price_id` can be optionally specified as an alias to allow
+        ergonomic interaction with prices in the Orb API.
+
+        See the [Price resource](/product-catalog/price-configuration) for the
+        specification of different price model configurations possible in this endpoint.
+
+        Args:
+          cadence: The cadence to bill for this price on.
+
+          currency: An ISO 4217 currency string for which this price is billed in.
+
+          item_id: The id of the item the price will be associated with.
+
+          model_type: The pricing model type
+
+          name: The name of the price.
+
+          unit_with_multiplier_config: Configuration for unit_with_multiplier pricing
+
+          billable_metric_id: The id of the billable metric for the price. Only needed if the price is
+              usage-based.
+
+          billed_in_advance: If the Price represents a fixed cost, the price will be billed in-advance if
+              this is true, and in-arrears if this is false.
+
+          billing_cycle_configuration: For custom cadence: specifies the duration of the billing period in days or
+              months.
+
+          conversion_rate: The per unit conversion rate of the price currency to the invoicing currency.
+
+          conversion_rate_config: The configuration for the rate of the price currency to the invoicing currency.
+
+          dimensional_price_configuration: For dimensional price: specifies a price group and dimension values
+
+          external_price_id: An alias for the price.
+
+          fixed_price_quantity: If the Price represents a fixed cost, this represents the quantity of units
+              applied.
+
+          invoice_grouping_key: The property used to group this price on an invoice
+
+          invoicing_cycle_configuration: Within each billing cycle, specifies the cadence at which invoices are produced.
+              If unspecified, a single invoice is produced per billing cycle.
+
+          license_type_id: The ID of the license type to associate with this price. On a usage price this
+              also marks the price as eligible to draw down from that license type's
+              allocation; a usage price created without it is billed normally. Usage prices
+              with a license type must use the `unit` model, and only draw down when their
+              currency matches the allocation's.
+
+          metadata: User-specified key/value pairs for the resource. Individual keys can be removed
+              by setting the value to `null`, and the entire metadata mapping can be cleared
+              by setting `metadata` to `null`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        ...
+
     @required_args(
         ["cadence", "currency", "item_id", "model_type", "name", "unit_config"],
         ["cadence", "currency", "item_id", "model_type", "name", "tiered_config"],
@@ -8298,6 +8510,7 @@ class AsyncPrices(AsyncAPIResource):
         ["cadence", "currency", "item_id", "minimum_composite_config", "model_type", "name"],
         ["cadence", "currency", "item_id", "model_type", "name", "percent_config"],
         ["cadence", "currency", "event_output_config", "item_id", "model_type", "name"],
+        ["cadence", "currency", "item_id", "model_type", "name", "unit_with_multiplier_config"],
     )
     async def create(
         self,
@@ -8340,7 +8553,8 @@ class AsyncPrices(AsyncAPIResource):
         | Literal["metered_allowance"]
         | Literal["minimum_composite"]
         | Literal["percent"]
-        | Literal["event_output"],
+        | Literal["event_output"]
+        | Literal["unit_with_multiplier"],
         name: str,
         unit_config: UnitConfig | Omit = omit,
         billable_metric_id: Optional[str] | Omit = omit,
@@ -8383,6 +8597,7 @@ class AsyncPrices(AsyncAPIResource):
         | Optional[price_create_params.NewFloatingMinimumCompositePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingPercentCompositePriceConversionRateConfig]
         | Optional[price_create_params.NewFloatingEventOutputPriceConversionRateConfig]
+        | Optional[price_create_params.NewFloatingUnitWithMultiplierPriceConversionRateConfig]
         | Omit = omit,
         dimensional_price_configuration: Optional[NewDimensionalPriceConfiguration] | Omit = omit,
         external_price_id: Optional[str] | Omit = omit,
@@ -8452,6 +8667,8 @@ class AsyncPrices(AsyncAPIResource):
         | Omit = omit,
         percent_config: price_create_params.NewFloatingPercentCompositePricePercentConfig | Omit = omit,
         event_output_config: price_create_params.NewFloatingEventOutputPriceEventOutputConfig | Omit = omit,
+        unit_with_multiplier_config: price_create_params.NewFloatingUnitWithMultiplierPriceUnitWithMultiplierConfig
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -8519,6 +8736,7 @@ class AsyncPrices(AsyncAPIResource):
                         "minimum_composite_config": minimum_composite_config,
                         "percent_config": percent_config,
                         "event_output_config": event_output_config,
+                        "unit_with_multiplier_config": unit_with_multiplier_config,
                     },
                     price_create_params.PriceCreateParams,
                 ),

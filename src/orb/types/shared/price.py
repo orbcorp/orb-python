@@ -224,6 +224,11 @@ __all__ = [
     "EventOutputPriceConversionRateConfig",
     "EventOutputPriceEventOutputConfig",
     "EventOutputPriceLicenseType",
+    "UnitWithMultiplierPrice",
+    "UnitWithMultiplierPriceCompositePriceFilter",
+    "UnitWithMultiplierPriceConversionRateConfig",
+    "UnitWithMultiplierPriceUnitWithMultiplierConfig",
+    "UnitWithMultiplierPriceLicenseType",
 ]
 
 
@@ -5188,6 +5193,151 @@ class EventOutputPrice(BaseModel):
     """
 
 
+class UnitWithMultiplierPriceCompositePriceFilter(BaseModel):
+    field: Literal["price_id", "item_id", "price_type", "currency", "pricing_unit_id"]
+    """The property of the price to filter on."""
+
+    operator: Literal["includes", "excludes"]
+    """Should prices that match the filter be included or excluded."""
+
+    values: List[str]
+    """The IDs or values that match this filter."""
+
+
+UnitWithMultiplierPriceConversionRateConfig: TypeAlias = Annotated[
+    Union[UnitConversionRateConfig, TieredConversionRateConfig], PropertyInfo(discriminator="conversion_rate_type")
+]
+
+
+class UnitWithMultiplierPriceUnitWithMultiplierConfig(BaseModel):
+    """Configuration for unit_with_multiplier pricing"""
+
+    default_display_name: str
+    """Sub-line label for list-price events that don't set display_name_key.
+
+    Unlabeled events with another multiplier are labeled by their multiplier (e.g.
+    '0.8× rate').
+    """
+
+    display_name_key: str
+    """Event property holding the sub-line label for the event's rate (e.g.
+
+    'Off-peak').
+    """
+
+    multiplier_key: str
+    """Event property holding the multiplier applied to unit_amount (e.g.
+
+    0.8 for a 20% discount). Events without a number between 0 and 1000 with at most
+    12 decimal places are charged at unit_amount.
+    """
+
+    unit_amount: str
+    """List price per unit, before the event's multiplier is applied."""
+
+
+class UnitWithMultiplierPriceLicenseType(BaseModel):
+    """
+    The LicenseType resource represents a type of license that can be assigned to users.
+    License types are used during billing by grouping metrics on the configured grouping key.
+    """
+
+    id: str
+    """The Orb-assigned unique identifier for the license type."""
+
+    grouping_key: str
+    """The key used for grouping licenses of this type.
+
+    This is typically a user identifier field.
+    """
+
+    name: str
+    """The name of the license type."""
+
+
+class UnitWithMultiplierPrice(BaseModel):
+    id: str
+
+    billable_metric: Optional[BillableMetricTiny] = None
+
+    billing_cycle_configuration: BillingCycleConfiguration
+
+    billing_mode: Literal["in_advance", "in_arrear"]
+
+    cadence: Literal["one_time", "monthly", "quarterly", "semi_annual", "annual", "custom"]
+
+    composite_price_filters: Optional[List[UnitWithMultiplierPriceCompositePriceFilter]] = None
+
+    conversion_rate: Optional[float] = None
+
+    conversion_rate_config: Optional[UnitWithMultiplierPriceConversionRateConfig] = None
+
+    created_at: datetime
+
+    credit_allocation: Optional[Allocation] = None
+
+    currency: str
+
+    discount: Optional[Discount] = None
+
+    external_price_id: Optional[str] = None
+
+    fixed_price_quantity: Optional[float] = None
+
+    invoice_grouping_key: Optional[str] = None
+
+    invoicing_cycle_configuration: Optional[BillingCycleConfiguration] = None
+
+    item: ItemSlim
+    """
+    A minimal representation of an Item containing only the essential identifying
+    information.
+    """
+
+    maximum: Optional[Maximum] = None
+
+    maximum_amount: Optional[str] = None
+
+    metadata: Dict[str, str]
+    """User specified key-value pairs for the resource.
+
+    If not present, this defaults to an empty dictionary. Individual keys can be
+    removed by setting the value to `null`, and the entire metadata mapping can be
+    cleared by setting `metadata` to `null`.
+    """
+
+    minimum: Optional[Minimum] = None
+
+    minimum_amount: Optional[str] = None
+
+    price_model_type: Literal["unit_with_multiplier"] = FieldInfo(alias="model_type")
+    """The pricing model type"""
+
+    name: str
+
+    plan_phase_order: Optional[int] = None
+
+    price_type: Literal["usage_price", "fixed_price", "composite_price"]
+
+    replaces_price_id: Optional[str] = None
+    """The price id this price replaces.
+
+    This price will take the place of the replaced price in plan version migrations.
+    """
+
+    unit_with_multiplier_config: UnitWithMultiplierPriceUnitWithMultiplierConfig
+    """Configuration for unit_with_multiplier pricing"""
+
+    dimensional_price_configuration: Optional[DimensionalPriceConfiguration] = None
+
+    license_type: Optional[UnitWithMultiplierPriceLicenseType] = None
+    """
+    The LicenseType resource represents a type of license that can be assigned to
+    users. License types are used during billing by grouping metrics on the
+    configured grouping key.
+    """
+
+
 Price: TypeAlias = Annotated[
     Union[
         UnitPrice,
@@ -5226,6 +5376,7 @@ Price: TypeAlias = Annotated[
         MinimumCompositePrice,
         PercentCompositePrice,
         EventOutputPrice,
+        UnitWithMultiplierPrice,
     ],
     PropertyInfo(discriminator="price_model_type"),
 ]

@@ -4144,6 +4144,109 @@ class TestPrices:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_create_overload_37(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_37(self, client: Orb) -> None:
+        price = client.prices.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["x"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            license_type_id="license_type_id",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_37(self, client: Orb) -> None:
+        response = client.prices.with_raw_response.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_37(self, client: Orb) -> None:
+        with client.prices.with_streaming_response.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_update(self, client: Orb) -> None:
         price = client.prices.update(
             price_id="price_id",
@@ -8625,6 +8728,109 @@ class TestAsyncPrices:
             item_id="item_id",
             model_type="event_output",
             name="Annual fee",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            price = await response.parse()
+            assert_matches_type(Price, price, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_37(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_37(self, async_client: AsyncOrb) -> None:
+        price = await async_client.prices.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+            billable_metric_id="billable_metric_id",
+            billed_in_advance=True,
+            billing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            conversion_rate=0,
+            conversion_rate_config={
+                "conversion_rate_type": "unit",
+                "unit_config": {"unit_amount": "unit_amount"},
+            },
+            dimensional_price_configuration={
+                "dimension_values": ["x"],
+                "dimensional_price_group_id": "dimensional_price_group_id",
+                "external_dimensional_price_group_id": "external_dimensional_price_group_id",
+            },
+            external_price_id="external_price_id",
+            fixed_price_quantity=0,
+            invoice_grouping_key="x",
+            invoicing_cycle_configuration={
+                "duration": 0,
+                "duration_unit": "day",
+            },
+            license_type_id="license_type_id",
+            metadata={"foo": "string"},
+        )
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_37(self, async_client: AsyncOrb) -> None:
+        response = await async_client.prices.with_raw_response.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        price = response.parse()
+        assert_matches_type(Price, price, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_37(self, async_client: AsyncOrb) -> None:
+        async with async_client.prices.with_streaming_response.create(
+            cadence="one_time",
+            currency="currency",
+            item_id="item_id",
+            model_type="unit_with_multiplier",
+            name="Annual fee",
+            unit_with_multiplier_config={
+                "default_display_name": "x",
+                "display_name_key": "x",
+                "multiplier_key": "x",
+                "unit_amount": "unit_amount",
+            },
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
