@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.96.0](https://github.com/orbcorp/orb-python/compare/v4.95.0...v4.96.0) (2026-11-07)
+
+
+### Features
+
+* **api:** api update ([b2bcdb5](https://github.com/orbcorp/orb-python/commit/b2bcdb5a2dc9cfa24a3e0b8f6dae56e3a9fbad3d))
+* **api:** credit block status `void` renamed to `deleted` for deleted blocks ([b2bcdb5](https://github.com/orbcorp/orb-python/commit/b2bcdb5a2dc9cfa24a3e0b8f6dae56e3a9fbad3d))
+
 ## [4.95.0](https://github.com/orbcorp/orb-python/compare/v4.94.0...v4.95.0) (2026-11-06)
 
 
