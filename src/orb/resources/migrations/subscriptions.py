@@ -22,10 +22,11 @@ __all__ = ["Subscriptions", "AsyncSubscriptions"]
 
 
 class Subscriptions(SyncAPIResource):
-    """
-    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-    in the [Price resource](/reference/price).
+    """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+    Each subscription is migrated
+    asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+    progresses.
     """
 
     @cached_property
@@ -114,10 +115,11 @@ class Subscriptions(SyncAPIResource):
 
 
 class AsyncSubscriptions(AsyncAPIResource):
-    """
-    The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-    customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-    in the [Price resource](/reference/price).
+    """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+    Each subscription is migrated
+    asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+    progresses.
     """
 
     @cached_property

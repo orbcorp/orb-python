@@ -304,10 +304,11 @@ class Orb(SyncAPIClient):
 
     @cached_property
     def migrations(self) -> Migrations:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import Migrations
 
@@ -762,10 +763,11 @@ class AsyncOrb(AsyncAPIClient):
 
     @cached_property
     def migrations(self) -> AsyncMigrations:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import AsyncMigrations
 
@@ -1146,10 +1148,11 @@ class OrbWithRawResponse:
 
     @cached_property
     def migrations(self) -> migrations.MigrationsWithRawResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import MigrationsWithRawResponse
 
@@ -1368,10 +1371,11 @@ class AsyncOrbWithRawResponse:
 
     @cached_property
     def migrations(self) -> migrations.AsyncMigrationsWithRawResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import AsyncMigrationsWithRawResponse
 
@@ -1590,10 +1594,11 @@ class OrbWithStreamedResponse:
 
     @cached_property
     def migrations(self) -> migrations.MigrationsWithStreamingResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import MigrationsWithStreamingResponse
 
@@ -1812,10 +1817,11 @@ class AsyncOrbWithStreamedResponse:
 
     @cached_property
     def migrations(self) -> migrations.AsyncMigrationsWithStreamingResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
+        """A migration moves a plan's subscriptions onto one of the plan's versions.
+
+        Each subscription is migrated
+        asynchronously, either immediately or at a scheduled time, and the migration reports its overall status as it
+        progresses.
         """
         from .resources.migrations import AsyncMigrationsWithStreamingResponse
 
