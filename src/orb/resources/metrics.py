@@ -137,20 +137,23 @@ class Metrics(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> BillableMetric:
         """
-        This endpoint allows you to update the `name`, `description`, and `metadata`
-        properties on a metric. Fields left out of the request are not changed, and
-        `name` cannot be empty. If you pass `null` for the metadata value, it will clear
-        any existing metadata for that metric.
+        This endpoint allows you to update the `name`, `description`, `item_id`, and
+        `metadata` properties on a metric. Fields left out of the request are not
+        changed, and `name` cannot be empty. If you pass `null` for the metadata value,
+        it will clear any existing metadata for that metric. Changing `item_id` applies
+        to prices created on the metric afterwards; existing prices keep the item they
+        were created with.
 
-        While a metric is in `draft` status, its `sql` and `item_id` can also be
-        changed. Use [publish metric](/api-reference/metric/publish-metric) to make a
-        draft metric active.
+        While a metric is in `draft` status, its `sql` can also be changed. Use
+        [publish metric](/api-reference/metric/publish-metric) to make a draft metric
+        active.
 
         Args:
           description: A description of the metric.
 
-          item_id: The id of the item to associate the metric with. Can only be changed while the
-              metric is in `draft` status.
+          item_id: The id of the item to associate the metric with. Prices created on the metric
+              afterwards use the new item; existing prices keep the item they were created
+              with.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -358,8 +361,7 @@ class Metrics(SyncAPIResource):
         """
         This endpoint publishes a [metric](/core-concepts#metric) in `draft` status,
         making it `active`. Only draft metrics can be published, and an active metric
-        can't be moved back into `draft`, so its `sql` and `item_id` can no longer be
-        changed.
+        can't be moved back into `draft`, so its `sql` can no longer be changed.
 
         Args:
           extra_headers: Send extra headers
@@ -544,20 +546,23 @@ class AsyncMetrics(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> BillableMetric:
         """
-        This endpoint allows you to update the `name`, `description`, and `metadata`
-        properties on a metric. Fields left out of the request are not changed, and
-        `name` cannot be empty. If you pass `null` for the metadata value, it will clear
-        any existing metadata for that metric.
+        This endpoint allows you to update the `name`, `description`, `item_id`, and
+        `metadata` properties on a metric. Fields left out of the request are not
+        changed, and `name` cannot be empty. If you pass `null` for the metadata value,
+        it will clear any existing metadata for that metric. Changing `item_id` applies
+        to prices created on the metric afterwards; existing prices keep the item they
+        were created with.
 
-        While a metric is in `draft` status, its `sql` and `item_id` can also be
-        changed. Use [publish metric](/api-reference/metric/publish-metric) to make a
-        draft metric active.
+        While a metric is in `draft` status, its `sql` can also be changed. Use
+        [publish metric](/api-reference/metric/publish-metric) to make a draft metric
+        active.
 
         Args:
           description: A description of the metric.
 
-          item_id: The id of the item to associate the metric with. Can only be changed while the
-              metric is in `draft` status.
+          item_id: The id of the item to associate the metric with. Prices created on the metric
+              afterwards use the new item; existing prices keep the item they were created
+              with.
 
           metadata: User-specified key/value pairs for the resource. Individual keys can be removed
               by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -765,8 +770,7 @@ class AsyncMetrics(AsyncAPIResource):
         """
         This endpoint publishes a [metric](/core-concepts#metric) in `draft` status,
         making it `active`. Only draft metrics can be published, and an active metric
-        can't be moved back into `draft`, so its `sql` and `item_id` can no longer be
-        changed.
+        can't be moved back into `draft`, so its `sql` can no longer be changed.
 
         Args:
           extra_headers: Send extra headers

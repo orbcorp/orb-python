@@ -15,7 +15,8 @@ class MetricUpdateParams(TypedDict, total=False):
     item_id: Optional[str]
     """The id of the item to associate the metric with.
 
-    Can only be changed while the metric is in `draft` status.
+    Prices created on the metric afterwards use the new item; existing prices keep
+    the item they were created with.
     """
 
     metadata: Optional[Dict[str, Optional[str]]]
