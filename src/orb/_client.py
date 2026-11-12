@@ -49,6 +49,7 @@ if TYPE_CHECKING:
         licenses,
         customers,
         top_level,
+        migrations,
         credit_notes,
         credit_blocks,
         license_types,
@@ -78,6 +79,7 @@ if TYPE_CHECKING:
     from .resources.invoice_line_items import InvoiceLineItems, AsyncInvoiceLineItems
     from .resources.customers.customers import Customers, AsyncCustomers
     from .resources.subscription_changes import SubscriptionChanges, AsyncSubscriptionChanges
+    from .resources.migrations.migrations import Migrations, AsyncMigrations
     from .resources.dimensional_price_groups.dimensional_price_groups import (
         DimensionalPriceGroups,
         AsyncDimensionalPriceGroups,
@@ -299,6 +301,17 @@ class Orb(SyncAPIClient):
         from .resources.plans import Plans
 
         return Plans(self)
+
+    @cached_property
+    def migrations(self) -> Migrations:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import Migrations
+
+        return Migrations(self)
 
     @cached_property
     def prices(self) -> Prices:
@@ -748,6 +761,17 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncPlans(self)
 
     @cached_property
+    def migrations(self) -> AsyncMigrations:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import AsyncMigrations
+
+        return AsyncMigrations(self)
+
+    @cached_property
     def prices(self) -> AsyncPrices:
         """
         The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
@@ -1121,6 +1145,17 @@ class OrbWithRawResponse:
         return PlansWithRawResponse(self._client.plans)
 
     @cached_property
+    def migrations(self) -> migrations.MigrationsWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import MigrationsWithRawResponse
+
+        return MigrationsWithRawResponse(self._client.migrations)
+
+    @cached_property
     def prices(self) -> prices.PricesWithRawResponse:
         """
         The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
@@ -1330,6 +1365,17 @@ class AsyncOrbWithRawResponse:
         from .resources.plans import AsyncPlansWithRawResponse
 
         return AsyncPlansWithRawResponse(self._client.plans)
+
+    @cached_property
+    def migrations(self) -> migrations.AsyncMigrationsWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import AsyncMigrationsWithRawResponse
+
+        return AsyncMigrationsWithRawResponse(self._client.migrations)
 
     @cached_property
     def prices(self) -> prices.AsyncPricesWithRawResponse:
@@ -1543,6 +1589,17 @@ class OrbWithStreamedResponse:
         return PlansWithStreamingResponse(self._client.plans)
 
     @cached_property
+    def migrations(self) -> migrations.MigrationsWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import MigrationsWithStreamingResponse
+
+        return MigrationsWithStreamingResponse(self._client.migrations)
+
+    @cached_property
     def prices(self) -> prices.PricesWithStreamingResponse:
         """
         The Price resource represents a price that can be billed on a subscription, resulting in a charge on an invoice in
@@ -1752,6 +1809,17 @@ class AsyncOrbWithStreamedResponse:
         from .resources.plans import AsyncPlansWithStreamingResponse
 
         return AsyncPlansWithStreamingResponse(self._client.plans)
+
+    @cached_property
+    def migrations(self) -> migrations.AsyncMigrationsWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        from .resources.migrations import AsyncMigrationsWithStreamingResponse
+
+        return AsyncMigrationsWithStreamingResponse(self._client.migrations)
 
     @cached_property
     def prices(self) -> prices.AsyncPricesWithStreamingResponse:

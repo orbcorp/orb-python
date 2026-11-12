@@ -97,6 +97,14 @@ from .top_level import (
     TopLevelWithStreamingResponse,
     AsyncTopLevelWithStreamingResponse,
 )
+from .migrations import (
+    Migrations,
+    AsyncMigrations,
+    MigrationsWithRawResponse,
+    AsyncMigrationsWithRawResponse,
+    MigrationsWithStreamingResponse,
+    AsyncMigrationsWithStreamingResponse,
+)
 from .credit_notes import (
     CreditNotes,
     AsyncCreditNotes,
@@ -237,6 +245,12 @@ __all__ = [
     "AsyncPlansWithRawResponse",
     "PlansWithStreamingResponse",
     "AsyncPlansWithStreamingResponse",
+    "Migrations",
+    "AsyncMigrations",
+    "MigrationsWithRawResponse",
+    "AsyncMigrationsWithRawResponse",
+    "MigrationsWithStreamingResponse",
+    "AsyncMigrationsWithStreamingResponse",
     "Prices",
     "AsyncPrices",
     "PricesWithRawResponse",

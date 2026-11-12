@@ -698,6 +698,33 @@ Methods:
 - <code title="get /plans/{plan_id}/migrations">client.plans.migrations.<a href="./src/orb/resources/plans/migrations.py">list</a>(plan_id, \*\*<a href="src/orb/types/plans/migration_list_params.py">params</a>) -> <a href="./src/orb/types/plans/migration_list_response.py">SyncPage[MigrationListResponse]</a></code>
 - <code title="post /plans/{plan_id}/migrations/{migration_id}/cancel">client.plans.migrations.<a href="./src/orb/resources/plans/migrations.py">cancel</a>(migration_id, \*, plan_id) -> <a href="./src/orb/types/plans/migration_cancel_response.py">MigrationCancelResponse</a></code>
 
+# Migrations
+
+Types:
+
+```python
+from orb.types import (
+    MigrationSubscription,
+    MigrationCreateResponse,
+    MigrationRetrieveResponse,
+    MigrationListResponse,
+    MigrationCancelResponse,
+)
+```
+
+Methods:
+
+- <code title="post /migrations">client.migrations.<a href="./src/orb/resources/migrations/migrations.py">create</a>(\*\*<a href="src/orb/types/migration_create_params.py">params</a>) -> <a href="./src/orb/types/migration_create_response.py">MigrationCreateResponse</a></code>
+- <code title="get /migrations/{migration_id}">client.migrations.<a href="./src/orb/resources/migrations/migrations.py">retrieve</a>(migration_id) -> <a href="./src/orb/types/migration_retrieve_response.py">MigrationRetrieveResponse</a></code>
+- <code title="get /migrations">client.migrations.<a href="./src/orb/resources/migrations/migrations.py">list</a>(\*\*<a href="src/orb/types/migration_list_params.py">params</a>) -> <a href="./src/orb/types/migration_list_response.py">SyncPage[MigrationListResponse]</a></code>
+- <code title="post /migrations/{migration_id}/cancel">client.migrations.<a href="./src/orb/resources/migrations/migrations.py">cancel</a>(migration_id) -> <a href="./src/orb/types/migration_cancel_response.py">MigrationCancelResponse</a></code>
+
+## Subscriptions
+
+Methods:
+
+- <code title="get /migrations/{migration_id}/subscriptions">client.migrations.subscriptions.<a href="./src/orb/resources/migrations/subscriptions.py">list</a>(migration_id, \*\*<a href="src/orb/types/migrations/subscription_list_params.py">params</a>) -> <a href="./src/orb/types/migration_subscription.py">SyncPage[MigrationSubscription]</a></code>
+
 # Prices
 
 Types:

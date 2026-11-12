@@ -186,13 +186,17 @@ from .invoice_create_params import InvoiceCreateParams as InvoiceCreateParams
 from .invoice_update_params import InvoiceUpdateParams as InvoiceUpdateParams
 from .license_create_params import LicenseCreateParams as LicenseCreateParams
 from .license_list_response import LicenseListResponse as LicenseListResponse
+from .migration_list_params import MigrationListParams as MigrationListParams
 from .price_evaluate_params import PriceEvaluateParams as PriceEvaluateParams
 from .customer_create_params import CustomerCreateParams as CustomerCreateParams
 from .customer_update_params import CustomerUpdateParams as CustomerUpdateParams
+from .migration_subscription import MigrationSubscription as MigrationSubscription
 from .credit_note_list_params import CreditNoteListParams as CreditNoteListParams
 from .dimensional_price_group import DimensionalPriceGroup as DimensionalPriceGroup
 from .discount_override_param import DiscountOverrideParam as DiscountOverrideParam
 from .license_create_response import LicenseCreateResponse as LicenseCreateResponse
+from .migration_create_params import MigrationCreateParams as MigrationCreateParams
+from .migration_list_response import MigrationListResponse as MigrationListResponse
 from .price_evaluate_response import PriceEvaluateResponse as PriceEvaluateResponse
 from .top_level_ping_response import TopLevelPingResponse as TopLevelPingResponse
 from .dimensional_price_groups import DimensionalPriceGroups as DimensionalPriceGroups
@@ -203,6 +207,8 @@ from .subscription_list_params import SubscriptionListParams as SubscriptionList
 from .credit_note_create_params import CreditNoteCreateParams as CreditNoteCreateParams
 from .license_deactivate_params import LicenseDeactivateParams as LicenseDeactivateParams
 from .license_retrieve_response import LicenseRetrieveResponse as LicenseRetrieveResponse
+from .migration_cancel_response import MigrationCancelResponse as MigrationCancelResponse
+from .migration_create_response import MigrationCreateResponse as MigrationCreateResponse
 from .plan_edited_webhook_event import PlanEditedWebhookEvent as PlanEditedWebhookEvent
 from .credit_block_update_params import CreditBlockUpdateParams as CreditBlockUpdateParams
 from .license_type_create_params import LicenseTypeCreateParams as LicenseTypeCreateParams
@@ -214,6 +220,7 @@ from .subscription_create_params import SubscriptionCreateParams as Subscription
 from .subscription_update_params import SubscriptionUpdateParams as SubscriptionUpdateParams
 from .invoice_list_summary_params import InvoiceListSummaryParams as InvoiceListSummaryParams
 from .license_deactivate_response import LicenseDeactivateResponse as LicenseDeactivateResponse
+from .migration_retrieve_response import MigrationRetrieveResponse as MigrationRetrieveResponse
 from .alert_create_for_plan_params import AlertCreateForPlanParams as AlertCreateForPlanParams
 from .credit_block_update_response import CreditBlockUpdateResponse as CreditBlockUpdateResponse
 from .invoice_edited_webhook_event import InvoiceEditedWebhookEvent as InvoiceEditedWebhookEvent
