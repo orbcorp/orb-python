@@ -230,6 +230,9 @@ class Plan(BaseModel):
     identifier in your system.
     """
 
+    has_draft: bool
+    """Whether the plan has an unpublished draft version."""
+
     invoicing_currency: str
     """An ISO 4217 currency string for which this plan is billed in.
 
