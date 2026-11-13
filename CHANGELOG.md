@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.97.0](https://github.com/orbcorp/orb-python/compare/v4.96.0...v4.97.0) (2026-11-13)
+
+
+### Features
+
+* **api:** allow changing item_id on active metrics ([a611213](https://github.com/orbcorp/orb-python/commit/a6112135562d19816e733bb734d36de32bd68b41))
+* **api:** api update ([03a4f31](https://github.com/orbcorp/orb-python/commit/03a4f31dc94485760d08a0b8d1890cf3155d5df1))
+* **api:** api update ([f93f5bc](https://github.com/orbcorp/orb-python/commit/f93f5bc257084425cebda0f369e36b55e6e74843))
+
 ## [4.96.0](https://github.com/orbcorp/orb-python/compare/v4.95.0...v4.96.0) (2026-11-07)
 
 
