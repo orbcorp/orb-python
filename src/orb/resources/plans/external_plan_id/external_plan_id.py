@@ -6,15 +6,23 @@ from typing import Dict, Optional
 
 import httpx
 
-from ... import _legacy_response
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import path_template, maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.plan import Plan
-from ...types.plans import external_plan_id_update_params
-from ..._base_client import make_request_options
+from .... import _legacy_response
+from .draft import (
+    Draft,
+    AsyncDraft,
+    DraftWithRawResponse,
+    AsyncDraftWithRawResponse,
+    DraftWithStreamingResponse,
+    AsyncDraftWithStreamingResponse,
+)
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._utils import path_template, maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ....types.plan import Plan
+from ....types.plans import external_plan_id_update_params
+from ...._base_client import make_request_options
 
 __all__ = ["ExternalPlanID", "AsyncExternalPlanID"]
 
@@ -25,6 +33,15 @@ class ExternalPlanID(SyncAPIResource):
     customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
     in the [Price resource](/reference/price).
     """
+
+    @cached_property
+    def draft(self) -> Draft:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return Draft(self._client)
 
     @cached_property
     def with_raw_response(self) -> ExternalPlanIDWithRawResponse:
@@ -173,6 +190,15 @@ class AsyncExternalPlanID(AsyncAPIResource):
     customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
     in the [Price resource](/reference/price).
     """
+
+    @cached_property
+    def draft(self) -> AsyncDraft:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return AsyncDraft(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncExternalPlanIDWithRawResponse:
@@ -326,6 +352,15 @@ class ExternalPlanIDWithRawResponse:
             external_plan_id.fetch,
         )
 
+    @cached_property
+    def draft(self) -> DraftWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return DraftWithRawResponse(self._external_plan_id.draft)
+
 
 class AsyncExternalPlanIDWithRawResponse:
     def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
@@ -337,6 +372,15 @@ class AsyncExternalPlanIDWithRawResponse:
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             external_plan_id.fetch,
         )
+
+    @cached_property
+    def draft(self) -> AsyncDraftWithRawResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return AsyncDraftWithRawResponse(self._external_plan_id.draft)
 
 
 class ExternalPlanIDWithStreamingResponse:
@@ -350,6 +394,15 @@ class ExternalPlanIDWithStreamingResponse:
             external_plan_id.fetch,
         )
 
+    @cached_property
+    def draft(self) -> DraftWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return DraftWithStreamingResponse(self._external_plan_id.draft)
+
 
 class AsyncExternalPlanIDWithStreamingResponse:
     def __init__(self, external_plan_id: AsyncExternalPlanID) -> None:
@@ -361,3 +414,12 @@ class AsyncExternalPlanIDWithStreamingResponse:
         self.fetch = async_to_streamed_response_wrapper(
             external_plan_id.fetch,
         )
+
+    @cached_property
+    def draft(self) -> AsyncDraftWithStreamingResponse:
+        """
+        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
+        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
+        in the [Price resource](/reference/price).
+        """
+        return AsyncDraftWithStreamingResponse(self._external_plan_id.draft)

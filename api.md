@@ -677,8 +677,32 @@ Methods:
 
 Methods:
 
-- <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
-- <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+
+### Draft
+
+Methods:
+
+- <code title="delete /plans/external_plan_id/{external_plan_id}/draft">client.plans.external_plan_id.draft.<a href="./src/orb/resources/plans/external_plan_id/draft.py">discard</a>(external_plan_id) -> None</code>
+- <code title="get /plans/external_plan_id/{external_plan_id}/draft">client.plans.external_plan_id.draft.<a href="./src/orb/resources/plans/external_plan_id/draft.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plans/plan_version_draft.py">PlanVersionDraft</a></code>
+- <code title="post /plans/external_plan_id/{external_plan_id}/draft/publish">client.plans.external_plan_id.draft.<a href="./src/orb/resources/plans/external_plan_id/draft.py">publish</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id/draft_publish_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
+- <code title="put /plans/external_plan_id/{external_plan_id}/draft">client.plans.external_plan_id.draft.<a href="./src/orb/resources/plans/external_plan_id/draft.py">save</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id/draft_save_params.py">params</a>) -> <a href="./src/orb/types/plans/plan_version_draft.py">PlanVersionDraft</a></code>
+
+## Draft
+
+Types:
+
+```python
+from orb.types.plans import PlanVersionDraft
+```
+
+Methods:
+
+- <code title="delete /plans/{plan_id}/draft">client.plans.draft.<a href="./src/orb/resources/plans/draft.py">discard</a>(plan_id) -> None</code>
+- <code title="get /plans/{plan_id}/draft">client.plans.draft.<a href="./src/orb/resources/plans/draft.py">fetch</a>(plan_id) -> <a href="./src/orb/types/plans/plan_version_draft.py">PlanVersionDraft</a></code>
+- <code title="post /plans/{plan_id}/draft/publish">client.plans.draft.<a href="./src/orb/resources/plans/draft.py">publish</a>(plan_id, \*\*<a href="src/orb/types/plans/draft_publish_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
+- <code title="put /plans/{plan_id}/draft">client.plans.draft.<a href="./src/orb/resources/plans/draft.py">save</a>(plan_id, \*\*<a href="src/orb/types/plans/draft_save_params.py">params</a>) -> <a href="./src/orb/types/plans/plan_version_draft.py">PlanVersionDraft</a></code>
 
 ## Migrations
 
