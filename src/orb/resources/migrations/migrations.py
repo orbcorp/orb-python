@@ -87,6 +87,7 @@ class Migrations(SyncAPIResource):
         plan_id: Optional[str] | Omit = omit,
         plan_version_numbers: Optional[Iterable[int]] | Omit = omit,
         reason: Optional[str] | Omit = omit,
+        skip_grace_period: bool | Omit = omit,
         statuses: List[Literal["active", "upcoming"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -137,6 +138,9 @@ class Migrations(SyncAPIResource):
 
           reason: Why the migration was created.
 
+          skip_grace_period: A new migration waits 5 minutes before it changes any subscriptions, so it can
+              be canceled. When true, it starts right away instead.
+
           statuses: Migrate subscriptions with these statuses. Defaults to active subscriptions.
 
           extra_headers: Send extra headers
@@ -165,6 +169,7 @@ class Migrations(SyncAPIResource):
                     "plan_id": plan_id,
                     "plan_version_numbers": plan_version_numbers,
                     "reason": reason,
+                    "skip_grace_period": skip_grace_period,
                     "statuses": statuses,
                 },
                 migration_create_params.MigrationCreateParams,
@@ -363,6 +368,7 @@ class AsyncMigrations(AsyncAPIResource):
         plan_id: Optional[str] | Omit = omit,
         plan_version_numbers: Optional[Iterable[int]] | Omit = omit,
         reason: Optional[str] | Omit = omit,
+        skip_grace_period: bool | Omit = omit,
         statuses: List[Literal["active", "upcoming"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -413,6 +419,9 @@ class AsyncMigrations(AsyncAPIResource):
 
           reason: Why the migration was created.
 
+          skip_grace_period: A new migration waits 5 minutes before it changes any subscriptions, so it can
+              be canceled. When true, it starts right away instead.
+
           statuses: Migrate subscriptions with these statuses. Defaults to active subscriptions.
 
           extra_headers: Send extra headers
@@ -441,6 +450,7 @@ class AsyncMigrations(AsyncAPIResource):
                     "plan_id": plan_id,
                     "plan_version_numbers": plan_version_numbers,
                     "reason": reason,
+                    "skip_grace_period": skip_grace_period,
                     "statuses": statuses,
                 },
                 migration_create_params.MigrationCreateParams,

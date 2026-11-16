@@ -74,5 +74,11 @@ class MigrationCreateParams(TypedDict, total=False):
     reason: Optional[str]
     """Why the migration was created."""
 
+    skip_grace_period: bool
+    """
+    A new migration waits 5 minutes before it changes any subscriptions, so it can
+    be canceled. When true, it starts right away instead.
+    """
+
     statuses: List[Literal["active", "upcoming"]]
     """Migrate subscriptions with these statuses. Defaults to active subscriptions."""

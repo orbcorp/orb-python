@@ -47,6 +47,7 @@ class TestMigrations:
             plan_id="plan_id",
             plan_version_numbers=[0],
             reason="reason",
+            skip_grace_period=True,
             statuses=["active"],
         )
         assert_matches_type(MigrationCreateResponse, migration, path=["response"])
@@ -217,6 +218,7 @@ class TestAsyncMigrations:
             plan_id="plan_id",
             plan_version_numbers=[0],
             reason="reason",
+            skip_grace_period=True,
             statuses=["active"],
         )
         assert_matches_type(MigrationCreateResponse, migration, path=["response"])
