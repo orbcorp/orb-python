@@ -17,7 +17,13 @@ from .draft import (
     DraftWithStreamingResponse,
     AsyncDraftWithStreamingResponse,
 )
-from ...types import plan_list_params, plan_create_params, plan_update_params
+from ...types import (
+    plan_list_params,
+    plan_create_params,
+    plan_update_params,
+    plan_create_plan_version_params,
+    plan_set_default_plan_version_params,
+)
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -34,6 +40,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ...pagination import SyncPage, AsyncPage
 from ...types.plan import Plan
 from ..._base_client import AsyncPaginator, make_request_options
+from ...types.plan_version import PlanVersion
 from .external_plan_id.external_plan_id import (
     ExternalPlanID,
     AsyncExternalPlanID,
@@ -323,6 +330,83 @@ class Plans(SyncAPIResource):
             model=Plan,
         )
 
+    def create_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        add_adjustments: Optional[Iterable[plan_create_plan_version_params.AddAdjustment]] | Omit = omit,
+        add_prices: Optional[Iterable[plan_create_plan_version_params.AddPrice]] | Omit = omit,
+        remove_adjustments: Optional[Iterable[plan_create_plan_version_params.RemoveAdjustment]] | Omit = omit,
+        remove_prices: Optional[Iterable[plan_create_plan_version_params.RemovePrice]] | Omit = omit,
+        replace_adjustments: Optional[Iterable[plan_create_plan_version_params.ReplaceAdjustment]] | Omit = omit,
+        replace_prices: Optional[Iterable[plan_create_plan_version_params.ReplacePrice]] | Omit = omit,
+        set_as_default: Optional[bool] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> PlanVersion:
+        """
+        This endpoint allows the creation of a new plan version for an existing plan.
+
+        Args:
+          version: New version number.
+
+          add_adjustments: Additional adjustments to be added to the plan.
+
+          add_prices: Additional prices to be added to the plan.
+
+          remove_adjustments: Adjustments to be removed from the plan.
+
+          remove_prices: Prices to be removed from the plan.
+
+          replace_adjustments: Adjustments to be replaced with additional adjustments on the plan.
+
+          replace_prices: Prices to be replaced with additional prices on the plan.
+
+          set_as_default: Set this new plan version as the default
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return self._post(
+            path_template("/plans/{plan_id}/versions", plan_id=plan_id),
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "add_adjustments": add_adjustments,
+                    "add_prices": add_prices,
+                    "remove_adjustments": remove_adjustments,
+                    "remove_prices": remove_prices,
+                    "replace_adjustments": replace_adjustments,
+                    "replace_prices": replace_prices,
+                    "set_as_default": set_as_default,
+                },
+                plan_create_plan_version_params.PlanCreatePlanVersionParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=PlanVersion,
+        )
+
     def fetch(
         self,
         plan_id: str,
@@ -368,6 +452,90 @@ class Plans(SyncAPIResource):
             path_template("/plans/{plan_id}", plan_id=plan_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Plan,
+        )
+
+    def fetch_plan_version(
+        self,
+        version: str,
+        *,
+        plan_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PlanVersion:
+        """This endpoint is used to fetch a plan version.
+
+        It returns the phases, prices,
+        and adjustments present on this version of the plan.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        if not version:
+            raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
+        return self._get(
+            path_template("/plans/{plan_id}/versions/{version}", plan_id=plan_id, version=version),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PlanVersion,
+        )
+
+    def set_default_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Plan:
+        """
+        This endpoint allows setting the default version of a plan.
+
+        Args:
+          version: Plan version to set as the default.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return self._post(
+            path_template("/plans/{plan_id}/set_default_version", plan_id=plan_id),
+            body=maybe_transform(
+                {"version": version}, plan_set_default_plan_version_params.PlanSetDefaultPlanVersionParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=Plan,
         )
@@ -650,6 +818,83 @@ class AsyncPlans(AsyncAPIResource):
             model=Plan,
         )
 
+    async def create_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        add_adjustments: Optional[Iterable[plan_create_plan_version_params.AddAdjustment]] | Omit = omit,
+        add_prices: Optional[Iterable[plan_create_plan_version_params.AddPrice]] | Omit = omit,
+        remove_adjustments: Optional[Iterable[plan_create_plan_version_params.RemoveAdjustment]] | Omit = omit,
+        remove_prices: Optional[Iterable[plan_create_plan_version_params.RemovePrice]] | Omit = omit,
+        replace_adjustments: Optional[Iterable[plan_create_plan_version_params.ReplaceAdjustment]] | Omit = omit,
+        replace_prices: Optional[Iterable[plan_create_plan_version_params.ReplacePrice]] | Omit = omit,
+        set_as_default: Optional[bool] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> PlanVersion:
+        """
+        This endpoint allows the creation of a new plan version for an existing plan.
+
+        Args:
+          version: New version number.
+
+          add_adjustments: Additional adjustments to be added to the plan.
+
+          add_prices: Additional prices to be added to the plan.
+
+          remove_adjustments: Adjustments to be removed from the plan.
+
+          remove_prices: Prices to be removed from the plan.
+
+          replace_adjustments: Adjustments to be replaced with additional adjustments on the plan.
+
+          replace_prices: Prices to be replaced with additional prices on the plan.
+
+          set_as_default: Set this new plan version as the default
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return await self._post(
+            path_template("/plans/{plan_id}/versions", plan_id=plan_id),
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "add_adjustments": add_adjustments,
+                    "add_prices": add_prices,
+                    "remove_adjustments": remove_adjustments,
+                    "remove_prices": remove_prices,
+                    "replace_adjustments": replace_adjustments,
+                    "replace_prices": replace_prices,
+                    "set_as_default": set_as_default,
+                },
+                plan_create_plan_version_params.PlanCreatePlanVersionParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=PlanVersion,
+        )
+
     async def fetch(
         self,
         plan_id: str,
@@ -699,6 +944,90 @@ class AsyncPlans(AsyncAPIResource):
             cast_to=Plan,
         )
 
+    async def fetch_plan_version(
+        self,
+        version: str,
+        *,
+        plan_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> PlanVersion:
+        """This endpoint is used to fetch a plan version.
+
+        It returns the phases, prices,
+        and adjustments present on this version of the plan.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        if not version:
+            raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
+        return await self._get(
+            path_template("/plans/{plan_id}/versions/{version}", plan_id=plan_id, version=version),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PlanVersion,
+        )
+
+    async def set_default_plan_version(
+        self,
+        plan_id: str,
+        *,
+        version: int,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> Plan:
+        """
+        This endpoint allows setting the default version of a plan.
+
+        Args:
+          version: Plan version to set as the default.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not plan_id:
+            raise ValueError(f"Expected a non-empty value for `plan_id` but received {plan_id!r}")
+        return await self._post(
+            path_template("/plans/{plan_id}/set_default_version", plan_id=plan_id),
+            body=await async_maybe_transform(
+                {"version": version}, plan_set_default_plan_version_params.PlanSetDefaultPlanVersionParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Plan,
+        )
+
 
 class PlansWithRawResponse:
     def __init__(self, plans: Plans) -> None:
@@ -713,8 +1042,17 @@ class PlansWithRawResponse:
         self.list = _legacy_response.to_raw_response_wrapper(
             plans.list,
         )
+        self.create_plan_version = _legacy_response.to_raw_response_wrapper(
+            plans.create_plan_version,
+        )
         self.fetch = _legacy_response.to_raw_response_wrapper(
             plans.fetch,
+        )
+        self.fetch_plan_version = _legacy_response.to_raw_response_wrapper(
+            plans.fetch_plan_version,
+        )
+        self.set_default_plan_version = _legacy_response.to_raw_response_wrapper(
+            plans.set_default_plan_version,
         )
 
     @cached_property
@@ -758,8 +1096,17 @@ class AsyncPlansWithRawResponse:
         self.list = _legacy_response.async_to_raw_response_wrapper(
             plans.list,
         )
+        self.create_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            plans.create_plan_version,
+        )
         self.fetch = _legacy_response.async_to_raw_response_wrapper(
             plans.fetch,
+        )
+        self.fetch_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            plans.fetch_plan_version,
+        )
+        self.set_default_plan_version = _legacy_response.async_to_raw_response_wrapper(
+            plans.set_default_plan_version,
         )
 
     @cached_property
@@ -803,8 +1150,17 @@ class PlansWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             plans.list,
         )
+        self.create_plan_version = to_streamed_response_wrapper(
+            plans.create_plan_version,
+        )
         self.fetch = to_streamed_response_wrapper(
             plans.fetch,
+        )
+        self.fetch_plan_version = to_streamed_response_wrapper(
+            plans.fetch_plan_version,
+        )
+        self.set_default_plan_version = to_streamed_response_wrapper(
+            plans.set_default_plan_version,
         )
 
     @cached_property
@@ -848,8 +1204,17 @@ class AsyncPlansWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             plans.list,
         )
+        self.create_plan_version = async_to_streamed_response_wrapper(
+            plans.create_plan_version,
+        )
         self.fetch = async_to_streamed_response_wrapper(
             plans.fetch,
+        )
+        self.fetch_plan_version = async_to_streamed_response_wrapper(
+            plans.fetch_plan_version,
+        )
+        self.set_default_plan_version = async_to_streamed_response_wrapper(
+            plans.set_default_plan_version,
         )
 
     @cached_property

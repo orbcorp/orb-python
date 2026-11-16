@@ -46,7 +46,7 @@ from .shared_params.new_plan_scalable_matrix_with_tiered_pricing_price import (
 )
 
 __all__ = [
-    "BetaCreatePlanVersionParams",
+    "PlanCreatePlanVersionParams",
     "AddAdjustment",
     "AddAdjustmentAdjustment",
     "AddAdjustmentAdjustmentNewTieredPercentageDiscount",
@@ -160,7 +160,7 @@ __all__ = [
 ]
 
 
-class BetaCreatePlanVersionParams(TypedDict, total=False):
+class PlanCreatePlanVersionParams(TypedDict, total=False):
     version: Required[int]
     """New version number."""
 

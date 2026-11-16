@@ -329,28 +329,6 @@ Methods:
 
 - <code title="get /ping">client.top_level.<a href="./src/orb/resources/top_level.py">ping</a>() -> <a href="./src/orb/types/top_level_ping_response.py">TopLevelPingResponse</a></code>
 
-# Beta
-
-Types:
-
-```python
-from orb.types import PlanVersion, PlanVersionPhase
-```
-
-Methods:
-
-- <code title="post /plans/{plan_id}/versions">client.beta.<a href="./src/orb/resources/beta/beta.py">create_plan_version</a>(plan_id, \*\*<a href="src/orb/types/beta_create_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
-- <code title="get /plans/{plan_id}/versions/{version}">client.beta.<a href="./src/orb/resources/beta/beta.py">fetch_plan_version</a>(version, \*, plan_id) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
-- <code title="post /plans/{plan_id}/set_default_version">client.beta.<a href="./src/orb/resources/beta/beta.py">set_default_plan_version</a>(plan_id, \*\*<a href="src/orb/types/beta_set_default_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
-
-## ExternalPlanID
-
-Methods:
-
-- <code title="post /plans/external_plan_id/{external_plan_id}/versions">client.beta.external_plan_id.<a href="./src/orb/resources/beta/external_plan_id.py">create_plan_version</a>(external_plan_id, \*\*<a href="src/orb/types/beta/external_plan_id_create_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
-- <code title="get /plans/external_plan_id/{external_plan_id}/versions/{version}">client.beta.external_plan_id.<a href="./src/orb/resources/beta/external_plan_id.py">fetch_plan_version</a>(version, \*, external_plan_id) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
-- <code title="post /plans/external_plan_id/{external_plan_id}/set_default_version">client.beta.external_plan_id.<a href="./src/orb/resources/beta/external_plan_id.py">set_default_plan_version</a>(external_plan_id, \*\*<a href="src/orb/types/beta/external_plan_id_set_default_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
-
 # Coupons
 
 Types:
@@ -663,7 +641,7 @@ Methods:
 Types:
 
 ```python
-from orb.types import Plan
+from orb.types import Plan, PlanVersion, PlanVersionPhase
 ```
 
 Methods:
@@ -671,14 +649,20 @@ Methods:
 - <code title="post /plans">client.plans.<a href="./src/orb/resources/plans/plans.py">create</a>(\*\*<a href="src/orb/types/plan_create_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 - <code title="put /plans/{plan_id}">client.plans.<a href="./src/orb/resources/plans/plans.py">update</a>(plan_id, \*\*<a href="src/orb/types/plan_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 - <code title="get /plans">client.plans.<a href="./src/orb/resources/plans/plans.py">list</a>(\*\*<a href="src/orb/types/plan_list_params.py">params</a>) -> <a href="./src/orb/types/plan.py">SyncPage[Plan]</a></code>
+- <code title="post /plans/{plan_id}/versions">client.plans.<a href="./src/orb/resources/plans/plans.py">create_plan_version</a>(plan_id, \*\*<a href="src/orb/types/plan_create_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
 - <code title="get /plans/{plan_id}">client.plans.<a href="./src/orb/resources/plans/plans.py">fetch</a>(plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="get /plans/{plan_id}/versions/{version}">client.plans.<a href="./src/orb/resources/plans/plans.py">fetch_plan_version</a>(version, \*, plan_id) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
+- <code title="post /plans/{plan_id}/set_default_version">client.plans.<a href="./src/orb/resources/plans/plans.py">set_default_plan_version</a>(plan_id, \*\*<a href="src/orb/types/plan_set_default_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 
 ## ExternalPlanID
 
 Methods:
 
 - <code title="put /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">update</a>(other_external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_update_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="post /plans/external_plan_id/{external_plan_id}/versions">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">create_plan_version</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_create_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
 - <code title="get /plans/external_plan_id/{external_plan_id}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">fetch</a>(external_plan_id) -> <a href="./src/orb/types/plan.py">Plan</a></code>
+- <code title="get /plans/external_plan_id/{external_plan_id}/versions/{version}">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">fetch_plan_version</a>(version, \*, external_plan_id) -> <a href="./src/orb/types/plan_version.py">PlanVersion</a></code>
+- <code title="post /plans/external_plan_id/{external_plan_id}/set_default_version">client.plans.external_plan_id.<a href="./src/orb/resources/plans/external_plan_id/external_plan_id.py">set_default_plan_version</a>(external_plan_id, \*\*<a href="src/orb/types/plans/external_plan_id_set_default_plan_version_params.py">params</a>) -> <a href="./src/orb/types/plan.py">Plan</a></code>
 
 ### Draft
 

@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .beta import (
-    Beta,
-    AsyncBeta,
-    BetaWithRawResponse,
-    AsyncBetaWithRawResponse,
-    BetaWithStreamingResponse,
-    AsyncBetaWithStreamingResponse,
-)
 from .items import (
     Items,
     AsyncItems,
@@ -179,12 +171,6 @@ __all__ = [
     "AsyncTopLevelWithRawResponse",
     "TopLevelWithStreamingResponse",
     "AsyncTopLevelWithStreamingResponse",
-    "Beta",
-    "AsyncBeta",
-    "BetaWithRawResponse",
-    "AsyncBetaWithRawResponse",
-    "BetaWithStreamingResponse",
-    "AsyncBetaWithStreamingResponse",
     "Coupons",
     "AsyncCoupons",
     "CouponsWithRawResponse",

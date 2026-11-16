@@ -37,7 +37,6 @@ from ._base_client import (
 
 if TYPE_CHECKING:
     from .resources import (
-        beta,
         items,
         plans,
         alerts,
@@ -63,7 +62,6 @@ if TYPE_CHECKING:
     from .resources.alerts import Alerts, AsyncAlerts
     from .resources.metrics import Metrics, AsyncMetrics
     from .resources.invoices import Invoices, AsyncInvoices
-    from .resources.beta.beta import Beta, AsyncBeta
     from .resources.top_level import TopLevel, AsyncTopLevel
     from .resources.plans.plans import Plans, AsyncPlans
     from .resources.credit_notes import CreditNotes, AsyncCreditNotes
@@ -173,17 +171,6 @@ class Orb(SyncAPIClient):
         from .resources.top_level import TopLevel
 
         return TopLevel(self)
-
-    @cached_property
-    def beta(self) -> Beta:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import Beta
-
-        return Beta(self)
 
     @cached_property
     def coupons(self) -> Coupons:
@@ -634,17 +621,6 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncTopLevel(self)
 
     @cached_property
-    def beta(self) -> AsyncBeta:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import AsyncBeta
-
-        return AsyncBeta(self)
-
-    @cached_property
     def coupons(self) -> AsyncCoupons:
         """
         A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
@@ -1019,17 +995,6 @@ class OrbWithRawResponse:
         return TopLevelWithRawResponse(self._client.top_level)
 
     @cached_property
-    def beta(self) -> beta.BetaWithRawResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import BetaWithRawResponse
-
-        return BetaWithRawResponse(self._client.beta)
-
-    @cached_property
     def coupons(self) -> coupons.CouponsWithRawResponse:
         """
         A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
@@ -1240,17 +1205,6 @@ class AsyncOrbWithRawResponse:
         from .resources.top_level import AsyncTopLevelWithRawResponse
 
         return AsyncTopLevelWithRawResponse(self._client.top_level)
-
-    @cached_property
-    def beta(self) -> beta.AsyncBetaWithRawResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import AsyncBetaWithRawResponse
-
-        return AsyncBetaWithRawResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithRawResponse:
@@ -1465,17 +1419,6 @@ class OrbWithStreamedResponse:
         return TopLevelWithStreamingResponse(self._client.top_level)
 
     @cached_property
-    def beta(self) -> beta.BetaWithStreamingResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import BetaWithStreamingResponse
-
-        return BetaWithStreamingResponse(self._client.beta)
-
-    @cached_property
     def coupons(self) -> coupons.CouponsWithStreamingResponse:
         """
         A coupon represents a reusable discount configuration that can be applied either as a fixed or percentage amount to an invoice or subscription. Coupons are activated using a redemption code, which applies the discount to a subscription or invoice. The duration of a coupon determines how long it remains available for use by end users.
@@ -1686,17 +1629,6 @@ class AsyncOrbWithStreamedResponse:
         from .resources.top_level import AsyncTopLevelWithStreamingResponse
 
         return AsyncTopLevelWithStreamingResponse(self._client.top_level)
-
-    @cached_property
-    def beta(self) -> beta.AsyncBetaWithStreamingResponse:
-        """
-        The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be subscribed to by a
-        customer. Plans define the billing behavior of the subscription. You can see more about how to configure prices
-        in the [Price resource](/reference/price).
-        """
-        from .resources.beta import AsyncBetaWithStreamingResponse
-
-        return AsyncBetaWithStreamingResponse(self._client.beta)
 
     @cached_property
     def coupons(self) -> coupons.AsyncCouponsWithStreamingResponse:
