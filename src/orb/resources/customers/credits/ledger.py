@@ -258,6 +258,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -357,6 +368,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -445,6 +473,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -544,6 +583,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -619,6 +675,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -718,6 +785,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -801,6 +885,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -900,6 +995,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -977,6 +1089,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -1076,6 +1199,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -1230,6 +1370,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -1329,6 +1480,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -1417,6 +1585,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -1516,6 +1695,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -1591,6 +1787,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -1690,6 +1897,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -1773,6 +1997,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -1872,6 +2107,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -1949,6 +2201,17 @@ class Ledger(SyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -2048,6 +2311,23 @@ class Ledger(SyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -2555,6 +2835,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -2654,6 +2945,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -2742,6 +3050,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -2841,6 +3160,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -2916,6 +3252,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3015,6 +3362,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -3098,6 +3462,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3197,6 +3572,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -3274,6 +3666,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3373,6 +3776,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -3527,6 +3947,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3626,6 +4057,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -3714,6 +4162,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3813,6 +4272,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -3888,6 +4364,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -3987,6 +4474,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -4070,6 +4574,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -4169,6 +4684,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
@@ -4246,6 +4778,17 @@ class AsyncLedger(AsyncAPIResource):
         3. If `invoice_settings` is specified, an invoice will be created that reflects
            the cost of the credits (based on `amount` and `per_unit_cost_basis`).
 
+        ## Currency
+
+        `currency` sets which currency or custom pricing unit ledger the entry applies
+        to. It is optional: if it is omitted, Orb uses the customer's default ledger
+        pricing unit, which may not be the one you intend. We recommend passing
+        `currency` explicitly on every ledger entry.
+
+        For entries that act on an existing block (`void`, `amendment`, and
+        `expiration_change`), `currency` must match the block's pricing unit. Otherwise
+        the request fails with a currency mismatch error.
+
         ## Adding credits
 
         Adding credits is done by creating an entry of type `increment`. This requires
@@ -4345,6 +4888,23 @@ class AsyncLedger(AsyncAPIResource):
         this entry, `block_id` is required to identify the block, and `amount` indicates
         how many credits to void, up to the block's initial balance. Pass in a
         `void_reason` of `refund` if the void is due to a refund.
+
+        Pass `currency` set to the block's currency or custom pricing unit. If it is
+        omitted and the block is not in the customer's default ledger pricing unit, the
+        request fails with a currency mismatch error.
+
+        The following snippet illustrates a sample request body to void 50 credits from
+        a block that uses a custom pricing unit named `tokens`:
+
+        ```json
+        {
+          "entry_type": "void",
+          "block_id": "UiUhFWeLHPrBY4Ad",
+          "amount": 50,
+          "currency": "tokens",
+          "void_reason": "refund"
+        }
+        ```
 
         ## Amendment
 
