@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.99.0](https://github.com/orbcorp/orb-python/compare/v4.98.0...v4.99.0) (2026-11-17)
+
+
+### Features
+
+* **api:** add plan.migration_scheduled webhook when a plan migration is created ([18e7f53](https://github.com/orbcorp/orb-python/commit/18e7f53ed4598595dcdf192d7d2a723d58839ab2))
+* **api:** add skip_grace_period option to plan version migrations ([18e7f53](https://github.com/orbcorp/orb-python/commit/18e7f53ed4598595dcdf192d7d2a723d58839ab2))
+
 ## [4.98.0](https://github.com/orbcorp/orb-python/compare/v4.97.0...v4.98.0) (2026-11-14)
 
 
