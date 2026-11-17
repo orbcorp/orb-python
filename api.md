@@ -561,6 +561,7 @@ Types:
 
 ```python
 from orb.types import (
+    InvoiceStatusFilter,
     InvoiceFetchUpcomingResponse,
     InvoiceIssueSummaryResponse,
     InvoiceListSummaryResponse,
@@ -796,6 +797,7 @@ from orb.types import (
     NewSubscriptionUnitWithPercentPrice,
     NewSubscriptionUnitWithProrationPrice,
     Subscription,
+    SubscriptionStatusFilter,
     SubscriptionUsage,
     Subscriptions,
     SubscriptionFetchCostsResponse,

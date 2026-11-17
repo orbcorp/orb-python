@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
+from .subscription_status_filter import SubscriptionStatusFilter
 
 __all__ = ["SubscriptionListSummaryParams"]
 
@@ -27,9 +29,9 @@ class SubscriptionListSummaryParams(TypedDict, total=False):
     request.
     """
 
-    customer_id: Optional[str]
+    customer_id: Union[str, SequenceNotStr[str], None]
 
-    external_customer_id: Optional[str]
+    external_customer_id: Union[str, SequenceNotStr[str], None]
 
     external_plan_id: Optional[str]
 
@@ -38,4 +40,4 @@ class SubscriptionListSummaryParams(TypedDict, total=False):
 
     plan_id: Optional[str]
 
-    status: Optional[Literal["active", "ended", "upcoming"]]
+    status: Union[SubscriptionStatusFilter, List[SubscriptionStatusFilter], None]

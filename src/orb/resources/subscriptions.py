@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Union, Iterable, Optional, cast
+from typing import Any, Dict, List, Union, Iterable, Optional, cast
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -36,6 +36,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.subscription import Subscription
 from ..types.subscription_usage import SubscriptionUsage
 from ..types.mutated_subscription import MutatedSubscription
+from ..types.subscription_status_filter import SubscriptionStatusFilter
 from ..types.subscription_fetch_costs_response import SubscriptionFetchCostsResponse
 from ..types.subscription_list_summary_response import SubscriptionListSummaryResponse
 from ..types.subscription_fetch_schedule_response import SubscriptionFetchScheduleResponse
@@ -608,12 +609,12 @@ class Subscriptions(SyncAPIResource):
         created_at_lt: Union[str, datetime, None] | Omit = omit,
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
-        customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
-        external_customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
+        customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
+        external_customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         plan_id: Optional[str] | Omit = omit,
-        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        status: Union[SubscriptionStatusFilter, List[SubscriptionStatusFilter], None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1248,12 +1249,12 @@ class Subscriptions(SyncAPIResource):
         created_at_lt: Union[str, datetime, None] | Omit = omit,
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
-        customer_id: Optional[str] | Omit = omit,
-        external_customer_id: Optional[str] | Omit = omit,
+        customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
+        external_customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         plan_id: Optional[str] | Omit = omit,
-        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        status: Union[SubscriptionStatusFilter, List[SubscriptionStatusFilter], None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2862,12 +2863,12 @@ class AsyncSubscriptions(AsyncAPIResource):
         created_at_lt: Union[str, datetime, None] | Omit = omit,
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
-        customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
-        external_customer_id: Optional[SequenceNotStr[str]] | Omit = omit,
+        customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
+        external_customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         plan_id: Optional[str] | Omit = omit,
-        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        status: Union[SubscriptionStatusFilter, List[SubscriptionStatusFilter], None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -3502,12 +3503,12 @@ class AsyncSubscriptions(AsyncAPIResource):
         created_at_lt: Union[str, datetime, None] | Omit = omit,
         created_at_lte: Union[str, datetime, None] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
-        customer_id: Optional[str] | Omit = omit,
-        external_customer_id: Optional[str] | Omit = omit,
+        customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
+        external_customer_id: Union[str, SequenceNotStr[str], None] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         limit: int | Omit = omit,
         plan_id: Optional[str] | Omit = omit,
-        status: Optional[Literal["active", "ended", "upcoming"]] | Omit = omit,
+        status: Union[SubscriptionStatusFilter, List[SubscriptionStatusFilter], None] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

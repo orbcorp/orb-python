@@ -29,6 +29,7 @@ from .._response import to_streamed_response_wrapper, async_to_streamed_response
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.shared.invoice import Invoice
+from ..types.invoice_status_filter import InvoiceStatusFilter
 from ..types.shared_params.discount import Discount
 from ..types.invoice_list_summary_response import InvoiceListSummaryResponse
 from ..types.invoice_issue_summary_response import InvoiceIssueSummaryResponse
@@ -272,7 +273,7 @@ class Invoices(SyncAPIResource):
         invoice_date_lte: Union[str, datetime, None] | Omit = omit,
         is_recurring: Optional[bool] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | Omit = omit,
+        status: Union[InvoiceStatusFilter, List[InvoiceStatusFilter], None] | Omit = omit,
         subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -637,7 +638,7 @@ class Invoices(SyncAPIResource):
         invoice_date_lte: Union[str, datetime, None] | Omit = omit,
         is_recurring: Optional[bool] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[Literal["draft", "issued", "paid", "synced", "void"]] | Omit = omit,
+        status: Union[InvoiceStatusFilter, List[InvoiceStatusFilter], None] | Omit = omit,
         subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1239,7 +1240,7 @@ class AsyncInvoices(AsyncAPIResource):
         invoice_date_lte: Union[str, datetime, None] | Omit = omit,
         is_recurring: Optional[bool] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]] | Omit = omit,
+        status: Union[InvoiceStatusFilter, List[InvoiceStatusFilter], None] | Omit = omit,
         subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1606,7 +1607,7 @@ class AsyncInvoices(AsyncAPIResource):
         invoice_date_lte: Union[str, datetime, None] | Omit = omit,
         is_recurring: Optional[bool] | Omit = omit,
         limit: int | Omit = omit,
-        status: Optional[Literal["draft", "issued", "paid", "synced", "void"]] | Omit = omit,
+        status: Union[InvoiceStatusFilter, List[InvoiceStatusFilter], None] | Omit = omit,
         subscription_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

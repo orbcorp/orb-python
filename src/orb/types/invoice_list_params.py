@@ -7,6 +7,7 @@ from datetime import date, datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .invoice_status_filter import InvoiceStatusFilter
 
 __all__ = ["InvoiceListParams"]
 
@@ -66,6 +67,6 @@ class InvoiceListParams(TypedDict, total=False):
     limit: int
     """The number of items to fetch. Defaults to 20."""
 
-    status: Optional[List[Literal["draft", "issued", "paid", "synced", "void"]]]
+    status: Union[InvoiceStatusFilter, List[InvoiceStatusFilter], None]
 
     subscription_id: Optional[str]
