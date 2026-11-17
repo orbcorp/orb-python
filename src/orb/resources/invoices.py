@@ -799,6 +799,20 @@ class Invoices(SyncAPIResource):
         be provided to pay using agent-granted credentials instead. This action can only
         be taken on invoices with status "issued".
 
+        A `200` response means Orb attempted the charge, not that the payment succeeded.
+        A declined card still returns `200`. To check the outcome, read the returned
+        invoice:
+
+        - `status` is `paid` if the payment succeeded. It stays `issued` if the payment
+          failed or is still processing.
+        - The newest entry in `payment_attempts` has `succeeded: true` only if the
+          charge went through.
+
+        Some payment methods (such as ACH debits) settle asynchronously, so the outcome
+        may not be known when this endpoint returns. Listen for the
+        `invoice.payment_succeeded` and `invoice.payment_failed` webhooks to get the
+        final result.
+
         Args:
           shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
 
@@ -1767,6 +1781,20 @@ class AsyncInvoices(AsyncAPIResource):
         customer's default payment method. Optionally, a shared payment token (SPT) can
         be provided to pay using agent-granted credentials instead. This action can only
         be taken on invoices with status "issued".
+
+        A `200` response means Orb attempted the charge, not that the payment succeeded.
+        A declined card still returns `200`. To check the outcome, read the returned
+        invoice:
+
+        - `status` is `paid` if the payment succeeded. It stays `issued` if the payment
+          failed or is still processing.
+        - The newest entry in `payment_attempts` has `succeeded: true` only if the
+          charge went through.
+
+        Some payment methods (such as ACH debits) settle asynchronously, so the outcome
+        may not be known when this endpoint returns. Listen for the
+        `invoice.payment_succeeded` and `invoice.payment_failed` webhooks to get the
+        final result.
 
         Args:
           shared_payment_token_id: The ID of a shared payment token granted by an agent to use for this payment.
