@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.100.0](https://github.com/orbcorp/orb-python/compare/v4.99.0...v4.100.0) (2026-11-18)
+
+
+### Features
+
+* **api:** api update ([36da32c](https://github.com/orbcorp/orb-python/commit/36da32c34fb1a396823a425e78f7db1b2198a8f8))
+* **api:** document currency handling and void examples for ledger entries ([3fabc14](https://github.com/orbcorp/orb-python/commit/3fabc14bbd98e4cf350c3677ccc6429133d7bedf))
+
 ## [4.99.0](https://github.com/orbcorp/orb-python/compare/v4.98.0...v4.99.0) (2026-11-17)
 
 
