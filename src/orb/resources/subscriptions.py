@@ -420,9 +420,12 @@ class Subscriptions(SyncAPIResource):
           name: The name to use for the subscription. If not specified, the plan name will be
               used.
 
-          net_terms: The net terms determines the difference between the invoice date and the issue
-              date for the invoice. If you intend the invoice to be due on issue, set this
-              to 0. If not provided, this defaults to the value specified in the plan.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. If you
+              intend the invoice to be due on issue, set this to 0. If not provided, this
+              defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -561,10 +564,12 @@ class Subscriptions(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of `0` here represents that the
-              invoice is due on issue, whereas a value of `30` represents that the customer
-              has a month to pay the invoice.
+          net_terms: The number of days until subscription invoices are due, counting the start date
+              set by the account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              as day 1. A value of `0` here represents that the invoice is due on issue,
+              whereas a value of `30` represents that the customer has a month to pay the
+              invoice.
 
           extra_headers: Send extra headers
 
@@ -1822,9 +1827,12 @@ class Subscriptions(SyncAPIResource):
               be issued for the subscription. If not specified, invoices will only be issued
               at the end of the billing period.
 
-          net_terms: The net terms determines the difference between the invoice date and the issue
-              date for the invoice. If you intend the invoice to be due on issue, set this
-              to 0. If not provided, this defaults to the value specified in the plan.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. If you
+              intend the invoice to be due on issue, set this to 0. If not provided, this
+              defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -2674,9 +2682,12 @@ class AsyncSubscriptions(AsyncAPIResource):
           name: The name to use for the subscription. If not specified, the plan name will be
               used.
 
-          net_terms: The net terms determines the difference between the invoice date and the issue
-              date for the invoice. If you intend the invoice to be due on issue, set this
-              to 0. If not provided, this defaults to the value specified in the plan.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. If you
+              intend the invoice to be due on issue, set this to 0. If not provided, this
+              defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.
@@ -2815,10 +2826,12 @@ class AsyncSubscriptions(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: Determines the difference between the invoice issue date for subscription
-              invoices as the date that they are due. A value of `0` here represents that the
-              invoice is due on issue, whereas a value of `30` represents that the customer
-              has a month to pay the invoice.
+          net_terms: The number of days until subscription invoices are due, counting the start date
+              set by the account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              as day 1. A value of `0` here represents that the invoice is due on issue,
+              whereas a value of `30` represents that the customer has a month to pay the
+              invoice.
 
           extra_headers: Send extra headers
 
@@ -4076,9 +4089,12 @@ class AsyncSubscriptions(AsyncAPIResource):
               be issued for the subscription. If not specified, invoices will only be issued
               at the end of the billing period.
 
-          net_terms: The net terms determines the difference between the invoice date and the issue
-              date for the invoice. If you intend the invoice to be due on issue, set this
-              to 0. If not provided, this defaults to the value specified in the plan.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. If you
+              intend the invoice to be due on issue, set this to 0. If not provided, this
+              defaults to the value specified in the plan.
 
           plan_id: The plan that the given subscription should be switched to. Note that either
               this property or `external_plan_id` must be specified.

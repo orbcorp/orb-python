@@ -28,7 +28,10 @@ class PaymentMethod(BaseModel):
     """The ID of the Orb customer this payment method is attached to."""
 
     default: bool
-    """Whether this is the customer's default payment method."""
+    """
+    Whether this is the customer's default payment method on its payment gateway
+    connection.
+    """
 
     external_payment_method_id: str
     """The identifier of this payment method in the external payment provider."""

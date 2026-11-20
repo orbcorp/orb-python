@@ -122,11 +122,12 @@ class Invoices(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: The net terms determines the due date of the invoice. Due date is calculated
-              based on the invoice or issuance date, depending on the account's configured due
-              date calculation method. A value of '0' here represents that the invoice is due
-              on issue, whereas a value of '30' represents that the customer has 30 days to
-              pay the invoice. Do not set this field if you want to set a custom due date.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. A value of
+              '0' here represents that the invoice is due on issue. Do not set this field if
+              you want to set a custom due date.
 
           will_auto_issue: When true, auto-issues the invoice on the invoice date. If the invoice date is
               today's date or earlier, the invoice will be issued upon creation. When false,
@@ -212,11 +213,12 @@ class Invoices(SyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: The net terms determines the due date of the invoice. Due date is calculated
-              based on the invoice or issuance date, depending on the account's configured due
-              date calculation method. A value of '0' here represents that the invoice is due
-              on issue, whereas a value of '30' represents that the customer has 30 days to
-              pay the invoice. Do not set this field if you want to set a custom due date.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. A value of
+              '0' here represents that the invoice is due on issue. Do not set this field if
+              you want to set a custom due date.
 
           extra_headers: Send extra headers
 
@@ -1103,11 +1105,12 @@ class AsyncInvoices(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: The net terms determines the due date of the invoice. Due date is calculated
-              based on the invoice or issuance date, depending on the account's configured due
-              date calculation method. A value of '0' here represents that the invoice is due
-              on issue, whereas a value of '30' represents that the customer has 30 days to
-              pay the invoice. Do not set this field if you want to set a custom due date.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. A value of
+              '0' here represents that the invoice is due on issue. Do not set this field if
+              you want to set a custom due date.
 
           will_auto_issue: When true, auto-issues the invoice on the invoice date. If the invoice date is
               today's date or earlier, the invoice will be issued upon creation. When false,
@@ -1193,11 +1196,12 @@ class AsyncInvoices(AsyncAPIResource):
               by setting the value to `null`, and the entire metadata mapping can be cleared
               by setting `metadata` to `null`.
 
-          net_terms: The net terms determines the due date of the invoice. Due date is calculated
-              based on the invoice or issuance date, depending on the account's configured due
-              date calculation method. A value of '0' here represents that the invoice is due
-              on issue, whereas a value of '30' represents that the customer has 30 days to
-              pay the invoice. Do not set this field if you want to set a custom due date.
+          net_terms: The number of days until the invoice is due, counting the start date as day 1,
+              so net 30 from October 1 is due October 30. The account's
+              [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+              sets whether the start date is the invoice date or the issuance date. A value of
+              '0' here represents that the invoice is due on issue. Do not set this field if
+              you want to set a custom due date.
 
           extra_headers: Send extra headers
 
