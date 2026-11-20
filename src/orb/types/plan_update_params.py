@@ -9,6 +9,12 @@ __all__ = ["PlanUpdateParams"]
 
 
 class PlanUpdateParams(TypedDict, total=False):
+    billing_entity_id: Optional[str]
+    """The Orb ID of the active billing entity to set as this plan's default entity.
+
+    Pass `null` to clear it.
+    """
+
     description: Optional[str]
     """An optional user-defined description of the plan."""
 

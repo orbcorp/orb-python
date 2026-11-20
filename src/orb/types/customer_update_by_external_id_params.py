@@ -54,6 +54,13 @@ class CustomerUpdateByExternalIDParams(TypedDict, total=False):
 
     billing_address: Optional[AddressInputParam]
 
+    billing_entity_id: Optional[str]
+    """The Orb ID of the active billing entity to set as this customer's default
+    entity.
+
+    Pass `null` to clear it.
+    """
+
     currency: Optional[str]
     """An ISO 4217 currency string used for the customer's invoices and balance.
 

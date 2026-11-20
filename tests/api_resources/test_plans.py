@@ -167,6 +167,7 @@ class TestPlans:
                     "plan_phase_order": 0,
                 }
             ],
+            billing_entity_id="billing_entity_id",
             default_invoice_memo="default_invoice_memo",
             description="description",
             external_plan_id="external_plan_id",
@@ -223,6 +224,7 @@ class TestPlans:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         plan = client.plans.update(
             plan_id="plan_id",
+            billing_entity_id="billing_entity_id",
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
@@ -905,6 +907,7 @@ class TestAsyncPlans:
                     "plan_phase_order": 0,
                 }
             ],
+            billing_entity_id="billing_entity_id",
             default_invoice_memo="default_invoice_memo",
             description="description",
             external_plan_id="external_plan_id",
@@ -961,6 +964,7 @@ class TestAsyncPlans:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         plan = await async_client.plans.update(
             plan_id="plan_id",
+            billing_entity_id="billing_entity_id",
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},

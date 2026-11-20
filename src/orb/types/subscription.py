@@ -155,6 +155,9 @@ class Subscription(BaseModel):
     means the billing period begins on the 30th.
     """
 
+    billing_entity_id: Optional[str] = None
+    """The id of the billing entity that issues this subscription's invoices."""
+
     created_at: datetime
 
     current_billing_period_end_date: Optional[datetime] = None

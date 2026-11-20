@@ -14,6 +14,13 @@ __all__ = ["SubscriptionListSummaryParams"]
 
 
 class SubscriptionListSummaryParams(TypedDict, total=False):
+    billing_entity_id: Optional[str]
+    """Filters to objects issued by this billing entity.
+
+    Filtering on the account's default billing entity also matches objects created
+    before the account had billing entities.
+    """
+
     created_at_gt: Annotated[Union[str, datetime, None], PropertyInfo(alias="created_at[gt]", format="iso8601")]
 
     created_at_gte: Annotated[Union[str, datetime, None], PropertyInfo(alias="created_at[gte]", format="iso8601")]

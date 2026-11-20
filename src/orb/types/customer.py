@@ -384,6 +384,9 @@ class Customer(BaseModel):
     boolean value.
     """
 
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this customer."""
+
     default_payment_method: Optional[DefaultPaymentMethod] = None
     """
     A payment method represents a customer's stored payment instrument held with an

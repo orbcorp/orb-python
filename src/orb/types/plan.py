@@ -131,6 +131,9 @@ class BasePlan(BaseModel):
 
     name: Optional[str] = None
 
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this plan."""
+
 
 class PlanPhase(BaseModel):
     id: str
@@ -204,6 +207,9 @@ class Plan(BaseModel):
     Legacy field representing the parent plan ID if the current plan is a 'child
     plan', overriding prices from the parent.
     """
+
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this plan."""
 
     created_at: datetime
 

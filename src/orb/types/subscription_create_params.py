@@ -200,6 +200,13 @@ class SubscriptionCreateParams(TypedDict, total=False):
 
     billing_cycle_anchor_configuration: Optional[BillingCycleAnchorConfiguration]
 
+    billing_entity_id: Optional[str]
+    """The id of the active billing entity that issues this subscription's invoices.
+
+    If not specified, falls back to the customer's billing entity, then the plan's,
+    then the account's default. This cannot be changed after creation.
+    """
+
     coupon_redemption_code: Optional[str]
     """Redemption code to be used for this subscription.
 
@@ -225,6 +232,12 @@ class SubscriptionCreateParams(TypedDict, total=False):
     """
 
     end_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
+
+    external_billing_entity_id: Optional[str]
+    """
+    The external id of the active billing entity that issues this subscription's
+    invoices.
+    """
 
     external_customer_id: Optional[str]
 

@@ -52,6 +52,9 @@ class SubscriptionPlan(BaseModel):
 
     name: Optional[str] = None
 
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this plan."""
+
 
 class Subscription(BaseModel):
     """

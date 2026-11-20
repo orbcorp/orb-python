@@ -34,6 +34,9 @@ class Plan(BaseModel):
 
     plan_version: str
 
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this plan."""
+
 
 class BalanceAlertStatus(BaseModel):
     """Alert status is used to determine if an alert is currently in-alert or not."""

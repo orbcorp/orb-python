@@ -37,6 +37,12 @@ class InvoiceCreateParams(TypedDict, total=False):
     auto_collection setting.
     """
 
+    billing_entity_id: Optional[str]
+    """The id of the active billing entity that issues this invoice.
+
+    If not specified, falls back to the customer's billing entity.
+    """
+
     customer_id: Optional[str]
     """The id of the `Customer` to create this invoice for.
 
@@ -51,6 +57,9 @@ class InvoiceCreateParams(TypedDict, total=False):
 
     If not set, the due date will be calculated based on the `net_terms` value.
     """
+
+    external_billing_entity_id: Optional[str]
+    """The external id of the active billing entity that issues this invoice."""
 
     external_customer_id: Optional[str]
     """The `external_customer_id` of the `Customer` to create this invoice for.

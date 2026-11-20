@@ -126,6 +126,9 @@ class PlanCreateParams(TypedDict, total=False):
     If the plan has phases, this includes adjustments across all phases of the plan.
     """
 
+    billing_entity_id: Optional[str]
+    """The Orb ID of the active billing entity to set as this plan's default entity."""
+
     default_invoice_memo: Optional[str]
     """
     Free-form text which is available on the invoice PDF and the Orb invoice portal.

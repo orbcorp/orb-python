@@ -72,9 +72,11 @@ class Invoices(SyncAPIResource):
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
         auto_collection: Optional[bool] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        external_billing_entity_id: Optional[str] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
         memo: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -104,6 +106,9 @@ class Invoices(SyncAPIResource):
               payment method, if any. If not specified, the invoice inherits the customer's
               auto_collection setting.
 
+          billing_entity_id: The id of the active billing entity that issues this invoice. If not specified,
+              falls back to the customer's billing entity.
+
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
 
@@ -111,6 +116,8 @@ class Invoices(SyncAPIResource):
 
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
+
+          external_billing_entity_id: The external id of the active billing entity that issues this invoice.
 
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
@@ -151,9 +158,11 @@ class Invoices(SyncAPIResource):
                     "invoice_date": invoice_date,
                     "line_items": line_items,
                     "auto_collection": auto_collection,
+                    "billing_entity_id": billing_entity_id,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
+                    "external_billing_entity_id": external_billing_entity_id,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
@@ -260,6 +269,7 @@ class Invoices(SyncAPIResource):
         amount: Optional[str] | Omit = omit,
         amount_gt: Optional[str] | Omit = omit,
         amount_lt: Optional[str] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
@@ -304,6 +314,10 @@ class Invoices(SyncAPIResource):
         endpoint for better performance.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -339,6 +353,7 @@ class Invoices(SyncAPIResource):
                         "amount": amount,
                         "amount_gt": amount_gt,
                         "amount_lt": amount_lt,
+                        "billing_entity_id": billing_entity_id,
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "date_type": date_type,
@@ -626,6 +641,7 @@ class Invoices(SyncAPIResource):
         amount: Optional[str] | Omit = omit,
         amount_gt: Optional[str] | Omit = omit,
         amount_lt: Optional[str] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
@@ -668,6 +684,10 @@ class Invoices(SyncAPIResource):
         regularly refreshes invoices asynchronously.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -699,6 +719,7 @@ class Invoices(SyncAPIResource):
                         "amount": amount,
                         "amount_gt": amount_gt,
                         "amount_lt": amount_lt,
+                        "billing_entity_id": billing_entity_id,
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "date_type": date_type,
@@ -1055,9 +1076,11 @@ class AsyncInvoices(AsyncAPIResource):
         invoice_date: Union[str, datetime],
         line_items: Iterable[invoice_create_params.LineItem],
         auto_collection: Optional[bool] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         discount: Optional[Discount] | Omit = omit,
         due_date: Union[Union[str, date], Union[str, datetime], None] | Omit = omit,
+        external_billing_entity_id: Optional[str] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
         memo: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -1087,6 +1110,9 @@ class AsyncInvoices(AsyncAPIResource):
               payment method, if any. If not specified, the invoice inherits the customer's
               auto_collection setting.
 
+          billing_entity_id: The id of the active billing entity that issues this invoice. If not specified,
+              falls back to the customer's billing entity.
+
           customer_id: The id of the `Customer` to create this invoice for. One of `customer_id` and
               `external_customer_id` are required.
 
@@ -1094,6 +1120,8 @@ class AsyncInvoices(AsyncAPIResource):
 
           due_date: An optional custom due date for the invoice. If not set, the due date will be
               calculated based on the `net_terms` value.
+
+          external_billing_entity_id: The external id of the active billing entity that issues this invoice.
 
           external_customer_id: The `external_customer_id` of the `Customer` to create this invoice for. One of
               `customer_id` and `external_customer_id` are required.
@@ -1134,9 +1162,11 @@ class AsyncInvoices(AsyncAPIResource):
                     "invoice_date": invoice_date,
                     "line_items": line_items,
                     "auto_collection": auto_collection,
+                    "billing_entity_id": billing_entity_id,
                     "customer_id": customer_id,
                     "discount": discount,
                     "due_date": due_date,
+                    "external_billing_entity_id": external_billing_entity_id,
                     "external_customer_id": external_customer_id,
                     "memo": memo,
                     "metadata": metadata,
@@ -1243,6 +1273,7 @@ class AsyncInvoices(AsyncAPIResource):
         amount: Optional[str] | Omit = omit,
         amount_gt: Optional[str] | Omit = omit,
         amount_lt: Optional[str] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
@@ -1287,6 +1318,10 @@ class AsyncInvoices(AsyncAPIResource):
         endpoint for better performance.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -1322,6 +1357,7 @@ class AsyncInvoices(AsyncAPIResource):
                         "amount": amount,
                         "amount_gt": amount_gt,
                         "amount_lt": amount_lt,
+                        "billing_entity_id": billing_entity_id,
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "date_type": date_type,
@@ -1611,6 +1647,7 @@ class AsyncInvoices(AsyncAPIResource):
         amount: Optional[str] | Omit = omit,
         amount_gt: Optional[str] | Omit = omit,
         amount_lt: Optional[str] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
         customer_id: Optional[str] | Omit = omit,
         date_type: Optional[Literal["due_date", "invoice_date"]] | Omit = omit,
@@ -1653,6 +1690,10 @@ class AsyncInvoices(AsyncAPIResource):
         regularly refreshes invoices asynchronously.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -1684,6 +1725,7 @@ class AsyncInvoices(AsyncAPIResource):
                         "amount": amount,
                         "amount_gt": amount_gt,
                         "amount_lt": amount_lt,
+                        "billing_entity_id": billing_entity_id,
                         "cursor": cursor,
                         "customer_id": customer_id,
                         "date_type": date_type,

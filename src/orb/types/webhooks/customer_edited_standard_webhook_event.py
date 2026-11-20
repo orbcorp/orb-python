@@ -22,6 +22,8 @@ class PropertiesPreviousAttributes(BaseModel):
 
     billing_address: Optional[Address] = None
 
+    billing_entity_id: Optional[str] = None
+
     default_payment_method_id: Optional[str] = None
 
     email: Optional[str] = None

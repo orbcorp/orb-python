@@ -21,6 +21,9 @@ class Plan(BaseModel):
 
     name: Optional[str] = None
 
+    billing_entity_id: Optional[str] = None
+    """The id of the default billing entity of this plan."""
+
 
 class Properties(BaseModel):
     new_default_version_number: int

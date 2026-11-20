@@ -142,6 +142,7 @@ class CreditNotes(SyncAPIResource):
     def list(
         self,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         created_at_gt: Union[str, datetime, None] | Omit = omit,
         created_at_gte: Union[str, datetime, None] | Omit = omit,
         created_at_lt: Union[str, datetime, None] | Omit = omit,
@@ -161,6 +162,10 @@ class CreditNotes(SyncAPIResource):
         reverse chronological order by `creation_time`.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -184,6 +189,7 @@ class CreditNotes(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "billing_entity_id": billing_entity_id,
                         "created_at_gt": created_at_gt,
                         "created_at_gte": created_at_gte,
                         "created_at_lt": created_at_lt,
@@ -352,6 +358,7 @@ class AsyncCreditNotes(AsyncAPIResource):
     def list(
         self,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         created_at_gt: Union[str, datetime, None] | Omit = omit,
         created_at_gte: Union[str, datetime, None] | Omit = omit,
         created_at_lt: Union[str, datetime, None] | Omit = omit,
@@ -371,6 +378,10 @@ class AsyncCreditNotes(AsyncAPIResource):
         reverse chronological order by `creation_time`.
 
         Args:
+          billing_entity_id: Filters to objects issued by this billing entity. Filtering on the account's
+              default billing entity also matches objects created before the account had
+              billing entities.
+
           cursor: Cursor for pagination. This can be populated by the `next_cursor` value returned
               from the initial request.
 
@@ -394,6 +405,7 @@ class AsyncCreditNotes(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "billing_entity_id": billing_entity_id,
                         "created_at_gt": created_at_gt,
                         "created_at_gte": created_at_gte,
                         "created_at_lt": created_at_lt,

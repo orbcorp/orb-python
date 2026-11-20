@@ -146,12 +146,14 @@ class TestSubscriptions:
                 "month": 1,
                 "year": 0,
             },
+            billing_entity_id="billing_entity_id",
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
             currency="currency",
             customer_id="customer_id",
             default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            external_billing_entity_id="external_billing_entity_id",
             external_customer_id="external_customer_id",
             external_marketplace="google",
             external_marketplace_reporting_id="external_marketplace_reporting_id",
@@ -360,6 +362,7 @@ class TestSubscriptions:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.list(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -652,6 +655,7 @@ class TestSubscriptions:
     @parametrize
     def test_method_list_summary_with_all_params(self, client: Orb) -> None:
         subscription = client.subscriptions.list_summary(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -1611,12 +1615,14 @@ class TestAsyncSubscriptions:
                 "month": 1,
                 "year": 0,
             },
+            billing_entity_id="billing_entity_id",
             coupon_redemption_code="coupon_redemption_code",
             credits_overage_rate=0,
             currency="currency",
             customer_id="customer_id",
             default_invoice_memo="default_invoice_memo",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            external_billing_entity_id="external_billing_entity_id",
             external_customer_id="external_customer_id",
             external_marketplace="google",
             external_marketplace_reporting_id="external_marketplace_reporting_id",
@@ -1825,6 +1831,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.list(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -2117,6 +2124,7 @@ class TestAsyncSubscriptions:
     @parametrize
     async def test_method_list_summary_with_all_params(self, async_client: AsyncOrb) -> None:
         subscription = await async_client.subscriptions.list_summary(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),

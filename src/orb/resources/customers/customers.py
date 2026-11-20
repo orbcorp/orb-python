@@ -156,6 +156,7 @@ class Customers(SyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -213,6 +214,9 @@ class Customers(SyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval. If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -413,6 +417,7 @@ class Customers(SyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -448,6 +453,7 @@ class Customers(SyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -495,6 +501,9 @@ class Customers(SyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity. Pass `null` to clear it.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. This
               can only be set if the customer does not already have a currency configured. If
@@ -706,6 +715,7 @@ class Customers(SyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "default_payment_method_id": default_payment_method_id,
                     "email": email,
@@ -1161,6 +1171,7 @@ class Customers(SyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -1206,6 +1217,9 @@ class Customers(SyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity. Pass `null` to clear it.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. This
               can only be set if the customer does not already have a currency configured. If
@@ -1417,6 +1431,7 @@ class Customers(SyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "default_payment_method_id": default_payment_method_id,
                     "email": email,
@@ -1540,6 +1555,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         email_delivery: Optional[bool] | Omit = omit,
         external_customer_id: Optional[str] | Omit = omit,
@@ -1597,6 +1613,9 @@ class AsyncCustomers(AsyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval. If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. If not
               set at creation time, will be set at subscription creation time.
@@ -1797,6 +1816,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "email_delivery": email_delivery,
                     "external_customer_id": external_customer_id,
@@ -1832,6 +1852,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -1879,6 +1900,9 @@ class AsyncCustomers(AsyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity. Pass `null` to clear it.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. This
               can only be set if the customer does not already have a currency configured. If
@@ -2090,6 +2114,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "default_payment_method_id": default_payment_method_id,
                     "email": email,
@@ -2545,6 +2570,7 @@ class AsyncCustomers(AsyncAPIResource):
         auto_collection: Optional[bool] | Omit = omit,
         auto_issuance: Optional[bool] | Omit = omit,
         billing_address: Optional[AddressInputParam] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         currency: Optional[str] | Omit = omit,
         default_payment_method_id: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
@@ -2590,6 +2616,9 @@ class AsyncCustomers(AsyncAPIResource):
               true, invoices will be automatically issued. If false, invoices will require
               manual approval.If `null` is specified, the customer's auto issuance setting
               will be inherited from the account-level setting.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this customer's default
+              entity. Pass `null` to clear it.
 
           currency: An ISO 4217 currency string used for the customer's invoices and balance. This
               can only be set if the customer does not already have a currency configured. If
@@ -2801,6 +2830,7 @@ class AsyncCustomers(AsyncAPIResource):
                     "auto_collection": auto_collection,
                     "auto_issuance": auto_issuance,
                     "billing_address": billing_address,
+                    "billing_entity_id": billing_entity_id,
                     "currency": currency,
                     "default_payment_method_id": default_payment_method_id,
                     "email": email,

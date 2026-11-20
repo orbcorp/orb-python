@@ -28,6 +28,7 @@ class TestExternalPlanID:
     def test_method_update_with_all_params(self, client: Orb) -> None:
         external_plan_id = client.plans.external_plan_id.update(
             other_external_plan_id="external_plan_id",
+            billing_entity_id="billing_entity_id",
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},
@@ -540,6 +541,7 @@ class TestAsyncExternalPlanID:
     async def test_method_update_with_all_params(self, async_client: AsyncOrb) -> None:
         external_plan_id = await async_client.plans.external_plan_id.update(
             other_external_plan_id="external_plan_id",
+            billing_entity_id="billing_entity_id",
             description="description",
             external_plan_id="external_plan_id",
             metadata={"foo": "string"},

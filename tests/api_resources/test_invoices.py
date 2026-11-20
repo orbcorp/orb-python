@@ -64,6 +64,7 @@ class TestInvoices:
                 }
             ],
             auto_collection=True,
+            billing_entity_id="billing_entity_id",
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -79,6 +80,7 @@ class TestInvoices:
                 "reason": "reason",
             },
             due_date=parse_date("2025-09-22"),
+            external_billing_entity_id="external_billing_entity_id",
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
@@ -196,6 +198,7 @@ class TestInvoices:
             amount="amount",
             amount_gt="amount[gt]",
             amount_lt="amount[lt]",
+            billing_entity_id="billing_entity_id",
             cursor="cursor",
             customer_id="customer_id",
             date_type="due_date",
@@ -472,6 +475,7 @@ class TestInvoices:
             amount="amount",
             amount_gt="amount[gt]",
             amount_lt="amount[lt]",
+            billing_entity_id="billing_entity_id",
             cursor="cursor",
             customer_id="customer_id",
             date_type="due_date",
@@ -769,6 +773,7 @@ class TestAsyncInvoices:
                 }
             ],
             auto_collection=True,
+            billing_entity_id="billing_entity_id",
             customer_id="4khy3nwzktxv7",
             discount={
                 "discount_type": "percentage",
@@ -784,6 +789,7 @@ class TestAsyncInvoices:
                 "reason": "reason",
             },
             due_date=parse_date("2025-09-22"),
+            external_billing_entity_id="external_billing_entity_id",
             external_customer_id="external-customer-id",
             memo="An optional memo for my invoice.",
             metadata={"foo": "string"},
@@ -901,6 +907,7 @@ class TestAsyncInvoices:
             amount="amount",
             amount_gt="amount[gt]",
             amount_lt="amount[lt]",
+            billing_entity_id="billing_entity_id",
             cursor="cursor",
             customer_id="customer_id",
             date_type="due_date",
@@ -1177,6 +1184,7 @@ class TestAsyncInvoices:
             amount="amount",
             amount_gt="amount[gt]",
             amount_lt="amount[lt]",
+            billing_entity_id="billing_entity_id",
             cursor="cursor",
             customer_id="customer_id",
             date_type="due_date",

@@ -94,6 +94,7 @@ class TestCreditNotes:
     @parametrize
     def test_method_list_with_all_params(self, client: Orb) -> None:
         credit_note = client.credit_notes.list(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -242,6 +243,7 @@ class TestAsyncCreditNotes:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOrb) -> None:
         credit_note = await async_client.credit_notes.list(
+            billing_entity_id="billing_entity_id",
             created_at_gt=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
             created_at_lt=parse_datetime("2019-12-27T18:11:19.117Z"),

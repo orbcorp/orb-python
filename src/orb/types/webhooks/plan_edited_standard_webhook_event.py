@@ -13,6 +13,8 @@ __all__ = ["PlanEditedStandardWebhookEvent", "Properties", "PropertiesPreviousAt
 class PropertiesPreviousAttributes(BaseModel):
     """metadata values are non-null on the wire, as on the price event."""
 
+    billing_entity_id: Optional[str] = None
+
     description: Optional[str] = None
 
     external_plan_id: Optional[str] = None

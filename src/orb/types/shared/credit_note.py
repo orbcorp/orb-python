@@ -114,6 +114,9 @@ class CreditNote(BaseModel):
     id: str
     """The Orb id of this credit note."""
 
+    billing_entity_id: Optional[str] = None
+    """The id of the billing entity of the credit note's invoice."""
+
     created_at: datetime
     """The creation time of the resource in Orb."""
 

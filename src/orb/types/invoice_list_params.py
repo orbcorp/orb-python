@@ -19,6 +19,13 @@ class InvoiceListParams(TypedDict, total=False):
 
     amount_lt: Annotated[Optional[str], PropertyInfo(alias="amount[lt]")]
 
+    billing_entity_id: Optional[str]
+    """Filters to objects issued by this billing entity.
+
+    Filtering on the account's default billing entity also matches objects created
+    before the account had billing entities.
+    """
+
     cursor: Optional[str]
     """Cursor for pagination.
 

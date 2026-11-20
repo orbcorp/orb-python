@@ -157,6 +157,9 @@ class InvoiceIssueSummaryResponse(BaseModel):
 
     billing_address: Optional[Address] = None
 
+    billing_entity_id: Optional[str] = None
+    """The id of the billing entity that issues this invoice."""
+
     created_at: datetime
     """The creation time of the resource in Orb."""
 

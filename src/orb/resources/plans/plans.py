@@ -113,6 +113,7 @@ class Plans(SyncAPIResource):
         name: str,
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
@@ -140,6 +141,8 @@ class Plans(SyncAPIResource):
 
           adjustments: Adjustments for this plan. If the plan has phases, this includes adjustments
               across all phases of the plan.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
@@ -179,6 +182,7 @@ class Plans(SyncAPIResource):
                     "name": name,
                     "prices": prices,
                     "adjustments": adjustments,
+                    "billing_entity_id": billing_entity_id,
                     "default_invoice_memo": default_invoice_memo,
                     "description": description,
                     "external_plan_id": external_plan_id,
@@ -203,6 +207,7 @@ class Plans(SyncAPIResource):
         self,
         plan_id: str,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -223,6 +228,9 @@ class Plans(SyncAPIResource):
         Other fields on a plan are currently immutable.
 
         Args:
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
+              Pass `null` to clear it.
+
           description: An optional user-defined description of the plan.
 
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
@@ -251,6 +259,7 @@ class Plans(SyncAPIResource):
             path_template("/plans/{plan_id}", plan_id=plan_id),
             body=maybe_transform(
                 {
+                    "billing_entity_id": billing_entity_id,
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
@@ -603,6 +612,7 @@ class AsyncPlans(AsyncAPIResource):
         name: str,
         prices: Iterable[plan_create_params.Price],
         adjustments: Optional[Iterable[plan_create_params.Adjustment]] | Omit = omit,
+        billing_entity_id: Optional[str] | Omit = omit,
         default_invoice_memo: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
@@ -630,6 +640,8 @@ class AsyncPlans(AsyncAPIResource):
 
           adjustments: Adjustments for this plan. If the plan has phases, this includes adjustments
               across all phases of the plan.
+
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
 
           default_invoice_memo: Free-form text which is available on the invoice PDF and the Orb invoice portal.
 
@@ -669,6 +681,7 @@ class AsyncPlans(AsyncAPIResource):
                     "name": name,
                     "prices": prices,
                     "adjustments": adjustments,
+                    "billing_entity_id": billing_entity_id,
                     "default_invoice_memo": default_invoice_memo,
                     "description": description,
                     "external_plan_id": external_plan_id,
@@ -693,6 +706,7 @@ class AsyncPlans(AsyncAPIResource):
         self,
         plan_id: str,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -713,6 +727,9 @@ class AsyncPlans(AsyncAPIResource):
         Other fields on a plan are currently immutable.
 
         Args:
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
+              Pass `null` to clear it.
+
           description: An optional user-defined description of the plan.
 
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
@@ -741,6 +758,7 @@ class AsyncPlans(AsyncAPIResource):
             path_template("/plans/{plan_id}", plan_id=plan_id),
             body=await async_maybe_transform(
                 {
+                    "billing_entity_id": billing_entity_id,
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,

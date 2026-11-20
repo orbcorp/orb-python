@@ -71,6 +71,7 @@ class ExternalPlanID(SyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -91,6 +92,9 @@ class ExternalPlanID(SyncAPIResource):
         Other fields on a plan are currently immutable.
 
         Args:
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
+              Pass `null` to clear it.
+
           description: An optional user-defined description of the plan.
 
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
@@ -123,6 +127,7 @@ class ExternalPlanID(SyncAPIResource):
             ),
             body=maybe_transform(
                 {
+                    "billing_entity_id": billing_entity_id,
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
@@ -398,6 +403,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
         self,
         other_external_plan_id: str,
         *,
+        billing_entity_id: Optional[str] | Omit = omit,
         description: Optional[str] | Omit = omit,
         external_plan_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, Optional[str]]] | Omit = omit,
@@ -418,6 +424,9 @@ class AsyncExternalPlanID(AsyncAPIResource):
         Other fields on a plan are currently immutable.
 
         Args:
+          billing_entity_id: The Orb ID of the active billing entity to set as this plan's default entity.
+              Pass `null` to clear it.
+
           description: An optional user-defined description of the plan.
 
           external_plan_id: An optional user-defined ID for this plan resource, used throughout the system
@@ -450,6 +459,7 @@ class AsyncExternalPlanID(AsyncAPIResource):
             ),
             body=await async_maybe_transform(
                 {
+                    "billing_entity_id": billing_entity_id,
                     "description": description,
                     "external_plan_id": external_plan_id,
                     "metadata": metadata,
