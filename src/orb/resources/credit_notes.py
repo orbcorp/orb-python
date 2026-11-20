@@ -157,8 +157,7 @@ class CreditNotes(SyncAPIResource):
     ) -> SyncPage[CreditNote]:
         """Get a paginated list of CreditNotes.
 
-        Users can also filter by customer_id,
-        subscription_id, or external_customer_id. The credit notes will be returned in
+        The credit notes will be returned in
         reverse chronological order by `creation_time`.
 
         Args:
@@ -368,8 +367,7 @@ class AsyncCreditNotes(AsyncAPIResource):
     ) -> AsyncPaginator[CreditNote, AsyncPage[CreditNote]]:
         """Get a paginated list of CreditNotes.
 
-        Users can also filter by customer_id,
-        subscription_id, or external_customer_id. The credit notes will be returned in
+        The credit notes will be returned in
         reverse chronological order by `creation_time`.
 
         Args:
