@@ -1,5 +1,15 @@
 # Changelog
 
+## [4.101.0](https://github.com/orbcorp/orb-python/compare/v4.100.0...v4.101.0) (2026-11-21)
+
+
+### Features
+
+* **api:** api update ([bedac87](https://github.com/orbcorp/orb-python/commit/bedac87101a09a429e98c1c55d9f912d59df180a))
+* **api:** api update ([ef7bfcd](https://github.com/orbcorp/orb-python/commit/ef7bfcd9b7860be468af217505a141dd1738ecc0))
+* **api:** clarify net_terms day counting, with start date as day 1 ([ef7bfcd](https://github.com/orbcorp/orb-python/commit/ef7bfcd9b7860be468af217505a141dd1738ecc0))
+* **api:** Remove unsupported filters from list credit notes description ([6f7efb8](https://github.com/orbcorp/orb-python/commit/6f7efb807819299871eafa6e73a26dd8e0097089))
+
 ## [4.100.0](https://github.com/orbcorp/orb-python/compare/v4.99.0...v4.100.0) (2026-11-18)
 
 
