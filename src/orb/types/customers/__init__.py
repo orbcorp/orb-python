@@ -16,9 +16,34 @@ from .cost_list_by_external_id_response import CostListByExternalIDResponse as C
 from .credit_list_by_external_id_params import CreditListByExternalIDParams as CreditListByExternalIDParams
 from .balance_transaction_create_response import BalanceTransactionCreateResponse as BalanceTransactionCreateResponse
 from .credit_list_by_external_id_response import CreditListByExternalIDResponse as CreditListByExternalIDResponse
+from .customer_payment_gateway_connection import CustomerPaymentGatewayConnection as CustomerPaymentGatewayConnection
+from .payment_gateway_connection_list_params import (
+    PaymentGatewayConnectionListParams as PaymentGatewayConnectionListParams,
+)
+from .payment_gateway_connection_create_params import (
+    PaymentGatewayConnectionCreateParams as PaymentGatewayConnectionCreateParams,
+)
+from .payment_gateway_connection_list_response import (
+    PaymentGatewayConnectionListResponse as PaymentGatewayConnectionListResponse,
+)
+from .payment_gateway_connection_update_params import (
+    PaymentGatewayConnectionUpdateParams as PaymentGatewayConnectionUpdateParams,
+)
 from .credit_fetch_balance_by_external_id_params import (
     CreditFetchBalanceByExternalIDParams as CreditFetchBalanceByExternalIDParams,
 )
 from .credit_fetch_balance_by_external_id_response import (
     CreditFetchBalanceByExternalIDResponse as CreditFetchBalanceByExternalIDResponse,
+)
+from .payment_gateway_connection_list_by_external_id_params import (
+    PaymentGatewayConnectionListByExternalIDParams as PaymentGatewayConnectionListByExternalIDParams,
+)
+from .payment_gateway_connection_create_by_external_id_params import (
+    PaymentGatewayConnectionCreateByExternalIDParams as PaymentGatewayConnectionCreateByExternalIDParams,
+)
+from .payment_gateway_connection_list_by_external_id_response import (
+    PaymentGatewayConnectionListByExternalIDResponse as PaymentGatewayConnectionListByExternalIDResponse,
+)
+from .payment_gateway_connection_update_by_external_id_params import (
+    PaymentGatewayConnectionUpdateByExternalIDParams as PaymentGatewayConnectionUpdateByExternalIDParams,
 )

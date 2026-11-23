@@ -358,6 +358,42 @@ Methods:
 - <code title="get /credit_notes">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">list</a>(\*\*<a href="src/orb/types/credit_note_list_params.py">params</a>) -> <a href="./src/orb/types/shared/credit_note.py">SyncPage[CreditNote]</a></code>
 - <code title="get /credit_notes/{credit_note_id}">client.credit_notes.<a href="./src/orb/resources/credit_notes.py">fetch</a>(credit_note_id) -> <a href="./src/orb/types/shared/credit_note.py">CreditNote</a></code>
 
+# Account
+
+## BillingEntities
+
+Types:
+
+```python
+from orb.types.account import BillingEntity
+```
+
+Methods:
+
+- <code title="post /account/billing_entities">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">create</a>(\*\*<a href="src/orb/types/account/billing_entity_create_params.py">params</a>) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="put /account/billing_entities/{billing_entity_id}">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">update</a>(billing_entity_id, \*\*<a href="src/orb/types/account/billing_entity_update_params.py">params</a>) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="get /account/billing_entities">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">list</a>(\*\*<a href="src/orb/types/account/billing_entity_list_params.py">params</a>) -> <a href="./src/orb/types/account/billing_entity.py">SyncPage[BillingEntity]</a></code>
+- <code title="post /account/billing_entities/{billing_entity_id}/archive">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">archive</a>(billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="post /account/billing_entities/external_billing_entity_id/{external_billing_entity_id}/archive">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">archive_by_external_id</a>(external_billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="get /account/billing_entities/{billing_entity_id}">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">fetch</a>(billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="get /account/billing_entities/external_billing_entity_id/{external_billing_entity_id}">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">fetch_by_external_id</a>(external_billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="post /account/billing_entities/{billing_entity_id}/unarchive">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">unarchive</a>(billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="post /account/billing_entities/external_billing_entity_id/{external_billing_entity_id}/unarchive">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">unarchive_by_external_id</a>(external_billing_entity_id) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+- <code title="put /account/billing_entities/external_billing_entity_id/{external_billing_entity_id}">client.account.billing_entities.<a href="./src/orb/resources/account/billing_entities.py">update_by_external_id</a>(external_billing_entity_id, \*\*<a href="src/orb/types/account/billing_entity_update_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/account/billing_entity.py">BillingEntity</a></code>
+
+## PaymentGatewayConnections
+
+Types:
+
+```python
+from orb.types.account import PaymentGatewayConnection
+```
+
+Methods:
+
+- <code title="get /account/payment_gateway_connections">client.account.payment_gateway_connections.<a href="./src/orb/resources/account/payment_gateway_connections.py">list</a>(\*\*<a href="src/orb/types/account/payment_gateway_connection_list_params.py">params</a>) -> <a href="./src/orb/types/account/payment_gateway_connection.py">SyncPage[PaymentGatewayConnection]</a></code>
+- <code title="get /account/payment_gateway_connections/{payment_gateway_connection_id}">client.account.payment_gateway_connections.<a href="./src/orb/resources/account/payment_gateway_connections.py">fetch</a>(payment_gateway_connection_id) -> <a href="./src/orb/types/account/payment_gateway_connection.py">PaymentGatewayConnection</a></code>
+
 # Customers
 
 Types:
@@ -488,6 +524,29 @@ Methods:
 
 - <code title="post /customers/{customer_id}/balance_transactions">client.customers.balance_transactions.<a href="./src/orb/resources/customers/balance_transactions.py">create</a>(customer_id, \*\*<a href="src/orb/types/customers/balance_transaction_create_params.py">params</a>) -> <a href="./src/orb/types/customers/balance_transaction_create_response.py">BalanceTransactionCreateResponse</a></code>
 - <code title="get /customers/{customer_id}/balance_transactions">client.customers.balance_transactions.<a href="./src/orb/resources/customers/balance_transactions.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/balance_transaction_list_params.py">params</a>) -> <a href="./src/orb/types/customers/balance_transaction_list_response.py">SyncPage[BalanceTransactionListResponse]</a></code>
+
+## PaymentGatewayConnections
+
+Types:
+
+```python
+from orb.types.customers import (
+    CustomerPaymentGatewayConnection,
+    PaymentGatewayConnectionListResponse,
+    PaymentGatewayConnectionListByExternalIDResponse,
+)
+```
+
+Methods:
+
+- <code title="post /customers/{customer_id}/payment_gateway_connections">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">create</a>(customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_create_params.py">params</a>) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
+- <code title="put /customers/{customer_id}/payment_gateway_connections/{payment_gateway_connection_id}">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">update</a>(payment_gateway_connection_id, \*, customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_update_params.py">params</a>) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
+- <code title="get /customers/{customer_id}/payment_gateway_connections">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">list</a>(customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_list_params.py">params</a>) -> <a href="./src/orb/types/customers/payment_gateway_connection_list_response.py">PaymentGatewayConnectionListResponse</a></code>
+- <code title="delete /customers/{customer_id}/payment_gateway_connections/{payment_gateway_connection_id}">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">delete</a>(payment_gateway_connection_id, \*, customer_id) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
+- <code title="post /customers/external_customer_id/{external_customer_id}/payment_gateway_connections">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">create_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_create_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
+- <code title="delete /customers/external_customer_id/{external_customer_id}/payment_gateway_connections/{payment_gateway_connection_id}">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">delete_by_external_id</a>(payment_gateway_connection_id, \*, external_customer_id) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
+- <code title="get /customers/external_customer_id/{external_customer_id}/payment_gateway_connections">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">list_by_external_id</a>(external_customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_list_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/payment_gateway_connection_list_by_external_id_response.py">PaymentGatewayConnectionListByExternalIDResponse</a></code>
+- <code title="put /customers/external_customer_id/{external_customer_id}/payment_gateway_connections/{payment_gateway_connection_id}">client.customers.payment_gateway_connections.<a href="./src/orb/resources/customers/payment_gateway_connections.py">update_by_external_id</a>(payment_gateway_connection_id, \*, external_customer_id, \*\*<a href="src/orb/types/customers/payment_gateway_connection_update_by_external_id_params.py">params</a>) -> <a href="./src/orb/types/customers/customer_payment_gateway_connection.py">CustomerPaymentGatewayConnection</a></code>
 
 # Events
 

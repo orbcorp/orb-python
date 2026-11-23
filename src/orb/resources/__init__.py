@@ -40,6 +40,14 @@ from .prices import (
     PricesWithStreamingResponse,
     AsyncPricesWithStreamingResponse,
 )
+from .account import (
+    Account,
+    AsyncAccount,
+    AccountWithRawResponse,
+    AsyncAccountWithRawResponse,
+    AccountWithStreamingResponse,
+    AsyncAccountWithStreamingResponse,
+)
 from .coupons import (
     Coupons,
     AsyncCoupons,
@@ -183,6 +191,12 @@ __all__ = [
     "AsyncCreditNotesWithRawResponse",
     "CreditNotesWithStreamingResponse",
     "AsyncCreditNotesWithStreamingResponse",
+    "Account",
+    "AsyncAccount",
+    "AccountWithRawResponse",
+    "AsyncAccountWithRawResponse",
+    "AccountWithStreamingResponse",
+    "AsyncAccountWithStreamingResponse",
     "Customers",
     "AsyncCustomers",
     "CustomersWithRawResponse",

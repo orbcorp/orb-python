@@ -50,6 +50,14 @@ from .balance_transactions import (
     AsyncBalanceTransactionsWithStreamingResponse,
 )
 from ...types.address_input_param import AddressInputParam
+from .payment_gateway_connections import (
+    PaymentGatewayConnections,
+    AsyncPaymentGatewayConnections,
+    PaymentGatewayConnectionsWithRawResponse,
+    AsyncPaymentGatewayConnectionsWithRawResponse,
+    PaymentGatewayConnectionsWithStreamingResponse,
+    AsyncPaymentGatewayConnectionsWithStreamingResponse,
+)
 from ...types.shared_params.customer_tax_id import CustomerTaxID
 from ...types.customer_hierarchy_config_param import CustomerHierarchyConfigParam
 from ...types.new_reporting_configuration_param import NewReportingConfigurationParam
@@ -126,6 +134,26 @@ class Customers(SyncAPIResource):
         information on what this timezone parameter influences within Orb.
         """
         return BalanceTransactions(self._client)
+
+    @cached_property
+    def payment_gateway_connections(self) -> PaymentGatewayConnections:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return PaymentGatewayConnections(self._client)
 
     @cached_property
     def with_raw_response(self) -> CustomersWithRawResponse:
@@ -1525,6 +1553,26 @@ class AsyncCustomers(AsyncAPIResource):
         information on what this timezone parameter influences within Orb.
         """
         return AsyncBalanceTransactions(self._client)
+
+    @cached_property
+    def payment_gateway_connections(self) -> AsyncPaymentGatewayConnections:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return AsyncPaymentGatewayConnections(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncCustomersWithRawResponse:
@@ -2945,6 +2993,26 @@ class CustomersWithRawResponse:
         """
         return BalanceTransactionsWithRawResponse(self._customers.balance_transactions)
 
+    @cached_property
+    def payment_gateway_connections(self) -> PaymentGatewayConnectionsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return PaymentGatewayConnectionsWithRawResponse(self._customers.payment_gateway_connections)
+
 
 class AsyncCustomersWithRawResponse:
     def __init__(self, customers: AsyncCustomers) -> None:
@@ -3030,6 +3098,26 @@ class AsyncCustomersWithRawResponse:
         information on what this timezone parameter influences within Orb.
         """
         return AsyncBalanceTransactionsWithRawResponse(self._customers.balance_transactions)
+
+    @cached_property
+    def payment_gateway_connections(self) -> AsyncPaymentGatewayConnectionsWithRawResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return AsyncPaymentGatewayConnectionsWithRawResponse(self._customers.payment_gateway_connections)
 
 
 class CustomersWithStreamingResponse:
@@ -3117,6 +3205,26 @@ class CustomersWithStreamingResponse:
         """
         return BalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)
 
+    @cached_property
+    def payment_gateway_connections(self) -> PaymentGatewayConnectionsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return PaymentGatewayConnectionsWithStreamingResponse(self._customers.payment_gateway_connections)
+
 
 class AsyncCustomersWithStreamingResponse:
     def __init__(self, customers: AsyncCustomers) -> None:
@@ -3202,3 +3310,23 @@ class AsyncCustomersWithStreamingResponse:
         information on what this timezone parameter influences within Orb.
         """
         return AsyncBalanceTransactionsWithStreamingResponse(self._customers.balance_transactions)
+
+    @cached_property
+    def payment_gateway_connections(self) -> AsyncPaymentGatewayConnectionsWithStreamingResponse:
+        """
+        A customer is a buyer of your products, and the other party to the billing relationship.
+
+        In Orb, customers are assigned system generated identifiers automatically, but it's often desirable to have these
+        match existing identifiers in your system. To avoid having to denormalize Orb ID information, you can pass in an
+        `external_customer_id` with your own identifier. See
+        [Customer ID Aliases](/events-and-metrics/customer-aliases) for further information about how these
+        aliases work in Orb.
+
+        In addition to having an identifier in your system, a customer may exist in a payment provider solution like
+        Stripe. Use the `payment_provider_id` and the `payment_provider` enum field to express this mapping.
+
+        A customer also has a timezone (from the standard [IANA timezone database](https://www.iana.org/time-zones)), which
+        defaults to your account's timezone. See [Timezone localization](/essentials/timezones) for
+        information on what this timezone parameter influences within Orb.
+        """
+        return AsyncPaymentGatewayConnectionsWithStreamingResponse(self._customers.payment_gateway_connections)

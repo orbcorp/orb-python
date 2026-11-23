@@ -32,6 +32,14 @@ from .balance_transactions import (
     BalanceTransactionsWithStreamingResponse,
     AsyncBalanceTransactionsWithStreamingResponse,
 )
+from .payment_gateway_connections import (
+    PaymentGatewayConnections,
+    AsyncPaymentGatewayConnections,
+    PaymentGatewayConnectionsWithRawResponse,
+    AsyncPaymentGatewayConnectionsWithRawResponse,
+    PaymentGatewayConnectionsWithStreamingResponse,
+    AsyncPaymentGatewayConnectionsWithStreamingResponse,
+)
 
 __all__ = [
     "Costs",
@@ -52,6 +60,12 @@ __all__ = [
     "AsyncBalanceTransactionsWithRawResponse",
     "BalanceTransactionsWithStreamingResponse",
     "AsyncBalanceTransactionsWithStreamingResponse",
+    "PaymentGatewayConnections",
+    "AsyncPaymentGatewayConnections",
+    "PaymentGatewayConnectionsWithRawResponse",
+    "AsyncPaymentGatewayConnectionsWithRawResponse",
+    "PaymentGatewayConnectionsWithStreamingResponse",
+    "AsyncPaymentGatewayConnectionsWithStreamingResponse",
     "Customers",
     "AsyncCustomers",
     "CustomersWithRawResponse",

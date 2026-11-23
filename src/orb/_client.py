@@ -42,6 +42,7 @@ if TYPE_CHECKING:
         alerts,
         events,
         prices,
+        account,
         coupons,
         metrics,
         invoices,
@@ -70,6 +71,7 @@ if TYPE_CHECKING:
     from .resources.license_types import LicenseTypes, AsyncLicenseTypes
     from .resources.prices.prices import Prices, AsyncPrices
     from .resources.subscriptions import Subscriptions, AsyncSubscriptions
+    from .resources.account.account import Account, AsyncAccount
     from .resources.coupons.coupons import Coupons, AsyncCoupons
     from .resources.licenses.licenses import Licenses, AsyncLicenses
     from .resources.webhook_endpoints import WebhookEndpoints, AsyncWebhookEndpoints
@@ -190,6 +192,12 @@ class Orb(SyncAPIClient):
         from .resources.credit_notes import CreditNotes
 
         return CreditNotes(self)
+
+    @cached_property
+    def account(self) -> Account:
+        from .resources.account import Account
+
+        return Account(self)
 
     @cached_property
     def customers(self) -> Customers:
@@ -640,6 +648,12 @@ class AsyncOrb(AsyncAPIClient):
         return AsyncCreditNotes(self)
 
     @cached_property
+    def account(self) -> AsyncAccount:
+        from .resources.account import AsyncAccount
+
+        return AsyncAccount(self)
+
+    @cached_property
     def customers(self) -> AsyncCustomers:
         """
         A customer is a buyer of your products, and the other party to the billing relationship.
@@ -1014,6 +1028,12 @@ class OrbWithRawResponse:
         return CreditNotesWithRawResponse(self._client.credit_notes)
 
     @cached_property
+    def account(self) -> account.AccountWithRawResponse:
+        from .resources.account import AccountWithRawResponse
+
+        return AccountWithRawResponse(self._client.account)
+
+    @cached_property
     def customers(self) -> customers.CustomersWithRawResponse:
         """
         A customer is a buyer of your products, and the other party to the billing relationship.
@@ -1224,6 +1244,12 @@ class AsyncOrbWithRawResponse:
         from .resources.credit_notes import AsyncCreditNotesWithRawResponse
 
         return AsyncCreditNotesWithRawResponse(self._client.credit_notes)
+
+    @cached_property
+    def account(self) -> account.AsyncAccountWithRawResponse:
+        from .resources.account import AsyncAccountWithRawResponse
+
+        return AsyncAccountWithRawResponse(self._client.account)
 
     @cached_property
     def customers(self) -> customers.AsyncCustomersWithRawResponse:
@@ -1438,6 +1464,12 @@ class OrbWithStreamedResponse:
         return CreditNotesWithStreamingResponse(self._client.credit_notes)
 
     @cached_property
+    def account(self) -> account.AccountWithStreamingResponse:
+        from .resources.account import AccountWithStreamingResponse
+
+        return AccountWithStreamingResponse(self._client.account)
+
+    @cached_property
     def customers(self) -> customers.CustomersWithStreamingResponse:
         """
         A customer is a buyer of your products, and the other party to the billing relationship.
@@ -1648,6 +1680,12 @@ class AsyncOrbWithStreamedResponse:
         from .resources.credit_notes import AsyncCreditNotesWithStreamingResponse
 
         return AsyncCreditNotesWithStreamingResponse(self._client.credit_notes)
+
+    @cached_property
+    def account(self) -> account.AsyncAccountWithStreamingResponse:
+        from .resources.account import AsyncAccountWithStreamingResponse
+
+        return AsyncAccountWithStreamingResponse(self._client.account)
 
     @cached_property
     def customers(self) -> customers.AsyncCustomersWithStreamingResponse:
