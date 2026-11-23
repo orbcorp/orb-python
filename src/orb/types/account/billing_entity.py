@@ -16,28 +16,8 @@ class InvoiceSettings(BaseModel):
     Each null field inherits the account's setting.
     """
 
-    auto_collection: Optional[bool] = None
-    """Whether Orb charges the customer's payment method automatically."""
-
-    automatic_tax_enabled: Optional[bool] = None
-    """Whether Orb calculates tax through the tax provider."""
-
-    email_delivery: Optional[bool] = None
-    """Whether Orb emails invoices to customers."""
-
-    manual_issuance: Optional[bool] = None
-    """Whether invoices stay in draft until issued by hand."""
-
     memo: Optional[str] = None
     """The memo printed on the entity's invoices."""
-
-    net_terms: Optional[int] = None
-    """
-    The number of days until payment is due, counting the start date as day 1, so
-    net 30 from October 1 is due October 30. The account's
-    [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
-    sets whether the start date is the invoice date or the issuance date.
-    """
 
 
 class PaymentGatewayConnection(BaseModel):

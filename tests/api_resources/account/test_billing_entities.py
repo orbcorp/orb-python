@@ -43,14 +43,7 @@ class TestBillingEntities:
             legal_name="x",
             name="x",
             external_billing_entity_id="x",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             tax_registrations=[
                 {
                     "code": "x",
@@ -109,14 +102,7 @@ class TestBillingEntities:
                 "state": "state",
             },
             default_payment_gateway_connection_id="default_payment_gateway_connection_id",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             legal_name="x",
             name="x",
             payment_gateway_connections=[
@@ -454,14 +440,7 @@ class TestBillingEntities:
                 "state": "state",
             },
             default_payment_gateway_connection_id="default_payment_gateway_connection_id",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             legal_name="x",
             name="x",
             payment_gateway_connections=[
@@ -542,14 +521,7 @@ class TestAsyncBillingEntities:
             legal_name="x",
             name="x",
             external_billing_entity_id="x",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             tax_registrations=[
                 {
                     "code": "x",
@@ -608,14 +580,7 @@ class TestAsyncBillingEntities:
                 "state": "state",
             },
             default_payment_gateway_connection_id="default_payment_gateway_connection_id",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             legal_name="x",
             name="x",
             payment_gateway_connections=[
@@ -953,14 +918,7 @@ class TestAsyncBillingEntities:
                 "state": "state",
             },
             default_payment_gateway_connection_id="default_payment_gateway_connection_id",
-            invoice_settings={
-                "auto_collection": True,
-                "automatic_tax_enabled": True,
-                "email_delivery": True,
-                "manual_issuance": True,
-                "memo": "memo",
-                "net_terms": 0,
-            },
+            invoice_settings={"memo": "memo"},
             legal_name="x",
             name="x",
             payment_gateway_connections=[

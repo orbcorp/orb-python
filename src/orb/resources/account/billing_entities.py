@@ -145,10 +145,10 @@ class BillingEntities(SyncAPIResource):
         Omitted
         fields keep their value. A change to the name, legal name, address, or tax
         registrations writes a new version of the billing entity; invoices already
-        issued keep the version they were issued with. In `invoice_settings`, null
-        clears a field so it inherits the account's setting; the default billing entity
-        accepts only `memo` and `net_terms`. An archived billing entity cannot be
-        updated until it is unarchived. This endpoint requires an admin API key.
+        issued keep the version they were issued with. In `invoice_settings`, a null
+        `memo` clears it so the billing entity uses the account's memo. An archived
+        billing entity cannot be updated until it is unarchived. This endpoint requires
+        an admin API key.
 
         `payment_gateway_connections` is the full set of connections the billing entity
         collects payments through; a connection left out is disconnected from the
@@ -553,10 +553,10 @@ class BillingEntities(SyncAPIResource):
         Omitted
         fields keep their value. A change to the name, legal name, address, or tax
         registrations writes a new version of the billing entity; invoices already
-        issued keep the version they were issued with. In `invoice_settings`, null
-        clears a field so it inherits the account's setting; the default billing entity
-        accepts only `memo` and `net_terms`. An archived billing entity cannot be
-        updated until it is unarchived. This endpoint requires an admin API key.
+        issued keep the version they were issued with. In `invoice_settings`, a null
+        `memo` clears it so the billing entity uses the account's memo. An archived
+        billing entity cannot be updated until it is unarchived. This endpoint requires
+        an admin API key.
 
         `payment_gateway_connections` is the full set of connections the billing entity
         collects payments through; a connection left out is disconnected from the
@@ -744,10 +744,10 @@ class AsyncBillingEntities(AsyncAPIResource):
         Omitted
         fields keep their value. A change to the name, legal name, address, or tax
         registrations writes a new version of the billing entity; invoices already
-        issued keep the version they were issued with. In `invoice_settings`, null
-        clears a field so it inherits the account's setting; the default billing entity
-        accepts only `memo` and `net_terms`. An archived billing entity cannot be
-        updated until it is unarchived. This endpoint requires an admin API key.
+        issued keep the version they were issued with. In `invoice_settings`, a null
+        `memo` clears it so the billing entity uses the account's memo. An archived
+        billing entity cannot be updated until it is unarchived. This endpoint requires
+        an admin API key.
 
         `payment_gateway_connections` is the full set of connections the billing entity
         collects payments through; a connection left out is disconnected from the
@@ -1152,10 +1152,10 @@ class AsyncBillingEntities(AsyncAPIResource):
         Omitted
         fields keep their value. A change to the name, legal name, address, or tax
         registrations writes a new version of the billing entity; invoices already
-        issued keep the version they were issued with. In `invoice_settings`, null
-        clears a field so it inherits the account's setting; the default billing entity
-        accepts only `memo` and `net_terms`. An archived billing entity cannot be
-        updated until it is unarchived. This endpoint requires an admin API key.
+        issued keep the version they were issued with. In `invoice_settings`, a null
+        `memo` clears it so the billing entity uses the account's memo. An archived
+        billing entity cannot be updated until it is unarchived. This endpoint requires
+        an admin API key.
 
         `payment_gateway_connections` is the full set of connections the billing entity
         collects payments through; a connection left out is disconnected from the
