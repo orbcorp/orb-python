@@ -35,7 +35,9 @@ class TaxRegistration(BaseModel):
     applies_to: Optional[str] = None
     """The jurisdiction the registration applies to.
 
-    If null, it applies to every customer.
+    If null, it applies to every customer. A Canadian provincial registration
+    (`CA PST-BC`, `CA PST-MB`, `CA PST-SK`, `CA QST`) only applies to customers in
+    its province, whatever this field holds.
     """
 
     code: str
